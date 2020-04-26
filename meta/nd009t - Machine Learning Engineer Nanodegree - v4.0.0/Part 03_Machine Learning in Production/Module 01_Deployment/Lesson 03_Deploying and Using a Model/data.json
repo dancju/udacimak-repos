@@ -1,0 +1,859 @@
+{
+  "data": {
+    "lesson": {
+      "id": 770426,
+      "key": "8efca8ea-839c-4e13-ba87-2e12a86c60ae",
+      "title": "Deploying and Using a Model",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson students will learn how to deploy a model using SageMaker and how to make use of their deployed model with a simple web application.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/8efca8ea-839c-4e13-ba87-2e12a86c60ae/770426/1544197646551/Deploying+and+Using+a+Model+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/8efca8ea-839c-4e13-ba87-2e12a86c60ae/770426/1544197642446/Deploying+and+Using+a+Model+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 770427,
+          "key": "5804c6fe-492b-4777-a234-58228b1a874a",
+          "title": "Deploying a Model in SageMaker",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5804c6fe-492b-4777-a234-58228b1a874a",
+            "completed_at": "2019-11-29T09:56:28.868Z",
+            "last_viewed_at": "2019-11-29T09:56:26.936Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780703,
+              "key": "75cd9592-9be3-4ec5-8274-e53943fc928a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Deploying a Model in SageMaker",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783156,
+              "key": "8fa28f31-f13b-4c3a-b8a7-22ca814ab291",
+              "title": "L3 00 Intro V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "g_GYZpcVcFE",
+                "china_cdn_id": "g_GYZpcVcFE.mp4"
+              }
+            },
+            {
+              "id": 780707,
+              "key": "d7040ba8-ee8c-4843-ba4a-7df7ed5d686a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Deploying a Model in SageMaker\n\nIn this lesson, we're going to take a look at how we can use a model that has been created in SageMaker. We will do this by first *deploying* our model. For us, this means using SageMaker's functionality to **create an endpoint that will be used as a way to send data to our model**.\n\n>Recall, from the first lesson in this section, that an endpoint is basically a way to allow a model and an application to communicate. An application, such as a web app, will be responsible for accepting user input data, and through an endpoint we can send that data to our model, which will produce predictions that can be sent back to our application!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790327,
+              "key": "d152caa0-408e-45b0-88b8-f61376952266",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5c003e8b_screen-shot-2018-11-29-at-11.30.10-am/screen-shot-2018-11-29-at-11.30.10-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d152caa0-408e-45b0-88b8-f61376952266",
+              "caption": "",
+              "alt": "Endpoint pictured as the connector between a model that can provide predictions, and an application that can accept user input data.",
+              "width": 500,
+              "height": 728,
+              "instructor_notes": null
+            },
+            {
+              "id": 790326,
+              "key": "58b1213d-8944-4a5e-add6-64b19809a7de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\nFor our purposes **an endpoint is just a URL**. Instead of returning a web page, like a typical url, this endpoint URL returns the *results* of performing inference. In addition, we are able to send data to this URL so that our model knows what to perform inference on. We won't go too far into the details of how this is all set up since SageMaker does most of the heavy lifting for us.\n\nAn important aspect that we will encounter is that SageMaker endpoints are secured. In this case, that means that only other AWS services with permission to access SageMaker endpoints can do so.\n\nTo start with, we won't need to worry about this too much since we will be working inside of a SageMaker notebook and so we will be able to access our deployed endpoints easily.\n\nLater on we will talk about how to set things up so that a simple web app, which doesn't need to be given special permission, can access our SageMaker endpoint.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780178,
+          "key": "d92f8640-0359-47ed-b553-7a0fc07859d1",
+          "title": "Boston Housing Example - Deploying the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d92f8640-0359-47ed-b553-7a0fc07859d1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780709,
+              "key": "9c8d1520-7afc-4758-bd23-67caf889ac2f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Boston Housing Example",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781516,
+              "key": "3bcb3998-a086-49e8-a18c-c32e0462b7c8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you've had some time to try and build models using SageMaker, we are going to learn how to deploy those models so that our models can be interacted with using an endpoint.\n\nInside of the `Tutorials` folder is the `Boston Housing - XGBoost (Deploy) - High Level.ipynb` notebook which we will be looking at in the video below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780195,
+              "key": "52e2b95c-b79e-4d02-811a-5762216b0a48",
+              "title": "Deployment L3 C1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0PBsV-SzSlo",
+                "china_cdn_id": "0PBsV-SzSlo.mp4"
+              }
+            },
+            {
+              "id": 780716,
+              "key": "4f79e93b-f562-4ffa-a3ab-3aa997a6edd7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Using the high level approach makes deploying a trained model pretty straightforward. All we need to do is call the `deploy` method and SageMaker takes care of the rest.\n\nSimilarly, sending data to the deployed endpoint and capturing the resulting inference is easy too as SageMaker wraps everything up into the `predict` method, provided we make sure that our data is serialized correctly. In our case, serializing means converting the data structure we wish to send to our endpoint into a string, something that can be transferred using HTTP.\n\nIn the next video we'll take a more in-depth look at how our model is being deployed.\n\n## WARNING - SHUT DOWN YOUR DEPLOYED ENDPOINT\n\nSorry for the yelling, but this is pretty important. The cost of a deployed endpoint is based on the length of time that it is running. This means that if you aren't using an endpoint you **really** need to shut it down.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780179,
+          "key": "c7ce0c04-48f3-4dd4-8284-df69d073935f",
+          "title": "Boston Housing In-Depth - Deploying the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c7ce0c04-48f3-4dd4-8284-df69d073935f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780718,
+              "key": "ae827097-7ab8-4eff-adb1-9a09eaa3ea8a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Boston Housing In-Depth",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781518,
+              "key": "95799f9e-00ea-48e1-9de2-260e7113821d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now we will look at deploying a model using the low level approach. This method requires us to describe the various properties that our endpoint should have and what inference code and model should be used.\n\nTo follow along, open up the `Boston Housing - XGBoost (Deploy) - Low Level.ipynb` notebook in the `Tutorials` folder.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780206,
+              "key": "03b741a1-f007-42ff-bcec-cf388224dc3b",
+              "title": "Deployment L3 C2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1lzWAzypJ9k",
+                "china_cdn_id": "1lzWAzypJ9k.mp4"
+              }
+            },
+            {
+              "id": 781491,
+              "key": "1486866f-b999-4072-90b9-596fbf17830d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Using the low level approach to deploy our model requires us to create an endpoint, which will be used to send data to our model and to get inference results.\n\nIn order to create an endpoint in SageMaker, we first need to describe an endpoint configuration. This describes to SageMaker the various properties we want our endpoint to have. Once we've created the endpoint configuration we can ask SageMaker to create an endpoint with the properties we want.\n\nThe actual endpoint that is created by SageMaker is a combination of a compute instance (some remote server) running a docker container with the inference code on it and a URL that data can be sent to and returned from. This URL is used as an interface to the compute instance, which receives data, performs inference using our model and returns the result.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780181,
+          "key": "60e60038-fc8a-4955-b0b2-0cb8f0fc6ae2",
+          "title": "Deploying and Using a Sentiment Analysis Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "60e60038-fc8a-4955-b0b2-0cb8f0fc6ae2",
+            "completed_at": "2019-11-29T09:56:34.620Z",
+            "last_viewed_at": "2019-11-29T09:56:33.835Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781520,
+              "key": "88cf5dcb-68b8-486a-8885-80e640ed7742",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Deploying and Using a Sentiment Analysis Model",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780209,
+              "key": "bc05b644-ea94-47d6-bfd5-023f57a3dd63",
+              "title": "Deployment L3 C3 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "r7XVQEojRKk",
+                "china_cdn_id": "r7XVQEojRKk.mp4"
+              }
+            },
+            {
+              "id": 781524,
+              "key": "c210f723-5358-4ad2-be92-31a140c59595",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You've learned how to create and train models in SageMaker *and* how you can deploy them. In this example we are going to look at how we can make use of a deployed model in a simple web app.\n\nIn order for our simple web app to interact with the deployed model we are going to have to solve a couple problems.\n\nThe first obstacle is something that has been mentioned earlier. \n> The endpoint that is created when we deploy a model using SageMaker is secured, meaning that only entities that are authenticated with AWS can send or receive data from the deployed model. This is a problem since authenticating for the purposes of a simple web app is a bit more work than we'd like. \n\nSo we will need to find a way to work around this.\n\n> The second obstacle is that our deployed model expects us to send it a review after it has been processed. That is, it assumes we have already tokenized the review and then created a bag of words encoding. However, we want our user to be able to type any review into our web app. \n\nWe will also see how we can overcome this.\n\nTo solve these issues we are going to need to use some additional Amazon services. In particular, we are going to look at Amazon Lambda and API Gateway.\n\nIn the mean time, I would encourage you to take a look at the `IMDB Sentiment Analysis - XGBoost - Web App.ipynb` notebook in the `Tutorials` folder. In the coming videos we will go through this notebook in detail, however, each of the steps involved is pretty well documented in the notebook itself.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 790335,
+          "key": "5d2e69af-1fa5-4368-99e0-d7ce8a96bb93",
+          "title": "Text Processing, Bag of Words",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d2e69af-1fa5-4368-99e0-d7ce8a96bb93",
+            "completed_at": "2019-11-29T09:58:05.685Z",
+            "last_viewed_at": "2019-11-29T09:58:04.714Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 790336,
+              "key": "e44800e0-6362-4dbd-8842-70931dea243d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Text Processing\n\nI mentioned that one of our tasks will be to convert any user input text into data that our deployed model can see as input. You've seen a few examples of text pre-processing and the steps usually go something like this:\n1. Get rid of any special characters like punctuation\n2. Convert all text to lowercase and split into individual words\n3. Create a vocabulary that assigns each unique word a numerical value or converts words into a vector of numbers\n\nThis last step is often called **word tokenization** or vectorization.\n\nAnd in the next example, you'll see exactly how I do these processing steps; I'll also be vectorizing words using a method called **bag of words**. If you'd like to learn more about bag of words, please check out the video below, recorded by another of our instructors, Arpan!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790337,
+              "key": "77f80682-0b56-488d-ae21-1cc2165c86cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Bag of Words",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790338,
+              "key": "20687c82-2604-4241-b19a-db63f6cbe113",
+              "title": "Bag Of Words",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "A7M1z8yLl0w",
+                "china_cdn_id": "A7M1z8yLl0w.mp4"
+              }
+            },
+            {
+              "id": 790339,
+              "key": "f3a9c233-561d-4600-9edc-995c81e2a1e4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can read more about the bag of words model, and its applications, [on this page](https://en.wikipedia.org/wiki/Bag-of-words_model). It's a useful way to represent words based on their frequency of occurrence in a text.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790340,
+              "key": "081023ee-6a22-46c5-9014-6c10b4d8c047",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quiz\n\nFor the following quiz questions, consider a \"document\" that is just the following sentence:\n```shell\nAt a very basic level, I think people need the opportunity to learn and to grow.\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790341,
+              "key": "998c867e-beca-4010-8c6f-f98d6a7430db",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "998c867e-beca-4010-8c6f-f98d6a7430db",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Given only this document, what is the size of the vocabulary (the unique words in the document)?",
+                "answers": [
+                  {
+                    "id": "a1543523043440",
+                    "text": "1",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1543523077821",
+                    "text": "14",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1543523089224",
+                    "text": "15",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1543523090953",
+                    "text": "16",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 780183,
+          "key": "854daee3-76b0-466e-a33b-97b76c8297e1",
+          "title": "Building and Deploying the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "854daee3-76b0-466e-a33b-97b76c8297e1",
+            "completed_at": "2019-11-29T10:09:50.280Z",
+            "last_viewed_at": "2019-11-30T04:41:46.971Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781527,
+              "key": "1266d970-840e-4d13-83d6-84fbfe6d3723",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Building and Deploying the Model\n\n> Remember to shutdown your endpoint, if you are not going to use it for a while; we'll remind you again at the end of this video.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780215,
+              "key": "0543e026-bf33-4868-8891-0f5eb8d9c1e1",
+              "title": "Deployment L3 C4b V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JCiQhhXbeuc",
+                "china_cdn_id": "JCiQhhXbeuc.mp4"
+              }
+            },
+            {
+              "id": 781532,
+              "key": "ddacf52e-60d7-4f83-b041-06400fd8ee1a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To begin with, we are going to extend the mini-project that you worked on in the last lesson by deploying it. There are a couple of changes made to the way that data is processed in this version and the reason for this is to simplify some of what follows.\n\nFor the most part, however, we simply add on an extra deployment step to the sentiment analysis mini-project and then test that our deployed endpoint is working correctly.\n\nOnce this is done we know that we have a sentiment analysis model that has been trained, is performing well and is working, a great place to start!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782198,
+              "key": "b7af654c-9766-45af-a5be-f2ef6efc5ea7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Don't forget to SHUT DOWN your endpoint!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780186,
+          "key": "f7f5adb5-0b56-46df-a187-72821673a9a8",
+          "title": "How to Use a Deployed Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f7f5adb5-0b56-46df-a187-72821673a9a8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781536,
+              "key": "5f516156-2d80-4927-b78e-05ff2e75201d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# How to use a Deployed Model",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780227,
+              "key": "07d2cd97-022e-4d66-82a8-fec6fb6eb9f4",
+              "title": "Deployment L3 C5b V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WTwj-7XcTro",
+                "china_cdn_id": "WTwj-7XcTro.mp4"
+              }
+            },
+            {
+              "id": 781558,
+              "key": "133abaee-75ee-4f53-9153-0ffb78c07775",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As mentioned earlier, there are two obstacles we are going to need to overcome. The first is the security issue and the second is data processing. The way that we are going to approach solving these issues is by making use of Amazon Lambda and API Gateway.\n\nThe structure for our web app will look like the diagram below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781548,
+              "key": "8a33900b-c602-4158-946b-0fb6325d9e78",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4a7b2_web-app/web-app.svg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8a33900b-c602-4158-946b-0fb6325d9e78",
+              "caption": "",
+              "alt": "Simple Web App Data Path",
+              "width": 770,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 781561,
+              "key": "cc51fa42-4a7c-488e-85fe-1df72339facf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "What this means is that when someone uses our web app, the following will occur.\n\n1. To begin with, a user will type out a review and enter it into our web app.\n\n2. Then, our web app will send that review to an endpoint that we created using API Gateway. This endpoint will be constructed so that anyone (including our web app) can use it.\n\n3. API Gateway will forward the data on to the Lambda function\n\n4. Once the Lambda function receives the user's review, it will process that review by tokenizing it and then creating a bag of words encoding of the result. After that, it will send the processed review off to our deployed model.\n\n5. Once the deployed model performs inference on the processed review, the resulting sentiment will be returned back to the Lambda function.\n\n6. Our Lambda function will then return the sentiment result back to our web app using the endpoint that was constructed using API Gateway.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782199,
+              "key": "2f32c3da-2a92-48dc-b1ca-667cd1ef14ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Don't forget!\n\nCurrently our endpoint is running. The reason for this is that in the next few videos we are going to interact with our deployed endpoint. If you are following along, don't forget that your endpoint is running. If you need to take a break, don't forget to shut down your endpoint!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 790344,
+          "key": "f3277861-79f0-4d0d-a92e-1fb8f0cd40c3",
+          "title": "Creating and Using an Endpoint",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f3277861-79f0-4d0d-a92e-1fb8f0cd40c3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 790350,
+              "key": "4cfaaa37-9fe7-47ee-bd8c-d46ca17a2e40",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating and Using Endpoints\n\nYou've just learned a lot about how to use SageMaker to deploy a model and perform inference on some data. Now is a good time to review some of the key steps that we've covered. You have experience processing data and creating estimators/models, so I'll focus on what you've learned about endpoints.\n\nAn endpoint, in this case, is a URL that allows an application and a model to speak to one another.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790355,
+              "key": "c2dcc05b-8909-4fb0-a2fc-25e565464009",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5c005450_model-app-endpoint/model-app-endpoint.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c2dcc05b-8909-4fb0-a2fc-25e565464009",
+              "caption": "",
+              "alt": "endpoint communicating between app and model.",
+              "width": 500,
+              "height": 728,
+              "instructor_notes": null
+            },
+            {
+              "id": 790351,
+              "key": "ad08c62a-65d3-462a-b2c2-eb053c143f07",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Endpoint steps\n\n* You can start an endpoint by calling `.deploy()` on an estimator and passing in some information about the instance.\n\n```python\nxgb_predictor = xgb.deploy(initial_instance_count = 1, instance_type = 'ml.m4.xlarge')\n```\n\n* Then, you need to tell your endpoint, what type of data it expects to see as input (like .csv).\n\n```python\nfrom sagemaker.predictor import csv_serializer\n\nxgb_predictor.content_type = 'text/csv'\nxgb_predictor.serializer = csv_serializer\n```\n\n* Then, perform inference; you can pass some data as the \"Body\" of a message, to an endpoint and get a response back!\n\n```python\nresponse = runtime.invoke_endpoint(EndpointName = xgb_predictor.endpoint,   # The name of the endpoint we created\n                                       ContentType = 'text/csv',                     # The data format that is expected\n                                       Body = ','.join([str(val) for val in test_bow]).encode('utf-8'))\n```\n\n* The inference data is stored in the \"Body\" of the response, and can be retrieved:\n```python\nresponse = response['Body'].read().decode('utf-8')\nprint(response)\n```\n\n* Finally, do not forget to **shut down your endpoint** when you are done using it.\n```python\nxgb_predictor.delete_endpoint()\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780188,
+          "key": "167797b9-eb23-4b66-95d7-1c7c504bfc28",
+          "title": "Building a Lambda Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "167797b9-eb23-4b66-95d7-1c7c504bfc28",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 781563,
+              "key": "27662f81-b50d-4a04-8d89-43fa1a1b8c09",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Building a Lambda Function",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780236,
+              "key": "878db5db-4279-4f18-ac15-f48c9037d707",
+              "title": "Deployment L3 C6 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jOXETK4AerU",
+                "china_cdn_id": "jOXETK4AerU.mp4"
+              }
+            },
+            {
+              "id": 782200,
+              "key": "df8e5d1f-8a54-42d7-88d5-1afe62c58475",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In general, a Lambda function is an example of a 'Function as a Service'. It lets you perform actions in response to certain events, called triggers. Essentially, you get to describe some events that you care about, and when those events occur, your code is executed.\n\nFor example, you could set up a trigger so that whenever data is uploaded to a particular S3 bucket, a Lambda function is executed to process that data and insert it into a database somewhere.\n\nOne of the big advantages to Lambda functions is that since the amount of code that can be contained in a Lambda function is relatively small, you are only charged for the *number* of executions.\n\nIn our case, the Lambda function we are creating is meant to process user input and interact with our deployed model. Also, the trigger that we will be using is the endpoint that we will create using API Gateway.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790358,
+              "key": "a87a2e34-185e-470a-acce-24dac8e5d15f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create a Lambda Function\n\nThe steps to create a lambda function are outlined in the notebook and here, for convenience.\n\nSetting up a Lambda function\nThe first thing we are going to do is set up a Lambda function. This Lambda function will be executed whenever our public API has data sent to it. When it is executed it will receive the data, perform any sort of processing that is required, send the data (the review) to the SageMaker endpoint we've created and then return the result.\n\n**Part A: Create an IAM Role for the Lambda function** \n\nSince we want the Lambda function to call a SageMaker endpoint, we need to make sure that it has permission to do so. To do this, we will construct a role that we can later give the Lambda function.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790359,
+              "key": "a9a2dc30-1fa2-487d-8ab6-cf79f59fb6c2",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a9a2dc30-1fa2-487d-8ab6-cf79f59fb6c2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Using the AWS Console, navigate to the IAM page and click on Roles. Then, click on Create role.",
+                "Make sure that the AWS service is the type of trusted entity selected and choose Lambda as the service that will use this role, then click Next: Permissions.",
+                "In the search box type sagemaker and select the check box next to the AmazonSageMakerFullAccess policy. Then, click on Next: Review.",
+                "Lastly, give this role a name. Make sure you use a name that you will remember later on, for example LambdaSageMakerRole. Then, click on Create role."
+              ],
+              "positive_feedback": "Great, now on to Part B!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 790360,
+              "key": "77eb67e7-5fe4-4d06-9d21-b564cf9e1905",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Part B: Create a Lambda function**\n\nNow it is time to actually create the Lambda function. Remember from earlier that in order to process the user provided input and send it to our endpoint we need to gather two pieces of information:\n\n1. The name of the endpoint, and\n2. the vocabulary object.\n\nWe will copy these pieces of information to our Lambda function, after we create it.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790361,
+              "key": "29f30c14-9841-41c2-9cf9-f61f5ac7d33e",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "29f30c14-9841-41c2-9cf9-f61f5ac7d33e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "To start, using the AWS Console, navigate to the AWS Lambda page and click on Create a function.",
+                "When you get to the next page, make sure that Author from scratch is selected.",
+                "Now, name your Lambda function, using a name that you will remember later on, for example sentiment_analysis_xgboost_func. Make sure that the Python 3.6 runtime is selected and then choose the role that you created in the previous part. Then, click on Create Function.",
+                "On the next page you will see some information about the Lambda function you've just created. If you scroll down you should see an editor in which you can write the code that will be executed when your Lambda function is triggered... you should copy and past the code below.",
+                "Once you have copy and pasted the code above into the Lambda code editor, replace the **ENDPOINT NAME HERE** portion with the name of the endpoint that we deployed earlier.",
+                "You will also need to copy the vocabulary dict to the appropriate place in the code at the beginning of the lambda_handler method.",
+                "Once you have added the endpoint name to the Lambda function, click on Save. Your Lambda function is now up and running!"
+              ],
+              "positive_feedback": "Great, make sure to copy and paste the relevant info!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 790362,
+              "key": "a581f235-6f9e-4449-b6bb-e3bf205e8c7e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```python\n# We need to use the low-level library to interact with SageMaker since the SageMaker API\n# is not available natively through Lambda.\nimport boto3\n\n# And we need the regular expression library to do some of the data processing\nimport re\n\nREPLACE_NO_SPACE = re.compile(\"(\\.)|(\\;)|(\\:)|(\\!)|(\\')|(\\?)|(\\,)|(\\\")|(\\()|(\\))|(\\[)|(\\])\")\nREPLACE_WITH_SPACE = re.compile(\"(<br\\s*/><br\\s*/>)|(\\-)|(\\/)\")\n\ndef review_to_words(review):\n    words = REPLACE_NO_SPACE.sub(\"\", review.lower())\n    words = REPLACE_WITH_SPACE.sub(\" \", words)\n    return words\n\ndef bow_encoding(words, vocabulary):\n    bow = [0] * len(vocabulary) # Start by setting the count for each word in the vocabulary to zero.\n    for word in words.split():  # For each word in the string\n        if word in vocabulary:  # If the word is one that occurs in the vocabulary, increase its count.\n            bow[vocabulary[word]] += 1\n    return bow\n\n\ndef lambda_handler(event, context):\n\n    vocab = \"*** ACTUAL VOCABULARY GOES HERE ***\"\n\n    words = review_to_words(event['body'])\n    bow = bow_encoding(words, vocab)\n\n    # The SageMaker runtime is what allows us to invoke the endpoint that we've created.\n    runtime = boto3.Session().client('sagemaker-runtime')\n\n    # Now we use the SageMaker runtime to invoke our endpoint, sending the review we were given\n    response = runtime.invoke_endpoint(EndpointName = '***ENDPOINT NAME HERE***',# The name of the endpoint we created\n                                       ContentType = 'text/csv',                 # The data format that is expected\n                                       Body = ','.join([str(val) for val in bow]).encode('utf-8')) # The actual review\n\n    # The response is an HTTP response whose body contains the result of our inference\n    result = response['Body'].read().decode('utf-8')\n\n    # Round the result so that our web app only gets '1' or '0' as a response.\n    result = round(float(result))\n\n    return {\n        'statusCode' : 200,\n        'headers' : { 'Content-Type' : 'text/plain', 'Access-Control-Allow-Origin' : '*' },\n        'body' : str(result)\n    }\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780189,
+          "key": "9e4e1722-59e8-43ad-b4fe-ff40347aadde",
+          "title": "Building an API",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9e4e1722-59e8-43ad-b4fe-ff40347aadde",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782201,
+              "key": "c6956620-6ca4-4345-94a2-998f865534cd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Building an API",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780246,
+              "key": "b285c303-a918-44c7-8119-9e0e5cb4e84e",
+              "title": "Deployment L3 C7 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AzBQ-aDQSG4",
+                "china_cdn_id": "AzBQ-aDQSG4.mp4"
+              }
+            },
+            {
+              "id": 782202,
+              "key": "842955c3-e906-4fcf-abe5-ba73cb56a6ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "At this point we've created and deployed a model, and we've constructed a Lambda function that can take care of processing user data, sending it off to our deployed model and returning the result. What we need to do now is set up some way to send our user data to the Lambda function.\n\nThe way that we will do this is using a service called API Gateway. Essentially, API Gateway allows us to create an HTTP endpoint (a web address). In addition, we can set up what we want to happen when someone tries to send data to our constructed endpoint.\n\nIn our application, we want to set it up so that when data is sent to our endpoint, we trigger the Lambda function that we created earlier, making sure to send the data to our Lambda function for processing. Then, once the Lambda function has retrieved the inference results from our model, we return the results back to the original caller.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780190,
+          "key": "869536f5-d6f3-4e6c-8d7b-6fe7d502a458",
+          "title": "Using the Final Web Application",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "869536f5-d6f3-4e6c-8d7b-6fe7d502a458",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782203,
+              "key": "295bf41b-819b-4db8-ac2a-5bb82895849d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Using the Final Web Application",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780255,
+              "key": "5b67742c-f745-4b9e-979d-21dc2115ec84",
+              "title": "Deployment L3 C8 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VgG41Q_a15I",
+                "china_cdn_id": "VgG41Q_a15I.mp4"
+              }
+            },
+            {
+              "id": 782204,
+              "key": "6441a61c-9a4f-41d4-bccc-5eb53999e8e6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now we get to reap the rewards of all our hard work, we get to deploy our web app!\n\nThe back end of our app has been set up so at this point all we need to do is finish up the user facing portion, the website itself. To do this we just need to tell our website where it should send data to.\n\n# Don't forget!\n\nIn order for our web app to work, we need to have our model deployed. This means that we are incurring a cost. So, once you have finished playing with your newly created web app, make sure to shut it down!\n\nYou may also want to clean up the endpoint that you constructed and the Lambda function. This isn't too important, however, since each of these services only incur a cost when used.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 790363,
+              "key": "581116ae-2b15-4cb3-8cc8-b246bd665b52",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Some notes on Lambda and Gateway usage\n\nFor Lambda functions you are only charged *per execution*, which for this class will be very few and still within the free tier. Deleting a lambda function is just a good cleanup step; you won't be charged if you just leave it there (without executing it). Similarly, for APIs created using API Gateway you are only charged per request, and the number of requests we require in this course should still fall under the free tier.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 782205,
+          "key": "d795a903-f012-4ecd-b543-fb43ce150676",
+          "title": "Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d795a903-f012-4ecd-b543-fb43ce150676",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782206,
+              "key": "4a49f4f3-db46-4bab-9819-60f10b098888",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What have we learned so far?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782207,
+              "key": "ef4aa0b9-0aae-48af-af6b-4b1ab3dede1e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson we learned how to deploy a model that has been created using SageMaker. We took a look at how to construct endpoints and how to use those endpoints to send data to a deployed model.\n\nIn addition, we looked at what we needed to do if we wanted anyone to have access to our deployed model. To make this work we first implemented a Lambda function that took care of data processing and interacting with the model. Then we created an interface through which we could send data to our Lambda function using API Gateway.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782208,
+              "key": "a77e9abe-286e-480b-882e-e8e6e6f9eba5",
+              "title": "How does the data flow?",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a77e9abe-286e-480b-882e-e8e6e6f9eba5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Describe how the data flows through our sentiment analysis web app."
+              },
+              "answer": {
+                "text": "To begin with, the user enters a review on our website. \n\nNext, our website sends that data off to an endpoint, created using API Gateway.\n\nOur endpoint acts as an interface to our Lambda function so our user data gets sent to the Lambda function.\n\nOur Lambda function processes the user data and sends it off to the deployed model's endpoint.\n\nThe deployed model perform inference on the processed data and returns the inference results to the Lambda function.\n\nThe Lambda function returns the results to the original caller using the endpoint constructed using API Gateway.\n\nLastly, the website receives the inference results and displays those results to the user.",
+                "video": null
+              }
+            },
+            {
+              "id": 782209,
+              "key": "086b0333-b93c-444e-976f-d1d28e22d7f0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What's next?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782210,
+              "key": "a57c5126-8b48-4a3c-8e26-91bd85412a5a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the next lesson we are going to look at hyperparameter tuning. This is a method by which we can test a variety of different hyperparameters and chose the ones that work best for our data set.\n\nWhile doing this we will also take a look at CloudWatch, which is a service that allows us to look at the logs generated by the various SageMaker tasks we perform.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

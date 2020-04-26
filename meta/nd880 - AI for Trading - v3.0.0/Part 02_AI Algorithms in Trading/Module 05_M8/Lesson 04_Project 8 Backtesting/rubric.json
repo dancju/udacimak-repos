@@ -1,0 +1,345 @@
+{
+  "id": 2388,
+  "project_id": 581,
+  "upload_types": [
+    "repo",
+    "zip"
+  ],
+  "file_filter_regex": "\\A(?!(((.*/)?(__MACOSX|\\.git|node_modules|bower_components|jspm_packages|\\.idea|build|.ipynb_checkpoints|\\.Trash-0|logs)(\\Z|/))))((.*\\.(css|docx|gradle|htm|html|java|js|markdown|md|pdf|py|rmd|rst|sql|swift|txt|xml|yaml|yml)\\Z)|((.*/)?(README|Readme|readme|Makefile)\\Z))",
+  "nomination_eligible": false,
+  "stand_out": "",
+  "hide_criteria": false,
+  "created_at": "2018-10-29T21:28:24.637Z",
+  "updated_at": "2019-05-24T18:47:34.756Z",
+  "hashtag": "",
+  "max_upload_size_mb": 500,
+  "estimated_sla": null,
+  "project_assistant_enabled": false,
+  "checkmate_enabled": false,
+  "checkmate_metadata": null,
+  "available_for_cert_project": false,
+  "classroom_node_id": 771111,
+  "classroom_project_key": "85663d10-c1ae-4883-aa6e-f7add34ab837",
+  "language": "en-us",
+  "ndkeys": [
+    "nd880-beta",
+    "nd880",
+    "nd880-cn",
+    "nd880-ent"
+  ],
+  "coursekeys": [],
+  "sections": [
+    {
+      "id": 5433,
+      "name": "Shift Daily Returns Data",
+      "created_at": "2019-03-04T22:06:06.149Z",
+      "updated_at": "2019-03-04T22:11:11.374Z",
+      "deleted_at": null,
+      "position": 0,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15639,
+          "section_id": 5433,
+          "passed_description": "The variable `frames` contains the data from `daily_return` and `data` correctly shifted.",
+          "exceeded_description": null,
+          "created_at": "2019-03-04T22:06:22.861Z",
+          "updated_at": "2019-03-04T22:11:11.378Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Shift Daily Returns Data",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5395,
+      "name": "Build Universe Based on Filters",
+      "created_at": "2019-02-22T20:32:37.229Z",
+      "updated_at": "2019-03-04T22:11:11.383Z",
+      "deleted_at": null,
+      "position": 1,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15559,
+          "section_id": 5395,
+          "passed_description": "The function `get_universe` correctly creates a stock universe by selecting only those companies that have a market capitalization of at least 1 billion dollars (1e9) OR that are in the previous day's holdings, even if on the current day, the company no longer meets the 1 billion dollar criteria.\n\nThey should use the `.copy()` attribute to create a copy of the data and they should drop the column containing the daily return from the universe dataframe.\n\nThe returned `universe` dataframe should have a shape of (2265, 93)",
+          "exceeded_description": null,
+          "created_at": "2019-02-22T20:33:01.808Z",
+          "updated_at": "2019-02-28T15:49:16.634Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Build Universe of Stocks ",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5396,
+      "name": "Factor covariance matrix",
+      "created_at": "2019-02-22T20:33:44.301Z",
+      "updated_at": "2019-03-04T22:11:11.386Z",
+      "deleted_at": null,
+      "position": 2,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15602,
+          "section_id": 5396,
+          "passed_description": "The function `diagonal_factor_cov` correctly creates the factor covariance matrix. The factor matrix must be scaled by (0.01**2).  They must use the given `colnames` function to get the column names from `X` and use the statement 'covariance[date]' to get the covariances for the given `date`.\n\nThe returned factor covariance matrix should have shape (77, 77)",
+          "exceeded_description": null,
+          "created_at": "2019-02-27T21:26:25.870Z",
+          "updated_at": "2019-02-28T15:49:16.639Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Create the factor covariance matrix",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5397,
+      "name": "Alpha Combination",
+      "created_at": "2019-02-22T20:34:17.941Z",
+      "updated_at": "2019-03-04T22:11:11.389Z",
+      "deleted_at": null,
+      "position": 3,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15603,
+          "section_id": 5397,
+          "passed_description": "The function `get_B_alpha` correctly creates a matrix of alpha factors. They must use the given `get_formula` and `model_matrix` functions. \n\nThe returned `B_alpha` should be of type patsy.design_info.DesignMatrix and it should have shape (2265, 4). The 4 columns of this matrix should correspond to the 4 alpha factors chosen at the beginning, namely:\n\n\"USFASTD_1DREVRSL\"\n \"USFASTD_EARNYILD\"\n\"USFASTD_VALUE\"\n\"USFASTD_SENTMT\"",
+          "exceeded_description": null,
+          "created_at": "2019-02-27T23:27:14.690Z",
+          "updated_at": "2019-03-11T22:39:24.917Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "create a matrix of alpha factors",
+          "exceedable": false
+        },
+        {
+          "id": 15604,
+          "section_id": 5397,
+          "passed_description": "The function `get_alpha_vec` correctly creates a vector of alpha factors. To do this, they must add the rows of the Matrix of Alpha Factors and multiply the result by 1e-4.\n\nThe returned `alpha_vac` should have shape (2265,)",
+          "exceeded_description": null,
+          "created_at": "2019-02-28T00:19:26.885Z",
+          "updated_at": "2019-02-28T16:04:00.754Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Create an alpha vector",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5398,
+      "name": "Objective function",
+      "created_at": "2019-02-22T20:37:08.554Z",
+      "updated_at": "2019-03-04T22:11:11.393Z",
+      "deleted_at": null,
+      "position": 4,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15605,
+          "section_id": 5398,
+          "passed_description": "The  `obj_func(h)` function correctly implements the objective function. The equation of the objective function is given in the notebook. ",
+          "exceeded_description": null,
+          "created_at": "2019-02-28T11:41:35.711Z",
+          "updated_at": "2019-02-28T12:12:46.033Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Create the objective function to be minimized",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5399,
+      "name": "Gradient",
+      "created_at": "2019-02-22T20:38:54.306Z",
+      "updated_at": "2019-03-04T22:11:11.395Z",
+      "deleted_at": null,
+      "position": 5,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15606,
+          "section_id": 5399,
+          "passed_description": "The  `grad_func(h)` function correctly implements the gradient of the objective function. The equation of the gradient of the objective function is given in the notebook. ",
+          "exceeded_description": null,
+          "created_at": "2019-02-28T11:55:41.563Z",
+          "updated_at": "2019-03-11T22:39:24.925Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Create the gradient of the objective function",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5400,
+      "name": "Optimize",
+      "created_at": "2019-02-22T20:39:17.788Z",
+      "updated_at": "2019-03-04T22:06:22.489Z",
+      "deleted_at": null,
+      "position": 6,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15607,
+          "section_id": 5400,
+          "passed_description": "The function `get_h_star` correctly optimizes the objective function using the following functions `obj_func`, `grad_func`, and `scipy.optimize.fmin_l_bfgs_b`.\n\nThe returned `h_star` should have shape (2265,)",
+          "exceeded_description": null,
+          "created_at": "2019-02-28T12:12:46.478Z",
+          "updated_at": "2019-02-28T16:04:00.758Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Optimize the objective function",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5401,
+      "name": "Risk Exposures",
+      "created_at": "2019-02-22T20:39:49.210Z",
+      "updated_at": "2019-03-04T22:06:22.500Z",
+      "deleted_at": null,
+      "position": 7,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15608,
+          "section_id": 5401,
+          "passed_description": "The function `get_risk_exposures` correctly calculates the portfolio's risk exposures\n\nThe returned `risk_exposures` Pandas series should have shape (77,). The index of this Pandas Series should correspond to the risk factors such as 'USFASTD_AERODEF', 'USFASTD_AIRLINES', 'USFASTD_ALUMSTEL', ......",
+          "exceeded_description": null,
+          "created_at": "2019-02-28T12:21:05.438Z",
+          "updated_at": "2019-02-28T16:04:00.761Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Calculate the portfolio's Risk Exposure",
+          "exceedable": false
+        },
+        {
+          "id": 15609,
+          "section_id": 5401,
+          "passed_description": "The function `get_portfolio_alpha_exposure` correctly calculates the portfolio's alpha exposures.\n\nThe returned `portfolio_alpha_exposure` Pandas series should have shape (4,). The index of this Pandas Series should should correspond to the 4 alpha factors chosen at the beginning, namely:\n\n\"USFASTD_1DREVRSL\"\n \"USFASTD_EARNYILD\"\n\"USFASTD_VALUE\"\n\"USFASTD_SENTMT\"",
+          "exceeded_description": null,
+          "created_at": "2019-02-28T12:27:11.340Z",
+          "updated_at": "2019-02-28T16:04:00.765Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Calculate the portfolio's Alpha Exposure",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5402,
+      "name": "Transaction Costs",
+      "created_at": "2019-02-22T20:40:14.715Z",
+      "updated_at": "2019-03-04T22:06:22.504Z",
+      "deleted_at": null,
+      "position": 8,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15610,
+          "section_id": 5402,
+          "passed_description": "The function `get_total_transaction_costs` correctly calculates the total transaction costs according to the equation given in the notebook. ",
+          "exceeded_description": null,
+          "created_at": "2019-02-28T12:31:44.366Z",
+          "updated_at": "2019-03-12T17:04:37.657Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Calculate Total Transaction Costs",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5403,
+      "name": "Profit-and-Loss (PnL) attribution",
+      "created_at": "2019-02-22T20:40:46.721Z",
+      "updated_at": "2019-03-04T22:06:22.510Z",
+      "deleted_at": null,
+      "position": 9,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15611,
+          "section_id": 5403,
+          "passed_description": "Correctly calculate the PnL attributed to the alpha factors, the PnL attributed to the risk factors, and attribution to cost.\n\nTo calculate the alpha and risk exposures they must use the provided `partial_dot_product` function",
+          "exceeded_description": null,
+          "created_at": "2019-02-28T16:44:47.360Z",
+          "updated_at": "2019-02-28T16:52:04.307Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Profit and Loss attribution",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5420,
+      "name": "Build portfolio characteristics",
+      "created_at": "2019-02-28T16:49:53.504Z",
+      "updated_at": "2019-03-04T22:06:22.516Z",
+      "deleted_at": null,
+      "position": 10,
+      "rubric_id": 2388,
+      "rubric_items": [
+        {
+          "id": 15613,
+          "section_id": 5420,
+          "passed_description": "Correctly calculates the sum of long positions, short positions, net positions, gross market value, and amount of dollars traded.",
+          "exceeded_description": null,
+          "created_at": "2019-02-28T16:50:15.714Z",
+          "updated_at": "2019-02-28T16:52:04.311Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "build portfolio characteristics",
+          "exceedable": false
+        }
+      ]
+    }
+  ],
+  "project": {
+    "id": 581,
+    "name": "Backtesting",
+    "nanodegree_key": "nd880",
+    "is_cert_project": false,
+    "audit_project_id": null,
+    "hashtag": null,
+    "audit_rubric_id": null,
+    "entitlement_required": false,
+    "is_career": false,
+    "recruitment_family_id": 1,
+    "awaiting_review_count": 0,
+    "awaiting_review_count_by_language": {},
+    "awaiting_audit_count": 0,
+    "awaiting_quality_audit_count": 0,
+    "awaiting_training_audit_count": 0,
+    "created_at": "2019-02-19T20:57:09.272Z",
+    "updated_at": "2020-04-25T14:09:25.752Z",
+    "price": "5.5",
+    "ungradeable_price": "3.0",
+    "audit_price": null
+  }
+}

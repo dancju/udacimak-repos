@@ -1,0 +1,706 @@
+{
+  "data": {
+    "lesson": {
+      "id": 630085,
+      "key": "41f6f121-d722-46f8-a3ad-2ba021fc2d8e",
+      "title": "Portfolio Optimization",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to optimize portfolios to meet certain criteria and constraints.  Get hands on experience in optimizing a portfolio with the cvxpy Python library.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/41f6f121-d722-46f8-a3ad-2ba021fc2d8e/630085/1544001725228/Portfolio+Optimization+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/41f6f121-d722-46f8-a3ad-2ba021fc2d8e/630085/1544001721279/Portfolio+Optimization+Subtitles.zip"
+          },
+          {
+            "name": "Ex-1-No-Constraints",
+            "uri": "https://video.udacity-data.com/topher/2018/July/5b56295e_ex-1-no-constraints/ex-1-no-constraints.html"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 630086,
+          "key": "f34b38d2-ee90-4304-af51-4cbca2673f16",
+          "title": "Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f34b38d2-ee90-4304-af51-4cbca2673f16",
+            "completed_at": "2020-03-31T13:13:12.789Z",
+            "last_viewed_at": "2020-03-31T13:11:19.062Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 677255,
+              "key": "7cd5489f-9153-4345-9f0b-f6446fba39a5",
+              "title": "L4 01 Intro V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CtIcmmR0YTs",
+                "china_cdn_id": "CtIcmmR0YTs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630142,
+          "key": "fe0fbbe7-5ec8-4787-8a2b-05bd6b1f2d5c",
+          "title": "What is Optimization?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fe0fbbe7-5ec8-4787-8a2b-05bd6b1f2d5c",
+            "completed_at": "2020-03-31T13:48:31.483Z",
+            "last_viewed_at": "2020-03-31T13:47:40.532Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 677256,
+              "key": "a2fc70e1-e957-434c-aeea-70052db62936",
+              "title": "L4 02 What Is Optimization V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ISRlP1GeOjU",
+                "china_cdn_id": "ISRlP1GeOjU.mp4"
+              }
+            },
+            {
+              "id": 680097,
+              "key": "b1dcfd4f-ef33-4c06-8f13-030de5d90d8a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Second-order condition\n\nIn the previous problem, we cheated a little. We knew the shape of the function, and we knew its orientation from our plot, so when we found the point where the derivative equaled 0, we knew we had found the minimum. However, in general, points where the derivative equals 0 could be minima, maxima, or [saddle points](https://en.wikipedia.org/wiki/Saddle_point). To distinguish between these cases, we need to check the function's curvature around the point in question. We do this using the second derivative of the function. For a function of one variable, the rule is:\n\n* If <span class=\"mathquill\">\\frac{\\mathrm{d}^2y}{\\mathrm{d}x^2}(x_0) < 0</span> then <span class=\"mathquill\">f</span> has a local maximum at <span class=\"mathquill\">x_0</span>.\n* If <span class=\"mathquill\">\\frac{\\mathrm{d}^2y}{\\mathrm{d}x^2}(x_0) > 0</span> then <span class=\"mathquill\">f</span> has a local minimum at <span class=\"mathquill\">x_0</span>.\n* If <span class=\"mathquill\">\\frac{\\mathrm{d}^2y}{\\mathrm{d}x^2}(x_0) = 0</span>, the test is inconclusive.\n\n\nSo in the case of the function above, we have \n\n<div class=\"mathquill\">\\frac{\\mathrm{d}y}{\\mathrm{d}x} = 2(x-1)</div>\n\nso,\n\n<div class=\"mathquill\">\\frac{\\mathrm{d}^2y}{\\mathrm{d}x^2} = 2</div>\n\nThe second derivative is positive for all <span class=\"mathquill\">x</span>, which means the function's slope is increasing everywhere, hence the function's curvature is upward everywhere. So we can be confident that the point we found is a minimum.\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681278,
+              "key": "12861cb9-bf09-46d5-bc34-cf9d06139399",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For a function of two variables, the rule must change a bit. We construct the matrix of second-order partial derivatives:\n\n<div class=\"mathquill\">H(x,y)={\\begin{pmatrix}f_{xx}(x,y)&f_{xy}(x,y)\\\\f_{yx}(x,y)&f_{yy}(x,y)\\end{pmatrix}}</div>\n\nThis is called the _Hessian_ matrix <span class=\"mathquill\">H(x,y)</span>. \n\nRecall that the _determinant_ of a matrix, <div class=\"mathquill\">\\mathrm{det}{\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}}=ad - bc.</div>\n\nIf the first-order partial derivatives are 0 at the point <span class=\"mathquill\">(a,b)</span>, i.e. <span class=\"mathquill\">f_x(a,b) = f_y(a,b) = 0</span>, then, we apply the following rule:\n\n* If <span class=\"mathquill\">\\mathrm{det}(H)(a,b)>0</span> and <span class=\"mathquill\">f_{xx}(a,b)>0</span> then <span class=\"mathquill\">(a,b)</span> is a local minimum of <span class=\"mathquill\">f</span>.\n* If <span class=\"mathquill\">\\mathrm{det}(H)(a,b)>0</span> and <span class=\"mathquill\">f_{xx}(a,b)<0</span> then <span class=\"mathquill\"> (a,b)</span> is a local maximum of <span class=\"mathquill\">f</span>.\n* If <span class=\"mathquill\">\\mathrm{det}(H)(a,b)<0</span> then <span class=\"mathquill\">(a,b)</span> is a saddle point of <span class=\"mathquill\">f</span>.\n* If <span class=\"mathquill\">\\mathrm{det}(H)(a,b)=0</span> then the second derivative test is inconclusive, and the point <span class=\"mathquill\">(a, b)</span> could be any of a minimum, maximum or saddle point.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630145,
+          "key": "d1564806-52b2-4893-aae2-d6c00f460f5c",
+          "title": "Optimization with Constraints",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d1564806-52b2-4893-aae2-d6c00f460f5c",
+            "completed_at": "2020-03-31T15:32:24.792Z",
+            "last_viewed_at": "2020-03-31T15:32:17.344Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 695361,
+              "key": "6bb711f6-f814-4894-8381-c5c732e2ebe7",
+              "title": "L4 03 Optimization With Constraints V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "91WzhG6dti8",
+                "china_cdn_id": "91WzhG6dti8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630157,
+          "key": "ac5cc674-a287-4476-9559-5d987e60aecd",
+          "title": "Two-Asset Portfolio Optimization",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ac5cc674-a287-4476-9559-5d987e60aecd",
+            "completed_at": "2020-03-31T16:08:06.434Z",
+            "last_viewed_at": "2020-03-31T16:12:37.508Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630482,
+              "key": "e56deab5-61fd-40d0-b7fe-6f7348d58470",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Derivation of Optimal Weights on a Two-Asset Portfolio\n\nSo how do we set up the portfolio optimization problem? In general, we know that we want high returns and low variance of returns, and that the weights on each asset in our portfolio should sum to 1. \n\nLet's again consider a portfolio a portfolio with 2 assets in it, Stock A and Stock B. We want to solve for the weight on each asset, <span class=\"mathquill\">x_A</span> and <span class=\"mathquill\">x_B</span>.\n\nOur objective function for this problem is the expression for the portfolio variance: \n\n<div class=\"mathquill\">(1)\\;\\sigma_P^2= x_A^2\\sigma_A^2 + x_B^2\\sigma_B^2 + 2x_Ax_B\\sigma_A\\sigma_B\\rho_{r_Ar_B}.</div>\n\nThis is what we will seek to _minimize_.\n\nWe've seen these quantities before, but let's just briefly recall what all these symbols mean:\n<span class=\"mathquill\">\\sigma_P^2</span> is the portfolio variance.\n<span class=\"mathquill\">\\sigma_A^2</span> is the variance of the return of Stock A.\n<span class=\"mathquill\">\\sigma_B^2</span>is the variance of the return of Stock B.\n<span class=\"mathquill\">\\rho_{r_Ar_B}</span>is the correlation between the returns of stocks A and B.\n\nOur only constraint is:<div class=\"mathquill\">(2)\\;x_A + x_B = 1\n</div>\n\nIt turns out that this is a problem we can solve analytically. If we substitute <span class=\"mathquill\">(2)</span> into <span class=\"mathquill\">(1)</span>, we will get a function of a single variable: \n\n<div class=\"mathquill\">\\sigma_P^2= x_A^2\\sigma_A^2 + (1-x_A)^2\\sigma_B^2 + 2x_A(1-x_A)\\sigma_A\\sigma_B\\rho_{r_Ar_B}</div>\n\nNow, let's take a breather and look at a plot of <span class=\"mathquill\">\\sigma_P^2</span> as a function of <span class=\"mathquill\">x_A</span>, to get a sense of what the function looks like. Let's assume some values for the variables <span class=\"mathquill\">\\sigma_A</span>, <span class=\"mathquill\">\\sigma_B</span>, and <span class=\"mathquill\">\\rho_{r_Ar_B}</span>.\n\nIf, <span class=\"mathquill\">\\sigma_A = 0.1</span>, <span class=\"mathquill\">\\sigma_B = 0.05</span>, and <span class=\"mathquill\">\\rho_{r_Ar_B} = 0.25</span>, then the plot looks like this: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680813,
+              "key": "c5480884-f7ef-4f0e-9d34-874f026a5d4e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b5544a3_two-asset-variance/two-asset-variance.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c5480884-f7ef-4f0e-9d34-874f026a5d4e",
+              "caption": "",
+              "alt": "",
+              "width": 1330,
+              "height": 760,
+              "instructor_notes": null
+            },
+            {
+              "id": 680812,
+              "key": "96746256-3c2e-4b1c-a8bf-a38beca5eb97",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Cool, it's a parabola. So now we see that we are looking for the bottom of that parabola again.\n\nSo, since this is a problem in only one variable, <span class=\"mathquill\">x_A</span>, let's take the derivative with respect to <span class=\"mathquill\">x_A</span>, and solve for the value of <span class=\"mathquill\">x_A</span> that makes the resulting expression equal 0:\n\n<div class=\"mathquill\">\\frac{\\mathrm{d} (\\sigma_P^2)}{\\mathrm{d} x_A} = 0 = 2x_A\\sigma_A^2 -2\\sigma_B^2(1-x_A)+2\\sigma_A\\sigma_B\\rho_{r_Ar_B}[-x_A + (1-x_A)]</div>\n\n<div class=\"mathquill\">0 = 2x_A\\sigma_A^2 +2\\sigma_B^2x_A-2\\sigma_B^2+2\\sigma_A\\sigma_B\\rho_{r_Ar_B}[1-2x_A]</div>\n\n<div class=\"mathquill\">x_A[2\\sigma_A^2 + 2\\sigma_B^2 - 4\\sigma_A\\sigma_B\\rho_{r_Ar_B}] -2\\sigma_B^2 + 2\\sigma_A\\sigma_B\\rho_{r_Ar_B}=0</div>\n\n<div class=\"mathquill\">x_A[\\sigma_A^2 + \\sigma_B^2 - 2\\sigma_A\\sigma_B\\rho_{r_Ar_B}] =\\sigma_B^2 - \\sigma_A\\sigma_B\\rho_{r_Ar_B}</div>\n\n<div class=\"mathquill\">x_A = \\frac{\\sigma_B^2 - \\sigma_A\\sigma_B\\rho_{r_Ar_B}}{\\sigma_A^2 + \\sigma_B^2 - 2\\sigma_A\\sigma_B\\rho_{r_Ar_B}}</div>\n\nFrom the constraint condition, <span class=\"mathquill\">(2)</span>, we have: <div class=\"mathquill\">x_B = 1 - x_A\n</div>\n\nNow we know the portfolio weights. You can see that they are only dependent on the standard deviations of Stock A and B, and their covariance. If we wanted to know the expected portfolio mean, we only have to remember that it is the weighted sum of the individual portfolio means:\n\n<div class=\"mathquill\">\\mu_P = \\mu_Ax_A + \\mu_Bx_B</div>\n\nTo be sure our solution is a _minimum_, we should check the second-order condition. We will leave this as an exercise to you.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630158,
+          "key": "16810413-fb63-47e9-b49d-ed538ac383b6",
+          "title": "Portfolio Optimization with 2 Stocks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "16810413-fb63-47e9-b49d-ed538ac383b6",
+            "completed_at": "2020-03-31T16:06:52.315Z",
+            "last_viewed_at": "2020-03-31T16:14:49.762Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630175,
+              "key": "dc00b767-8d47-4447-b4a7-f0cf17639128",
+              "title": "Portfolio Optimization with 2 Stocks",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "dc00b767-8d47-4447-b4a7-f0cf17639128",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Let’s say we want to construct a portfolio containing 2 stocks, Stock 1 and Stock 2.\n\nStock 1:\nExpected return=15%,\nVolatility=10%\n\nStock 2:\nExpected return=10%,\nVolatility=5%\n\nCorrelation between Stock A and B = 0.25\n\nWhat weights on Stocks 1 and 2, <span class=\"mathquill\">x_1</span> and <span class=\"mathquill\">x_2</span>, will give the minimum variance portfolio?",
+                "answers": [
+                  {
+                    "id": "a1527120189720",
+                    "text": "<span class=\"mathquill\">x_1=0.875,\\; x_2=0.125</span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527120221814",
+                    "text": "<span class=\"mathquill\">x_1=0.669,\\; x_2=0.331</span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527120222424",
+                    "text": "<span class=\"mathquill\">x_1=0.331,\\; x_2=0.669</span>",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527120223001",
+                    "text": "<span class=\"mathquill\">x_1=0.125,\\; x_2=0.875</span>",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 630181,
+          "key": "b9f3d830-8cb7-41d6-ae90-029e6cf3972d",
+          "title": "Formulating Portfolio Optimization Problems",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b9f3d830-8cb7-41d6-ae90-029e6cf3972d",
+            "completed_at": "2020-03-31T16:15:01.422Z",
+            "last_viewed_at": "2020-03-31T16:15:00.210Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 676236,
+              "key": "a7d278b1-ea53-49f8-9849-5c7b2b2d2561",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Formulating Portfolio Optimization Problems\n\nSo far, we've discussed one way to formulate a portfolio optimization problem. We learned to set the portfolio variance as the objective function, while imposing the constraint that the portfolio weights should sum to 1. However, in practice you may _frame_ the problem a little differently. Let's talk about some of the different ways to _set up_ a portfolio optimization problem.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680790,
+              "key": "2a710214-b615-4ccb-89eb-cf9036ff3b15",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Common Constraints\n\nThere are several common constraints that show up in these problems. Earlier, we were allowing our portfolio weights to be negative or positive, as long as they summed to 1. If a weight turned out to be negative, we would consider the absolute value of that number to be the size of the _short_ position to take on that asset. If your strategy does not allow you to take short positions, your portfolio weights will all need to be positive numbers. In order to enforce this in the optimization problem, you would add the constraint that every <span class=\"mathquill\">x_i</span> in the <span class=\"mathquill\">\\mathbf{x}</span> vector is _positive_.\n\n**no short selling:**\n<span class=\"mathquill\">\\;\\;\\;\\;\\;\\;\\;\\;0 \\leq x_i \\leq 1,\\;\\;\\;\\;\\;\\;\\;\\;i=1,2,\\ldots,n</span>\n\nYou may choose to impose constraints that would limit your portfolio allocations in individual sectors, such as technology or energy. You could do this by limiting the sum of weights for assets in each sector.\n\n**sector limits:**\n<span class=\"mathquill\">\\;\\;\\;\\;\\;\\;\\;\\;x_{\\mathrm{biotech1}} + x_{\\mathrm{biotech2}} + x_{\\mathrm{biotech3}} \\leq  M,\\;\\;\\;\\;\\;\\;\\;\\;M = \\mathrm{percent\\;of\\;portfolio\\;to\\;invest\\;in\\;biotech\\;companies}</span>\n\nIf your optimization objective seeks to minimize portfolio variance, you might also incorporate into the problem a goal for the total portfolio return. You can do this by adding a constraint on the portfolio return.\n\n**constraint on portfolio return:**\n<span class=\"mathquill\">\\;\\;\\;\\;\\;\\;\\;\\;\\mathbf{x}^\\mathrm{T} \\mathbf{\\mu} \\geq r_{\\mathrm{min}}, \\;\\;\\;\\;\\;\\;\\;\\;r_{\\mathrm{min}} = \\mathrm{minimum\\;acceptable\\;portfolio\\;return}</span>\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 676239,
+              "key": "94bee3f5-6b96-43e2-ac96-4e74c12ade89",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Maximizing Portfolio Return\n\nWe can also flip the problem around by maximizing returns instead of minimizing variance. Instead of minimizing variance, it often makes sense to impose a constraint on the variance in order to manage risk. Then you could maximize mean returns, which is equivalent to minimizing the negative mean returns. This makes sense when your employer has told you, “I want the best return possible, but you must limit your losses to <span class=\"mathquill\">p</span> percent!”\n\n**objective:**\n<span class=\"mathquill\">\\;\\;\\;\\;\\mathrm{minimize:}\\;\\;-\\mathbf{x}^\\mathrm{T} \\mathbf{\\mu}</span>\n\n**constraint:**\n<span class=\"mathquill\">\\;\\;\\;\\;\\mathbf{x}^\\mathrm{T} \\mathbf{P}\\mathbf{x} \\leq p, \\;\\;\\;\\;p = \\mathrm{maximum\\;permissible\\;portfolio\\;variance}</span>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680793,
+              "key": "7d333ca8-7824-4257-beb1-27ee763c1457",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Maximizing Portfolio Return _And_ Minimizing Portfolio Variance\n\nIndeed, you could also create an objective function that both maximizes returns and minimizes variance, and controls the tradeoff between the two goals with a parameter, <span class=\"mathquill\">b</span>. In this case, you have two terms in your objective function, one representing the portfolio mean, and one representing the portfolio variance, and the variance term is multiplied by <span class=\"mathquill\">b</span>. \n\nHow does one determine the parameter <span class=\"mathquill\">b</span>? Well, it’s very dependent on the individual and the situation, and depends on the level of risk aversion appropriate. It basically represents how much percent return you are willing to give up for each unit of variance you take on. \n\n**objective:**<span class=\"mathquill\">\\;\\;\\;\\;\\;\\;\\;\\mathrm{minimize:}\\;\\;\\;\\;\\;-\\mathbf{x}^\\mathrm{T} \\mathbf{\\mu}+b\\mathbf{x}^\\mathrm{T} \\mathbf{P}\\mathbf{x}, \\;\\;\\;\\;\\; b = \\mathrm{tradeoff\\;parameter}</span>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680794,
+              "key": "4622c1c9-7818-4b1b-a13a-097302e2ec27",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## A Math Note: the L2-Norm\n\nThere’s another way to formulate an optimization objective that relies on a new piece of notation, so I’ll just take a moment to explain that now. Say we just want to minimize the difference between two quantities. Then we need a measure of the difference, but generalized into many dimensions. For portfolio optimization problems, each dimension is an asset in the portfolio. When we want to measure the distance between two vectors, we use something called the Euclidean norm or L2-norm. This is just the square root of the squared differences of each of the vectors’ components. We write it with double bars and a 2 subscript.\n\n<div class=\"mathquill\">d = \\sqrt{(a_x - b_x)^2 + (a_y - b_y)^2 + (a_z - b_z)^2} = \\left \\| \\mathbf{a} - \\mathbf{b} \\right \\|_2</div>\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680795,
+              "key": "0ea9882e-8341-49a5-a730-cf2ee3c745b1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b550df3_l2-norm/l2-norm.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0ea9882e-8341-49a5-a730-cf2ee3c745b1",
+              "caption": "",
+              "alt": "",
+              "width": 974,
+              "height": 606,
+              "instructor_notes": null
+            },
+            {
+              "id": 680796,
+              "key": "0d347383-a200-41e7-99b9-833ddf14f444",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Note that this reduces to the familiar Pythagorean theorem in 2 dimensions.\n\n<div class=\"mathquill\">d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}</div>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680797,
+              "key": "e8f2e222-c5cb-41d1-a0ce-993fd15cd035",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b550e55_pythagorean-theroem/pythagorean-theroem.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e8f2e222-c5cb-41d1-a0ce-993fd15cd035",
+              "caption": "",
+              "alt": "",
+              "width": 788,
+              "height": 614,
+              "instructor_notes": null
+            },
+            {
+              "id": 680798,
+              "key": "c6d0a257-86fd-49bf-8ee0-609c66646a92",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Minimizing Distance to a Set of Target Weights\n\nBack to portfolio optimization! One way to formulate an optimization problem is to use the L2 norm and minimize the difference between your vector of portfolio weights and a set of predefined target portfolio weights <span class=\"mathquill\">\\mathbf{x}^*</span>. The goal would be to get the weights as close as possible to the set of target weights while respecting a set of constraints. As an example, these target weights might be values thought to be proportional to future returns for each asset, in other words, an alpha vector.\n\n**objective:** <span class=\"mathquill\">\\;\\;\\;\\;\\;\\mathrm{minimize:}\\;\\;\\;\\;\\;\\left \\| \\mathbf{x}-\\mathbf{x}^* \\right \\|_2, \\;\\;\\;\\;\\;\\mathbf{x}^* = \\mathrm{a\\;set\\;of\\;target\\;portfolio\\;weights}</span>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 680799,
+              "key": "b087a5f8-bdae-4061-8358-71a996008a90",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Tracking an Index\n\nWhat if you want to minimize portfolio variance, but have the portfolio track an index at the same time? In this case, you would want terms in your objective function representing both portfolio variance and the relationship between your portfolio weights and the index weights, <span class=\"mathquill\">\\mathbf{q}</span>. There are a few ways to set this up, but one intuitive way is to simply minimize the difference between your portfolio weights and the weights on the assets in the index, and minimize portfolio variance at the same time. The tradeoff between these goals would be determined by a parameter, <span class=\"mathquill\">\\lambda</span>.\n\n**objective:** <span class=\"mathquill\">\\;\\;\\;\\;\\;\\mathrm{minimize:}\\;\\;\\;\\;\\;\\mathbf{x}^\\mathrm{T}\\mathbf{P}\\mathbf{x} +\\lambda\\left \\| \\mathbf{x} - \\mathbf{q} \\right \\|_2, \\;\\;\\;\\mathbf{q} = \\mathrm{a\\;set\\;of\\;index\\;weights},\\;\\;\\;\\lambda = \\mathrm{a\\;tradeoff\\;parameter}</span>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 676964,
+              "key": "482b16df-57c1-4baa-95e2-56f36caf1613",
+              "title": "Lambda",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "482b16df-57c1-4baa-95e2-56f36caf1613",
+                "completed_at": "2020-03-31T16:27:33.315Z",
+                "last_viewed_at": "2020-03-31T16:27:33.315Z",
+                "unstructured": "{\"selected_id\":\"a1532033713680\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Let's say you have two terms in your optimization objective, and lambda is multiplied to the second term.  If you choose a larger lambda, do you think this causes the optimization to be influenced more by the goal of minimizing the first term or the goal of minimizing the second term?",
+                "answers": [
+                  {
+                    "id": "a1532033660536",
+                    "text": "first term",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1532033713680",
+                    "text": "second term",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1532033716559",
+                    "text": "it depends",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1532033721954",
+                    "text": "neither",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 630204,
+          "key": "5d81797b-da3a-48f8-a0dc-eee814c0295c",
+          "title": "cvxpy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d81797b-da3a-48f8-a0dc-eee814c0295c",
+            "completed_at": "2020-03-31T16:27:09.979Z",
+            "last_viewed_at": "2020-03-31T16:27:07.994Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630737,
+              "key": "24083fad-8ef9-4ee3-925a-ff88b0064b88",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## ``cvxpy``\n**What is ``cvxpy``?** [``cvxpy``](http://www.cvxpy.org/index.html) is a Python package for solving convex optimization problems. It allows you to express the problem in a human-readable way, calls a solver, and unpacks the results.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630594,
+              "key": "056663d2-3edb-489d-94e4-8dde76fca684",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## ``cvxpy`` Example\nBelow, please find an example of the use of ``cvxpy`` to solve the simple example we referred to in the lectures, optimizing the objective function <span class=\"mathquill\">(x - 1)^2 +1</span> subject to the constraint <span class=\"mathquill\">x \\leq 0</span>.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630595,
+              "key": "036c59fa-f14d-40dd-807e-11911d2712f7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b072c04_cvxpy-visual/cvxpy-visual.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/036c59fa-f14d-40dd-807e-11911d2712f7",
+              "caption": "",
+              "alt": "",
+              "width": 836,
+              "height": 520,
+              "instructor_notes": null
+            },
+            {
+              "id": 630593,
+              "key": "8e02dd76-aa58-4660-aecf-220c95a83632",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b072b0c_cvxpy-example/cvxpy-example.jpeg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8e02dd76-aa58-4660-aecf-220c95a83632",
+              "caption": "",
+              "alt": "",
+              "width": 598,
+              "height": 239,
+              "instructor_notes": null
+            },
+            {
+              "id": 630504,
+              "key": "d6884c41-c984-4d20-b06f-8e55c20423bc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How to use ``cvxpy``\n\n**Import**: First, you need to import the package:``import cvxpy as cvx``\n\n**Steps**: Optimization problems involve finding the values of a _variable_ that minimize an  _objective function_ under a set of _constraints_ on the range of possible values the variable can take. So we need to use ``cvxpy`` to declare the _variable_, _objective function_ and _constraints_, and then solve the problem.\n\n**Optimization variable**: Use ``cvx.Variable()`` to declare an optimization variable. For portfolio optimization, this will be <span class=\"mathquill\">\\mathbf{x}</span>, the vector of weights on the assets. Use the argument to declare the size of the variable; e.g. ``x = cvx.Variable(2)`` declares that <span class=\"mathquill\">\\mathbf{x}</span> is a vector of length 2. In general, variables can be scalars, vectors, or matrices.\n\n**Objective function**: Use ``cvx.Minimize()`` to declare the objective function. For example, if the objective function is <span class=\"mathquill\">(\\mathbf{x} - \\mathbf{y})^2</span>, you would declare it to be: ``objective = cvx.Minimize((x - y)**2)``.\n\n**Constraints**: You must specify the problem constraints with a list of expressions. For example, if the constraints are <span class=\"mathquill\">\\mathbf{x} + \\mathbf{y} = 1</span> and <span class=\"mathquill\">\\mathbf{x} - \\mathbf{y} \\geq 1</span> you would create the list: ``constraints = [x + y == 1, x - y >= 1]``. Equality and inequality constraints are elementwise, whether they involve scalars, vectors, or matrices. For example, together the constraints ``0 <= x`` and ``x <= 1`` mean that every entry of <span class=\"mathquill\">\\mathbf{x}</span> is between 0 and 1. You cannot construct inequalities with < and >. Strict inequalities don’t make sense in a real world setting. Also, you cannot chain constraints together, e.g., ``0 <= x <= 1`` or ``x == y == 2``.\n\n**Quadratic form**: Use ``cvx.quad_form()`` to create a quadratic form. For example, if you want to minimize portfolio variance, and you have a covariance matrix <span class=\"mathquill\">\\mathbf{P}</span>, the quantity ``cvx.quad_form(x, P)`` represents the quadratic form <span class=\"mathquill\">\\mathbf{x}^\\mathrm{T}\\mathbf{P}\\mathbf{x}</span>, the portfolio variance.\n\n**Norm**: Use ``cvx.norm()`` to create a norm term. For example, to minimize the distance between <span class=\"mathquill\">\\mathbf{x}</span> and another vector,  <span class=\"mathquill\">\\mathbf{b}</span>, i.e. <span class=\"mathquill\">\\left \\| \\mathbf{x} - \\mathbf{b} \\right \\|_2</span>, create a term in the objective function ``cvx.norm(x-b, 2)``. The second argument specifies the type of norm; for an L2-norm, use the argument 2.\n\n**Constants**: Constants are the quantities in objective or constraint expressions that are not Variables. You can use your numeric library of choice to construct matrix and vector constants. For instance, if ``x`` is a ``cvxpy`` ``Variable`` in the expression ``A*x + b``, ``A`` and ``b`` could be Numpy ndarrays, Numpy matrices, or SciPy sparse matrices. ``A`` and ``b`` could even be different types.\n\n**Optimization problem**: The core step in using ``cvxpy`` to solve an optimization problem is to specify the problem. Remember that an optimization problem involves minimizing an _objective function_, under some _constraints_, so to specify the problem, you need both of these. Use ``cvx.Problem()`` to declare the optimization problem. For example, ``problem = cvx.Problem(objective, constraints)``, where ``objective`` and ``constraints`` are quantities you've defined earlier. Problems are immutable. This means that you cannot modify a problem’s objective or constraints after you have created it. If you find yourself wanting to add a constraint to an existing problem, you should instead create a new problem.\n\n**Solve**: Use ``problem.solve()`` to run the optimization solver.\n\n**Status**: Use ``problem.status`` to access the status of the problem and check whether it has been determined to be unfeasible or unbounded.\n\n**Results**: Use ``problem.value`` to access the optimal value of the objective function. Use e.g. ``x.value`` to access the optimal value of the optimization variable.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 679935,
+          "key": "d923f72e-6ebf-479b-8be7-e7aa0ccfb5db",
+          "title": "Exercise: cvxpy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d923f72e-6ebf-479b-8be7-e7aa0ccfb5db",
+            "completed_at": "2020-03-31T16:30:18.824Z",
+            "last_viewed_at": "2020-03-31T16:30:02.506Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 679950,
+              "key": "cfc0366e-b15f-4390-bc78-21a8a0561d2d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewH1lhWsnJN7",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-SJ3bjhJEX",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/m3l4_cvxpy_basic.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 679951,
+          "key": "75b62184-ad96-4a3f-9112-b11289e8c008",
+          "title": "Exercise: cvxpy advanced optimization",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "75b62184-ad96-4a3f-9112-b11289e8c008",
+            "completed_at": "2020-03-31T16:31:10.879Z",
+            "last_viewed_at": "2020-03-31T16:31:05.555Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 679952,
+              "key": "c6ea4f73-3f10-49e7-82df-825d260aea88",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewH1lhWsnJN7",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-rJ5wpnJ4X",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/m3l4_cvxpy_advanced.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630489,
+          "key": "427dbfae-fc66-4b0b-8466-dbc04f889ac3",
+          "title": "Rebalancing a Portfolio",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "427dbfae-fc66-4b0b-8466-dbc04f889ac3",
+            "completed_at": "2020-03-31T16:31:35.814Z",
+            "last_viewed_at": "2020-03-31T16:31:31.026Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 677260,
+              "key": "0ee09f2f-7a4f-4795-ad38-f14ac3b274b6",
+              "title": "L4 11 Rebalancing A Portfolio V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "S5SPhBpG3b0",
+                "china_cdn_id": "S5SPhBpG3b0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 677262,
+          "key": "c7048f5c-8931-4481-9a3f-9a5b91ae648f",
+          "title": "Rebalancing Strategies",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c7048f5c-8931-4481-9a3f-9a5b91ae648f",
+            "completed_at": "2020-03-31T16:34:15.609Z",
+            "last_viewed_at": "2020-03-31T16:34:02.459Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 677263,
+              "key": "a6447aa2-1f13-4cf4-85c0-c06b9d3b57da",
+              "title": "L4 12 Rebalancing Strategies V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8u5gBx-fYr8",
+                "china_cdn_id": "8u5gBx-fYr8.mp4"
+              }
+            },
+            {
+              "id": 680094,
+              "key": "d20155e6-b7af-48b5-8436-ac4c4b91c099",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Terminology\n\nTarget asset allocation = some goal you have for the weights (<span class=\"mathquill\">\\mathbf{x}</span>) on the assets in your portfolio.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630206,
+          "key": "37d58bc6-0d9b-4a71-b302-648c1a358783",
+          "title": "Limitations of the Classical Approach",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "37d58bc6-0d9b-4a71-b302-648c1a358783",
+            "completed_at": "2020-03-31T16:35:06.038Z",
+            "last_viewed_at": "2020-03-31T16:35:03.657Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 677258,
+              "key": "d646a6c1-d32b-4fef-9b5c-f285b05186be",
+              "title": "L4 13 Limitations V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UbbZa7-3iuk",
+                "china_cdn_id": "UbbZa7-3iuk.mp4"
+              }
+            },
+            {
+              "id": 680800,
+              "key": "7c5ec97e-611d-44c9-b9b3-d67f55804ff8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Multi-Period Optimization\n\nIf you're curious, you can find out more about multi-period optimization [here](http://stanford.edu/~boyd/papers/pdf/cvx_portfolio.pdf).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630491,
+          "key": "cbdeb356-4e28-4d43-8586-365c138f98aa",
+          "title": "Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cbdeb356-4e28-4d43-8586-365c138f98aa",
+            "completed_at": "2020-03-31T16:37:20.381Z",
+            "last_viewed_at": "2020-03-31T16:37:17.697Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 677254,
+              "key": "91a48699-b3ab-4145-a48f-749fb2b28f5e",
+              "title": "L4 14 Recap V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "e3qJYCQfJD0",
+                "china_cdn_id": "e3qJYCQfJD0.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

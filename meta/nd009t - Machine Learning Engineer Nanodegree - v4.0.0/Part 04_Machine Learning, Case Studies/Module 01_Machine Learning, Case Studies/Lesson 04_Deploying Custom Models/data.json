@@ -1,0 +1,568 @@
+{
+  "data": {
+    "lesson": {
+      "id": 832568,
+      "key": "c461a06f-883b-4a29-bc43-edc1ffba821b",
+      "title": "Deploying Custom Models",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Design and train a custom PyTorch classifier by writing a training script. This is an especially useful skill for tasks that cannot be easily solved by built-in algorithms.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/c461a06f-883b-4a29-bc43-edc1ffba821b/832568/1556075089932/Deploying+Custom+Models+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/c461a06f-883b-4a29-bc43-edc1ffba821b/832568/1556075085394/Deploying+Custom+Models+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 841268,
+          "key": "1d36b213-e767-432e-85e4-d10d058fa6ec",
+          "title": "Pre-Notebook: Custom Models & Moon Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d36b213-e767-432e-85e4-d10d058fa6ec",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841729,
+              "key": "65e521ca-3449-45b0-b40f-93fb701c0114",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Notebook: Custom Models & Moon Data, Exercise\n\nNext, you'll approach the task of building and training a custom PyTorch classifier to classify data! Specifically, you'll be tasked with classifying \"moon data,\" which is 2-dimensional data whose classes are distributed to look a bit like moons in 2D space. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841732,
+              "key": "f92054b8-58e6-434d-8785-ba742057ccec",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c9c06ad_screen-shot-2019-03-26-at-3.59.20-pm/screen-shot-2019-03-26-at-3.59.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f92054b8-58e6-434d-8785-ba742057ccec",
+              "caption": "Slightly noisy, purple (top) and yellow (bottom) \"moon\" data.",
+              "alt": "",
+              "width": 400,
+              "height": 756,
+              "instructor_notes": null
+            },
+            {
+              "id": 841731,
+              "key": "65e42dff-9adb-425c-8326-3c3ad0a64f0d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nBuilding and training a custom model is presented as an alternative to something like a LinearLearner, which is great in many cases but may fail for data that is not easily separable. As you follow along with this lesson, you should work in the referenced SageMaker notebooks. We will present a solution to you, but please try to work on a solution of your own, when prompted. Much of the value in this experience will come from experimenting with the code, **in your own way**. \n\nTo open this notebook:\n>- Navigate to your SageMaker notebook instance, in the [SageMaker console](https://console.aws.amazon.com/sagemaker/), which has been linked to the main [Github exercise repository](https://github.com/udacity/ML_SageMaker_Studies)\n- Activate the notebook instance (if it is in a \"Stopped\" state), and open it via Jupyter\n- Click on the exercise notebook in the `Moon_Data` directory.\n\nYou may also directly view the exercise and solution notebooks via the repository at the following links:\n* [Exercise notebook](https://github.com/udacity/ML_SageMaker_Studies/blob/master/Moon_Data/Moon_Classification_Exercise.ipynb)\n* [Solution notebook](https://github.com/udacity/ML_SageMaker_Studies/blob/master/Moon_Data/Moon_Classification_Solution.ipynb)\n\nIn this particular case, you will also find a directory `source` and `source_solution` for further reference.\n\n**The solutions are meant to be consulted if you are stuck or want to check your work.**\n\n## Notebook Outline\n\nWe'll go over the following steps to complete the notebook.\n\n* Upload data to S3\n* Define a PyTorch neural network for binary classification\n* Write a custom **training script**\n* Train and evaluate the custom model\n\n## Later: Delete Resources\n\nAt the end of this exercise, and intermittently, you will be reminded to delete your endpoints and resources so that you do not incur any extra processing or storage fees!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841267,
+          "key": "b3072dea-0c9a-4a53-96e9-55838e276c1e",
+          "title": "Moon Data & Custom Models",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b3072dea-0c9a-4a53-96e9-55838e276c1e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841535,
+              "key": "84564f87-1ce7-42d5-9d4f-6f97b18ade6a",
+              "title": "18 Moon Data Custom Model V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vb5ojq8Jw7k",
+                "china_cdn_id": "vb5ojq8Jw7k.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841269,
+          "key": "3a80f2e2-17d0-4e2d-b709-e5a3f8ad89b3",
+          "title": "Upload Data to S3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3a80f2e2-17d0-4e2d-b709-e5a3f8ad89b3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841526,
+              "key": "7bb29318-ad9c-410a-a821-c2f998fb1424",
+              "title": "19 Uploading To S3 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Mz08Bac6h2Y",
+                "china_cdn_id": "Mz08Bac6h2Y.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841271,
+          "key": "d9695ab1-03e9-4e2f-9cb8-4141321a982f",
+          "title": "Exercise: Custom PyTorch Classifier",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d9695ab1-03e9-4e2f-9cb8-4141321a982f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841527,
+              "key": "cbaab85d-825d-43e4-97e2-52cd988b366e",
+              "title": "20 Custom PyTorch Model V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kiZ22MJWSFU",
+                "china_cdn_id": "kiZ22MJWSFU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841272,
+          "key": "ed1a320d-db94-4609-aaba-f02b1f473466",
+          "title": "Solution: Simple Neural Network",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ed1a320d-db94-4609-aaba-f02b1f473466",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841528,
+              "key": "4fcf2fcd-e6e0-4f67-a196-e2ce7d294b2f",
+              "title": "22 Simple NN V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FINTJpz1Yx0",
+                "china_cdn_id": "FINTJpz1Yx0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841273,
+          "key": "84c9c38c-8fc0-4d87-b244-5f3d072829b0",
+          "title": "Exercise: Training Script",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "84c9c38c-8fc0-4d87-b244-5f3d072829b0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841720,
+              "key": "071b6a06-a00e-40d2-bb80-c7a428113039",
+              "title": "23 Train Script V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1cbvRmKvQIg",
+                "china_cdn_id": "1cbvRmKvQIg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841275,
+          "key": "f10e92b1-40e0-4380-b0b0-eeac804ba0dc",
+          "title": "Solution: Complete Training Script",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f10e92b1-40e0-4380-b0b0-eeac804ba0dc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841529,
+              "key": "ce0587fb-d39c-48c7-bea0-9189cf99d11a",
+              "title": "24 Complete Training Script V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xmrB3sqbeTU",
+                "china_cdn_id": "xmrB3sqbeTU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841276,
+          "key": "f82f12a6-cf17-4ef8-8592-629d3bdbb581",
+          "title": "Custom SKLearn Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f82f12a6-cf17-4ef8-8592-629d3bdbb581",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 845799,
+              "key": "4b6fdc7b-6f4b-4479-bb6f-12f9a291b8c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Defining a Custom Model\n\nTo define a custom model, you need to have the **model** itself and the following two scripts:\n* A **training** script that defines how the model will accept input data, and train. This script should also save the trained model parameters.\n* A **predict** script that defines how a trained model produces an output and in what format.\n\n## PyTorch\n\nIn PyTorch, you have the option of defining a neural network of your own design. These models do not come with any built-in predict scripts and so you have to write one yourself.\n\n## SKLearn\n\nThe `scikit-learn` library, on the other hand, has many pre-defined models that come with train and predict functions attached!\n\nYou can define custom SKLearn models in a very similar way that you do PyTorch models only you typically **only** have to define the training script. You can use the default predict function.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841279,
+          "key": "985809d3-d01b-4502-92e6-f6dc91cc71f0",
+          "title": "PyTorch Estimator",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "985809d3-d01b-4502-92e6-f6dc91cc71f0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841532,
+              "key": "a37d274c-5562-4616-9132-9d3589ee5aad",
+              "title": "26 PyTorch Estimator Model V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pJOkQfMtxpc",
+                "china_cdn_id": "pJOkQfMtxpc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841280,
+          "key": "d12a9288-349d-4ca3-b5dd-4ed5b3b8763b",
+          "title": "Exercise: Create a PyTorchModel & Endpoint",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d12a9288-349d-4ca3-b5dd-4ed5b3b8763b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841733,
+              "key": "136e17a2-d240-44b1-88e3-002b33c8a92b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create and Deploy a Trained Model\n\nBefore you can deploy a custom PyTorch model, you have to take one more step: creating a `PyTorchModel`. In earlier exercises, you could see that a call to `.deploy()` created **both** a *model* and an *endpoint*, but for PyTorch models, these steps have to be separate. PyTorch models do not automatically come with `.predict()` functions attached (as many Amazon and Scikit-learn models do, for example) and you may have noticed that you've been given a `predict.py` file in the `source` directory. This file is responsible for loading a trained model and applying it to passed in, numpy data. \n\nNow, when we created a PyTorch **estimator**, we specified where the training script, `train.py` was located. And we'll have to do something very similar here, but for a PyTorch **model** and the `predict.py` file. \n\n### EXERCISE: Instantiate a PyTorchModel\nYou can create a `PyTorchModel` from your trained, estimator attributes. This model is responsible for knowing how to execute a specific `predict.py` script. And this model is what you'll deploy to create an endpoint.\n\n#### Model Parameters\nTo instantiate a `PyTorchModel`, ([documentation, here](https://sagemaker.readthedocs.io/en/stable/sagemaker.pytorch.html#pytorch-model)) you pass in the same arguments as your PyTorch estimator, with a few additions/modifications:\n\n* **model_data**: The trained model.tar.gz file created by your estimator, which can be accessed as estimator.model_data.\n* **entry_point**: This time, this is the path to the Python script SageMaker runs for prediction rather than training, predict.py.\n\nIn the exercise notebook, you've been given the following code to fill in:\n\n```python\n%%time\n# importing PyTorchModel\nfrom sagemaker.pytorch import PyTorchModel\n\n# Create a model from the trained estimator data\n# And point to the prediction script\nmodel = None\n```\n\n### EXERCISE: Deploy the trained model\nDeploy your model to create a predictor. We'll use this to make predictions on our test data and evaluate the model.\n\n```python\n%%time\n# deploy and create a predictor\npredictor = None\n```\n\n\n### Evaluate your Model\n\nAfter deploying your model, you have been given some code to evaluate its performance according to a variety of metrics!\n\n> Remember to **delete your predictor endpoint** *after* you've finished evaluating the model. \n\nTry to complete these steps on your own, and I'll go over one solution, next!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841281,
+          "key": "6cf2a627-ef22-4299-81a1-b042a6537416",
+          "title": "Solution: PyTorchModel & Evaluation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6cf2a627-ef22-4299-81a1-b042a6537416",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841719,
+              "key": "9cc3c679-0a57-4d84-952e-28702b61ef13",
+              "title": "28 PyTorch Deployment Evaluation V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qZTyQqo9FWM",
+                "china_cdn_id": "qZTyQqo9FWM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841241,
+          "key": "8aef0216-acc4-4e55-a7b6-a39e273fd24c",
+          "title": "Clean Up: All Resources",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8aef0216-acc4-4e55-a7b6-a39e273fd24c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841653,
+              "key": "60d89e2c-f385-4490-b7d9-b42cd45df619",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Clean up Resources\n\nIt is good practice to always clean up and delete any resources that you are no longer using. That is, after you complete an exercise, and you are done with predictions and data analysis, you should get rid of any:\n* Data source in S3 that you are no longer using\n* Endpoint configuration files that you no longer need\n* Endpoints that you will no longer use\n* CloudWatch logs that are no longer useful\n\n\n## Deleting Endpoints\n\nIn the notebook, we have usually included code to delete your endpoints after creating some predictions, for example:\n\n```python\n# delete predictor endpoint\nsession.delete_endpoint(predictor.endpoint)\n```\n\n## Thorough Clean up\n\nYou can find a link for instructions on cleaning up all your resources, [in this documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-cleanup.html) and I will go over some of these details, next.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841656,
+              "key": "7045da27-67bd-4219-acaf-245e36c6b9b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Open the Amazon SageMaker console at [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and delete the following resources:\n1. The endpoint configuration.\n2. The model.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841664,
+              "key": "0736546f-9df4-4b83-86c2-f9e74c96ed14",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c9bc99d_delete-endpoint-config1/delete-endpoint-config1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0736546f-9df4-4b83-86c2-f9e74c96ed14",
+              "caption": "Delete endpoint config files.",
+              "alt": "",
+              "width": 2560,
+              "height": 1600,
+              "instructor_notes": null
+            },
+            {
+              "id": 841666,
+              "key": "39d65fa8-65d4-4a6b-a464-897191f2ea32",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c9bc9f0_delete-models/delete-models.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/39d65fa8-65d4-4a6b-a464-897191f2ea32",
+              "caption": "Deleting models",
+              "alt": "",
+              "width": 2560,
+              "height": 1600,
+              "instructor_notes": null
+            },
+            {
+              "id": 841657,
+              "key": "a6176451-06b4-424b-b064-c26b384ec775",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Open the Amazon S3 console at [https://console.aws.amazon.com/s3/](https://console.aws.amazon.com/s3/) and delete or empty the bucket that you created for storing model artifacts and the training dataset.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841665,
+              "key": "52c30b7c-460b-4de8-b60f-2b0f93cbb4cb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c9bc9bb_s3-empty-bucket/s3-empty-bucket.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/52c30b7c-460b-4de8-b60f-2b0f93cbb4cb",
+              "caption": "Delete or empty your S3 bucket (empty is recommended until the end of the course, when you should delete this bucket entirely)",
+              "alt": "",
+              "width": 2560,
+              "height": 1600,
+              "instructor_notes": null
+            },
+            {
+              "id": 841658,
+              "key": "345ae9e3-d6da-45e4-9eff-52165a5048e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Open the Amazon CloudWatch console at [https://console.aws.amazon.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/) and delete all of the log groups that have names starting with /aws/sagemaker/.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841659,
+              "key": "7ad70ecc-0615-43e6-8d00-e324bb345287",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "At the end of this course, you may also choose to delete the entire notebook instance and IAM Role, but you may keep these as is, for now. In between lessons, if you are taking a break, you may want to **Stop** your notebook and pause it from continuously running.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841667,
+              "key": "c9be81a0-177c-4f88-ad06-b79673f5fd81",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c9bca1e_stop-notebook/stop-notebook.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c9be81a0-177c-4f88-ad06-b79673f5fd81",
+              "caption": "Stopping the ML-case-studies notebook",
+              "alt": "",
+              "width": 2560,
+              "height": 1600,
+              "instructor_notes": null
+            },
+            {
+              "id": 841668,
+              "key": "09840175-93d2-4688-be9a-8d89e612d45c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Cleaning up resources at the end of an exercise or lesson is a great practice to get into!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 846525,
+              "key": "fe574834-af2a-42c5-93a7-b705d602f61d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## IMPORTANT\n\n**To avoid incurring additional charges, it is suggested that you *DELETE* any unused notebooks and data resources on S3 and CloudWatch.**",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841283,
+          "key": "f4c6bc81-22fa-44dd-9461-b6f15474e3e6",
+          "title": "Summary of Skills",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f4c6bc81-22fa-44dd-9461-b6f15474e3e6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841734,
+              "key": "eec9a126-f57c-4031-9ff1-7776b376314a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary of Skills\n\nYou've really learned a lot at this point in the course! You should be familiar with each part of the machine learning workflow from data loading and processing to model training and deployment.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841736,
+              "key": "8a53385c-1925-4dc9-98fa-0f6a79df7f6d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c9c10d4_screen-shot-2019-03-27-at-5.09.30-pm/screen-shot-2019-03-27-at-5.09.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8a53385c-1925-4dc9-98fa-0f6a79df7f6d",
+              "caption": "Machine learning workflow.",
+              "alt": "",
+              "width": 600,
+              "height": 1010,
+              "instructor_notes": null
+            },
+            {
+              "id": 841735,
+              "key": "196adfeb-ce5c-4eb6-8e62-e5bb3b955c57",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "By studying specific case studies, you should have a better idea of what kinds of machine learning models may be applied to different scenarios. \n* Essentially, you want to choose an **unsupervised** or **supervised** model based on the given data\n* Often you'll want to process and transform your given data to extract the most relevant and comparable **features** for a given task\n* Then you'll want to refine your choice of model and tune it based on constraints given by a business problem or the data itself\n* You also looked at different ways to visualize what your trained models have learned and different ways to measure success through a variety of **model evaluation metrics**\n\nIn this last example, you saw how to define and train a custom model of your own design, by specifying the model architecture and a **training script**. Now, you are ready to move on to the final project!",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

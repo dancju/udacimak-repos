@@ -1,0 +1,1475 @@
+{
+  "data": {
+    "lesson": {
+      "id": 630708,
+      "key": "882eb101-8593-4301-a41a-c9be6b3f40c6",
+      "title": "Introduction to Kalman Filters",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn the intuition behind the Kalman Filter, a vehicle tracking algorithm, and implement a one-dimensional tracker of your own.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/882eb101-8593-4301-a41a-c9be6b3f40c6/630708/1544453348933/Introduction+to+Kalman+Filters+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/882eb101-8593-4301-a41a-c9be6b3f40c6/630708/1544453343994/Introduction+to+Kalman+Filters+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 630785,
+          "key": "bacfb997-6b81-4e10-bcb3-b78503fca1d4",
+          "title": "Kalman Filters and Linear Algebra",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bacfb997-6b81-4e10-bcb3-b78503fca1d4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630787,
+              "key": "a6afd475-7867-4557-924e-2e17d12d58f2",
+              "title": "矩阵介绍",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ugx3mldc0lE",
+                "china_cdn_id": "Ugx3mldc0lE.mp4"
+              }
+            },
+            {
+              "id": 630786,
+              "key": "936617b3-33d0-4537-9f02-f48f9ada16bc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Overview\nIn this lesson, you will gain exposure to many of the concepts and tools which you will keep coming back to as you learn more about computer vision and autonomous systems. We will focus on the **Kalman Filter**, which is an algorithm that uses noisy sensor measurements (and Bayes' Rule) to produce reliable estimates of unknown quantities (like where a vehicle is likely to be in 3 seconds). \n\nIn this lesson you'll learn the general intuition behind Kalman filters and build up a 1D filter of your own. Then, we'll take a short break from Kalman filters and really look at how we can represent motion and the state of a slef-driving car. Then, we'll go back to Kalman filters and talk about tracking objects in multiple dimensions using linear algebra. Linear algebra is one of the most powerful mathematical tools that a computer vision expert can use. When a problem can be framed in the language of matrices, it's often possible to find programmatic solutions which are effective and very fast. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 21402,
+          "key": "486709880923",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "486709880923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 10408,
+              "key": "48670988",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "XZL934YQ-FQ",
+                "china_cdn_id": "XZL934YQ-FQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630791,
+          "key": "c7f31ce8-bdde-4f29-b002-128ce0b5b2b2",
+          "title": "Tracking Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c7f31ce8-bdde-4f29-b002-128ce0b5b2b2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631365,
+              "key": "3b592a7c-0d71-448c-8bcd-ff9a3c7a56a4",
+              "title": "KALMAN Tracking Intro  RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "C73G7vfVNQc",
+                "china_cdn_id": "C73G7vfVNQc.mp4"
+              }
+            },
+            {
+              "id": 631367,
+              "key": "cb95ea14-b3f3-417c-b90d-26524212d3fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "See the quiz, below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631366,
+              "key": "6629d59e-9241-4643-b6b2-4d57dffab91c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09de43_screen-shot-2018-05-26-at-3.22.39-pm/screen-shot-2018-05-26-at-3.22.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6629d59e-9241-4643-b6b2-4d57dffab91c",
+              "caption": "t = 4 possible locations.",
+              "alt": "",
+              "width": 1472,
+              "height": 816,
+              "instructor_notes": null
+            },
+            {
+              "id": 631368,
+              "key": "0ef87642-0b04-431e-be31-b6f90c9abbab",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0ef87642-0b04-431e-be31-b6f90c9abbab",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Out of the three labelled spots in the image above, which point is the moving bject most likely to be at at time, t = 4?",
+                "answers": [
+                  {
+                    "id": "a1527373398413",
+                    "text": "A",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527373459346",
+                    "text": "B",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527373461093",
+                    "text": "C",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631376,
+          "key": "f9b354e8-306c-4763-9f38-498cff729368",
+          "title": "Answer: Tracking Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f9b354e8-306c-4763-9f38-498cff729368",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631379,
+              "key": "6a6c8cdc-62dc-4781-9173-5f481b6eb979",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09e381_screen-shot-2018-05-26-at-3.45.03-pm/screen-shot-2018-05-26-at-3.45.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6a6c8cdc-62dc-4781-9173-5f481b6eb979",
+              "caption": "Position at time t = 4.",
+              "alt": "",
+              "width": 1510,
+              "height": 832,
+              "instructor_notes": null
+            },
+            {
+              "id": 631380,
+              "key": "df6e100b-e088-4d6f-851c-dfa1599e620f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Inferring Velocity\n\nFrom the earlier positions, we can infer the velocity (indicated by the pink arrow in the image) of the object; the velocity appears to be u and to the left by a fairly consistent amount between each time step.\n\nAssuming no drastic change in velocity occurs, we predict that at time t = 4, the object will be on this same trajectory, at point B.\n\n## Kalman Filter\n\nA Kalman filter gives us a mathematical way to infer velocity from only a set of measured locations. In this lesson, we'll learn how to create a 1D Kalman filter that takes in positions, like those shown above, takes into account uncertainty, and estimates where future locations might be and the velocity of an object!\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630792,
+          "key": "6cfa4303-3c18-4107-bf4a-b5b78766bc49",
+          "title": "Gaussian Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6cfa4303-3c18-4107-bf4a-b5b78766bc49",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631369,
+              "key": "cbbdf188-2764-4503-a79e-b5877917e1ae",
+              "title": "KALMAN Gaussian Intro  RENDER 1 1 V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "S2v1CExswT4",
+                "china_cdn_id": "S2v1CExswT4.mp4"
+              }
+            },
+            {
+              "id": 631372,
+              "key": "8c7ef419-0197-4935-95b5-099fb3b08a5c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "See the quiz, below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631373,
+              "key": "5e86ba22-2219-40a5-a1b2-018a19f49c03",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09e1b8_screen-shot-2018-05-26-at-3.37.30-pm/screen-shot-2018-05-26-at-3.37.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5e86ba22-2219-40a5-a1b2-018a19f49c03",
+              "caption": "Labelled graphs.",
+              "alt": "",
+              "width": 1490,
+              "height": 818,
+              "instructor_notes": null
+            },
+            {
+              "id": 631374,
+              "key": "0b251f67-bda9-4a3a-99c4-bd99896ad5ce",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0b251f67-bda9-4a3a-99c4-bd99896ad5ce",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Out of all the options in the above image, which of these plots are Gaussians? Select *all* options that apply.",
+                "answers": [
+                  {
+                    "id": "a1527374322932",
+                    "text": "A",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527374358940",
+                    "text": "B",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527374360850",
+                    "text": "C",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527374362189",
+                    "text": "D",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527374364473",
+                    "text": "E",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631377,
+          "key": "6bb4c49b-70fc-4475-8f00-8147efb93efb",
+          "title": "Answer: Gaussian Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6bb4c49b-70fc-4475-8f00-8147efb93efb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631381,
+              "key": "0ad93132-d471-49f0-b093-8a2e2a919045",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09e4f9_screen-shot-2018-05-26-at-3.51.18-pm/screen-shot-2018-05-26-at-3.51.18-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0ad93132-d471-49f0-b093-8a2e2a919045",
+              "caption": "All Gaussians.",
+              "alt": "",
+              "width": 1538,
+              "height": 838,
+              "instructor_notes": null
+            },
+            {
+              "id": 631388,
+              "key": "c28c0e55-f979-4e71-87dc-2d0571b4d9ab",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Gaussian Characteristics\n\nGaussians are exponential function characterized by a given **mean**, which defines the location of the peak of a Gaussian curve, ad a **variance** which defines the width/spread of the curve. All Gaussian are:\n*  **symmetrical**\n* they have **one peak**, which is also referred to as a \"unimodal\" distribution, and * they have an exponential drop off on either side of that peak\n\nOptions C, E, and F all have multiple peaks and so are *not* Gaussians.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630793,
+          "key": "826a9902-1ecf-4c76-be9d-6e986ab10bf8",
+          "title": "Quiz: Variance and Preferred Gaussian",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "826a9902-1ecf-4c76-be9d-6e986ab10bf8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631393,
+              "key": "bd17647d-d857-44e7-92b1-2c9b9c93f5c9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09e88e_screen-shot-2018-05-26-at-4.05.55-pm/screen-shot-2018-05-26-at-4.05.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bd17647d-d857-44e7-92b1-2c9b9c93f5c9",
+              "caption": "Image of three different Gaussians.",
+              "alt": "",
+              "width": 1420,
+              "height": 810,
+              "instructor_notes": null
+            },
+            {
+              "id": 631394,
+              "key": "eaae70f4-49e7-4eb8-8487-7ccbb858b7d1",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "eaae70f4-49e7-4eb8-8487-7ccbb858b7d1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "For the three Gaussians pictured above, which has the largest, smallest, and in-between variance? Match their letter label with large/medium/small variance."
+                },
+                "concepts_label": "Gaussian Label",
+                "answers_label": "Variance",
+                "concepts": [
+                  {
+                    "text": "A",
+                    "correct_answer": {
+                      "id": "a1527376099395",
+                      "text": "Medium"
+                    }
+                  },
+                  {
+                    "text": "B",
+                    "correct_answer": {
+                      "id": "a1527376196785",
+                      "text": "Small"
+                    }
+                  },
+                  {
+                    "text": "C",
+                    "correct_answer": {
+                      "id": "a1527376198837",
+                      "text": "Large"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1527376099395",
+                    "text": "Medium"
+                  },
+                  {
+                    "id": "a1527376196785",
+                    "text": "Small"
+                  },
+                  {
+                    "id": "a1527376198837",
+                    "text": "Large"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 631395,
+              "key": "c8deb97a-d8ec-4ebe-acaa-e1752fad4766",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09e9b3_screen-shot-2018-05-26-at-4.06.03-pm/screen-shot-2018-05-26-at-4.06.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c8deb97a-d8ec-4ebe-acaa-e1752fad4766",
+              "caption": "",
+              "alt": "",
+              "width": 1448,
+              "height": 830,
+              "instructor_notes": null
+            },
+            {
+              "id": 631396,
+              "key": "0da66ab8-ab6a-402f-9b8c-e9179a27e6be",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0da66ab8-ab6a-402f-9b8c-e9179a27e6be",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the three Gaussians, pictured above, would you want to have when indicating how \"sure\" you are about a car's location?",
+                "answers": [
+                  {
+                    "id": "a1527376318863",
+                    "text": "A",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527376358999",
+                    "text": "B",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527376361876",
+                    "text": "C",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631391,
+          "key": "c6370b2d-b629-46c9-9186-701c8df84523",
+          "title": "Answer: Variance and Preferred Gaussian",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c6370b2d-b629-46c9-9186-701c8df84523",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631399,
+              "key": "8db3a559-45b5-4f52-b613-ab201db77810",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09eab1_screen-shot-2018-05-26-at-4.15.46-pm/screen-shot-2018-05-26-at-4.15.46-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8db3a559-45b5-4f52-b613-ab201db77810",
+              "caption": "",
+              "alt": "",
+              "width": 1424,
+              "height": 816,
+              "instructor_notes": null
+            },
+            {
+              "id": 631398,
+              "key": "c6bd43bd-716a-4e7e-bd16-b7f4ec0d789c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Variance\n\nThe variance is a measure of Gaussian spread; the smallest spread is Gaussian B, the largest is Gaussian A. You may also notice that larger variances correspond to shorter Gaussians.\n\nVariance is also a measure of certainty; if you are trying to find something like the location of a car with the *most* certainty, you'll want a Gaussian whose mean is the location of the car and with the smallest uncertainty/spread. As seen in the answer, below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631400,
+              "key": "a7b89182-380b-44fe-8a2a-7dfad9346f94",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09eb09_screen-shot-2018-05-26-at-4.04.18-pm/screen-shot-2018-05-26-at-4.04.18-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a7b89182-380b-44fe-8a2a-7dfad9346f94",
+              "caption": "Smaller variance = more certain measurement.",
+              "alt": "",
+              "width": 1464,
+              "height": 840,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 630796,
+          "key": "2c92a6e1-73ee-424d-b0db-4612ac8ca4a8",
+          "title": "Gaussian Function and Maximum",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2c92a6e1-73ee-424d-b0db-4612ac8ca4a8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630798,
+              "key": "2be5590c-bd18-460f-858b-fcedadd0d733",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Maximizing a Gaussian\n\nBelow, you'll see a code implementation of a Gaussian function with some specified mean, mu, and variance sigma^2. What value of x would maximize this function?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630797,
+              "key": "0eab7397-8788-48fd-817b-ee59f61bd5cd",
+              "title": "Maximize Gaussian - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fRYtUP0P4Lg",
+                "china_cdn_id": "fRYtUP0P4Lg.mp4"
+              }
+            },
+            {
+              "id": 631401,
+              "key": "f8f4599c-29f4-4ea4-b1c5-677ff98490e1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "See the answer, below!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630799,
+              "key": "281f39c5-e05c-4b2c-a144-ac0de2f00789",
+              "title": "Maximize Gaussian Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2cD8T65E-jM",
+                "china_cdn_id": "2cD8T65E-jM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630795,
+          "key": "24dbaafa-3d84-4952-97f2-eb10d226a8b7",
+          "title": "Quiz: Shifting the Mean",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "24dbaafa-3d84-4952-97f2-eb10d226a8b7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631402,
+              "key": "c76cc956-bffb-4ad8-8976-1e7516216bc4",
+              "title": "KALMAN QUIZ Shifting The Mean 01 RENDER 1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gfBdoCFborg",
+                "china_cdn_id": "gfBdoCFborg.mp4"
+              }
+            },
+            {
+              "id": 631406,
+              "key": "cb8cf2eb-ee55-44ed-81cc-e99ee1307465",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "See quiz, below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631410,
+              "key": "f592715b-9c4a-4f9b-81cc-8ee46fd072b3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09ee02_screen-shot-2018-05-26-at-4.29.49-pm/screen-shot-2018-05-26-at-4.29.49-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f592715b-9c4a-4f9b-81cc-8ee46fd072b3",
+              "caption": "",
+              "alt": "",
+              "width": 1400,
+              "height": 798,
+              "instructor_notes": null
+            },
+            {
+              "id": 631408,
+              "key": "b6252d23-f951-4ed8-b3a4-256790aec5d0",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b6252d23-f951-4ed8-b3a4-256790aec5d0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "After combining the two Gaussians above,  where will the new mean be? Choose one of the four options pictured above.",
+                "answers": [
+                  {
+                    "id": "a1527377054235",
+                    "text": "A",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527377102074",
+                    "text": "B",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527377104326",
+                    "text": "C",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527377418169",
+                    "text": "D",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631403,
+          "key": "7aebd697-faef-460e-bf20-3e6f695785fe",
+          "title": "Answer: Shifting the Mean",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7aebd697-faef-460e-bf20-3e6f695785fe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631409,
+              "key": "4b2ac4cb-1ba0-49d6-bcb7-125717f45db3",
+              "title": "KALMAN QUIZ Shifting The Mean 02 RENDER V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "L8vNIKvpJ1s",
+                "china_cdn_id": "L8vNIKvpJ1s.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630811,
+          "key": "00586171-a9a2-4242-bc74-13b8602628a2",
+          "title": "Quiz: Predicting the Peak",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "00586171-a9a2-4242-bc74-13b8602628a2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631411,
+              "key": "bb12b66d-6044-45a6-9d51-00aadcbeb2f3",
+              "title": "KALMAN QUIZ Predicting The Peak 01 RENDER V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_fGH3xJMxdM",
+                "china_cdn_id": "_fGH3xJMxdM.mp4"
+              }
+            },
+            {
+              "id": 631412,
+              "key": "d1abe991-a7bf-43b3-bbef-17750e65b96f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "See quiz, below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631414,
+              "key": "08dc2e23-9ea4-4aca-9674-259057f12e21",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09eebf_screen-shot-2018-05-26-at-4.32.19-pm/screen-shot-2018-05-26-at-4.32.19-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/08dc2e23-9ea4-4aca-9674-259057f12e21",
+              "caption": "",
+              "alt": "",
+              "width": 1550,
+              "height": 866,
+              "instructor_notes": null
+            },
+            {
+              "id": 631415,
+              "key": "ddbe2ca3-9ee5-401b-b356-f9443025d517",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ddbe2ca3-9ee5-401b-b356-f9443025d517",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For the newly created Gaussian, given the new mean, how tall do yo think the new peak will be? Recall that the height of a Gaussian is related to its variance term and \"certainty.\" Choose one of the three given options.",
+                "answers": [
+                  {
+                    "id": "a1527377613779",
+                    "text": "A",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527377689466",
+                    "text": "B",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527377689825",
+                    "text": "C",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631404,
+          "key": "fb641322-203e-4da2-93a7-c457a3f3ff64",
+          "title": "Answer: Predicting the Peak",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fb641322-203e-4da2-93a7-c457a3f3ff64",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631416,
+              "key": "52775d55-1555-4b9b-ab53-5b8b71e47c50",
+              "title": "KALMAN QUIZ Predicting The Peak 02 RENDER V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mcwr6FcP2Vc",
+                "china_cdn_id": "mcwr6FcP2Vc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630812,
+          "key": "77c32ab6-c398-4d3d-8743-f7d6eee8fddb",
+          "title": "Quiz: Parameter Update",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "77c32ab6-c398-4d3d-8743-f7d6eee8fddb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632917,
+              "key": "6f22fb65-c00c-4b19-a179-e8a1d699f6f8",
+              "title": "KALMAN QUIZ Parameter Update 01  RENDER V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UUXETqShme4",
+                "china_cdn_id": "UUXETqShme4.mp4"
+              }
+            },
+            {
+              "id": 631417,
+              "key": "81687d26-9fb9-47fd-9ea3-eadf995fdb37",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09efc6_screen-shot-2018-05-26-at-4.37.05-pm/screen-shot-2018-05-26-at-4.37.05-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/81687d26-9fb9-47fd-9ea3-eadf995fdb37",
+              "caption": "",
+              "alt": "",
+              "width": 1498,
+              "height": 828,
+              "instructor_notes": null
+            },
+            {
+              "id": 631418,
+              "key": "c9c3b57b-7b82-47d8-8419-bb78185e6d72",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Given the above two Gaussians, with `mu = 10` and `nu = 12` and both squared variances = 4. Answer the following questions about the newly created Gaussian (made from a product of the given two).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631420,
+              "key": "1ee6494b-06f2-4a96-a488-e2999684d65b",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1ee6494b-06f2-4a96-a488-e2999684d65b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the new value of the mean, mu-prime?",
+                "matchers": [
+                  {
+                    "expression": "^\\s*11\\s*"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 631421,
+              "key": "4f4f3bb6-f387-4b27-ab95-4a6e21e1641a",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4f4f3bb6-f387-4b27-ab95-4a6e21e1641a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the new squared variance, sigma^2-prime?",
+                "matchers": [
+                  {
+                    "expression": "^\\s*2\\s*"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631405,
+          "key": "ed2cf7aa-a7cf-4302-acd6-e2abff976a84",
+          "title": "Answer: Parameter Update",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ed2cf7aa-a7cf-4302-acd6-e2abff976a84",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631422,
+              "key": "3fed26cc-af49-4217-8fb0-ae5c7f99821e",
+              "title": "KALMAN QUIZ Parameter Update 02 RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vl6GkkEgY4M",
+                "china_cdn_id": "vl6GkkEgY4M.mp4"
+              }
+            },
+            {
+              "id": 631492,
+              "key": "a0ed2b33-e423-4dbb-b03e-716d80b45a7c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Next, see if you can program the parameter update equations in code!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630813,
+          "key": "17e75563-b012-4e8f-a6f0-f817feb0e0f4",
+          "title": "Notebook: New Mean and Variance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "17e75563-b012-4e8f-a6f0-f817feb0e0f4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631493,
+              "key": "ba4ae2b4-b88e-407a-84d2-a16008a1d5b5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view0d570e76",
+              "pool_id": "jupyter",
+              "view_id": "0d570e76-bed3-4c01-9e12-2228caef7495",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630817,
+          "key": "b1503fc2-3c3f-455b-8d5e-cc98eb87a2be",
+          "title": "Solution: New Mean and Variance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b1503fc2-3c3f-455b-8d5e-cc98eb87a2be",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630818,
+              "key": "32ed6f9f-5ddd-4214-8e0a-00976d8b5079",
+              "title": "New Mean and Variance Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SwxRWZaC1FM",
+                "china_cdn_id": "SwxRWZaC1FM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630819,
+          "key": "66e07499-3b87-43b6-a100-c485893e3270",
+          "title": "Quiz: Gaussian Motion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "66e07499-3b87-43b6-a100-c485893e3270",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631424,
+              "key": "bd4917f7-46ca-4dba-b3b8-17700f93f683",
+              "title": "KALMAN QUIZ Gaussian Motion 01 RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LFPT0R3VaPs",
+                "china_cdn_id": "LFPT0R3VaPs.mp4"
+              }
+            },
+            {
+              "id": 631426,
+              "key": "b9642100-10a0-4543-843c-053aa5d57d9c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09f340_screen-shot-2018-05-26-at-4.51.08-pm/screen-shot-2018-05-26-at-4.51.08-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b9642100-10a0-4543-843c-053aa5d57d9c",
+              "caption": "",
+              "alt": "",
+              "width": 2478,
+              "height": 1372,
+              "instructor_notes": null
+            },
+            {
+              "id": 631427,
+              "key": "a7239777-d117-4ae1-8072-923993923573",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For the above orange Gaussian with `mu = 8` and squared `variance = 4` what will the new, blue Gaussian parameters be after a motion of `U = 10` and squared `variance = 6`. Answer the following questions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631428,
+              "key": "d584c1f0-3b9c-49a3-8349-f6932a504da1",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d584c1f0-3b9c-49a3-8349-f6932a504da1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the new mean, mu-prime, after motion?",
+                "matchers": [
+                  {
+                    "expression": "^\\s*18\\s*"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 631429,
+              "key": "62bdf074-3a52-45b7-95bc-92ee65660a47",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "62bdf074-3a52-45b7-95bc-92ee65660a47",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the new squared variance, sigma^2-prime, after motion?",
+                "matchers": [
+                  {
+                    "expression": "^\\s*10\\s*"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631425,
+          "key": "cc9fbb2a-04d1-43bc-8af2-43fa20cc8b76",
+          "title": "Answer: Gaussian Motion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cc9fbb2a-04d1-43bc-8af2-43fa20cc8b76",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631431,
+              "key": "5b96725c-ca64-4705-ad42-b1e6cd0ba91a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b09f527_screen-shot-2018-05-26-at-5.00.26-pm/screen-shot-2018-05-26-at-5.00.26-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5b96725c-ca64-4705-ad42-b1e6cd0ba91a",
+              "caption": "",
+              "alt": "",
+              "width": 1492,
+              "height": 848,
+              "instructor_notes": null
+            },
+            {
+              "id": 631432,
+              "key": "d4b35479-63cb-46bb-ba3b-fc05df2cff2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Motion Update\n\nA motion update is just an addition between parameters; the new mean will be the old mean + the motion mean; same with the new variance!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630820,
+          "key": "9b291dfa-261e-4b53-b616-79ea08649e6c",
+          "title": "Predict Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9b291dfa-261e-4b53-b616-79ea08649e6c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630821,
+              "key": "df44ad9b-4c33-4d59-821a-4ec2e36634b9",
+              "title": "Predict Function - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DV2cX9W0tT8",
+                "china_cdn_id": "DV2cX9W0tT8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630822,
+          "key": "4d416029-b985-43e7-bf46-17debc66f963",
+          "title": "Notebook: Predict Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4d416029-b985-43e7-bf46-17debc66f963",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631494,
+              "key": "83287026-c469-4a1b-a4ec-ae610da0f735",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view0d3ec058",
+              "pool_id": "jupyter",
+              "view_id": "0d3ec058-cc4b-4fa1-b017-307d4833ec0a",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630824,
+          "key": "3fa2ae1c-c5c7-4481-9eb9-d85a50490a11",
+          "title": "Answer: Predict Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3fa2ae1c-c5c7-4481-9eb9-d85a50490a11",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630825,
+              "key": "f97e80d8-a3c5-46ea-a752-63238a21062d",
+              "title": "Predict Function Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AMFig-sYGfM",
+                "china_cdn_id": "AMFig-sYGfM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630826,
+          "key": "47dce0e5-96e2-4bc4-bf32-aa13b34e7781",
+          "title": "Kalman Filter Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "47dce0e5-96e2-4bc4-bf32-aa13b34e7781",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630827,
+              "key": "242b708a-8e8d-4787-a4cd-5c59cb5ecffa",
+              "title": "Kalman Filter Code - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3xBycKfnCOQ",
+                "china_cdn_id": "3xBycKfnCOQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630828,
+          "key": "05638a56-1fdb-4702-a215-a6c59aa05186",
+          "title": "Notebook: 1D Kalman Filter",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "05638a56-1fdb-4702-a215-a6c59aa05186",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631495,
+              "key": "9e274836-52dd-4498-b700-873104c144fb",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view2fccab35",
+              "pool_id": "jupyter",
+              "view_id": "2fccab35-a06c-4c7b-a6cc-6b801eeced54",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630829,
+          "key": "e9747bb1-04ac-4152-a437-30a5fe7dfe14",
+          "title": "Answer: 1D Kalman Filter",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e9747bb1-04ac-4152-a437-30a5fe7dfe14",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630830,
+              "key": "4daf6723-714a-4b2b-a99b-49b218fd6fcb",
+              "title": "Kalman Filter Code Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "X7cixvcogl8",
+                "china_cdn_id": "X7cixvcogl8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630831,
+          "key": "ac4c181c-543a-4b08-be54-d36ad25faa74",
+          "title": "Kalman Prediction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ac4c181c-543a-4b08-be54-d36ad25faa74",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631433,
+              "key": "22a08145-9d04-431f-b5db-1f1aaa902b82",
+              "title": "KALMAN QUIZ Kalman Prediction V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "d8Gx4-RghD0",
+                "china_cdn_id": "d8Gx4-RghD0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630832,
+          "key": "c5d7510a-d595-46f9-9280-2ca59925a9de",
+          "title": "Next: Motion Models and State",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c5d7510a-d595-46f9-9280-2ca59925a9de",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630833,
+              "key": "a4fa9fad-6ed8-400c-88ab-668bd0b907f9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# A Break from Kalman Filters\nAt this point, you've implemented a one dimensional Kalman Filter and you probably have some idea of how a multi-dimensional Kalman Filter might work. \n\nBut in order to actually make (or even use) a Kalman Filter in a 2D or 3D world (or \"state space\" in the language of robotics) we will first need to learn more about how we can keep track of robot motion and what exactly we mean when we use this word \"state\".\n\n## Motion Models and State\n\nThe next lesson will be a concise introduction to representing the position and motion of an object (an object's **state**) using a mathematical representation of motion: **a motion model**.\n\nAfter we go over motion for a self-driving car, we will come back to the *multidimensional* Kalman Filter!",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

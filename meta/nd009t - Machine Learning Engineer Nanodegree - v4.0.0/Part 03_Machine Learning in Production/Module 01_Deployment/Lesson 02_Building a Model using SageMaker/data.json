@@ -1,0 +1,965 @@
+{
+  "data": {
+    "lesson": {
+      "id": 769748,
+      "key": "b922a210-7ac8-4786-a39d-a09daba5a170",
+      "title": "Building a Model using SageMaker",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to use Amazon’s SageMaker service to predict Boston housing prices using SageMaker’s built-in XGBoost algorithm. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/b922a210-7ac8-4786-a39d-a09daba5a170/769748/1544197119391/Building+a+Model+using+SageMaker+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/b922a210-7ac8-4786-a39d-a09daba5a170/769748/1544197115290/Building+a+Model+using+SageMaker+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 769749,
+          "key": "99adbe22-a708-4b91-bd62-1972e92fd9d8",
+          "title": "Introduction to Amazon SageMaker",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "99adbe22-a708-4b91-bd62-1972e92fd9d8",
+            "completed_at": "2019-11-25T17:05:59.841Z",
+            "last_viewed_at": "2019-11-25T17:05:59.684Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780582,
+              "key": "399cbd0f-50b2-4257-a080-97ff10d6ceb6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Introduction to Amazon SageMaker",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784293,
+              "key": "f39c809a-acca-4c78-9071-e4978b2c313d",
+              "title": "Deploying A Model With Sagemakerv2 RENDER V1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nJCc4_9-iAQ",
+                "china_cdn_id": "nJCc4_9-iAQ.mp4"
+              }
+            },
+            {
+              "id": 780581,
+              "key": "cc99aeb8-e235-4221-b483-c8d4ba1ce19d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Hi, I'm Sean, and together we are going to learn about Amazon's SageMaker service.\n\nTo start with, we are going to need to set a few things up.\n\n**Note:** Amazon is constantly iterating and improving the various services that they offer. Sometimes this involves changes to the way certain things look, however, the functionality should be the same. So in the screenshots and videos that follow, if *your* screen doesn't look exactly the same, don't worry!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 967252,
+          "key": "88eb12c5-56ba-4b81-810a-91583e7eea51",
+          "title": "AWS Setup Instructions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "88eb12c5-56ba-4b81-810a-91583e7eea51",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 967253,
+              "key": "66032e67-b1d4-45a1-9d44-060eff75d494",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create an AWS Account\n1. Open a regular AWS account (if you don't already have one) following the instructions via the [Amazon Web Service Help Center](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 967254,
+              "key": "be622beb-d9de-4760-a882-c01e755701bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. You will need a promo code from us so you can apply it to your account. To request a promo code, you can submit a support ticket [here](https://udacity.zendesk.com/hc/en-us/requests/new?ticket_form_id=110806). \n - Under the **\"Reason for Contact\"** field, choose **\"Other\"**, then choose **\"External Tools\"** in the dropdown. \n - When the **\"External Tools\"** field appears, select **\"AWS\"**. \n - Please note that regular AWS accounts receive $75 worth of credits.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 967255,
+              "key": "ddcc4369-b228-413a-8484-08791197f6b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. To apply your promo code, follow below:\n - Click **\"Credits\"** on the left side of the screen and enter the promo-code you received, then hit **\"redeem\"**.\n - Refresh the page and you will be able to view your credits under: Below are all the credits you have redeemed with AWS. Credits will automatically be applied to your bill.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 967256,
+              "key": "a50fd0c5-f930-4b67-bd53-b9bb1a48e55b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/January/5e178405_aws-account/aws-account.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a50fd0c5-f930-4b67-bd53-b9bb1a48e55b",
+              "caption": "",
+              "alt": "",
+              "width": 1699,
+              "height": 815,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 782190,
+          "key": "1de00ea0-ed18-402e-9c59-35ed137326a0",
+          "title": "Checking GPU Access",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1de00ea0-ed18-402e-9c59-35ed137326a0",
+            "completed_at": "2019-11-26T04:13:05.815Z",
+            "last_viewed_at": "2019-11-26T05:29:04.564Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782191,
+              "key": "c29c0a80-f458-49f3-83d5-fd7aa6f77f45",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Check for GPU Access\n\nYou don't need access to GPU enabled compute instances for most of the notebooks that you will work with in this module. However, in the project you will be constructing an RNN and so having access to GPU enabled compute instances will increase the speed with which you can train your model significantly.\n\nSince it can sometimes take a few days for Amazon to approve a limit request which would allow you to use GPU machines, it is a good idea to start this process now so that it's ready when you need it.\n\nThe smallest GPU instance available when using SageMaker is the **p2.xlarge** instance and it is perfectly adequate for completing the project. Depending on the default region that was used during the creation of your AWS account the default number of **p2.xlarge** instances allowed may be 0.\n\nYou can view your limit by looking at the EC2 Service Limit report which can be found here https://console.aws.amazon.com/ec2/v2/home?#Limits.\n\nScroll down and check your current **p2.xlarge** limit.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782192,
+              "key": "daa13e63-6720-4820-8fae-bc2d02f8fed5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be700f4_p2xlarge-limit-request/p2xlarge-limit-request.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/daa13e63-6720-4820-8fae-bc2d02f8fed5",
+              "caption": "",
+              "alt": "Check p2.xlarge Limit",
+              "width": 1688,
+              "height": 246,
+              "instructor_notes": null
+            },
+            {
+              "id": 782193,
+              "key": "2d4b1d38-92a3-4129-ae1a-40678b5dbf99",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Submit a Limit Increase Request\n\nIf your current limit is 0 you will need to request a limit increase.\n\nIn order to request a limit increase you will need to know the region in which you would like the instance to operate. You will most likely want this to be the current region for your account. You can find the current region for your account by looking in the top right corner of EC2 Service Limits page (or most other AWS console pages).\n\nFor example, the image below shows that my current region is set to **N. Virginia**.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782194,
+              "key": "8292d5a3-fdfa-4002-beb7-e7fa95751335",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be70104_current-region/current-region.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8292d5a3-fdfa-4002-beb7-e7fa95751335",
+              "caption": "",
+              "alt": "Current AWS Region",
+              "width": 349,
+              "height": 38,
+              "instructor_notes": null
+            },
+            {
+              "id": 782195,
+              "key": "e537804a-4315-4bb1-bcaa-ee213d0e3bfb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To submit a limit increase request, click on **Request limit increase** next to **p2.xlarge** on the EC2 Service Limits page.\n\nOn the service request form you will need to complete several fields.\n\nFor the **Region** field, select the AWS region found above.\n\nFor the **New limit value** field, enter a value of 1 (or more, if you wish).\n\nFor the **Use Case Description**, you can simply state: \"I would like to use GPU instances for deep learning.\"",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782196,
+              "key": "adf1a637-8e17-4f35-a84e-4516e8197bf4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be7011c_p2-limit-increase/p2-limit-increase.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/adf1a637-8e17-4f35-a84e-4516e8197bf4",
+              "caption": "",
+              "alt": "Service Limit Increase Request Form",
+              "width": 1624,
+              "height": 1086,
+              "instructor_notes": null
+            },
+            {
+              "id": 782197,
+              "key": "c86ff019-d23a-4204-b9df-3c6be15a1de3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Note:** If you have never launched an instance of any type on AWS, you might receive an email from AWS support asking you to initialize your account by creating an instance before they approve the limit increase. This can be done, for example, by creating and running a SageMaker Notebook instance.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 771570,
+          "key": "d55d4fdb-300e-46f4-812c-acf8147439c2",
+          "title": "Setting up a Notebook Instance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d55d4fdb-300e-46f4-812c-acf8147439c2",
+            "completed_at": "2019-11-25T17:06:05.494Z",
+            "last_viewed_at": "2019-11-26T04:19:26.264Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780593,
+              "key": "8bd52c6d-4b37-4ea0-b838-187fe8c03d29",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Setting up a Notebook Instance",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780594,
+              "key": "b6ec2e9a-b877-46d1-9618-0bc3cbc9845c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The first thing we are going to need to do is set up a notebook instance!\n\nThis will be the primary way in which we interact with the SageMaker ecosystem. Of course, this is not the *only* way to interact with SageMaker's functionality, but it is the way that we will use in this module.\n\nThe video below guides you through setting up your first notebook instance. Also, if you prefer to read the instructions instead, these have been provided underneath the video.\n\n**Note:** Once a notebook instance has been set up, by default, it will be **InService** which means that the notebook instance is running. This is important to know because the *cost* of a notebook instance is based on the length of time that it has been running. This means that once you are finished using a notebook instance you should **Stop** it so that you are no longer incurring a cost. Don't worry though, you won't lose any data provided you don't delete the instance. Just start the instance back up when you have time and all of your saved data will still be there.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780100,
+              "key": "98c206e4-ac07-4f8f-b246-889e3c6a1f7b",
+              "title": "Deployment L2 C2 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TRUCNy5Eqjc",
+                "china_cdn_id": "TRUCNy5Eqjc.mp4"
+              }
+            },
+            {
+              "id": 787610,
+              "key": "88f79003-d0ef-400d-8cce-a29c110740dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Searching for SageMaker\n\nYour main console page may look slightly different than in the above example. You should still be able to find **Amazon SageMaker** by either:\n1. Clicking on _All Services_ then scrolling down and navigating to Machine Learning> Amazon SageMaker, or\n2. By searching for SageMaker, as in the below screenshot (and clicking on it).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 787611,
+              "key": "7eec4848-f3fc-46ed-b7f9-9a3bb25b7f19",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bfddc96_screen-shot-2018-11-27-at-4.06.38-pm/screen-shot-2018-11-27-at-4.06.38-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7eec4848-f3fc-46ed-b7f9-9a3bb25b7f19",
+              "caption": "",
+              "alt": "Finding SageMaker in the search bar.",
+              "width": 400,
+              "height": 748,
+              "instructor_notes": null
+            },
+            {
+              "id": 780595,
+              "key": "54dccf4a-6dcc-4606-9fc5-67236c0984df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating and Running a Notebook Instance\n\nFirst, start by logging in to the [AWS console](https://console.aws.amazon.com), opening the SageMaker dashboard, selecting **Notebook Instances** and clicking on **Create notebook instance**.\n\nYou may choose any name you would like for your notebook. Also, using **ml.t2.medium** should be all that is necessary for the notebooks that you will encounter in this module. In addition, an **ml.t2.medium** instance is covered under the free tier.\n\nNext, under **IAM role** select **Create a new role**. You should get a pop-up window that looks like the one below. The only change that needs to be made is to select **None** under **S3 buckets you specify**, as is shown in the image below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780608,
+              "key": "673a90b2-79a2-4576-8d39-163e999561c9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be30dbb_create-an-iam-role/create-an-iam-role.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/673a90b2-79a2-4576-8d39-163e999561c9",
+              "caption": "",
+              "alt": "Create IAM Role Form",
+              "width": 821,
+              "height": 565,
+              "instructor_notes": null
+            },
+            {
+              "id": 780609,
+              "key": "ff389c6a-841d-4643-b3e3-9a052da9b2aa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Once you have finished setting up the role for your notebook, your notebook instance settings should look something like the image below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780610,
+              "key": "7155488d-6d43-49b9-abde-534eca4cc216",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be30dd1_notebook-instance-settings/notebook-instance-settings.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7155488d-6d43-49b9-abde-534eca4cc216",
+              "caption": "",
+              "alt": "Notebook Instance Settings",
+              "width": 802,
+              "height": 661,
+              "instructor_notes": null
+            },
+            {
+              "id": 780611,
+              "key": "8ed3ae26-6555-47b4-b847-e703dcbed07a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Note:** Your notebook name may be different than the one displayed and the IAM role that appears will be different.\n\nNow scroll down and click on **Create notebook instance**.\n\nOnce your notebook instance has started and is accessible, click on **open** to get to the Jupyter notebook main page.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780101,
+          "key": "4bd3d92b-ca4b-422c-bf8b-8a9d02667b14",
+          "title": "Cloning the Deployment Notebooks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4bd3d92b-ca4b-422c-bf8b-8a9d02667b14",
+            "completed_at": "2019-11-25T17:06:07.704Z",
+            "last_viewed_at": "2019-11-25T17:06:34.521Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780612,
+              "key": "36941dc6-2a17-4b3f-88eb-93a5aa11ed69",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Getting the Notebooks",
+              "instructor_notes": ""
+            },
+            {
+              "id": 814337,
+              "key": "4d7ae702-8f10-4360-a96d-62d220528e14",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Recently, SageMaker has added a line in the setup code to link directly to a Github repository and it's recommended that you use that setup!\n\nAlso on the `Actions` list, you should select `Open Jupyter` to get to the examples notebooks. from the dropdown menu, you'll still be able to see the `Stop` action.\n\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780613,
+              "key": "7d99d557-0d76-43f1-88a2-f1f3740cc8d9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that your notebook instance has been set up and is running, it's time to get the notebooks that we will be using during this module.\n\nThese notebooks are stored in a [repository on Github](https://github.com/udacity/sagemaker-deployment) and the easiest way to make them available inside of your notebook instance is to use **git** and clone the repository.\n\nThe video below goes through this process. Also, if you would prefer to read the instructions, these have been provided and can be found underneath the video.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780103,
+              "key": "63dd135f-4687-48e7-98c5-fa675d09ede2",
+              "title": "Deployment L2 C3 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jqL74whe9yo",
+                "china_cdn_id": "jqL74whe9yo.mp4"
+              }
+            },
+            {
+              "id": 780614,
+              "key": "12a414f6-d4f1-40e5-95c9-aea9b3fee204",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Cloning the Deployment Notebooks\n\nIn order to clone the deployment repository into your notebook instance, click on the **new** drop down menu and select **terminal**. By default, the working directory of the terminal instance is the home directory, however, the Jupyter notebook hub's root directory is under `SageMaker`. Enter the appropriate directory and clone the repository as follows:\n\n```bash\ncd SageMaker\ngit clone https://github.com/udacity/sagemaker-deployment.git\nexit\n```\n\nAfter you have finished, close the terminal window.\n\nYour notebook instance is now set up and ready to be used!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783853,
+          "key": "d034850f-b779-4754-87f3-f3086a634c07",
+          "title": "Is Everything Set Up?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d034850f-b779-4754-87f3-f3086a634c07",
+            "completed_at": "2019-11-25T17:06:10.642Z",
+            "last_viewed_at": "2019-11-25T17:06:09.980Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783857,
+              "key": "8a45683b-12a7-442d-a53a-dc345f359a2e",
+              "title": "Has everything been set up correctly?",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8a45683b-12a7-442d-a53a-dc345f359a2e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create an AWS Account",
+                "Apply AWS Credits",
+                "Checked for GPU Access",
+                "Submit a Limit Increase Request (if necessary)",
+                "Create a SageMaker Notebook Instance",
+                "Clone the Deployment Repository (notebooks) into your Notebook Instance"
+              ],
+              "positive_feedback": "Fantastic, everything should be set up and ready to go!",
+              "video_feedback": null,
+              "description": "As you proceed through the lessons that follow you will get a chance to use Amazon's SageMaker service. However, in order to do so you will need to make sure that everything has been set up.\n\nThis is meant to be a checklist that you can use to make sure you've completed all of the preparation steps."
+            }
+          ]
+        },
+        {
+          "id": 780105,
+          "key": "e4d6f0cd-f0fd-451c-8eaf-a3e2c70f936a",
+          "title": "Boston Housing Example - Getting the Data Ready",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e4d6f0cd-f0fd-451c-8eaf-a3e2c70f936a",
+            "completed_at": "2019-11-25T17:07:24.764Z",
+            "last_viewed_at": "2019-11-29T09:51:39.084Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780617,
+              "key": "49bba020-be70-444b-a922-c3e099b6e9dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Boston Housing Example",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780141,
+              "key": "4a37afb4-2e19-4215-a0d7-4e878ff74799",
+              "title": "Deployment L2 C4 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "78y5cTR-JxM",
+                "china_cdn_id": "78y5cTR-JxM.mp4"
+              }
+            },
+            {
+              "id": 787614,
+              "key": "0872d761-cc4e-415c-8f54-902ba1e81cbe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### SageMaker Sessions & Execution Roles\n\nSageMaker has some unique objects and terminology that will become more familiar over time. There are a few objects that you'll see come up, over and over again:\n\n* **Session** - A session is a special *object* that allows you to do things like manage data in S3 and create and train any machine learning models; you can read more about the functions that can be called on a session, [at this documentation](https://sagemaker.readthedocs.io/en/latest/session.html). The `upload_data` function should be close to the top of the list! You'll also see functions like `train`, `tune`, and `create_model` all of which we'll go over in more detail, later.\n* **Role** - Sometimes called the _execution role_, this is the IAM role that you created when you created your notebook instance. The role basically defines how data that your notebook uses/creates will be stored. You can even try printing out the role with `print(role)` to see the details of this creation.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 787618,
+              "key": "3e328499-5f20-492f-b158-ce431ffe0ea8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Uploading to an S3 Bucket\n\nAnother SageMaker detail that is new is the method of data storage. In these instances, we'll be using S3 buckets for data storage. \n\n> S3 is a virtual storage solution that is mostly meant for data to be written to few times and read from many times. This is, in some sense, the main workhorse for data storage and transfer when using Amazon services. These are similar to file folders that contain data _and_ metadata about that data, such as the data size, date of upload, author, and so on.\n\n**S3** stands for Simple Storage Service (S3).\n\nAfter you upload data to a session, you should see that an S3 bucket is created, as indicated by an output like the following:\n```python\nINFO: sagemaker: Created S3 bucket: <message specific to your locale, ex. sagemaker-us-west-1-#>\n```\n\nIf you'd like to learn more about how we're creating a csv file, you can check out [the pandas documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html). Above, we are just concatenating x and y data sets as columns of data (`axis=1`) and converting that pandas dataframe into a csv file using `.to_csv`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780616,
+              "key": "7cbcd0c2-721d-4e5f-bae9-d24b0e9536da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Boston Housing Data \n\nFor our very first time using SageMaker we will be looking at the problem of estimating the median cost of a house in the Boston area using the [Boston Housing Dataset](https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html).\n\nWe will be using this dataset often throughout this module as it provides a great example on which to try out all of SageMaker's features.\n\nIn addition, we will be using a random tree model. In particular, we will be using the [XGBoost](https://xgboost.readthedocs.io/en/latest/) algorithm. The details of XGBoost are beyond the scope of this module as we are interested in learning about SageMaker. If you would like to learn more about XGBoost I would recommend starting with the documentation which you can find at https://xgboost.readthedocs.io/en/latest/\n\nThe notebook we will be working though in this video and in the following two videos can be found in the `Tutorial` directory and is called `Boston Housing - XGBoost (Batch Transform) - High Level.ipynb`. Now that you know why **Boston Housing** and **XGBoost** are in the name, let's talk a bit about the rest of it.\n\nFirst, **Batch Transform** is the method we will be using to test our model once we have trained it. This is something that we will discuss a little more later on.\n\nSecond, **High Level** describes the API we will be using to get SageMaker to perform various machine learning tasks. In particular, it refers to the Python SDK whose documentation can be found here: https://sagemaker.readthedocs.io/en/latest/. This high level approach simplifies a lot of the details when working with SageMaker and can be very useful.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780106,
+          "key": "07a4361d-4aa3-499c-aeed-7847b0e0b0b7",
+          "title": "Boston Housing Example - Training the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "07a4361d-4aa3-499c-aeed-7847b0e0b0b7",
+            "completed_at": "2019-11-26T05:29:19.428Z",
+            "last_viewed_at": "2019-11-29T09:51:43.783Z",
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "XGBoost paper",
+                "uri": "https://video.udacity-data.com/topher/2018/November/5bfdf09f_xgboost/xgboost.pdf"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 780145,
+              "key": "d66fed13-b719-47af-abae-6c4d39c2c2b4",
+              "title": "Deployment L2 C5 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rqYlkCTLmIY",
+                "china_cdn_id": "rqYlkCTLmIY.mp4"
+              }
+            },
+            {
+              "id": 787619,
+              "key": "9df4edff-389f-4082-a0cd-72cd3cb8e8a7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### XGBoost in Competition\n\nThere's a [list of winning XGBoost-based solutions](https://github.com/dmlc/xgboost/tree/master/demo#machine-learning-challenge-winning-solutions) to a variety of competitions, at the linked XGBoost repository.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 787620,
+              "key": "5e773fd0-2358-4736-b189-ce02ded89405",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Estimators\n\nYou can read [the documentation on estimators](https://sagemaker.readthedocs.io/en/latest/estimators.html) for more information about this object. Essentially, the Estimator is an object that specifies some details about how a model will be trained. It gives you the ability to create and deploy a model.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 787621,
+              "key": "0f0f2b8e-57f4-434f-a57a-2af1a7789b6b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Training Jobs\n\nA training job is used to train a specific estimator. \n\nWhen you request a training job to be executed you need to provide a few items:\n1. A location on S3 where your training (and possibly validation) data is stored,\n2. A location on S3 where the resulting model will be stored (this data is called the model artifacts),\n3. A location of a docker container (certainly this is the case if using a built in algorithm) to be used for training\n4. A description of the compute instance that should be used.\n\nOnce you provide all of this information, SageMaker will executed the necessary instance (CPU or GPU), load up the necessary docker container and execute it, passing in the location of the training data. Then when the container has finished training the model, the _model artifacts_ are packaged up and stored on S3.\n\nYou can see a high-level (which we've just walked through) example of training a KMeans estimator, [in this documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-train-model-create-training-job.html). This high-level example defines a KMeans estimator, and uses `.fit()` to train that model. Later, we'll show you a low-level model, in which you have to specify many more details about the training job.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780107,
+          "key": "bda01ab5-5729-4ba5-993a-d9d58613079f",
+          "title": "Boston Housing Example - Testing the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bda01ab5-5729-4ba5-993a-d9d58613079f",
+            "completed_at": "2019-11-26T12:30:46.186Z",
+            "last_viewed_at": "2019-11-26T12:30:44.720Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780148,
+              "key": "66bc2062-8261-44e5-a53b-11ee6ec7ad08",
+              "title": "Deployment L2 C6 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CZRKuS_qYtg",
+                "china_cdn_id": "CZRKuS_qYtg.mp4"
+              }
+            },
+            {
+              "id": 787622,
+              "key": "a9772484-3b47-4dce-b5c4-8e563bd23512",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Transformer\n\nYou can read more about the transform and wait functions, in [the transformer documentation](https://sagemaker.readthedocs.io/en/latest/transformer.html). In this case, the transformer is used to create a transform job and **evaluate a trained model**. The `transform` function takes in the location of some test data, and some information about how that test data is formatted.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780113,
+          "key": "74f244ae-59cd-4266-b5c6-7aa9dc7d60d3",
+          "title": "Mini-Project: Building Your First Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "74f244ae-59cd-4266-b5c6-7aa9dc7d60d3",
+            "completed_at": "2019-11-26T12:35:23.191Z",
+            "last_viewed_at": "2019-11-29T09:51:31.266Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780626,
+              "key": "ef1dbc3a-d9c7-49c7-8757-731bd15d0a86",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Mini-Project: Building Your First Model",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780151,
+              "key": "a9d5b2c9-008a-4e3b-9bd4-2f0dc0f2e330",
+              "title": "Deployment L2 C7 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ouLvRqMMbbY",
+                "china_cdn_id": "ouLvRqMMbbY.mp4"
+              }
+            },
+            {
+              "id": 780628,
+              "key": "c5931304-a8ea-430b-a4aa-6a72089907e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you've seen an example of how to use SageMaker, it's *your* turn to try it out!\n\nIf you look at the deployment [Gitub repository](https://github.com/udacity/sagemaker-deployment), inside of the `Mini-Projects` folder is a notebook called `IMDB Sentiment Analysis - XGBoost (Batch Transform).ipynb`. Inside of the notebook are some tasks for you to complete.\n\nAs you progress through the notebook you will construct an XGBoost model that tries to determine the sentiment, positive or negative, of a movie review using the [IMDB Dataset](http://ai.stanford.edu/~amaas/data/sentiment/). Moving forward, most of the mini-projects that you will complete throughout this module will use the IMDB dataset.\n\n**Note:** For the most part, creating this XGBoost model is pretty similar to the Boston Housing example that we just looked at so you can look there if you get stuck. In addition, a solution has been provided and in the next video we will go over my solution to this notebook.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780116,
+          "key": "3df3718c-fc7f-4fe6-8514-645e0e951015",
+          "title": "Mini-Project: Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3df3718c-fc7f-4fe6-8514-645e0e951015",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780156,
+              "key": "27d88abb-3f05-4b62-869e-bfb8a5505a46",
+              "title": "Deployment L2 C8 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "utUxiW-tZrY",
+                "china_cdn_id": "utUxiW-tZrY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780124,
+          "key": "5292f566-4a11-48b8-923a-5bf9d294dcd8",
+          "title": "Boston Housing In-Depth - Data Preparation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5292f566-4a11-48b8-923a-5bf9d294dcd8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780631,
+              "key": "16a0cc02-ba3d-4853-afd0-a13812d948b9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Boston Housing In-Depth",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780160,
+              "key": "5deae779-b6c3-4d8a-8c2b-15732f10a2d2",
+              "title": "Deployment L2 C9b V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TA-Ms7djeL0",
+                "china_cdn_id": "TA-Ms7djeL0.mp4"
+              }
+            },
+            {
+              "id": 780633,
+              "key": "adf1e3b4-256f-49b9-bc4a-ca758462e53d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that we've had a chance to look at how SageMaker is used, let's take a deeper look at what is going on behind the scenes.\n\nIn the previous notebooks we looked at, we use the Python SDK to interact with SageMaker, calling this the high-level approach. Now we will look at the low level approach where we describe different tasks we want SageMaker to perform. The documentation for the low level approach can be found in the [Amazon SageMaker Developer Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html)\n\nThe notebook that we will be looking at in this video and in the remainder of this lesson is contained in the `Tutorial` folder and is the `Boston Housing - XGBoost (Batch Transform) - Low Level.ipynb` notebook.\n\nYou will notice as we go through the details that describing the different tasks we want SageMaker to do can be quite involved. However there is a reason to understand it!\n\nThe high level approach makes developing new models very straightforward, requiring very little code. The reason this can be done is that certain decisions have been made for you. The low level approach allows you to be far more particular in how you want the various tasks executed, which is good for when you want to do something a little more complicated.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780126,
+          "key": "c03f7957-809d-4927-bcaf-80070c76cc9c",
+          "title": "Boston Housing In-Depth - Creating a Training Job",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c03f7957-809d-4927-bcaf-80070c76cc9c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780168,
+              "key": "5fa2b35b-1edb-40a6-a72f-27385f7e11ff",
+              "title": "Deployment L2 C10b V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1CIbWNUSZXo",
+                "china_cdn_id": "1CIbWNUSZXo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780125,
+          "key": "d16cd75b-e38b-4172-92a2-0308bf8f6fdb",
+          "title": "Boston Housing In-Depth - Building a Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d16cd75b-e38b-4172-92a2-0308bf8f6fdb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780173,
+              "key": "1a72c4b7-02c5-42e4-928b-820f3310b6cc",
+              "title": "Deployment L2 C11b V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JJyVsmcV2M4",
+                "china_cdn_id": "JJyVsmcV2M4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780134,
+          "key": "b2f8ab3c-69f2-4735-bcf3-7dc9f0ee2dee",
+          "title": "Boston Housing In-Depth - Creating a Batch Transform Job",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b2f8ab3c-69f2-4735-bcf3-7dc9f0ee2dee",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780177,
+              "key": "bbd60206-34de-4d3b-b4d9-9dad2dc66629",
+              "title": "Deployment L2 C12 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JwPJMYRl3nw",
+                "china_cdn_id": "JwPJMYRl3nw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780654,
+          "key": "b26e59e2-0f3f-4fd0-9bf8-2e1344663c48",
+          "title": "Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b26e59e2-0f3f-4fd0-9bf8-2e1344663c48",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780664,
+              "key": "48cb5e1c-8636-48bd-9ffe-92448f83de87",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What have we learned so far?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780657,
+              "key": "4033adab-b228-4c51-b537-10bb2da5ebf2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson we went over the basics of how models can be constructed and trained using Amazon SageMaker. In addition, we saw some of how SageMaker works and how it interacts with other services.\n\nIn particular, we learned how Amazon S3 is used as a central storage service when using SageMaker. In order to train a model, data must first be available on S3, and once the model has been trained, the model artifacts are also stored on S3.\n\nWe also saw how to use SageMaker to train models and fit them to data, saving the results (called model artifacts).\n\nLastly, we looked at how we could use SageMaker's Batch Transform functionality to test our models.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780661,
+              "key": "2256aca6-028f-4844-a88a-5e6420098701",
+              "title": "SageMaker Models",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2256aca6-028f-4844-a88a-5e6420098701",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What are the main components of a SageMaker model?"
+              },
+              "answer": {
+                "text": "In SageMaker, a model is a collection of information that describes how to perform inference. For the most part, this comprises two very important pieces.\n\nThe first is the container that holds the model inference functionality. For different types of models this code may be different but for simpler models and models provided by Amazon this is typically the same container that was used to train the model.\n\nThe second is the model artifacts. These are the pieces of data that were created during the training process. For example, if we were fitting a linear model then the coefficients that were fit would be saved as model artifacts.",
+                "video": null
+              }
+            },
+            {
+              "id": 780663,
+              "key": "681f6abb-98b5-474d-98a7-0ca80dfed2a0",
+              "title": "Fitting Models",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "681f6abb-98b5-474d-98a7-0ca80dfed2a0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What happens when a model is fit using SageMaker?"
+              },
+              "answer": {
+                "text": "When a model is fit using SageMaker, the process is as follows.\n\nFirst, a compute instance (basically a server somewhere) is started up with the properties that we specified.\n\nNext, when the compute instance is ready, the code, in the form of a container, that is used to fit the model is loaded and executed. When this code is executed, it is provided access to the training (and possibly validation) data stored on S3.\n\nOnce the compute instance has finished fitting the model, the resulting model artifacts are stored on S3 and the compute instance is shut down.",
+                "video": null
+              }
+            },
+            {
+              "id": 780665,
+              "key": "92c9ca54-ef85-4662-b931-da1619a28b5d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What's next?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780666,
+              "key": "c7550db0-a725-42ff-b1c2-1324e2538498",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the next few lessons we are going to look at some of the more advanced functionality of SageMaker.\n\nTo begin with, we will look at deploying a model using SageMaker. This means making a model available for other entities to use. Along the way we will create a simple web app that interacts with a deployed model.\n\nIn addition, we will look at hyperparameter tuning. Which is a way to train a bunch of different models, all with different hyperparameters, and then select the one that performs the best.\n\nLastly, we will take a look at updating a deployed model. Sometimes a model may not work as well as it once did due to changes in the underlying data. In [this resource](https://edouardfouche.com/Data-Stream-Generation-with-Concept-Drift/), you can read more about how a model's predictions and accuracy may degrade as a result of something called *concept drift*, which is a change in the underlying data distribution over time. When this happens we might want to update a deployed model, however, our model may be in use so we don't want to shut it down. SageMaker allows us to solve this problem without there being any loss of service.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

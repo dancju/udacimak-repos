@@ -1,0 +1,513 @@
+{
+  "data": {
+    "lesson": {
+      "id": 770456,
+      "key": "e67c33e9-bbaa-4a8d-b739-7067f713c0ad",
+      "title": "Updating a Model",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson students will learn how to update their model to account for changes in the underlying data used to train their model.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/e67c33e9-bbaa-4a8d-b739-7067f713c0ad/770456/1544197024854/Updating+a+Model+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/e67c33e9-bbaa-4a8d-b739-7067f713c0ad/770456/1544197018253/Updating+a+Model+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 770461,
+          "key": "9b6a5242-b43c-4892-b145-e4cce47e04b2",
+          "title": "Updating a Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9b6a5242-b43c-4892-b145-e4cce47e04b2",
+            "completed_at": "2019-11-30T12:51:14.383Z",
+            "last_viewed_at": "2019-12-02T09:12:10.261Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782815,
+              "key": "b2d5d755-07d4-449e-a8ce-8b0608f2a93a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Updating a Model",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783160,
+              "key": "0b9d80dd-a5a9-446b-97bc-cb20fa7a0616",
+              "title": "L5 00 Intro V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7wI168JzBiU",
+                "china_cdn_id": "7wI168JzBiU.mp4"
+              }
+            },
+            {
+              "id": 782817,
+              "key": "756f57fb-ef0c-4dff-9a81-b3308225ce1c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson we are going to take a look at updating an existing endpoint so that it conforms to a different endpoint configuration. There are many reasons for wanting to do this, the two that we will look at are, performing an A/B test and updating a model which is no longer performing as well.\n\nTo start, we will look at performing an A/B test between two different models. Then, once we've decided on a model to use, updating the existing endpoint so that it only sends data to a single model.\n\nFor the second example, it may be the case that once we've built a model and begun using it, the assumptions on which our model is built begin to change.\n\nFor instance, in the sentiment analysis examples that we've looked at our models are based on a vocabulary consisting of the 5000 most frequently appearing words in the training set. But what happens if, over time, the usage of words changes? Then our model may not be as accurate.\n\nWhen this happens we may need to modify our model, often this means re-training it. When we do, we'd like to update the existing endpoint without having to shut it down. Fortunately, SageMaker allows us to do this in a straightforward way.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780397,
+          "key": "7957003f-6438-435f-9130-2a2b40c5a344",
+          "title": "Building a Sentiment Analysis Model (XGBoost)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7957003f-6438-435f-9130-2a2b40c5a344",
+            "completed_at": "2019-12-02T09:12:31.822Z",
+            "last_viewed_at": "2019-12-02T09:12:31.197Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782818,
+              "key": "42e5d712-f470-4dfe-bfd8-d271bbc02f8a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Building a Sentiment Analysis Model",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780419,
+              "key": "3c5c1f47-e342-4bff-bf01-fbda2b276301",
+              "title": "Deployment L5 C1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dwRkA0ig3uU",
+                "china_cdn_id": "dwRkA0ig3uU.mp4"
+              }
+            },
+            {
+              "id": 782820,
+              "key": "8ea13f72-caa2-4f7f-aba3-ed823783dbdb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To begin with we will create an XGBoost model similar to the ones that we have constructed in the past in order to predict the median housing cost in Boston.\n\nThe difference this time is that we are using a hybrid approach, including both the high level and low level functionality. In this case we use the high level approach to train a model (to produce model artifacts) and then we use the low level approach to construct the model itself and to construct the endpoint configuration. The reason for this is so that we can have more control over how our endpoint behaves.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780398,
+          "key": "ef185efd-e342-4c59-b83b-4a75bf14f04b",
+          "title": "Building a Sentiment Analysis Model (Linear Learner)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ef185efd-e342-4c59-b83b-4a75bf14f04b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782821,
+              "key": "4a5cece0-8c94-46c4-b5d4-e086c1b3c98d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Building a Sentiment Analysis Model",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780426,
+              "key": "d46cf5c3-334e-4cd6-9802-9a5bb6be16fb",
+              "title": "Deployment L5 C2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7TdiVF6qS1k",
+                "china_cdn_id": "7TdiVF6qS1k.mp4"
+              }
+            },
+            {
+              "id": 782824,
+              "key": "affb2753-c724-4c59-8096-40c227932a10",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Depending on the application you have in mind for a particular machine learning model, accuracy may not always be the metric you wish to optimize. There may be some other constraints on getting the model to work in production. For example, your model may not be very easy to interpret or maybe performing inference for a particular model may be too costly.\n\nIn any case you may want to try alternative models. In the example we are working on here we construct a linear learner model as an alternative to the previously created XGBoost model.\n\n**Note:** It is important to notice that the result returned by the linear learner model is json, compared to the csv data returned by the XGBoost model. You can't always assume that different models will return data in the same way although typically the return type is specified in the documentation.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780399,
+          "key": "fca2ec31-7c90-4510-86b6-2e2a029df3d8",
+          "title": "Combining the Models",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fca2ec31-7c90-4510-86b6-2e2a029df3d8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782825,
+              "key": "3a7bcbf6-b9d0-4e32-9645-92231d1501b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Combining the Models",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780434,
+              "key": "bb7dd535-a6c0-4418-9892-d5683b2dae6c",
+              "title": "Deployment L5 C3 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OYYJerDHu0o",
+                "china_cdn_id": "OYYJerDHu0o.mp4"
+              }
+            },
+            {
+              "id": 782826,
+              "key": "15a43d12-b589-4b6b-9f65-7bc025fb297a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Using the low level approach to creating endpoint configurations allows us to create endpoints that are more sophisticated. For example, endpoints which receive data and route that data to one of many different models. In the example here we are only using two different models but there may be situations in which you would want more.\n\nIn addition, SageMaker provides functionality to update an existing endpoint so that it conforms to a different endpoint configuration. Further, SageMaker does this in a way that does **not** require the existing endpoint to be shut down.\n\nThis is very beneficial as you may be working in an environment where there are other services that depend on your deployed endpoint.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780401,
+          "key": "7048e123-8dce-4387-930d-608707ae9ed5",
+          "title": "Mini-Project: Updating a Sentiment Analysis Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7048e123-8dce-4387-930d-608707ae9ed5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782827,
+              "key": "e7be4f97-ca6d-4895-a5fa-28f5c07ddc30",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Mini-Project: Updating a Sentiment Analysis Model",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780436,
+              "key": "2f03e6f0-1c17-4aa3-896a-985617775039",
+              "title": "Deployment L5 C4 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "v7dYwxuKXzI",
+                "china_cdn_id": "v7dYwxuKXzI.mp4"
+              }
+            },
+            {
+              "id": 782828,
+              "key": "14d5bbce-ea64-479b-a41f-ed384933c023",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this mini-project we will take a look at situation in which we have a trained model which is working well, but then something changes with the underlying distribution on which our model is based. First we need to take a look at what might be the problem. Then we want to create a new, updated model and replace our old model without taking down the corresponding endpoint.\n\nThis mini-project notebook is called `IMDB Sentiment Analysis - XGBoost (Updating a Model).ipynb` and can be found inside of the `Mini-Projects` folder.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780403,
+          "key": "934b933b-e344-4aad-865a-e6ea01f33929",
+          "title": "Loading and Testing the New Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "934b933b-e344-4aad-865a-e6ea01f33929",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780438,
+              "key": "a7fef307-f746-4081-99da-b03770e446c3",
+              "title": "Deployment L5 C5 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "75RxW3R6674",
+                "china_cdn_id": "75RxW3R6674.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780405,
+          "key": "b8a2d8bf-cd2e-4b8d-84af-5bd780c09850",
+          "title": "Exploring the New Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b8a2d8bf-cd2e-4b8d-84af-5bd780c09850",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780442,
+              "key": "4c005db6-a3ca-4645-99ad-fbce05785a13",
+              "title": "Deployment L5 C6 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sEBK1dmiUfE",
+                "china_cdn_id": "sEBK1dmiUfE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780408,
+          "key": "6514358d-fb0c-4acb-aee9-fc7c5aa9e750",
+          "title": "Building a New Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6514358d-fb0c-4acb-aee9-fc7c5aa9e750",
+            "completed_at": "2019-12-02T09:21:34.916Z",
+            "last_viewed_at": "2019-12-02T09:21:33.437Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780445,
+              "key": "05c24f69-8da6-40ac-ad75-3a3d9af4f1ba",
+              "title": "Deployment L5 C7 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RUVxrKcWAsU",
+                "china_cdn_id": "RUVxrKcWAsU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780411,
+          "key": "e0495b97-e948-4f0b-a404-1d527891c561",
+          "title": "SageMaker Retrospective",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e0495b97-e948-4f0b-a404-1d527891c561",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782829,
+              "key": "b18cba75-d07e-442a-84cc-692bafa3a35b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# SageMaker Retrospective",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780573,
+              "key": "39113740-d502-4018-b86c-3bd6b7de0714",
+              "title": "Deployment L5 C8 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Vdacqn_w-e4",
+                "china_cdn_id": "Vdacqn_w-e4.mp4"
+              }
+            },
+            {
+              "id": 782830,
+              "key": "aaa70b5d-0238-4bb9-945c-8911c5c404dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this module we looked at various features offered by Amazon's SageMaker service. These features include the following.\n\n * **Notebook Instances** provide a convenient place to process and explore data in addition to making it very easy to interact with the rest of SageMaker's features.\n\n * **Training Jobs** allow us to create *model artifacts* by fitting various machine learning models to data.\n\n * **Hyperparameter Tuning** allow us to create multiple training jobs each with different hyperparameters in order to find the hyperparameters that work best for a given problem.\n\n * **Models** are essentially a combination of *model artifacts* formed during a training job and an associated docker container (code) that is used to perform inference.\n\n * **Endpoint Configurations** act as blueprints for endpoints. They describe what sort of resources should be used when an endpoint is constructed along with which models should be used and, if multiple models are to be used, how the incoming data should be split up among the various models.\n\n * **Endpoints** are the actual HTTP URLs that are created by SageMaker and which have properties specified by their associated endpoint configurations. **Have you shut down your endpoints?**\n\n * **Batch Transform** is the method by which you can perform inference on a whole bunch of data at once. In contrast, setting up an endpoint allows you to perform inference on small amounts of data by sending it do the endpoint bit by bit.\n\nIn addition to the features provided by SageMaker we used three other Amazon services.\n\nIn particular, we used **S3** as a central repository in which to store our data. This included test / training / validation data as well as model artifacts that we created during training.\n\nWe also looked at how we could combine a deployed SageMaker endpoint with **Lambda** and **API Gateway** to create our own simple web app.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780412,
+          "key": "2fddf5c4-615d-4c59-a296-c21fac459380",
+          "title": "Cleaning Up Your AWS Account",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2fddf5c4-615d-4c59-a296-c21fac459380",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782831,
+              "key": "e33d18fa-70a7-4e36-b3ee-6856751cf426",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Cleaning Up Your AWS Account",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780574,
+              "key": "1086ab9c-d5ae-40e0-a8ea-a63ca659abfc",
+              "title": "Deployment L5 C9 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8z24cb3EfMc",
+                "china_cdn_id": "8z24cb3EfMc.mp4"
+              }
+            },
+            {
+              "id": 782832,
+              "key": "24447404-442b-4a1c-8222-e03949d9be6e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Once you have finished making use of Amazon's services you should make sure to clean up your account. One of the main reasons for this is so that you don't get an unexpected bill!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782834,
+              "key": "fc298bf2-fe22-4a7b-b6c3-52b6e1a857d9",
+              "title": "Have you cleaned up?",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fc298bf2-fe22-4a7b-b6c3-52b6e1a857d9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Shut down any notebook instances that are running.",
+                "Shut down any endpoints that are running.",
+                "Clean up your S3 buckets, provided you are finished with them. **Note:** Deleting an S3 bucket can not be undone so only do this if you are completely finished.",
+                "Delete any unused Lambda functions.",
+                "Remove any unused APIs created using API Gateway"
+              ],
+              "positive_feedback": "It is generally a good idea to double check your AWS account from time to time as you are working with various services. Keep your AWS account tidy!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 780413,
+          "key": "dd5a2430-fa22-4e71-abd0-994d03a6909f",
+          "title": "SageMaker Tips and Tricks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd5a2430-fa22-4e71-abd0-994d03a6909f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782835,
+              "key": "8c7137be-e1f1-46e3-8084-c6786d4b02b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Tips and Tricks",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780575,
+              "key": "cfd42967-770c-4f69-8bd3-74db81451554",
+              "title": "Deployment L5 C10 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ilnX9rUlV_w",
+                "china_cdn_id": "ilnX9rUlV_w.mp4"
+              }
+            },
+            {
+              "id": 782836,
+              "key": "ed8f6391-c49e-46f6-986a-9342578e5ab7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# SageMaker Documentation\n\n * **Developer Documentation** can be found here: https://docs.aws.amazon.com/sagemaker/latest/dg/\n\n * **Python SDK Documentation** (also known as the high level approach) can be found here: https://sagemaker.readthedocs.io/en/latest/\n\n * **Python SDK Code** can be found on github here: https://github.com/aws/sagemaker-python-sdk",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

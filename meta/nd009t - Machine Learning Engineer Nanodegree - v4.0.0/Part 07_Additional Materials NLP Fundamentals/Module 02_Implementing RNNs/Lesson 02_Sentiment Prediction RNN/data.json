@@ -1,0 +1,682 @@
+{
+  "data": {
+    "lesson": {
+      "id": 730881,
+      "key": "0a8ef0e2-8a0e-4087-8fc7-ac397da134e2",
+      "title": "Sentiment Prediction RNN",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Implement a sentiment prediction RNN for predicting whether a movie review is positive or negative!",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/0a8ef0e2-8a0e-4087-8fc7-ac397da134e2/730881/1571296342944/Sentiment+Prediction+RNN+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/0a8ef0e2-8a0e-4087-8fc7-ac397da134e2/730881/1571296339443/Sentiment+Prediction+RNN+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 734500,
+          "key": "9b3f4978-13b1-44a8-abd1-e434f56c4bd4",
+          "title": "Sentiment RNN, Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9b3f4978-13b1-44a8-abd1-e434f56c4bd4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 752093,
+              "key": "27b86f09-53f5-43c9-91eb-09f4da3c3816",
+              "title": "1 SentimentRNN Intro V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bQWUuaMc9ZI",
+                "china_cdn_id": "bQWUuaMc9ZI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 751922,
+          "key": "53f3bc6f-6e4a-43aa-9f10-6545829b0f2d",
+          "title": "Pre-Notebook: Sentiment RNN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "53f3bc6f-6e4a-43aa-9f10-6545829b0f2d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 751924,
+              "key": "bcd38352-5367-47d1-83a9-f302e27e1270",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Notebook: Sentiment RNN\n\nThe next few videos will be all about implementing a complete RNN that can classify the sentiment of movie reviews (positive or negative).\n\n**It's suggested that you open the notebook in a new, working tab and continue working on it as you go through the instructional videos in this tab.** This way you can toggle between learning new skills and coding/applying new skills.\n\nTo open this notebook, you have two options:\n>- Go to the next page in the classroom (recommended).\n- Clone the repo from [Github](https://github.com/udacity/deep-learning-v2-pytorch) and open the notebook **Sentiment_RNN_Exercise.ipynb** in the **sentiment-rnn** folder.  You can either download the repository with `git clone https://github.com/udacity/deep-learning-v2-pytorch.git`, or download it as an archive file from [this link](https://github.com/udacity/deep-learning-v2-pytorch/archive/master.zip).\n\n# Instructions\n\n* Load in text data\n* Pre-process that data, encoding characters as integers\n* Pad the data such that each review is a standard sequence length\n* Define an RNN with embedding and hidden LSTM layers that predicts the sentiment of a given review\n* Train the RNN \n* See how it performs on test data\n\nThis is a self-assessed lab. If you need any help or want to check your answers, feel free to check out the solutions notebook in the same folder, or by clicking [here](https://github.com/udacity/deep-learning-v2-pytorch/blob/master/sentiment-rnn/Sentiment_RNN_Solution.ipynb).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 751925,
+              "key": "5a7fc0a0-01e4-4c2c-a500-927b642cfc62",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### GPU Workspaces\n\nThe next workspace is **GPU-enabled**, which means you can select to train on a GPU instance. The recommendation is this:\n* Load in data, test functions and models (checking parameters and doing a short training loop) while in CPU (non-enabled) mode\n* When you're ready to extensively train and test your model, **enable** GPU to quickly train the model!\n\nAll models and data they see as input will have to be moved to the GPU device, so take note of the relevant movement code in the model creation and training process.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 751923,
+          "key": "8800224b-e93f-48ae-bdfb-fa70f888f1f7",
+          "title": "Notebook: Sentiment RNN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8800224b-e93f-48ae-bdfb-fa70f888f1f7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 751926,
+              "key": "efbb5008-d830-4734-a748-2cbd49909d30",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewuah6hrp8uld",
+              "pool_id": "jupytergpu",
+              "view_id": "jupyter-2632dc8d709",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Sentiment_RNN_Exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 751927,
+          "key": "330d05e0-1d86-41fa-b39d-3ea41b641498",
+          "title": "Data Pre-Processing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "330d05e0-1d86-41fa-b39d-3ea41b641498",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791865,
+              "key": "85fcd947-c36f-4e1d-bcda-d196927898d6",
+              "title": "3 Data PreProcessing V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Xw1MWmql7no",
+                "china_cdn_id": "Xw1MWmql7no.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 751928,
+          "key": "65d83c52-d99b-4fab-a03f-dcf506cbadbe",
+          "title": "Encoding Words, Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "65d83c52-d99b-4fab-a03f-dcf506cbadbe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791866,
+              "key": "e96bbf36-025a-4cde-a6b6-70dbe4895499",
+              "title": "4 EncodingWords Sol V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4RYyn3zv1Hg",
+                "china_cdn_id": "4RYyn3zv1Hg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 751929,
+          "key": "0058c721-965b-438a-a70d-e61c7980762b",
+          "title": "Getting Rid of Zero-Length",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0058c721-965b-438a-a70d-e61c7980762b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791867,
+              "key": "3bcc58ad-527c-4f21-a325-532505c85462",
+              "title": "5 GettingRid ZeroLength V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Hs6ithuvDJg",
+                "china_cdn_id": "Hs6ithuvDJg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 751930,
+          "key": "8eca32c9-13a7-4386-8eb7-3d78a756a139",
+          "title": "Cleaning & Padding Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8eca32c9-13a7-4386-8eb7-3d78a756a139",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791868,
+              "key": "ea129819-2ffc-4d54-bcf7-7ae75d604319",
+              "title": "6 Cleaning And Padding V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UgPo1_cq-0g",
+                "china_cdn_id": "UgPo1_cq-0g.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 751931,
+          "key": "c636fb0e-b6ef-4e36-bb4f-5beeea9000d6",
+          "title": "Padded Features, Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c636fb0e-b6ef-4e36-bb4f-5beeea9000d6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791869,
+              "key": "b4ed7509-0656-492d-be9f-e72fb0f3ac4d",
+              "title": "7 PaddedFeatures Sol V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sYOd1IDmep8",
+                "china_cdn_id": "sYOd1IDmep8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 751932,
+          "key": "85825dba-65e9-4b52-94de-29b3c399a029",
+          "title": "TensorDataset & Batching Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "85825dba-65e9-4b52-94de-29b3c399a029",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791870,
+              "key": "b36e452a-7f6c-4050-a6fd-198065cd4da4",
+              "title": "8 TensorDataset Batching V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Oxuf2QIPjj4",
+                "china_cdn_id": "Oxuf2QIPjj4.mp4"
+              }
+            },
+            {
+              "id": 780241,
+              "key": "c1abf202-f811-4691-8747-f19c7043556f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Omission: shuffling data\n\nMake sure to shuffle your data, so that your model doesn't learn anything about the ordering of the data, and instead can focus on the _content_. We can do this with a DataLoader by setting `shuffle=True`. You'll find this updated code in the exercise and solution notebooks.\n \n```\n# make sure to SHUFFLE your data\ntrain_loader = DataLoader(train_data, shuffle=True, batch_size=batch_size)\nvalid_loader = DataLoader(valid_data, shuffle=True, batch_size=batch_size)\ntest_loader = DataLoader(test_data, shuffle=True, batch_size=batch_size)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 752100,
+              "key": "cdc178fb-10fd-4b57-8a54-2266e0a22ac7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## TensorDataset\n\nTake a look at the source code for [the TensorDataset class](https://github.com/pytorch/tnt/blob/master/torchnet/dataset/tensordataset.py), you can see that it's \"purpose\" is to provide an `easy way to create a dataset out of standard data structures`.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 751933,
+          "key": "7432647b-8cb6-462c-ad89-d8ee50f3cc82",
+          "title": "Defining the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7432647b-8cb6-462c-ad89-d8ee50f3cc82",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791871,
+              "key": "91269691-ca31-452c-910e-93c3d17fde4f",
+              "title": "9 DefiningModel V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SpvIZl1YQRI",
+                "china_cdn_id": "SpvIZl1YQRI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780176,
+          "key": "8a041ba2-0466-42e6-bbf5-7696ae94c969",
+          "title": "Complete Sentiment RNN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8a041ba2-0466-42e6-bbf5-7696ae94c969",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780235,
+              "key": "65e0da90-ed4d-4b1e-b0d5-ca613fb1a127",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Consult the Solution Code\n\nTo take a closer look at this solution, feel free to check out the solution workspace or click [here](https://github.com/udacity/deep-learning-v2-pytorch/blob/master/sentiment-rnn/Sentiment_RNN_Solution.ipynb) to see it as a webpage.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780185,
+              "key": "a14eb54f-6385-4ae8-9076-52d34f4a4d0b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Complete RNN Class\n\nI hope you tried out defining this model on your own and got it to work! Below, is how I completed this model.\n> I know I want an embedding layer, a recurrent layer, and a final, linear layer with a sigmoid applied; I defined all of those in the `__init__` function, according to passed in parameters.\n\n```python\ndef __init__(self, vocab_size, output_size, embedding_dim, hidden_dim, n_layers, drop_prob=0.5):\n        \"\"\"\n        Initialize the model by setting up the layers.\n        \"\"\"\n        super(SentimentRNN, self).__init__()\n\n        self.output_size = output_size\n        self.n_layers = n_layers\n        self.hidden_dim = hidden_dim\n        \n        # embedding and LSTM layers\n        self.embedding = nn.Embedding(vocab_size, embedding_dim)\n        self.lstm = nn.LSTM(embedding_dim, hidden_dim, n_layers, \n                            dropout=drop_prob, batch_first=True)\n        \n        # dropout layer\n        self.dropout = nn.Dropout(0.3)\n        \n        # linear and sigmoid layers\n        self.fc = nn.Linear(hidden_dim, output_size)\n        self.sig = nn.Sigmoid()\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780194,
+              "key": "09c2eb77-bcea-48a6-8e82-98a88a162b8b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### `__init__` explanation\n\nFirst I have an **embedding layer**, which should take in the size of our vocabulary (our number of integer tokens) and produce an embedding of `embedding_dim` size. So, as this model trains, this is going to create and embedding lookup table that has as many rows as we have word integers, and as many columns as the embedding dimension.\n\nThen, I have an **LSTM layer**, which takes in inputs of `embedding_dim` size. So, it's accepting embeddings as inputs, and producing an output and hidden state of a hidden size. I am also specifying a number of layers, and a dropout value, and finally, I’m setting `batch_first` to True because we are using DataLoaders to batch our data like that!\n\nThen, the LSTM outputs are passed to a dropout layer and then a fully-connected, linear layer that will produce `output_size` number of outputs. And finally, I’ve defined a sigmoid layer to convert the output to a value between 0-1.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780196,
+              "key": "ba1e824b-01e8-478f-89b5-150842fd28a3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Feedforward behavior\n\nMoving on to the `forward` function, which takes in an input `x` and a `hidden` state, I am going to pass an input through these layers in sequence.\n\n```python\ndef forward(self, x, hidden):\n        \"\"\"\n        Perform a forward pass of our model on some input and hidden state.\n        \"\"\"\n        batch_size = x.size(0)\n\n        # embeddings and lstm_out\n        embeds = self.embedding(x)\n        lstm_out, hidden = self.lstm(embeds, hidden)\n    \n        # stack up lstm outputs\n        lstm_out = lstm_out.contiguous().view(-1, self.hidden_dim)\n        \n        # dropout and fully-connected layer\n        out = self.dropout(lstm_out)\n        out = self.fc(out)\n\n        # sigmoid function\n        sig_out = self.sig(out)\n        \n        # reshape to be batch_size first\n        sig_out = sig_out.view(batch_size, -1)\n        sig_out = sig_out[:, -1] # get last batch of labels\n        \n        # return last sigmoid output and hidden state\n        return sig_out, hidden\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780201,
+              "key": "bc0b1226-fec5-4cf7-865e-294f0ce7111c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### `forward` explanation\n\nSo, first, I'm getting the `batch_size` of my input x, which I’ll use for shaping my data. Then, I'm passing x through the embedding layer first, to get my embeddings as output\n\nThese embeddings are passed to my lstm layer, alongside a hidden state, and this returns an `lstm_output` and a new `hidden` state! Then I'm going to stack up the outputs of my LSTM to pass to my last linear layer.\n\nThen I keep going, passing the reshaped `lstm_output` to a dropout layer and my linear layer, which should return a specified number of outputs that I will pass to my sigmoid activation function.\n\nNow, I want to make sure that I’m returning *only* the **last** of these sigmoid outputs for a batch of input data, so, I’m going to shape these outputs into a shape that is `batch_size` first. Then I'm getting the last bacth by called `sig_out[:, -1], and that’s going to give me the batch of last labels that I want!\n\nFinally, I am returning that output and the hidden state produced by the LSTM layer.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780208,
+              "key": "8fdba721-965b-4508-8bf4-533adf38ddbc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### `init_hidden`\n\nThat completes my forward function and then I have one more: `init_hidden` and this is just the same as you’ve seen before. The hidden and cell states of an LSTM are a tuple of values and each of these is size (n_layers by batch_size, by hidden_dim). I’m initializing these hidden weights to all zeros, and moving to a gpu if available.\n\n```python\ndef init_hidden(self, batch_size):\n        ''' Initializes hidden state '''\n        # Create two new tensors with sizes n_layers x batch_size x hidden_dim,\n        # initialized to zero, for hidden state and cell state of LSTM\n        weight = next(self.parameters()).data\n        \n        if (train_on_gpu):\n            hidden = (weight.new(self.n_layers, batch_size, self.hidden_dim).zero_().cuda(),\n                  weight.new(self.n_layers, batch_size, self.hidden_dim).zero_().cuda())\n        else:\n            hidden = (weight.new(self.n_layers, batch_size, self.hidden_dim).zero_(),\n                      weight.new(self.n_layers, batch_size, self.hidden_dim).zero_())\n        \n        return hidden\n```\n\nAfter this, I’m ready to instantiate and train this model, you should see if you can decide on good hyperparameters of your own, and then check out the solution code, next!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 779604,
+          "key": "062bfbc6-34c8-4e5c-b072-6479eca5a385",
+          "title": "Training the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "062bfbc6-34c8-4e5c-b072-6479eca5a385",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 779607,
+              "key": "cd2baf7b-2953-4174-9056-4d931bd20f82",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Hyperparameters\n\nAfter defining my model, next I should instantiate it with some hyperparameters.\n\n```python\n# Instantiate the model w/ hyperparams\nvocab_size = len(vocab_to_int)+1 # +1 for the 0 padding + our word tokens\noutput_size = 1\nembedding_dim = 400\nhidden_dim = 256\nn_layers = 2\n\nnet = SentimentRNN(vocab_size, output_size, embedding_dim, hidden_dim, n_layers)\n\nprint(net)\n```\n\nThis should look familiar, but the main thing to note here is our `vocab_size`.\n\nThis is actually the length of our `vocab_to_int` dictionary (all our unique words) **plus one** to account for the `0`-token that we added,  when we padded our input features. So, if you do data pre-processing, you may end up with one or two extra, special tokens that you’ll need to account for, in this parameter!\n\nThen, I want my `output_size` to be 1; this will be a sigmoid value between 0 and 1, indicating whether a review is positive or negative.\n\nThen I have my embedding and hidden dimension. The embedding dimension is just a smaller representation of my vocabulary of 70k words and I think any value between like 200 and 500 or so would work, here. I’ve chosen 400. Similarly, for our hidden dimension, I think 256 hidden features should be enough to distinguish between positive and negative reviews.\n\nI’m also choosing to make a 2 layer LSTM. Finally, I’m instantiating my model and printing it out to make sure everything looks good.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 779610,
+              "key": "f52e7498-3d64-4c3f-bf6a-10912b9fc67c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be09c77_screen-shot-2018-11-05-at-11.33.57-am/screen-shot-2018-11-05-at-11.33.57-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f52e7498-3d64-4c3f-bf6a-10912b9fc67c",
+              "caption": "Model hyperparameters",
+              "alt": "",
+              "width": 2296,
+              "height": 680,
+              "instructor_notes": null
+            },
+            {
+              "id": 779609,
+              "key": "b13d3ec6-949e-4af6-8241-7dd6636aa177",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Training and Optimization\n\nThe training code, should look pretty familiar. One new detail is that, we'll be using a new kind of cross entropy loss that is designed to work with a single Sigmoid output. \n> [BCELoss](https://pytorch.org/docs/stable/nn.html#bceloss), or **Binary Cross Entropy Loss**, applies cross entropy loss to a single value between 0 and 1.\n\nWe'll define an Adam optimizer, as usual.\n\n```python\n# loss and optimization functions\nlr=0.001\n\ncriterion = nn.BCELoss()\noptimizer = torch.optim.Adam(net.parameters(), lr=lr)\n```\n\n#### Output, target format\n\nYou should also notice that, in the training loop, we are making sure that our outputs are squeezed so that they do not have an empty dimension `output.squeeze()` and the labels are float tensors, `labels.float()`. Then we perform backpropagation as usual.\n\n#### Train and eval mode\n\nBelow, you can also see that we switch between train and evaluation mode when the model is training versus when it is being evaluated on validation data!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 779621,
+              "key": "6764de5c-8ba7-44e8-b4a3-1467efbb1746",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Training Loop\n\nBelow, you’ll see a usual training loop.\n\nI’m actually only going to do four epochs of training because that's about when I noticed the validation loss stop decreasing. \n* You can see that I am initializing my hidden state before entering the batch loop then have my usual detachment from history for the hidden state and backpropagation steps.\n* I’m getting my input and label data from my train_dataloader. Then applying my model to the inputs and comparing the outputs and the true labels.\n* I also have some code that checks performance on my validation set, which, if you want, may be a great thing to use to decide when to stop training or which best model to save!\n\n\n```python\n# training params\n\nepochs = 4 # 3-4 is approx where I noticed the validation loss stop decreasing\n\ncounter = 0\nprint_every = 100\nclip=5 # gradient clipping\n\n# move model to GPU, if available\nif(train_on_gpu):\n    net.cuda()\n\nnet.train()\n# train for some number of epochs\nfor e in range(epochs):\n    # initialize hidden state\n    h = net.init_hidden(batch_size)\n\n    # batch loop\n    for inputs, labels in train_loader:\n        counter += 1\n\n        if(train_on_gpu):\n            inputs, labels = inputs.cuda(), labels.cuda()\n\n        # Creating new variables for the hidden state, otherwise\n        # we'd backprop through the entire training history\n        h = tuple([each.data for each in h])\n\n        # zero accumulated gradients\n        net.zero_grad()\n\n        # get the output from the model\n        output, h = net(inputs, h)\n\n        # calculate the loss and perform backprop\n        loss = criterion(output.squeeze(), labels.float())\n        loss.backward()\n        # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.\n        nn.utils.clip_grad_norm_(net.parameters(), clip)\n        optimizer.step()\n\n        # loss stats\n        if counter % print_every == 0:\n            # Get validation loss\n            val_h = net.init_hidden(batch_size)\n            val_losses = []\n            net.eval()\n            for inputs, labels in valid_loader:\n\n                # Creating new variables for the hidden state, otherwise\n                # we'd backprop through the entire training history\n                val_h = tuple([each.data for each in val_h])\n\n                if(train_on_gpu):\n                    inputs, labels = inputs.cuda(), labels.cuda()\n\n                output, val_h = net(inputs, val_h)\n                val_loss = criterion(output.squeeze(), labels.float())\n\n                val_losses.append(val_loss.item())\n\n            net.train()\n            print(\"Epoch: {}/{}...\".format(e+1, epochs),\n                  \"Step: {}...\".format(counter),\n                  \"Loss: {:.6f}...\".format(loss.item()),\n                  \"Val Loss: {:.6f}\".format(np.mean(val_losses)))\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 779623,
+              "key": "4d5f5d91-9dcd-4dd7-9b67-f685904a5d42",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Make sure to take a look at how training **and** validation loss decrease during training! Then, once you're satisfied with your trained model, you can test it out in a couple ways to see how it behaves on new data!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 779624,
+              "key": "c31f68cb-7cce-4a6d-8164-2a20e533f006",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Consult the Solution Code\n\nTo take a closer look at this solution, feel free to check out the solution workspace or click [here](https://github.com/udacity/deep-learning-v2-pytorch/blob/master/sentiment-rnn/Sentiment_RNN_Solution.ipynb) to see it as a webpage.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780256,
+          "key": "485111e1-a8fa-40d2-97a9-027069cd2ab5",
+          "title": "Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "485111e1-a8fa-40d2-97a9-027069cd2ab5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780258,
+              "key": "482779a0-c647-4e7b-9686-377bb202d67e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Testing the Trained Model\n\nI want to show you two great ways to test: using test data and using inference. The first is similar to what you’ve seen in our CNN lessons. I am iterating through the test data in the `test_loader`, recording the test loss and calculating the accuracy based on how many labels this model got correct!\n\nI’m doing this by looking at the **rounded value** of our output. Recall that this is a sigmoid output between 0-1 and so rounding this value will give us an integer that is the most likely label: 0 or 1. Then I’m comparing that predicted label to the true label; if it matches, I record that as a correctly-labeled test review.\n\n```python\n# Get test data loss and accuracy\n\ntest_losses = [] # track loss\nnum_correct = 0\n\n# init hidden state\nh = net.init_hidden(batch_size)\n\nnet.eval()\n# iterate over test data\nfor inputs, labels in test_loader:\n\n    # Creating new variables for the hidden state, otherwise\n    # we'd backprop through the entire training history\n    h = tuple([each.data for each in h])\n\n    if(train_on_gpu):\n        inputs, labels = inputs.cuda(), labels.cuda()\n    \n    # get predicted outputs\n    output, h = net(inputs, h)\n    \n    # calculate loss\n    test_loss = criterion(output.squeeze(), labels.float())\n    test_losses.append(test_loss.item())\n    \n    # convert output probabilities to predicted class (0 or 1)\n    pred = torch.round(output.squeeze())  # rounds to the nearest integer\n    \n    # compare predictions to true label\n    correct_tensor = pred.eq(labels.float().view_as(pred))\n    correct = np.squeeze(correct_tensor.numpy()) if not train_on_gpu else np.squeeze(correct_tensor.cpu().numpy())\n    num_correct += np.sum(correct)\n\n\n# -- stats! -- ##\n# avg test loss\nprint(\"Test loss: {:.3f}\".format(np.mean(test_losses)))\n\n# accuracy over all test data\ntest_acc = num_correct/len(test_loader.dataset)\nprint(\"Test accuracy: {:.3f}\".format(test_acc))\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780260,
+              "key": "36c5f030-f186-403c-9899-0142c278a202",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nBelow, I’m printing out the average test loss and the accuracy, which is just the number of correctly classified items divided by the number of pieces of test data,total.\n\nWe can see that the test loss  is `0.516` and the accuracy is about **81.1%** !",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780265,
+              "key": "dfd98bac-a38e-4888-b5e8-1f40b44edef3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be21607_screen-shot-2018-11-06-at-2.30.04-pm/screen-shot-2018-11-06-at-2.30.04-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dfd98bac-a38e-4888-b5e8-1f40b44edef3",
+              "caption": "Test results",
+              "alt": "",
+              "width": 440,
+              "height": 438,
+              "instructor_notes": null
+            },
+            {
+              "id": 780268,
+              "key": "f7ea0784-6038-47d8-8cd8-7837e17ffe27",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Next, you're ready for your last task! Which is to define a `predict` function to perform inference on any given text review!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780275,
+              "key": "5738c3ce-877b-455e-989a-d65bcfdbf869",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Exercise: Inference on a test review\n\nYou can change this `test_review` to any text that you want. Read it and think: is it pos or neg? Then see if your model predicts correctly!\n    \n> **Exercise:** Write a `predict` function that takes in a trained net, a plain text_review, and a sequence length, and prints out a custom statement for a positive or negative review!\n* You can use any functions that you've already defined or define any helper functions you want to complete `predict`, but it should just take in a trained net, a text review, and a sequence length.\n\n```python\ndef predict(net, test_review, sequence_length=200):\n    ''' Prints out whether a give review is predicted to be \n        positive or negative in sentiment, using a trained model.\n        \n        params:\n        net - A trained net \n        test_review - a review made of normal text and punctuation\n        sequence_length - the padded length of a review\n        '''\n    \n    \n    # print custom response based on whether test_review is pos/neg\n    \n        \n```\n\nTry to solve this task on  your own, then check out the solution, next!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 779666,
+          "key": "a8556c8d-3a22-4ed0-b232-ebc953269bd0",
+          "title": "Inference, Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a8556c8d-3a22-4ed0-b232-ebc953269bd0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780292,
+              "key": "a6bc51c5-52fd-4f01-b6f9-a665e8ec1aa1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Inference\n\nLet's put all these pieces together! One of the coolest ways to test a model like this is to give it user-generated data, without any true label, and see what happens. So, in this case, that data will just be a single string: a review that you can write and here’s just one `test_review`as an example:\n\n```python\n# negative test review\ntest_review_neg = 'The worst movie I have seen; acting was terrible and I want my money back. This movie had bad acting and the dialogue was slow.'\n```\n\nWe can see that this review is a negative one, but let's see if our model can identify it's sentiment correctly!\n\nOur task is to write a `predict` function that takes in a trained model, a `test_review` like this one that is just normal text and punctuation, a `sequence_length` for padding. \n\nThe process by which you make predictions based on user data, is called **inference**. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780293,
+              "key": "af00dc34-0a91-4aed-8fab-79fd982df23a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Pre-process the `test_review`\n\nThe first thing we'll have to do it to process the `test_review`, so that it is converted into a tensor that our model can see as input. In fact, this involves quite a lot of pre-processing, but nothing that you haven't seen before!\n\nI broke this down into a series of steps.\n\nI have a helper function `tokenize_review` that is responsible for doing some data processing on my test_review.\n\nIt takes in my test_review, and then does a couple of things:\n\n1. First, I convert my `test_review` to lowercase, and remove any punctuation, so I’m left with all text. \n2. Then I breaks it into individual words with split(), and I’m left with a list of words in the review.\n3. I encode those words using the `vocab_to_int` dictionary that we already defined, near the start of this lesson. \n\nNow, I am assuming a few things here, including: this review is one review, not a batch, and that this review only includes words _already_ in our dictionary, and in this case that will be true, but you can add code to handle unknown characters, I just didn’t do that in my model.\n\n```python\nfrom string import punctuation\n\ndef tokenize_review(test_review):\n    test_review = test_review.lower() # lowercase\n    # get rid of punctuation\n    test_text = ''.join([c for c in test_review if c not in punctuation])\n\n    # splitting by spaces\n    test_words = test_text.split()\n\n    # tokens\n    test_ints = []\n    test_ints.append([vocab_to_int[word] for word in test_words])\n\n    return test_ints\n```\n\nOkay, so this tokenize function returns a list of integers; my tokenized review!\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780311,
+              "key": "2564ab74-9a0f-4542-a37c-12334ac3c580",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Padding and converting into a Tensor\n\nFor my next couple of steps, I’m going to pad the ints, returned by the `tokenize_review` function and shape them into our `sequence_length` size; since our model was trained on sequence lengths of 200, I’m going to use the same length, here. I'll pad it using the `pad_features` function that we defined earlier.\n\nFinally, I’m going to convert the padded result into a Tensor. So, these are all the steps, and I’m going to wrap this *all* up in my predict function.\n\n```python\ndef predict(net, test_review, sequence_length=200):\n    \n    net.eval()\n    \n    # tokenize review\n    test_ints = tokenize_review(test_review)\n    \n    # pad tokenized sequence\n    seq_length=sequence_length\n    features = pad_features(test_ints, seq_length)\n    \n    # convert to tensor to pass into your model\n    feature_tensor = torch.from_numpy(features)\n    \n    batch_size = feature_tensor.size(0)\n    \n    # initialize hidden state\n    h = net.init_hidden(batch_size)\n    \n    if(train_on_gpu):\n        feature_tensor = feature_tensor.cuda()\n    \n    # get the output from the model\n    output, h = net(feature_tensor, h)\n    \n    # convert output probabilities to predicted class (0 or 1)\n    pred = torch.round(output.squeeze()) \n    # printing output value, before rounding\n    print('Prediction value, pre-rounding: {:.6f}'.format(output.item()))\n    \n    # print custom response\n    if(pred.item()==1):\n        print(\"Positive review detected!\")\n    else:\n        print(\"Negative review detected.\")\n\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780313,
+              "key": "c575d3a3-71ba-49f8-a48a-b78209253740",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "So, using the passed in arguments, I’m tokenizing my review using my helper function, then padding it using my pad function, and converting it into a Tensor that can be seen by my model.\n\nThen, I’m passing this tensor into my trained net which will return an output of length one. With this output, I can grab the most likely class, which will be the rounded value 0 or 1; this is my prediction!\n\nLastly, I want to print out a custom message for a positive or negative detected review, and I’m doing that at the bottom of the above function!\n\n**You can test this out on sample positive and negative text reviews to see how this trained model behaves!** Below, you can see how it identifies our negative test review correctly.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780315,
+              "key": "9838958b-e753-49ec-84cf-f4393cca029a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be21a57_screen-shot-2018-11-06-at-2.48.40-pm/screen-shot-2018-11-06-at-2.48.40-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9838958b-e753-49ec-84cf-f4393cca029a",
+              "caption": "Identifies negative review",
+              "alt": "",
+              "width": 600,
+              "height": 286,
+              "instructor_notes": null
+            },
+            {
+              "id": 780316,
+              "key": "60dcb371-00f6-414c-8ba0-8db7644622e8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Conclusion\n\nNow that you have a trained model and a predict function, you can pass in any kind of text and this model will predict whether the text has a positive or negative sentiment. You can use this to try to find what words it associates with positive or negative sentiment.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780320,
+              "key": "9d5bf655-8df5-4ed0-9ed3-261db0ff1863",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be21b06_dancing-beemo/dancing-beemo.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9d5bf655-8df5-4ed0-9ed3-261db0ff1863",
+              "caption": "Dancing Beemo from [Adventure Time](https://en.wikipedia.org/wiki/Adventure_Time) to celebrate!",
+              "alt": "",
+              "width": 300,
+              "height": 281,
+              "instructor_notes": null
+            },
+            {
+              "id": 780317,
+              "key": "a8e852af-9d86-439b-b6ea-ca12662f5724",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Later, you'll learn how to deploy a model like this to a production environment so that it can respond to any kind of user data put into a web app!\n\n**For now, great job implementing so *many* kinds of recurrent neural networks!!**\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

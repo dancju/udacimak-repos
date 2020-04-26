@@ -1,0 +1,578 @@
+{
+  "data": {
+    "lesson": {
+      "id": 817071,
+      "key": "cf391ace-c3c9-476b-b357-83ef349eb800",
+      "title": "Payment Fraud Detection",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Train a linear model to do credit card fraud detection. Improve the model by accounting for class imbalance in the training data and tuning for a specific performance metric. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/cf391ace-c3c9-476b-b357-83ef349eb800/817071/1556075147076/Payment+Fraud+Detection+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/cf391ace-c3c9-476b-b357-83ef349eb800/817071/1556075142850/Payment+Fraud+Detection+Subtitles.zip"
+          },
+          {
+            "name": "creditcard-fraud",
+            "uri": "https://video.udacity-data.com/topher/2019/January/5c534768_creditcardfraud/creditcardfraud.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 841243,
+          "key": "5f696977-ffc3-4027-ae18-13b35fe8bb18",
+          "title": "Fraud Detection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5f696977-ffc3-4027-ae18-13b35fe8bb18",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841533,
+              "key": "d6f444c9-c0a4-493c-97f7-46afe9171c06",
+              "title": "L2 01 Fraud Detection V1 RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zDnyR5Tci5M",
+                "china_cdn_id": "zDnyR5Tci5M.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841244,
+          "key": "c30267d5-ac17-47de-a6e1-38fd07709a0d",
+          "title": "Pre-Notebook: Payment Fraud Detection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c30267d5-ac17-47de-a6e1-38fd07709a0d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841712,
+              "key": "62e98f6d-c726-4827-ba83-1d0dc86971f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Notebook: Fraud Detection, Exercise\n\nNext, you'll approach the task of payment fraud detection! This is a real-world problem, with fraud accounting for billions of dollars worth of loss, worldwide. As you follow along with this lesson, you should work in the referenced SageMaker notebooks. We will present a solution to you, but please try to work on a solution of your own, when prompted. Much of the value in this experience will come from experimenting with the code, **in your own way**. \n\nTo open this notebook:\n>- Navigate to your SageMaker notebook instance, in the [SageMaker console](https://console.aws.amazon.com/sagemaker/), which has been linked to the main [Github exercise repository](https://github.com/udacity/ML_SageMaker_Studies)\n- Activate the notebook instance (if it is in a \"Stopped\" state), and open it via Jupyter\n- Click on the exercise notebook in the `Payment_Fraud_Detection` directory.\n\nYou may also directly view the exercise and solution notebooks via the repository at the following links:\n* [Exercise notebook](https://github.com/udacity/ML_SageMaker_Studies/blob/master/Payment_Fraud_Detection/Fraud_Detection_Exercise.ipynb)\n* [Solution notebook](https://github.com/udacity/ML_SageMaker_Studies/blob/master/Payment_Fraud_Detection/Fraud_Detection_Solution.ipynb)\n\n**The solution notebook is meant to be consulted if you are stuck or want to check your work.**\n\n## Notebook Outline\n\nWe'll go over the following steps to complete the notebook.\n\n* Load in and explore payment transaction data\n* Train a LinearLearner to classify the data\n* Improve a basic model by accounting for class imbalance in the dataset and different metrics for model \"success\"\n\n## Later: Delete Resources\n\nAt the end of this exercise, and intermittently, you will be reminded to delete your endpoints and resources so that you do not incur any extra processing or storage fees!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841245,
+          "key": "5a682f6b-faa6-4962-a3bb-abd8f397f34a",
+          "title": "Exercise: Payment Transaction Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5a682f6b-faa6-4962-a3bb-abd8f397f34a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841515,
+              "key": "62f0073f-0716-445b-bfbd-b5234a8c1412",
+              "title": "01 Transaction Data V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bF65I3J6aqQ",
+                "china_cdn_id": "bF65I3J6aqQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841246,
+          "key": "5532b5ce-5abd-4e82-a3f1-099652a82709",
+          "title": "Solution: Data Distribution & Splitting",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5532b5ce-5abd-4e82-a3f1-099652a82709",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841516,
+              "key": "94800d50-c8e3-4d83-958d-d928780324be",
+              "title": "02 Data Splitting Dist Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Cjn82LqTB00",
+                "china_cdn_id": "Cjn82LqTB00.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841247,
+          "key": "3b6056ff-9059-4b60-b390-9d85c4919118",
+          "title": "LinearLearner & Class Imbalance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3b6056ff-9059-4b60-b390-9d85c4919118",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841517,
+              "key": "ba6519a9-8005-408f-9c00-e298b55d37ba",
+              "title": "03 LinearLearner V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pjs5pP9OOMc",
+                "china_cdn_id": "pjs5pP9OOMc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841248,
+          "key": "45694e28-e117-4160-b0b7-2868969d65f2",
+          "title": "Exercise: Define a LinearLearner",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "45694e28-e117-4160-b0b7-2868969d65f2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841722,
+              "key": "c0eda65b-4777-4834-9810-bbedda057d7c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Instantiate a `LinearLearner`\n\nNow that you've uploaded your training data, it's time to define and train a model! In the main exercise notebook, you'll define and train the SageMaker, built-in algorithm, `LinearLearner`.\n\n### EXERCISE: Create a LinearLearner Estimator\nYou've had some practice instantiating built-in models in SageMaker. All estimators require some constructor arguments to be passed in. \n> See if you can complete this task, instantiating a LinearLearner estimator, using only the [LinearLearner documentation](https://sagemaker.readthedocs.io/en/stable/linear_learner.html) as a resource. \n\nYou'll find that this estimator takes in a lot of arguments, but not all are _required_. My suggestion is to start with a simple model, and utilize default values where applicable. Later, we will discuss some specific hyperparameters and their use cases.\n\n### Instance Types\nIt is suggested that you use instances that are available in the free tier of usage: 'ml.c4.xlarge' for training and 'ml.t2.medium' for deployment.\n\nHere is what the exercise code looks like in the main notebook:\n\n```python\n# import LinearLearner\nfrom sagemaker import LinearLearner\n\n# instantiate LinearLearner\n\n```\n\nTry to complete this code on your own, and I'll go over one possible solution, next!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841249,
+          "key": "307455a9-5b65-4d9c-99e9-82d5f8dd2bc5",
+          "title": "Solution: Default LinearLearner",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "307455a9-5b65-4d9c-99e9-82d5f8dd2bc5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841721,
+              "key": "7cb9ac07-0f53-4edc-b1ef-e9c139d5ee4a",
+              "title": "05 Default LinearLearner V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WaqDbA_5dNE",
+                "china_cdn_id": "WaqDbA_5dNE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841250,
+          "key": "19106b61-4305-48ea-9310-fe3751e64a94",
+          "title": "Exercise: Format Data & Train the LinearLearner",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "19106b61-4305-48ea-9310-fe3751e64a94",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841723,
+              "key": "b1fa284e-da5a-4b0c-9779-d9f8677593a1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Train your Estimator\n\nAfter defining a model, you can format your training data and call `.fit()` to train the `LinearLearner`.\n\nIn the notebook, these exercises look as follows:\n\n### EXERCISE: Convert data into a RecordSet format\nPrepare the data for a built-in model by converting the train features and labels into numpy array's of float values. Then you can use the `record_set` function to format the data as a RecordSet and prepare it for training!\n\n```python\n# create RecordSet of training data\nformatted_train_data = None\n```\n\n### EXERCISE: Train the Estimator\nAfter instantiating your estimator, train it with a call to .fit(), passing in the formatted training data.\n\n```python\n%%time \n# train the estimator on formatted training data\n\n```\n\nComplete this code, and you may check out a solution, next!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841251,
+          "key": "1d72bcf2-318d-4317-b796-1bc310f47dcf",
+          "title": "Solution: Training Job",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d72bcf2-318d-4317-b796-1bc310f47dcf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841518,
+              "key": "6807fc54-7d2b-4dd0-81e4-93d51c0202ab",
+              "title": "091 Training Job V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-whnaHFkPxU",
+                "china_cdn_id": "-whnaHFkPxU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841255,
+          "key": "d1357fc2-e323-4b51-864d-f4116f5b5129",
+          "title": "Precision & Recall, Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d1357fc2-e323-4b51-864d-f4116f5b5129",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841953,
+              "key": "4506ded9-3b5b-4793-a0fb-4cef972e226c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Precision & Recall\n\nPrecision and recall are just different metrics for measuring the \"success\" or performance of a trained model. \n\n* **precision** is defined as the number of true positives (truly fraudulent transaction data, in this case) over _all_ positives, and will be the higher when the amount of false positives is low.\n* **recall** is defined as the number of true positives over true positives _plus_ false negatives and will be higher when the number of false negatives is low.\n\nBoth take into account true positives and will be higher for high, positive accuracy, too.\n\nI find it helpful to look at the below image to wrap my head around these measurements:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841954,
+              "key": "8f2bd275-b147-4bcf-a8fa-e2e570ed9b65",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/April/5ca2d7d4_precision-recall/precision-recall.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8f2bd275-b147-4bcf-a8fa-e2e570ed9b65",
+              "caption": "",
+              "alt": "Circle of positives and border of negatives; vertical line separates true and false in each positive/negative category.",
+              "width": 400,
+              "height": 748,
+              "instructor_notes": null
+            },
+            {
+              "id": 841955,
+              "key": "5798b3cd-fd35-4e67-b4a0-52cd9ed61cb3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In many cases, it may be worthwhile to optimize for a higher recall or precision, which gives you a more granular look at false positives and negatives.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841252,
+          "key": "12b8cc41-b081-4417-8ff5-5bd95aac0c13",
+          "title": "Exercise: Deploy Estimator",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "12b8cc41-b081-4417-8ff5-5bd95aac0c13",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841724,
+              "key": "7341a159-06a6-445a-9d27-326f935e5056",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Deploy an Endpoint and Evaluate Predictions\n\nFinally, you are ready to deploy your trained `LinearLearner` and see how it performs according to various metrics. As you evaluate this model, I want you to think about: \n* Which metrics _best_ define success for this model?\n* Is it important that we catch all cases of fraud?\n* Is it important to prioritize a smooth user experience and never flag valid transactions?\n\nThe answers to these questions may vary based on use case!\n\nIn the main exercise notebook, you'll see the following instructions for deploying an endpoint and using it to make predictions:\n\n### EXERCISE: Deploy the trained model\nDeploy your model to create a predictor. We'll use this to make predictions on our test data and evaluate the model.\n\n```python\n%%time \n# deploy and create a predictor\nlinear_predictor = None\n```\n\n### Evaluating Your Model\nOnce your model is deployed, you can see how it performs when applied to the test data. Let's first test our model on just one test point, to see the resulting list.\n\n```python\n# test one prediction\ntest_x_np = test_features.astype('float32')\nresult = linear_predictor.predict(test_x_np[0])\n\nprint(result)\n```\n\nYou should proceed with investigating and evaluating the model test results. And next, I will discuss the results I got after deploying.\n\n### Shutting Down an Endpoint\n\n> As always, after deploying a model and making/saving predictions, you are free to delete your model endpoint and clean up that resource.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841253,
+          "key": "dd171d6e-9a95-4a48-b74e-127ba3a2a8b9",
+          "title": "Solution: Deployment & Evaluation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd171d6e-9a95-4a48-b74e-127ba3a2a8b9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841519,
+              "key": "70b36a31-2c57-4094-be51-bf4dfede0399",
+              "title": "092 Deployment Evaluation V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZknaWInjSa4",
+                "china_cdn_id": "ZknaWInjSa4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841256,
+          "key": "079c8c63-ccec-40b4-a13d-65a4612ebfe7",
+          "title": "Model Improvements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "079c8c63-ccec-40b4-a13d-65a4612ebfe7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841520,
+              "key": "059ba0a6-2169-4534-9594-dc9d17554f0b",
+              "title": "10 Model Improvements V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JjZMuUnxKw4",
+                "china_cdn_id": "JjZMuUnxKw4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841257,
+          "key": "2c320cfb-4443-4d0f-8245-5fff33b83083",
+          "title": "Improvement, Model Tuning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2c320cfb-4443-4d0f-8245-5fff33b83083",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841521,
+              "key": "fc575e67-92d6-4208-878b-726846f6a12f",
+              "title": "11 Model Tuning V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bb7zG0TdtRM",
+                "china_cdn_id": "bb7zG0TdtRM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841258,
+          "key": "0ebcd512-21e8-47ac-bfce-817307406b3a",
+          "title": "Exercise: Improvement, Class Imbalance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0ebcd512-21e8-47ac-bfce-817307406b3a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841725,
+              "key": "c33f3675-f6c8-4b90-8c07-4315eb4a4ded",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Model Improvement: Accounting for Class Imbalance\n\nWe have a model that is _tuned_ to get a higher recall, which aims to reduce the number of **false negatives**. Earlier, we discussed how class imbalance may actually bias our model towards predicting that all transactions are valid, resulting in higher **false negatives and true negatives**. It stands to reason that this model could be further improved if we account for this imbalance!\n\nTo account for class imbalance during training of a binary classifier, `LinearLearner` offers the hyperparameter, `positive_example_weight_mult`, which is the weight assigned to positive (fraudulent data) examples when training a binary classifier. The weight of negative examples (valid data) is fixed at 1.\n\nFrom the [hyperparameter documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/ll_hyperparameters.html) on positive_example_weight_mult, it reads:\n>\"If you want the algorithm to choose a weight so that errors in classifying negative vs. positive examples have equal impact on training loss, specify `balanced`.\"\n\nIn the main exercise notebook, your exercises from defining to deploying an improved model looks as follows:\n\n### EXERCISE: Create a LinearLearner with a `positive_example_weight_mult` parameter\nIn addition to tuning a model for higher recall, you should add a parameter that helps account for class imbalance.\n\n```python\n# instantiate a LinearLearner\n\n# include params for tuning for higher recall\n# *and* account for class imbalance in training data\nlinear_balanced = None\n```\n\n### EXERCISE: Train the balanced estimator\nFit the new, balanced estimator on the formatted training data.\n\n```python\n%%time \n# train the estimator on formatted training data\n\n```\n\n### EXERCISE: Deploy and evaluate the balanced estimator\nDeploy the balanced predictor and evaluate it. Do the results match with your expectations?\n\n```python\n%%time \n# deploy and create a predictor\nbalanced_predictor = None\n```\n\nAn important question here, when evaluating your model, is: **Do the results match with your expectations?** Much like in a scientific experiment it is good practice to start with a hypothesis that drives your idea for improving a model; if the trained model reacts in a different way than you expect (i.e. the model metrics are worse), it is worth revisiting your assumptions and approach.\n\nTry to complete all these tasks, and if you get stuck, you can reference the solution video, next!\n\n### Shutting Down the Endpoint\n\n> Remember to delete your deployed, model endpoint after you finish with evaluation.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841259,
+          "key": "15919a05-45e1-4b42-80b9-ce9117fa49b7",
+          "title": "Solution: Accounting for Class Imbalance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "15919a05-45e1-4b42-80b9-ce9117fa49b7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841522,
+              "key": "fb89cd6d-a1ed-47fb-a5a0-b5fb8c9e612a",
+              "title": "13 Class Balancing Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ncoPZdiVLJg",
+                "china_cdn_id": "ncoPZdiVLJg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841260,
+          "key": "dedbc8e2-7385-4f7f-be8c-4a11f1e3e54d",
+          "title": "Exercise: Define a Model w/ Specifications",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dedbc8e2-7385-4f7f-be8c-4a11f1e3e54d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841726,
+              "key": "55994d7f-5d23-44fc-be92-bea07aa78a10",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Model Design\nNow that you've seen how to tune and balance a `LinearLearner`, it is your turn to put together all that you've learned and build a new model, based on a real, business problem. This exercise is meant to be more open-ended, so that you get practice with the steps involved in designing a model and deploying it. In this exercise you'll:\n* Create a LinearLearner model, according to specifications\n* Train and deploy the model\n* Evaluate the results\n* Delete the endpoint (after evaluation)\n\nHere is what you'll see in the main exercise notebook:\n\n### EXERCISE: Train and deploy a LinearLearner with appropriate hyperparameters, according to the given scenario\n\n**Scenario:**\n> A bank has asked you to build a model that optimizes for a good user experience; users should only ever have up to about 15% of their valid transactions flagged as fraudulent.\n\nThis requires that you make a design decision: Given the above scenario, **what metric (and value)** should you aim for during training?\n\n*You may assume that performance on a training set will be within about 5-10% of the performance on a test set. For example, if you get 80% on a training set, you can assume that you'll get between about 70-90% accuracy on a test set.*\n\n**Your final model should account for class imbalance and be appropriately tuned.**\n\n```python\n%%time\n# instantiate and train a LinearLearner\n\n# include params for tuning for higher precision\n# *and* account for class imbalance in training data\n\n```\n\n```python\n%%time \n# deploy and evaluate a predictor\n\n```\n\n```python\n## IMPORTANT\n# delete the predictor endpoint after evaluation \n```\n\nIn this case, I will not be walking through a detailed solution (and there are multiple ways to approach this task and come up with a solution), but you can see one example solution in the solution notebook and on the next page. \n\n### Final Cleanup!\nAfter completing these tasks, double check that you have deleted **all** your endpoints, and associated files. I'd also suggest manually deleting your S3 bucket, models, and endpoint configurations directly from your AWS console. You can find thorough cleanup instructions, [in the documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-cleanup.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841262,
+          "key": "39be2d14-d96d-40e5-89ac-184821a02ed4",
+          "title": "One Solution: Tuned and Balanced LinearLearner",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "39be2d14-d96d-40e5-89ac-184821a02ed4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841727,
+              "key": "0fdf8601-2fdd-4600-8c06-1f5f7ceb41c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# One Possible Solution\n\nTo optimize for _few_ false positives (misclassified, valid transactions), I defined a model that accounts for class imbalance and optimizes for a **high precision**.\n\nLet's review the scenario: \n>A bank has asked you to build a model that optimizes for a good user experience; users should only ever have up to about 15% of their valid transactions flagged as fraudulent.\n\n*My thoughts*: If we're allowed about 15/100 incorrectly classified valid transactions (false positives), then I can calculate an approximate value for the precision that I want as: 85/(85+15) = 85%. I'll aim for about 5% higher during training to ensure that I get closer to 80-85% precision on the test data.\n\n```python\n%%time\n# One possible solution\n# instantiate and train a LinearLearner\n\n# include params for tuning for higher precision\n# *and* account for class imbalance in training data\nlinear_precision = LinearLearner(role=role,\n                                train_instance_count=1, \n                                train_instance_type='ml.c4.xlarge',\n                                predictor_type='binary_classifier',\n                                output_path=output_path,\n                                sagemaker_session=sagemaker_session,\n                                epochs=15,\n                                binary_classifier_model_selection_criteria='recall_at_target_precision',\n                                target_precision=0.9,\n                                positive_example_weight_mult='balanced')\n\n\n# train the estimator on formatted training data\nlinear_precision.fit(formatted_train_data) \n```\n\nThis model trains for a fixed precision of 90%, and, under that constraint, tries to get as high a recall value as possible. After training, I deployed the model to create a predictor:\n\n```python\n%%time \n# deploy and evaluate a predictor\nprecision_predictor = linear_precision.deploy(initial_instance_count=1, instance_type='ml.t2.medium')\n```\n>INFO:sagemaker:Creating model with name: linear-learner-2019-03-11-04-07-10-993\n>INFO:sagemaker:Creating endpoint with name linear-learner-2019-03-11-03-36-56-524\n\nThen evaluated the model by seeing how it performed on test data:\n\n```python\nprint('Metrics for tuned (precision), LinearLearner.\\n')\n\n# get metrics for balanced predictor\nmetrics = evaluate(precision_predictor, \n                   test_features.astype('float32'), \n                   test_labels, \n                   verbose=True)\n```\nThese were the results I got:\n\nMetrics for tuned (precision), LinearLearner.\n\n```python\nprediction (col)    0.0  1.0\nactual (row)                \n0.0               85276   26\n1.0                  31  110\n\nRecall:     0.780\nPrecision:  0.809\nAccuracy:   0.999\n```\n\nAs you can see, we still misclassified 26 of the valid results and so I may have to go back and up my aimed-for precision; the recall and accuracy are not too bad, considering the precision tradeoff. \n\nFinally, I made sure to **delete the endpoint** after I was doe with evaluation.\n\n```python\n## IMPORTANT\n# delete the predictor endpoint \ndelete_endpoint(precision_predictor)\n```\n>Deleted linear-learner-2019-03-11-03-36-56-524",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841264,
+          "key": "83dd6508-486f-435d-b123-c425de8df2ab",
+          "title": "Summary and Improvements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "83dd6508-486f-435d-b123-c425de8df2ab",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841534,
+              "key": "5d23dc76-152f-4de2-8b5e-d6151412d92b",
+              "title": "L2 03 Summary & Improvements V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VsjDz3agnhQ",
+                "china_cdn_id": "VsjDz3agnhQ.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

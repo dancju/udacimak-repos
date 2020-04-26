@@ -1,0 +1,569 @@
+{
+  "data": {
+    "lesson": {
+      "id": 959807,
+      "key": "39e445e1-bc6d-4c88-9d1d-e232584cdee9",
+      "title": "Time-Series Forecasting",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to format time series data into context (input) and prediction (output) data, and train the built-in algorithm, DeepAR; this uses an RNN to find recurring patterns in time series data.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/39e445e1-bc6d-4c88-9d1d-e232584cdee9/959807/1575594968728/Time-Series+Forecasting+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/39e445e1-bc6d-4c88-9d1d-e232584cdee9/959807/1575594965959/Time-Series+Forecasting+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 841284,
+          "key": "f9e3f9cd-2d69-4c48-a888-a9e70f1c68ad",
+          "title": "Time-Series Forecasting",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f9e3f9cd-2d69-4c48-a888-a9e70f1c68ad",
+            "completed_at": "2019-12-05T14:57:51.746Z",
+            "last_viewed_at": "2019-12-05T14:57:51.632Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841745,
+              "key": "b3873a97-3e58-4067-b7e4-af1038cbab0e",
+              "title": "L3 03 Time Series Forecasting",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "U8k2Fl2zgJ8",
+                "china_cdn_id": "U8k2Fl2zgJ8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841285,
+          "key": "dafb821b-1df1-4b31-a289-235386f27c76",
+          "title": "Forecasting Energy Consumption, Notebook",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dafb821b-1df1-4b31-a289-235386f27c76",
+            "completed_at": "2019-12-05T14:59:31.313Z",
+            "last_viewed_at": "2019-12-05T14:59:26.834Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841744,
+              "key": "97af0cdf-23f6-4535-8e94-df62f786403b",
+              "title": "01 Time Series Notebook V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OZJu6or8Fl0",
+                "china_cdn_id": "OZJu6or8Fl0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841286,
+          "key": "b1ecb1e4-9b42-4b1e-b2e9-7eee251e8f12",
+          "title": "Pre-Notebook: Time-Series Forecasting",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b1ecb1e4-9b42-4b1e-b2e9-7eee251e8f12",
+            "completed_at": "2019-12-05T15:06:49.896Z",
+            "last_viewed_at": "2019-12-05T15:06:44.664Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841912,
+              "key": "622ab96c-0725-485f-82fa-70d9e74fb8ca",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Notebook: Time-Series Forecasting, Exercise\n\nNext, you'll approach the task of time-series forecasting. You'll be taking a look at household energy consumption data, originally taken from [Kaggle](https://www.kaggle.com/uciml/electric-power-consumption-data-set). As you follow along with this lesson, you should work in the referenced SageMaker notebooks. We will present a solution to you, but please try to work on a solution of your own, when prompted. Much of the value in this experience will come from experimenting with the code, **in your own way**. \n\nTo open this notebook:\n>- Navigate to your SageMaker notebook instance, in the [SageMaker console](https://console.aws.amazon.com/sagemaker/), which has been linked to the main [Github exercise repository](https://github.com/udacity/ML_SageMaker_Studies)\n- Activate the notebook instance (if it is in a \"Stopped\" state), and open it via Jupyter\n- Click on the exercise notebook in the `Time_Series_Forecasting` directory.\n\nYou may also directly view the exercise and solution notebooks via the repository at the following links:\n* [Exercise notebook](https://github.com/udacity/ML_SageMaker_Studies/blob/master/Time_Series_Forecasting/Energy_Consumption_Exercise.ipynb)\n* [Solution notebook](https://github.com/udacity/ML_SageMaker_Studies/blob/master/Time_Series_Forecasting/Energy_Consumption_Solution.ipynb)\n\n**The solution notebook is meant to be consulted if you are stuck or want to check your work.**\n\n## Notebook Outline\n\nWe'll go over the following steps to complete the notebook.\n\n* Load in and explore household energy consumption data\n* Clean the data and transform it to prepare for training a model\n* Format the data into JSON Lines\n* Train a DeepAR model on defined context and prediction data points\n* Evaluate the model by comparing known and predicted consumption values\n\n## Later: Delete Resources\n\nAt the end of this exercise, and intermittently, you will be reminded to delete your endpoints and resources so that you do not incur any extra processing or storage fees!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841287,
+          "key": "b7f0df49-50f1-4c2c-8dfd-44b03339b4c3",
+          "title": "Processing Energy Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b7f0df49-50f1-4c2c-8dfd-44b03339b4c3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841743,
+              "key": "dfde49a2-3992-4726-b9cf-9997416f0ca7",
+              "title": "02 Processing Energy Data V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zxnoYK4sYgk",
+                "china_cdn_id": "zxnoYK4sYgk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841288,
+          "key": "fcdf547b-47c9-4066-b14e-6a5b037a85db",
+          "title": "Exercise: Creating Time Series",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fcdf547b-47c9-4066-b14e-6a5b037a85db",
+            "completed_at": "2019-12-06T05:48:49.695Z",
+            "last_viewed_at": "2019-12-06T05:48:49.539Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841742,
+              "key": "53fd150a-adde-4471-8511-0f5d1c2a9008",
+              "title": "03 Creating Time Series V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KMzVAmoa66k",
+                "china_cdn_id": "KMzVAmoa66k.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841289,
+          "key": "d75b8929-ec23-4393-a98d-24eb01059db0",
+          "title": "Solution: Split Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d75b8929-ec23-4393-a98d-24eb01059db0",
+            "completed_at": "2019-12-06T06:12:24.697Z",
+            "last_viewed_at": "2019-12-06T06:12:20.606Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841938,
+              "key": "375fc046-21a3-472b-8176-7aa37f720ba8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Splitting in Time\n\nWe'll evaluate our model on a test set of data. For machine learning tasks like classification, we typically create train/test data by randomly splitting examples into different sets. For forecasting it's important to do this train/test split in **time** rather than a random split of all data points.\n\n## Training Time Series\nIn general, we can create training data by taking each of our complete time series and leaving off the last `prediction_length` data points to create corresponding, training time series.\n\nIn code this looks like  this:\n\n```python\ndef create_training_series(complete_time_series, prediction_length):\n    '''Given a complete list of time series data, create training time series.\n       :param complete_time_series: A list of all complete time series.\n       :param prediction_length: The number of points we want to predict.\n       :return: A list of training time series.\n       '''\n    # get training series\n    time_series_training = []\n    \n    for ts in complete_time_series:\n        # truncate trailing `prediction_length` pts\n        time_series_training.append(ts[:-prediction_length])\n        \n    return time_series_training\n```\n\nDeepAR will train on the provided data looking at different intervals that are `context_length` number of points as input and the next `prediction_length` number of points as output. It selects the context from the given, truncated training data, which is why it is important to leave off the last `prediction_length` points.\n\n## Training and Test Series\n\nWe can visualize what these series look like, by plotting the train/test series on the same axis. We should see that the test series contains _all_ of our data in a year, and a training series contains all but the last `prediction_length` points. Below are train/test series for 2007.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841939,
+              "key": "a3cf0577-967c-4453-b6fa-78a02afa774c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/April/5ca2ceae_screen-shot-2019-04-01-at-7.52.45-pm/screen-shot-2019-04-01-at-7.52.45-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a3cf0577-967c-4453-b6fa-78a02afa774c",
+              "caption": "Test series and train series (truncated, in orange).",
+              "alt": "",
+              "width": 600,
+              "height": 984,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 841290,
+          "key": "0163f5b6-4ed7-4aef-9e22-ea5460a5b2e2",
+          "title": "Exercise: Convert to JSON",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0163f5b6-4ed7-4aef-9e22-ea5460a5b2e2",
+            "completed_at": "2019-12-06T06:15:55.576Z",
+            "last_viewed_at": "2019-12-06T06:15:54.660Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841737,
+              "key": "5bfb026e-c917-4488-90e8-bafdae85d396",
+              "title": "05 Convert To JSON V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YyxfrVQcM1E",
+                "china_cdn_id": "YyxfrVQcM1E.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841292,
+          "key": "460587ae-dedd-465c-8a4f-a77a9bbfcf35",
+          "title": "Solution: Formatting JSON Lines & DeepAR Estimator",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "460587ae-dedd-465c-8a4f-a77a9bbfcf35",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841738,
+              "key": "4d91738a-d0ed-40a9-94bc-3e07e612dcbb",
+              "title": "07 DeepAR Estimator V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1Wx-LK9TVWY",
+                "china_cdn_id": "1Wx-LK9TVWY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841293,
+          "key": "3ec0254c-4735-46a0-b626-5062639db885",
+          "title": "Exercise: DeepAR Estimator",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3ec0254c-4735-46a0-b626-5062639db885",
+            "completed_at": "2019-12-06T06:16:06.164Z",
+            "last_viewed_at": "2020-03-28T17:28:04.654Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841941,
+              "key": "ea2706d9-c6aa-4c82-8585-511004d9a7b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instantiating a DeepAR Estimator\n\nSome estimators have specific, SageMaker constructors, but not all. Instead, you can create a base Estimator and pass in the specific **image** (or container) that holds a specific model. The container for the DeepAR model can be gotten as follows:\n\n```python\nfrom sagemaker.amazon.amazon_estimator import get_image_uri\n\nimage_name = get_image_uri(boto3.Session().region_name, # get the region\n                           'forecasting-deepar') # specify image\n```\n\nNow that you have the correct image, you can instantiate an Estimator. You're given the following, in-notebook exercise.\n\n### EXERCISE: Instantiate an Estimator\nA generic Estimator will be defined by the usual constructor arguments and an `image_name`.\n\nYou can take a look at the [estimator source code](https://github.com/aws/sagemaker-python-sdk/blob/master/src/sagemaker/estimator.py#L601) to view specifics.\n\nIf you complete this task, you can move on to setting DeepAR's model and training hyperparameters and call `.fit()` to start a training job! You're encouraged to keep going, deploying and evaluating the model on your owm; you are welcome to consult the solution videos to see if your answer matches mine.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841294,
+          "key": "f8367fed-7d80-4926-aa0c-635d1c676843",
+          "title": "Solution: Complete Estimator & Hyperparameters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f8367fed-7d80-4926-aa0c-635d1c676843",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841739,
+              "key": "b50762c6-ddbe-4677-b9e2-e8adc2ab9496",
+              "title": "08 Complete Estimator Hyperparams V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ah7muNBc3dI",
+                "china_cdn_id": "ah7muNBc3dI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841296,
+          "key": "e7c2ec11-32c2-42bb-9ed8-e2913f3256d8",
+          "title": "Making Predictions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e7c2ec11-32c2-42bb-9ed8-e2913f3256d8",
+            "completed_at": "2019-12-05T15:07:06.733Z",
+            "last_viewed_at": "2019-12-06T05:48:44.031Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841740,
+              "key": "3896a2ef-7d8c-4098-8ca3-e65ab55f5b85",
+              "title": "11 Making Predictions V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BKOYIfgjsq8",
+                "china_cdn_id": "BKOYIfgjsq8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841297,
+          "key": "e15f7c19-b599-434f-b93e-4efa8b4f8d5d",
+          "title": "Exercise: Predicting the Future",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e15f7c19-b599-434f-b93e-4efa8b4f8d5d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841942,
+              "key": "cc1f6d44-def1-48cf-ad01-39977476c235",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Predicting the Future\nRecall that we did not give our model any data about 2010, but let's see if it can predict the energy consumption given **no target**, only a known start date! \n\n### EXERCISE: Format a request for a \"future\" prediction\nYour task is to create a formatted input to send to the deployed predictor passing in my usual parameters for \"configuration\". The \"instances\" will, in this case, just be one instance, defined by the following:\n\n* **start**: The start time will be time stamp that you specify. To predict the first 30 days of 2010, start on Jan. 1st, '2010-01-01'.\n* **target**: The target will be an empty list because this year has no, complete associated time series; we specifically withheld that information from our model, for testing purposes. For example:\n\n```python\n{\"start\": start_time, \"target\": []} # empty target\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841943,
+              "key": "0acfa06c-56b3-4f33-b255-fff7ec85ea23",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You'll see the following code to complete in the main exercise notebook. Complete the `instances` and see if you can generate some future predictions. **Also, remember to delete your model endpoint when you are done making predictions and evaluating your model.**\n\n```python\n# Starting my prediction at the beginning of 2010\nstart_date = '2010-01-01'\ntimestamp = '00:00:00'\n\n# formatting start_date\nstart_time = start_date +' '+ timestamp\n\n# formatting request_data\n## TODO: fill in instances information\nrequest_data = {\"instances\": [{\"start\": None, \"target\": None}],\n                \"configuration\": {\"num_samples\": 50,\n                                  \"output_types\": [\"quantiles\"],\n                                  \"quantiles\": ['0.1', '0.5', '0.9']}\n                }\n\njson_input = json.dumps(request_data).encode('utf-8')\n\nprint('Requesting prediction for '+start_time)\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 841298,
+          "key": "dba6bb1a-50e7-4d28-92ae-f96568c78862",
+          "title": "Solution: Predicting Future Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dba6bb1a-50e7-4d28-92ae-f96568c78862",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841741,
+              "key": "f234f42b-e845-47ad-acb9-44fc5ab552d0",
+              "title": "13 Predicting Future Data V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HT5xKDOgHYw",
+                "china_cdn_id": "HT5xKDOgHYw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 841241,
+          "key": "8aef0216-acc4-4e55-a7b6-a39e273fd24c",
+          "title": "Clean Up: All Resources",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8aef0216-acc4-4e55-a7b6-a39e273fd24c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 841653,
+              "key": "60d89e2c-f385-4490-b7d9-b42cd45df619",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Clean up Resources\n\nIt is good practice to always clean up and delete any resources that you are no longer using. That is, after you complete an exercise, and you are done with predictions and data analysis, you should get rid of any:\n* Data source in S3 that you are no longer using\n* Endpoint configuration files that you no longer need\n* Endpoints that you will no longer use\n* CloudWatch logs that are no longer useful\n\n\n## Deleting Endpoints\n\nIn the notebook, we have usually included code to delete your endpoints after creating some predictions, for example:\n\n```python\n# delete predictor endpoint\nsession.delete_endpoint(predictor.endpoint)\n```\n\n## Thorough Clean up\n\nYou can find a link for instructions on cleaning up all your resources, [in this documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-cleanup.html) and I will go over some of these details, next.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841656,
+              "key": "7045da27-67bd-4219-acaf-245e36c6b9b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Open the Amazon SageMaker console at [https://console.aws.amazon.com/sagemaker/](https://console.aws.amazon.com/sagemaker/) and delete the following resources:\n1. The endpoint configuration.\n2. The model.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841664,
+              "key": "0736546f-9df4-4b83-86c2-f9e74c96ed14",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c9bc99d_delete-endpoint-config1/delete-endpoint-config1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0736546f-9df4-4b83-86c2-f9e74c96ed14",
+              "caption": "Delete endpoint config files.",
+              "alt": "",
+              "width": 2560,
+              "height": 1600,
+              "instructor_notes": null
+            },
+            {
+              "id": 841666,
+              "key": "39d65fa8-65d4-4a6b-a464-897191f2ea32",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c9bc9f0_delete-models/delete-models.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/39d65fa8-65d4-4a6b-a464-897191f2ea32",
+              "caption": "Deleting models",
+              "alt": "",
+              "width": 2560,
+              "height": 1600,
+              "instructor_notes": null
+            },
+            {
+              "id": 841657,
+              "key": "a6176451-06b4-424b-b064-c26b384ec775",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Open the Amazon S3 console at [https://console.aws.amazon.com/s3/](https://console.aws.amazon.com/s3/) and delete or empty the bucket that you created for storing model artifacts and the training dataset.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841665,
+              "key": "52c30b7c-460b-4de8-b60f-2b0f93cbb4cb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c9bc9bb_s3-empty-bucket/s3-empty-bucket.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/52c30b7c-460b-4de8-b60f-2b0f93cbb4cb",
+              "caption": "Delete or empty your S3 bucket (empty is recommended until the end of the course, when you should delete this bucket entirely)",
+              "alt": "",
+              "width": 2560,
+              "height": 1600,
+              "instructor_notes": null
+            },
+            {
+              "id": 841658,
+              "key": "345ae9e3-d6da-45e4-9eff-52165a5048e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Open the Amazon CloudWatch console at [https://console.aws.amazon.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/) and delete all of the log groups that have names starting with /aws/sagemaker/.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841659,
+              "key": "7ad70ecc-0615-43e6-8d00-e324bb345287",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "At the end of this course, you may also choose to delete the entire notebook instance and IAM Role, but you may keep these as is, for now. In between lessons, if you are taking a break, you may want to **Stop** your notebook and pause it from continuously running.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 841667,
+              "key": "c9be81a0-177c-4f88-ad06-b79673f5fd81",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c9bca1e_stop-notebook/stop-notebook.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c9be81a0-177c-4f88-ad06-b79673f5fd81",
+              "caption": "Stopping the ML-case-studies notebook",
+              "alt": "",
+              "width": 2560,
+              "height": 1600,
+              "instructor_notes": null
+            },
+            {
+              "id": 841668,
+              "key": "09840175-93d2-4688-be9a-8d89e612d45c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Cleaning up resources at the end of an exercise or lesson is a great practice to get into!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 846525,
+              "key": "fe574834-af2a-42c5-93a7-b705d602f61d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## IMPORTANT\n\n**To avoid incurring additional charges, it is suggested that you *DELETE* any unused notebooks and data resources on S3 and CloudWatch.**",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

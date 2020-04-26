@@ -1,0 +1,527 @@
+{
+  "data": {
+    "lesson": {
+      "id": 393436,
+      "key": "a8a46395-26cb-4f43-b81c-48625e628f15",
+      "title": "Pairs Trading and Mean Reversion",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn about pairs trading, and study the tools used in identifying stock pairs and making trading decisions.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/a8a46395-26cb-4f43-b81c-48625e628f15/393436/1549305324461/Pairs+Trading+and+Mean+Reversion+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/a8a46395-26cb-4f43-b81c-48625e628f15/393436/1549305321914/Pairs+Trading+and+Mean+Reversion+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 559610,
+          "key": "3b56a656-3435-4aa1-9280-9da8a6dc7e6e",
+          "title": "Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3b56a656-3435-4aa1-9280-9da8a6dc7e6e",
+            "completed_at": "2020-03-30T10:03:42.363Z",
+            "last_viewed_at": "2020-03-30T10:03:40.515Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 675034,
+              "key": "fa9955ba-f326-41dc-8b09-4123751526af",
+              "title": "M2L6 01 Intro V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CQ6QGAxbUF8",
+                "china_cdn_id": "CQ6QGAxbUF8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 559611,
+          "key": "bc7cd602-bfeb-42b6-a1f5-851991b13cab",
+          "title": "Mean Reversion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bc7cd602-bfeb-42b6-a1f5-851991b13cab",
+            "completed_at": "2020-03-30T10:06:01.677Z",
+            "last_viewed_at": "2020-03-30T10:05:54.597Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 675035,
+              "key": "18dff6dd-0607-459f-aa49-00c595b106dc",
+              "title": "M2L6 02 Mean Reversion V5",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zQ08lFcZa_A",
+                "china_cdn_id": "zQ08lFcZa_A.mp4"
+              }
+            },
+            {
+              "id": 677066,
+              "key": "b1b3b5fd-08d7-4201-9960-8cbcfe0371a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Drift and Volatility Model (optional)\nThe drift and volatility model is also called a Brownian Motion model, and is a type of stochastic volatility model.  First, let’s discuss how this relates to the finance industry.  Stochastic volatility models are fundamental building blocks for estimating the price of options (calls, puts, swaps) and also bonds.  Before creating a model of an option (like a call option, for instance), we first want a model for the movement of its underlying asset (the stock price itself).  The movement of the stock price is what the drift and volatility model (brownian motion model) attempts to describe.  \nThe word Brownian Motion refers to the movements of molecules suspended in fluid, since this model was first used in physics and later adapted for finance.  So it helps to imagine the stock price as a small particle, drifting through a glass of water, while it’s being bumped around by other particles and molecules.  The word “stochastic” is another word for “random”.  Stochastic volatility models attempt to represent the movement of a stock price when the volatility of its movements is random.  Stochastic volatility models were used to improve upon the work of Black, Scholes and Merton, who came up with the first formula for pricing options.\n\nNow let’s revisit the drift and volatility model and describe what it means.\n\n<span class=\"mathquill\">dp_t = p_t \\mu d_t + p_t \\sigma_t \\epsilon \\sqrt(d_t)</span>\n\nFirst, notice that <span class=\"mathquill\">dp_t</span> on the left is referring to the differential of the stock price at time t.  This type of equation is called a differential equation, since it describes the change over time of some process, rather than the specific state (stock price) of that series.  \n\nThe term <span class=\"mathquill\">p_t \\mu dt</span> is the drift term.  First, notice that it depends on the value of the stock price at time t <span class=\"mathquill\">(p_t)</span>.  This means that if we compare the movements of two stocks, one that’s priced at $2 per share, and another that’s priced at $1000 per share, the series with the larger price per share is expected to drift (change) more in absolute dollar amounts compared to the other stock.  The <span class=\"mathquill\">\\mu</span> term is the expected return of the stock (think average return).  Think of the expected return as the expected percent change over a period of time.  We usually estimate the expected future return based on historical returns.  So if a stock is expected to have a larger percent change per day compared to another, we’d also expect it to drift more (change more) compared to the other stock.  This term also includes <span class=\"mathquill\">d_t</span>, which is the change in time (how much time has passed).  If we watched a stock over a period of day versus over one month, we would expect it to drift more over a month, as more time has passed.\n\nNow let’s look at the volatility term.  Think of this as the random, bouncy part of the stock movement.  This term includes the stock price <span class=\"mathquill\">p_t</span>.  It also includes the standard deviation of the stock <span class=\"mathquill\">\\sigma_t</span>, which is a function of time.  This is why this model is a type of stochastic volatility model, because it allows for a non-constant volatility that varies over time.  If a stock series has higher volatility, this will result in a larger overall movement in stock price (a higher <span class=\"mathquill\">dp_t</span>).  The \\epsilon is a white noise term, which means it’s a random number with a mean of zero and standard deviation of one.  The white noise accounts for movements in the stock price that are not accounted for by the model.  Finally, there’s the square root of the change in time.  Note that the product <span class=\"mathquill\">\\epsilon_t \\sqrt(d_t)</span> is usually written as <span class=\"mathquill\">dW_t</span>, and named a Wiener process.  \n\n### Back to Mean Reversion\nOkay, stepping back a bit to relate this to mean reversion.  The drift and volatility model is a way to describe phenomena that we observe in real life, such as stock prices.  The model assumes that there is a constant drift term with some added randomness, so we can expect that a series will bounce around, but still revert back to its long-term mean.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 559613,
+          "key": "5c4fe82b-8c39-4635-a5fd-6d9f7ff99ef3",
+          "title": "Pairs Trading",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5c4fe82b-8c39-4635-a5fd-6d9f7ff99ef3",
+            "completed_at": "2020-03-30T11:38:43.240Z",
+            "last_viewed_at": "2020-03-30T11:38:43.081Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 675036,
+              "key": "90f52af8-2572-4a1b-95cd-86c6f5dc891c",
+              "title": "M2L6 04 Pairs Trading V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7lEm_tFXcBk",
+                "china_cdn_id": "7lEm_tFXcBk.mp4"
+              }
+            },
+            {
+              "id": 677069,
+              "key": "57d0126a-10bb-4914-8007-5a6919fe692a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pairs Trading\nNote that with pairs trading, we analyze the original stock price series, and do not convert them to returns or log returns.  We’ll get into the details shortly, but let’s just look at an example.  Let’s say <span class=\"mathquill\">stock_A</span> is $2 per share, and <span class=\"mathquill\">stock_B</span> is $3 per share.  If we figured out that we can trade these pairs together, we may go long <span class=\"mathquill\">stock_A</span> and short <span class=\"mathquill\">stock_B</span>.  But how much do we long <span class=\"mathquill\">stock_A</span> and short <span class=\"mathquill\">stock_B</span>?  What if we long 3 shares of <span class=\"mathquill\">stock_A</span> and short 2 shares of <span class=\"mathquill\">stock_B</span>? This is nice, because <span class=\"mathquill\">shares_A \\times price_A - shares_B \\times price_B</span> gives us <span class=\"mathquill\">3 \\times \\$2 - 2 \\times \\$3</span>, or zero.  Doing pairs trading analysis with the stock price series instead of returns lets us decide how many shares of each stock to long or short, since our goal will be to have the same dollar amount in our long position as in our short position.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 559614,
+          "key": "817e70b7-1521-4fbf-aedf-2c966c498d09",
+          "title": "Finding Pairs to Trade",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "817e70b7-1521-4fbf-aedf-2c966c498d09",
+            "completed_at": "2020-03-30T17:44:20.466Z",
+            "last_viewed_at": "2020-03-30T17:44:18.778Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 676227,
+              "key": "4f351121-4620-4268-a063-fa7584a5d861",
+              "title": "M2L6 07 Finding Pairs To Trade V4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6hQtoElcnGM",
+                "china_cdn_id": "6hQtoElcnGM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 559619,
+          "key": "3bfa0a56-2521-4864-955e-1ec39de1c1d3",
+          "title": "Quiz: Identify Pairs to Trade",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3bfa0a56-2521-4864-955e-1ec39de1c1d3",
+            "completed_at": "2020-03-30T17:45:01.321Z",
+            "last_viewed_at": "2020-03-30T17:44:58.904Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 560106,
+              "key": "be80656d-86de-42e8-b714-7ee4fb745ca6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aa2c7f6_08-identify-pairs-to-trade/08-identify-pairs-to-trade.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/be80656d-86de-42e8-b714-7ee4fb745ca6",
+              "caption": "A basket of stocks",
+              "alt": "A basket of stocks",
+              "width": 1088,
+              "height": 511,
+              "instructor_notes": null
+            },
+            {
+              "id": 560109,
+              "key": "dee377e6-42dd-4a6c-85ae-6b30d4d9c25d",
+              "title": "Identify Pairs to Trade",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "dee377e6-42dd-4a6c-85ae-6b30d4d9c25d",
+                "completed_at": "2020-03-30T17:46:15.127Z",
+                "last_viewed_at": "2020-03-30T17:46:15.127Z",
+                "unstructured": "{\"selected_ids\":[\"a1520617565416\",\"a1520617539775\",\"a1520617632522\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Looking at the graph above, mark any pair(s) of stocks that you think will be good candidates for pairs trading.",
+                "answers": [
+                  {
+                    "id": "a1520617495936",
+                    "text": "GRMP & HPPY",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1520617539775",
+                    "text": "HPPY & BSHF",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1520617565416",
+                    "text": "DPY & GRMP",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1520617603789",
+                    "text": "DOC & SNWH",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1520617632522",
+                    "text": "SNZY & SLPY",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 559615,
+          "key": "8384e897-fc5e-4157-93f9-4d22cc9ab9b2",
+          "title": "Cointegration",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8384e897-fc5e-4157-93f9-4d22cc9ab9b2",
+            "completed_at": "2020-03-30T17:46:18.070Z",
+            "last_viewed_at": "2020-03-30T17:46:17.939Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 675038,
+              "key": "0ea1c43e-d72e-4b2f-88a4-6416174febd3",
+              "title": "M2L6 09 Cointegration V6",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "N4ZI5SyFMOc",
+                "china_cdn_id": "N4ZI5SyFMOc.mp4"
+              }
+            },
+            {
+              "id": 677133,
+              "key": "52d0e4ec-ee51-4150-bbb9-dcee25d33f19",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Cointegration\nA way to think about whether two stocks’ time series are cointegrated is to see if some linear combination of their time series forms a stationary series. In other words, let’s say <span class=\"mathquill\">stock_1</span> and <span class=\"mathquill\">stock_2</span> are non-stationary, but <span class=\"mathquill\">w_1 \\times stock_1 + w_2 \\times stock_2</span> is a stationary series.  Then we can also say that <span class=\"mathquill\">stock_1</span> and <span class=\"mathquill\">stock_2</span> are cointegrated.\n\n### Hedge Ratio\nWe can perform a regression where <span class=\"mathquill\">stock_2</span> is the dependent variable, and <span class=\"mathquill\">stock_1</span> is the independent variable (it doesn’t matter which you choose to be x or y).  Then the regression coefficient, which is our hedge ratio, is effectively <span class=\"mathquill\">\\frac{w_1}{w_2}</span>.  You can see how multiplying <span class=\"mathquill\">stock_1</span> by <span class=\"mathquill\">\\frac{w_1}{w_2}</span> is similar to multiply <span class=\"mathquill\">stock_1</span> by <span class=\"mathquill\">w_1</span> and <span class=\"mathquill\">stock_2</span> with <span class=\"mathquill\">w_2</span>; in either case, we’re weighting each stock so that their linear combination produces a stationary series.\n\n### Augmented Dickey Fuller Test\nTo check if two series are cointegrated, we can use the Augmented Dickey Fuller (ADF) Test.  First, let’s get some intuition to see what the ADF test is doing.  It’s trying to determine if the linear combination of the two series, (which is also a time series) is stationary.  \n\nA series is stationary when its mean and covariance are constant, and also when the autocorrelation between one time period and another only depends on the time duration between them, and not the specific point in time of each observation.\n\nIf you could represent a series as an AR(1) model <span class=\"mathquill\">y_t = \\beta y_{t-1} + \\epsilon_t</span>, let’s think about what happens if the <span class=\"mathquill\">\\beta</span> is greater than one.  We can imagine putting in a value for <span class=\"mathquill\">y_{t-1}</span> to get an estimate for <span class=\"mathquill\">y_t</span>; then for the next day, we’ll use that value as <span class=\"mathquill\">y_{t-1}</span> to put into the model and estimate the new <span class=\"mathquill\">y_t</span>.  We’d end up having a series that trends in one direction, so its mean is not constant, and therefore it is not stationary.\n\nNext, if we had a <span class=\"mathquill\">\\beta</span> equal to one, then <span class=\"mathquill\">y_t = y_{t-1} + \\epsilon_t</span>.  We call this special case a random walk, and it means that the current price is equal to the previous price plus some white noise.  Even though the mean of this series is constant, its covariance between one time period and another depends upon the point in time of the observations, so it is also not stationary.\n\nFinally, if we had a <span class=\"mathquill\">\\beta</span> of less than one, then we notice that <span class=\"mathquill\">y_t</span> depends upon less than 100% of the value of its previous value <span class=\"mathquill\"> y_{t-1}</span>, with some added random noise <span class=\"mathquill\">\\epsilon_t</span>.  The series doesn’t trend in a particular direction.  Its variance is also constant, and its covariance between any two data points doesn’t depend on the point in time of the data point.  You can think of the series like a bouncing rubber ball that’s being tapped lightly by random raindrops.  Without the rain, the bouncing ball would have smaller and smaller bounces, and eventually stop bouncing.  With random raindrops falling on the ball, some raindrops would make the ball bounce more, others would make the ball bounce less. So overall, the ball maintains a constant bounce height over time.\n\nSo conceptually, the Augmented Dickey Fuller Test is a hypothesis test for which the null hypothesis is that a series is a random walk (its <span class=\"mathquill\">\\beta</span> is equal to one), and so the null hypothesis assumes that the series is not stationary.  The alternate hypothesis is that <span class=\"mathquill\">\\beta</span> is less than one, and therefore it’s a stationary series.  So if the ADF produces a p-value of 0.05 or less, we can say with a 95% confidence level that the series is stationary.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 677134,
+          "key": "cc0ea66c-4424-43e6-b8b9-5472b8ede51f",
+          "title": "ADF and roots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cc0ea66c-4424-43e6-b8b9-5472b8ede51f",
+            "completed_at": "2020-03-30T17:51:43.509Z",
+            "last_viewed_at": "2020-03-30T17:51:42.470Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 677135,
+              "key": "eb406c9a-016a-4d51-b30d-2392f7c114f6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### ADF and Roots of the Characteristic Equation ( very optional but kinda cool!)\nThe previous explanation of ADF is usually done with a bit more added vocabulary.  Normally, you might hear ADF explained as a test for the existence of a unit root.  This next section will introduce some math vocabulary, but please remember the main idea of the previous section if this section starts to feel like too much.\n\nIf we have an AR(p) model \n<span class=\"mathquill\">y_t = \\beta_1 y_{t-1} + … + \\beta_{t-p} y_{t-p} + \\epsilon_t</span>\nwe can put all the terms that are not the white noise <span class=\"mathquill\">\\epsilon</span> to the left, like this: \n<span class=\"mathquill\">y_t - \\beta_1 y_{t-1} - … - \\beta_{t-p} y_{t-p} = \\epsilon_t.</span>\n\nThen we set the left side of the equation equal to zero.  What we have on the left is called the “characteristic equation”.  You might recall from learning algebra that when we set an equation equal to zero, we usually are trying to solve for the roots (the values that make the equation equal to zero).  Before we can solve for the roots of this equation, we need to rewrite it differently using something called backward shift notation.\n\nBackward shift notation looks like this: <span class=\"mathquill\">B^n y_t = y_{t-n}.</span>  So when we see <span class=\"mathquill\">y_{t-1}</span>, we’ll replace it with <span class=\"mathquill\">B^1 y_t</span>.  If we see <span class=\"mathquill\">y_{t-2}</span>, we’ll replace it with <span class=\"mathquill\">B^2 y_t</span>.  The nice thing about backward shift notation is that we can describe our lags in terms of <span class=\"mathquill\">y_t</span>, which will come in handy in the part that’s coming up.\n\nSo we can change this equation: \n<span class=\"mathquill\">y_t - \\beta_1 y_{t-1} - … - \\beta_{t-p} y_{t-p} = 0</span>\nInto this:\n<span class=\"mathquill\">y_t - \\beta_1 (B y_t) - … - \\beta_{t-p} (B^p y_t) = 0</span>\n\nNotice how we can now factor out the <span class=\"mathquill\">y_t</span>, so we have:\n<span class=\"mathquill\">y_t (1 -\\beta_1 B - … - \\beta_{t-p} B^p) = 0</span>\n\nOkay, let’s look at some examples to see what this means.  We saw previously that an AR(1) model with a coefficient of one:\n<span class=\"mathquill\"> y_t = y_{t-1} + \\epsilon_t </span>\nis called a random walk, and that a random walk is not stationary.  If write the characteristic equation of the random walk, it looks like this: \n<span class=\"mathquill\">y_t - y_{t-1} = \\epsilon_t = 0</span>\nNext, we rewrite it with backward shift notation:\n<span class=\"mathquill\">y_t - B y_t = 0</span>\nThen we factor out the <span class=\"mathquill\">y_t</span> to get:\n<span class=\"mathquill\">y_t (1 - B) = 0</span>\nAnd we solve for B to get B = 1.  The root equals one, and you might hear people say that the series has a unit root, or that its root “equals unity”.\n\nNext, let’s look at an AR(1) series where the <span class=\"mathquill\">\\beta</span> coefficient is less than one (let’s say <span class=\"mathquill\">\\beta</span> is <span class=\"mathquill\">\\frac{1}{2}</span>).  \n<span class=\"mathquill\">y_t = \\frac{1}{2} y_{t-1} + \\epsilon_t</span>\nThe characteristic equation looks like this:\n<span class=\"mathquill\">y_t - \\frac{1}{2} y_{t-1} = \\epsilon_t = 0</span>\nIn backward shift notation, it looks like:\n<span class=\"mathquill\">y_t - \\frac{1}{2} B y_t = 0</span>\nFactor out the <span class=\"mathquill\">y_t</span>:\n<span class=\"mathquill\">y_t(1 - \\frac{1}{2} B) = 0</span>\n\nSolving for B is solving for the unit root of the characteristic equation.  So we get <span class=\"mathquill\">1 = \\frac{1}{2} B</span>, and so <span class=\"mathquill\">B = 2.</span>  Since the root is greater than one, we can say that the series is stationary.\n\nNote that for series with more than one lag, we can solve for more than one root.\n\nThe Augmented Dickey Fuller Test has a null hypothesis that a series has a unit root.  In other words, the null hypothesis is that a series is a random walk, which is not stationary.  The alternate hypothesis is that the roots of the series are all greater than one, which suggests that the series is stationary.  If the ADF gives a p-value of 0.05 or less, we reject the null hypothesis and can assume that the series is stationary.\n\n### Engle-Granger Test\nThe Engle Granger Test is used to check whether two series are cointegrated. It involves two steps.  First, calculate the hedge ratio by running a regression on one series against the other\n<span class=\"mathquill\">y_t = \\beta x_t</span>\nWe call the <span class=\"mathquill\">\\beta</span> the “hedge ratio”.  \n\nSecond, we take <span class=\"mathquill\">y_t - \\beta x_t</span> to create a series that may be stationary.  We’ll call this new series <span class=\"mathquill\">z_t</span>.  Then we use the ADF test to check if that series <span class=\"mathquill\">z_t</span> is stationary.  If <span class=\"mathquill\">z_t</span> is stationary, we can assume that the x and y series are cointegrated.\n\n\n\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 559621,
+          "key": "444f69f1-690c-4d65-9bf5-cfda794055ae",
+          "title": "Clustering Stocks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "444f69f1-690c-4d65-9bf5-cfda794055ae",
+            "completed_at": "2020-03-30T17:52:09.461Z",
+            "last_viewed_at": "2020-03-30T17:52:07.953Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 675039,
+              "key": "5e5edd7a-31cc-43d4-815e-4d826393ad9e",
+              "title": "M2L6 11 Clustering Stocks V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LkgCK_qPqWE",
+                "china_cdn_id": "LkgCK_qPqWE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 559623,
+          "key": "ef881014-4604-456d-97ac-e12a8dad49c5",
+          "title": "Trade Pairs of Stocks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ef881014-4604-456d-97ac-e12a8dad49c5",
+            "completed_at": "2020-03-30T18:09:47.485Z",
+            "last_viewed_at": "2020-03-30T18:09:45.976Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 693441,
+              "key": "cae671ac-4593-40b6-9601-7d8801b89222",
+              "title": "M2L6 13 Trade Pairs Of Stocks V6",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "i1yVMrgjtB0",
+                "china_cdn_id": "i1yVMrgjtB0.mp4"
+              }
+            },
+            {
+              "id": 832806,
+              "key": "1396a1c6-5a22-44da-9f73-03e42e53f854",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Clarification\nThe slide at time 1:28 should say:\nIf spread widens, short the spread: short the asset that has increased, long the asset that has decreased (relatively).\n\nif spread narrows, go long the spread:\nshort asset that has increased, long the asset that has decreased (relatively).\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 677137,
+              "key": "1592ddd6-f703-4c43-8936-795ad07f5897",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Backtesting\n\nNote that we will dedicate an entire module plus project on backtesting in term 2, which will incorporate all of the tools you learn in Term 1 and Term 2.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 694157,
+          "key": "5100843c-1b2c-4f3e-82ba-78abcc56567a",
+          "title": "Exercise: finding pairs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5100843c-1b2c-4f3e-82ba-78abcc56567a",
+            "completed_at": "2020-03-30T18:11:16.009Z",
+            "last_viewed_at": "2020-03-30T18:11:14.719Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 694158,
+              "key": "9e15b75b-f97c-4be9-9651-70fd6663bc9e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewrtax957b2cj",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-ju5lzqxqaca",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/pairs_candidates.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 559625,
+          "key": "0c4dd433-0e19-4c29-8a4b-2916f411eec9",
+          "title": "Variations of Pairs Trading and Mean Reversion Trading",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0c4dd433-0e19-4c29-8a4b-2916f411eec9",
+            "completed_at": "2020-03-30T18:20:57.178Z",
+            "last_viewed_at": "2020-03-30T18:20:55.571Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 675583,
+              "key": "2a99da70-6422-4547-b658-dfac0190dcd0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Variations of Pairs Trading or Mean Reversion Trading\nNote that it’s also possible to extend pairs trading to more than two stocks.  We can identify multiple pairs and include these pairs in the same portfolio.  We can also analyze stocks that are in the same industry.  If we grouped the stocks within the same industry into a virtual portfolio and calculated the return of that industry, this portfolio return would represent the general expected movement of all stocks within the industry.  Then, for each individual stock series, we can calculate the spread between its return and the portfolio return.  We can assume that stocks within the same industry may revert towards the industry average.  So when the spread between the single stock and the industry changes significantly, we can use that as a signal to buy or sell.  \n\n## Cointegration with 2 or more stocks\n\n### Generalizing the 2-stock pairs trading method\nWe can extend cointegration from two stocks to three stocks using a method called the Johansen test.  First let’s see an example of how this works with two stocks.\n\nThe Johansen test gives us coefficients that we can multiply to each of the two stock series, so that a linear combination produces a number, and we can use it the same way we used the spread in the prior pairs trading method.  \n\n<span class=\"mathquill\">w_1 \\times stock_1 + w_2 \\times stock_2 = spread</span>\n\nIn other words, if the first stock series moves up significantly relative to the second stock, we can see this by an increase in the “spread” beyond its historical average.  We will assume that the spread will revert down towards its historical average, so we’ll short the first stock that is relatively high, and long the second stock that is relatively low.\n\nSo far, this looks pretty much like what you did before, except instead of computing a hedge ratio to multiply to one stock, the Johansen test gives you one coefficient to multiply to each of the two stock series.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 677044,
+          "key": "b70321ef-bce7-45d1-b135-e0112808f68c",
+          "title": "3 or more stocks (optional)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b70321ef-bce7-45d1-b135-e0112808f68c",
+            "completed_at": "2020-03-30T18:25:47.966Z",
+            "last_viewed_at": "2020-03-30T18:25:46.958Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 677047,
+              "key": "fb4202b7-2d51-49de-b430-40d5737d9cbb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Extending to 3 stocks (optional)\n\nNow let’s extend this concept to three stocks.  If we analyze three stock series with the Johansen, we can determine whether all three stocks together have a cointegrated relationship, and that a linear combination of all three form a stationary series.  Note that for the purpose of cointegration trading we use the original price series, and do not convert them to log returns.  The Johansen test also lets us decide whether only two series are needed to form a stationary series, but for now, let’s assume that we find a trio of stocks that are cointegrated.\n\nThe Johansen gives us three coefficients, one for each stock series.  We take the linear combination to get a spread.\n\n<span class=\"mathquill\">w_1 \\times stock_1 + w_2 \\times stock_2 + w_3 \\times stock_3 = spread</span>\n\n\nWe get the historical average of the spread.  Then we check if the spread deviates significantly from that average.  For example, let’s say the spread increases significantly.  So we check whether each of the three individual series moved up or down significantly to result in the change in spread.  We short the series that are relatively high, and long the series that are relatively low.  To determine how much to long or short, we again use the weights that are given by the Johansen test <span class=\"mathquill\">(w_1, w_2, w_3)</span>.\n\nFor example, let’s say the spread has gotten larger.  Let’s also pretend that <span class=\"mathquill\">w_1</span> is 0.5, <span class=\"mathquill\">w_2</span> is 0.3, and <span class=\"mathquill\">w_3</span> is -0.1.  Notice that the weights do not need to sum to 1.  We’ll long or short the number of shares for each stock in these proportions.  So for instance, if we traded 5 shares of <span class=\"mathquill\">stock_1</span>, we’ll trade 3 shares of <span class=\"mathquill\">stock_2</span>, and one share of <span class=\"mathquill\">stock_3</span>.\n\nIf we notice that <span class=\"mathquill\">stock_1</span> is higher than normal, <span class=\"mathquill\">stock_2</span> is lower than normal, and <span class=\"mathquill\">stock_3</span> is lower than normal, then let’s see whether we long or short a stock, and by how much.\n\nSince <span class=\"mathquill\">stock_1</span> is higher than usual (relative to the others), we short 5 shares of <span class=\"mathquill\">stock_1</span> because we expect it should revert by decreasing relative to the others.\n\nSince <span class=\"mathquill\">stock_2</span> is lower than normal, we long it by 3 shares, because we expect it to revert by increasing relative to the others.\n\nSince <span class=\"mathquill\">stock_3</span> is lower than normal, so we also long it by 1 share but notice that <span class=\"mathquill\">w_3</span> is a negative number (-0.1).  Whenever we see a negative weight, it means we change a buy to a sell, or change a sell to a buy.  So we long a -1 shares, which is actually shorting 1 share.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 677048,
+          "key": "613fa9a6-f1ea-4971-816f-7400740bc413",
+          "title": "Details of Johansen Test (optional)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "613fa9a6-f1ea-4971-816f-7400740bc413",
+            "completed_at": "2020-03-30T18:25:51.782Z",
+            "last_viewed_at": "2020-03-30T18:25:50.993Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 677049,
+              "key": "043f7d9e-4829-48ba-9f10-e5232c3a2cd9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Details of the Johansen test (very optional)\n\nSo you may be wondering how we get these coefficients, and also how we check whether three stocks have a cointegrated relationship.  For a closer look, let’s introduce a bit of math.  Recall from the lesson on time series, that a vector autoregression attempts to describe a stock’s current value based on not only its prior values, but also the prior values of other stocks.  Let’s use two stocks as an example:  Note, I’m using the variable names “IBM” and “GE” to refer to the price series of these stocks. The <span class=\"mathquill\">\\mu</span> refers to a historical average for each stock’s time series.  The “e” refers to an error term for each stock.\n\n<span class=\"mathquill\">IBM_{t} = \\mu_{IBM} + \\beta_{1,1} \\times IBM_{t-1} + \\beta_{1,2} \\times GE_{t-1} + e_{1,t}</span>\n\n\n<span class=\"mathquill\">GE_{t} = \\mu_{GE} + \\beta_{2,1} \\times IBM_{t-1} + \\beta_{2,2} \\times GE_{t-1} + e_{2,t}</span>\n\n\nWe normally use matrices to make this easier to work with, so the equations above can be written as:\n<span class=\"mathquill\">\n\\begin{bmatrix}\nIBM_t\\\\ \nGE_t\n\\end{bmatrix}\n=\n\\begin{bmatrix}\n\\mu_{IBM} \\\\\n\\mu_{GE}\n\\end{bmatrix}\n+\n\\begin{bmatrix}\n\\beta_{1,1} & \\beta_{1,2}\\\\ \n\\beta_{2,1} & \\beta_{2,2} \n\\end{bmatrix}\n\n\\begin{bmatrix}\nIBM_{t-1}\\\\ \nGE_{t-1}\n\\end{bmatrix}\n\n+ \n\\begin{bmatrix}\ne_{1,t}\\\\ \ne_{2,t}\n\\end{bmatrix}\n</span>\n\n\n\n\nTo make things simpler to write, we’ll write the 2 x 2 matrix of betas with a capital B, and we’ll denote the vector of the two stocks with a lowercase x.  We’ll write the vector of <span class=\"mathquill\">\\mu</span>’s with a single <span class=\"mathquill\">\\mu</span>, and so on.  So the vector autoregression with a lag of one is:\n\n<span class=\"mathquill\">x_{t} = \\mu + B x_{t-1} + e_{t}</span>\n\n\nFor a lag of p, this formula looks like\n<span class=\"mathquill\">x_{t} = \\mu + B_1 x_{t-1} + ... + B_p x_{t-p}+ e_{t}</span>\n\n\nNow, if you recall from studying cointegrated time series, taking the time-wise difference may help us create a stationary series.  So we’ll denote the timewise difference as:\nAs \n<span class=\"mathquill\">\\Delta x_{t} = x_{t} - x_{t-1}</span>\n\n\nNext, we can define x_t in using a Vector Error Correction Model (VECM) like this:\n<span class=\"mathquill\">\\Delta x_{t} = \\mu + Bx_{t-1} + C_1\\Delta x_{t-1} + C_p \\Delta x_{t-p} + e_t </span>\n\n\nNotice how the <span class=\"mathquill\">B x_{t-1}</span> term is just the vector of the previous periods’ values, and not the time-wise difference like the other terms.  All of the subsequent terms to its right are time-wise differences.  The Johansen test checks how many rows in the matrix B are needed to form a cointegrated series.  To do this, it does some math, using an eigenvalue decomposition (let’s not worry about it for now), to determine how likely the matrix B has a rank of 0, or 1, 2, or 3, up to the number of stocks that we’re looking at (most likely 2 or 3).  \n\nHere’s a quick refresher on what the rank of a matrix is.  \n\nIf you have three equations like this:\n\n<span class=\"mathquill\">1x + 1y = 1</span>\n\n<span class=\"mathquill\">2x + 2y = 2</span>\n\n<span class=\"mathquill\">3x + 3y = 3</span>\n\n\nWhat do you notice about all of these equations?  It looks like you only need one of the equations to describe all three of them.  In this case, we’d say that the rank is 1.  \n\nSimilarly, when the Johansen test checks whether the rank of matrix B is 0, 1, 2 or 3, let’s see what this means for us practically.  If we were trying to see if 3 stocks were cointegrated, and the Johansen test estimated that the rank of matrix B was 3, then we’d assume that all three stocks form a cointegrated relationship.  If, on the other hand, the Johansen test results showed that the rank of matrix B was likely 2, then only 2 of the 3 stocks are necessary to form a cointegrated relationship.  So we’d want to try out all the pairs of stocks to see which two are cointegrated.  If the rank was zero, then that means there was no cointegration among the stocks that we looked at.  \n\nTo determine the rank, the Johansen test actually does a hypothesis test on whether the rank is 0, 1, 2 or 3, up to the number of stocks there are in the test (probably 2 or 3).   Looking at the t-statistic or p-value can let you decide with a certain level of confidence if at least two or even three of these stocks form a cointegrated series.\n\nOkay, we’re almost there!  The Johansen test gives us a vector that we can use as the weights we assign to each stock.  If you are curious, this is the largest eigenvector that’s generated by the eigenvalue decomposition.  But again, let’s not worry about how to do eigenvalue decomposition, and just see how to use this vector of weights.  These are the weights that we mentioned earlier when computing the linear combination of the stock prices, which is used in the same way as the spread.\n\nSo if we get <span class=\"mathquill\">w_1, w_2, w_3</span> from the eigenvector w, we use these as weights on each stock, as we saw earlier:\n\n<span class=\"mathquill\">w_1 \\times stock_1 + w_2 \\times stock_2 + w_3 \\times stock_3 = spread</span>\n\n\nTo summarize, the Johansen test figures out whether a group of stocks is cointegrated, and if so, how to calculate a “spread” that we’ll keep track of for temporary deviations from its historical average.  It also gives us the proportion of shares to trade for each stock.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 559630,
+          "key": "47e8eefc-25fd-4326-aafc-f20df5b36cd5",
+          "title": "Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "47e8eefc-25fd-4326-aafc-f20df5b36cd5",
+            "completed_at": "2020-03-30T18:25:53.148Z",
+            "last_viewed_at": "2020-03-30T18:25:52.348Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 675043,
+              "key": "2d9608b9-852a-4608-9d94-19caf8b561c3",
+              "title": "M2L6 20 Summary V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wuzha8SU2jw",
+                "china_cdn_id": "wuzha8SU2jw.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

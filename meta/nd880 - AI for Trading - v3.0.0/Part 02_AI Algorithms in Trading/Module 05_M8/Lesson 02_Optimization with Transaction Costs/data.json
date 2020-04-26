@@ -1,0 +1,1023 @@
+{
+  "data": {
+    "lesson": {
+      "id": 830608,
+      "key": "482720f4-5772-4878-a746-1799af74013f",
+      "title": "Optimization with Transaction Costs",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn about how to make the portfolio optimization in a backtest more realistic, and also more computationally efficient.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/482720f4-5772-4878-a746-1799af74013f/830608/1553028013424/Optimization+with+Transaction+Costs+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/482720f4-5772-4878-a746-1799af74013f/830608/1553028009240/Optimization+with+Transaction+Costs+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 830611,
+          "key": "1bb76446-a316-40c9-9f08-3ba39f23fbd2",
+          "title": "intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1bb76446-a316-40c9-9f08-3ba39f23fbd2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840127,
+              "key": "db6f401d-1979-4a04-92a0-961f90f51d08",
+              "title": "M82 Intro V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WQ95rYDyVSA",
+                "china_cdn_id": "WQ95rYDyVSA.mp4"
+              }
+            },
+            {
+              "id": 830612,
+              "key": "b6db0865-c8f8-495e-b2fb-7340a2ed6429",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, we’ll show you how to incorporate transaction costs into portfolio optimization.  This will give your backtest a more realistic measure of your alpha’s performance.  In addition, we’ll show you some additional ways to design your optimization with efficiency in mind.  This is really helpful when  backtesting, because having reasonably shorter runtimes allows you to test and iterate on your alphas more quickly.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 830651,
+          "key": "0c85aeeb-e3ee-4aef-b085-99dd6f33f316",
+          "title": "exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0c85aeeb-e3ee-4aef-b085-99dd6f33f316",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 839828,
+              "key": "ca25de79-b5dd-4e22-8805-a5135d4ca6c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Code Exercise\n\nPlease open this notebook in a separate tab.  You can watch the videos, and also look at the notebook for details that are mentioned in the videos.  Feel free to work through parts of the notebook as you go through the lesson videos.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 830665,
+              "key": "17ab484a-21cd-430a-ab9b-e541b00b649c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r403173c830651xJUPYTERqql4p60l",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-1xx20",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "financial-datasets",
+                      "paths": [
+                        {
+                          "src": "/aitnd/msci-barra/project_8/",
+                          "dest": "/data/project_8_barra"
+                        }
+                      ],
+                      "mountWarnUntil": 0
+                    },
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/optimization_with_tcosts.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 830613,
+          "key": "ad6d09a1-3942-40c0-85d4-7b574429c449",
+          "title": "barra data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ad6d09a1-3942-40c0-85d4-7b574429c449",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840128,
+              "key": "e0f7a86f-1e89-49f6-99eb-2c02801d6628",
+              "title": "M8l2 02 Barra Data Take2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7WjYfvpLSTM",
+                "china_cdn_id": "7WjYfvpLSTM.mp4"
+              }
+            },
+            {
+              "id": 830614,
+              "key": "450c9ce4-3871-43f5-9b57-54e00928993a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We’ll be using factor data that is generated by Barra.  This will be good practice because Barra data is used throughout the industry.\n\nNote that the data fields that start with the prefix U-S-F-A-S-T are factor exposures, one column for each factor.  We will use some of these as alpha factors, and the rest as risk factors.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 830615,
+          "key": "1f826e54-2f47-4f3c-bc68-55209a0ff893",
+          "title": "time offsets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1f826e54-2f47-4f3c-bc68-55209a0ff893",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840129,
+              "key": "a3928f0c-dc3c-4fff-a0b4-11d69b27d6b9",
+              "title": "M8l2 04 Time Offset Take2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TYYV3MnhCP0",
+                "china_cdn_id": "TYYV3MnhCP0.mp4"
+              }
+            },
+            {
+              "id": 830616,
+              "key": "29789b91-62db-4578-a753-81eb9d7f6aea",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nWe'll offset the dates so that the daily returns are realized on data that is received from two trading days before.  This allows for one trading day to execute the trades.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 839829,
+          "key": "53366430-d3f3-4210-b61e-d5222307388d",
+          "title": "holdings in dollars",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "53366430-d3f3-4210-b61e-d5222307388d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840130,
+              "key": "0b83cfc7-8b81-4ef5-b84e-3bb2a1739019",
+              "title": "M8l2 05 Holdings Dollars V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GKA0cpKx0BE",
+                "china_cdn_id": "GKA0cpKx0BE.mp4"
+              }
+            },
+            {
+              "id": 840131,
+              "key": "b12f8bf4-73fe-4196-972b-5969b1d95d62",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For the backtest, the positions for each asset will now be in units of dollars, instead of weights.   To make this distinction, we'll use the letter \"h\" for holdings, instead of the \"x\" that we had used for weights in prior projects and lessons.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 839830,
+          "key": "77a19cdf-8fd7-41b5-9253-c78a1dd021ff",
+          "title": "scaling alpha factor",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "77a19cdf-8fd7-41b5-9253-c78a1dd021ff",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840132,
+              "key": "145443f4-f7bf-4594-997d-b6b7373160b4",
+              "title": "M8l2 06 Scaling Alpha V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-gXKutS0jQc",
+                "china_cdn_id": "-gXKutS0jQc.mp4"
+              }
+            },
+            {
+              "id": 840134,
+              "key": "c30da472-f545-4088-8efb-a83d42bc6804",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To scale the alpha vector so that the expected portfolio return is in units of dollars, multiply the alpha vector by 1 basis point (1/10,000).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 830617,
+          "key": "fe1ef284-4c33-45dd-8426-6f8b9e894115",
+          "title": "Transaction Costs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fe1ef284-4c33-45dd-8426-6f8b9e894115",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840135,
+              "key": "751547d5-f23a-4b78-9601-d0ea0fe2e524",
+              "title": "M8l2 07 Tcost Part1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "E8di2Qu9Ogo",
+                "china_cdn_id": "E8di2Qu9Ogo.mp4"
+              }
+            },
+            {
+              "id": 830618,
+              "key": "bd951c56-4b84-43a2-8ca3-cbff10083342",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For institutional traders, the cost is due to the impact a trade has on the market price of the asset being bought or sold.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 840136,
+              "key": "c3a66e99-b957-4c78-9947-455f0f6cc418",
+              "title": "M8l2 07 Tcost Part2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mWMFwCkWEFk",
+                "china_cdn_id": "mWMFwCkWEFk.mp4"
+              }
+            },
+            {
+              "id": 830619,
+              "key": "28d5d7f2-0da1-4684-8490-d5025020cfed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nA “limit order book”, is a list of all the bids and asks for an asset that are made by market participants.  Bids are commitments to buy a certain quantity of an asset at a specified price.  “Asks”, also called “offers” are promises to sell a certain quantity of the asset at a specified price.  \n\nThe distance between these two market orders is called the spread, as in the bid-ask spread.  The point at the middle of the bid-ask spread is called the midpoint price.  The midpoint price is used as benchmark from which to calculate transaction costs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 830620,
+              "key": "84f17b46-95b9-4994-97cd-e11765a95e42",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6cc3ab_tcost-1/tcost-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/84f17b46-95b9-4994-97cd-e11765a95e42",
+              "caption": "",
+              "alt": "",
+              "width": 1097,
+              "height": 693,
+              "instructor_notes": null
+            },
+            {
+              "id": 830621,
+              "key": "006d23f7-11f5-4bc2-bd35-8e0100946315",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6cc3b9_tcost-2/tcost-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/006d23f7-11f5-4bc2-bd35-8e0100946315",
+              "caption": "",
+              "alt": "",
+              "width": 1233,
+              "height": 695,
+              "instructor_notes": null
+            },
+            {
+              "id": 840137,
+              "key": "1ef52267-71b2-4170-b55e-606e2ba28b80",
+              "title": "M8l2 07 Tcost Part3 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZFAZASS1m54",
+                "china_cdn_id": "ZFAZASS1m54.mp4"
+              }
+            },
+            {
+              "id": 830622,
+              "key": "65e0b61d-8a28-4a01-8e13-83ef32ad2aae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nThe midpoint price can serve as the benchmark from which we estimate the transaction cost.  For each child order that is traded, the difference between the price paid and this benchmark is a measure of the trade cost, which is called “slippage.”\nWe can think of slippage as the sum of two kinds of price impact.  There’s the temporary price impact, and permanent price impact.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 830623,
+              "key": "d4286e1a-e8d1-4d1a-b45d-4ae289e2e43c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6cc401_tcost-3/tcost-3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d4286e1a-e8d1-4d1a-b45d-4ae289e2e43c",
+              "caption": "",
+              "alt": "",
+              "width": 1213,
+              "height": 657,
+              "instructor_notes": null
+            },
+            {
+              "id": 830624,
+              "key": "386a7745-b019-4281-8ae7-706e59e100b5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6cc40c_tocst-4/tocst-4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/386a7745-b019-4281-8ae7-706e59e100b5",
+              "caption": "",
+              "alt": "",
+              "width": 1124,
+              "height": 662,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 839833,
+          "key": "84147880-d076-4e53-8de4-aaf36edeb1f0",
+          "title": "Transaction cost formula",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "84147880-d076-4e53-8de4-aaf36edeb1f0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840138,
+              "key": "1b14303c-5f48-44e4-9cc7-77c51f3bc241",
+              "title": "M8l2 10 Linear Impact V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ntAIxAOzQQM",
+                "china_cdn_id": "ntAIxAOzQQM.mp4"
+              }
+            },
+            {
+              "id": 840146,
+              "key": "225a8374-a8c3-45b0-9394-286bebe2c93e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The assumption that we'll use is that when the trade is 1% of Average Daily Volume, the price changes by 10 basis points.  The transaction cost is the percent change in price times the amount traded.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 840140,
+              "key": "a869fb41-c7de-4a64-821c-27665a808760",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ff791_screen-shot-2019-03-18-at-12.54.43-pm/screen-shot-2019-03-18-at-12.54.43-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a869fb41-c7de-4a64-821c-27665a808760",
+              "caption": "",
+              "alt": "",
+              "width": 891,
+              "height": 602,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 830626,
+          "key": "f2e1c2d2-8db0-4b72-9cd8-ea98bae66ab1",
+          "title": "Linear Transaction cost model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f2e1c2d2-8db0-4b72-9cd8-ea98bae66ab1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840148,
+              "key": "23c263ea-7521-45b1-8497-cc464d60d4ff",
+              "title": "M8l2 18 Linear Price Impact Part2 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aTNfxMjEg3w",
+                "china_cdn_id": "aTNfxMjEg3w.mp4"
+              }
+            },
+            {
+              "id": 840149,
+              "key": "727c7733-3fad-4ecb-92cf-523d938d501c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ff918_screen-shot-2019-03-18-at-12.55.43-pm/screen-shot-2019-03-18-at-12.55.43-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/727c7733-3fad-4ecb-92cf-523d938d501c",
+              "caption": "",
+              "alt": "",
+              "width": 1097,
+              "height": 607,
+              "instructor_notes": null
+            },
+            {
+              "id": 840150,
+              "key": "c219f772-f461-439c-8e2a-e49de585b874",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ff924_screen-shot-2019-03-18-at-12.55.32-pm/screen-shot-2019-03-18-at-12.55.32-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c219f772-f461-439c-8e2a-e49de585b874",
+              "caption": "",
+              "alt": "",
+              "width": 1110,
+              "height": 553,
+              "instructor_notes": null
+            },
+            {
+              "id": 840151,
+              "key": "69cb661b-f91b-4dbf-bd1d-c48fc7f78b98",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ff92f_screen-shot-2019-03-18-at-12.56.03-pm/screen-shot-2019-03-18-at-12.56.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/69cb661b-f91b-4dbf-bd1d-c48fc7f78b98",
+              "caption": "",
+              "alt": "",
+              "width": 1068,
+              "height": 453,
+              "instructor_notes": null
+            },
+            {
+              "id": 830631,
+              "key": "8159b152-620c-44a9-8037-4c7bda91cdcd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Square root model (optional, advanced)\nTo learn more about the square root impact model, Gordon recommends this paper, [Crossover from Linear to Square-Root Market Impact](https://arxiv.org/pdf/1811.05230.pdf).\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 830632,
+          "key": "ad574f13-d20e-4b4c-be62-ceea96c9c036",
+          "title": "Optimization without constraints",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ad574f13-d20e-4b4c-be62-ceea96c9c036",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840153,
+              "key": "6cdaa6b7-627d-477b-a465-4192a22401f0",
+              "title": "M8l2 11 Optimization Without Constraints Part1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "l8UOQTmyyUw",
+                "china_cdn_id": "l8UOQTmyyUw.mp4"
+              }
+            },
+            {
+              "id": 840154,
+              "key": "7cc5c43b-6371-4f32-9ff0-d7389c72e519",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Using the objective function instead of constraints\nAssume an optimization objective function has the following terms to minimize:\n\nObjective Function = common Risk + Specific Risk - Expected Return + Transaction Costs\n\nWe have some goals that we previously satisfied using constraints:\n\nMarket neutral\n\nPosition Size\n\nPortfolio Diversification\n\nCan you think about which term in the objective function also serves a similar purpose as these constraints?\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 840152,
+              "key": "d9289913-f714-43e2-9ed8-fa0cb15f3807",
+              "title": "M8l2 12 Optimization Without Constraints Part2 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fvwhoqt9U70",
+                "china_cdn_id": "fvwhoqt9U70.mp4"
+              }
+            },
+            {
+              "id": 840155,
+              "key": "857d64a2-3187-4590-b06a-dd09f9eb7005",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ffb25_screen-shot-2019-03-18-at-1.09.46-pm/screen-shot-2019-03-18-at-1.09.46-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/857d64a2-3187-4590-b06a-dd09f9eb7005",
+              "caption": "",
+              "alt": "",
+              "width": 734,
+              "height": 496,
+              "instructor_notes": null
+            },
+            {
+              "id": 840156,
+              "key": "b8a383c5-7471-448f-a3d1-6b6d664a596e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ffb2f_screen-shot-2019-03-18-at-1.09.56-pm/screen-shot-2019-03-18-at-1.09.56-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b8a383c5-7471-448f-a3d1-6b6d664a596e",
+              "caption": "",
+              "alt": "",
+              "width": 724,
+              "height": 535,
+              "instructor_notes": null
+            },
+            {
+              "id": 840157,
+              "key": "654ceadc-2f47-44e8-94d4-6f8a9fe8c822",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ffb3b_screen-shot-2019-03-18-at-1.10.03-pm/screen-shot-2019-03-18-at-1.10.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/654ceadc-2f47-44e8-94d4-6f8a9fe8c822",
+              "caption": "",
+              "alt": "",
+              "width": 745,
+              "height": 548,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 830636,
+          "key": "a4401c31-1ca1-484a-b463-7c9f96ae72d6",
+          "title": "Risk Factor Matrix",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a4401c31-1ca1-484a-b463-7c9f96ae72d6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840158,
+              "key": "942e1e71-4597-4a7e-8ecc-35c068bfba22",
+              "title": "M8l2 13 Risk Factor Matrix V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Obwjj-Fs2LM",
+                "china_cdn_id": "Obwjj-Fs2LM.mp4"
+              }
+            },
+            {
+              "id": 840159,
+              "key": "fccee197-62c4-4440-a751-89befec4802e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When filling the risk factor matrix, we can use just the variances and set the covariances in the off-diagonals to zero.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 830638,
+              "key": "7522c6dc-9355-4619-aaa5-5a0ae80866a3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6cc515_factor-cov/factor-cov.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7522c6dc-9355-4619-aaa5-5a0ae80866a3",
+              "caption": "",
+              "alt": "",
+              "width": 1246,
+              "height": 680,
+              "instructor_notes": null
+            },
+            {
+              "id": 830639,
+              "key": "0513950d-0e7f-4485-9d79-f2134acf640c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6cc51f_factor-var/factor-var.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0513950d-0e7f-4485-9d79-f2134acf640c",
+              "caption": "",
+              "alt": "",
+              "width": 1092,
+              "height": 668,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 830641,
+          "key": "f93ff8f2-a283-4ee5-bd0e-30f15a442845",
+          "title": "Avoid N by N matrix",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f93ff8f2-a283-4ee5-bd0e-30f15a442845",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840160,
+              "key": "bfeb951f-ce5c-42b9-ae95-8d36d2effe67",
+              "title": "M8l2 14 N By N Matrix V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qYAWhI8hk7U",
+                "china_cdn_id": "qYAWhI8hk7U.mp4"
+              }
+            },
+            {
+              "id": 840164,
+              "key": "96f6106e-58a4-4aae-a15e-4851bae5d82f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ffcaf_screen-shot-2019-03-18-at-1.16.33-pm/screen-shot-2019-03-18-at-1.16.33-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/96f6106e-58a4-4aae-a15e-4851bae5d82f",
+              "caption": "",
+              "alt": "",
+              "width": 1054,
+              "height": 604,
+              "instructor_notes": null
+            },
+            {
+              "id": 840161,
+              "key": "e4545b90-1eae-4e85-91c7-c32c5147f284",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ffc7b_screen-shot-2019-03-18-at-1.14.37-pm/screen-shot-2019-03-18-at-1.14.37-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e4545b90-1eae-4e85-91c7-c32c5147f284",
+              "caption": "",
+              "alt": "",
+              "width": 1056,
+              "height": 635,
+              "instructor_notes": null
+            },
+            {
+              "id": 840162,
+              "key": "4355bf3c-2573-45f7-8cd1-77e29baca0ab",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ffc87_screen-shot-2019-03-18-at-1.14.44-pm/screen-shot-2019-03-18-at-1.14.44-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4355bf3c-2573-45f7-8cd1-77e29baca0ab",
+              "caption": "",
+              "alt": "",
+              "width": 1025,
+              "height": 630,
+              "instructor_notes": null
+            },
+            {
+              "id": 840163,
+              "key": "671ba922-42a1-4166-805f-79b13f2cb674",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ffc91_screen-shot-2019-03-18-at-1.14.51-pm/screen-shot-2019-03-18-at-1.14.51-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/671ba922-42a1-4166-805f-79b13f2cb674",
+              "caption": "",
+              "alt": "",
+              "width": 854,
+              "height": 602,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 840165,
+          "key": "6ee72dae-8b72-4cf2-8693-703b24f664f3",
+          "title": "risk aversion parameter",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6ee72dae-8b72-4cf2-8693-703b24f664f3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840166,
+              "key": "52462e9c-93d6-47e3-a845-5c1a42e52854",
+              "title": "M8l2 16 Risk Aversion V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tmTqo-yfQKE",
+                "china_cdn_id": "tmTqo-yfQKE.mp4"
+              }
+            },
+            {
+              "id": 840167,
+              "key": "f3a00b6f-ee74-4591-90e6-20f235c7f7ca",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/March/5c8ffd12_screen-shot-2019-03-18-at-1.18.17-pm/screen-shot-2019-03-18-at-1.18.17-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f3a00b6f-ee74-4591-90e6-20f235c7f7ca",
+              "caption": "",
+              "alt": "",
+              "width": 976,
+              "height": 581,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 830647,
+          "key": "87046d69-331f-4108-8376-4f1fc0287278",
+          "title": "objective function, gradient and optimizer",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "87046d69-331f-4108-8376-4f1fc0287278",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840168,
+              "key": "757cf3ea-a718-4a5e-b16c-f4a4119a84d6",
+              "title": "M8l2 17 Objective Function Gradient V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MXQTfFrZ44Y",
+                "china_cdn_id": "MXQTfFrZ44Y.mp4"
+              }
+            },
+            {
+              "id": 830648,
+              "key": "1b171ca8-e06e-4bb0-a0d5-6cc90c57dc0e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Optimization Overview in Scipy\nThis [Scipy link “Mathematical optimization”](http://scipy-lectures.org/advanced/mathematical_optimization/) is a good reference on the various optimizers that are available in scipy.  In addition to the L-BFGS method, other optimizers worth trying are Powell, Nelder-Mead, and Conjugate Gradient optimizers.\n\nThis [course website](http://web.stanford.edu/class/ee364b/lectures.html)\nalso contains insightful explanation of various optimization algorithms.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 830649,
+          "key": "ddf4bc8a-0222-4744-a401-fdcafff39aa0",
+          "title": "outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ddf4bc8a-0222-4744-a401-fdcafff39aa0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840169,
+              "key": "35fc3883-d37c-4ec3-a619-f07a4ee0d696",
+              "title": "M82 Outro V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GbWg0wSTDfk",
+                "china_cdn_id": "GbWg0wSTDfk.mp4"
+              }
+            },
+            {
+              "id": 830650,
+              "key": "4383a88e-66d1-411a-aa28-0838f9d41323",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, you learned about some core steps that you’d take to design a backtest.  You practiced incorporating a time delay to account for when information is received, and to allow for trading into the desired position.  You also learned to model transaction costs, and designed the optimization with computational efficiency in mind.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 839840,
+          "key": "7c2e9777-82e1-417e-b549-5be7f4d6313b",
+          "title": "ML for Trading interview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7c2e9777-82e1-417e-b549-5be7f4d6313b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840197,
+              "key": "e48200cf-8f6b-4c95-aa68-a781504d9e73",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Gordon will discuss some of the research that he is most well known for, applying deep reinforcement learning to trade execution.  This is an optional but recommended video.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 840193,
+              "key": "27a799d2-387e-423b-8490-d7160c61cb6e",
+              "title": "NewsRoom Juan V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DpO73QaXaOY",
+                "china_cdn_id": "DpO73QaXaOY.mp4"
+              }
+            },
+            {
+              "id": 840194,
+              "key": "dcb05cf1-2c58-4275-a893-a4648b478d23",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Machine Learning for Trading\n\nHere is Gordon's paper [Machine Learning for Trading](https://cims.nyu.edu/~ritter/ritter2017machine.pdf).  You can find Gordon's other major publications [here](https://cims.nyu.edu/~ritter/)",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

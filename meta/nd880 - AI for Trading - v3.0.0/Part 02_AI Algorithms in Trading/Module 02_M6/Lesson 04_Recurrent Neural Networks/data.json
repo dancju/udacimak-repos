@@ -1,0 +1,905 @@
+{
+  "data": {
+    "lesson": {
+      "id": 766560,
+      "key": "e75be3c6-0412-44e5-a851-2e0c82b49218",
+      "title": "Recurrent Neural Networks",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to use recurrent neural networks to learn from sequential data such as text. Build a network that can generate realistic text one letter at a time.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/e75be3c6-0412-44e5-a851-2e0c82b49218/766560/1541784809585/Recurrent+Neural+Networks+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/e75be3c6-0412-44e5-a851-2e0c82b49218/766560/1541784804979/Recurrent+Neural+Networks+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 780912,
+          "key": "e0568d87-96f4-4270-8552-22dc05a1e4f4",
+          "title": "Intro to RNNs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e0568d87-96f4-4270-8552-22dc05a1e4f4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780913,
+              "key": "ecdef93b-4f5b-407c-82a6-9dd2f7c50669",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/October/5bc13632_meme/meme.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ecdef93b-4f5b-407c-82a6-9dd2f7c50669",
+              "caption": "Hi, it's Luis again!",
+              "alt": "Image of Luis Serrano",
+              "width": 250,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 780918,
+              "key": "2ca50cb8-2dcd-46ff-b9bc-cf96ff5e469a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Recurrent Neural Networks\n\nHi! It's Luis again!\n\nNow that you have some experience with PyTorch and deep learning, I'll be teaching you about recurrent neural networks (**RNN**s) and long short-term memory (**LSTM**) . RNNs are designed specifically to learn from sequences of data by passing the hidden state from one step in the sequence to the next step in the sequence, combined with the input. LSTMs are an improvement the RNNs, and are quite useful when our neural network needs to switch between remembering recent things, and things from long time ago. But first, I want to give you some great references to study this further. There are many posts out there about LSTMs, here are a few of my favorites:\n\n- [Chris Olah's LSTM post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)\n- [Edwin Chen's LSTM post](http://blog.echen.me/2017/05/30/exploring-lstms/)\n- [Andrej Karpathy's blog post](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) on RNNs\n- [Andrej Karpathy's lecture](https://www.youtube.com/watch?v=iX5V1WpxxkY) on RNNs and LSTMs from CS231n\n\nSo, let's dig in!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 330174,
+          "key": "099654ea-c20c-458a-9f3b-5d393fa14614",
+          "title": "RNN vs LSTM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "099654ea-c20c-458a-9f3b-5d393fa14614",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331380,
+              "key": "6651e9ba-9069-4688-bdb2-7b1d111e3780",
+              "title": "RNN Vs LSTM",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "70MgF-IwAr8",
+                "china_cdn_id": "70MgF-IwAr8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 330175,
+          "key": "70bbdf4a-5e6f-4ee7-884c-409848196529",
+          "title": "Basics of LSTM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "70bbdf4a-5e6f-4ee7-884c-409848196529",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331382,
+              "key": "2a62182f-6b03-48e8-9c79-08654ee75bca",
+              "title": "LSTM Basics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gjb68a4XsqE",
+                "china_cdn_id": "gjb68a4XsqE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 330176,
+          "key": "7f4778d7-1aba-4f7b-9824-1122a3522059",
+          "title": "Architecture of LSTM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7f4778d7-1aba-4f7b-9824-1122a3522059",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331381,
+              "key": "9cf1d046-1ff9-4dec-9ac9-5e1b09b4cf0f",
+              "title": "LSTM Architecture",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ycwthhdx8ws",
+                "china_cdn_id": "ycwthhdx8ws.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 330177,
+          "key": "afe4e11e-7f3a-4b23-b046-ab4ab90248d8",
+          "title": "The Learn Gate",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "afe4e11e-7f3a-4b23-b046-ab4ab90248d8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463707,
+              "key": "91c6ef10-053d-4879-8bdd-37c2adc479e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 331383,
+              "key": "8094be0c-4ab6-47cd-8f2e-1f5965eed29f",
+              "title": "Learn Gate",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aVHVI7ovbHY",
+                "china_cdn_id": "aVHVI7ovbHY.mp4"
+              }
+            },
+            {
+              "id": 463705,
+              "key": "100350ea-5ea0-4347-b1d5-7aa48a053d51",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The output of the _Learn Gate_ is <span class=\"mathquill\">N_ti_t</span> where:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463706,
+              "key": "c094c2f2-ae08-4387-89c2-c5dfbbb1bcfe",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e2cc3_screen-shot-2017-11-16-at-4.26.22-pm/screen-shot-2017-11-16-at-4.26.22-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c094c2f2-ae08-4387-89c2-c5dfbbb1bcfe",
+              "caption": "_Equation 1_",
+              "alt": "",
+              "width": 300,
+              "height": 130,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 330178,
+          "key": "f87835a3-9e52-4e40-a538-e553d53a0978",
+          "title": "The Forget Gate",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f87835a3-9e52-4e40-a538-e553d53a0978",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331384,
+              "key": "1e8ddd3b-b5da-47cf-a956-66b343d1b39b",
+              "title": "Forget Gate",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iWxpfxLUPSU",
+                "china_cdn_id": "iWxpfxLUPSU.mp4"
+              }
+            },
+            {
+              "id": 463708,
+              "key": "4a878c14-8ab2-4731-be54-13a267389d40",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The output of the _Forget Gate_ is <span class=\"mathquill\">LTM_{t-1}f_t</span> where:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463709,
+              "key": "ca255137-5bc1-40a3-8079-0d13d81459b8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e2d24_screen-shot-2017-11-16-at-4.27.58-pm/screen-shot-2017-11-16-at-4.27.58-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ca255137-5bc1-40a3-8079-0d13d81459b8",
+              "caption": "_Equation 2_",
+              "alt": "",
+              "width": 250,
+              "height": 80,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 330179,
+          "key": "bafc7674-799e-4d94-8ad2-c3a7ccda865f",
+          "title": "The Remember Gate",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bafc7674-799e-4d94-8ad2-c3a7ccda865f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331385,
+              "key": "cc1f9d29-a3ac-4498-bd45-1991fbf589d9",
+              "title": "Remember Gate",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0qlm86HaXuU",
+                "china_cdn_id": "0qlm86HaXuU.mp4"
+              }
+            },
+            {
+              "id": 463710,
+              "key": "e628bfc6-3dd5-4723-aa67-cbf86bf9007d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The output of the _Remember Gate_ is: \n\n<span class=\"mathquill\">LTM_{t-1}f_t+N_ti_t</span>\n\n_Equation 3_ \n\n                                                  \n\n(<span class=\"mathquill\">N_t, i_t </span> and <span class=\"mathquill\">f_t </span> are calculated in _equations 1_ and _2_)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 330180,
+          "key": "0cf688e2-19b3-4e72-848a-49eeb90bd948",
+          "title": "The Use Gate",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0cf688e2-19b3-4e72-848a-49eeb90bd948",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463714,
+              "key": "c7e509b4-65b0-443a-a369-9cd0281e4fd1",
+              "title": "LSTM 7 Use Gate",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5Ifolm1jTdY",
+                "china_cdn_id": "5Ifolm1jTdY.mp4"
+              }
+            },
+            {
+              "id": 463712,
+              "key": "644d329e-6ffc-4e20-aaff-fda505258361",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "At 00:27 : Luis refers to obtaining New Short Term Memory instead it's **New Long Term Memory**.\n\nThe output of the _Use Gate_ is <span class=\"mathquill\">U_t V_t</span> where:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463713,
+              "key": "feeca9d4-7771-405e-b90b-2c007b0bc731",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e2e00_screen-shot-2017-11-16-at-4.31.41-pm/screen-shot-2017-11-16-at-4.31.41-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/feeca9d4-7771-405e-b90b-2c007b0bc731",
+              "caption": "_Equation 4_",
+              "alt": "",
+              "width": 250,
+              "height": 120,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 330181,
+          "key": "793c6221-30c9-40cc-b9aa-65a51696b1c7",
+          "title": "Putting it All Together",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "793c6221-30c9-40cc-b9aa-65a51696b1c7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331387,
+              "key": "fd806831-c95a-4179-adc9-81123c994523",
+              "title": "Putting It All Together",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IF8FlKW-Zo0",
+                "china_cdn_id": "IF8FlKW-Zo0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 330285,
+          "key": "f9f95dcb-bb0e-43d3-841c-9277c54207cb",
+          "title": "Other architectures",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f9f95dcb-bb0e-43d3-841c-9277c54207cb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331388,
+              "key": "31ab9354-d0a3-492b-8423-3a76b32d86c0",
+              "title": "Other Architectures",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MsxFDuYlTuQ",
+                "china_cdn_id": "MsxFDuYlTuQ.mp4"
+              }
+            },
+            {
+              "id": 463716,
+              "key": "ac307b19-ce90-4aef-826d-26508ecc2922",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Additional information about GRUs can be found in the following links:\n- [Michael Guerzhoy's post](http://www.cs.toronto.edu/~guerzhoy/321/lec/W09/rnn_gated.pdf)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780914,
+          "key": "016118b6-b376-40d4-b115-e4a2465df6a5",
+          "title": "Implementing RNNs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "016118b6-b376-40d4-b115-e4a2465df6a5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780915,
+              "key": "b260f9fc-bf85-4e24-914a-e2fe5152ee97",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be2380d_cezanne-head/cezanne-head.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b260f9fc-bf85-4e24-914a-e2fe5152ee97",
+              "caption": "Hi, it's Cezanne!",
+              "alt": "Image of Cezanne",
+              "width": 250,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 780917,
+              "key": "36333439-3765-4a71-a6e6-65bb0043efe4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Implementing Recurrent Neural Networks\n\nNow that you've learned about RNNs and LSTMs from Luis, it's time to see how we implement them in PyTorch. With a bit of an assist from Mat, I'll be leading you through a couple notebooks showing how to build RNNs with PyTorch. First, I'll show you how to learn from time-series data. Then, you'll implement a character-level RNN. That is, it will learn from some text one character at a time, then generate new text one character at a time.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 730872,
+          "key": "75b86f72-a241-4df3-8eb3-d688835f0b93",
+          "title": "Time-Series Prediction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "75b86f72-a241-4df3-8eb3-d688835f0b93",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 751845,
+              "key": "9ade4f19-5a96-4d2b-b412-c41460a56028",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Code Walkthrough & Repository \n\nThe below video is a walkthrough of code that you can find in our public Github repository, if you navigate to `recurrent-neural-networks > time-series` and [the Simple_RNN.ipynb notebook](https://github.com/udacity/deep-learning-v2-pytorch/blob/master/recurrent-neural-networks/time-series/Simple_RNN.ipynb). Feel free to go through this code on your own, locally. \n\nThis example is meant to give you an idea of how PyTorch represents RNNs and how you might represent memory in code. Later, you'll be given more complex exercise and solution notebooks, in-classroom.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 751844,
+              "key": "805afa7c-4fe8-40a7-96bb-c8fa2156cd4a",
+              "title": "02 Time Series Prediction V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xV5jHLFfJbQ",
+                "china_cdn_id": "xV5jHLFfJbQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 730873,
+          "key": "d69b005f-8855-4990-89db-9ab3af3ec7dc",
+          "title": "Training & Memory",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d69b005f-8855-4990-89db-9ab3af3ec7dc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 751852,
+              "key": "e78bb123-cd4a-499f-88e3-724d8b25c376",
+              "title": "03 Training Memory V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sx7T_KP5v9I",
+                "china_cdn_id": "sx7T_KP5v9I.mp4"
+              }
+            },
+            {
+              "id": 751854,
+              "key": "7af4de37-1b2a-4f7b-8bce-20712f5d1dd1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Recurrent Layers\n\nHere is the documentation for the main types of [recurrent layers in PyTorch](https://pytorch.org/docs/stable/nn.html#recurrent-layers). Take a look and read about the three main types: RNN, LSTM, and GRU.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 751855,
+              "key": "a9c608f4-5e5e-4fce-91a4-4eebfa75f5e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Hidden State Dimensions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 751862,
+              "key": "fdbd5f69-acce-4d08-928e-e9d9f8949fc5",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fdbd5f69-acce-4d08-928e-e9d9f8949fc5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Say you've defined a GRU layer with `input_size = 100`, `hidden_size = 20`, and `num_layers=1`.\nWhat will the dimensions of the hidden state be if you're passing in data, batch first, in batches of 3 sequences at a time?",
+                "answers": [
+                  {
+                    "id": "a1539659912593",
+                    "text": "`(1, 1, 20)`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1539660094445",
+                    "text": "`(1, 1, 100)`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1539660099136",
+                    "text": "`(1, 3, 20)`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1539660107884",
+                    "text": "`(1, 3, 100)`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1539660241639",
+                    "text": "`(3, 1, 20)`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 305304,
+          "key": "6538eb14-1ec2-4a25-bc73-5942a48b1141",
+          "title": "Character-wise RNNs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6538eb14-1ec2-4a25-bc73-5942a48b1141",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 306074,
+              "key": "a1b53a77-896f-46d1-9827-2127679400fc",
+              "title": "Character-Wise RNN",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dXl3eWCGLdU",
+                "china_cdn_id": "dXl3eWCGLdU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 305305,
+          "key": "5a65c5b3-5cfc-4753-bcde-25a490978e6c",
+          "title": "Sequence Batching",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5a65c5b3-5cfc-4753-bcde-25a490978e6c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 306077,
+              "key": "3eb4b04b-ea18-44b9-82fe-ad8d094bca10",
+              "title": "Sequence-Batching",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Z4OiyU0Cldg",
+                "china_cdn_id": "Z4OiyU0Cldg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780499,
+          "key": "cfeeb323-45d6-4567-9a7b-49700a25dcfe",
+          "title": "Notebook: Character-Level RNN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cfeeb323-45d6-4567-9a7b-49700a25dcfe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780500,
+              "key": "3472ff83-a28e-48bb-b308-3059a8aff42c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Notebook: Character-Level RNN\n\nNow you have all the information you need to implement an RNN of our own. The next few videos will be all about character-level text prediction with an LSTM!\n\n**It's suggested that you open the notebook in a new, working tab and continue working on it as you go through the instructional videos in this tab.** This way you can toggle between learning new skills and coding/applying new skills.\n\nTo open this notebook, go to our notebook repo (available [from here on Github](https://github.com/udacity/deep-learning-v2-pytorch)) and open the notebook **Character_Level_RNN_Exercise.ipynb** in the **recurrent-neural-networks > char-rnn** folder.  You can either download the repository with `git clone https://github.com/udacity/deep-learning-v2-pytorch.git`, or download it as an archive file from [this link](https://github.com/udacity/deep-learning-v2-pytorch/archive/master.zip).\n\n# Instructions\n\n* Load in text data\n* Pre-process that data, encoding characters as integers and creating one-hot input vectors\n* Define an RNN that predicts the *next* character when given an input sequence\n* Train the RNN and use it to generate *new* text\n\nThis is a self-assessed lab. If you need any help or want to check your answers, feel free to check out the solutions notebook in the same folder, or by clicking [here](https://github.com/udacity/deep-learning-v2-pytorch/blob/master/recurrent-neural-networks/char-rnn/Character_Level_RNN_Solution.ipynb).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780725,
+              "key": "f39aaa7b-2930-4bbf-a71f-65bf0e76af76",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Note about GPUs\n\nIn this notebook, you'll find training these networks is much faster if you use a GPU. However, you can still complete the exercises without a GPU. If you can't use a local GPU, we suggest you use cloud platforms such as [AWS](https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html), [GCP](https://cloud.google.com/gpu/), and [FloydHub](https://www.floydhub.com/) to train your networks on a GPU.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 751838,
+          "key": "04794f8a-7728-4c0a-a808-aa7972bc7738",
+          "title": "Implementing a Char-RNN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "04794f8a-7728-4c0a-a808-aa7972bc7738",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 751868,
+              "key": "2faf34a9-34f1-4887-ae85-e9224e4391a7",
+              "title": "04 Implementing CharRNN V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MMtgZXzFB10",
+                "china_cdn_id": "MMtgZXzFB10.mp4"
+              }
+            },
+            {
+              "id": 751885,
+              "key": "309d905c-013f-4f27-ad51-905d8db9d373",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "*Typo: Above you may see the title, `Chararacter_Level_RNN_Exercise`. This is a mistake on my part and the in-classroom notebooks have been updated with the correct spelling.* \n\nKnow that the code is correct even if the title has a typo :) ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 751839,
+          "key": "dc32e24e-62ef-4339-b455-fd3d905b5211",
+          "title": "Batching Data, Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dc32e24e-62ef-4339-b455-fd3d905b5211",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 751869,
+              "key": "993bfdd1-b9d6-47a4-abe2-5345ad2e3024",
+              "title": "05 Batching Data V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9Eg0wf3eW-k",
+                "china_cdn_id": "9Eg0wf3eW-k.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 751840,
+          "key": "a08bb8eb-fb71-4012-8a17-b78c841b68fb",
+          "title": "Defining the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a08bb8eb-fb71-4012-8a17-b78c841b68fb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 751870,
+              "key": "9823eb22-5e36-4a56-9192-3db886b87a37",
+              "title": "06 Defining Model V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_LWzyqq4hCY",
+                "china_cdn_id": "_LWzyqq4hCY.mp4"
+              }
+            },
+            {
+              "id": 766542,
+              "key": "33a2fb6b-8ba5-46ef-b402-6dfab765b0b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Contiguous variables\n\nIf you are stacking up multiple LSTM outputs, it may be necessary to use `.contiguous()` to reshape the output. The notebook and Github repo code has been updated to include this use case in the `forward` function of the model:\n```\n# stack up LSTM outputs\nout = out.contiguous().view(-1, self.n_hidden)\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 751841,
+          "key": "284fab25-93cb-4192-840e-371f0c75cc07",
+          "title": "Char-RNN, Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "284fab25-93cb-4192-840e-371f0c75cc07",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 751871,
+              "key": "e4d229ba-07c0-436f-9bb9-7449557ba7b6",
+              "title": "07 CharRNN Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ed33qePHrJM",
+                "china_cdn_id": "ed33qePHrJM.mp4"
+              }
+            },
+            {
+              "id": 751874,
+              "key": "c798b2ac-6d16-454c-bb51-411bea065111",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Representing Memory\n\nYou’ve learned that RNN’s work well for sequences of data because they have a kind of memory. This memory is represented by something called the **hidden state**.\n\nIn the character-level LSTM example, each LSTM cell, in addition to accepting a character as input and generating an output character, also has some hidden state, and each cell will pass along its hidden state to the next cell. \n\nThis connection creates a kind of memory by which a series of cells can remember which characters they’ve just seen and use that information to inform the next prediction!\n\nFor example, if a cell has just generated the character `a` it likely will *not* generate another `a`, right after that!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 766544,
+              "key": "55f2b211-c380-43e1-9d4d-72314754289b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### `net.eval()`\n\nThere is an omission in the above code: including `net.eval()` !\n\n`net.eval(`) will set all the layers in your model to evaluation mode. This affects layers like dropout layers that turn \"off\" nodes during training with some probability, but should allow every node to be \"on\" for evaluation. So, you should set your model to evaluation mode **before testing or validating your model**, and before, for example, sampling and making predictions about the likely next character in a given sequence. I'll set net.train()` (training mode) only during the training loop. \n\nThis is reflected in the previous notebook code and in our [Github repository](https://github.com/udacity/deep-learning-v2-pytorch/blob/master/recurrent-neural-networks/char-rnn).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 751842,
+          "key": "ecaff24e-7314-43b1-a11d-49762fa5c5ff",
+          "title": "Making Predictions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ecaff24e-7314-43b1-a11d-49762fa5c5ff",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 751875,
+              "key": "146c5fbc-1939-4c73-87a7-30b1fb5debe8",
+              "title": "08 Making Predictions V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BhrpV3kwATo",
+                "china_cdn_id": "BhrpV3kwATo.mp4"
+              }
+            },
+            {
+              "id": 751882,
+              "key": "d2625806-47ba-45b6-99d1-8d90af18752f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Examples of RNNs\n\nTake a look at one of my favorite examples of RNNs making predictions based on some user-generated input dat: the [sketch-rnn by Magenta](https://magenta.tensorflow.org/assets/sketch_rnn_demo/index.html). This RNN takes as input a starting sketch, drawn by you, and then tries to complete your sketch using a particular model. For example, it can learn to complete a sketch of a pineapple or the mona lisa!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 751884,
+              "key": "fddd9725-74f8-438f-ba31-7b767de4227e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/October/5bc55cf8_screen-shot-2018-10-15-at-8.35.15-pm/screen-shot-2018-10-15-at-8.35.15-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fddd9725-74f8-438f-ba31-7b767de4227e",
+              "caption": "Example sketch-rnn output of the mona lisa.",
+              "alt": "",
+              "width": 2543,
+              "height": 1016,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

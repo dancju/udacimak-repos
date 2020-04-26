@@ -1,0 +1,458 @@
+{
+  "data": {
+    "lesson": {
+      "id": 770446,
+      "key": "7b826e39-157c-43f1-ad6d-f9d6e5128910",
+      "title": "Hyperparameter Tuning",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson students will see how to use SageMaker’s automatic hyperparameter tuning tools on the Boston housing prices model from lesson 2 and with a sentiment analysis model.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/7b826e39-157c-43f1-ad6d-f9d6e5128910/770446/1544197989172/Hyperparameter+Tuning+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/7b826e39-157c-43f1-ad6d-f9d6e5128910/770446/1544197983670/Hyperparameter+Tuning+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 770454,
+          "key": "32f45030-eb9f-4be0-bc05-45e72eab2ce9",
+          "title": "Hyperparameter Tuning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "32f45030-eb9f-4be0-bc05-45e72eab2ce9",
+            "completed_at": "2019-11-30T12:40:38.022Z",
+            "last_viewed_at": "2019-11-30T12:40:35.698Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782211,
+              "key": "502b9c3b-fe04-4d51-af8b-aa5bf30caa74",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Hyperparameter Tuning",
+              "instructor_notes": ""
+            },
+            {
+              "id": 783158,
+              "key": "7f25a8b0-02fa-4350-8974-d4ca20ad2b3c",
+              "title": "L4 00 Intro V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ohVX3RUTghg",
+                "china_cdn_id": "ohVX3RUTghg.mp4"
+              }
+            },
+            {
+              "id": 782217,
+              "key": "07b2ac04-ebe6-4808-adc0-240944d0c9fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, we are going to take a look at how we can improve our models using one of SageMaker's features. In particular, we are going to explore how we can use SageMaker to perform hyperparameter tuning.\n\nIn many machine learning models there are some parameters that need to be specified by the model creator and which can't be determined directly from the data itself. Generally the approach to finding the best parameters is to train a bunch of models with different parameters and then choose the model that works best.\n\nSageMaker provides an automated way of doing this. In fact, SageMaker also does this in an intelligent way using Bayesian optimization. What we will do is specify ranges for our hyperparameters. Then, SageMaker will explore different choices within those ranges, increasing the performance of our model over time.\n\nIn addition to learning how to use hyperparameter tuning, we will look at Amazon's CloudWatch service. For our purposes, CloudWatch provides a user interface through which we can examine various logs generated during training. This can be especially useful when diagnosing errors.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780354,
+          "key": "40edaa76-5587-4ea8-8d9d-2d128a19ab2d",
+          "title": "Introduction to Hyperparameter Tuning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "40edaa76-5587-4ea8-8d9d-2d128a19ab2d",
+            "completed_at": "2019-11-30T12:44:32.698Z",
+            "last_viewed_at": "2019-11-30T12:44:25.612Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782220,
+              "key": "6376c211-b584-4b67-9b35-da7eb38d6c79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Introduction to Hyperparameter Tuning",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782223,
+              "key": "2cf25950-f8f6-48c2-a688-c6da4f86184f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's take a look at how we can use SageMaker to improve our Boston housing model. To begin with, we will remind ourselves how we train a model using SageMaker.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780369,
+              "key": "04ba32e1-6990-470d-8679-78fd38ff48a2",
+              "title": "Deployment L4 C1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nah8kxqp55U",
+                "china_cdn_id": "nah8kxqp55U.mp4"
+              }
+            },
+            {
+              "id": 782225,
+              "key": "0fa41eac-4cdf-419f-bfe2-6c895e87f9f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Essentially, tuning a model means training a bunch of models, each with different hyperparameters, and then choosing the best performing model. Of course, we still need to describe two different aspects of hyperparameter tuning:\n\n1) What is a *bunch* of models? In other words, how many different models should we train?\n\n2) Which model is the *best* model? In other words, what sort of metric should we use in order to distinguish how well one model performs relative to another.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780356,
+          "key": "2bb14e1c-7efc-4b1c-9ec2-009b81f62f48",
+          "title": "Boston Housing Example - Tuning the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2bb14e1c-7efc-4b1c-9ec2-009b81f62f48",
+            "completed_at": "2019-11-30T12:46:56.558Z",
+            "last_viewed_at": "2019-11-30T12:46:48.069Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782226,
+              "key": "4bb7b23d-5694-4387-84e5-88ecb3aa44f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Boston Housing Example",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782227,
+              "key": "59ac171e-cec0-41ce-bfb9-4dace061db36",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the video below we will look at how we can set up a hyperparameter tuning job using the high level approach in SageMaker. To following along, open up the `Boston Housing - XGBoost (Hyperparameter Tuning) - High Level.ipynb` notebook in the `Tutorials` directory.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780380,
+              "key": "e8e99ed3-e662-4d43-8864-4fbe89129eb1",
+              "title": "Deployment L4 C2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "lsYRtKivrGc",
+                "china_cdn_id": "lsYRtKivrGc.mp4"
+              }
+            },
+            {
+              "id": 782228,
+              "key": "0f72d9f6-56a9-426d-baa4-f52678c04a1a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Generally speaking, the way to think about hyperparameter tuning inside of SageMaker is that we start with a **base** collection of hyperparameters which describe a default model. We then give some additional set of hyperparameters ranges. These ranges tell SageMaker which hyperparameters can be varied, with the goal being to improve the default model.\n\nWe then describe how to compare models, which in our instance is just by way of specifying a metric. Then we describe how many total models we want SageMaker to train.\n\n**Note:** In addition to creating a tuned model in this notebook, we also saw how the `attach` method can be used to create an `Estimator` object which is attached to an already completed training job. This method is useful in other situations as well.\n\nYou will notice that throughout this module we train the same model multiple times. In most of the Boston Housing notebooks, for example, we train an XGBoost model with the same hyperparameters. The reason for this is so that each notebook is self contained and can be run even if you haven't run the other notebooks.\n\nIn *your* case however, you've probably already created an XGBoost model on the Boston Housing training set with the standard hyperparameters. If you wanted to, you could use the `attach` method to avoid having to re-train the model.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780357,
+          "key": "60de13b0-7484-406d-a453-5eeba318386e",
+          "title": "Mini-Project: Tuning the Sentiment Analysis Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "60de13b0-7484-406d-a453-5eeba318386e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782230,
+              "key": "54e27669-2468-4b20-8e8f-4ab1375b604c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Mini-Project: Tuning the Sentiment Analysis Model",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780381,
+              "key": "0ff92659-96c8-42e0-821d-e19862e26662",
+              "title": "Deployment L4 C3 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7XORMSX7vAY",
+                "china_cdn_id": "7XORMSX7vAY.mp4"
+              }
+            },
+            {
+              "id": 782231,
+              "key": "4ca4e5cb-f139-4a46-80fc-c7f0b51c019d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you've seen an example of how to use SageMaker to tune a model, it's *your* turn to try it out!\n\nInside of the `Mini-Projects` folder is a notebook called `IMDB Sentiment Analysis - XGBoost (Hyperparameter Tuning).ipynb`. Inside of the notebook are some tasks for you to complete.\n\n**Note:** To make things a little more interesting, there is a small error in the notebook. Try not to anticipate where the error is. Instead, just continue through the notebook as if nothing is wrong and when an error occurs, try to use CloudWatch to diagnose and fix it.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780360,
+          "key": "8767f9cc-185c-4beb-8f4c-b3676829f127",
+          "title": "Mini-Project: Solution - Tuning the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8767f9cc-185c-4beb-8f4c-b3676829f127",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780383,
+              "key": "f70c0349-ee62-4868-bd93-587dfe98d02c",
+              "title": "Deployment L4 C4 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Q2Vthdca49I",
+                "china_cdn_id": "Q2Vthdca49I.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780361,
+          "key": "be2485bb-cdce-4203-8bd8-5261e200ed7d",
+          "title": "Mini-Project: Solution - Fixing the Error and Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "be2485bb-cdce-4203-8bd8-5261e200ed7d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780387,
+              "key": "0805a81e-fe1b-4af9-91e5-b1bab6da3a66",
+              "title": "Deployment L4 C5 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "i-EjGkZ8z30",
+                "china_cdn_id": "i-EjGkZ8z30.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780362,
+          "key": "df098353-bc2b-4d38-8137-3a1d08824ef0",
+          "title": "Boston Housing In-Depth - Creating a Tuning Job",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "df098353-bc2b-4d38-8137-3a1d08824ef0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782233,
+              "key": "4c04f9ba-feb1-45c6-a505-34f5d072e596",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Boston Housing In-Depth",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782234,
+              "key": "e4e92e16-3f6e-4f9a-8c85-34018e88f6d5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now we will look at creating a hyperparameter tuning job using the low level approach. Just like in the other low level approaches, this method requires us to describe the various properties that our hyperparameter tuning job should have.\n\nTo follow along, open up the `Boston Housing - XGBoost (Hyperparameter Tuning) - Low Level.ipynb` notebook in the `Tutorials` folder.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780393,
+              "key": "5033d815-33cd-484f-9a2f-eecf07f01041",
+              "title": "Deployment L4 C6 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vlsZ-jC5C8Y",
+                "china_cdn_id": "vlsZ-jC5C8Y.mp4"
+              }
+            },
+            {
+              "id": 782235,
+              "key": "ac74ec4c-f37f-4196-8a3a-0d57f4c73c15",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Creating a hyperparameter tuning job using the low level approach requires us to describe two different things.\n\nThe first, is a training job that will be used as the **base** job for the hyperparameter tuning task. This training job description is almost exactly the same as the standard training job description except that instead of specifying **HyperParameters** we specify **StaticHyperParameters**. That is, the hyperparameters that we do **not** want to change in the various iterations.\n\nThe second thing we need to describe is the tuning job itself. This description includes the different ranges of hyperparameters that we **do** want SageMaker to vary, in addition to the total number of jobs we want to have created and how to determine which model is best.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 780365,
+          "key": "388fa7d6-7ca0-4b22-98d5-2207d676358e",
+          "title": "Boston Housing In-Depth - Monitoring the Tuning Job",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "388fa7d6-7ca0-4b22-98d5-2207d676358e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780395,
+              "key": "6633bbb9-a71b-4096-99a0-f044ade6b656",
+              "title": "Deployment L4 C7 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WXjIkSHYEyM",
+                "china_cdn_id": "WXjIkSHYEyM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 780366,
+          "key": "e722b28d-c926-4a33-8878-8d9fb733dd50",
+          "title": "Boston Housing In-Depth - Building and Testing the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e722b28d-c926-4a33-8878-8d9fb733dd50",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 780396,
+              "key": "20e6e072-8e64-47e6-ac33-f18b38b211f6",
+              "title": "Deployment L4 C8 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ap7d7DZL0Ic",
+                "china_cdn_id": "ap7d7DZL0Ic.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 782236,
+          "key": "a13ea8c1-9817-4165-90fb-d060144e74a2",
+          "title": "Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a13ea8c1-9817-4165-90fb-d060144e74a2",
+            "completed_at": "2019-11-30T12:51:12.533Z",
+            "last_viewed_at": "2019-11-30T12:51:06.910Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 782240,
+              "key": "cb0e9a77-6b4e-475f-94dc-d90a6c671650",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What have we learned so far?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782238,
+              "key": "ef103cef-3c9f-4348-ba66-eb26502bef0e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson we took a look at how we can use SageMaker to tune a model. This can be helpful once we've found a good base model and we want to try and iterate a bit to refine our model and get a little more out of it.\n\nWe also looked at using CloudWatch to monitor our training jobs so that we can better diagnose errors when they arise. This can be especially helpful when training more complicated models such as those in which you can incorporate your own code.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782239,
+              "key": "61740df6-08bb-4fc9-b068-6a08bad44cbb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What's next?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782243,
+              "key": "29fca6f9-7c02-4e32-9dc0-526e29bd8e3b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the next lesson we will take a look at updating a deployed model. Once you've developed a model and deployed it the story is rarely over. What happens if some of the built in assumptions about your model change over time?\n\nWe will look at how you can create a new model which more accurately reflects the current state of your problem and then update an existing endpoint so that it uses your new model rather than the original one. In addition, using SageMaker, we can do this without needing to shut down the endpoint. This means that whatever application is using your deployed model won't notice any sort of disruption in service.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

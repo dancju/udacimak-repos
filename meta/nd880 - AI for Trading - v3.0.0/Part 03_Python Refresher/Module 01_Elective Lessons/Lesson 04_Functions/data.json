@@ -1,0 +1,978 @@
+{
+  "data": {
+    "lesson": {
+      "id": 486300,
+      "key": "d91fa76c-cfb4-40b5-8aec-40d5b25a1e58",
+      "title": "Functions",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to use functions to improve and reuse your code! Learn about functions, variable scope, documentation, lambda expressions, iterators, and generators.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/d91fa76c-cfb4-40b5-8aec-40d5b25a1e58/486300/1518744908550/Functions%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/d91fa76c-cfb4-40b5-8aec-40d5b25a1e58/486300/1518744887405/Functions%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 486311,
+          "key": "e758630d-d2f2-4a80-a2ba-eb9f852ac1e5",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e758630d-d2f2-4a80-a2ba-eb9f852ac1e5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527729,
+              "key": "176dfcbc-1290-4519-a707-008a443833fb",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "p5L4rTV1Pgk",
+                "china_cdn_id": "p5L4rTV1Pgk.mp4"
+              }
+            },
+            {
+              "id": 495398,
+              "key": "995586a2-6592-4605-bbf4-22b878166fe4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Functions\nWelcome to this lesson on Functions! You'll learn about:\n- Defining Functions\n- Variable Scope\n- Documentation\n- Lambda Expressions\n- Iterators and Generators\n\nYou can think about functions as a way to take what you have already learned how to do, and put it in a holder that allows you to use it over and over again in an easy to use container.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486344,
+          "key": "97c1d194-e640-4dda-b7c8-770db5a4cb0f",
+          "title": "Defining Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "97c1d194-e640-4dda-b7c8-770db5a4cb0f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 534728,
+              "key": "18522d53-df21-4586-9880-4eb00157b9ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There are two videos on this page, one on defining functions and one on default arguments.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 542298,
+              "key": "03a39ced-df81-4e8d-80c8-8089fe17d616",
+              "title": "Defining Functions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IP_tJYhynbc",
+                "china_cdn_id": "IP_tJYhynbc.mp4"
+              }
+            },
+            {
+              "id": 495399,
+              "key": "4c58bf02-08ba-4516-a9a9-8085b3b025a7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Defining Functions\nExample of a function definition:\n```python\ndef cylinder_volume(height, radius):\n    pi = 3.14159\n    return height * pi * radius ** 2\n```\nAfter defining the cylinder_volume function, we can **call** the function like this. \n```python\ncylinder_volume(10, 3)\n```\nThis is called a **function call** statement.\n\nA function definition includes several important parts.\n\n### Function Header\nLet's start with the function header, which is the first line of a function definition.\n1. The function header always starts with the `def` keyword, which indicates that this is a **function definition**.\n2. Then comes the **function name** (here, `cylinder_volume`), which follows the same naming conventions as variables. You can revisit the naming conventions below.\n3. Immediately after the name are *parentheses* that may include **arguments** separated by commas (here, `height` and `radius`). Arguments, or **parameters**, are values that are passed in as **inputs** when the function is called, and are used in the function body. If a function doesn't take arguments, these parentheses are left empty.\n4. The header always end with a colon `:`.\n\n### Function Body\nThe rest of the function is contained in the body, which is where the function does its work.\n1. The **body** of a function is the code indented after the header line. Here, it's the two lines that define `pi` and `return` the volume.\n2. Within this body, we can refer to the **argument variables** and define new variables, which can only be used within these indented lines.\n3. The body will often include a `return` statement, which is used to send back an **output value** from the function to the statement that called the function. A `return` statement consists of the `return` keyword followed by an expression that is evaluated to get the output value for the function. If there is no `return` statement, the function simply returns None. \n\nBelow, you'll find a code editor where you can experiment with this.\n\n### Naming Conventions for Functions\nFunction names follow the same naming conventions as variables.\n\n1. Only use ordinary letters, numbers and underscores in your function names. They can’t have spaces, and need to start with a letter or underscore.\n2. **You can’t use reserved words or built-in identifiers** that have important purposes in Python, which you’ll learn about throughout this course.  A list of Python reserved words is described [here](https://pentangle.net/python/handbook/node52.html). \n3. Try to use descriptive names that can help readers understand what the function does.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 552836,
+              "key": "7f064e51-01a7-4c5d-8e7a-c51db45aa98b",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7f064e51-01a7-4c5d-8e7a-c51db45aa98b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the below are acceptable ways to begin a function in Python? (Select all that apply.)",
+                "answers": [
+                  {
+                    "id": "a1519539283667",
+                    "text": "def my_function(arg1, arg2):",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1519539324765",
+                    "text": "def do_stuff(arg1 arg2):",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519539349824",
+                    "text": "def my function(arg1, arg2)",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1519539376835",
+                    "text": "def my_function(arg2, arg1, arg4):",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 534731,
+              "key": "58471b77-a819-446b-a3ac-4d862f4a300a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Print vs. Return in Functions\nHere are two valid functions. One returns a value and one simply prints a value, without returning anything. Test run this code and experiment to understand the difference.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 534693,
+              "key": "d2250dc9-770e-4780-b233-f94b2795eeb7",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "d2250dc9-770e-4780-b233-f94b2795eeb7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "4513729312587776",
+                "initial_code_files": [
+                  {
+                    "text": "# this prints something, but does not return anything\ndef show_plus_ten(num):\n    print(num + 10)\n\n# this returns something\ndef add_ten(num):\n    return(num + 10)\n\nprint('Calling show_plus_ten...')\nreturn_value_1 = show_plus_ten(5)\nprint('Done calling')\nprint('This function returned: {}'.format(return_value_1))\n\nprint('\\nCalling add_ten...')\nreturn_value_2 = add_ten(5)\nprint('Done calling')\nprint('This function returned: {}'.format(return_value_2))",
+                    "name": "function_return.py"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 542297,
+              "key": "2460a929-0751-4509-a6bb-b95157540563",
+              "title": "Default Arguments",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cG6UfBZX2KI",
+                "china_cdn_id": "cG6UfBZX2KI.mp4"
+              }
+            },
+            {
+              "id": 495400,
+              "key": "0d2880ff-e5d9-4d48-89e5-ef1b735acde4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Default Arguments\nWe can add default arguments in a function to have default values for parameters that are unspecified in a function call.\n```python\ndef cylinder_volume(height, radius=5):\n    pi = 3.14159\n    return height * pi * radius ** 2\n```\nIn the example above, `radius` is set to 5 if that parameter is omitted in a function call. If we call `cylinder_volume(10)`, the function will use 10 as the height and 5 as the radius. However, if we call `cylinder_volume(10, 7)` the 7 will simply overwrite the default value of 5.\n\nAlso notice here we are passing values to our arguments by position.  It is possible to pass values in two ways - **by position** and **by name**. Each of these function calls are evaluated the same way. \n```python\ncylinder_volume(10, 7)  # pass in arguments by position\ncylinder_volume(height=10, radius=7)  # pass in arguments by name\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486345,
+          "key": "3487f6f7-ff59-40cf-8746-106c6bdca7a5",
+          "title": "Quiz: Defining Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3487f6f7-ff59-40cf-8746-106c6bdca7a5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 495411,
+              "key": "961e93d7-f8cb-42ec-8d44-b4426ede550e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lots of Practice\n\nAn excellent resource for putting your skills to use is to join communities like the one at [HackerRank](https://www.hackerrank.com/).  Here you can work through tons of problems at your own pace!  Once you master writing functions, you will be ready to build full applications using Python.\n\n## Quiz: Population Density Function\n\nWrite a function named `population_density` that takes two arguments, `population` and `land_area`, and returns a population density calculated from those values. I've included two test cases that you can use to verify that your function works correctly. Once you've written your function, use the Test Run button to test your code.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 495412,
+              "key": "586bfa7f-f249-4c94-bbf0-39285d8ac8ea",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "586bfa7f-f249-4c94-bbf0-39285d8ac8ea",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6070447897182208",
+                "initial_code_files": [
+                  {
+                    "text": "# write your function here\n\n\n\n\n# test cases for your function\ntest1 = population_density(10, 1)\nexpected_result1 = 10\nprint(\"expected result: {}, actual result: {}\".format(expected_result1, test1))\n\ntest2 = population_density(864816, 121.4)\nexpected_result2 = 7123.6902801\nprint(\"expected result: {}, actual result: {}\".format(expected_result2, test2))",
+                    "name": "pop_density.py"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 495414,
+              "key": "4d6fb0e6-90ab-4da6-a38f-9405e2386a6f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: `readable_timedelta`\n\nWrite a function named `readable_timedelta`. The function should take one argument, an integer `days`, and return a string that says how many weeks and days that is. For example, calling the function and printing the result like this:\n```python\nprint(readable_timedelta(10))\n```\nshould output the following:\n```txt\n1 week(s) and 3 day(s).\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 495415,
+              "key": "f8b35dee-8b52-4288-84c1-a60804871be8",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "f8b35dee-8b52-4288-84c1-a60804871be8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5358155756863488",
+                "initial_code_files": [
+                  {
+                    "text": "# write your function here\n\n\n# test your function\nprint(readable_timedelta(10))",
+                    "name": "student.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 495413,
+          "key": "06583dc4-befc-42dc-adad-876e43d3c8ba",
+          "title": "Solution: Defining Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "06583dc4-befc-42dc-adad-876e43d3c8ba",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 495417,
+              "key": "21a01fdb-7211-45cf-9904-97b23116bc32",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz Solution: Population Density Function\n```python\ndef population_density(population, land_area):\n    return population/land_area\n\n# test cases for your function\ntest1 = population_density(10, 1)\nexpected_result1 = 10\nprint(\"expected result: {}, actual result: {}\".format(expected_result1, test1))\n\ntest2 = population_density(864816, 121.4)\nexpected_result2 = 7123.6902801\nprint(\"expected result: {}, actual result: {}\".format(expected_result2, test2))\n```\n### Output:\n```txt\nexpected result: 10, actual result: 10.0\nexpected result: 7123.6902801, actual result: 7123.690280065897\n```\n\nI used a one-line function body because my personal preference is to keep my functions brief, as long as it doesn't make the code confusing. You could also perform the calculation on its own line separate from the return statement.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 495418,
+              "key": "a1eaaddb-f212-478e-a3e6-d56cd45b7d22",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz Solution: `readable_timedelta`\n\n```python\ndef readable_timedelta(days):\n    # use integer division to get the number of weeks\n    weeks = days // 7\n    # use % to get the number of days that remain\n    remainder = days % 7\n    return \"{} week(s) and {} day(s).\".format(weeks, remainder)\n\n# test your function\nprint(readable_timedelta(10))\n```\n### Output:\n```txt\n1 week(s) and 3 day(s).\n```\n\nNice work on writing your first functions! You'll see and write more functions soon.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 488954,
+          "key": "98b7dee3-4ce8-4d6b-8950-55d23a3e3241",
+          "title": "Variable Scope",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "98b7dee3-4ce8-4d6b-8950-55d23a3e3241",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 534675,
+              "key": "fa00dbe0-e9e4-4b76-ac94-3d75fc51ae90",
+              "title": "Variable Scope",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rYubQlAM-gw",
+                "china_cdn_id": "rYubQlAM-gw.mp4"
+              }
+            },
+            {
+              "id": 495401,
+              "key": "cecbee50-57a9-4810-976d-49b65bfff3de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Variable Scope\n__Variable scope__ refers to which parts of a program a variable can be referenced, or used, from.\n\nIt's important to consider scope when using variables in functions. If a variable is created inside a function, it can only be used within that function. Accessing it outside that function is not possible.\n```python\n# This will result in an error\ndef some_function():\n    word = \"hello\"\n \nprint(word)\n```\nIn the example above and the example below, `word` is said to have scope that is only __local__ to each function. This means you can use the same name for different variables that are used in different functions.\n```python\n# This works fine\ndef some_function():\n    word = \"hello\"\n \ndef another_function():\n    word = \"goodbye\"\n```\nVariables defined outside functions, as in the example below, can still be accessed within a function. Here, `word` is said to have a __global scope__.\n```python\n# This works fine\nword = \"hello\"\n\ndef some_function():\n    print(word)\n\nsome_function()```\nNotice that we can still access the value of the global variable `word` within this function. However, the value of a global variable can not be __modified__ inside the function. If you want to modify that variable's value inside this function, it should be passed in as an argument. You'll see more on this in the next quiz.\n\nScope is essential to understanding how information is passed throughout programs in Python and really any programming language.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 495419,
+              "key": "4ab356fc-45e4-4d2d-9708-5a257cbc1193",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## More on Variable Scope\n\nWhen you program, you'll often find that similar ideas come up again and again. You'll use variables for things like counting, iterating and accumulating values to return. In order to write readable code, you'll find yourself wanting to use similar names for similar ideas. As soon as you put multiple piece of code together (for instance, multiple functions or function calls in a single script) you might find that you want to use the same name for two separate concepts.\n\nFortunately, you don't need to come up with new names endlessly. Reusing names for objects is OK as long as you keep them in separate scope.\n\n__Good practice:__ It is best to define variables in the smallest scope they will be needed in. While functions _can_ refer to variables defined in a larger scope, this is very rarely a good idea since you may not know what variables you have defined if your program has a lot of variables.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 488955,
+          "key": "6f936f02-4ba7-46d7-9fac-5a5c5ea8de73",
+          "title": "Variable Scope",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6f936f02-4ba7-46d7-9fac-5a5c5ea8de73",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 495448,
+              "key": "98d65711-9d38-410b-8c91-684077a7fe4b",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "98d65711-9d38-410b-8c91-684077a7fe4b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Read through this code snippet:\n\n```python\negg_count = 0\n\ndef buy_eggs():\n    egg_count += 12 # purchase a dozen eggs\n\nbuy_eggs()\n```\n\nWhat is the result of running this code? If you aren't sure, try running it on your own computer!",
+                "answers": [
+                  {
+                    "id": "a1514481237657",
+                    "text": "`egg_count` equals zero",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1514481246002",
+                    "text": "`egg_count` equals 12",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1514481246513",
+                    "text": "An error occurs",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 533961,
+          "key": "92cc15be-1b0d-4266-9b26-4cec6aa91f93",
+          "title": "Solution: Variable Scope",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "92cc15be-1b0d-4266-9b26-4cec6aa91f93",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 533962,
+              "key": "3591a14d-fe3c-467e-8310-c0dd5781fa4d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz Solution: Variable Scope\n\nThe code snippet on the previous page is repeated here:\n```python\negg_count = 0\n\ndef buy_eggs():\n    egg_count += 12 # purchase a dozen eggs\n\nbuy_eggs()\n```\nThis code causes an `UnboundLocalError`, because the variable `egg_count` in the first line has global scope. Note that it is not passed as an argument into the function, so the function assumes the `egg_count` being referred to is the global variable. \n\nIn the last video, you saw that within a function, we can print a global variable's value successfully without an error. This worked because we were simply accessing the value of the variable. If we try to __change__ or __reassign__ this global variable, however, as we do in this code, we get an error. Python doesn't allow functions to modify variables that aren't in the function's scope.\n\nA better way to write this would be:\n```python\negg_count = 0\n\ndef buy_eggs(count):\n    return count + 12  # purchase a dozen eggs\n\negg_count = buy_eggs(egg_count)\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486346,
+          "key": "a9b3f8b5-16e2-4ca8-a11a-ee3722922eb4",
+          "title": "Documentation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a9b3f8b5-16e2-4ca8-a11a-ee3722922eb4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 533881,
+              "key": "5e1b616e-87f3-4e12-82a9-06273a69ceea",
+              "title": "Documentation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_Vl9NJkA6JQ",
+                "china_cdn_id": "_Vl9NJkA6JQ.mp4"
+              }
+            },
+            {
+              "id": 495402,
+              "key": "5b503871-a29b-4ff3-861e-d04a78c55830",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Documentation\nDocumentation is used to make your code easier to understand and use. Functions are especially readable because they often use documentation strings, or docstrings. Docstrings are a type of comment used to explain the purpose of a function, and how it should be used. Here's a function for population density with a docstring.\n```python\ndef population_density(population, land_area):\n    \"\"\"Calculate the population density of an area. \"\"\"\n    return population / land_area\n```\n\n\nDocstrings are surrounded by triple quotes. The first line of the docstring is a brief explanation of the function's purpose. If you feel that this is sufficient documentation you can end the docstring at this point; single line docstrings are perfectly acceptable, as in the example above.\n```python\ndef population_density(population, land_area):\n    \"\"\"Calculate the population density of an area.\n\n    INPUT:\n    population: int. The population of that area\n    land_area: int or float. This function is unit-agnostic, if you pass in values in terms\n    of square km or square miles the function will return a density in those units.\n\n    OUTPUT: \n    population_density: population / land_area. The population density of a particular area.\n    \"\"\"\n    return population / land_area\n```\nIf you think that a longer description would be appropriate for the function, you can add more information after the one-line summary. In the example above, you can see that we wrote an explanation of the function's arguments, stating the purpose and types of each one. It's also common to provide some description of the function's output.\n\nEvery piece of the docstring is optional, however, docstrings are a part of good coding practice. You can read more about docstring conventions [here](https://www.python.org/dev/peps/pep-0257).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486347,
+          "key": "f4275609-4f8e-4096-a5cb-4cffd660153c",
+          "title": "Quiz: Documentation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f4275609-4f8e-4096-a5cb-4cffd660153c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527859,
+              "key": "01cb8261-d4b9-4c64-8c5d-0d483ea17217",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Write a Docstring\nWrite a docstring for the `readable_timedelta` function you defined earlier! Remember the way you write your docstrings is pretty flexible! Look through Python's docstring conventions [here](https://www.python.org/dev/peps/pep-0257/) and check out this [Stack Overflow page](https://stackoverflow.com/questions/3898572/what-is-the-standard-python-docstring-format) for some inspiration!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 527857,
+              "key": "707d1857-24f0-4bdd-829c-11efe49a7aec",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "707d1857-24f0-4bdd-829c-11efe49a7aec",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5386808574214144",
+                "initial_code_files": [
+                  {
+                    "text": "def readable_timedelta(days):\n    # insert your docstring here\n\n    weeks = days // 7\n    remainder = days % 7\n    return \"{} week(s) and {} day(s)\".format(weeks, remainder)",
+                    "name": "docstring.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 527854,
+          "key": "31623316-02d8-48b6-8969-9d337d04807d",
+          "title": "Solution: Documentation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "31623316-02d8-48b6-8969-9d337d04807d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527855,
+              "key": "13567769-2dc0-4ca6-b864-8e2f964c0b28",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz Solution: `readable_timedelta`\nHere's some ways you could've written your docstring!\n\n```python\ndef readable_timedelta(days):\n    \"\"\"Return a string of the number of weeks and days included in days.\"\"\"\n    weeks = days // 7\n    remainder = days % 7\n    return \"{} week(s) and {} day(s)\".format(weeks, remainder)\n```\n\n```python\ndef readable_timedelta(days):\n    \"\"\"Return a string of the number of weeks and days included in days.\n    \n    Args:\n        days (int): number of days to convert\n    \"\"\"\n    weeks = days // 7\n    remainder = days % 7\n    return \"{} week(s) and {} day(s)\".format(weeks, remainder)\n```\n\n```python\ndef readable_timedelta(days):\n    \"\"\"\n    Return a string of the number of weeks and days included in days.\n    \n    Parameters:\n    days -- number of days to convert (int)\n\n    Returns:\n    string of the number of weeks and days included in days\n    \"\"\"\n    weeks = days // 7\n    remainder = days % 7\n    return \"{} week(s) and {} day(s)\".format(weeks, remainder)\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486350,
+          "key": "258ce5fc-22bc-423c-b321-e0193bd98ace",
+          "title": "Lambda Expressions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "258ce5fc-22bc-423c-b321-e0193bd98ace",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 549405,
+              "key": "eff001c5-59f9-483e-8806-2042df11f791",
+              "title": "L4 08 Lambda Expressions V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wkEmPz1peJM",
+                "china_cdn_id": "wkEmPz1peJM.mp4"
+              }
+            },
+            {
+              "id": 495403,
+              "key": "81f6b3a4-ac68-46f3-9f54-ac620f1ac8a4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lambda Expressions\nYou can use lambda expressions to create anonymous functions. That is, functions that don’t have a name. They are helpful for creating quick functions that aren’t needed later in your code. This can be especially useful for higher order functions, or functions that take in other functions as arguments.\n\nWith a lambda expression, this function:\n```python\ndef multiply(x, y):\n    return x * y\n```\ncan be reduced to:\n```python\nmultiply = lambda x, y: x * y\n```\nBoth of these functions are used in the same way. In either case, we can call `multiply` like this:\n```python\nmultiply(4, 7)\n```\nThis returns 28.\n### Components of a Lambda Function\n1. The `lambda` keyword is used to indicate that this is a lambda expression.\n2. Following `lambda` are one or more arguments for the anonymous function separated by commas, followed by a colon `:`. Similar to functions, the way the arguments are named in a lambda expression is arbitrary.\n3. Last is an expression that is evaluated and returned in this function. This is a lot like an expression you might see as a return statement in a function.\n\nWith this structure, lambda expressions aren’t ideal for complex functions, but can be very useful for short, simple functions.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486351,
+          "key": "9330654f-fbd0-4c90-bb30-cc0cb3b0a078",
+          "title": "Quiz: Lambda Expressions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9330654f-fbd0-4c90-bb30-cc0cb3b0a078",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527866,
+              "key": "068ad8ec-4c49-4f3b-ae1e-9736c2c4292e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Lambda with Map\n`map()` is a higher-order built-in function that takes a function and iterable as inputs, and returns an iterator that applies the function to each element of the iterable. The code below uses `map()` to find the mean of each list in `numbers` to create the list `averages`. Give it a test run to see what happens.\n\nRewrite this code to be more concise by replacing the `mean` function with a lambda expression defined within the call to `map()`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 527865,
+              "key": "b17d66b9-a2c8-480e-abd6-f9de8988754f",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "b17d66b9-a2c8-480e-abd6-f9de8988754f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5961021085319168",
+                "initial_code_files": [
+                  {
+                    "text": "numbers = [\n              [34, 63, 88, 71, 29],\n              [90, 78, 51, 27, 45],\n              [63, 37, 85, 46, 22],\n              [51, 22, 34, 11, 18]\n           ]\n\ndef mean(num_list):\n    return sum(num_list) / len(num_list)\n\naverages = list(map(mean, numbers))\nprint(averages)",
+                    "name": "lambda_map.py"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 527871,
+              "key": "f0ff76d5-29cb-49b0-80dd-0ccddb928ab1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Lambda with Filter\n`filter()` is a higher-order built-in function that takes a function and iterable as inputs and returns an iterator with the elements from the iterable for which the function returns True. The code below uses `filter()` to get the names in `cities` that are fewer than 10 characters long to create the list `short_cities`. Give it a test run to see what happens.\n\nRewrite this code to be more concise by replacing the `is_short` function with a lambda expression defined within the call to `filter()`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 527877,
+              "key": "f68c8576-2d45-4bf3-a779-265f7522c74e",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "f68c8576-2d45-4bf3-a779-265f7522c74e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5238863929409536",
+                "initial_code_files": [
+                  {
+                    "text": "cities = [\"New York City\", \"Los Angeles\", \"Chicago\", \"Mountain View\", \"Denver\", \"Boston\"]\n\ndef is_short(name):\n    return len(name) < 10\n\nshort_cities = list(filter(is_short, cities))\nprint(short_cities)",
+                    "name": "lambda_filter.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 527867,
+          "key": "7ef6a019-e4a7-4cb3-8938-440751a47960",
+          "title": "Solution: Lambda Expressions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7ef6a019-e4a7-4cb3-8938-440751a47960",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527868,
+              "key": "a0abdb4a-28bc-467e-8b4a-f596aef3dbf8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz Solution: Lambda with Map\n```python\nnumbers = [\n              [34, 63, 88, 71, 29],\n              [90, 78, 51, 27, 45],\n              [63, 37, 85, 46, 22],\n              [51, 22, 34, 11, 18]\n           ]\n\naverages = list(map(lambda x: sum(x) / len(x), numbers))\nprint(averages)\n```\n### Output:\n```txt\n[57.0, 58.2, 50.6, 27.2]\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 527878,
+              "key": "9bba4bd0-afa6-49ce-a28f-ad9946807acb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz Solution: Lambda with Filter\n```python\ncities = [\"New York City\", \"Los Angeles\", \"Chicago\", \"Mountain View\", \"Denver\", \"Boston\"]\n\nshort_cities = list(filter(lambda x: len(x) < 10, cities))\nprint(short_cities)\n```\n### Output:\n```txt\n['Chicago', 'Denver', 'Boston']\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486352,
+          "key": "50247542-7933-4afe-9130-ff1dff429b03",
+          "title": "[Optional] Iterators and Generators",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "50247542-7933-4afe-9130-ff1dff429b03",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527734,
+              "key": "017906ac-48a8-48c1-88af-32c4698b831d",
+              "title": "Iterators And Generators",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tYH8X4Zeh-0",
+                "china_cdn_id": "tYH8X4Zeh-0.mp4"
+              }
+            },
+            {
+              "id": 495404,
+              "key": "3487d6fb-ec0d-4fdf-ab14-66b78479dc20",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Iterators and Generators\n__Iterables__ are objects that can return one of their elements at a time, such as a list. Many of the built-in functions we’ve used so far, like 'enumerate,' return an iterator.\n\nAn __iterator__ is an object that represents a stream of data. This is different from a **list**, which is also an iterable, but is not an iterator because it is not a stream of data.\n\n__Generators__ are a simple way to create iterators using functions. You can also define iterators using __classes__, which you can read more about [here](https://docs.python.org/3/tutorial/classes.html#iterators).\n\nHere is an example of a generator function called `my_range`, which produces an iterator that is a stream of numbers from 0 to (x - 1).\n\n```python\ndef my_range(x):\n    i = 0\n    while i < x:\n        yield i\n        i += 1\n```\nNotice that instead of using the return keyword, it uses `yield`. This allows the function to return values one at a time, and start where it left off each time it’s called. This `yield` keyword is what differentiates a generator from a typical function.\n\nRemember, since this returns an iterator, we can convert it to a list or iterate through it in a loop to view its contents. For example, this code:\n```python\nfor x in my_range(5):\n    print(x)\n```\noutputs:\n```txt\n0\n1\n2\n3\n4\n```\n\n# Why Generators?\nYou may be wondering why we'd use generators over lists. Here’s an excerpt from a [stack overflow page](https://softwareengineering.stackexchange.com/questions/290231/when-should-i-use-a-generator-and-when-a-list-in-python/290235) that addresses this: \n>Generators are a lazy way to build iterables. They are useful when the fully realized list would not fit in memory, or when the cost to calculate each list element is high and you want to do it as late as possible. But they can only be iterated over once.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486353,
+          "key": "8f8f635f-3a64-4430-9f5a-1b9cae806e6d",
+          "title": "[Optional] Quiz: Iterators and Generators",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8f8f635f-3a64-4430-9f5a-1b9cae806e6d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527889,
+              "key": "951cd3c5-a374-41fb-822a-65d7b74e2868",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Implement `my_enumerate`\nWrite your own generator function that works like the built-in function `enumerate`.\n\nCalling the function like this:\n```python\nlessons = [\"Why Python Programming\", \"Data Types and Operators\", \"Control Flow\", \"Functions\", \"Scripting\"]\n\nfor i, lesson in my_enumerate(lessons, 1):\n    print(\"Lesson {}: {}\".format(i, lesson))\n```\nshould output:\n```txt\nLesson 1: Why Python Programming\nLesson 2: Data Types and Operators\nLesson 3: Control Flow\nLesson 4: Functions\nLesson 5: Scripting\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 527888,
+              "key": "cf6d568a-79f0-44dc-b136-8b05b7484805",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "cf6d568a-79f0-44dc-b136-8b05b7484805",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5163475710640128",
+                "initial_code_files": [
+                  {
+                    "text": "lessons = [\"Why Python Programming\", \"Data Types and Operators\", \"Control Flow\", \"Functions\", \"Scripting\"]\n\ndef my_enumerate(iterable, start=0):\n    # Implement your generator function here\n\n\nfor i, lesson in my_enumerate(lessons, 1):\n    print(\"Lesson {}: {}\".format(i, lesson))",
+                    "name": "my_enumerate.py"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 527932,
+              "key": "3180c2d9-1643-48bf-903b-5b3b26ae3c67",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Chunker\nIf you have an iterable that is too large to fit in memory in full (e.g., when dealing with large files), being able to take and use chunks of it at a time can be very valuable.\n\nImplement a generator function, `chunker`, that takes in an iterable and yields a chunk of a specified size at a time.\n\nCalling the function like this:\n```python\nfor chunk in chunker(range(25), 4):\n    print(list(chunk))\n```\nshould output:\n```txt\n[0, 1, 2, 3]\n[4, 5, 6, 7]\n[8, 9, 10, 11]\n[12, 13, 14, 15]\n[16, 17, 18, 19]\n[20, 21, 22, 23]\n[24]\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 527931,
+              "key": "fcf5292d-f95b-40fa-a76e-b5beff5dbb7d",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "fcf5292d-f95b-40fa-a76e-b5beff5dbb7d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6466613495332864",
+                "initial_code_files": [
+                  {
+                    "text": "def chunker(iterable, size):\n    # Implement function here\n\n\nfor chunk in chunker(range(25), 4):\n    print(list(chunk))",
+                    "name": "chunker.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 527890,
+          "key": "7da0a9fa-5c9b-4e81-a043-0fabd59ba8f0",
+          "title": "[Optional] Solution: Iterators and Generators",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7da0a9fa-5c9b-4e81-a043-0fabd59ba8f0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527891,
+              "key": "928aa1fb-97d8-4e61-8b0f-e47e00fd11a1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz Solution: Implement `my_enumerate`\n```python\nlessons = [\"Why Python Programming\", \"Data Types and Operators\", \"Control Flow\", \"Functions\", \"Scripting\"]\n\ndef my_enumerate(iterable, start=0):\n    count = start\n    for element in iterable:\n        yield count, element\n        count += 1\n\nfor i, lesson in my_enumerate(lessons, 1):\n    print(\"Lesson {}: {}\".format(i, lesson))\n```\n### Output:\n```txt\nLesson 1: Why Python Programming\nLesson 2: Data Types and Operators\nLesson 3: Control Flow\nLesson 4: Functions\nLesson 5: Scripting\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 527937,
+              "key": "d3a112f8-ec87-413e-8a29-216f93f826a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz Solution: Chunker\nHere's one way you could do it. You can find this implementation on this [Stack Overflow page](https://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks).\n```python\ndef chunker(iterable, size):\n    \"\"\"Yield successive chunks from iterable of length size.\"\"\"\n    for i in range(0, len(iterable), size):\n        yield iterable[i:i + size]\n\nfor chunk in chunker(range(25), 4):\n    print(list(chunk))\n```\n### Output:\n```txt\n[0, 1, 2, 3]\n[4, 5, 6, 7]\n[8, 9, 10, 11]\n[12, 13, 14, 15]\n[16, 17, 18, 19]\n[20, 21, 22, 23]\n[24]\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 531521,
+          "key": "1b22a853-e86e-4441-8700-dd048443ee82",
+          "title": "[Optional] Generator Expressions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1b22a853-e86e-4441-8700-dd048443ee82",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 531526,
+              "key": "fe178c85-71b6-45dd-82f7-ef1f6ed9b00f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Generator Expressions\nHere's a cool concept that combines generators and list comprehensions! You can actually create a generator in the same way you'd normally write a list comprehension, except with parentheses instead of square brackets. For example:\n```python\nsq_list = [x**2 for x in range(10)]  # this produces a list of squares\n\nsq_iterator = (x**2 for x in range(10))  # this produces an iterator of squares\n```\nThis can help you save time and create efficient code!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 486358,
+          "key": "851a31fc-8e66-4737-8262-1e402e493fec",
+          "title": "Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "851a31fc-8e66-4737-8262-1e402e493fec",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 527874,
+              "key": "b2993877-1af3-461c-98e0-084632420cbc",
+              "title": "Conclusion",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QRnLr7pwHyk",
+                "china_cdn_id": "QRnLr7pwHyk.mp4"
+              }
+            },
+            {
+              "id": 689977,
+              "key": "088b9d44-6537-4ebe-830d-ed105821b107",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Additional Resources\n\n* If you want to learn more about writing functions, check out [this talk from PyCon](https://youtu.be/rrBJVMyD-Gs) by Jack Diederich. Diederich covers best practices for writing functions in Python that also apply to all code in Python.\n\n* [Here's a great blog post](https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/) about `yield` and generators from Jeff Knupp.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 628504,
+          "key": "f1bd218f-5ab0-4f05-a8bb-66a9de9cde18",
+          "title": "Further Learning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f1bd218f-5ab0-4f05-a8bb-66a9de9cde18",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 628505,
+              "key": "d2c435b1-201a-4fa8-a5c9-ae2653fbb568",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Further Learning\n\n* If you want to learn more about writing functions, check out [this talk from PyCon](https://youtu.be/rrBJVMyD-Gs) by Jack Diederich. Diederich covers best practices for writing functions in Python that also apply to all code in Python.\n\n* [Here's a great blog post](https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/) about `yield` and generators from Jeff Knupp.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

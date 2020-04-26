@@ -1,0 +1,1914 @@
+{
+  "data": {
+    "lesson": {
+      "id": 578799,
+      "key": "1f5e13bb-7a49-46bd-887f-1de7a7d01e1a",
+      "title": "Introduction to Object-Oriented Programming",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn the basics of object-oriented programming so that you can build your own Python package.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/1f5e13bb-7a49-46bd-887f-1de7a7d01e1a/578799/1544198027689/Introduction+to+Object-Oriented+Programming+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/1f5e13bb-7a49-46bd-887f-1de7a7d01e1a/578799/1544198023553/Introduction+to+Object-Oriented+Programming+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 598837,
+          "key": "23e64568-864e-4fb0-a004-53d87db042df",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "23e64568-864e-4fb0-a004-53d87db042df",
+            "completed_at": "2019-11-25T06:30:22.929Z",
+            "last_viewed_at": "2019-11-25T06:30:22.797Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 608583,
+              "key": "7ffd5d20-6116-484a-a155-9f121ca2d785",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Introduction\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693878,
+              "key": "75bb075c-7f46-46d6-b5bb-a177e7dfa313",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5DfFaAl1Wmc",
+                "china_cdn_id": "5DfFaAl1Wmc.mp4"
+              }
+            },
+            {
+              "id": 608584,
+              "key": "260a5c0d-55a7-4fd1-a31f-a02c65f82626",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Outline\n\n* Object-oriented programming syntax\n    * procedural vs object-oriented programming\n    * classes, objects, methods and attributes\n    * coding a class\n    * magic methods\n    * inheritance\n\n* Using object-oriented programming to make a Python package\n    * making a package\n    * tour of scikit-learn source code\n    * putting your package on PyPi",
+              "instructor_notes": ""
+            },
+            {
+              "id": 669446,
+              "key": "1b3c9340-9a33-4941-aeaf-f11658ce468d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Why Object-Oriented Programming?\n\nObject-oriented programming has a few benefits over procedural programming, which is the programming style you most likely first learned. As you'll see in this lesson, \n- object-oriented programming allows you to create large, modular programs that can easily expand over time;\n- object-oriented programs hide the implementation from the end-user.\n\nConsider Python packages like [Scikit-learn](https://github.com/scikit-learn/scikit-learn), [pandas](https://pandas.pydata.org/), and [NumPy](http://www.numpy.org/). These are all Python packages built with object-oriented programming. Scikit-learn, for example, is a relatively large and complex package built with object-oriented programming. This package has expanded over the years with new functionality and new algorithms.\n\nWhen you train a machine learning algorithm with Scikit-learn, you don't have to know anything about how the algorithms work or how they were coded. You can focus directly on the modeling.\n\nHere's an example taken from the [Scikit-learn website](http://scikit-learn.org/stable/modules/svm.html):\n```\nfrom sklearn import svm\nX = [[0, 0], [1, 1]]\ny = [0, 1]\nclf = svm.SVC()\nclf.fit(X, y)  \n```\n\nHow does Scikit-learn train the SVM model? You don't need to know because the implementation is hidden with object-oriented programming. If the implementation changes, you as a user of Scikit-learn might not ever find out. Whether or not you SHOULD understand how SVM works is a different question.\n\nIn this lesson, you'll practice the fundamentals of object-oriented programming. By the end of the lesson, you'll have built a Python package using object-oriented programming.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 668285,
+              "key": "96c57190-4818-4792-ac3b-40fc5421ea1b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Files\n\nThis lesson uses classroom workspaces that contain all of the files and functionality you will need. You can also find the files in the [data scientist nanodegree term 2 GitHub repo](https://github.com/udacity/DSND_Term2/tree/master/lessons/ObjectOrientedProgramming).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598838,
+          "key": "c942f1be-2e40-4632-b48e-69611a08d2d0",
+          "title": "Procedural vs. Object-Oriented Programming",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c942f1be-2e40-4632-b48e-69611a08d2d0",
+            "completed_at": "2019-11-25T06:30:34.886Z",
+            "last_viewed_at": "2019-11-25T06:30:34.785Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 608585,
+              "key": "43d04e6d-4884-4bbf-a17d-ac87e265d72e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Procedural vs Object-Oriented Programming",
+              "instructor_notes": ""
+            },
+            {
+              "id": 713527,
+              "key": "7ca070f7-a0ad-4f37-9d6f-2c9437ffbd8e",
+              "title": "L3 02 Proced Vs OOP V1 V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "psXD_J8FnCQ",
+                "china_cdn_id": "psXD_J8FnCQ.mp4"
+              }
+            },
+            {
+              "id": 608602,
+              "key": "c3c3e685-866e-4dfd-b898-1feecb4403a9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Objects are defined by characteristics and actions\n\nHere is a reminder of what is a characteristic and what is an action.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 677045,
+              "key": "6ea76154-d212-4eb5-9edf-7d64fc87724b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b511a90_screen-shot-2018-07-19-at-4.05.25-pm/screen-shot-2018-07-19-at-4.05.25-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6ea76154-d212-4eb5-9edf-7d64fc87724b",
+              "caption": "Objects are defined by their characteristics and their actions",
+              "alt": "characteristics vs actions",
+              "width": 770,
+              "height": 398,
+              "instructor_notes": null
+            },
+            {
+              "id": 598844,
+              "key": "4e19da30-ed3e-44e2-b007-785c3f42529c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Characteristics and Actions in English Grammar\n\nAnother way to think about characteristics and actions is in terms of English grammar. A characteristic would be a noun. On the other hand, an action would be a verb. \n\nLet's pick something from the real-world: a dog. A few characteristics could be the dog's weight, color, breed, and height. These are all nouns. What actions would a dog take? A dog can bark, run, bite and eat. These are all verbs.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598842,
+              "key": "9dfe2884-2569-456d-ab1d-1c17d8eb32b8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quizzes - Characteristics versus Actions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598841,
+              "key": "d0bf333a-07f5-46bb-92ce-121a426fa4c6",
+              "title": "Characteristics of an Object",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d0bf333a-07f5-46bb-92ce-121a426fa4c6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following would you consider to be characteristics of a tree object?",
+                "answers": [
+                  {
+                    "id": "a1523649290619",
+                    "text": "height",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523649345982",
+                    "text": "color",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523649346454",
+                    "text": "to grow",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523649347215",
+                    "text": "width",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523649381575",
+                    "text": "to fall down",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523649389063",
+                    "text": "species",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 598843,
+              "key": "f619af9a-470f-4a6a-932b-dccec97c23ec",
+              "title": "Identify the Actions",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f619af9a-470f-4a6a-932b-dccec97c23ec",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following would be considered actions for a laptop computer object?",
+                "answers": [
+                  {
+                    "id": "a1523649619299",
+                    "text": "memory",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523650248622",
+                    "text": "width",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523650249160",
+                    "text": "to turn on",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523650249912",
+                    "text": "operating system",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523650250656",
+                    "text": "to turn off",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1523650254710",
+                    "text": "thickness",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523650273208",
+                    "text": "weight",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1523650274301",
+                    "text": "to erase",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 598845,
+          "key": "9a937f8b-efd3-4381-ada2-1ffd5382ec93",
+          "title": "Class, Object, Method and Attribute",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9a937f8b-efd3-4381-ada2-1ffd5382ec93",
+            "completed_at": "2019-11-25T06:30:50.705Z",
+            "last_viewed_at": "2019-11-25T06:30:50.573Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 608586,
+              "key": "2d2b9650-da21-428c-a960-3d899918d750",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Class, object, method, attribute",
+              "instructor_notes": ""
+            },
+            {
+              "id": 713528,
+              "key": "18cc5542-5d2d-4893-912e-5400b00026e6",
+              "title": "L3 03 Class Obj Methods Attributes V1 1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yvVMJt09HuA",
+                "china_cdn_id": "yvVMJt09HuA.mp4"
+              }
+            },
+            {
+              "id": 608605,
+              "key": "459cbbd0-7fa8-4774-845d-86f36845fa27",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Object-Oriented Programming (OOP) Vocabulary\n* class - a blueprint consisting of methods and attributes\n* object - an *instance* of a class. It can help to think of objects as something in the real world like a yellow pencil, a small dog, a blue shirt, etc. However, as you'll see later in the lesson, objects can be more abstract.\n* attribute - a descriptor or characteristic. Examples would be color, length, size, etc. These attributes can take on specific values like blue, 3 inches, large, etc.\n* method - an action that a class or object could take\n* OOP - a commonly used abbreviation for object-oriented programming\n* encapsulation - one of the fundamental ideas behind object-oriented programming is called encapsulation: you can combine functions and data all into a single entity. In object-oriented programming, this single entity is called a class. Encapsulation allows you to hide implementation details much like how the scikit-learn package hides the implementation of machine learning algorithms.\n\nIn English, you might hear an attribute described as a *property*, *description*, *feature*, *quality*, *trait*, or *characteristic*. All of these are saying the same thing.\n\nHere is a reminder of how a class, object, attributes and methods relate to each other.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 677046,
+              "key": "8c228f27-5382-468b-92ee-03fe5ebd50a5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b511ad5_screen-shot-2018-07-19-at-4.06.55-pm/screen-shot-2018-07-19-at-4.06.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8c228f27-5382-468b-92ee-03fe5ebd50a5",
+              "caption": "A class is a blueprint consisting of attributes and methods.",
+              "alt": "classes versus objects",
+              "width": 770,
+              "height": 389,
+              "instructor_notes": null
+            },
+            {
+              "id": 608606,
+              "key": "dfe3f5c6-5643-412b-a04c-e4c2e2897961",
+              "title": "Match words and descriptions",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "dfe3f5c6-5643-412b-a04c-e4c2e2897961",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the vocabulary term on the left with the examples on the right."
+                },
+                "concepts_label": "Term",
+                "answers_label": "Examples",
+                "concepts": [
+                  {
+                    "text": "Object",
+                    "correct_answer": {
+                      "id": "a1524009544286",
+                      "text": "Stephen Hawking, Angela Merkel, Brad Pitt"
+                    }
+                  },
+                  {
+                    "text": "Class",
+                    "correct_answer": {
+                      "id": "a1524009734091",
+                      "text": "scientist, chancellor, actor"
+                    }
+                  },
+                  {
+                    "text": "Attribute",
+                    "correct_answer": {
+                      "id": "a1524009826120",
+                      "text": "color, size, shape"
+                    }
+                  },
+                  {
+                    "text": "Method",
+                    "correct_answer": {
+                      "id": "a1524009947803",
+                      "text": "to rain, to ring, to ripen"
+                    }
+                  },
+                  {
+                    "text": "Value",
+                    "correct_answer": {
+                      "id": "a1524010033994",
+                      "text": "gray, large, round"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1524009544286",
+                    "text": "Stephen Hawking, Angela Merkel, Brad Pitt"
+                  },
+                  {
+                    "id": "a1524009947803",
+                    "text": "to rain, to ring, to ripen"
+                  },
+                  {
+                    "id": "a1524009734091",
+                    "text": "scientist, chancellor, actor"
+                  },
+                  {
+                    "id": "a1524009826120",
+                    "text": "color, size, shape"
+                  },
+                  {
+                    "id": "a1524010033994",
+                    "text": "gray, large, round"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 608615,
+          "key": "6e899a3c-4ea6-417e-beeb-059feb2e2956",
+          "title": "OOP Syntax",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6e899a3c-4ea6-417e-beeb-059feb2e2956",
+            "completed_at": "2019-11-25T06:30:53.875Z",
+            "last_viewed_at": "2019-11-25T06:30:53.776Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 608617,
+              "key": "72c83216-cca1-4a8f-a07c-da2349150230",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Object-Oriented Programming Syntax\n\nIn this video, you'll see what a class and object look like in Python. In the next section, you'll have the chance to play around with the code. And then you will write your own class.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628508,
+              "key": "ed72ff24-d0bd-46f2-8496-536f1cd4ebeb",
+              "title": "Object Oriented Programming Syntax",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Y8ZVw1LHI8E",
+                "china_cdn_id": "Y8ZVw1LHI8E.mp4"
+              }
+            },
+            {
+              "id": 669433,
+              "key": "55ff77f5-5d77-495e-bdf6-ef569e034489",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Function vs Method\n\n_In the video above at 1:44, the dialogue mistakenly calls __init__ a function rather than a method. Why is __init__ not a function?_\n\nA function and a method look very similar. They both use the `def` keyword. They also have inputs and return outputs. The difference is that a method is inside of a class whereas a function is outside of a class.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 669438,
+              "key": "88ebc056-9811-495f-bdac-460291b0cbbf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What is self?\n\nIf you instantiate two objects, how does Python differentiate between these two objects?\n\n```\nshirt_one = Shirt('red', 'S', 'short-sleeve', 15)\nshort_two = Shirt('yellow', 'M', 'long-sleeve', 20)\n```\n\nThat's where `self` comes into play. If you call the `change_price` method on shirt_one, how does Python know to change the price of shirt_one and not of shirt_two? \n\n```\nshirt_one.change_price(12)\n```\n\nBehind the scenes, Python is calling the `change_price` method:\n```\n    def change_price(self, new_price):\n    \n        self.price = new_price\n```\n\n`Self` tells Python where to look in the computer's memory for the shirt_one object. And then Python changes the price of the shirt_one object. When you call the `change_price` method, `shirt_one.change_price(12)`, `self` is implicitly passed in.\n\nThe word `self` is just a convention. You could actually use any other name as long as you are consistent; however, you should always use `self` rather than some other word or else you might confuse people.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 608607,
+          "key": "c3c8eb3c-5af6-4b00-82c6-f188d7be8477",
+          "title": "Exercise: OOP Syntax Practice - Part 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c3c8eb3c-5af6-4b00-82c6-f188d7be8477",
+            "completed_at": "2019-11-25T06:31:13.421Z",
+            "last_viewed_at": "2019-11-25T06:33:39.173Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613066,
+              "key": "14e518bd-7b13-420f-bdd4-ff5872711b7a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewad57d566",
+              "pool_id": "jupyter",
+              "view_id": "dd684ef5-4af2-4a5d-bc47-fae2ae3625d0",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1.OOP_syntax_shirt_practice/shirt_exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 621424,
+          "key": "a286cfb1-ce38-4f82-b7ce-857ed24411ad",
+          "title": "A Couple of Notes about OOP",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a286cfb1-ce38-4f82-b7ce-857ed24411ad",
+            "completed_at": "2019-11-25T06:33:34.578Z",
+            "last_viewed_at": "2019-11-25T06:33:42.863Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 621560,
+              "key": "1ecc380b-f249-49e6-b614-2879f09ec6da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Notes About OOP\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628509,
+              "key": "e3e78c54-64fc-4a2c-b8bb-b22be7221c55",
+              "title": "Notes On OOP",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NcgDIWm6iBA",
+                "china_cdn_id": "NcgDIWm6iBA.mp4"
+              }
+            },
+            {
+              "id": 669445,
+              "key": "b3049975-9eb5-4441-8f4f-3702ad01241b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Set and Get methods\n\nThe last part of the video mentioned that accessing attributes in Python can be somewhat different than in other programming languages like Java and C++. This section goes into further detail.\n\nThe shirt class has a method to change the price of the shirt: `shirt_one.change_price(20)`. In Python, you can also change the values of an attribute with the following syntax:\n\n```python\nshirt_one.price = 10\nshirt_one.price = 20\nshirt_one.color = 'red'\nshirt_one.size = 'M'\nshirt_one.style = 'long_sleeve'\n```\n\nThis code accesses and changes the price, color, size and style attributes directly. Accessing attributes directly would be frowned upon in many other languages **but not in Python**. Instead, the general object-oriented programming convention is to use methods to access attributes or change attribute values. These methods are called set and get methods or setter and getter methods.\n\nA get method is for obtaining an attribute value. A set method is for changing an attribute value. If you were writing a Shirt class, the code could look like this:\n\n```\nclass Shirt:\n\n    def __init__(self, shirt_color, shirt_size, shirt_style, shirt_price):\n        self._price = shirt_price\n    \n    def get_price(self):\n      return self._price\n    \n    def set_price(self, new_price):\n      self._price = new_price\n``` \n\nInstantiating and using an object might look like this:\n```\nshirt_one = Shirt('yellow', 'M', 'long-sleeve', 15)\nprint(shirt_one.get_price())\nshirt_one.set_price(10)\n```\n\nIn the class definition, the underscore in front of price is a somewhat controversial Python convention. In other languages like C++ or Java, price could be explicitly labeled as a private variable. This would prohibit an object from accessing the price attribute directly like `shirt_one._price = 15`. However, Python does not distinguish between private and public variables like other languages. Therefore, there is some controversy about using the underscore convention as well as get and set methods in Python. Why use get and set methods in Python when Python wasn't designed to use them?\n\nAt the same time, you'll find that some Python programmers develop object-oriented programs using get and set methods anyway. Following the Python convention, the underscore in front of price is to let a programmer know that price should only be accessed with get and set methods rather than accessing price directly with `shirt_one._price`.  However, a programmer could still access _price directly because there is nothing in the Python language to prevent the direct access.\n\nTo reiterate, a programmer could technically still do something like `shirt_one._price = 10`, and the code would work. But accessing price directly, in this case, would not be following the intent of how the Shirt class was designed.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 713498,
+              "key": "54cdff20-0a89-4e17-bced-3e396c5a96f4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "One of the benefits of set and get methods is that, as previously mentioned in the course, you can hide the implementation from your user. Maybe originally a variable was coded as a list and later became a dictionary. With set and get methods, you could easily change how that variable gets accessed. Without set and get methods, you'd have to go to every place in the code that accessed the variable directly and change the code.\n\nYou can read more about get and set methods in Python on this [Python Tutorial site](https://www.python-course.eu/python3_properties.php).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 621428,
+              "key": "0fcc016e-9c6d-4996-b4f0-ef6dde864253",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# A Note about Attributes\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 621430,
+              "key": "979cbbc8-bbd9-4cee-88f1-848dcb8cf994",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There are some drawbacks to accessing attributes directly versus writing a method for accessing attributes. \n\nIn terms of object-oriented programming, the rules in Python are a bit looser than in other programming languages. As previously mentioned, in some languages, like C++, you can explicitly state whether or not an object should be allowed to change or access an attribute's values directly. Python does not have this option.\n\nWhy might it be better to change a value with a method instead of directly? Changing values via a method gives you more flexibility in the long-term. What if the units of measurement change, like the store was originally meant to work in US dollars and now has to handle Euros? Here's an example:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 621431,
+              "key": "dd7c3156-5589-4eb5-a8ce-65c8211c345a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Example Dollars versus Euros\nIf you've changed attribute values directly, you'll have to go through your code and find all the places where US dollars were used, like:\n```python\nshirt_one.price = 10 # US dollars\n```\n\nand then manually change to Euros\n```python\nshirt_one.price = 8 # Euros\n```\n\nIf you had used a method, then you would only have to change the method to convert from dollars to Euros.\n\n```python\n\ndef change_price(self, new_price):\n    self.price = new_price * 0.81 # convert dollars to Euros\n\nshirt_one.change_price(10)\n``` \n\nFor the purposes of this introduction to object-oriented programming, you will not need to worry about updating attributes directly versus with a method; however, if you decide to further your studies of object-oriented programming, especially in another language such as C++ or Java, you'll have to take this into consideration.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 621476,
+              "key": "dbc5512e-90bd-4a9a-978f-820e0c99a10c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Modularized Code\n\nThus far in the lesson, all of the code has been in Jupyter Notebooks. For example, in the previous exercise, a code cell loaded the Shirt class, which gave you access to the Shirt class throughout the rest of the notebook; however, if you were developing a software program, you would want to modularize this code.\n\nYou would put the Shirt class into its own Python script called, say, shirt.py. And then in another Python script, you would import the Shirt class with a line like:\n`from shirt import Shirt`.\n\nFor now, as you get used to OOP syntax, you'll be completing exercises in Jupyter notebooks. But midway through the lesson, you'll modularize object-oriented code into separate files.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613064,
+          "key": "dc076341-4118-420c-a907-9cac2dbc4fa4",
+          "title": "Exercise: OOP Syntax Practice - Part 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dc076341-4118-420c-a907-9cac2dbc4fa4",
+            "completed_at": "2019-11-25T06:34:31.632Z",
+            "last_viewed_at": "2019-11-25T06:34:31.510Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613069,
+              "key": "74fcdfef-1479-43f1-b0df-5b08d99fc084",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewad57d566",
+              "pool_id": "jupyter",
+              "view_id": "081ae8b1-d51d-488c-897b-0c333f3d46b9",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/2.OOP_syntax_pants_practice/exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 613086,
+          "key": "c3fb617a-64f4-4427-9cfe-7c4a9e928a5b",
+          "title": "Commenting Object-Oriented Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c3fb617a-64f4-4427-9cfe-7c4a9e928a5b",
+            "completed_at": "2019-11-25T06:34:53.575Z",
+            "last_viewed_at": "2019-11-25T06:34:53.477Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613510,
+              "key": "c112709f-2d10-4e31-8f0a-b377626840c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Commenting Object-Oriented Code\n\nDid you notice anything special about the answer key in the previous exercise? The Pants class and the SalesPerson class contained docstrings! A docstring is a type of comment that describes how a Python module, function, class or method  works. Docstrings, therefore, are not unique to object-oriented programming. This section of the course is merely reminding you to use docstrings and to comment your code. It's not just going to help you understand and maintain your code. It will also make you a better job candidate.\n\nFrom this point on, please always comment your code. Use both in-line comments and document level comments as appropriate.\n\nCheck out this [link](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) to read more about docstrings.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613512,
+              "key": "52982b9f-4d7f-45cb-83b1-0a903179ed05",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Docstrings and Object-Oriented Code\n\nBelow is an example of a class with docstrings and a few things to keep in mind:\n* Make sure to indent your docstrings correctly or the code will not run. A docstring should be indented one indentation underneath the class or method being described.\n* You don't have to define 'self' in your method docstrings. It's understood that any method will have self as the first method input.\n\n```python\nclass Pants:\n    \"\"\"The Pants class represents an article of clothing sold in a store\n    \"\"\"\n    \n    def __init__(self, color, waist_size, length, price):\n        \"\"\"Method for initializing a Pants object\n    \n        Args: \n            color (str)\n            waist_size (int)\n            length (int)\n            price (float)\n            \n        Attributes:\n            color (str): color of a pants object\n            waist_size (str): waist size of a pants object\n            length (str): length of a pants object\n            price (float): price of a pants object\n        \"\"\"\n            \n        self.color = color\n        self.waist_size = waist_size\n        self.length = length\n        self.price = price\n    \n    def change_price(self, new_price):\n        \"\"\"The change_price method changes the price attribute of a pants object\n    \n        Args: \n            new_price (float): the new price of the pants object\n            \n        Returns: None\n        \n        \"\"\"\n        self.price = new_price\n    \n    def discount(self, percentage):\n        \"\"\"The discount method outputs a discounted price of a pants object\n\n        Args:\n            percentage (float): a decimal representing the amount to discount\n\n        Returns:\n            float: the discounted price\n        \"\"\"\n        return self.price * (1 - percentage)\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613513,
+          "key": "12a781f3-22fd-4e7e-ad4e-acfec6014578",
+          "title": "A Gaussian Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "12a781f3-22fd-4e7e-ad4e-acfec6014578",
+            "completed_at": "2019-11-25T06:35:00.442Z",
+            "last_viewed_at": "2019-11-25T06:35:00.327Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613514,
+              "key": "13c59cf7-09ed-405e-b887-b20bfe206b4b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#  Gaussian Class\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693889,
+              "key": "63cef239-2402-4c73-bce1-cf12a621a175",
+              "title": "Gaussian Class",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TVzNdFYyJIU",
+                "china_cdn_id": "TVzNdFYyJIU.mp4"
+              }
+            },
+            {
+              "id": 613523,
+              "key": "d3980d8d-70dd-43d0-892d-2ff85b9e1e21",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Resources for Review\n\nThe example in the next part of the lesson assumes you are familiar with Gaussian and binomial distributions. \n\nHere are a few formulas that might be helpful:\n\n#### Gaussian Distribution Formulas\n\n##### probability density function\n<div class=\"mathquill\">\nf(x \\space | \\space \\mu, \\sigma^2) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^-\\frac{(x-\\mu)^2}{2\\sigma^2}\n</div>\n\n<div class=\"mathquill\">\n\\begin{aligned}\n\\\\ \\text{where:}\n\\\\ \\mu& \\space \\text{is the mean}\n\\\\ \\sigma& \\space \\text{ is the standard deviation} \n\\\\ \\sigma&^2 \\space \\text{is the variance}\n\\end{aligned}\n</div>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671578,
+              "key": "1e859fc8-cb2f-48ba-9110-41223deeaa7b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Binomial Distribution Formulas\n##### mean\n<div class=\"mathquill\">\\mu = n * p</div>\n\nIn other words, a fair coin has a probability of a positive outcome (heads) p = 0.5. If you flip a coin 20 times, the mean would be 20 * 0.5 = 10; you'd expect to get 10 heads.\n\n##### variance\n<div class=\"mathquill\">\\sigma^2 = n * p * (1 - p)</div>\n\nContinuing with the coin example, n would be the number of coin tosses and p would be the probability of getting heads. \n\n##### standard deviation\n<div class=\"mathquill\">\\sigma = \\sqrt{n * p * (1 - p)}</div>\n\nor in other words, the standard deviation is the square root of the variance.\n\n##### probability density function\n\n<div class=\"mathquill\">\nf(k, n, p) = \\frac{n\\footnotesize{!}}{k!(n - k)!}p^k(1-p)^{(n-k)}\n</div>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671579,
+              "key": "fe5b0cf4-2e07-4775-afc0-1662e7d50b7e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Further Resources\nIf you would like to review the Gaussian (normal) distribution and binomial distribution, here are a few resources:\n\nThis free Udacity course, [Intro to Statistics](https://www.udacity.com/course/intro-to-statistics--st101), has a lesson on Gaussian distributions as well as the Binomial distribution.\n\nThis free course, [Intro to Descriptive Statistics](https://www.udacity.com/course/intro-to-descriptive-statistics--ud827), also has a Gaussian distributions lesson.\n\nHere are the wikipedia articles:\n* [Gaussian Distributions Wikipedia](https://en.wikipedia.org/wiki/Normal_distribution)\n* [Binomial Distributions Wikipedia](https://en.wikipedia.org/wiki/Binomial_distribution)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613525,
+              "key": "d4a63e5d-f039-46bd-a138-630b384cadab",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quizzes\n\nHere are a few quizzes to help you determine how well you understand the Gaussian and binomial distributions. Even if you can't remember how to answer these types of questions, feel free to move on to the next part of the lesson; however, the material assumes you know what these distributions are and that you know the basics of how to work with them. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613539,
+              "key": "0e968065-dd57-44ad-ad45-5c9732449bb4",
+              "title": "Probability",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0e968065-dd57-44ad-ad45-5c9732449bb4",
+                "completed_at": "2019-11-25T06:35:20.953Z",
+                "last_viewed_at": "2019-11-25T06:35:24.225Z",
+                "unstructured": "{\"selected_id\":\"a1524177113673\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Assume the average weight of an American adult male is 180 pounds with a standard deviation of 34 pounds. The distribution of weights follows a normal distribution. What is the probability that a man weighs exactly 185 pounds?",
+                "answers": [
+                  {
+                    "id": "a1524176871936",
+                    "text": "0.56",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524177113673",
+                    "text": "0",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1524177114590",
+                    "text": "0.44",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524177115835",
+                    "text": "0.059",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524177234309",
+                    "text": "I'm not sure how to answer this question",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 613558,
+              "key": "15f13f05-e217-4275-86e0-a8e6a8e07db7",
+              "title": "Follow up question",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "15f13f05-e217-4275-86e0-a8e6a8e07db7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Like in the previous question, assume the average weight of an American adult male is 180 pounds with a standard deviation of 34 pounds. The distribution of weights follows a normal distribution. What is the probability that a man weighs somewhere between 120 and 155 pounds?",
+                "answers": [
+                  {
+                    "id": "a1524177619761",
+                    "text": "0",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524177666393",
+                    "text": "0.23",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524177667222",
+                    "text": "0.27",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524177667910",
+                    "text": "0.19",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 613560,
+              "key": "18b7f143-73e0-4d1d-84ba-c4d3a500ecff",
+              "title": "Binomial Distribution",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "18b7f143-73e0-4d1d-84ba-c4d3a500ecff",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Now consider a Binomial distribution. Assume that 15% of the population is allergic to cats. If you randomly select 60 people for a medical trial, what is the probability that 7 of those people are allergic to cats?",
+                "answers": [
+                  {
+                    "id": "a1524178343950",
+                    "text": ".01",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524178716456",
+                    "text": ".14",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524178717463",
+                    "text": "0",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524178718087",
+                    "text": ".05",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524178722905",
+                    "text": "0.12",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 613564,
+          "key": "d81546a9-a31b-4d6a-9982-6be34c5e27e4",
+          "title": "How the Gaussian Class Works",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d81546a9-a31b-4d6a-9982-6be34c5e27e4",
+            "completed_at": "2019-11-25T06:50:39.148Z",
+            "last_viewed_at": "2019-11-25T06:50:39.009Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613565,
+              "key": "7f4b6027-b0bb-448b-8749-4658e200d6b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# How the Gaussian Class Works \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628511,
+              "key": "09c24d27-e4e1-4f98-a698-91aab6ba2808",
+              "title": "How The Gaussian Class Works",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "N-5I0d1zJHI",
+                "china_cdn_id": "N-5I0d1zJHI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613567,
+          "key": "e3f2ed5d-99c7-4b67-9aae-c2f57f5a2013",
+          "title": "Exercise: Code the Gaussian Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e3f2ed5d-99c7-4b67-9aae-c2f57f5a2013",
+            "completed_at": "2019-11-25T06:36:01.245Z",
+            "last_viewed_at": "2019-11-25T06:36:01.139Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613570,
+              "key": "7d28e953-394e-4c91-9093-3534b9fe1cd2",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewad57d566",
+              "pool_id": "jupyter",
+              "view_id": "7908eb12-19ee-444d-b5cb-fec02b018d94",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/3.OOP_code_gaussian_class/gaussian_code_exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 614629,
+          "key": "dd3bdaec-0e9f-4caa-b579-0808e71fd9b8",
+          "title": "Magic Methods",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd3bdaec-0e9f-4caa-b579-0808e71fd9b8",
+            "completed_at": "2019-11-25T06:38:11.954Z",
+            "last_viewed_at": "2019-11-25T06:38:11.767Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614630,
+              "key": "9e39aeb4-d4ff-4da4-8d89-21bd26f85ebe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Magic Methods",
+              "instructor_notes": ""
+            },
+            {
+              "id": 713551,
+              "key": "f32fd5ec-2f80-4e82-ae42-386ab94507a9",
+              "title": "L3 10 Magic M V1 V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9dEsv1aNUEE",
+                "china_cdn_id": "9dEsv1aNUEE.mp4"
+              }
+            },
+            {
+              "id": 614631,
+              "key": "3c33066a-25ec-48a1-9264-5321267e8422",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Magic Methods in Code",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628512,
+              "key": "55b81805-6498-489f-a73e-d6210cecfb37",
+              "title": "Magic Methods in Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oDuXThOqans",
+                "china_cdn_id": "oDuXThOqans.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 614637,
+          "key": "36c0c1e4-5253-436a-a958-150226c70c3f",
+          "title": "Exercise: Code Magic Methods",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "36c0c1e4-5253-436a-a958-150226c70c3f",
+            "completed_at": "2019-11-25T06:38:15.004Z",
+            "last_viewed_at": "2019-11-25T06:41:32.259Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614647,
+              "key": "6fcc0415-da6c-4d7c-8020-08b1374756e3",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewad57d566",
+              "pool_id": "jupyter",
+              "view_id": "eedace13-687e-45c9-a914-456ac137756e",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/4.OOP_code_magic_methods/magic_methods.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 614701,
+          "key": "050879f0-0ff3-4149-8941-d0f8ade47f3e",
+          "title": "Inheritance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "050879f0-0ff3-4149-8941-d0f8ade47f3e",
+            "completed_at": "2019-11-25T06:41:37.175Z",
+            "last_viewed_at": "2019-11-25T06:41:37.076Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 672330,
+              "key": "8097f807-8ce1-41b2-b328-3d98987074bf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Inheritance",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693899,
+              "key": "513da679-5b75-4143-a517-c3de55c5c91b",
+              "title": "Inheritance",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1gsrxUwPI40",
+                "china_cdn_id": "1gsrxUwPI40.mp4"
+              }
+            },
+            {
+              "id": 614703,
+              "key": "4eba3a4d-7762-4483-849e-291c931d599e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Inheritance Code\n\nIn the following video, you'll see how to code inheritance using Python.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628513,
+              "key": "03d3cdb4-cc0b-4469-b6e7-6e5d253e73fe",
+              "title": "13 Inheritance Example V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uWT-HIHBjv0",
+                "china_cdn_id": "uWT-HIHBjv0.mp4"
+              }
+            },
+            {
+              "id": 626145,
+              "key": "9918201b-b3fa-4477-8a93-d3cea9b6fcd5",
+              "title": "Inheritance Truth",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9918201b-b3fa-4477-8a93-d3cea9b6fcd5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Check the boxes next to the statements that are true.",
+                "answers": [
+                  {
+                    "id": "a1525735834071",
+                    "text": "Inheritance helps organize code with a more general version of a class and then specific children.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1525735869251",
+                    "text": "Inheritance makes code much more difficult to maintain.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525735870019",
+                    "text": "Inheritance can make object-oriented programs more efficient to write.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1525735870915",
+                    "text": "Updates to a parent class automatically trickle down to its children.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 614704,
+          "key": "c96d2618-3046-408f-b440-2d3adaf5f52d",
+          "title": "Exercise: Inheritance with Clothing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c96d2618-3046-408f-b440-2d3adaf5f52d",
+            "completed_at": "2019-11-25T06:41:49.289Z",
+            "last_viewed_at": "2019-11-25T06:41:49.167Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614714,
+              "key": "45e467e9-1b62-4c38-bc11-bcc7ad2abd38",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewad57d566",
+              "pool_id": "jupyter",
+              "view_id": "9bb8c1d6-c852-485a-8a94-1cdf1d321a9c",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/5.OOP_code_inheritance_clothing/inheritance_exercise_clothing.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 614752,
+          "key": "30120037-1bf8-46c4-9e7b-38e714da2949",
+          "title": "Inheritance: Probability Distribution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30120037-1bf8-46c4-9e7b-38e714da2949",
+            "completed_at": "2019-11-25T06:41:57.206Z",
+            "last_viewed_at": "2019-11-25T06:41:57.061Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614754,
+              "key": "b2ad039a-0589-4ffc-a03c-1f2c2b5acbb0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Inheritance Gaussian Class",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628514,
+              "key": "d35ed7d3-5a25-4e09-b434-842463a321e6",
+              "title": "Inheritance Gaussian Class",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XS4LQn1VA3U",
+                "china_cdn_id": "XS4LQn1VA3U.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 614755,
+          "key": "f6b34f54-a9f1-4eca-b8b1-a725eac21bc3",
+          "title": "Demo: Inheritance Probability Distributions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f6b34f54-a9f1-4eca-b8b1-a725eac21bc3",
+            "completed_at": "2019-11-25T06:42:16.746Z",
+            "last_viewed_at": "2019-11-25T06:42:15.997Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614758,
+              "key": "adba3139-288a-4d54-bbe6-95d2371d17c5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewad57d566",
+              "pool_id": "jupyter",
+              "view_id": "88e68367-2a38-42a8-9ed1-8b7739d82604",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/6.OOP_code_inheritance_probability_distributions/inheritance_probability_distribution.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 672332,
+          "key": "06cdaa83-2994-40bc-bd2d-3e66016abb4f",
+          "title": "Advanced OOP Topics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "06cdaa83-2994-40bc-bd2d-3e66016abb4f",
+            "completed_at": "2019-11-25T06:42:24.887Z",
+            "last_viewed_at": "2019-11-25T06:42:24.657Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 672333,
+              "key": "3dde0287-5bb4-4449-adc5-120440ec2181",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Advanced OOP Topics\n\nInheritance is the last object-oriented programming topic in the lesson. Thus far you've been exposed to:\n* classes and objects\n* attributes and methods\n* magic methods\n* inheritance\n\nClasses, object, attributes, methods, and inheritance are common to all object-oriented programming languages.  \n\nKnowing these topics is enough to start writing object-oriented software. What you've learned so far is all you need to know to complete this OOP lesson. However, these are only the fundamentals of object-oriented programming. \n\nHere is a list of resources for advanced Python object-oriented programming topics. \n* [class methods, instance methods, and static methods](https://realpython.com/instance-class-and-static-methods-demystified/) - these are different types of methods that can be accessed at the class or object level\n* [class attributes vs instance attributes](https://www.python-course.eu/python3_class_and_instance_attributes.php) - you can also define attributes at the class level or at the instance level\n* [multiple inheritance, mixins](https://easyaspython.com/mixins-for-fun-and-profit-cb9962760556) - A class can inherit from multiple parent classes\n* [Python decorators](https://realpython.com/primer-on-python-decorators/) - Decorators are a short-hand way for using functions inside other functions",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 614801,
+          "key": "f79ed872-7a04-4399-bfe7-0d55d78e2059",
+          "title": "Organizing into Modules",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f79ed872-7a04-4399-bfe7-0d55d78e2059",
+            "completed_at": "2019-11-25T06:42:34.669Z",
+            "last_viewed_at": "2019-11-25T06:42:34.559Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614802,
+              "key": "250cb98e-cda6-45ec-9e1e-b9db03dd7557",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Organizing into Modules",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628515,
+              "key": "cbf6823c-44f5-4f25-b1f3-a9af73111899",
+              "title": "Organizing Code Into Modules",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AARS10U5bbo",
+                "china_cdn_id": "AARS10U5bbo.mp4"
+              }
+            },
+            {
+              "id": 620140,
+              "key": "4b995135-9486-428e-9006-d7d3cec4d1be",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Windows vs. macOS vs. Linux\n\nLinux, which our Udacity classroom workspaces use, is an operating system like Windows or macOS. One important difference is that Linux is free and open source whereas Windows is owned by Microsoft and macOS by Apple. \n\nThroughout the lesson, you can do all of your work in a classroom workspace. These workspaces provide interfaces that connect to [virtual machines in the cloud](https://aws.amazon.com/getting-started/tutorials/launch-a-virtual-machine/). However, if you want to run this code locally on your computer, the commands to use might be slightly different. \n\nIf you are using macOS, you can open an application called \"Terminal\" and essentially use the same commands that you use in the workspace. That is because [Linux and MacOS are related](https://www.quora.com/Is-macOS-essentially-built-on-top-of-Linux).\n\nIf you are using Windows, the analogous application is called console. The console commands can be somewhat different than the terminal commands. A search engine like Google is your best friend for finding the right commands in a Windows environment. \n\nThe classroom workspace has one major benefit. You can do whatever you want to the workspace including installing Python packages. And if something goes wrong, you can reset the workspace and start with a clean slate; however, always download your code files or commit your code to github or gitlab before resetting a workspace. Otherwise, you will lose your code!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 614804,
+          "key": "7846a525-c390-49ff-9898-38ee3af2dd6f",
+          "title": "Demo: Modularized Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7846a525-c390-49ff-9898-38ee3af2dd6f",
+            "completed_at": "2019-11-25T06:42:41.302Z",
+            "last_viewed_at": "2019-11-25T06:42:41.184Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614807,
+              "key": "d008065f-e1fe-4a60-9a3e-0583906618c3",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa072a40d",
+              "pool_id": "webterminal",
+              "view_id": "a072a40d-42bb-442a-9d21-ac71286d1c43",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/1_instruction_files/modularize_code_instructions.txt",
+                      "/home/workspace/2_modularized_code/Generaldistribution.py",
+                      "/home/workspace/2_modularized_code/Gaussiandistribution.py",
+                      "/home/workspace/2_modularized_code/example_code.py"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false
+                  },
+                  "kind": "generic"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 614803,
+          "key": "0f6e02e6-13bd-498c-9297-1afdef89e909",
+          "title": "Making a Package",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0f6e02e6-13bd-498c-9297-1afdef89e909",
+            "completed_at": "2019-11-25T06:42:48.559Z",
+            "last_viewed_at": "2019-11-25T06:42:48.404Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614819,
+              "key": "557be6b8-6f6c-4cbe-ada7-ff948baa644a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Making a Package\n\nIn the previous section, the Distribution and Gaussian code was refactored into individual modules. A Python module is just a Python file containing code.\n\nIn this next section, you'll convert the Distributions code into a Python package. A package is a collection of Python modules. Although the previous code might already seem like it was a Python package because it contained multiple files, a Python package also needs an `__init__.py` file. In this section, you'll learn how to create this `__init__.py` file and then pip install the package into your local Python installation.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682869,
+              "key": "18c19cb7-abc8-4fff-a401-2b56580de239",
+              "title": "15 Making a Package v2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Hj2OBr1CGZM",
+                "china_cdn_id": "Hj2OBr1CGZM.mp4"
+              }
+            },
+            {
+              "id": 616697,
+              "key": "f047cc66-63f5-47a9-97ca-1f8a76fdee07",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What is pip?\n\nPip is a [Python package manager](https://pip.pypa.io/en/stable/) that helps with installing and uninstalling Python packages. You might have used pip to install packages using the command line: `pip install numpy`.  When you execute a command like `pip install numpy`, pip will download the package from a Python package repository called [PyPi](https://pypi.org/). However, for this next exercise, you'll use pip to install a Python package from a local folder on your computer. The last part of the lesson will focus on uploading packages to PyPi so that you can share your package with the world.\n\nYou can complete this entire lesson within the classroom using the provided workspaces; however, if you want to develop a package locally on your computer, you should consider setting up a virtual environment. That way if you install your package on your computer, the package won't install into your main Python installation. Before starting the next exercise, the next part of the lesson will discuss what virtual environments are and how to use them. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672295,
+              "key": "e7f2dd20-59cf-4ee0-a484-71ddf41b2c99",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Object-Oriented Programming and Python Packages\n\nA Python package does not need to use object-oriented programming. You could simply have a Python module with a set of functions. However, most if not all of the popular Python packages take advantage of object-oriented programming for a few reasons:\n1. Object-oriented programs are relatively easy to expand especially because of inheritance\n2. Object-oriented programs obscure functionality from the user. Consider scipy packages. You don't need to know how the actual code works in order to use its classes and methods.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 672270,
+          "key": "0a7ca0d5-1517-4d10-989c-587e7fa21197",
+          "title": "Virtual Environments",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0a7ca0d5-1517-4d10-989c-587e7fa21197",
+            "completed_at": "2019-11-25T06:42:52.476Z",
+            "last_viewed_at": "2019-11-25T06:42:52.356Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 672276,
+              "key": "3cd7f887-0d80-4eaf-863c-46f4d25e6ba6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Virtual Environments",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672272,
+              "key": "bdf21e5e-073c-4033-8e19-6a93be62b245",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Python Environments\n\nIn the next part of the lesson, you'll be given a workspace where you can upload files into a Python package and pip install the package. If you decide to install your package on your local computer, you'll want to create a virtual environment. A virtual environment is a silo-ed Python installation apart from your main Python installation. That way you can install packages and delete the virtual environment without affecting your main Python installation\n\nLet's talk about two different Python environment managers: conda and venv. You can create virtual environments with either one. Below you'll read about each of these environment managers including some advantages and disadvantages. If you've taken other data science, machine learning or artificial intelligence courses at Udacity, you're probably already familiar with [conda](https://conda.io/docs/).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672321,
+              "key": "dced95c8-3657-4f16-b442-467550bafb7f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Conda\n\n Conda does two things: manages packages and manages environments. \n\nAs a package manager, conda makes it easy to install Python packages especially for data science. For instance, typing `conda install numpy` will install the numpy package. \n\nAs an environment manager, conda allows you to create silo-ed Python installations.  With an environment manager, you can install packages on your computer without affecting your main Python installation.\n\nThe command line code looks something like this:\n```\nconda create --name environmentname\nsource activate environmentname\nconda install numpy\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672273,
+              "key": "05e3940d-ea5a-45e4-992f-d6d89a1b6517",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Pip and Venv\n\nThere are other environmental managers and package managers besides conda. For example, venv is an environment manager that comes pre-installed with Python 3. Pip is a package manager.\n\nPip can only manage Python packages whereas conda is a language agnostic package manager. In fact, conda was invented because pip could not handle data science packages that depended on libraries outside of Python. If you look at the [history of conda](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/#Myth-#5:-conda-doesn't-work-with-virtualenv,-so-it's-useless-for-my-workflow), you'll find that the software engineers behind conda needed a way to manage data science packages (NumPy, Matplotlib, etc.) that relied on libraries outside of Python.\n\nConda manages environments AND packages. Pip only manages packages.\n\nTo use venv and pip, the commands look something like this:\n```\npython3 -m venv environmentname\nsource environmentname/bin/activate\npip install numpy\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672274,
+              "key": "7e3f8fc1-0081-419a-9d3d-3e3f2a436a77",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "##### Which to Choose\n\nWhether you choose to create environments with venv or conda will depend on your use case. Conda is very helpful for data science projects, but conda can make generic Python software development a bit more confusing; that's the case for this project.\n\nIf you create a conda environment, activate the environment, and then pip install the distributions package, you'll find that the system installs your package [globally rather than in your local conda environment](https://github.com/ContinuumIO/anaconda-issues/issues/1429).  However, if you create the conda environment and install pip simultaneously, you'll find that pip behaves as expected installing packages into your local environment:\n```\nconda create --name environmentname pip\n```\n\nOn the other hand,  using pip with venv works as expected. Pip and venv tend to be used for generic software development projects including web development. For this lesson on creating packages, you can use conda or venv if you want to develop locally on your computer and install your package.\n\nThe video below shows how to use venv, which is what we recommend for this project.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672271,
+              "key": "041e798a-2af8-489b-8b5f-63b373115d63",
+              "title": "Virtual Environments",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "f7rzxUiHOJ0",
+                "china_cdn_id": "f7rzxUiHOJ0.mp4"
+              }
+            },
+            {
+              "id": 672275,
+              "key": "77584ca6-9086-495c-9354-72f90192b36a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "##### Instructions for venv\n\nHere are instructions about how to set up virtual environments on a macOS, Linux, or Windows machine using the terminal: [instructions link](https://packaging.python.org/guides/installing-using-pip-and-virtualenv/). \n\nThese are a few notes for understanding the tutorial:\n- If you are using Python 2.7.9 or later (including Python 3), the Python installation should already come with the Python package manager called pip. There is no need to install it.\n- `env` is the name of the environment you want to create. You can call `env` anything you want. \n- Python 3 comes with a virtual environment package pre-installed. So instead of typing `python3 -m virtualenv env`, you can type `python3 -m venv env` to create a virtual environment.\n\nOnce you've activated a virtual environment, you can then use terminal commands to go into the directory where your Python library is stored. And then you can run `pip install .`. In the next section, you can practice pip installing and/or creating virtual environments in the classroom workspace. You'll see that creating a virtual environment actually creates a new folder containing a Python installation. Deleting this folder will remove the virtual environment.\n\nNote that if you install packages on the workspace and run into issues, you can always reset the workspace; however, you will lose all of your work. So be sure to download any files you want to keep before resetting a workspace.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 614820,
+          "key": "cde49eaa-a6c0-4625-98d2-ebb0f69fb865",
+          "title": "Exercise: Making a Package and Pip Installing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cde49eaa-a6c0-4625-98d2-ebb0f69fb865",
+            "completed_at": "2019-11-25T06:45:52.091Z",
+            "last_viewed_at": "2019-11-25T06:46:16.134Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 615332,
+              "key": "99089cfc-765e-4cc4-a68e-64392cafe9bc",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa072a40d",
+              "pool_id": "webterminal",
+              "view_id": "e0a7e46a-e82a-4193-8da0-0fbb5a0f2097",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/1_instruction_files/making_a_package_instructions.txt"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false
+                  },
+                  "kind": "generic"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 616699,
+          "key": "398732a5-f624-4bed-ba33-6d8b5345aae0",
+          "title": "Binomial Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "398732a5-f624-4bed-ba33-6d8b5345aae0",
+            "completed_at": "2019-11-25T06:46:13.846Z",
+            "last_viewed_at": "2019-11-25T06:47:07.569Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 616700,
+              "key": "0ab850da-f8b5-4d13-87cb-de42e8438d42",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Binomial Class",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693911,
+              "key": "537feba7-864b-4821-bb3b-692e80d11c46",
+              "title": "Binomial Class",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "O-4qRh74rkI",
+                "china_cdn_id": "O-4qRh74rkI.mp4"
+              }
+            },
+            {
+              "id": 616701,
+              "key": "43644a7c-a5ec-4774-83ae-05555b9498f1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Binomial Class Exercise\n\nIn this next video, you'll get an overview of the binomial class exercise.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628517,
+              "key": "f1f09540-0324-440c-afa3-bcc52bb16d6b",
+              "title": "Binomial Class",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xTamXY6Z9Kg",
+                "china_cdn_id": "xTamXY6Z9Kg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 616703,
+          "key": "5d4314db-8e7b-4ea0-b427-1b6c9d723ef9",
+          "title": "Exercise: Binomial Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d4314db-8e7b-4ea0-b427-1b6c9d723ef9",
+            "completed_at": "2019-11-25T06:47:10.103Z",
+            "last_viewed_at": "2019-11-25T06:47:09.972Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 616704,
+              "key": "45accc8b-2547-4a93-841b-43c6204dc591",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa072a40d",
+              "pool_id": "webterminal",
+              "view_id": "11957d68-ad70-4c49-9662-e61c2ab446db",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/1_instruction_files/binomial_class_instructions.txt"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false
+                  },
+                  "kind": "generic"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 616892,
+          "key": "ec909481-975e-4b6c-acbb-6c744991c8bd",
+          "title": "Scikit-learn Source Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ec909481-975e-4b6c-acbb-6c744991c8bd",
+            "completed_at": "2019-11-25T06:47:12.999Z",
+            "last_viewed_at": "2019-11-25T06:47:12.880Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 616894,
+              "key": "d280ad84-4602-4353-aba1-6236c9969b47",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Scikit-learn Source Code",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628519,
+              "key": "33fea464-05d3-4dc8-b3c5-f5ab8df15376",
+              "title": "Scikitlearn Source Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4_qkqMsbthg",
+                "china_cdn_id": "4_qkqMsbthg.mp4"
+              }
+            },
+            {
+              "id": 620584,
+              "key": "bc70a277-896f-450d-a65c-7f3b3cd792f1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Contributing to a GitHub project\n\nHere are a few links about how to contribute to a github project:\n* [Beginner's Guide to Contributing to a Github Project](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)\n* [Contributing to a Github Project](https://github.com/MarcDiethelm/contributing/blob/master/README.md)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 669373,
+              "key": "974dfcf1-3def-4557-9d29-27a0043e36b6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Advanced Python OOP Topics\n\nHere are a few links to more advanced OOP topics that appear in the Scikit-learn package:\n- [Decorators](https://realpython.com/primer-on-python-decorators/)\n- [Mixins](https://easyaspython.com/mixins-for-fun-and-profit-cb9962760556)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 616896,
+          "key": "2b79b827-2756-41bb-9b43-fe3430b6d7d8",
+          "title": "Putting Code on PyPi",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2b79b827-2756-41bb-9b43-fe3430b6d7d8",
+            "completed_at": "2019-11-25T06:49:17.462Z",
+            "last_viewed_at": "2019-11-25T06:49:17.324Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 616897,
+              "key": "f1be61e4-7760-47cb-b1e2-b0a2349e7a84",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Putting Code on PyPi",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628520,
+              "key": "0f4c1011-01dd-4405-aa2e-36fdeb779b83",
+              "title": "20 Putting Code On PyPi V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4uosDOKn5LI",
+                "china_cdn_id": "4uosDOKn5LI.mp4"
+              }
+            },
+            {
+              "id": 672237,
+              "key": "663244c0-89be-499e-836f-d1eb7828d931",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# PyPi vs. Test PyPi\n\nNote that [pypi.org](https://pypi.org) and [test.pypy.org](https://test.pypi.org) are two different websites.  You'll need to register separately at each website. If you only register at [pypi.org](https://pypi.org), you will not be able to upload to the [test.pypy.org](https://test.pypi.org) repository.\n\nAlso, remember that your package name must be unique. If you use a package name that is already taken, you will get an error when trying to upload the package.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 634276,
+              "key": "d996599e-713a-4c62-8172-63e8f9aea000",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Summary of the Terminal Commands Used in the Video\n\n```terminal\ncd binomial_package_files\npython setup.py sdist\npip install twine\n\n# commands to upload to the pypi test repository\ntwine upload --repository-url https://test.pypi.org/legacy/ dist/*\npip install --index-url https://test.pypi.org/simple/ dsnd-probability\n\n# command to upload to the pypi repository\ntwine upload dist/*\npip install dsnd-probability\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 616902,
+              "key": "8124eed6-db25-4981-8607-b9d3c519e1dd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# More PyPi Resources\n\n##### Tutorial on distributing packages\n\nThis link has a good tutorial on distributing Python packages including more configuration options for your setup.py file: [tutorial on distributing packages](https://packaging.python.org/tutorials/distributing-packages/). You'll notice that the python command to run the setup.py is slightly different with \n```\npython3 setup.py sdist bdist_wheel\n```\n\nThis command will still output a folder called `dist`. The difference is that you will get both a .tar.gz file and a .whl file. The .tar.gz file is called a *source archive* whereas the .whl file is a *built distribution*. \nThe .whl file is a newer type of installation file for Python packages. When you pip install a package, pip will first look for a whl file (wheel file) and if there isn't one, will then look for the tar.gz file. \n\nA tar.gz file, ie an sdist, contains the files needed to [compile](https://en.wikipedia.org/wiki/Compiler) and install a Python package. A whl file, ie a *built distribution*, only needs to be copied to the proper place for installation. Behind the scenes, pip installing a whl file has fewer steps than a tar.gz file.\n\nOther than this command, the rest of the steps for uploading to PyPi are the same.\n\n##### Other Links\n\nIf you'd like to learn more about PyPi, here are a couple of resources:\n\n* [Overview of PyPi](https://docs.python.org/3/distutils/packageindex.html)\n* [MIT License](https://opensource.org/licenses/MIT)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 653967,
+          "key": "991db7b2-ffaa-45a9-8c77-3c97fd71ae4e",
+          "title": "Exercise: Upload to PyPi",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "991db7b2-ffaa-45a9-8c77-3c97fd71ae4e",
+            "completed_at": "2019-11-25T06:49:18.951Z",
+            "last_viewed_at": "2019-11-25T06:49:18.828Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 653983,
+              "key": "b4f2bec1-913d-4fe5-be86-01497965fd72",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa072a40d",
+              "pool_id": "webterminal",
+              "view_id": "d35a5229-e6df-4799-8dbd-9d344a908782",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/1_instruction_files/upload_to_pypi.txt"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false
+                  },
+                  "kind": "generic"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 616905,
+          "key": "03f34f77-1c0f-4ab0-9a80-b50bff31065a",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "03f34f77-1c0f-4ab0-9a80-b50bff31065a",
+            "completed_at": "2019-11-25T06:49:26.313Z",
+            "last_viewed_at": "2019-11-25T06:50:31.939Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 616906,
+              "key": "4b0aa92a-3705-4330-ab7d-6f71fb7eeae9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Summary",
+              "instructor_notes": ""
+            },
+            {
+              "id": 693914,
+              "key": "b5bb8dae-5083-47d2-a23a-f677aded8a6a",
+              "title": "L3 21 Outro v1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DStO1hBKtHQ",
+                "china_cdn_id": "DStO1hBKtHQ.mp4"
+              }
+            },
+            {
+              "id": 663822,
+              "key": "3a85d546-df25-4137-95ba-e4c48b0188f1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Portfolio Exercise\n\nIn the next lesson, you'll find instructions for a portfolio exercise involving object-oriented programming and Python packages.\n\nA portfolio exercise is an assignment meant to show off your skills and expand your professional portfolio. They are an excellent way to demonstrate to potential employers your knowledge and creativity. Note that these exercises are not reviewed and are thus not official graduation requirements.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

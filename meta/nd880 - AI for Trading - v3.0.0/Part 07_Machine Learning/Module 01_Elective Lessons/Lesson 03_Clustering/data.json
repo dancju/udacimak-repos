@@ -1,0 +1,1262 @@
+{
+  "data": {
+    "lesson": {
+      "id": 112696,
+      "key": "5452184060",
+      "title": "Clustering",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Clustering is one of the most common methods of unsupervised learning. Here, we'll discuss the K-means clustering algorithm.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/5452184060/112696/1545064994510/Clustering+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/5452184060/112696/1545064988610/Clustering+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 498871,
+          "key": "3bcf4227-8108-41aa-bc85-39e9cd99e271",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3bcf4227-8108-41aa-bc85-39e9cd99e271",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 502676,
+              "key": "d04cdd1d-7781-4b7c-8053-1f5d4d4ad9a1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/June/59406a18_meme/meme.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d04cdd1d-7781-4b7c-8053-1f5d4d4ad9a1",
+              "caption": "",
+              "alt": "",
+              "width": 250,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 498872,
+              "key": "a1eae309-5093-417a-91e4-0fdb9ba0d13e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Hello! And welcome to the Unsupervised Section of this nanodegree!\n\nFor this section, I have the honor of introducing you to some amazing instructors that will guide you through this topic.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 502677,
+              "key": "3bc221f9-bbab-416b-ae3a-0afac4a97ab8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a5bfb65_sebastian-katie-jay/sebastian-katie-jay.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3bc221f9-bbab-416b-ae3a-0afac4a97ab8",
+              "caption": "Sebastian Thrun, Katie Malone, and Jay Alammar",
+              "alt": "",
+              "width": 1414,
+              "height": 418,
+              "instructor_notes": null
+            },
+            {
+              "id": 502678,
+              "key": "e1b416c4-8e74-41eb-b70d-2cd6946f66f0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Sebastian Thrun**, whom you've already met in previous sections. He is, among others, the godfather of self driving cars, Stanford professor, and founder of Google X and Udacity.\n\n** Katie Malone** is a data scientist with a PhD in physics. She was one of the pioneers at Udacity, and currently works in research and development.\n\n** Jay Alammar** is a computer scientist and machine learning professional, who has done some amazing work in interactive explorations of neural networks. Check out [his blog](http://jalammar.github.io/).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 23158,
+          "key": "30158685760923",
+          "title": "Unsupervised Learning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30158685760923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 137199,
+              "key": "3015868576",
+              "title": "Unsupervised Learning",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "Mx9f99bRB3Q",
+                "china_cdn_id": "Mx9f99bRB3Q.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 132414,
+          "key": "30158685770923",
+          "title": "Clustering Movies",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30158685770923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 38994,
+              "key": "3015868577",
+              "title": "Clustering Movies",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "g8PKffm8IRY",
+                "china_cdn_id": "g8PKffm8IRY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 57247,
+          "key": "30474785940923",
+          "title": "How Many Clusters?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30474785940923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 108784,
+              "key": "3047478594",
+              "title": "How Many Clusters?",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "3047478594",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": {
+                "video": {
+                  "youtube_id": "R6oIvdBtsZw",
+                  "china_cdn_id": "R6oIvdBtsZw.mp4"
+                },
+                "text": null
+              },
+              "question": {
+                "title": "How Many Clusters Quiz",
+                "alt_text": null,
+                "background_image": "//lh4.ggpht.com/uPkhAMmwFB46Vzbxe5SZh43Tb8pwJCPbUw1oW0tOeet6mXaXcpzrTXdpn0XXy_W5tuSTSgZiYM_xjWcEHjBO=s0#w=1435&h=803",
+                "non_google_background_image": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3047478594",
+                "semantic_type": "ImageFormQuestion",
+                "evaluation_id": "3034378634",
+                "widgets": [
+                  {
+                    "group": null,
+                    "initial_value": null,
+                    "label": null,
+                    "marker": "numeric1",
+                    "model": "NumericInputWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.1,
+                      "width": 0.2,
+                      "x": 0.6702211527455775,
+                      "y": 0.535769342054549
+                    }
+                  }
+                ]
+              },
+              "answer": {
+                "text": null,
+                "video": {
+                  "youtube_id": "8Ygq5dRV0Kk",
+                  "china_cdn_id": "8Ygq5dRV0Kk.mp4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 98689,
+          "key": "30174285910923",
+          "title": "Match Points with Clusters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30174285910923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 39876,
+              "key": "3017428591",
+              "title": "Match Points with Clusters",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "3017428591",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": {
+                "video": {
+                  "youtube_id": "lS5DfbsWH34",
+                  "china_cdn_id": "lS5DfbsWH34.mp4"
+                },
+                "text": null
+              },
+              "question": {
+                "title": "Match Points with Clutsers Quiz",
+                "alt_text": null,
+                "background_image": "//lh4.ggpht.com/B0KTQNOXw3KxHP7ahoOBxafRri0I5ctVrIyc2RTFk5WI-aRuBMwkc8uIavMc_NV9rJX6klhbQ5c_s_L5W8U=s0#w=1437&h=805",
+                "non_google_background_image": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3017428591",
+                "semantic_type": "ImageFormQuestion",
+                "evaluation_id": "3013998667",
+                "widgets": [
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check1",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.2256511203071423,
+                      "y": 0.2962167744097318
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check2",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.16309054177300888,
+                      "y": 0.3344804717273247
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check3",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.23766538092025796,
+                      "y": 0.4052337511151434
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check4",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.17811371382335178,
+                      "y": 0.4598962145211163
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check5",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.41246710037650014,
+                      "y": 0.4268678043475437
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check6",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.34510080237638324,
+                      "y": 0.5072062422589558
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check7",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.39172899812236983,
+                      "y": 0.5418514750749203
+                    }
+                  }
+                ]
+              },
+              "answer": {
+                "text": null,
+                "video": {
+                  "youtube_id": "wJV1cRjmIYY",
+                  "china_cdn_id": "wJV1cRjmIYY.mp4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 115074,
+          "key": "30120086040923",
+          "title": "Optimizing Centers (Rubber Bands)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30120086040923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 136395,
+              "key": "3012008604",
+              "title": "Optimizing Centers (Rubber Bands)",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "3012008604",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": {
+                "video": {
+                  "youtube_id": "nNR4hjhhGBc",
+                  "china_cdn_id": "nNR4hjhhGBc.mp4"
+                },
+                "text": null
+              },
+              "question": {
+                "title": "Optimizing Centers Quiz",
+                "alt_text": null,
+                "background_image": "//lh5.ggpht.com/5d_UZm_yqsViaNo1Y7AH3mewrS1SJPvJdnVyKpO0Ed7VW_vkSgRne5Qe86WziuyPIZIRvdnPzD4sEDBgKQ=s0#w=1430&h=803",
+                "non_google_background_image": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3012008604",
+                "semantic_type": "ImageFormQuestion",
+                "evaluation_id": "3004978616",
+                "widgets": [
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio1",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.257256144002786,
+                      "y": 0.37882638664837687
+                    }
+                  },
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio2",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.2934503721774665,
+                      "y": 0.4032705607276798
+                    }
+                  },
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio3",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.3345369258129091,
+                      "y": 0.409776150519462
+                    }
+                  }
+                ]
+              },
+              "answer": {
+                "text": null,
+                "video": {
+                  "youtube_id": "TN1rQMrx65c",
+                  "china_cdn_id": "TN1rQMrx65c.mp4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 54992,
+          "key": "30012786740923",
+          "title": "Moving Centers 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30012786740923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 26581,
+              "key": "3001278674",
+              "title": "Moving Centers 2",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "3001278674",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": {
+                "video": {
+                  "youtube_id": "uC1Xwc7warg",
+                  "china_cdn_id": "uC1Xwc7warg.mp4"
+                },
+                "text": null
+              },
+              "question": {
+                "title": "Moving Centers 2 Quiz",
+                "alt_text": null,
+                "background_image": "//lh4.ggpht.com/T4HQWksfoc6lQlA-ksP6ADcmirKmo1WJnA0sl132ZlJc3NMhZpEy9Zg9steV7ZZ7-c0zaFmjet5OD0RWFS4=s0#w=1437&h=792",
+                "non_google_background_image": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3001278674",
+                "semantic_type": "ImageFormQuestion",
+                "evaluation_id": "3050028596",
+                "widgets": [
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio1",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.3946730311671992,
+                      "y": 0.2553353996868937
+                    }
+                  },
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio2",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.2305217942692098,
+                      "y": 0.48607265024121743
+                    }
+                  },
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio3",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.3488457506137001,
+                      "y": 0.5436607411589697
+                    }
+                  },
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio4",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.24283909976036472,
+                      "y": 0.6646496081299369
+                    }
+                  }
+                ]
+              },
+              "answer": {
+                "text": null,
+                "video": {
+                  "youtube_id": "FY0DXe0lfrI",
+                  "china_cdn_id": "FY0DXe0lfrI.mp4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 44765,
+          "key": "30496585760923",
+          "title": "Match Points (again)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30496585760923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 43715,
+              "key": "3049658576",
+              "title": "Match Points (again)",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "3049658576",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": {
+                "video": {
+                  "youtube_id": "9J3IwQFXveI",
+                  "china_cdn_id": "9J3IwQFXveI.mp4"
+                },
+                "text": null
+              },
+              "question": {
+                "title": "Match Points (again) Quiz",
+                "alt_text": null,
+                "background_image": "//lh6.ggpht.com/aJStgu-1rOZzeRO05RlJZQbdr4a9U01v4UsHEWsUBf3iWyc1vg_D2j2j6Bsom7SN7CxVVZmnzOouVXoE-WBJ=s0#w=1428&h=807",
+                "non_google_background_image": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3049658576",
+                "semantic_type": "ImageFormQuestion",
+                "evaluation_id": "3040398570",
+                "widgets": [
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check1",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.22669024003711424,
+                      "y": 0.3100748675361177
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check2",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.1601464706763365,
+                      "y": 0.345913398556593
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check3",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.1817504806708814,
+                      "y": 0.4606276213990611
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check4",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.24249271383309304,
+                      "y": 0.3994210659796806
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check5",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.4106270654540407,
+                      "y": 0.4339122899091429
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check6",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.33717787592785614,
+                      "y": 0.529610136924456
+                    }
+                  },
+                  {
+                    "group": null,
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "check7",
+                    "model": "CheckboxWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.3915774756833502,
+                      "y": 0.5446615959218231
+                    }
+                  }
+                ]
+              },
+              "answer": {
+                "text": null,
+                "video": {
+                  "youtube_id": "5j6VZr8sHo8",
+                  "china_cdn_id": "5j6VZr8sHo8.mp4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 24544,
+          "key": "30158685900923",
+          "title": "Handoff to Katie",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30158685900923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 137212,
+              "key": "3015868590",
+              "title": "Handoff to Katie",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "knrPsGtpyQY",
+                "china_cdn_id": "knrPsGtpyQY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 112119,
+          "key": "28695985710923",
+          "title": "K-Means Cluster Visualization",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "28695985710923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 65527,
+              "key": "2869598571",
+              "title": "K-Means Cluster Visualization",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "You can play with k-means clustering yourself here: http://www.naftaliharris.com/blog/visualizing-k-means-clustering/",
+              "user_state": {
+                "node_key": "2869598571",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": {
+                "video": {
+                  "youtube_id": "iCTPBcowJRY",
+                  "china_cdn_id": "iCTPBcowJRY.mp4"
+                },
+                "text": null
+              },
+              "question": {
+                "title": "K-Means Clustering Visualization",
+                "alt_text": null,
+                "background_image": "//lh4.ggpht.com/CV1JcdgQBTfH7jPHpd3rzls-kdocIkze10SuYflhSsHrrQ-hdUugQjqIdnRbAg-tUSLg8ipd-rdkvZ0Tfes=s0#w=1437&h=855",
+                "non_google_background_image": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2869598571",
+                "semantic_type": "ImageFormQuestion",
+                "evaluation_id": "2956218691",
+                "widgets": [
+                  {
+                    "group": null,
+                    "initial_value": null,
+                    "label": null,
+                    "marker": "numeric1",
+                    "model": "NumericInputWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.10199556541019955,
+                      "width": 0.06483790523690773,
+                      "x": 0.5165991271820449,
+                      "y": 0.4910615299334812
+                    }
+                  }
+                ]
+              },
+              "answer": {
+                "text": null,
+                "video": {
+                  "youtube_id": "ZMfwPUrOFsE",
+                  "china_cdn_id": "ZMfwPUrOFsE.mp4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 120703,
+          "key": "28940585350923",
+          "title": "K-Means Clustering Visualization 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "28940585350923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 137194,
+              "key": "2894058535",
+              "title": "K-Means Clustering Visualization 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "You can play with this visualization yourself here: http://www.naftaliharris.com/blog/visualizing-k-means-clustering/\n\nAlso, at about 1:05, we say the green centroid should move to the right--we meant to the left.",
+              "video": {
+                "youtube_id": "fQXXa-CAoS0",
+                "china_cdn_id": "fQXXa-CAoS0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 44763,
+          "key": "30759585930923",
+          "title": "K-Means Clustering Visualization 3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30759585930923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 131292,
+              "key": "3075958593",
+              "title": "K-Means Clustering Visualization 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "WfwX3B4d8_I",
+                "china_cdn_id": "WfwX3B4d8_I.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 60986,
+          "key": "28940785350923",
+          "title": "Sklearn",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "28940785350923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 113286,
+              "key": "2894078535",
+              "title": "Sklearn",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "3zHUAXcoZ7c",
+                "china_cdn_id": "3zHUAXcoZ7c.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 22831,
+          "key": "28852485550923",
+          "title": "Some challenges of k-means",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "28852485550923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 96658,
+              "key": "2885248555",
+              "title": "Some challenges of k-means",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "video": {
+                "youtube_id": "e2CdlG5P4WA",
+                "china_cdn_id": "e2CdlG5P4WA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 39292,
+          "key": "30185886790923",
+          "title": "Limitations of K-Means",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30185886790923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 111221,
+              "key": "3018588679",
+              "title": "Limitations of K-Means",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "3018588679",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": {
+                "video": {
+                  "youtube_id": "4Fkfu37el_k",
+                  "china_cdn_id": "4Fkfu37el_k.mp4"
+                },
+                "text": null
+              },
+              "question": {
+                "title": "Limitations of K-Means Quiz",
+                "alt_text": null,
+                "background_image": "//lh5.ggpht.com/K8Q1GWASiBmPwRgrhhCzASGmkTDi18uMjUmeTvdemh-bPdwgtojdKiGDpT4CV7g2TQ_5kw_cDWvSzhrd5BY=s0#w=1437&h=808",
+                "non_google_background_image": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3018588679",
+                "semantic_type": "ImageFormQuestion",
+                "evaluation_id": "3081768538",
+                "widgets": [
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio1",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.3247350374064838,
+                      "y": 0.6617932372505543
+                    }
+                  },
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio2",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.5078709476309227,
+                      "y": 0.6561114190687362
+                    }
+                  }
+                ]
+              },
+              "answer": {
+                "text": null,
+                "video": {
+                  "youtube_id": "nvLhUSSUhiY",
+                  "china_cdn_id": "nvLhUSSUhiY.mp4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 124882,
+          "key": "30338686490923",
+          "title": "Counterintuitive Clusters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30338686490923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 85733,
+              "key": "3033868649",
+              "title": "Counterintuitive Clusters",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "3033868649",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": {
+                "video": {
+                  "youtube_id": "aveIz1JYeAg",
+                  "china_cdn_id": "aveIz1JYeAg.mp4"
+                },
+                "text": null
+              },
+              "question": {
+                "title": "Counterintuitive Clusters Quiz",
+                "alt_text": null,
+                "background_image": "//lh6.ggpht.com/zCgabalIGjllHBokfGW6kgEi1e-r7t1KTRypS6PuTuLJW7g2sIqUp6mlmmZxHF3iOi6IcRDB3HrRJ9EZHxm0=s0#w=1435&h=807",
+                "non_google_background_image": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3033868649",
+                "semantic_type": "ImageFormQuestion",
+                "evaluation_id": "3056738546",
+                "widgets": [
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio1",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.7368298004987531,
+                      "y": 0.39613359201773835
+                    }
+                  },
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio2",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.7423043952618454,
+                      "y": 0.5059936252771619
+                    }
+                  }
+                ]
+              },
+              "answer": {
+                "text": null,
+                "video": {
+                  "youtube_id": "StmEUgT1XSY",
+                  "china_cdn_id": "StmEUgT1XSY.mp4"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 41900,
+          "key": "30440985710923",
+          "title": "Counterintuitive Clusters 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30440985710923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 102983,
+              "key": "3044098571",
+              "title": "Counterintuitive Clusters 2",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "3044098571",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": {
+                "video": {
+                  "youtube_id": "xSQTzAeeoEc",
+                  "china_cdn_id": "xSQTzAeeoEc.mp4"
+                },
+                "text": null
+              },
+              "question": {
+                "title": "Counterintuitive Clusters 2 Quiz",
+                "alt_text": null,
+                "background_image": "//lh6.ggpht.com/5fHBYCxWcJ3xh0FvQvu6BevJpZwSqVbPmLJihjGL0AE8GriBat2OiABb0Gqj8GV0dx5ShzQB3USsIswKgyqF=s0#w=1438&h=806",
+                "non_google_background_image": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3044098571",
+                "semantic_type": "ImageFormQuestion",
+                "evaluation_id": "3058428551",
+                "widgets": [
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio1",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.6943773379052369,
+                      "y": 0.790119179600887
+                    }
+                  },
+                  {
+                    "group": "group1",
+                    "initial_value": "false",
+                    "label": null,
+                    "marker": "radio2",
+                    "model": "RadioButtonWidget",
+                    "is_text_area": null,
+                    "tabindex": null,
+                    "placement": {
+                      "height": 0.05,
+                      "width": 0.05,
+                      "x": 0.8151885910224439,
+                      "y": 0.7818389689578714
+                    }
+                  }
+                ]
+              },
+              "answer": {
+                "text": null,
+                "video": {
+                  "youtube_id": "HyjBus7S2gY",
+                  "china_cdn_id": "HyjBus7S2gY.mp4"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_background_image",
+      "reason": "(2016/8/18) Not sure, ask i18n team for alternative"
+    },
+    {
+      "name": "non_google_background_image",
+      "reason": "(2016/8/18) Not sure, ask i18n team for alternative"
+    },
+    {
+      "name": "non_google_background_image",
+      "reason": "(2016/8/18) Not sure, ask i18n team for alternative"
+    },
+    {
+      "name": "non_google_background_image",
+      "reason": "(2016/8/18) Not sure, ask i18n team for alternative"
+    },
+    {
+      "name": "non_google_background_image",
+      "reason": "(2016/8/18) Not sure, ask i18n team for alternative"
+    },
+    {
+      "name": "non_google_background_image",
+      "reason": "(2016/8/18) Not sure, ask i18n team for alternative"
+    },
+    {
+      "name": "non_google_background_image",
+      "reason": "(2016/8/18) Not sure, ask i18n team for alternative"
+    },
+    {
+      "name": "non_google_background_image",
+      "reason": "(2016/8/18) Not sure, ask i18n team for alternative"
+    },
+    {
+      "name": "non_google_background_image",
+      "reason": "(2016/8/18) Not sure, ask i18n team for alternative"
+    }
+  ]
+}

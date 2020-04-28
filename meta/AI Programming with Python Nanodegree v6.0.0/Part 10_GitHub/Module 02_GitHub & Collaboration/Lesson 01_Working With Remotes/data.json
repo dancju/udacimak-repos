@@ -1,0 +1,1284 @@
+{
+  "data": {
+    "lesson": {
+      "id": 293439,
+      "key": "edde9226-f71c-4a81-a858-4c83e4c7b664",
+      "title": "Working With Remotes",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You'll learn how to create remote repositories on GitHub and how to get and send changes to the remote repository.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/edde9226-f71c-4a81-a858-4c83e4c7b664/293439/1517447918329/Working%20With%20Remotes%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/edde9226-f71c-4a81-a858-4c83e4c7b664/293439/1517447898803/Working%20With%20Remotes%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 293442,
+          "key": "1ad9f705-8b0e-403e-a903-4a757d8ede17",
+          "title": "Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1ad9f705-8b0e-403e-a903-4a757d8ede17",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299690,
+              "key": "cc1d18ef-86c1-4628-b887-8f9682104289",
+              "title": "Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SBUOhyXcR1Q",
+                "china_cdn_id": "SBUOhyXcR1Q.mp4"
+              }
+            },
+            {
+              "id": 293463,
+              "key": "e19d9181-4427-4b72-9eee-50691ad1c9b8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Expected Knowledge\n\n* creating repositories with `git init` and `git clone`\n* reviewing repos with `git status`\n* using `git log` and `git show` to review past commits\n* being able to make commits with `git add`\n* commit them to the repo with `git commit`\n* you need to know about branching, merging branches together, and resolving merge conflicts\n* and being able to undo things in Git:\n    * `git commit --amend` to undo the most recent commit or to change the wording of the commit message\n    * and `git reset`\nIf you're comfortable with all of these, then you'll be good to go for this course.\n\nIf you're new to Version control or Git, check out the [Version Control with Git course](https://www.udacity.com/course/version-control-with-git--ud123).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293443,
+          "key": "1a7c8b4d-804b-465b-90cb-94c2fdef8f65",
+          "title": "Remote Repositories",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1a7c8b4d-804b-465b-90cb-94c2fdef8f65",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 293464,
+              "key": "249489b5-19ee-4755-a96e-423704db0637",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Collaboration Setup\n\nAs a lone developer, you're probably comfortable working with a _local_ repository. In this first lesson, we're going to talk about **remote repositories** and interacting with these remote repositories.\n\nLet's say that you have a friend, we'll call her Farrin, and one day you two were together and you showed her what you've been working on. She had some ideas on features she could contribute to the project. But you don't want to give her *your* computer for her to make these changes, you want her to work on her computer. And, you don't want to have to *wait* for her to add these features, you want to keep working on the project and then just merge in her changes when she's finished. So how can we do that?\n\nWell, let me tell you that emailing the project back and forth would be a maintenance nightmare after about two emails. You're already tracking your project with Git, so we'll use _it_ to manage everything.\n\nSo Farrin will work on the project on a specific branch and any changes she makes she'll add to that branch. While she's working in her branch, you'll work on the project but on your own specific branch. And then you can merge these branches together when you get the branch from Farrin.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 293465,
+              "key": "edd8c7b4-e7c0-4e46-b12f-6ed87af79bb6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": ">  ## 💡 Always Use Topic Branches\n\n> Remember that it's incredibly helpful to make all of your commits on descriptively named **topic branches**. Branches help isolate unrelated changes from each other.\n\n> So when you're collaborating with other developers make sure to create a new branch that has a descriptive name that describes what changes it contains.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299691,
+              "key": "7bec0847-7e2c-4c90-b276-1b41fac21087",
+              "title": "L1 - Remote Repos Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AnSlYftJnwA",
+                "china_cdn_id": "AnSlYftJnwA.mp4"
+              }
+            },
+            {
+              "id": 293468,
+              "key": "a77d0ab8-e98a-4634-93b8-2eb48137de80",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is a Remote Repository?\n\nGit is a _distributed_ version control system which means there is not _one_ main repository of information. Each developer has a _copy_ of the repository. So you can have a copy of the repository (which includes the published commits and version history) and your friend can also have a copy of the same repository. Each repository has the exact same information that the other ones have, there's no one repository that's the main one. \n\nUp until this point, you have probably been only working locally on a _local_ repository. A _remote_ repository is the same Git repository like yours but it exists somewhere else.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300466,
+              "key": "17feefb5-7b5a-45ff-8cff-199fc93c6c72",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58ffbb45_ud456-l1-02-local-and-remote-repos/ud456-l1-02-local-and-remote-repos.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/17feefb5-7b5a-45ff-8cff-199fc93c6c72",
+              "caption": "_A local repository is the one that you work on in your local machine. Remote repositories live elsewhere (e.g. a friend's computer, GitHub, etc.)_",
+              "alt": "A local repository is the one that you work on in your local machine. Remote repositories live elsewhere (e.g. a friend's computer, GitHub, etc.)",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 293470,
+              "key": "989e2749-78b5-489c-9364-9a8f7e7994d0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Ways to access a Remote\n\nRemotes can be accessed in a couple of ways:\n\n* with a URL\n* path to a file system\n\nEven though it's possible to create a remote repository on your file system, it's very rarely used. By far the most common way to access a remote repository is through a URL to a repository that’s out on the web. \n\nThe way we can interact and control a remote repository is through the Git remote command:\n\n```bash\n$ git remote\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299692,
+              "key": "a2a7536b-8723-4406-907a-bd677f69a9df",
+              "title": "L1 - Sending Branches To Remote",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "414f0ukhOTY",
+                "china_cdn_id": "414f0ukhOTY.mp4"
+              }
+            },
+            {
+              "id": 293551,
+              "key": "88c49327-2290-4af7-8642-ef37f8328165",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You're also not limited to just one remote. You can add as many remote repositories  as you want!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300467,
+              "key": "fbbde604-5978-4814-b3ab-872d82dcfa30",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58ffbb5c_ud456-l1-02-multiple-remote-repos/ud456-l1-02-multiple-remote-repos.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fbbde604-5978-4814-b3ab-872d82dcfa30",
+              "caption": "_A local repository can be connected to more than one remote repository._",
+              "alt": "A diagram showing that a local repository can be connected to more than one remote repository.",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 293553,
+              "key": "f3de33d7-b2f9-44d5-85bd-8851f1acee54",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Why Multiple Remotes?\n\nWhy would you want to have multiple remote repositories? We'll look at this later but briefly, if you are working with multiple developers then you might want to get changes _they're_ working on in their branch(es) into _your_ project before they merge them into the master branch. You might want to do this if you want to test out their change before you decide to implement your changes.\n\nAnother example is if you have a project whose code is hosted on Github but deploys via Git to Heroku. You would have one remote for the `master` and one for the `deployment`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 293554,
+              "key": "41f4069b-5a0c-42eb-96e6-a92dd4dd466c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Make a Remote\n\nNow that we've learned about the purpose of remote repositories, let's add a remote repository to our own local one.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293555,
+          "key": "27f11e0c-50d8-47d5-bf18-ac2eed717386",
+          "title": "Add A Remote Repository",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "27f11e0c-50d8-47d5-bf18-ac2eed717386",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 297409,
+              "key": "78cf2d21-993a-4f74-9f94-de605ce56579",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Git Remote Command\nThe `git remote` command will let you manage and interact with remote repositories.\n\n```bash\n$ git remote\n```\n\nTry running this command on a local repository that you haven't shared with anyone yet. What do you get?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298969,
+              "key": "4375cb37-a9d4-4716-bb89-f38da12ca225",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f7d354_ud456-l1-git-remote-no-remote/ud456-l1-git-remote-no-remote.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4375cb37-a9d4-4716-bb89-f38da12ca225",
+              "caption": "_The Terminal application running the `git remote` command. No output is displayed since this repository does not have a connection to a remote._",
+              "alt": "The Terminal application running the `git remote` command. No output is displayed since this repository does not have a connection to a remote.",
+              "width": 1972,
+              "height": 1066,
+              "instructor_notes": null
+            },
+            {
+              "id": 298972,
+              "key": "495c02c6-8d6a-49ab-9d4c-bfe551f70856",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you haven't configured a remote repository then this command will display nothing. One caveat to this is if you have _cloned_ a repository. If you have, then your repository will automatically have a remote because it was cloned from the repository at the URL you provided. Let's look at a repository that has been cloned.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298977,
+              "key": "04bedc2f-ef89-4195-8a90-39974347a9ca",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f7d44c_ud456-l1-git-remote-shortname/ud456-l1-git-remote-shortname.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/04bedc2f-ef89-4195-8a90-39974347a9ca",
+              "caption": "_The Terminal application running the `git remote` command. It outputs the word `origin`._",
+              "alt": "The Terminal application running the `git remote` command. It outputs the word `origin`.",
+              "width": 2512,
+              "height": 1066,
+              "instructor_notes": null
+            },
+            {
+              "id": 298976,
+              "key": "addb54ba-37bf-4e68-8cd7-695080c18172",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The project I'm in is a clone of a Google's project called [Lighthouse](https://github.com/GoogleChrome/lighthouse). This project was cloned from GitHub and is for auditing, performance metrics, and best practices for Progressive Web Apps.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298982,
+              "key": "2136905a-3b18-4677-8889-417cce5d724d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Remote Shortnames\n\nThe output of `git remote` is just the word `origin`. Well that's weird. The word \"origin\", here, is referred to as a \"shortname\". A shortname is just a short and easy way to refer to the location of the remote repository. A shortname is local to the _current_ repository (as in, your _local_ repository). The word \"origin\" is the defacto name that's used to refer to the main remote repository. It's possible to rename this to something else, but typically it's left as \"origin\".\n\nWhy do we care about how easy it is to refer to a  remote repositories location? Well as you'll soon find out we'll be needing the path to the remote repository in a lot of our commands. And it's a lot easier to use just a name rather than the entire path to the remote repository.\n\nFor example which one of these is easier to understand:\n* Head north for about a quarter of a mile, then turn left, go straight down that road for about 5 miles, then turn right, proceed straight for about 300 feet until you past the blue mailbox, turn left down Jack Street, go 50 feet then turn left again on Owen Road, that will curve around until you hit Finn Lane. The structure that's the third one on the left\n* Grandma's house\n\nYou can see that it's a lot easier to refer to a location by just a short name like Grandma's house rather than the entire way to get there from your current location 😉\n\nIf you want to see the full path to the remote repository, then all you have to do is use the `-v` flag:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298983,
+              "key": "3b38f15b-6305-4fd6-8cf7-c5fc3b06d14e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f7d42a_ud456-l1-git-remote-from-clone/ud456-l1-git-remote-from-clone.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3b38f15b-6305-4fd6-8cf7-c5fc3b06d14e",
+              "caption": "_The Terminal application running the `git remote` command. The output includes the shortname and the full URL that it refers to._\n",
+              "alt": "The Terminal application running the `git remote` command. The output includes the shortname and the full URL that it refers to.",
+              "width": 2512,
+              "height": 1066,
+              "instructor_notes": null
+            },
+            {
+              "id": 298984,
+              "key": "e07e4e2e-55de-41b7-bfd1-d57557676be9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here you can see that if the word `origin` is used,  what actually is used is the path to `https://github.com/GoogleChrome/lighthouse.git` . It also might seem a little bit odd that there are now _two_ remotes both of them \"origin\" and both going to the same URL. The only difference is right at the end: \nthe `(fetch)` part and the `(push)` part\n\nWe'll be looking at both `fetch` and `push` in upcoming sections.\n\nWe've done enough looking for now. Let's do something active and create our own simple project and send it to a remote repository! ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298986,
+              "key": "12614ca3-c939-49ca-986d-cb055724423a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create A Simple Project\nWe're going to need a sample project to use during this course to test out working with remote repositories, sending updates to the remote repository, and getting changes from the remote repository, too.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298987,
+              "key": "68ea1516-bf8c-49cd-a6b9-33a22b4facd1",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "68ea1516-bf8c-49cd-a6b9-33a22b4facd1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you don't have a project that you want to use then you can follow along with me!",
+                "answers": [
+                  {
+                    "id": "a1492638392333",
+                    "text": "create a new directory for your project with the name `my-travel-plans`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492638431615",
+                    "text": "use `git init` to turn the `my-travel-plans` directory into a Git repository",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492638437655",
+                    "text": "create a `README.md` file",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492638447432",
+                    "text": "create `index.html`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492638452460",
+                    "text": "create `app.css`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 298988,
+              "key": "ff72b822-5617-4e5a-bf27-7630bcff41e7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### README File Content\n\n```text\n# Travel Destinations\n\nA simple app to keep track of destinations I'd like to visit.\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298989,
+              "key": "81d74c62-54e7-4cb8-8198-9b4d83410b5b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### HTML File Content\n\nAdd the following content to the index.html file:\n\n```html\n<!doctype html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n    <title>Travels</title>\n    <meta name=\"description\" content=\"\">\n    <link rel=\"stylesheet\" href=\"css/app.css\">\n</head>\n<body>\n\n    <div class=\"container\">\n        <div class=\"destination-container\">\n            <div class=\"destination\" id=\"florida\">\n                <h2>Florida</h2>\n            </div>\n\n            <div class=\"destination\" id=\"paris\">\n                <h2>Paris</h2>\n            </div>\n        </div>\n    </div>\n\n</body>\n</html>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298990,
+              "key": "4f44df16-7445-46cd-af85-000677595d15",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### CSS File Content\nAdd the following information to the CSS file:\n\n```css\nhtml {\n    box-sizing: border-box;\n    height: 100%;\n}\n\n*,\n*::before,\n*::after {\n    box-sizing: inherit;\n}\n\nbody {\n    display: flex;\n    margin: 0;\n    height: 100%;\n}\n\n.container {\n    margin: auto;\n    padding: 1em;\n    width: 80%;\n}\n\n.destination-container {\n    display: flex;\n    flex-flow: wrap;\n    justify-content: center;\n}\n\n.destination {\n    background: #03a9f4;\n    box-shadow: 0 1px 9px 0 rgba(0, 0, 0, 0.4);\n    color: white;\n    margin: 0.5em;\n    min-height: 200px;\n    flex: 0 1 200px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    text-align: center;\n}\n\nh2 {\n    margin: 0;\n    transform: rotate(-45deg);\n    text-shadow: 0 0 5px #01579b;\n}\n\n#florida {\n    background-color: #03a9f4;\n}\n\n#paris {\n    background-color: #d32f2f;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298991,
+              "key": "fa581d50-ecb9-49b4-b40c-730add0ebb52",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "At this point this is what my project looks like but remember your project can be anything you want you just need to make sure you have a project with some commits in it.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298992,
+              "key": "e42e2b37-82fd-48e7-8d27-be453634be60",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f7dce2_ud456-l1-my-travel-plans-project/ud456-l1-my-travel-plans-project.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e42e2b37-82fd-48e7-8d27-be453634be60",
+              "caption": "_A simple web application that shows the destinations I want to go to (Florida and Paris) opened in the Chrome browser._",
+              "alt": "A simple web application that shows the destinations I want to go to (Florida and Paris) opened in the Chrome browser.",
+              "width": 1920,
+              "height": 1444,
+              "instructor_notes": null
+            },
+            {
+              "id": 298995,
+              "key": "4f0b37b3-975e-4cb0-b398-823bb8c1e3fa",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4f0b37b3-975e-4cb0-b398-823bb8c1e3fa",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Let's make sure you're all set to continue. Please check off each of the following:",
+                "answers": [
+                  {
+                    "id": "a1492638982361",
+                    "text": "I have created a new directory for my project with the name `my-travel-plans`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492639054167",
+                    "text": "I've turned the project into a Git repo",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492639084428",
+                    "text": "I've added at least one file to the project",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492639094139",
+                    "text": "I've commited the file with git commit (for example, `Initial commit`)",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 298996,
+              "key": "53fc1c1e-3e8d-4d7e-b0bf-323071a1a0fc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Hosting on GitHub\n\nThere are several options for us to host Git projects. But one of the most popular hosting sites is a service called [GitHub](https://github.com/) which you might have heard of before. Now the problem with GitHub is that the name is so similar to Git that people sometimes conflate Git and GitHub and think they're the same thing when they're actually quite different. \n\n* Git is a version control tool\n* GitHub is a service to host Git projects\n\nIf you are already familiar with GitHub and know how to create a repo _without_ initializing a README, you can skip this video and go ahead and make your repo with the same name as your sample project, and remember not to initialize a readme.\n\nIf you don't have an account yet, sign up for one on [GitHub's join page](https://github.com/). There are different types of GitHub accounts you can sign up for but the free tier is all that we need for this course. And a free account is what most people use anyway. Once you create your account, sign in to GitHub and you'll be on the home page:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 298999,
+              "key": "a21d47ae-038b-4849-89d0-64ef5816b2df",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f7df39_ud456-l1-github-homepage/ud456-l1-github-homepage.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a21d47ae-038b-4849-89d0-64ef5816b2df",
+              "caption": "_This is what my account shows right after signing in. Your information will be different depending on the number of repositories you have and other users and repositories you follow._",
+              "alt": "A Screenshot of Richard's GitHub account right after signing in.",
+              "width": 2660,
+              "height": 1742,
+              "instructor_notes": null
+            },
+            {
+              "id": 299004,
+              "key": "38e49bcc-5178-4712-b1db-10881aef7bdc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Just like every website, GitHub updates its interface quite often so if what you're seeing doesn't look exactly like the image above don't worry the important features will be the same. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299005,
+              "key": "1d55c1e7-e10a-43c7-bf58-a8d49d73cb3f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The important thing we need to look at right now is how to create a new Repository. There are actually two ways to do this from the homepage:\n\n1. from the navbar\n* the green \"new repository\" button part way down the page on the right side",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299006,
+              "key": "ceb7306e-79cb-4b89-84dc-bb9a5f7e25d1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f7e399_ud456-l1-github-homepage-new-repo-button/ud456-l1-github-homepage-new-repo-button.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ceb7306e-79cb-4b89-84dc-bb9a5f7e25d1",
+              "caption": "_GitHub has two locations where you can create a new repository. The plus icon located in the page's header and the \"New Repository\" button in the middle of the page._",
+              "alt": "GitHub has two locations where you can create a new repository. The plus icon located in the page's header and the \"New Repository\" button in the middle of the page.",
+              "width": 2660,
+              "height": 1742,
+              "instructor_notes": null
+            },
+            {
+              "id": 299007,
+              "key": "22b84e4f-94b8-4fc9-916b-594b675328f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "I use the button in the navigation bar because the navigation bar is available on every single page, which makes it easy to get to the new repo link.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299008,
+              "key": "8aea6078-0d4a-407d-8d02-b811f599b752",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f7e42a_ud456-l1-nav-bar-new-repo-link/ud456-l1-nav-bar-new-repo-link.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8aea6078-0d4a-407d-8d02-b811f599b752",
+              "caption": "_Clicking on the plus icon in GitHub's header displays a dropdown of options. One option is the \"New repository\" link._",
+              "alt": "Clicking on the plus icon in GitHub's header displays a dropdown of options. One option is the \"New repository\" link.",
+              "width": 908,
+              "height": 484,
+              "instructor_notes": null
+            },
+            {
+              "id": 299010,
+              "key": "4854707b-1315-4bf1-a29d-b3d9ca6005f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the dropdown, the `New repository` link takes you to the repository creation page. We only need to fill out just one field in this form -  the repository name field.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299012,
+              "key": "01810fef-7294-473c-a732-5ad201ffa846",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f7e4b3_ud456-l1-github-create-repo-page/ud456-l1-github-create-repo-page.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/01810fef-7294-473c-a732-5ad201ffa846",
+              "caption": "_GitHub's Create a new repository page. The only required field is the `Repository name` field._",
+              "alt": "GitHub's Create a new repository page. The only required field is the `Repository name` field.",
+              "width": 2346,
+              "height": 1854,
+              "instructor_notes": null
+            },
+            {
+              "id": 299015,
+              "key": "07c451d6-4a89-4970-8dcb-2c7db833d886",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Typically you want to use the name of your project as the name of the repository. Creating a repository, modifying it later, or deleting it is relatively easy so don't feel like you have to get the name perfect right here on this page.  I'm going to create a repository called \"my-travel-plans\" that's the same name as the sample project I created.\n\nIt's okay to leave the description empty for now (although, you can provide one if you want). Because I'm on the free tier plan, my repository has to be public (which means my repository and all my code will be freely available for anyone to look at). If I want this to be a private repository, then I'd choose \"Private\" which will cause GitHub to ask for my credit card information and will also upgrade me to a paid plan.\n\nI'm also going to leave the \"Initialize this repository with the README\" option _unchecked_ because I don't want GitHub to add a README file for me.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299020,
+              "key": "852a550b-9db8-4c4d-9a0e-bcceef533366",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### ⚠️  Don't Initialize with a README ⚠️\nMake sure that you leave the \"Initialize this repository with the README\" _unchecked_. We'll be providing our own README, so we don't want GitHub to provide one automatically.\n\nAlso, if we let GitHub auto-generate a new README file for us, then we won't be provided with the setup commands to run in the terminal. It's still possible to get that information, but it will be hidden away.\n\nSo just make sure to leave this field unchecked, and you'll be good to go!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299021,
+              "key": "be16c111-ff7e-4db6-9e19-b3f93472270d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now just click that big \"Create Repository\" button to create your remote repository!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299693,
+              "key": "ba3ff4b1-6144-422e-92b7-121034171cad",
+              "title": "L1 - New Repo Git Commands On GitHub",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "myuGLZLYpYY",
+                "china_cdn_id": "myuGLZLYpYY.mp4"
+              }
+            },
+            {
+              "id": 299025,
+              "key": "862d50f5-9004-4673-826c-3e3d9aede69e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Remember that the `git remote` command is used to create and manage remote repositories. So I'll use the following command to create a connection from my local repository to the remote repository I just created on my GitHub account:\n\n```bash\n$ git remote add origin https://github.com/richardkalehoff/RichardsFantasticProject.git\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299039,
+              "key": "26f19eac-1a8f-4f03-b756-6184a0ab671a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## ⚠️  Remotes & Permissions ⚠️ \n\nWarning: It's important that you use the URL for the new repository that _you_ created on _your_ GitHub profile. Do _not_ use the one above because that's for the project I just created on _my_ account. Because this project is on _my_ account _you_ do not have access to send changes to it.\n\nSo make sure you use the URL from your project. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299045,
+              "key": "351146c5-afdb-4d73-a028-cfc0993c7b61",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The friends Kagure, Jack, Owen, and Finn each have their own `my-travel-plans` project at:\n\n\n* https://github.com/kagure/my-travel-plans.git\n* https://github.com/jack/my-travel-plans.git\n* https://github.com/owen/my-travel-plans.git\n* https://github.com/finn/my-travel-plans.git",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299044,
+              "key": "a06b102d-6e9f-4265-b8d3-1cc7a951e86d",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a06b102d-6e9f-4265-b8d3-1cc7a951e86d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Whose repository is being cloned in the following command?\n\n```bash\n$ git clone https://github.com/owen/my-travel-plans.git\n```",
+                "answers": [
+                  {
+                    "id": "a1492644108682",
+                    "text": "Kagure's",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492644126645",
+                    "text": "Jack's",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492644127187",
+                    "text": "Owen's",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492644127951",
+                    "text": "Finn's",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 299040,
+              "key": "1fe260e4-4d36-45e4-aa7c-b2623f256165",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1fe260e4-4d36-45e4-aa7c-b2623f256165",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Jonathan and Allison are working on a project together. Jonathan creates a project on GitHub at the URL `https://github.com/docsrus/brain-mapping.git` .\n\nIf Allison runs `git clone https://github.com/docsrus/brain-mapping.git`, will she have permission to make changes to Jonathan's project on GitHub?",
+                "answers": [
+                  {
+                    "id": "a1492643594333",
+                    "text": "Yes",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492643598300",
+                    "text": "No",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 299027,
+              "key": "db1302dd-930b-4c93-92c2-47b173e34948",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There are a couple of things to notice about the command you just ran on the command line:\n1. first, this command has the sub command `add`\n* the word `origin` is used - this is setting the shortname that we discussed earlier\n    - Remember that the word `origin` here isn't special in any way.\n    - If you want to change this to `repo-on-GitHub`, then (before running the command) just change the word \"origin\" to \"repo-on-GitHub\": \n\n    `$ git remote add repo-on-GitHub https://github.com/richardkalehoff/RichardsFantasticProject.git`\n* third, the full path to the repository is added (i.e. the URL to the remote repository on the web)\n\nNow I'll use `git remote -v` to verify that I've added the remote repository correctly:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300041,
+              "key": "096bdfea-b444-492e-9d0b-c13884fd0098",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe4670_ud456-l1-git-remote-add-terminal/ud456-l1-git-remote-add-terminal.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/096bdfea-b444-492e-9d0b-c13884fd0098",
+              "caption": "_`git remote add` was used to create a shortname of `origin` that points to the project on GitHub. Running `git remote -v` displays both the shortname and the URL._",
+              "alt": "`git remote add` was used to create a shortname of `origin` that points to the project on GitHub. Running `git remote -v` displays both the shortname and the URL",
+              "width": 2900,
+              "height": 1266,
+              "instructor_notes": null
+            },
+            {
+              "id": 299036,
+              "key": "08a89f38-e38c-4851-abdf-bf2c6ea2d97c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Fantastic! Everything is looking good. I've added a link to my remote repository with the `git remote add` command, and then I verified that everything looks correct with `git remote -v`. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299038,
+              "key": "b5a4f6a0-bb17-4e27-8195-d7a8a1f496a0",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b5a4f6a0-bb17-4e27-8195-d7a8a1f496a0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Let's make sure we're on the same page. Make sure you can answer all of these:",
+                "answers": [
+                  {
+                    "id": "a1492642338989",
+                    "text": "I have created my remote repository on GitHub",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492642376776",
+                    "text": "I've used `git remote add` to create a connection from my local repository to the remote repository",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492642377462",
+                    "text": "I've used `git remote -v` to verify that the shortname is there with the correct URL",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 299037,
+              "key": "3fcd4c32-9eaf-4d59-95d2-df957ed9ae6c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nA remote repository is a repository that's just like the one you're using but it's just stored at a different location. To manage a remote repository, use the `git remote` command:\n\n```bash\n$ git remote\n```\n\n* It's possible to have links to multiple different remote repositories.\n* A shortname is the name that's used to refer to a remote repository's location. Typically the location is a URL, but it could be a file path on the same computer.\n* `git remote add` is used to add a connection to a new remote repository.\n* `git remote -v` is used to see the details about a connection to a remote.\n\n### Further Research\n* [Working with Remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes#_showing_your_remotes) from the Git book\n* [the `git remote` command](https://git-scm.com/docs/git-remote) from the Git docs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293444,
+          "key": "b7334b54-ec80-4754-95cd-345b78f526ae",
+          "title": "Push Changes To A Remote",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b7334b54-ec80-4754-95cd-345b78f526ae",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299694,
+              "key": "98f232cb-2a45-4b35-8c18-56060a67b1ab",
+              "title": "L1 - Git Push In Theory",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "21TvMEtMRys",
+                "china_cdn_id": "21TvMEtMRys.mp4"
+              }
+            },
+            {
+              "id": 299050,
+              "key": "2038390c-f73d-4a10-90d5-2c73a77cdab0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reviewing Commits\n\nLet's take a look at the commits that I have in my Repository. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300043,
+              "key": "0038929e-bb61-4cf3-981b-eedec56d7aa6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe47d8_ud456-l1-project-commits/ud456-l1-project-commits.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0038929e-bb61-4cf3-981b-eedec56d7aa6",
+              "caption": "_The terminal application displaying the log of the project's commits._",
+              "alt": "The terminal application displaying the log of the project's commits.",
+              "width": 1940,
+              "height": 870,
+              "instructor_notes": null
+            },
+            {
+              "id": 299053,
+              "key": "f2f047a7-29e4-49b7-bc9c-8c2f98c6ef90",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "I used the following log command to display these commits\n\n```bash\n$ git log --oneline --graph --decorate --all\n```\n\nThese commits are only in the local repository, though. They haven't been sent up to the remote repository yet. When commits are sent to the remote a remote branch indicator will appear in the log. Since there aren't any remote branch indicators we can tell that there are no commits on the remote repository. But just to be 100% certain let's look at the remote repository on GitHub to see if there any commits.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300048,
+              "key": "9b4e71d4-b3f6-4eb1-a750-41a8e73de753",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe48af_ud456-l1-project-github-no-commits/ud456-l1-project-github-no-commits.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9b4e71d4-b3f6-4eb1-a750-41a8e73de753",
+              "caption": "_The remote repository doesn't contain any commits, so GitHub displays the repository's setup screen._",
+              "alt": "A Screenshot of a remote repository that doesn't contain any commits",
+              "width": 2436,
+              "height": 1726,
+              "instructor_notes": null
+            },
+            {
+              "id": 299058,
+              "key": "4bfc06d8-3797-46da-972b-1b2e059e0a9c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Since we haven't sent any commits update to GitHub yet it's still showing us the setup screen to tell us how we can connect our local repository to the remote repository and send some commits. Since this is still the setup screen we can know that there are no commits in the remote repository.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299062,
+              "key": "fad0f2c1-748a-419b-8bae-b59f659ae7a6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sending Commits\nTo send local commits to a remote repository you need to use the `git push` command. You provide the remote short name and then you supply the name of the branch that contains the commits you want to push:\n\n```bash\n$ git push <remote-shortname> <branch>\n```\n\nMy remote's shortname is `origin` and the commits that I want to push are on the `master` branch. So I'll use the following command to send my commits to the remote repository on GitHub:\n\n```bash\n$ git push origin master\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300049,
+              "key": "fec03045-74b1-439e-89b2-ad9656616136",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe49db_ud456-l1-project-push-commits/ud456-l1-project-push-commits.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fec03045-74b1-439e-89b2-ad9656616136",
+              "caption": "_The terminal application showing the `git push` command. It asks for my username, password (which isn't displayed), and then displays information about what it's doing to send the commits._",
+              "alt": "The terminal application showing the `git push` command. It asks for my username, password (which isn't displayed), and then displays information about what it's doing to send the commits.",
+              "width": 2292,
+              "height": 1332,
+              "instructor_notes": null
+            },
+            {
+              "id": 299070,
+              "key": "ebfaf91b-c774-4989-9f9a-d275106442d4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There a couple of things to notice:\n* Depending on how you have configured GitHub and the remote URL that's being used, you might have to enter your username and password.\n    - this will happen if you use the HTTP version of the remote (rather than the `ssh` version)\n    - If you have configured GitHub to use the SSH protocol and have supplied it with your SSH key then you don't need to worry about doing this step. Check the [Connecting to GitHub with SSH documentation page](https://help.github.com/articles/connecting-to-github-with-ssh/) if you're interested in using SSH with GitHub.\n* If you have to enter your username and password your username will show up after typing but your password will not. So just keep typing your password and press enter when you're done.\n    - If you encounter any errors with your password don't worry it'll just ask you to type it in again\n* Git does some compressing of things to make it smaller and then sends those off to the remote\n* A new branch is created - at the very bottom it says `[new branch]` and then `master  -> master`\n\nNow let's look at GitHub:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300080,
+              "key": "4b6737b3-5a85-4658-bdff-35b78a7b8a26",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe5790_ud456-l1-project-on-github/ud456-l1-project-on-github.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4b6737b3-5a85-4658-bdff-35b78a7b8a26",
+              "caption": "_My entire project is up on GitHub!_",
+              "alt": "A Screenshot of Richard's entire project on GitHub",
+              "width": 1174,
+              "height": 1053,
+              "instructor_notes": null
+            },
+            {
+              "id": 299074,
+              "key": "890e4502-57ee-4538-8de5-275caa12f6b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Our project is up on GitHub - how awesome and easy was that! One cool feature that GitHub does is that it automatically shows the content of the README file which can be extremely helpful.\n\nGitHub also displays a lot of details about our Repository. Right now it's showing that there are:\n* three commits\n* one branch \n* one contributor\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300082,
+              "key": "96d7758e-844c-459c-baa1-fb290b9adc4c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe585d_ud456-l1-project-on-github-focus/ud456-l1-project-on-github-focus.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/96d7758e-844c-459c-baa1-fb290b9adc4c",
+              "caption": "_The project's main page on GitHub displays information about the repository._",
+              "alt": "The project's main page on GitHub displays information about the repository.",
+              "width": 1174,
+              "height": 1053,
+              "instructor_notes": null
+            },
+            {
+              "id": 299079,
+              "key": "a2f6fe92-d267-471b-a9f1-768abf533b9f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now before we move on, let's just check the local repository to see how it changed after pushing.\n\nRun the following command:\n\n```bash\n$ git log --oneline --graph --decorate --all\n```\n\n_Important: make sure to include the `--decorate` and `--all` flags_",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300089,
+              "key": "18c531d1-33a1-4ad4-82b1-23c156f74dac",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe591c_ud456-l1-04-commit-count-local/ud456-l1-04-commit-count-local.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/18c531d1-33a1-4ad4-82b1-23c156f74dac",
+              "caption": "_The terminal application showing the results of running `git log --oneline --graph --decorate --all`. The new `origin/master` tracking branch now exists._",
+              "alt": "The terminal application showing the results of running `git log --oneline --graph --decorate --all`. The new `origin/master` tracking branch now exists",
+              "width": 2226,
+              "height": 870,
+              "instructor_notes": null
+            },
+            {
+              "id": 299084,
+              "key": "7c1aca25-91d1-407a-8705-6bcd555e3830",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We now have a new marker in the output! This marker is `origin/master` and is called a **tracking branch**. A tracking branch's name includes the shortname of the remote repository as well as the name of the branch. So the tracking branch `origin/master` is telling us that the remote `origin` has a `master` branch that points to commit `9b7d28f` (and includes all of the commits before `9b7d28f`). This is really helpful because this means we can track the information of the remote Repository right here in our local one!\n\nOne _very important thing to know_ is that this `origin/master` tracking branch is not a live representation of where the branch exists on the remote repository. If a change is made to the remote repository not by us but by someone else,  the `origin/master` tracking branch in our local repository will not move. We have to tell it to go check for any updates and _then_ it will move. We'll look at how to do this in the next section.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299085,
+              "key": "52901036-ad22-493b-816a-02a49a8f71dd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nThe `git push` command is used to send commits from a local repository to a remote repository.\n\n```bash\n$ git push origin master\n```\n\nThe `git push` command takes:\n\n* the shortname of the remote repository you want to send commits to\n* the name of the branch that has the commits you want to send",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293451,
+          "key": "22364196-91e4-4da4-837b-0e71a8143350",
+          "title": "Pulling Changes From A Remote",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "22364196-91e4-4da4-837b-0e71a8143350",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299151,
+              "key": "23163032-d028-43b0-abbc-08eb04789544",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pull changes from a remote\n\nLet’s say that we are in a situation where there are commits on the _remote_ repository that we do not have in our _local_ repository. This can happen in several ways: You could be working on a team, and a co-worker has pushed new changes to the remote. Alternatively, you could be working on the same project but from different computers -- for example, say you have a work computer and a personal computer, and you contribute to the repo from both of them. If you push changes to the repo from your work computer, the local repo on your personal computer will not reflect those changes. How do we sync new changes that are on the remote into the local repository? That's exactly where we're going to be looking at now. Let's first look at how pulling in remote changes works in theory, then we'll actually do it ourselves!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299695,
+              "key": "af1856a4-9a9c-4d37-b7df-438fd2c6ba2c",
+              "title": "L1 - Git Pull In Theory",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MjNU2LTDVAA",
+                "china_cdn_id": "MjNU2LTDVAA.mp4"
+              }
+            },
+            {
+              "id": 299154,
+              "key": "8c5dccfe-5570-4cc9-838b-10fd24e264a1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "I said it before but I'll say it again, the branch that appears in the _local_ repository is actually tracking a branch in the _remote_ repository (e.g. `origin/master` in the local repository is called a **tracking branch** because it's tracking the progress of the `master` branch on the remote repository that has the shortname \"origin\").",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299155,
+              "key": "a87789f9-430c-4277-8d23-95a85075629b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Add remote changes\n\nSince we don't have any commits on our remote repository yet and we're not collaborating with anybody we're going to fake it and add some commits manually through GitHub's interface on the web. \n\nA walk-through video is below. Use the code snippets to follow along in the video.\n\n### New CSS Content\n\nAdd the following new ruleset:\n\n```css\n.destination:hover h2 {\n    transform: rotate(0deg);\n}\n```\n\nAdd `transition: transform 0.5s;` to the `h2` ruleset, so it should now be:\n\n```css\nh2 {\n    margin: 0;\n    transform: rotate(-45deg);\n    transition: transform 0.5s;\n    text-shadow: 0 0 5px #01579b;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299696,
+              "key": "a351f4ce-f2ce-4b35-a8a8-d0a5219a0ea0",
+              "title": "L1 - Adding A Commit On GitHub",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UBYxcTg6VLU",
+                "china_cdn_id": "UBYxcTg6VLU.mp4"
+              }
+            },
+            {
+              "id": 299157,
+              "key": "0ca81174-d0ba-457e-ae2d-cbe1d9b5aa36",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️  Prefer Working Locally ⚠️ \n\n> Because GitHub has a web interface, it allows you to add commits manually through its interface. But just because you _can_ do a thing, doesn't mean you _should_. I've demoed making these changes this way so that we could simulate commits being on the remote repository but not in the local repository. But I recommend that you should always work locally on a project and then push those changes to the remote repository. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299158,
+              "key": "a3ee791c-6bac-4964-9494-9e0645dfb173",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Retrieve remote commits\n\nNow let's compare our local repository and our remote repository. We only have _three_ commits in our local repository:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300122,
+              "key": "8438cbdc-49fa-43b6-8ccf-430c6b537cee",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe591c_ud456-l1-04-commit-count-local/ud456-l1-04-commit-count-local.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8438cbdc-49fa-43b6-8ccf-430c6b537cee",
+              "caption": "_Our local repository only has three commits in it._",
+              "alt": "Our local repository only has three commits in it.",
+              "width": 2226,
+              "height": 870,
+              "instructor_notes": null
+            },
+            {
+              "id": 299163,
+              "key": "7522865d-3a62-4223-8a74-2264ee1f5e55",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "While there are actually _four_ commits in the remote repository:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300124,
+              "key": "712c2845-d486-43df-ba06-6851c50146a5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe65d8_ud456-l1-04-commit-count-remote/ud456-l1-04-commit-count-remote.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/712c2845-d486-43df-ba06-6851c50146a5",
+              "caption": "_The remote repository on GitHub has four commits. The three from our local repository and the one we manually added on GitHub._",
+              "alt": "The remote repository on GitHub has four commits. The three from our local repository and the one we manually added on GitHub.",
+              "width": 2386,
+              "height": 1740,
+              "instructor_notes": null
+            },
+            {
+              "id": 299165,
+              "key": "c8fe5d73-7dc7-4de5-aede-ad98bba73ccd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pulling Changes with `git pull`\n\nThe local commits end at commit `5a010d1` while the remote has two extra commits - commit `4b81b2a` and commit ` b847434`.\n\nAlso, notice that in our _local_ repository when we did the `git log` the `origin/master` branch is still pointing to commit `5a010d1`.\n\nRemember that the `origin/master` branch is not a live mapping of where the remote's master branch is located. If the remote's `master` moves, the local `origin/master` branch stays the same. To update this branch, we need to sync the two together. \n\n`git push` will sync the _remote_ repository with the _local_ repository. To do the opposite (to sync the _local_ with the _remote_), we need to use `git pull`. The format for `git pull` is very similar to `git push` -  you provided the shortname for the remote repository and then the name of the branch you want to pull in the commits.\n\n```bash\n$ git pull origin master\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300125,
+              "key": "0b3fc747-6602-4b7e-a681-51a7d9da1430",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe665e_ud456-l1-04-git-pull/ud456-l1-04-git-pull.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0b3fc747-6602-4b7e-a681-51a7d9da1430",
+              "caption": "_Running `git pull origin master` will retrieve the commits from the `master` branch on the `origin` remote repository._",
+              "alt": "Running `git pull origin master` will retrieve the commits from the `master` branch on the `origin` remote repository.",
+              "width": 2226,
+              "height": 1464,
+              "instructor_notes": null
+            },
+            {
+              "id": 299166,
+              "key": "8831abeb-6d2c-4d05-9fcb-935be21dab53",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There's several things to note about running this command:\n\n* the format is very similar to that of `git push` - there's counting and compressing and packing of items\n* it has the phrase \"fast-forward\" which means Git did a fast-forward merge (we'll dig into this in just a second)\n * it displays information similar to `git log --stat` where it shows the files that have been changed and how many lines were added or removed in them\n\nIf you don't want to automatically merge the local branch with the tracking branch then you wouldn't use `git pull` you would use a different command called `git fetch`. You might want to do this if there are commits on the repository that you don't have _but_ there are also commits on the local repository that the remote one doesn't have either.\n\nLet's take a look at `git fetch`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299170,
+              "key": "bf6f5a77-4d08-4819-bffb-81382a74a705",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nIf there are changes in a remote repository that you'd like to include in your local repository, then you want to _pull_ in those changes. To do that with Git, you'd use the `git pull` command. You tell Git the shortname of the remote you want to get the changes from and then the branch that has the changes you want:\n\n```bash\n$ git pull origin master\n```\n\nWhen `git pull` is run, the following things happen:\n* the commit(s) on the remote branch are copied to the local repository\n* the local tracking branch (`origin/master`) is moved to point to the most recent commit\n* the local tracking branch (`origin/master`) is merged into the local branch (`master`)\n\nAlso, changes can be manually added on GitHub (but this is not recommended, so don't do it). ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293452,
+          "key": "daa45fbf-fccd-4648-b368-14e7a3de8bd1",
+          "title": "Pull vs Fetch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "daa45fbf-fccd-4648-b368-14e7a3de8bd1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299697,
+              "key": "e2d09bc4-9d91-4ee9-9034-f9ef474267ee",
+              "title": "Pull Vs Fetch",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kxXdk2HcOBo",
+                "china_cdn_id": "kxXdk2HcOBo.mp4"
+              }
+            },
+            {
+              "id": 299175,
+              "key": "f6bd1549-45b2-49f2-89a7-0062cc045d2a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Git fetch is used to retrieve commits from a remote repository's branch but it _does not_ automatically merge the local branch with the remote tracking branch after those commits have been received.\n\nThe above paragraph is a little dense so why don't you reread it one more time. \n\nYou provide the exact same information to `git fetch` as you do for `git pull`. So you provide the shortname of the remote repository you want to fetch from and then the branch you want to fetch:\n\n```bash\n$ git fetch origin master\n```\n\nWhen `git fetch` is run, the following things happen:\n* the commit(s) on the remote branch are copied to the local repository\n* the local tracking branch (e.g. `origin/master`) is moved to point to the most recent commit\n\nThe important thing to note is that the local branch does not change at all.\n\nYou can think of `git fetch` as half of a `git pull`. The other half of `git pull` is the merging aspect.\n\nOne main point when you want to use `git fetch` rather than `git pull` is if your remote branch and your local branch both have changes that neither of the other ones has.  In this case, you want to fetch the remote changes to get them in your local branch and then perform a merge manually. Then you can push that new merge commit back to the remote. \n\nLet's take a look at that.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299698,
+              "key": "edb855cd-f18f-4704-9d1e-48b42179a38d",
+              "title": "L1 - Fetch Merge And Push",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jwyQUfE1Eqw",
+                "china_cdn_id": "jwyQUfE1Eqw.mp4"
+              }
+            },
+            {
+              "id": 299178,
+              "key": "d2408893-539f-45ca-9fbd-d9ec454c3113",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nYou can think of the `git pull` command as doing two things:\n\n1. fetching remote changes (which adds the commits to the local repository and moves the tracking branch to point to them)\n* merging the local branch with the tracking branch\n\nThe ` git fetch` command is just the first step. It just retrieves the commits and moves the tracking branch. It _does not_ merge the local branch with the tracking branch. The same information provided to `git pull` is passed to `git fetch`:\n\n* the shortname of the remote repository\n* the branch with commits to retrieve\n\n```bash\n$ git fetch origin master\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293453,
+          "key": "702f499e-44bc-4208-8b3e-f05db54629c3",
+          "title": "Lesson Wrap Up",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "702f499e-44bc-4208-8b3e-f05db54629c3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299699,
+              "key": "e1d5f2b4-303f-4c3f-bce3-03f8983a6f5d",
+              "title": "Lesson Wrap Up",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6Koa4nAu-04",
+                "china_cdn_id": "6Koa4nAu-04.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,783 @@
+{
+  "data": {
+    "lesson": {
+      "id": 293441,
+      "key": "e295524f-87b6-4981-af74-6b20231dc7c1",
+      "title": "Staying In Sync With A Remote Repository",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You'll learn how to send suggested changes to another developer by using pull requests. You'll also learn how to use the powerful `git rebase` command to squash commits together.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/e295524f-87b6-4981-af74-6b20231dc7c1/293441/1517446869855/Staying%20In%20Sync%20With%20A%20Remote%20Repository%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/e295524f-87b6-4981-af74-6b20231dc7c1/293441/1517446851308/Staying%20In%20Sync%20With%20A%20Remote%20Repository%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 293450,
+          "key": "e7123304-aa7e-477a-8586-47acf84d3407",
+          "title": "Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e7123304-aa7e-477a-8586-47acf84d3407",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 300148,
+              "key": "9f2b9a8a-fdee-4b69-a4e2-360657ab5fda",
+              "title": "Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "j5RmK0UHOTY",
+                "china_cdn_id": "j5RmK0UHOTY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 293454,
+          "key": "9c0c0dd5-225e-44a4-9257-a584a7829207",
+          "title": "Create a Pull Request",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9c0c0dd5-225e-44a4-9257-a584a7829207",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299688,
+              "key": "7698e027-2da0-4c51-b09d-e0ae1396337f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A **pull request** is a request to the _original_ or _source repository's_ maintainer to include changes in their project that you made in your fork of their project. You are requesting that they _pull_ in changes you've made.\n\nLet's get a high-level overview of what this entails and then we'll dig into the details.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299689,
+              "key": "44e122e8-b8c8-41f3-9113-b628fba6d208",
+              "title": "L3 - Pull Request In Theory",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "twLr9ndsf90",
+                "china_cdn_id": "twLr9ndsf90.mp4"
+              }
+            },
+            {
+              "id": 300155,
+              "key": "8b162ee4-d3f6-447b-9d58-114045ba676d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's walk through the steps to issue a pull request of our own! If you've been following along then you've forked Lam's [travel plans repository](https://github.com/udacity/course-collaboration-travel-plans) to your own account, and you've made one or two additional commits to your forked version.\n\nIn the previous lesson, I created a topic branch called `include-richards-destinations`, added a few commits to it, and pushed that branch to GitHub. Remember that when you're creating a good pull request you want to have changes on a branch that's sole reason to exist is for these changes. Remember the name for these types of branches?...topic branches!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300158,
+              "key": "0cb6d0f1-458f-4995-bc17-d79a83f9d201",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0cb6d0f1-458f-4995-bc17-d79a83f9d201",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have _forked_ Lam's [project](https://github.com/udacity/course-collaboration-travel-plans)",
+                "I have created a topic branch with a descriptive name",
+                "I have made at least one commit on my branch",
+                "I have pushed my changes back to _my_ fork"
+              ],
+              "positive_feedback": "Perfect, let's continue!",
+              "video_feedback": null,
+              "description": "We're about to create a pull request (how exciting!), so let's make sure we've both got the same setup. Please answer the following:"
+            },
+            {
+              "id": 300159,
+              "key": "1a758402-7a7a-4a8b-b026-c80c20f0af8b",
+              "title": "L3 - Pull Request In Action",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "d3AGtKmHxUk",
+                "china_cdn_id": "d3AGtKmHxUk.mp4"
+              }
+            },
+            {
+              "id": 300171,
+              "key": "fa47cde8-dbfb-4897-b834-ba14e8e92a05",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You just created a pull request! Congratulations! 🙌🏼  \n\nAs you can see, it's actually not too difficult to create a pull request. When I was first learning Git, GitHub, and how to collaborate, I was extremely nervous about making commits, and working with remote repos, but _especially_ submitting a pull request to another developer's project! As long as you following the steps we covered in the previous section on:\n\n* reviewing the project's CONTRIBUTING.md file\n* checking out the project's existing issues\n* talking with the project maintainer\n\n...your pull request is sure to be included!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300172,
+              "key": "e4bcad56-8eae-42a9-af8c-7056db0a953b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nA pull request is a _request_ for the source repository to pull in your commits and merge them with their project. To create a pull request, a couple of things need to happen:\n\n* you must _fork_ the source repository\n* clone your fork down to your machine\n* make some commits (ideally on a topic branch!)\n* push the commits back to _your fork_\n* create a new pull request and choose the branch that has your new commits",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293455,
+          "key": "48825e17-72c6-4c3e-9c98-1add66bf1c86",
+          "title": "Stay in sync with source project",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "48825e17-72c6-4c3e-9c98-1add66bf1c86",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 300173,
+              "key": "76c48385-b2b0-48ce-ba2f-f98d1348f57f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "While you're working on a topic branch of changes that you want to make to a repository, that repository will probably be receiving updates of its own from the original authors.\n\n## Stars & Watching\n\nIf you want to keep up-to-date with the Repository, GitHub offers a convenient way to keep track of repositories - it lets you star repositories:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300178,
+              "key": "36312520-fe97-43d6-a05b-eb31a2d0f82b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe7831_ud456-l3-03-starred-repos/ud456-l3-03-starred-repos.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/36312520-fe97-43d6-a05b-eb31a2d0f82b",
+              "caption": "_The Star button and level for a repository._",
+              "alt": "The Star button and level for a repository.",
+              "width": 2488,
+              "height": 1804,
+              "instructor_notes": null
+            },
+            {
+              "id": 300180,
+              "key": "164240b7-1e6e-4ce3-93e6-c6d10b8612e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can go to [https://github.com/stars](https://github.com/stars) to list out and filter all of the repositories that you have starred.\n\nStarring is helpful if you want to keep track of certain repositories. But it's not entirely helpful if you need to actively keep up with a repositories development because you have to manually go to the stars page to view the repositories and see if they've changed.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300182,
+              "key": "25aec41d-867b-4c52-a337-c028c27e1018",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡 Stars & Popularity 💡 \n\n> Starring can be a useful feature to help you keep track of repositories you're interested in. But stars have also turned into a means of measuring a repo's popularity.\n\n> If you'd rather not increase a repository's stars, then check out \"watching\" a repository. Let's look at that right now!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300183,
+              "key": "ec67a777-ade4-432d-b157-e9e1881c8bb2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Watching A Repository\n\nIf you need to keep up with a project's changes and want to be notified of when things change, GitHub offers a \"Watch\" feature:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300186,
+              "key": "48779c51-3415-43aa-b5fe-e86ab9d080ef",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe792c_ud456-l3-03-watched-repos/ud456-l3-03-watched-repos.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/48779c51-3415-43aa-b5fe-e86ab9d080ef",
+              "caption": "_The Notification settings. \"Watching\" a repository will alert you to all activity._",
+              "alt": "The Notification settings in GitHub. \"Watching\" a repository will alert you to all activity.",
+              "width": 2488,
+              "height": 1804,
+              "instructor_notes": null
+            },
+            {
+              "id": 300188,
+              "key": "8e0eb746-a3cd-4a42-acaf-42f23582776f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you're working on a repository quite often, then I'd suggest setting the watch setting to \"Watching\". This way GitHub will notify you whenever anything happens with the repository like people pushing changes to the repository, new issues being created, or comments being added to existing issues.\n\n## Including Upstream Changes\n\nNow that you know about watching your repository let say that you're watching it and you get notified that some commits have been pushed to the original, source repository. How do you go about getting those changes into your fork of the repository? If you want to keep doing development on your fork then you'd need your fork to stay in sync with the source repository as much as possible.\n\nLet's see how we can get these changes from the remote repository into our repository.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300192,
+              "key": "80ab8111-2bf9-4c30-98b7-dda3a4cb9d96",
+              "title": "L3 - Include Upstream Changes",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VvoC6hN6FjU",
+                "china_cdn_id": "VvoC6hN6FjU.mp4"
+              }
+            },
+            {
+              "id": 300401,
+              "key": "09d31170-e300-435e-aed4-262d2ba163d7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Incase Lam starts making changes to her project that I won't have in my fork of her project, I'll add her project as an additional remote so that I can stay in sync with her. \n\nIn my local repository, I already have one remote repository which is `origin` remote.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300436,
+              "key": "fc74e87f-ac23-464a-bd17-bd8921b14b2a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58ffad47_ud456-l3-03-git-remotes-origin/ud456-l3-03-git-remotes-origin.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fc74e87f-ac23-464a-bd17-bd8921b14b2a",
+              "caption": "_The terminal application showing the existing connect to the remote repository. This is my remote repository and has the shortname `origin`._",
+              "alt": "The terminal application showing the existing connect to the remote repository. This is my remote repository and has the shortname `origin`.",
+              "width": 1578,
+              "height": 468,
+              "instructor_notes": null
+            },
+            {
+              "id": 300405,
+              "key": "31f98264-5422-4db7-9baf-58f3958462b3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Remember that the word `origin` is just the _default_ name that's used when you `git clone` a remote repository for the first time. We're going to use the `git remote` command to _add a new_ shortname and URL to this list. This will give us a connection to the source repository.\n\n```bash\n$ git remote add upstream https://github.com/udacity/course-collaboration-travel-plans.git\n```\n\nNotice that I've used the name `upstream`  as the shortname to reference the source repository. As with the `origin` shortname, the word `upstream` here is not special in any way; It's just a regular word. This could have been any word... like the word \"banana\". But the word \"upstream\" is typically used to refer to the source repository. \n\nLet's check out what the list of remotes looks like now after adding this new remote:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300437,
+              "key": "20480517-b24c-4a93-a14e-58467ff65116",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58ffae1a_ud456-l3-03-add-upstream-remote/ud456-l3-03-add-upstream-remote.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/20480517-b24c-4a93-a14e-58467ff65116",
+              "caption": "_The terminal application show both information about both remotes - `origin` and `upstream`._",
+              "alt": "The terminal application show both information about both remotes - `origin` and `upstream`.",
+              "width": 1578,
+              "height": 534,
+              "instructor_notes": null
+            },
+            {
+              "id": 300406,
+              "key": "d9b8b8ae-94de-4c09-9cc8-79a2f05b0de5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Origin vs Upstream Clarification\n\nOne thing that can be a tiny bit confusing right now is the difference between the `origin` and `upstream`. What might be confusing is that `origin` does _not_ refer to the source repository (also known as the _\"original\"_ repository) that we forked from. Instead, it's pointing to our forked repository. So even though it has the word `origin` is not actually the original repository.\n\nRemember that the names `origin` and `upstream` are just the default or de facto names that are used. If it's clearer for you to name your `origin` remote `mine` and the `upstream` remote `source-repo`, then by all means, go ahead and rename them. What you name your remote repositories in your local repository does not affect the source repository at all.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300439,
+              "key": "82a1122b-4eea-476f-bebf-607e6ae54291",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58ffae73_ud456-l3-03-rename-repos/ud456-l3-03-rename-repos.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/82a1122b-4eea-476f-bebf-607e6ae54291",
+              "caption": "_Using the `git remote rename` command to rename `origin` to `mine` and `upstream` to `source-repo`._",
+              "alt": "Using the `git remote rename` command to rename `origin` to `mine` and `upstream` to `source-repo`.",
+              "width": 1578,
+              "height": 600,
+              "instructor_notes": null
+            },
+            {
+              "id": 300409,
+              "key": "a2073b15-ed95-494d-b6c2-46e7fe48f189",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️ Resetting Remote Names ⚠️ \n\n> The image above demos the renaming of the remotes, but I have returned them to their default/defacto names of `origin` and `upstream` with the following commands:\n\n> ```bash\n$ git remote rename mine origin\n$ git remote rename source-repo upstream\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300416,
+              "key": "3d4e1516-1a21-4dc2-8073-20a75feea9ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Retrieving Upstream Changes\n\nNow to get the changes from upstream remote repository, all we have to do is run a `git fetch` and use the `upstream` shortname rather than the `origin` shortname:\n\n```bash\n$ git fetch upstream master\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300459,
+              "key": "de0df242-f98a-48fd-ae43-8830688c7712",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58ffb75c_ud456-l3-03-fetch-upstream-changes/ud456-l3-03-fetch-upstream-changes.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/de0df242-f98a-48fd-ae43-8830688c7712",
+              "caption": "_The terminal application showing the results of doing `git fetch upstream master`.  A new branch is added to the local repository._",
+              "alt": "The terminal application showing the results of doing `git fetch upstream master`.  A new branch is added to the local repository.",
+              "width": 1194,
+              "height": 501,
+              "instructor_notes": null
+            },
+            {
+              "id": 300410,
+              "key": "83130709-9151-4d47-be32-a6fd3642bb45",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "83130709-9151-4d47-be32-a6fd3642bb45",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Now that you've added a connection to the new `upstream` remote repository, if you run `git fetch upstream master` will that update _your forked repository_ on GitHub?",
+                "answers": [
+                  {
+                    "id": "a1493148150986",
+                    "text": "Yes",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1493148182704",
+                    "text": "No",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 300455,
+              "key": "38d3a369-88b2-455d-9b0a-9410bbdc8b2c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that we've fetched all of the changes from the upstream remote repository, let's do a log to see what new information we have in our local repository. I'm using the following `git log` command to make sure I display _all_ commits from _all_ branches (including remote and tracking branches!):\n\n```bash\n$ git log --oneline --graph --decorate --all\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300461,
+              "key": "9c008dee-3ebd-4d4f-9d8e-f7efca695589",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58ffb7d1_ud456-l3-03-git-log-of-upstream-changes/ud456-l3-03-git-log-of-upstream-changes.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9c008dee-3ebd-4d4f-9d8e-f7efca695589",
+              "caption": "_The terminal application showing the log of my local repository after fetching  the `upstream` remote's changes._",
+              "alt": "The terminal application showing the log of my local repository after fetching  the `upstream` remote's changes",
+              "width": 1626,
+              "height": 633,
+              "instructor_notes": null
+            },
+            {
+              "id": 300457,
+              "key": "0035b77a-fc0f-47b2-ae7a-c7ee5ed25525",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "It can be a bit difficult to read with the wrapping of the commit messages but you should be able to see that there is now an `upstream/master` remote branch that is ahead of the local `master` branch. `upstream/master` is on commit `52e493f` while the `master` branch is on commit `1c12194`. \n\nWe can use the `upstream/master` branch to keep track of where the source repository's master branch is. We can now get any changes that are made to the source repository's `master` branch by just running `git fetch upstream master`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300458,
+              "key": "3cdd8858-156e-4232-957a-d3154151a475",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3cdd8858-156e-4232-957a-d3154151a475",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Using `git fetch upstream master` pulled in the changes from the `master` branch on the `upstream` remote repository.\n\nWhat single command would we use if we want to fetch the `upstream/master` changes _and_ merge them into the `master` branch?",
+                "matchers": [
+                  {
+                    "expression": "git pull upstream"
+                  },
+                  {
+                    "expression": "git pull upstream master"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 300462,
+              "key": "4ef786ab-256e-4193-b87c-8330f61d2571",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To push these new changes from the Lam's repository, we don't want to run `git push origin upstream/master` because `upstream/master` is not a local branch. To get these changes into my forked version of her project, I could merge `upstream/master` into an existing branch (like the local `master` branch) and push that.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300463,
+              "key": "66f3b024-5606-47fc-a88f-cb9ad6097b42",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```bash\n# to make sure I'm on the correct branch for merging\n$ git checkout master\n\n# merge in Lam's changes\n$ git merge upstream/master\n\n# send Lam's changes to *my* remote\n$ git push origin master\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300464,
+              "key": "e1fa4d15-7bd8-49bc-a3b1-306aa1fe649b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nWhen working with a project that you've forked. The original project's maintainer will continue adding changes to their project. You'll want to keep your fork of their project in sync with theirs so that you can include any changes they make.\n\nTo get commits from a source repository into your forked repository on GitHub you need to:\n\n* get the cloneable URL of the source repository\n* create a new remote with the `git remote add` command \n    - use the shortname `upstream` to point to the source repository\n    - provide the URL of the source repository\n* fetch the new `upstream` remote\n* merge the `upstream`'s branch into a local branch\n* push the newly updated local branch to your `origin` repo",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293458,
+          "key": "adbf1b90-e1c6-4502-8856-d5207bff78b5",
+          "title": "Manage an active PR",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "adbf1b90-e1c6-4502-8856-d5207bff78b5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 300214,
+              "key": "70b9b211-f856-40ed-94c0-019230daa57a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The project maintainer may decide not to accept your changes right away. They might request you to make some additional changes to your code before accepting your request and merging in your changes. Most likely they will communicate their desired changes through the conversation on the pull requests page.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300250,
+              "key": "0c35a392-5bdb-4ed6-ba1f-874420db2cc6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe8556_ud456-l3-04-pull-request-comment/ud456-l3-04-pull-request-comment.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0c35a392-5bdb-4ed6-ba1f-874420db2cc6",
+              "caption": "_The project's maintainer is requesting some changes be made in the pull request._",
+              "alt": "A Screenshot showing GitHub. The project's maintainer is requesting some changes be made in the pull request.",
+              "width": 2722,
+              "height": 1808,
+              "instructor_notes": null
+            },
+            {
+              "id": 300251,
+              "key": "56cd73ac-c17b-40b9-a6bb-0491fec33acf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We can see that the source repository's owner has commented and asked us to combine the commits together.\n\nOne thing that I've grown to love about both the Git command line tool and the GitHub interface is how helpful they are with recommendations on what to do next. Near the bottom of the comments, there's a suggestion by GitHub that tells us how to add more commit; we need to add them to the same branch and push to my fork:\n\n> Add more commits by pushing to the **include-richards-destinations** branch on **richardkalehoff/course-collaboration-travel-plan**.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300255,
+              "key": "146d0073-6ea6-496f-94eb-f356e6c87acd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When you submit a pull request, remember that you're asking another developer to add _your_ code changes to their project. If they ask you to make some minor (even major!) changes to your pull request, that doesn't mean they're rejecting your work! It just means that they would like the code added to their project in a certain way.\n\nThe CONTRIBUTING.md file should be used to list out all information that the project's maintainer wants, so make sure to follow the information there. But that doesn't mean there might be times where the project's maintainer will ask you to do a few additional things.\n\nSo what should you do? Well, if you want your pull request to be accepted, then you make the change! Remember that the tab in GitHub is called the \"Conversation\" tab. So feel free to communicate back and forth with the project's maintainer to clarify exactly what they want you to do.\n\nIt also wouldn't hurt to thank them for taking the time to look over your pull request. Most of the developers that are working on open source projects are doing it unpaid. So remember to:\n\n* be kind - the project's maintainer is a regular person just like you\n* be patient - they will respond as soon as they are able",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300256,
+              "key": "eaa55cf0-1669-44b5-87fd-12ffadc11d45",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "So Lam is asking that I combine my changes together before she'll merge in my pull request. Combining commits together is a process called squashing. Let's look at how to do that!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300253,
+              "key": "adb65081-2d11-49b9-8120-f9eb05fb4f28",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nAs simple as at may seem, working on an active pull request is mostly about communication!\n\nIf the project's maintainer is requesting changes to the pull request, then:\n\n* make any necessary commits on the same branch in your local repository that your pull request is based on\n* push the branch to the _your_ fork of the source repository\n\nThe commits will then show up on the pull request page.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293459,
+          "key": "3d9fb9c8-47bc-4dbd-a6d3-09b006be24e4",
+          "title": "Squash Commits",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3d9fb9c8-47bc-4dbd-a6d3-09b006be24e4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 300258,
+              "key": "55b4bce4-914e-4331-b75a-254aea2efb67",
+              "title": "L3 - Squashing Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mRbeT2XVL9w",
+                "china_cdn_id": "mRbeT2XVL9w.mp4"
+              }
+            },
+            {
+              "id": 300271,
+              "key": "b3d71bbe-4fc1-473b-8f0c-6601a01b829d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To squash commits together, we're going to use the extremely powerful `git rebase` command. This is one of my _favorite_ commands, but it did take me _quite_ a while to become comfortable with it. At first, it was somewhat challenging for me to get a handle on how it works, and then (after reading countless warnings online) I was scared to actually use it for fear of irreparably damaging my project's Git history.\n\nBut I'm here to tell you that `git rebase` isn't really all that difficult, and that you can bravely make changes to your repository without fear of doing any damage! (<-- quite the claim, isn't it!?!)\n\nLet's first get a big picture idea of how squashing works, and then we'll actually do some squashing with the `git rebase` command.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300264,
+              "key": "34e4b2aa-52e3-4755-a4fd-6c89d950d9fc",
+              "title": "L3 - Squashing In Theory",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "H5JqcdIB5y0",
+                "china_cdn_id": "H5JqcdIB5y0.mp4"
+              }
+            },
+            {
+              "id": 300284,
+              "key": "40827622-0a26-405d-b683-e9b999c1bccc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The command I used is:\n\n```bash\n$ git rebase -i HEAD~3\n```\n## The Rebase Command\n\nThe `git rebase` command will move commits to have a _new base_. In the command `git rebase -i HEAD~3`, we're telling Git to use `HEAD~3` as the base where all of the other commits (`HEAD~2`, `HEAD~1`, and `HEAD`) will connect to.\n\nThe `-i` in the command stands for \"interactive\". You _can_ perform a rebase in a non-interactive mode. While you're learning how to rebase, though, I definitely recommend that you do _interactive_ rebasing.\n\n### Ancestry References\n\nAs a brief refresher, `HEAD` indicates your current location (it could point to several things, but typically it'll either point to a branch name or directly to a commit's SHA). The `~3` part means \"three before\", so `HEAD~3` will be the commit that's three before the one you're currently on. We're using this relative reference to a commit in the `git rebase` command.\n\nLet me demonstrate how to use this command to combine the three destination commits into one.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300285,
+              "key": "235f2fa7-47ee-48d1-ad8c-a6fee8a61919",
+              "title": "L3 - Squashing In Action",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cL6ehKtJLUM",
+                "china_cdn_id": "cL6ehKtJLUM.mp4"
+              }
+            },
+            {
+              "id": 300394,
+              "key": "ce4722f0-fcb4-4db7-8c8c-1f15d5b35cf3",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ce4722f0-fcb4-4db7-8c8c-1f15d5b35cf3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In the command:\n\n```bash\n$ git rebase -i HEAD~3\n```\n\n...the `HEAD~3` is an ancestry reference to a commit that will act as the new base for the commits that are being rebased.\n\nWhich of the following could be used as a reference to a base?",
+                "answers": [
+                  {
+                    "id": "a1493144164979",
+                    "text": "a SHA",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1493144244997",
+                    "text": "a branch name",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1493144253355",
+                    "text": "a tag name",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 300295,
+              "key": "1b87749b-82b2-4202-9410-5c09f03b1689",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Force Pushing\n\nIn the video, I had to force push the branch. I had to do this because GitHub was trying to prevent me from accidentally deleting commits. Because I used the `git rebase` command, I effectively _erased_ the three separate commits that recorded my addition of Florida, Paris, and Scotland. I used `git rebase` to combine or _squash_ all of these commits into one, single commit.\n\nUsing `git rebase` creates a new commit with a new SHA. When I tried using `git push` to send this commit up to GitHub, GitHub knew that accepting the push would erase the three separate commits, so it rejected it. So I had to _force push_ the commits through using `git push -f`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300297,
+              "key": "fd398816-cbab-4bd6-8109-25a296cb59de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ### ⚠️ Force Pushing ⚠️ \n\n> In this instance, force pushing my commits was necessary. But if you try to push commits and GitHub rejects them, it's trying to help you, so make sure to review what commits you're pushing _and_ the commits that are on GitHub to verify you're not about to overwrite content on your remote repository accidentally!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300361,
+              "key": "5c549443-06ea-4591-8b80-8b75c1abd4da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Rebase Commands\n\nLet's take another look at the different commands that you can do with `git rebase`:\n\n* use `p` or `pick` – to keep the commit as is\n* use `r` or `reword` – to keep the commit's content but alter the commit message\n* use `e` or `edit` – to keep the commit's content but stop before committing so that you can:\n    - add new content or files\n    - remove content or files\n    - alter the content that was going to be committed \n* use `s` or `squash` – to combine this commit's changes into the previous commit (the commit above it in the list)\n* use `f` or `fixup` – to combine this commit's change into the previous one but drop the commit message\n* use `x` or `exec` – to run a shell command\n* use `d` or `drop` – to delete the commit",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300392,
+              "key": "e4316542-7573-412e-92ab-3beb35065b61",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## When to rebase\n\nAs you've seen, the `git rebase` command is incredibly powerful. It can help you edit commit messages, reorder commits, combine commits, etc. So it truly is a powerhouse of a tool. Now the question becomes \"_When_ should you rebase?\". \n\nWhenever you rebase commits, Git will create a new SHA _for each commit_! This has drastic implications. To Git, the SHA is the identifier for a commit, so a different identifier means it's a different commit, _regardless if the content has changed at all._ \n\nSo you should not rebase if you have already pushed the commits you want to rebase. If you're collaborating with other developers, then they might already be working with the commits you've pushed. If you then use `git rebase` to change things around and then force push the commits, then the other developers will now be out of sync with the remote repository.  They will have to do some complicated surgery to their Git repository to get their repo back in a working state...and it might not even be possible for them to do that; they might just have to scrap all of their work and start over with your newly-rebased, force-pushed commits.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300358,
+              "key": "af0247b0-56a1-44fd-9001-63ce2cc6ad96",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nThe `git rebase` command is used to do a great many things.\n\n```bash\n# interactive rebase\n$ git rebase -i <base>\n\n# interactively rebase the commits to the one that's 3 before the one we're on\n$ git rebase -i HEAD~3\n```\n\nInside the interactive list of commits, all commits start out as `pick`, but you can swap that out with one of the other commands (`reword`, `edit`, `squash`, `fixup`, `exec`, and `drop`).\n\nI recommend that you create a `backup` branch _before_ rebasing, so that it's easy to return to your previous state. If you're happy with the rebase, then you can just delete the `backup` branch!\n\n### Further Research\n* [Git Branching - Rebasing](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) from the Git Book\n* [git-rebase](https://git-scm.com/docs/git-rebase) from the Git Docs\n* [https://www.atlassian.com/git/tutorials/rewriting-history#git-rebase](https://www.atlassian.com/git/tutorials/rewriting-history#git-rebase) from the Atlassian blog",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293460,
+          "key": "168d2c0e-4ae3-4c6b-a704-1ed321e53c42",
+          "title": "Course Wrap Up",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "168d2c0e-4ae3-4c6b-a704-1ed321e53c42",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 300151,
+              "key": "f7d960ab-99a9-4167-a5d6-12206764dd3f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "I just want to briefly run through all of the new and amazing skills you've acquired taking this course. You now know:\n\n* how to set up remote repositories\n* how to push changes to a remote repository and get changes from it\n* how to fork a repository\n* the initial steps to take when you start working on a new feature or change to the project\n* how to create a pull request\n* and the importance of communicating clearly and frequently with the other stakeholders in the project",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300149,
+              "key": "2db6b305-f5b4-4448-894d-f50d76dfea87",
+              "title": "Course Wrap Up",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "66Ut8Bv6kgc",
+                "china_cdn_id": "66Ut8Bv6kgc.mp4"
+              }
+            },
+            {
+              "id": 300152,
+              "key": "3f5c8514-1c02-432e-97a0-c96be69eaf17",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* [http://up-for-grabs.net/](http://up-for-grabs.net/#/)\n* [http://www.firsttimersonly.com/](http://www.firsttimersonly.com/)\n* [first-timers-only label on GitHub](https://github.com/search?utf8=%E2%9C%93&q=label%3Afirst-timers-only+is%3Aopen&type=Issues&ref=searchresults)\n* try tackling some Git and GitHub challenges with the [Git-it app](https://github.com/jlord/git-it-electron)\n\nWanna see what a developer's very first pull request is? Check out at [http://firstpr.me/](http://firstpr.me/)",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

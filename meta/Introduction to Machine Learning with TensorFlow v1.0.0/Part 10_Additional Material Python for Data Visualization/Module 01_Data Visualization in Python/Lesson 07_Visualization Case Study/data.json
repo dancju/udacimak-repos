@@ -1,0 +1,283 @@
+{
+  "data": {
+    "lesson": {
+      "id": 571222,
+      "key": "495fe81e-ebe8-4d10-a4a2-e85fe01565bd",
+      "title": "Visualization Case Study",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Put to practice the concepts you've learned about exploratory and explanatory data visualization in this case study on factors that impact diamond prices.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/495fe81e-ebe8-4d10-a4a2-e85fe01565bd/571222/1544216872670/Visualization+Case+Study+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/495fe81e-ebe8-4d10-a4a2-e85fe01565bd/571222/1544216869899/Visualization+Case+Study+Subtitles.zip"
+          },
+          {
+            "name": "diamonds.csv",
+            "uri": "https://video.udacity-data.com/topher/2018/March/5ab54831_diamonds/diamonds.csv"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 593098,
+          "key": "7c415e73-77f5-41ad-9a4c-dd5cdbe8898e",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7c415e73-77f5-41ad-9a4c-dd5cdbe8898e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 691987,
+              "key": "91e84676-5706-4b92-b2bf-48aa673f8cab",
+              "title": "L7 011 Intro V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Virihwp36do",
+                "china_cdn_id": "Virihwp36do.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 593199,
+          "key": "7c17efec-40d2-420d-8a15-5eaaa5706143",
+          "title": "Info on the Diamond Dataset",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7c17efec-40d2-420d-8a15-5eaaa5706143",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 593871,
+              "key": "eb6ec0d2-8327-4069-b45e-1b19971d9ee7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Information on the Diamond Dataset\n\nIn this lesson, you'll be working with a dataset regarding the prices and attributes of approximately 54,000 round-cut diamonds. You'll go through the steps of an explanatory data visualization, systematically starting from univariate visualizations, moving through bivariate visualizations, and finally multivariate visualizations. Finally, you'll work on polishing up selected plots from the analysis so that their main points can be clearly conveyed to others.\n\nYou can find a copy of the dataset in the Resources tab of the classroom; it will automatically be available to you in the workspaces of this lesson. The dataset consists of almost 54,000 rows and 10 columns:\n- **price**: Price in dollars. Data was collected in 2008.\n- **carat**: Diamond weight. 1 carat is equal to 0.2 grams.\n- **cut**: Quality of diamond cut, affects its shine. Grades go from (low) Fair, Good, Very Good, Premium, Ideal (best).\n- **color**: Measure of diamond coloration. Increasing grades go from (some color) J, I, H, G, F, E, D (colorless).\n- **clarity**: Measure of diamond inclusions. Increasing grades go from (inclusions) I1, SI2, SI1, VS2, VS1, VVS2, VVS1, IF (internally flawless).\n- **x**, **y**, **z**: Diamond length, width, and depth, respectively, in mm.\n- **table**: Ratio of width of top face of diamond to its overall width, as a percentage.\n- **depth**: Proportional depth of diamond, as a percentage. This is computed as 2 * z / (x + y), or the ratio of the depth to the average of length and width.\n\nFor the case study, we will concentrate only the variables in the top five bullet points: price and the four 'C's of diamond grade. Our focus will be on answering the question about the degree of importance that each of these quality measures has on the pricing of a diamond. You can see an example report covering all of the variables in the project information lesson.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 593200,
+          "key": "fb9cfc0e-7a0f-48ac-ac55-38723fc184c6",
+          "title": "Univariate Exploration",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fb9cfc0e-7a0f-48ac-ac55-38723fc184c6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 593873,
+              "key": "735a85aa-c47e-48ee-ad37-6d6e4ba28e8b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view8ac4c6cb",
+              "pool_id": "jupyter",
+              "view_id": "8ac4c6cb-0db9-4e41-b9eb-4c7180787ab7",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Univariate_Exploration.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 593201,
+          "key": "51fd9ddc-8207-4cdb-857e-c80903d7b0db",
+          "title": "Bivariate Exploration",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "51fd9ddc-8207-4cdb-857e-c80903d7b0db",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 594031,
+              "key": "6f362a5c-988c-4e63-8261-9c5f2fe3410c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view8ac4c6cb",
+              "pool_id": "jupyter",
+              "view_id": "f13e8f79-7f9f-4ea8-b53c-f17039b25a3c",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Bivariate_Exploration.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 593202,
+          "key": "469d2cf9-8e2b-42e3-977b-4614caf320d0",
+          "title": "Multivariate Exploration",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "469d2cf9-8e2b-42e3-977b-4614caf320d0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 594044,
+              "key": "9dbf41b0-b514-45d5-a0b5-3cc1ad05a8a9",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view8ac4c6cb",
+              "pool_id": "jupyter",
+              "view_id": "fcacf039-bb58-42ac-b1d8-83c8d2461f32",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Multivariate_Exploration.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 593203,
+          "key": "cf0b323e-a75c-4a28-9b39-04551dbb0261",
+          "title": "Explanatory Polishing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cf0b323e-a75c-4a28-9b39-04551dbb0261",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 594294,
+              "key": "53fc7a10-78c3-4b43-84d1-5a28939756b0",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view8ac4c6cb",
+              "pool_id": "jupyter",
+              "view_id": "b34588b6-4538-442e-8a92-6d5ae8c32814",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Explanatory_Polishing.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 593100,
+          "key": "8f77f826-ac53-43b7-aa08-3dcef01e3411",
+          "title": "Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8f77f826-ac53-43b7-aa08-3dcef01e3411",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 691988,
+              "key": "e5646299-3e33-46de-af63-730ed1352e6e",
+              "title": "L7 0F1 Congrats V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LF-obnL7CI0",
+                "china_cdn_id": "LF-obnL7CI0.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

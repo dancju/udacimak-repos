@@ -1,0 +1,510 @@
+{
+  "data": {
+    "lesson": {
+      "id": 918881,
+      "key": "29fe49d2-fa33-44e7-b232-194f111bbe79",
+      "title": "Random Projection and ICA",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, we will look at two other methods for feature extraction and dimensionality reduction: Random Projection and Independent Component Analysis (ICA).",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/29fe49d2-fa33-44e7-b232-194f111bbe79/918881/1581974230032/Random+Projection+and+ICA+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/29fe49d2-fa33-44e7-b232-194f111bbe79/918881/1581974227024/Random+Projection+and+ICA+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 457351,
+          "key": "e95038a6-3f8f-4a70-8937-b3afaab82bdf",
+          "title": "Random Projection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e95038a6-3f8f-4a70-8937-b3afaab82bdf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 680191,
+              "key": "bfa08a49-9b38-4e95-8d0c-86eae25692d3",
+              "title": "L6 1 Random Projection MAIN V1 V1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Iat1a8mzI-Y",
+                "china_cdn_id": "Iat1a8mzI-Y.mp4"
+              }
+            },
+            {
+              "id": 457358,
+              "key": "c20e588a-3441-4055-9949-12cb351493d3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Note: this lesson comes after a lesson explaining Principal Component Analysis]",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682316,
+              "key": "8952274c-3488-4d55-ae27-869e8158cc79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Paper: [Random projection in dimensionality reduction: Applications to image and text data](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.76.8124&rep=rep1&type=pdf)\n\nThis paper examines using Random Projection to reduce the dimensionality of image and text data. It shows how Random Projection proves to be a computationally simple method of dimensionality reduction, while still preserving the similarities of data vectors to a high degree. The paper shows this on real-world datasets including noisy and noiseless images of natural scenes, and text documents from a newsgroup corpus.\n\nPaper: [Random Projections for k-means Clustering](https://papers.nips.cc/paper/3901-random-projections-for-k-means-clustering.pdf)\n\nThis paper uses Random Projection as an efficient dimensionality reduction step before conducting k-means clustering on a dataset of 400 face images of dimensions 64 × 64.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 502756,
+          "key": "9e9f8fef-d09a-4522-9b5d-a6872c529a77",
+          "title": "Random Projection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9e9f8fef-d09a-4522-9b5d-a6872c529a77",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 502776,
+              "key": "3ed0bf66-67ad-4e1a-b7e5-40d76c64a8b2",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3ed0bf66-67ad-4e1a-b7e5-40d76c64a8b2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following is a scenario where you may want to use Random Project and not PCA",
+                "answers": [
+                  {
+                    "id": "a1515994926646",
+                    "text": "When we want to maximize the variance",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1515994993121",
+                    "text": "When working with so many dimensions that PCA's performance becomes unacceptable for the situation",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 502811,
+              "key": "cf2837bb-b09d-4856-940f-06ecfd62ac54",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cf2837bb-b09d-4856-940f-06ecfd62ac54",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "True or false: It is mandatory for us to specify the number of components/dimensions that we want [Random Projection](http://scikit-learn.org/stable/modules/generated/sklearn.random_projection.SparseRandomProjection.html#sklearn.random_projection.SparseRandomProjection) to reduce our dataset down into.",
+                "answers": [
+                  {
+                    "id": "a1516013220402",
+                    "text": "True, specifying the number of components is mandatory.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1516014052051",
+                    "text": "False, the number of components is optional and can be computed by the algorithm",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 457352,
+          "key": "e16839b2-b709-4440-a27a-2824468f28c9",
+          "title": "Random Projection in sklearn",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e16839b2-b709-4440-a27a-2824468f28c9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 680192,
+              "key": "d3bd6468-f2ad-4c34-9b98-d17589c63a03",
+              "title": "L6 2 Random Projection Impl MAINv1 V1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5DhvurLgRII",
+                "china_cdn_id": "5DhvurLgRII.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 457353,
+          "key": "1b5ec8d5-968c-432f-95ec-e8421358b331",
+          "title": "Independent Component Analysis (ICA)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1b5ec8d5-968c-432f-95ec-e8421358b331",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 680193,
+              "key": "42680200-0fec-47ed-9e04-24e8d84e74c6",
+              "title": "L6 3 ICA V1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ae94x-1JDzg",
+                "china_cdn_id": "ae94x-1JDzg.mp4"
+              }
+            },
+            {
+              "id": 680194,
+              "key": "92046df2-c319-4464-b299-09ef846b5a05",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The music in this this video:\n* [Cello Suite no. 3 in C, BWV 1009 - I. Prelude](https://musopen.org/music/43918-cello-suite-no-3-in-c-bwv-1009/) credit [The Internet Memory Foundation](https://musopen.org/music/performer/european-archive/)\n\n* [The Carnival of the Animals - XIII. The Swan (Solo piano version)](https://musopen.org/music/1454-the-carnival-of-the-animals/) Credit [Markus Staab](https://musopen.org/music/performer/markus-staab/) License: [CC](https://creativecommons.org/licenses/by/3.0/)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 457354,
+          "key": "1c3e56c4-6169-4ffa-85a5-f42c49fe4b57",
+          "title": "FastICA Algorithm",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1c3e56c4-6169-4ffa-85a5-f42c49fe4b57",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 680195,
+              "key": "66a7fb15-184a-4f74-ae8d-2fd1210a092e",
+              "title": "L6 4 ICA Algorithm V2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xlhd5UWk_-E",
+                "china_cdn_id": "xlhd5UWk_-E.mp4"
+              }
+            },
+            {
+              "id": 457357,
+              "key": "43e02a06-b3dc-4e8a-a45b-c564884aba82",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Paper: \"[Independent component analysis: algorithms and applications](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.322.679&rep=rep1&type=pdf)\" (pdf)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 502757,
+          "key": "a67930d4-d630-4cfa-a167-614dab18bc5d",
+          "title": "ICA",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a67930d4-d630-4cfa-a167-614dab18bc5d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 502823,
+              "key": "9da25e16-9209-4558-a00d-a86fa4d2632e",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9da25e16-9209-4558-a00d-a86fa4d2632e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following signals are statistically independent (and thus we have a chance of separating using ICA)",
+                "answers": [
+                  {
+                    "id": "a1516014829815",
+                    "text": "Two audio recordings of a conversation between two people",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1516014958317",
+                    "text": "Two audio recordings of two singers singing in unison (singing the same melody at the same time)",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1516015836805",
+                    "text": "The time series of temperature readings from two thermometers in the same city",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 502825,
+              "key": "ad0f7850-9704-42c3-a672-b9954c9c5b04",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ad0f7850-9704-42c3-a672-b9954c9c5b04",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "True or false: ICA always works in a case where the number of observations we have is lower than the number of independent components we seek (for example, we have two recordings of a band of five musicians)",
+                "answers": [
+                  {
+                    "id": "a1516016925312",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1516016976748",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 457355,
+          "key": "743c932d-34f4-49d3-b8b0-b96c5961c344",
+          "title": "ICA in sklearn",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "743c932d-34f4-49d3-b8b0-b96c5961c344",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 680196,
+              "key": "2c922e41-1f7a-4845-bd48-f3078ca58171",
+              "title": "L6 5 ICA Implementation V1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fZGxYfJmKaE",
+                "china_cdn_id": "fZGxYfJmKaE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 465011,
+          "key": "a0f09cb5-77c0-4f73-a587-f998a1af8f86",
+          "title": "[Lab] Independent Component Analysis",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a0f09cb5-77c0-4f73-a587-f998a1af8f86",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 465012,
+              "key": "67fd249b-5716-4206-81e6-260997d20a89",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view97f5e2d3",
+              "pool_id": "jupyter",
+              "view_id": "97f5e2d3-1052-401d-8728-aa8428b6b92b",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Independent%20Component%20Analysis%20Lab.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 465013,
+          "key": "186a9f58-6df9-49c0-95e8-160e88e8dd72",
+          "title": "[Solution] Independent Component Analysis",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "186a9f58-6df9-49c0-95e8-160e88e8dd72",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 465014,
+              "key": "055173a6-156f-4374-af7a-14d266443520",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view97f5e2d3",
+              "pool_id": "jupyter",
+              "view_id": "b6d39db7-2367-473f-9128-ddeb18d79045",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Independent%20Component%20Analysis%20Lab%20%5BSOLUTION%5D.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 457356,
+          "key": "448d1d12-3212-4d2f-9ee3-57341e2dc6a8",
+          "title": "ICA Applications",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "448d1d12-3212-4d2f-9ee3-57341e2dc6a8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 680197,
+              "key": "76a80624-c0dc-4179-984b-f02fe905eea8",
+              "title": "L6 6 ICA Applications MAIN V1 V1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "th12mTv1B7g",
+                "china_cdn_id": "th12mTv1B7g.mp4"
+              }
+            },
+            {
+              "id": 682313,
+              "key": "fef12c71-a9f3-41cb-93e8-712f79c85f2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Paper: [Independent Component Analysis of Electroencephalographic Data](http://papers.nips.cc/paper/1091-independent-component-analysis-of-electroencephalographic-data.pdf) [PDF]\n\nThis paper is an example of how ICA is used to transform EEG scan data to do blind source separation. For example, on the left are the readings of 14 channels from an EEG scan that lasted 4.5 seconds. On the right are the independent components extracted from that dataset:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682315,
+              "key": "d5bc6619-c51c-4e4c-b37a-b88042920607",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b596094_eeg-ica/eeg-ica.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d5bc6619-c51c-4e4c-b37a-b88042920607",
+              "caption": "",
+              "alt": "",
+              "width": 555,
+              "height": 614,
+              "instructor_notes": null
+            },
+            {
+              "id": 682314,
+              "key": "2c3dc7c6-86a4-4fd3-8cd7-9ab7786a292b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Paper: [Applying Independent Component Analysis to Factor Model in Finance](https://pdfs.semanticscholar.org/a34b/e08a20eba7523600203a32abb026a8dd85a3.pdf) [PDF]",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,1373 @@
+{
+  "data": {
+    "lesson": {
+      "id": 918922,
+      "key": "67eced77-c8a1-48df-8c43-000c65642569",
+      "title": "[Advanced] SQL Advanced JOINs & Performance Tuning",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn advanced joins and how to make queries that run quickly across giant datasets. Most of the examples in the lesson involve edge cases, some of which come up in interviews.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/67eced77-c8a1-48df-8c43-000c65642569/918922/1581973845860/%5BAdvanced%5D+SQL+Advanced+JOINs+%26+Performance+Tuning+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/67eced77-c8a1-48df-8c43-000c65642569/918922/1581973841166/%5BAdvanced%5D+SQL+Advanced+JOINs+%26+Performance+Tuning+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 392102,
+          "key": "8ac27338-6140-4acc-9a00-40acd127cc53",
+          "title": "Video: Introduction to Advanced SQL",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8ac27338-6140-4acc-9a00-40acd127cc53",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406833,
+              "key": "69644457-7625-4eab-83f8-298938380353",
+              "title": "Introduction to Advanced SQL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "i0VaVPIKUks",
+                "china_cdn_id": "i0VaVPIKUks.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 392103,
+          "key": "f6377e42-6c91-46bb-9b21-38db0734b60d",
+          "title": "Text + Images: FULL OUTER JOIN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f6377e42-6c91-46bb-9b21-38db0734b60d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463378,
+              "key": "6cf7e0e0-9469-4fc6-8cd5-1dd35322bd94",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## FULL OUTER JOIN\n\nIn earlier lessons, we covered inner joins, which produce results for which the join condition is matched in both tables. \n\n*Venn diagrams, which are helpful for visualizing table joins, are provided below along with sample queries. Consider the circle on the left Table A and the circle on the right Table B.*",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464372,
+              "key": "4afcb5f1-22f1-44a8-bf09-e7bd758a597f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a147488_inner-join/inner-join.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4afcb5f1-22f1-44a8-bf09-e7bd758a597f",
+              "caption": "`INNER JOIN` Venn Diagram",
+              "alt": "INNER JOIN Venn Diagram",
+              "width": 300,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 464390,
+              "key": "993565e2-23fc-430e-857a-4df6aca82824",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\nSELECT column_name(s)\nFROM Table_A\nINNER JOIN Table_B ON Table_A.column_name = Table_B.column_name;\n```\n\nLeft joins also include unmatched rows from the left table, which is indicated in the “FROM” clause.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464373,
+              "key": "96e0b5d9-be39-449b-a325-4e909b3330d8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a147484_left-join/left-join.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/96e0b5d9-be39-449b-a325-4e909b3330d8",
+              "caption": "`LEFT JOIN` Venn Diagram",
+              "alt": "LEFT JOIN Venn Diagram",
+              "width": 300,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 464391,
+              "key": "a19f2d40-a7d8-452f-9a77-3840b2061691",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\nSELECT column_name(s)\nFROM Table_A\nLEFT JOIN Table_B ON Table_A.column_name = Table_B.column_name;\n```\n\nRight joins are similar to left joins, but include unmatched data from the right table -- the one that’s indicated in the JOIN clause.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464374,
+              "key": "696bc331-9e15-4308-9342-d56d9a3fac04",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a147485_right-join/right-join.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/696bc331-9e15-4308-9342-d56d9a3fac04",
+              "caption": "`RIGHT JOIN` Venn Diagram",
+              "alt": "RIGHT JOIN Venn Diagram",
+              "width": 300,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 464392,
+              "key": "6e4cf876-5e7a-422e-aec9-53dfee3866a0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\nSELECT column_name(s)\nFROM Table_A\nRIGHT JOIN Table_B ON Table_A.column_name = Table_B.column_name;\n```\n\nIn some cases, you might want to include unmatched rows from *both* tables being joined. You can do this with a full outer join.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464375,
+              "key": "88825f16-1398-4cf6-ad2c-84930c0c9a9e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a147487_full-outer-join/full-outer-join.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/88825f16-1398-4cf6-ad2c-84930c0c9a9e",
+              "caption": "`FULL OUTER JOIN` Venn Diagram",
+              "alt": "FULL OUTER JOIN Venn Diagram",
+              "width": 300,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 464393,
+              "key": "e762754e-c368-4b84-a8f1-804ed25acec2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\nSELECT column_name(s)\nFROM Table_A\nFULL OUTER JOIN Table_B ON Table_A.column_name = Table_B.column_name;\n```\n\nA common application of this is when joining two tables on a timestamp. Let’s say you’ve got one table containing the number of _item 1_ sold each day, and another containing the number of _item 2_ sold. If a certain date, like January 1, 2018, exists in the left table but not the right, while another date, like January 2, 2018, exists in the right table but not the left:\n- a left join would drop the row with January 2, 2018 from the result set\n- a right join would drop January 1, 2018 from the result set",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464394,
+              "key": "bd7ecb4b-8048-4091-8ca8-e275af8a0afd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The only way to make sure both January 1, 2018 and January 2, 2018 make it into the results is to do a full outer join. A full outer join returns unmatched records in each table with null values for the columns that came from the opposite table.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464396,
+              "key": "5ab706e9-89b1-4888-bc88-d13720c1693a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you wanted to return unmatched rows only, which is useful for some cases of data assessment, you can isolate them by adding the following line to the end of the query:\n\n```\nWHERE Table_A.column_name IS NULL OR Table_B.column_name IS NULL\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 464376,
+              "key": "b345d417-9813-40fe-9c56-44d31472446d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a147485_full-outer-join-if-null/full-outer-join-if-null.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b345d417-9813-40fe-9c56-44d31472446d",
+              "caption": "`FULL OUTER JOIN` with `WHERE A.Key IS NULL OR B.Key IS NULL` Venn Diagram",
+              "alt": "FULL OUTER JOIN (IF NULL) Venn Diagram",
+              "width": 300,
+              "height": 200,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 392104,
+          "key": "8019448a-63dc-43f3-adcc-ced830380411",
+          "title": "Quiz: FULL OUTER JOIN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8019448a-63dc-43f3-adcc-ced830380411",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463791,
+              "key": "2d1264b0-c3a3-4570-aae7-89ebcc1a2be1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Finding Matched and Unmatched Rows with FULL OUTER JOIN\n\nYou’re not likely to use `FULL JOIN` (which can also be written as `FULL OUTER JOIN`) too often, but the syntax is worth practicing anyway. `LEFT JOIN` and `RIGHT JOIN` each return unmatched rows from one of the tables—`FULL JOIN` returns unmatched rows from both tables. `FULL JOIN` is commonly used in conjunction with aggregations to understand the amount of overlap between two tables.\n\nSay you're an analyst at Parch & Posey and you want to see:\n- each account who has a sales rep and each sales rep that has an account (all of the columns in these returned rows will be full)\n- but also each account that does not have a sales rep and each sales rep that does not have an account (some of the columns in these returned rows will be empty)\n\nThis type of question is rare, but `FULL OUTER JOIN` is perfect for it. In the following SQL Explorer, write a query with `FULL OUTER JOIN` to fit the above described Parch & Posey scenario (selecting all of the columns in both of the relevant tables, `accounts` and `sales_reps`) then answer the subsequent multiple choice quiz.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463792,
+              "key": "caa91a5b-369e-4418-8c5c-195fe2ea9bd0",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "262f9d14-d388-4c75-94ec-e0c48debfd7a",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 463817,
+              "key": "301625e9-fcb6-4215-9c7d-b1d821070661",
+              "title": "FULL OUTER JOIN",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "301625e9-fcb6-4215-9c7d-b1d821070661",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In your query results for the above Parch & Posey `FULL OUTER JOIN` quiz, are there any unmatched rows?",
+                "answers": [
+                  {
+                    "id": "a1510941345976",
+                    "text": "Yes",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510941407498",
+                    "text": "No",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 392105,
+          "key": "01f6b128-2a97-47aa-ae16-7f59023de69e",
+          "title": "Solutions: FULL OUTER JOIN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "01f6b128-2a97-47aa-ae16-7f59023de69e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463793,
+              "key": "9df79c83-ee21-4c6a-8c08-5f5f91644ffe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Finding Matched and Unmatched Rows with FULL OUTER JOIN\n\n```\nSELECT *\n  FROM accounts\n FULL JOIN sales_reps ON accounts.sales_rep_id = sales_reps.id\n```\n\nIf unmatched rows existed (they don't for this query), you could isolate them by adding the following line to the end of the query:\n\n```\nWHERE accounts.sales_rep_id IS NULL OR sales_reps.id IS NULL\n```\n\nTo elaborate on the rarity of `FULL OUTER JOINS` in practice, this Stack Overflow answer is helpful: [When is a good situation to use a full outer join?](https://stackoverflow.com/questions/2094793/when-is-a-good-situation-to-use-a-full-outer-join)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558963,
+              "key": "ab66659c-759d-4372-baa3-7456af68cc5a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "faf1d5cd-eae0-4446-8b32-bfc5c31494d1",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392106,
+          "key": "ebed9711-9877-4d72-b52c-dd1ec9433af1",
+          "title": "Video: JOINs with Comparison Operators",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ebed9711-9877-4d72-b52c-dd1ec9433af1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463819,
+              "key": "caaf52aa-2fbe-428a-8c24-e074ad87de94",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Joining without an Equals Sign",
+              "instructor_notes": ""
+            },
+            {
+              "id": 406840,
+              "key": "2ec4be3c-1efa-454f-a985-9ff276779974",
+              "title": "JOINs with Comparison Operators Motivation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ClzbfQyhNro",
+                "china_cdn_id": "ClzbfQyhNro.mp4"
+              }
+            },
+            {
+              "id": 463820,
+              "key": "be28f883-6463-4ce0-9746-caf08a8c3fd5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Inequality JOINs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463380,
+              "key": "ccba3762-7109-43a1-bf00-ca826df02e9d",
+              "title": "JOINs with Comparison Operators",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "48AgxPygRuQ",
+                "china_cdn_id": "48AgxPygRuQ.mp4"
+              }
+            },
+            {
+              "id": 392137,
+              "key": "a91cdeb9-9805-4417-a581-e2fab02ca162",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Expert Tip\n\nIf you recall from earlier lessons on joins, the join clause is evaluated before the where clause -- filtering in the join clause will eliminate rows before they are joined, while filtering in the WHERE clause will leave those rows in and produce some nulls.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 392107,
+          "key": "7e572fef-5eb3-46a4-a282-3802a900b6dd",
+          "title": "Quiz: JOINs with Comparison Operators",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7e572fef-5eb3-46a4-a282-3802a900b6dd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463821,
+              "key": "fd4bdc25-3df7-47ef-98fb-83625c5a9e59",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Inequality JOINs\n\nThe query in Derek's video was pretty long. Let's now use a shorter query to showcase the power of joining with comparison operators.\n \nInequality operators (a.k.a. comparison operators) don't only need to be date times or numbers, they also work on strings! You'll see how this works by completing the following quiz, which will also reinforce the concept of joining with comparison operators.\n\nIn the following SQL Explorer, write a query that left joins the `accounts` table and the `sales_reps` tables on each sale rep's ID number *and* joins it using the `<` comparison operator on `accounts.primary_poc` and `sales_reps.name`, like so:\n\n```\naccounts.primary_poc < sales_reps.name\n```\n\nThe query results should be a table with three columns: the account name (e.g. Johnson Controls), the primary contact name (e.g. Cammy Sosnowski), and the sales representative's name (e.g. Samuel Racine). Then answer the subsequent multiple choice question.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558964,
+              "key": "cff3bce6-e7ee-4131-8b1e-12c1d27d7b40",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "55a961a1-87da-445b-a759-6d19cd7f63d8",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 463881,
+              "key": "433e9c46-92d8-44ed-a16f-497e1a3d6891",
+              "title": "Joining with Comparison Operators",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "433e9c46-92d8-44ed-a16f-497e1a3d6891",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the relationship between `accounts.primary_poc` and `sales_reps.name`?",
+                "answers": [
+                  {
+                    "id": "a1510952814685",
+                    "text": "The primary point of contact's full name comes *before* the sales representative's name alphabetically",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510952870791",
+                    "text": "The primary point of contact's full name comes *after* the sales representative's name alphabetically",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510952919996",
+                    "text": "The company name comes *after* the sales representative's name alphabetically",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 392108,
+          "key": "5bbe86f1-1814-4008-a4c5-a3b8457d78d7",
+          "title": "Solutions: JOINs with Comparison Operators",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5bbe86f1-1814-4008-a4c5-a3b8457d78d7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463824,
+              "key": "c56338f0-f460-4ddf-b9b1-58b7adc09f9a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Inequality JOINs\n```\nSELECT accounts.name as account_name,\n       accounts.primary_poc as poc_name,\n       sales_reps.name as sales_rep_name\n  FROM accounts\n  LEFT JOIN sales_reps\n    ON accounts.sales_rep_id = sales_reps.id\n   AND accounts.primary_poc < sales_reps.name\n```\n\nFor more details on how string comparison with `<` and `>` work in SQL, check out this excellent answer on Stack Overflow: [SQL string comparison, greater than and less than operators](https://stackoverflow.com/a/26080240)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558966,
+              "key": "6fd6b65d-022f-424d-a742-9ff7ab4c222c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "d3bfb1a9-b9ae-4a12-81e0-539f25bc37b4",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392109,
+          "key": "fd05b6b0-1201-400b-b9d3-9a295ef20876",
+          "title": "Video: Self JOINs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fd05b6b0-1201-400b-b9d3-9a295ef20876",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 408628,
+              "key": "96b1d3c6-bd43-42e5-abe3-d4e3adc7de8f",
+              "title": "Self JOINs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tw_VzEGBOvI",
+                "china_cdn_id": "tw_VzEGBOvI.mp4"
+              }
+            },
+            {
+              "id": 392138,
+              "key": "b7897310-0f7b-4891-bde6-5b39fbf4b4c1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Expert Tip\n\nThis comes up pretty commonly in job interviews. Self JOIN logic can be pretty tricky -- you can see here that our join has three conditional statements. It is important to pause and think through each step when joining a table to itself.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1014430,
+              "key": "146eaa0e-b570-4bb3-acf6-1254ffa3580b",
+              "title": "Quiz: Self JOINS",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "146eaa0e-b570-4bb3-acf6-1254ffa3580b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What use case below is appropriate for self joins?",
+                "answers": [
+                  {
+                    "id": "a1587080052163",
+                    "text": "When you want to calculate the running total of orders made over the course of the year.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1587080109406",
+                    "text": " When you want to show both parent and child relationships within a family tree.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1587080110642",
+                    "text": "When you want the first four digits of a student ID as a unique identifier.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1587080164527",
+                    "text": "When you want to join all records of two tables to determine where employees live.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 392110,
+          "key": "33994f24-4832-4951-ab51-67555a49aaa9",
+          "title": "Quiz: Self JOINs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "33994f24-4832-4951-ab51-67555a49aaa9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463882,
+              "key": "35fa58e0-7993-42f7-baf6-3066838b40c3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Self JOINs\nOne of the most common use cases for self JOINs is in cases where two events occurred, one after another.  As you may have noticed in the previous video, using inequalities in conjunction with self JOINs is common.\n\nModify the query from the previous video, which is pre-populated in the SQL Explorer below, to perform the same interval analysis except for the `web_events` table. Also:\n- change the interval to 1 day to find those web events that occurred after, but not more than 1 day after, another web event\n- add a column for the `channel` variable in both instances of the table in your query\n\nYou can find more on the types of INTERVALS (and other date related functionality) in the Postgres documentation [here](https://www.postgresql.org/docs/8.2/static/functions-datetime.html).\n\n```\nSELECT o1.id AS o1_id,\n       o1.account_id AS o1_account_id,\n       o1.occurred_at AS o1_occurred_at,\n       o2.id AS o2_id,\n       o2.account_id AS o2_account_id,\n       o2.occurred_at AS o2_occurred_at\n  FROM orders o1\n LEFT JOIN orders o2\n   ON o1.account_id = o2.account_id\n  AND o2.occurred_at > o1.occurred_at\n  AND o2.occurred_at <= o1.occurred_at + INTERVAL '28 days'\nORDER BY o1.account_id, o1.occurred_at\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558967,
+              "key": "c8ea9f3d-d937-4671-a008-dfc5d938e5fa",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "d3284b96-b255-4e7a-9c10-e65497adcfbb",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392111,
+          "key": "0c3103b0-9898-4517-bc3b-f43756ee760f",
+          "title": "Solutions: Self JOINs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0c3103b0-9898-4517-bc3b-f43756ee760f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463884,
+              "key": "ca2a9b17-a5c7-4988-9143-fdf7f9168e1e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Self JOINs\n```\nSELECT we1.id AS we_id,\n       we1.account_id AS we1_account_id,\n       we1.occurred_at AS we1_occurred_at,\n       we1.channel AS we1_channel,\n       we2.id AS we2_id,\n       we2.account_id AS we2_account_id,\n       we2.occurred_at AS we2_occurred_at,\n       we2.channel AS we2_channel\n  FROM web_events we1 \n LEFT JOIN web_events we2\n   ON we1.account_id = we2.account_id\n  AND we1.occurred_at > we2.occurred_at\n  AND we1.occurred_at <= we2.occurred_at + INTERVAL '1 day'\nORDER BY we1.account_id, we2.occurred_at\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558968,
+              "key": "7103acb2-4975-41e2-bdc7-074f4407a30b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "dc6f998c-c07e-4789-a6d6-f3c2570d1997",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392112,
+          "key": "c30f0e7c-f8e8-4380-bf1d-2bb609cc9c80",
+          "title": "Video: UNION",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c30f0e7c-f8e8-4380-bf1d-2bb609cc9c80",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463886,
+              "key": "ec96aa9a-42a1-40df-a2c6-dd2402b9d9c7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Appending Data via UNION\n\n### UNION Use Case\n\n+ The UNION operator is used to combine the result sets of 2 or more SELECT statements. It removes duplicate rows between the various SELECT statements.\n+ Each SELECT statement within the UNION must have the same number of fields in the result sets with similar data types.\n+ Typically, the use case for leveraging the UNION command in SQL is when a user wants to pull together distinct values of specified columns that are spread across multiple tables. For example, a chef wants to pull together the ingredients and respective aisle across three separate meals that are maintained in different tables. \n\n### Details of UNION\n\n+ There must be the same number of expressions in both SELECT statements.\n+ The corresponding expressions must have the same data type in the SELECT statements. For example: expression1 must be the same data type in both the first and second SELECT statement.\n\n### Expert Tip\n\n+ UNION removes duplicate rows.\n+ UNION ALL does not remove duplicate rows.\n\n### Resources\n\nThe resource [here](https://www.techonthenet.com/sql/union.php) on SQL UNIONs is helpful in understanding syntax and examples.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 406838,
+              "key": "d200b2a5-5bd2-4868-94ba-e458c408d81c",
+              "title": "UNION Motivation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0eRr2K8lo-I",
+                "china_cdn_id": "0eRr2K8lo-I.mp4"
+              }
+            },
+            {
+              "id": 464195,
+              "key": "ef5a7def-7729-4a74-9163-0bb3306dcaf5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Appending Data via UNION Demonstration",
+              "instructor_notes": ""
+            },
+            {
+              "id": 408629,
+              "key": "582f90e2-d7b6-45a0-8622-6c3fba15e05b",
+              "title": "UNION 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "APRpwqFpGwI",
+                "china_cdn_id": "APRpwqFpGwI.mp4"
+              }
+            },
+            {
+              "id": 463885,
+              "key": "73abb35e-8f2e-4519-b171-80d6f62a921d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "SQL's two strict rules for appending data:\n1. Both tables must have the same number of columns.\n2. Those columns must have the same data types in the same order as the first table.\n\nA common misconception is that column names have to be the same. Column names, in fact, **don't** need to be the same to append two tables but you will find that they typically are.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463889,
+              "key": "77402053-055c-4045-be74-ff51646635be",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pretreating Tables before doing a UNION",
+              "instructor_notes": ""
+            },
+            {
+              "id": 408630,
+              "key": "bcb63909-e3be-4c97-94e3-748125eed04d",
+              "title": "UNION 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "so5zydnbYEg",
+                "china_cdn_id": "so5zydnbYEg.mp4"
+              }
+            },
+            {
+              "id": 463890,
+              "key": "80e3cd1e-5551-406f-af0f-f02e632059d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Performing Operations on a Combined Dataset",
+              "instructor_notes": ""
+            },
+            {
+              "id": 408631,
+              "key": "7d406f15-bb01-4364-8361-23767fcaa54b",
+              "title": "UNION 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oVGmi4zBOT8",
+                "china_cdn_id": "oVGmi4zBOT8.mp4"
+              }
+            },
+            {
+              "id": 1014467,
+              "key": "84ce6869-8d77-4dac-9e30-0db2dc2a3e2b",
+              "title": "Quiz: UNION I",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "84ce6869-8d77-4dac-9e30-0db2dc2a3e2b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What use case below is it appropriate to use a union?",
+                "answers": [
+                  {
+                    "id": "a1587081269075",
+                    "text": "When you want to determine all reasons students are late. Currently, each late reason is maintained within tables corresponding to the grade the student is in.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1587081319267",
+                    "text": "When you want to determine which state students live. Currently, there is one table for students and their academic performance and another table with their demographic and location information.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1587081329189",
+                    "text": "When you want to determine the average price of products that sold over $10k in revenue. Currently, there is one table that has all products and their respective pricing.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1587081339431",
+                    "text": "When you want to determine the total number of teachers by neighborhood in a particular city. Currently, there is one table that maintains the teacher’s information, including which neighborhood they teach in.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 392113,
+          "key": "b583cf80-2246-4d6f-a6f4-495a887a907e",
+          "title": "Quiz: UNION",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b583cf80-2246-4d6f-a6f4-495a887a907e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463893,
+              "key": "89c58b6d-5b65-4c7c-bb7b-431ae1f7bc6d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Appending Data via UNION\n\nWrite a query that uses `UNION ALL` on two instances (and selecting all columns) of the `accounts` table. Then inspect the results and answer the subsequent quiz.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558969,
+              "key": "8b44f55f-addc-40b2-989b-cd68d0d426a5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "69f44cd3-43d4-4420-a3a6-01e18b1c4b31",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 463902,
+              "key": "6ad82b2b-2ab9-4a9f-8443-90808653cc04",
+              "title": "UNION vs. UNION ALL",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6ad82b2b-2ab9-4a9f-8443-90808653cc04",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Without rewriting and running the query, how many results would be returned if you used `UNION` instead of `UNION ALL` in the above query?",
+                "answers": [
+                  {
+                    "id": "a1510956337565",
+                    "text": "702",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510956352070",
+                    "text": "1404",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510956352700",
+                    "text": "351",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 463894,
+              "key": "d7e3c819-d7fe-4976-b85c-e7fedebb2293",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pretreating Tables before doing a UNION\nAdd a `WHERE` clause to each of the tables that you unioned in the query above, filtering the first table where `name` equals Walmart and filtering the second table where `name` equals Disney. Inspect the results then answer the subsequent quiz.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558970,
+              "key": "2445192c-2208-4b40-8444-3eae38507de1",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "2641705c-7493-4402-a4c6-816bbc78556d",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 463907,
+              "key": "d3a41677-9994-4380-a4d6-31f4ea228494",
+              "title": "Alternative to UNION",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d3a41677-9994-4380-a4d6-31f4ea228494",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How else could the above query results be generated?",
+                "answers": [
+                  {
+                    "id": "a1510957012951",
+                    "text": "SELECT *     FROM accounts     WHERE name = 'Walmart'     AND name = 'Disney'",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510957091813",
+                    "text": "SELECT *     FROM accounts     WHERE name = 'Walmart'     OR name = 'Disney'",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510957095262",
+                    "text": "Not possible",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 558972,
+              "key": "d22f3f80-4f48-4fa2-add7-4bfed28412d3",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "0cf8a311-6b85-468d-99c5-cde736c676af",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 463895,
+              "key": "3b6dd0aa-588d-4381-94f4-7f114a20f894",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Performing Operations on a Combined Dataset\nPerform the union in your first query (under the **Appending Data via UNION** header) in a common table expression and name it `double_accounts`. Then do a `COUNT` the number of times a `name` appears in the `double_accounts` table. If you do this correctly, your query results should have a count of 2 for each `name`.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 392114,
+          "key": "6d435dbd-9672-4f71-8e54-3abc12c8e8eb",
+          "title": "Solutions: UNION",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6d435dbd-9672-4f71-8e54-3abc12c8e8eb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463891,
+              "key": "23fa52d9-4ee3-4dac-b5ee-6633ab875c9a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz 1:\n```\nSELECT *\n    FROM accounts\n\nUNION ALL\n\nSELECT *\n  FROM accounts\n```\n\n## Quiz 2:\n```\nSELECT *\n    FROM accounts\n    WHERE name = 'Walmart'\n\nUNION ALL\n\nSELECT *\n  FROM accounts\n  WHERE name = 'Disney'\n```\n\n## Quiz 3:\n```\nWITH double_accounts AS (\n    SELECT *\n      FROM accounts\n    \n    UNION ALL\n    \n    SELECT *\n      FROM accounts\n)\n\nSELECT name,\n       COUNT(*) AS name_count\n FROM double_accounts \nGROUP BY 1\nORDER BY 2 DESC\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558973,
+              "key": "4228ae1f-a6df-499f-ae8c-83b127ce7abb",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "080fbb23-461f-4d21-b355-db3c4cec9f97",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 463909,
+          "key": "54177881-bd1b-4115-ab44-21d74349b1b2",
+          "title": "Video: Performance Tuning Motivation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "54177881-bd1b-4115-ab44-21d74349b1b2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463910,
+              "key": "8576e196-e86d-4e63-9696-49c30255680a",
+              "title": "Performance Tuning Motivation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aY4_uYWEuoE",
+                "china_cdn_id": "aY4_uYWEuoE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 392115,
+          "key": "789ebb57-d737-43ee-87bd-34cea79ed7bf",
+          "title": "Video + Quiz: Performance Tuning 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "789ebb57-d737-43ee-87bd-34cea79ed7bf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 464190,
+              "key": "7fbf564e-84bc-42aa-9410-280eca623b19",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How You Can and Can't Control Performance",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463384,
+              "key": "91e6860e-3792-4f19-b7a4-6d38b277fab9",
+              "title": "More on Performance Tuning",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZK1FvNH10Ag",
+                "china_cdn_id": "ZK1FvNH10Ag.mp4"
+              }
+            },
+            {
+              "id": 463914,
+              "key": "948a1284-4830-4bb0-9959-910d0ff886e1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "One way to make a query run faster is to reduce the number of calculations that need to be performed. Some of the high-level things that will affect the number of calculations a given query will make include:\n- Table size\n- Joins\n- Aggregations\n\nQuery runtime is also dependent on some things that you can’t really control related to the database itself:\n- Other users running queries concurrently on the database\n- Database software and optimization (e.g., Postgres is optimized differently than Redshift)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463386,
+              "key": "db9f166b-e9ef-4646-9e20-6332d94972fa",
+              "title": "Performance Tuning 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5mVfYZ_bfRo",
+                "china_cdn_id": "5mVfYZ_bfRo.mp4"
+              }
+            },
+            {
+              "id": 463917,
+              "key": "fe542f82-8f5c-45b8-b3c4-84927c2dec83",
+              "title": "Performance Tuning with LIMIT",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fe542f82-8f5c-45b8-b3c4-84927c2dec83",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select all of the following statements that are true about tuning performance with LIMIT.",
+                "answers": [
+                  {
+                    "id": "a1510959865019",
+                    "text": "If you have time series data, limiting to a small time window can make your queries run more quickly.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510959896848",
+                    "text": "Testing your queries on a subset of data, finalizing your query, then removing the subset limitation is a sound strategy.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510959897909",
+                    "text": "Applying `LIMIT 10` when aggregating data to one row (i.e. with a `GROUP BY`) will speed up your queries.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510959898510",
+                    "text": "When working with subqueries, limiting the amount of data you’re working with in the place where it will be executed first will have the maximum impact on query run time.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 392139,
+          "key": "f0dca84c-9d9f-4bed-9e69-68705b4a0c8b",
+          "title": "Video:  Performance Tuning 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f0dca84c-9d9f-4bed-9e69-68705b4a0c8b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 408633,
+              "key": "4e8d64fb-d374-4ffc-8913-0999d1e0c031",
+              "title": "Performance Tuning 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "arMtEhSoq7E",
+                "china_cdn_id": "arMtEhSoq7E.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 392140,
+          "key": "b63dc66f-8c06-47a0-bfa9-b381ce028dc5",
+          "title": "Video: Performance Tuning 3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b63dc66f-8c06-47a0-bfa9-b381ce028dc5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 408634,
+              "key": "2bfb1f3f-8504-4ef1-ac45-91ed89c12854",
+              "title": "Performance Tuning 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hIAE8W6x5O8",
+                "china_cdn_id": "hIAE8W6x5O8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 392117,
+          "key": "69b2120c-7bac-46db-9716-0056888c6b2b",
+          "title": "Video: JOINing Subqueries",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "69b2120c-7bac-46db-9716-0056888c6b2b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463923,
+              "key": "6ede7850-4763-47de-a718-b359e9c1b43e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## JOINing Subqueries to Improve Performance\n\nCode along with Derek in the SQL Explorer below this next video. At the end, run each of the subqueries independently to get a better understanding of how they work.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410312,
+              "key": "029796e6-d5ab-4697-b29b-f109450f1dac",
+              "title": "Joining Subqueries",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rxy-fE5GeLY",
+                "china_cdn_id": "rxy-fE5GeLY.mp4"
+              }
+            },
+            {
+              "id": 558974,
+              "key": "dd108e53-db58-4644-baf1-17f875b53404",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view262f9d14",
+              "pool_id": "sqlwidget",
+              "view_id": "3637613d-dd43-4921-b344-c4969de3e01f",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 392141,
+              "key": "c901b399-c59a-4410-9376-0fd073c1b266",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Expert Tip\n\nIf you’d like to understand this a little better, you can do some extra research on [cartesian products](http://en.wikipedia.org/wiki/Cartesian_product). It’s also worth noting that the FULL JOIN and COUNT above actually runs pretty fast—it’s the COUNT(DISTINCT) that takes forever.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 392121,
+          "key": "d09e50f7-0ab0-435e-83fb-226837dcff85",
+          "title": "Video: SQL Completion Congratulations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d09e50f7-0ab0-435e-83fb-226837dcff85",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406834,
+              "key": "c9ebf82a-cd52-4c2d-807c-f726c48ca044",
+              "title": "Congratulations!",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_FPpbuuW-1o",
+                "china_cdn_id": "_FPpbuuW-1o.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

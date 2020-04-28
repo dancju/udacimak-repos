@@ -1,0 +1,2137 @@
+{
+  "data": {
+    "lesson": {
+      "id": 568562,
+      "key": "22ff3b91-42f7-420e-b6ad-de0b29684ed0",
+      "title": "Bivariate Exploration of Data",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, build up from your understanding of individual variables and learn how to use matplotlib and seaborn to look at relationships between two variables.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/22ff3b91-42f7-420e-b6ad-de0b29684ed0/568562/1544197231448/Bivariate+Exploration+of+Data+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/22ff3b91-42f7-420e-b6ad-de0b29684ed0/568562/1544197226325/Bivariate+Exploration+of+Data+Subtitles.zip"
+          },
+          {
+            "name": "pokemon.csv",
+            "uri": "https://video.udacity-data.com/topher/2018/April/5ac2906c_pokemon/pokemon.csv"
+          },
+          {
+            "name": "fuel_econ.csv",
+            "uri": "https://video.udacity-data.com/topher/2018/April/5ac2907f_fuel-econ/fuel-econ.csv"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 568563,
+          "key": "f8eda5ec-29b5-4ef7-a2aa-0548c42fefe1",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f8eda5ec-29b5-4ef7-a2aa-0548c42fefe1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568583,
+              "key": "1a7ba5d6-23f1-4578-afe7-1d99bdcb4dfc",
+              "title": "L4 011 Intro V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JzvJIWG8Rk4",
+                "china_cdn_id": "JzvJIWG8Rk4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 568564,
+          "key": "9d1316b3-f339-4d52-b63f-91994aefdd40",
+          "title": "Scatterplots and Correlation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9d1316b3-f339-4d52-b63f-91994aefdd40",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568584,
+              "key": "479529b9-38ff-41b2-93dc-7a30ab60f0d7",
+              "title": "L4 021 Scatterplots And Correlation V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wqMwTDVT9_Y",
+                "china_cdn_id": "wqMwTDVT9_Y.mp4"
+              }
+            },
+            {
+              "id": 572447,
+              "key": "3b231e85-3229-4fa3-b87a-107eed911c37",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568585,
+              "key": "da00c637-346a-4729-a79e-e9d4ae41f951",
+              "title": "Data Vis L4 C02 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wBDC5AmYgyg",
+                "china_cdn_id": "wBDC5AmYgyg.mp4"
+              }
+            },
+            {
+              "id": 568689,
+              "key": "73187206-d5e4-41bd-b50e-279609dd5e40",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Scatterplots\n\nIf we want to inspect the relationship between two numeric variables, the standard choice of plot is the **scatterplot**. In a scatterplot, each data point is plotted individually as a point, its x-position corresponding to one feature value and its y-position corresponding to the second. One basic way of creating a scatterplot is through Matplotlib's [`scatter`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html) function:\n```python\nplt.scatter(data = df, x = 'num_var1', y = 'num_var2')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568693,
+              "key": "b5053500-0bbd-4744-9351-35e22b57f554",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab03c6b_l4-c02-scatterplot1/l4-c02-scatterplot1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b5053500-0bbd-4744-9351-35e22b57f554",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569204,
+              "key": "b83429e3-f16c-4520-bb26-982e46cca9bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We can see a generally positive relationship between the two variables, as higher values of the x-axis variable are associated with greatly increasing values of the variable plotted on the y-axis.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568700,
+              "key": "ef7406c3-9a8a-4567-b70c-82a1aa0c6ea0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Alternative Approach\n\nSeaborn's [`regplot`](https://seaborn.pydata.org/generated/seaborn.regplot.html) function combines scatterplot creation with regression function fitting:\n```python\nsb.regplot(data = df, x = 'num_var1', y = 'num_var2')\n```\nThe basic function parameters, \"data\", \"x\", and \"y\" are the same for `regplot` as they are for matplotlib's `scatter`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568701,
+              "key": "771a484e-a674-4224-a65f-7d8deff58b4e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab03e30_l4-c02-scatterplot2/l4-c02-scatterplot2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/771a484e-a674-4224-a65f-7d8deff58b4e",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 568721,
+              "key": "de5ef743-e546-4200-a79b-97aaa773795c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "By default, the regression function is linear, and includes a shaded confidence region for the regression estimate. In this case, since the trend looks like a <span class='mathquill'>\\text{log}(y) \\propto x</span> relationship (that is, linear increases in the value of x are associated with linear increases in the log of y), plotting the regression line on the raw units is not appropriate. If we don't care about the regression line, then we could set `fit_reg = False` in the `regplot` function call. Otherwise, if we want to plot the regression line on the observed relationship in the data, we need to transform the data, as seen in the previous lesson.\n```python\ndef log_trans(x, inverse = False):\n    if not inverse:\n        return np.log10(x)\n    else:\n        return np.power(10, x)\n\nsb.regplot(df['num_var1'], df['num_var2'].apply(log_trans))\ntick_locs = [10, 20, 50, 100, 200, 500]\nplt.yticks(log_trans(tick_locs), tick_locs)\n```\nIn this example, the x- and y- values sent to `regplot` are set directly as Series, extracted from the dataframe.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568722,
+              "key": "a839c673-3a82-464c-88ad-feb3e4f48a4e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab047f5_l4-c02-scatterplot3/l4-c02-scatterplot3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a839c673-3a82-464c-88ad-feb3e4f48a4e",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 568565,
+          "key": "bd599deb-e989-4ce2-9dc2-d62316ecc0f1",
+          "title": "Overplotting, Transparency, and Jitter",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bd599deb-e989-4ce2-9dc2-d62316ecc0f1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568586,
+              "key": "465c31dd-dacb-4a6a-9bb3-fc62c33d192f",
+              "title": "L4 031 Overplotting Transparency And Jitter 1 V4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BGqR-nxgMtg",
+                "china_cdn_id": "BGqR-nxgMtg.mp4"
+              }
+            },
+            {
+              "id": 572451,
+              "key": "89f76e14-acd7-48d0-8bf5-a0052d47314b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568587,
+              "key": "616c7331-e77c-4d09-9ad4-e37b20cd4c96",
+              "title": "Data Vis L4 C03 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0F6ldBC6Nbs",
+                "china_cdn_id": "0F6ldBC6Nbs.mp4"
+              }
+            },
+            {
+              "id": 568786,
+              "key": "7bddb804-1295-4f6f-a9b7-2fec3f8248f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Overplotting, Transparency, and Jitter\n\nIf we have a very large number of points to plot or our numeric variables are discrete-valued, then it is possible that using a scatterplot straightforwardly will not be informative. The visualization will suffer from _overplotting_, where the high amount of overlap in points makes it difficult to see the actual relationship between the plotted variables.\n```python\nplt.scatter(data = df, x = 'disc_var1', y = 'disc_var2')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569101,
+              "key": "aca377a3-5afd-435f-b439-ce46e802015d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab1488a_l4-c03-overplotting1/l4-c03-overplotting1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/aca377a3-5afd-435f-b439-ce46e802015d",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569102,
+              "key": "ddbd766a-b05f-45c0-8e36-6ca73f40b172",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the above plot, we can infer some kind of negative relationship between the two variables, but the degree of variability in the data and strength of relationship are fairly unclear. In cases like this, we may want to employ _transparency_ and _jitter_ to make the scatterplot more informative. Transparency can be added to a [`scatter`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html) call by adding the \"alpha\" parameter set to a value between 0 (fully transparent, not visible) and 1 (fully opaque).\n```python\nplt.scatter(data = df, x = 'disc_var1', y = 'disc_var2', alpha = 1/5)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569103,
+              "key": "a43ddb0c-a3e1-4917-8d6b-d8e866e80ebf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab14acb_l4-c03-overplotting2/l4-c03-overplotting2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a43ddb0c-a3e1-4917-8d6b-d8e866e80ebf",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569107,
+              "key": "805f8a2c-1355-49d7-8780-fd696b53ea66",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Where more points overlap, the darker the image will be. Here, we can now see that there is a moderate negative relationship between the two numeric variables. Values of 0 and 10 on the x-axis are much rarer than the central values.\n\nAs an alternative or companion to transparency, we can also add jitter to move the position of each point slightly from its true value. This is not a direct option in matplotlib's `scatter` function, but is a built-in option with seaborn's [`regplot`](https://seaborn.pydata.org/generated/seaborn.regplot.html) function. x- and y- jitter can be added independently, and won't affect the fit of any regression function, if made:\n```python\nsb.regplot(data = df, x = 'disc_var1', y = 'disc_var2', fit_reg = False,\n           x_jitter = 0.2, y_jitter = 0.2, scatter_kws = {'alpha' : 1/3})\n```\nThe jitter settings will cause each point to be plotted in a uniform ±0.2 range of their true values. Note that transparency has been changed to be a dictionary assigned to the \"scatter_kws\" parameter. This is necessary so that transparency is specifically associated with the `scatter` component of the `regplot` function.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569108,
+              "key": "2742d1a2-7510-41a8-a1cf-bd81e3521fe5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab15147_l4-c03-overplotting3/l4-c03-overplotting3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2742d1a2-7510-41a8-a1cf-bd81e3521fe5",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 568566,
+          "key": "8f54c142-468e-4e1a-abef-4c6425403a3b",
+          "title": "Heat Maps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8f54c142-468e-4e1a-abef-4c6425403a3b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568588,
+              "key": "b67f96a7-bced-475c-a7be-c80795705e8d",
+              "title": "L4 041 Heat Maps V4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RyCdvsmBjtE",
+                "china_cdn_id": "RyCdvsmBjtE.mp4"
+              }
+            },
+            {
+              "id": 572452,
+              "key": "6824bae0-6b24-40c9-924b-1bdacb810483",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568589,
+              "key": "431acc3d-cd21-4100-ac2c-d64da4ec05cd",
+              "title": "Data Vis L4 C04 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "O6ElT4IFXc0",
+                "china_cdn_id": "O6ElT4IFXc0.mp4"
+              }
+            },
+            {
+              "id": 569110,
+              "key": "c78d87dc-170d-4db7-8297-5b463318a101",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Heat Maps\n\nA **heat map** is a 2-d version of the histogram that can be used as an alternative to a scatterplot. Like a scatterplot, the values of the two numeric variables to be plotted are placed on the plot axes. Similar to a histogram, the plotting area is divided into a grid and the number of points in each grid rectangle is added up. Since there won't be room for bar heights, counts are indicated instead by grid cell color. A heat map can be implemented with Matplotlib's [`hist2d`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist2d.html) function. \n```python\nplt.figure(figsize = [12, 5])\n\n# left plot: scatterplot of discrete data with jitter and transparency\nplt.subplot(1, 2, 1)\nsb.regplot(data = df, x = 'disc_var1', y = 'disc_var2', fit_reg = False,\n           x_jitter = 0.2, y_jitter = 0.2, scatter_kws = {'alpha' : 1/3})\n\n# right plot: heat map with bin edges between values\nplt.subplot(1, 2, 2)\nbins_x = np.arange(0.5, 10.5+1, 1)\nbins_y = np.arange(-0.5, 10.5+1, 1)\nplt.hist2d(data = df, x = 'disc_var1', y = 'disc_var2',\n           bins = [bins_x, bins_y])\nplt.colorbar();\n```\nNotice that since we have two variables, the \"bins\" parameter takes a list of two bin edge specifications, one for each dimension. Choosing an appropriate bin size is just as important here as it was for the univariate histogram. We add a [`colorbar`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.colorbar.html) function call to add a colorbar to the side of the plot, showing the mapping from counts to colors.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569115,
+              "key": "fec2e0d0-e224-4643-8d18-4b65af7820fe",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab158bb_l4-c04-heatmap1/l4-c04-heatmap1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fec2e0d0-e224-4643-8d18-4b65af7820fe",
+              "caption": "",
+              "alt": "",
+              "width": 864,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 569123,
+              "key": "f588dc34-6696-457b-92ff-851db7c945c1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As the color in the heatmap gets brighter and moves from blue to yellow, the higher the count of points in the corresponding cell.\n\nHeatmaps can also be used as 2-d versions of bar charts, plotting counts on combinations of two categorical variables instead of numeric variables. There is a function in seaborn, `heatmap`, that is built for categorical heatmaps. This will be discussed in more detail later in the lesson, in the section \"Clustered Bar Charts\".",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569127,
+              "key": "301fe6c3-0c0e-4337-97fe-e923b5ba7f6a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Variations\n\nTo select a different color palette, you can set the \"cmap\" parameter in `hist2d`. The most convenient way of doing this is to set the \"cmap\" value as a string referencing a built-in Matplotlib palette. A list of valid strings can be found on [this part](https://matplotlib.org/api/pyplot_summary.html#colors-in-matplotlib) of the Pyplot API documentation. A further discussion of color in plots will be left to the next lesson. For now, I will just show an example of reversing the default \"viridis\" color palette, by setting `cmap = 'viridis_r'`.\n\nFurthermore, I would like to distinguish cells with zero counts from those with non-zero counts. The \"cmin\" parameter specifies the minimum value in a cell before it will be plotted. By adding a `cmin = 0.5` parameter to the `hist2d` call, this means that a cell will only get colored if it contains at least one point.\n```python\nbins_x = np.arange(0.5, 10.5+1, 1)\nbins_y = np.arange(-0.5, 10.5+1, 1)\nplt.hist2d(data = df, x = 'disc_var1', y = 'disc_var2',\n           bins = [bins_x, bins_y], cmap = 'viridis_r', cmin = 0.5)\nplt.colorbar()\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569128,
+              "key": "b5c034f5-4812-4270-9210-9c650ae9c9ae",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab172c4_l4-c04-heatmap2/l4-c04-heatmap2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b5c034f5-4812-4270-9210-9c650ae9c9ae",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569129,
+              "key": "78fef3b7-ffe1-4593-8f07-6c2444fb9c53",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you have a lot of data, you might want to add annotations to cells in the plot indicating the count of points in each cell. From `hist2d`, this requires the addition of text elements one by one, much like how text annotations were added one by one to the bar plots in the previous lesson. We can get the counts to annotate directly from what is returned by `hist2d`, which includes not just the plotting object, but an array of counts and two vectors of bin edges.\n```python\n# hist2d returns a number of different variables, including an array of counts\nbins_x = np.arange(0.5, 10.5+1, 1)\nbins_y = np.arange(-0.5, 10.5+1, 1)\nh2d = plt.hist2d(data = df, x = 'disc_var1', y = 'disc_var2',\n               bins = [bins_x, bins_y], cmap = 'viridis_r', cmin = 0.5)\ncounts = h2d[0]\n\n# loop through the cell counts and add text annotations for each\nfor i in range(counts.shape[0]):\n    for j in range(counts.shape[1]):\n        c = counts[i,j]\n        if c >= 7: # increase visibility on darkest cells\n            plt.text(bins_x[i]+0.5, bins_y[j]+0.5, int(c),\n                     ha = 'center', va = 'center', color = 'white')\n        elif c > 0:\n            plt.text(bins_x[i]+0.5, bins_y[j]+0.5, int(c),\n                     ha = 'center', va = 'center', color = 'black')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569131,
+              "key": "0aeb1d56-80a5-4948-ad59-d484b04df71f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab17c13_l4-c04-heatmap3/l4-c04-heatmap3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0aeb1d56-80a5-4948-ad59-d484b04df71f",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569130,
+              "key": "ac5124a2-d1a4-4fa8-9c8f-50c3efb34321",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you have too many cells in your heat map, then the annotations will end up being too overwhelming, too much to attend to. In cases like that, it's best to leave off the annotations and let the data and colorbar speak for themselves. You're more likely to see annotations in a categorical heat map, where there are going to be fewer cells plotted. Indeed, there is a parameter built into seaborn's `heatmap` function for just that, as will be seen later.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 568567,
+          "key": "d559b9aa-86d6-4b46-9149-cc91c0630900",
+          "title": "Scatterplot Practice",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d559b9aa-86d6-4b46-9149-cc91c0630900",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 590355,
+              "key": "f8ce47a9-ef53-4bd6-bad7-c77097c02211",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewf503afd5",
+              "pool_id": "jupyter",
+              "view_id": "f503afd5-9ef1-4f48-9779-df0cd56fb622",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Scatterplot_Practice.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 568568,
+          "key": "1dca3bcb-d2d4-44c2-b88e-ecea98402349",
+          "title": "Violin Plots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1dca3bcb-d2d4-44c2-b88e-ecea98402349",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568590,
+              "key": "bfcdd1a2-2c54-4924-aa4a-fe15b5844d0e",
+              "title": "L4 061 Violin Plots 2 V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0hr61L-LZyM",
+                "china_cdn_id": "0hr61L-LZyM.mp4"
+              }
+            },
+            {
+              "id": 572454,
+              "key": "66c2dd8f-48a4-41c8-b0bc-a13b483d6588",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568591,
+              "key": "a8dcc219-01c0-4357-8c72-e245ce1a33d0",
+              "title": "Data Vis L4 C06 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "f8Kh4PByiEA",
+                "china_cdn_id": "f8Kh4PByiEA.mp4"
+              }
+            },
+            {
+              "id": 569203,
+              "key": "ec4e12ac-d360-4a31-b2dd-11c817163d0a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Violin Plots\n\nThere are a few ways of plotting the relationship between one quantitative and one qualitative variable, that demonstrate the data at different levels of abstraction. The **violin plot** is on the lower level of abstraction. For each level of the categorical variable, a distribution of the values on the numeric variable is plotted. The distribution is plotted as a kernel density estimate, something like a smoothed histogram. There is an extra section at the end of the previous lesson that provides more insight into kernel density estimates.\n\nSeaborn's [`violinplot`](https://seaborn.pydata.org/generated/seaborn.violinplot.html) function can be used to create violin plots combined with box plots – we'll discuss box plots on the next page.\n```python\nsb.violinplot(data = df, x = 'cat_var', y = 'num_var')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569212,
+              "key": "3777f448-d73c-44f8-974d-a86262b420e6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab1a954_l4-c06-violinplot1/l4-c06-violinplot1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3777f448-d73c-44f8-974d-a86262b420e6",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569281,
+              "key": "79cee88e-e432-4890-80f8-857389d914eb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here, you can see that the numeric data takes on a different shape in each categorical level: Some bimodality is suggested in group Alpha, a relatively high variance is observed in Beta, and Gamma and Delta are skewed negatively and positively, respectively. You can also see that each level has been rendered in a different color, like how the plain `countplot` was in the previous lesson. We can set the \"color\" parameter to make each curve the same color if it is not meaningful.\n\nInside each curve, there is a black shape with a white dot inside. This is the miniature box plot mentioned above. A further discussion of box plots will be performed on the next page. If you'd like to remove the box plot, you can set the `inner = None` parameter in the `violinplot` call to simplify the look of the final visualization.\n```python\nbase_color = sb.color_palette()[0]\nsb.violinplot(data = df, x = 'cat_var', y = 'num_var', color = base_color,\n              inner = None)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569282,
+              "key": "e754d722-d1b8-4b54-9b79-99a108eaa8d5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab20251_l4-c06-violinplot2/l4-c06-violinplot2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e754d722-d1b8-4b54-9b79-99a108eaa8d5",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569283,
+              "key": "ef488935-c122-42bd-a816-a6e2a25ace7a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Variation\n\nMuch like how the bar chart could be rendered with horizontal bars, the violin plot can also be rendered horizontally. Seaborn is smart enough to make an appropriate inference on which orientation is requested, depending on whether \"x\" or \"y\" receives the categorical variable. But if both variables are numeric (e.g., one is discretely-valued) then the \"orient\" parameter can be used to specify the plot orientation.\n```python\nbase_color = sb.color_palette()[0]\nsb.violinplot(data = df, x = 'num_var', y = 'cat_var', color = base_color,\n              inner = None)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569284,
+              "key": "f0d10a54-6ae1-4085-a1e3-9d2cdcc12f81",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab203d6_l4-c06-violinplot3/l4-c06-violinplot3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f0d10a54-6ae1-4085-a1e3-9d2cdcc12f81",
+              "caption": "",
+              "alt": "",
+              "width": 460,
+              "height": 262,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 568569,
+          "key": "6ec37bb1-2d14-451c-9965-91c86be93be3",
+          "title": "Box Plots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6ec37bb1-2d14-451c-9965-91c86be93be3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568592,
+              "key": "fa198978-ad29-4315-9400-69ea8ceae67e",
+              "title": "L4 071 Box Plots V4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3gxJag12T0g",
+                "china_cdn_id": "3gxJag12T0g.mp4"
+              }
+            },
+            {
+              "id": 572455,
+              "key": "842ae37a-1fbc-4dd3-94d4-c5c7cc213fa1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568593,
+              "key": "2bdb8320-8543-43f3-bcb8-641343e9493f",
+              "title": "Data Vis L4 C07 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "f6v3L3IDo24",
+                "china_cdn_id": "f6v3L3IDo24.mp4"
+              }
+            },
+            {
+              "id": 569407,
+              "key": "000af388-a54c-4a17-89d5-f6a1dab4a76f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Box Plots\n\nA **box plot** is another way of showing the relationship between a numeric variable and a categorical variable. Compared to the violin plot, the box plot leans more on summarization of the data, primarily just reporting a set of descriptive statistics for the numeric values on each categorical level. A box plot can be created using seaborn's [`boxplot`](https://seaborn.pydata.org/generated/seaborn.boxplot.html) function.\n\n```python\nplt.figure(figsize = [10, 5])\nbase_color = sb.color_palette()[0]\n\n# left plot: violin plot\nplt.subplot(1, 2, 1)\nax1 = sb.violinplot(data = df, x = 'cat_var', y = 'num_var', color = base_color)\n\n# right plot: box plot\nplt.subplot(1, 2, 2)\nsb.boxplot(data = df, x = 'cat_var', y = 'num_var', color = base_color)\nplt.ylim(ax1.get_ylim()) # set y-axis limits to be same as left plot\n```\nNote that the \"color\" parameter is being used here to make each box the same color. In order to provide a better comparison of the violin and box plots, a `ylim` expression has been added to the second plot to match the two plots' y-axis limits. The Axes object returned by `violinplot` is assigned to a variable, `ax1` is used to programmatically obtain those limit values.\n\n(Documentation: [Axes objects](https://matplotlib.org/api/axes_api.html))",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569408,
+              "key": "902d0a8a-ba46-4dc1-8646-843ce3e1b3b2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab297bd_l4-c07-boxplot1/l4-c07-boxplot1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/902d0a8a-ba46-4dc1-8646-843ce3e1b3b2",
+              "caption": "",
+              "alt": "",
+              "width": 720,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 569409,
+              "key": "4befe0cf-9a97-4d52-80c1-8f69748aef14",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The inner boxes and lines in the violin plot match up with the boxes and whiskers in the box plot. In a box plot, the central line in the box indicates the median of the distribution, while the top and bottom of the box represent the third and first quartiles of the data, respectively. Thus, the height of the box is the interquartile range (IQR). From the top and bottom of the box, the whiskers indicate the range from the first or third quartiles to the minimum or maximum value in the distribution. Typically, a maximum range is set on whisker length; by default this is 1.5 times the IQR. For the Gamma level, there are points below the lower whisker that indicate individual outlier points that are more than 1.5 times the IQR below the first quartile.\n\nComparing the two plots, the box plot is a cleaner summary of the data than the violin plot. It's easier to compare statistics between the groups with a box plot. This makes a box plot worth more consideration if you have a lot of groups to compare, or if you are building explanatory plots. You can clearly see from the box plot that the Delta group has the lowest median. On the other hand, the box plot lacks as nuanced a depiction of distributions as the violin plot: you can't see the slight bimodality present in the Alpha level values. The violin plot may be a better option for exploration, especially since seaborn's implementation also includes the box plot by default.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569410,
+              "key": "a443bf82-d583-4c64-bb1a-ca03eacc16b2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Variations\n\nAs with `violinplot`, `boxplot` can also render horizontal box plots by setting the numeric and categorical features to the appropriate arguments.\n```python\nbase_color = sb.color_palette()[0]\nsb.boxplot(data = df, x = 'num_var', y = 'cat_var', color = base_color)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569412,
+              "key": "7b401441-b7eb-4151-bec7-18939e45d083",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab29ca8_l4-c07-boxplot2/l4-c07-boxplot2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7b401441-b7eb-4151-bec7-18939e45d083",
+              "caption": "",
+              "alt": "",
+              "width": 450,
+              "height": 271,
+              "instructor_notes": null
+            },
+            {
+              "id": 569432,
+              "key": "0282ef69-7410-48df-bea4-be9df0114d37",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In `violinplot`, there is an additional option for plotting summary statistics in the violin, beyond the default mini box plot. By setting `inner = 'quartile'`, three lines will be plotted within each violin area for the three middle quartiles. The line with thick dashes indicates the median, and the two lines with shorter dashes on either side the first and third quartiles.\n```python\nbase_color = sb.color_palette()[0]\nsb.violinplot(data = df, x = 'cat_var', y = 'num_var', color = base_color,\n              inner = 'quartile')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569434,
+              "key": "93b515ea-ac93-428e-859a-1616c48ec27d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2ac0c_l4-c07-boxplot3/l4-c07-boxplot3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/93b515ea-ac93-428e-859a-1616c48ec27d",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 568570,
+          "key": "b3dd0ca0-99d7-4d0a-bf9e-440d33dd5b6c",
+          "title": "Violin and Box Plot Practice",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b3dd0ca0-99d7-4d0a-bf9e-440d33dd5b6c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 590356,
+              "key": "3acf97d9-9b50-4f3a-b05d-5194cbd4df74",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewf503afd5",
+              "pool_id": "jupyter",
+              "view_id": "4e7b215c-cf5c-441a-bd53-8cb89486298c",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Violin_and_Box_Plot_Practice.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 568571,
+          "key": "7c2f7055-36bc-4370-b81e-68a897951353",
+          "title": "Clustered Bar Charts",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7c2f7055-36bc-4370-b81e-68a897951353",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568594,
+              "key": "9adb488d-16fa-408f-ab96-e0b183bdb10e",
+              "title": "L4 091 Clustered Bar Charts V4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0rFp55TtEJM",
+                "china_cdn_id": "0rFp55TtEJM.mp4"
+              }
+            },
+            {
+              "id": 572456,
+              "key": "7522dec8-8b8d-4449-9ca2-49b0be8c5d58",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568595,
+              "key": "8c1780ba-a8f4-43d2-90eb-320394ab3ba0",
+              "title": "Data Vis L4 C09 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OnzWhpgM9Vs",
+                "china_cdn_id": "OnzWhpgM9Vs.mp4"
+              }
+            },
+            {
+              "id": 569505,
+              "key": "5a517994-1d94-42d5-885f-cc217ef00f83",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Clustered Bar Charts\n\nTo depict the relationship between two categorical variables, we can extend the univariate bar chart seen in the previous lesson into a **clustered bar chart**. Like a standard bar chart, we still want to depict the count of data points in each group, but each group is now a combination of labels on two variables. So we want to organize the bars into an order that makes the plot easy to interpret. In a clustered bar chart, bars are organized into clusters based on levels of the first variable, and then bars are ordered consistently across the second variable within each cluster. This is easiest to see with an example, using seaborn's [`countplot`](https://seaborn.pydata.org/generated/seaborn.countplot.html) function. To take the plot from univariate to bivariate, we add the second variable to be plotted under the \"hue\" argument:\n```python\nsb.countplot(data = df, x = 'cat_var1', hue = 'cat_var2')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569507,
+              "key": "3707e89d-6b66-4105-843e-85ff9809cb4e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2c211_l4-c09-clusteredbar1/l4-c09-clusteredbar1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3707e89d-6b66-4105-843e-85ff9809cb4e",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569509,
+              "key": "a9614768-aced-474f-8a6f-4b6e42fcbb16",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The first categorical variable is depicted by broad x-position (Control, Experiment A, Experiment B). Within each of these groups, three bars are plotted, one for each level of the second categorical variable (Low, Medium, High). Color differentiates each level, and is documented with the legend in the upper-right corner of the plot. The plot tells us that the three \"cat_var1\" groups are fairly balanced in frequencies across the \"cat_var2\" levels, though the \"Experiment A\" group appears to have slighly lower counts of \"Medium\" points (orange central bar) compared to the other two groups.\n\nThe legend position in this example is a bit distracting, however. We can use an [Axes method](https://matplotlib.org/api/axes_api.html) to set the legend properties on the Axes object returned from `countplot`.\n```python\nax = sb.countplot(data = df, x = 'cat_var1', hue = 'cat_var2')\nax.legend(loc = 8, ncol = 3, framealpha = 1, title = 'cat_var2')\n```\n(Documentation: [`Axes.legend`](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.legend.html))",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569510,
+              "key": "97ffe06d-294c-474b-8f72-9b2b6f947cb9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2c577_l4-c09-clusteredbar2/l4-c09-clusteredbar2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/97ffe06d-294c-474b-8f72-9b2b6f947cb9",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569511,
+              "key": "4e2e3c39-5c05-4000-884d-d44fc632323f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Alternative Approach (Heat Map)\n\nOne alternative way of depicting the relationship between two categorical variables is through a heat map. Heat maps were introduced earlier as the 2-d version of a histogram; here, we're using them as the 2-d version of a bar chart. The seaborn function [`heatmap`](https://seaborn.pydata.org/generated/seaborn.heatmap.html) is at home with this type of heat map implementation, but the input arguments are unlike most of the visualization functions that have been introduced in this course. Instead of providing the original dataframe, we need to summarize the counts into a matrix that will then be plotted.\n```python\nct_counts = df.groupby(['cat_var1', 'cat_var2']).size()\nct_counts = ct_counts.reset_index('count')\nct_counts = ct_counts.pivot(index = 'cat_var2', columns = 'cat_var1', values = 'count')\n```\n(Documentation: [Series `reset_index`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reset_index.html), [DataFrame `pivot`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.pivot.html))",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569517,
+              "key": "94e7ead0-4c70-43d3-8a96-7be3190eee32",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2cc3e_l4-c09-clusteredbar3/l4-c09-clusteredbar3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/94e7ead0-4c70-43d3-8a96-7be3190eee32",
+              "caption": "",
+              "alt": "",
+              "width": 399,
+              "height": 98,
+              "instructor_notes": null
+            },
+            {
+              "id": 569518,
+              "key": "452bee7f-d41c-452c-a1d5-087a4e6cb7f9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```python\nsb.heatmap(ct_counts)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569519,
+              "key": "c18181a4-df62-415c-806e-2583d86419ad",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2cc73_l4-c09-clusteredbar4/l4-c09-clusteredbar4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c18181a4-df62-415c-806e-2583d86419ad",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569523,
+              "key": "6d8fce0c-45dc-459a-b48c-5a9a2ec1f1f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The heat map tells the same story as the clustered bar chart: the similar colors across the rows suggests that the \"cat_var1\" group sizes are similarly sized and distributed similarly across levels of \"cat_var2\". The Experiment A has slightly fewer counts of Medium-level observations, while Control has higher counts of High data points and Experiment B has slightly higher counts of Low points. Compared to the clustered bar chart, however, there is less precision interpreting the magnitude of differences. For this reason, we might want to add annotations to the plot to report counts within each cell.\n```python\nsb.heatmap(ct_counts, annot = True, fmt = 'd')\n```\n`annot = True` makes it so annotations show up in each cell, but the default string formatting only goes to two digits of precision. Adding `fmt = 'd'` means that annotations will all be formatted as integers instead. You can use `fmt = '.0f'` if you have any cells with no counts, in order to account for NaNs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569524,
+              "key": "243c1399-f4ab-479e-8fcb-8a8640fae9a2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2d035_l4-c09-clusteredbar5/l4-c09-clusteredbar5.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/243c1399-f4ab-479e-8fcb-8a8640fae9a2",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 568572,
+          "key": "157ab94f-b709-46b2-81ed-5e2f1d11ed4f",
+          "title": "Categorical Plot Practice",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "157ab94f-b709-46b2-81ed-5e2f1d11ed4f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 590357,
+              "key": "fbfabfe7-8660-4b96-9039-6dc8c5da260a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewf503afd5",
+              "pool_id": "jupyter",
+              "view_id": "51211f41-f17e-4e9f-b96b-e9fb7df9d723",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Categorical_Plot_Practice.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 568574,
+          "key": "2159eb35-129b-419e-a81e-258425d98e1c",
+          "title": "Faceting",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2159eb35-129b-419e-a81e-258425d98e1c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568596,
+              "key": "ba64a6f1-1429-472e-b54b-f175625a215c",
+              "title": "L4 111 Faceting V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oUYRqI6wFGw",
+                "china_cdn_id": "oUYRqI6wFGw.mp4"
+              }
+            },
+            {
+              "id": 572462,
+              "key": "baae029f-106d-4a78-8d71-9b8ebbf65097",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568597,
+              "key": "311aad18-26ae-49a2-b2f0-144f2fe3f59c",
+              "title": "Data Vis L4 C11 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3Ls6w8Cd8n4",
+                "china_cdn_id": "3Ls6w8Cd8n4.mp4"
+              }
+            },
+            {
+              "id": 569564,
+              "key": "9badb38c-38a2-42fb-915f-5ed4ef8383cf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Faceting\n\nOne general visualization technique that will be useful for you to know about to handle plots of two or more variables is **faceting**. In faceting, the data is divided into disjoint subsets, most often by different levels of a categorical variable. For each of these subsets of the data, the same plot type is rendered on other variables. Faceting is a way of comparing distributions or relationships across levels of additional variables, especially when there are three or more variables of interest overall. While faceting is most useful in multivariate visualization, it is still valuable to introduce the technique here in our discussion of bivariate plots.\n\nFor example, rather than depicting the relationship between one numeric variable and one categorical variable using a violin plot or box plot, we could use faceting to look at a histogram of the numeric variable for subsets of the data divided by categorical variable levels. Seaborn's [FacetGrid](https://seaborn.pydata.org/generated/seaborn.FacetGrid.html) class facilitates the creation of faceted plots. There are two steps involved in creating a faceted plot. First, we need to create an instance of the FacetGrid object and specify the feature we want to facet by (\"cat_var\" in our example). Then we use the `map` method on the FacetGrid object to specify the plot type and variable(s) that will be plotted in each subset (in this case, histogram on \"num_var\").\n```python\ng = sb.FacetGrid(data = df, col = 'cat_var')\ng.map(plt.hist, \"num_var\")\n```\nIn the `map` call, just set the plotting function and variable to be plotted as positional arguments. Don't set them as keyword arguments, like `x = \"num_var\"`, or the mapping won't work properly.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569565,
+              "key": "bce84111-599c-4aef-b146-7db920a54d2d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2dbb4_l4-c11-faceting1/l4-c11-faceting1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bce84111-599c-4aef-b146-7db920a54d2d",
+              "caption": "",
+              "alt": "",
+              "width": 864,
+              "height": 216,
+              "instructor_notes": null
+            },
+            {
+              "id": 569571,
+              "key": "d7bf6609-46e3-41a7-b7c5-45a8679e1402",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Notice that each subset of the data is being plotted independently. Each uses the default of ten bins from `hist` to bin together the data, and each plot has a different bin size. Despite that, the axis limits on each facet are the same to allow clear and direct comparisons between groups. It's still worth cleaning things a little bit more by setting the same bin edges on all facets. Extra visualization parameters can be set as additional keyword arguments to the `map` function.\n```python\nbin_edges = np.arange(-3, df['num_var'].max()+1/3, 1/3)\ng = sb.FacetGrid(data = df, col = 'cat_var')\ng.map(plt.hist, \"num_var\", bins = bin_edges)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569572,
+              "key": "0d5f2e2a-471d-4d1e-b591-506159e0d60a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2df31_l4-c11-faceting2/l4-c11-faceting2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0d5f2e2a-471d-4d1e-b591-506159e0d60a",
+              "caption": "",
+              "alt": "",
+              "width": 864,
+              "height": 216,
+              "instructor_notes": null
+            },
+            {
+              "id": 569585,
+              "key": "8a0c9f1d-9939-43ef-83ba-5db318c00ec5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Variation\n\nIf you have many categorical levels to plot, then you might want to add more arguments to the FacetGrid object initialization to facilitate clarity in conveyance of information. The example below includes a categorical variable, \"many_cat_var\", that has fifteen different levels. Setting `col_wrap = 5` means that the plots will be organized into rows of five facets each, rather than a single long row of fifteen plots.\n```python\ngroup_means = df.groupby(['many_cat_var']).mean()\ngroup_order = group_means.sort_values(['num_var'], ascending = False).index\n\ng = sb.FacetGrid(data = df, col = 'many_cat_var', col_wrap = 5, size = 2,\n                 col_order = group_order)\ng.map(plt.hist, 'num_var', bins = np.arange(5, 15+1, 1))\ng.set_titles('{col_name}')\n```\nOther operations may be performed to increase the immediate readability of the plots: setting each facet height to 2 inches (\"size\"), sorting the facets by group mean (\"col_order\"), limiting the number of bin edges, and changing the titles of each facet to just the categorical level name using the `set_titles` method and `{col_name}` template variable.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569609,
+              "key": "1c5017f2-5e72-4ba4-9f6a-8fd62c9e70a8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2f284_l4-c11-faceting3/l4-c11-faceting3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1c5017f2-5e72-4ba4-9f6a-8fd62c9e70a8",
+              "caption": "",
+              "alt": "",
+              "width": 720,
+              "height": 432,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 568575,
+          "key": "c2627efd-b028-430f-b3f8-de1d17e9db89",
+          "title": "Adaptation of Univariate Plots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c2627efd-b028-430f-b3f8-de1d17e9db89",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568598,
+              "key": "d50570ad-2a3d-473d-a25f-d19aa4596538",
+              "title": "L4 121 Adaptations Of Univariate Plots V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MXcqplnUB0o",
+                "china_cdn_id": "MXcqplnUB0o.mp4"
+              }
+            },
+            {
+              "id": 572463,
+              "key": "0e4cc088-3ff2-47e6-829f-1974fe4b7eb8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568599,
+              "key": "e74dd4df-ab77-406d-a1be-0e994301338e",
+              "title": "Data Vis L4 C12 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aJncRqqJUYI",
+                "china_cdn_id": "aJncRqqJUYI.mp4"
+              }
+            },
+            {
+              "id": 569608,
+              "key": "249e8927-d20a-4e38-b380-1a61c4efa069",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Adapted Bar Charts\n\nHistograms and bar charts were introduced in the previous lesson as depicting the distribution of numeric and categorical variables, respectively, with the height (or length) of bars indicating the number of data points that fell within each bar's range of values. These plots can be adapted for use as bivariate plots by, instead of indicating count by height, indicating a mean or other statistic on a second variable.\n\nFor example, we could plot a numeric variable against a categorical variable by adapting a bar chart so that its bar heights indicate the mean of the numeric variable. This is the purpose of seaborn's [`barplot`](https://seaborn.pydata.org/generated/seaborn.barplot.html) function:\n```python\nbase_color = sb.color_palette()[0]\nsb.barplot(data = df, x = 'cat_var', y = 'num_var', color = base_color)\n```\nDifferent hues are automatically assigned to each category level unless a fixed color is set in the \"color\" parameter, like in `countplot` and `violinplot`.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569625,
+              "key": "1780a7d4-e10a-488a-8529-790939ccbb85",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2f6cd_l4-c12-adaptations1/l4-c12-adaptations1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1780a7d4-e10a-488a-8529-790939ccbb85",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569701,
+              "key": "f790e64a-2596-425d-b758-43affb2ecab6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The bar heights indicate the mean value on the numeric variable, with error bars plotted to show the uncertainty in the mean based on variance and sample size. The Delta bar dips below the 0 axis due to the negative mean.\n\nAs an alternative, the [`pointplot`](https://seaborn.pydata.org/generated/seaborn.pointplot.html) function can be used to plot the averages as points rather than bars. This can be useful if having bars in reference to a 0 baseline aren't important or would be confusing.\n```python\nsb.pointplot(data = df, x = 'cat_var', y = 'num_var', linestyles = \"\")\nplt.ylabel('Avg. value of num_var')\n```\nBy default, `pointplot`will connect values by a line. This is fine if the categorical variable is ordinal in nature, but it can be a good idea to remove the line via `linestyles = \"\"` for nominal data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569703,
+              "key": "6e35fb38-1637-4d60-9e5f-8d79906fede0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab34369_l4-c12-adaptations2/l4-c12-adaptations2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6e35fb38-1637-4d60-9e5f-8d79906fede0",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 569708,
+              "key": "e95d472b-7d8f-442b-823c-9b2517441257",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The above plots can be useful alternatives to the box plot and violin plot if the data is not conducive to either of those plot types. For example, if the numeric variable is binary in nature, taking values only of 0 or 1, then a box plot or violin plot will not be informative, leaving the adapted bar chart as the best choice for displaying the data.\n```python\nplt.figure(figsize = [12, 5])\nbase_color = sb.color_palette()[0]\n\n# left plot: violin plot\nplt.subplot(1, 3, 1)\nsb.violinplot(data = df, x = 'condition', y = 'binary_out', inner = None,\n              color = base_color)\nplt.xticks(rotation = 10) # include label rotation due to small subplot size\n\n# center plot: box plot\nplt.subplot(1, 3, 2)\nsb.boxplot(data = df, x = 'condition', y = 'binary_out', color = base_color)\nplt.xticks(rotation = 10)\n\n# right plot: adapted bar chart\nplt.subplot(1, 3, 3)\nsb.barplot(data = df, x = 'condition', y = 'binary_out', color = base_color)\nplt.xticks(rotation = 10)\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 569709,
+              "key": "9e737137-6cd8-451d-a222-64646608e17f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab34899_l4-c12-adaptations3/l4-c12-adaptations3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9e737137-6cd8-451d-a222-64646608e17f",
+              "caption": "",
+              "alt": "",
+              "width": 864,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 570103,
+              "key": "52d549b4-bdb2-4c13-b8ab-d348720c2468",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Adapted Histograms\n\nMatplotlib's `hist` function can also be adapted so that bar heights indicate value other than a count of points through the use of the \"weights\" parameter. By default, each data point is given a weight of 1, so that the sum of point weights in each bin is equal to the number of points. If we change the weights to be a representative function of each point's value on a second variable, then the sum will end up representing something other than a count.\n\n```python\nbin_edges = np.arange(0, df['num_var'].max()+1/3, 1/3)\n\n# count number of points in each bin\nbin_idxs = pd.cut(df['num_var'], bin_edges, right = False, include_lowest = True,\n                  labels = False).astype(int)\npts_per_bin = df.groupby(bin_idxs).size()\n\nnum_var_wts = df['binary_out'] / pts_per_bin[bin_idxs].values\n\n# plot the data using the calculated weights\nplt.hist(data = df, x = 'num_var', bins = bin_edges, weights = num_var_wts)\nplt.xlabel('num_var')\nplt.ylabel('mean(binary_out)')\n```\nTo get the mean of the y-variable (\"binary_out\") in each bin, the weight of each point should be equal to the y-variable value, divided by the number of points in its x-bin (`num_var_wts`). As part of this computation, we make use of pandas' [`cut`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.cut.html) function in order to associate each data point to a particular bin (`bin_idxs`). The `labels = False` parameter means that each point's bin membership is associated by a numeric index, rather than a string. We use these numeric indices into the `pts_per_bin`, with the `.values` at the end necessary in order for the Series' indices to not be confused between the indices of `df['binary_out']`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 570106,
+              "key": "745b0f30-81cb-4263-975b-4ad3e2b16648",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5becb09b_l4-c12-adaptations4/l4-c12-adaptations4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/745b0f30-81cb-4263-975b-4ad3e2b16648",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 570108,
+              "key": "4f043145-6c22-48e6-989c-0083f3a0f76b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This plot shows that the average outcome of the y-variable \"binary_out\" generally increases across values of the x-variable \"num_var\".\n\nMore commonly, you'll see plots summarizing one numeric variable against values of a second numeric variable not as adapted histograms, but instead as line plots. These are covered on the next page.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 568576,
+          "key": "95f3c6d7-2ad0-43c1-bb53-4b7fbc40262b",
+          "title": "Line Plots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "95f3c6d7-2ad0-43c1-bb53-4b7fbc40262b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568614,
+              "key": "c0b8141d-8727-49f1-91dc-6ea7757b30dc",
+              "title": "L4 131 Line Plots V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kSntEWPuOa0",
+                "china_cdn_id": "kSntEWPuOa0.mp4"
+              }
+            },
+            {
+              "id": 572466,
+              "key": "59289a77-b370-4612-9670-e396e5a7b01b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 568612,
+              "key": "2761c9bb-ede7-4c88-9289-607cf1339a71",
+              "title": "Data Vis L4 C13 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Z7NjwA6jbjU",
+                "china_cdn_id": "Z7NjwA6jbjU.mp4"
+              }
+            },
+            {
+              "id": 570799,
+              "key": "711f26d9-f578-4a12-b5bb-c8136c127fa3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Line Plots\n\nThe **line plot** is a fairly common plot type that is used to plot the trend of one numeric variable against values of a second variable. In contrast to a scatterplot, where all data points are plotted, in a line plot, only one point is plotted for every unique x-value or bin of x-values (like a histogram). If there are multiple observations in an x-bin, then the y-value of the point plotted in the line plot will be a summary statistic (like mean or median) of the data in the bin. The plotted points are connected with a line that emphasizes the sequential or connected nature of the x-values.\n\nIf the x-variable represents time, then a line plot of the data is frequently known as a **time series** plot. Often, we have only one observation per time period, like in stock or currency charts. While there is a seaborn function [`tsplot`](https://seaborn.pydata.org/generated/seaborn.tsplot.html) that is intended to be used with time series data, it is fairly specialized and (as of this writing's seaborn 0.8) is slated for major changes.\n\nInstead, we will make use of Matplotlib's [`errorbar`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.errorbar.html) function, performing some processing on the data in order to get it into its necessary form.\n```python\nplt.errorbar(data = df, x = 'num_var1', y = 'num_var2')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 570800,
+              "key": "3d2457a0-969e-425b-8bb8-09014e839499",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab445d9_l4-c13-lineplot1/l4-c13-lineplot1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3d2457a0-969e-425b-8bb8-09014e839499",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 570803,
+              "key": "d075ac9f-af38-4ad0-a3eb-c47424e2ee9b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If we just blindly stick a dataframe into the function without considering its structure, we might end up with a mess like the above. The function just plots all the data points as a line, connecting values from the first row of the dataframe to the last row. In order to create the line plot as intended, we need to do additional work to summarize the data.\n```python\n# set bin edges, compute centers\nbin_size = 0.25\nxbin_edges = np.arange(0.5, df['num_var1'].max()+bin_size, bin_size)\nxbin_centers = (xbin_edges + bin_size/2)[:-1]\n\n# compute statistics in each bin\ndata_xbins = pd.cut(df['num_var1'], xbin_edges, right = False, include_lowest = True)\ny_means = df['num_var2'].groupby(data_xbins).mean()\ny_sems = df['num_var2'].groupby(data_xbins).sem()\n\n# plot the summarized data\nplt.errorbar(x = xbin_centers, y = y_means, yerr = y_sems)\nplt.xlabel('num_var1')\nplt.ylabel('num_var2')\n```\nSince the x-variable ('num_var1') is continuous, we first set a number of bins into which the data will be grouped. In addition to the usual edges, the center of each bin is also computed for later plotting. For the points in each bin, we compute the mean and standard error of the mean. Note that the [`cut`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.cut.html) function call is simpler here than in the previous page, since we don't need to compute individual point weights.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 570804,
+              "key": "4f0a1244-56da-484e-8f88-00310ee28fc1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5becb159_l4-c13-lineplot2/l4-c13-lineplot2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4f0a1244-56da-484e-8f88-00310ee28fc1",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 570807,
+              "key": "5378a5c2-82b8-4c64-a0fc-7f152649c38c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "An interesting part of the above summarization of the data is that the uncertainty in the mean generally increases with increasing x-values. But for the largest two points, there are no error bars. Looking at the default `errorbar` plot (or the scatterplot below), we can see this is due to there only being one point in each of the last two bins.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 570814,
+              "key": "e3cde38f-e696-4607-9eb0-a077f64be890",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Alternate Variations\n\nInstead of computing summary statistics on fixed bins, you can also make computations on a rolling window through use of pandas' [`rolling`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.rolling.html) method. Since the rolling window will make computations on sequential rows of the dataframe, we should use [`sort_values`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sort_values.html) to put the x-values in ascending order first.\n\n```python\n# compute statistics in a rolling window\ndf_window = df.sort_values('num_var1').rolling(15)\nx_winmean = df_window.mean()['num_var1']\ny_median = df_window.median()['num_var2']\ny_q1 = df_window.quantile(.25)['num_var2']\ny_q3 = df_window.quantile(.75)['num_var2']\n\n# plot the summarized data\nbase_color = sb.color_palette()[0]\nline_color = sb.color_palette('dark')[0]\nplt.scatter(data = df, x = 'num_var1', y = 'num_var2')\nplt.errorbar(x = x_winmean, y = y_median, c = line_color)\nplt.errorbar(x = x_winmean, y = y_q1, c = line_color, linestyle = '--')\nplt.errorbar(x = x_winmean, y = y_q3, c = line_color, linestyle = '--')\n\nplt.xlabel('num_var1')\nplt.ylabel('num_var2')\n```\nNote that we're also not limited to just one line when plotting. When multiple Matplotlib functions are called one after the other, all of them will be plotted on the same axes. Instead of plotting the mean and error bars, we will plot the three central quartiles, laid on top of the scatterplot.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 570815,
+              "key": "8d2ce55e-8a3a-4de3-8849-986d14e5e2d9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5becb168_l4-c13-lineplot3/l4-c13-lineplot3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8d2ce55e-8a3a-4de3-8849-986d14e5e2d9",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 570851,
+              "key": "7d18de6f-fd4d-46f6-a008-25b3a7296f74",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Another bivariate application of line plots is to plot the distribution of a numeric variable for different levels of a categorical variable. This is another alternative to using violin plots, box plots, and faceted histograms. With the line plot, one line is plotted for each category level, like overlapping the histograms on top of one another. This can be accomplished through multiple `errorbar` calls using the methods above, or by performing multiple [`hist`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist.html) calls, setting the \"histtype = step\" parameter so that the bars are depicted as unfilled lines.\n```python\nbin_edges = np.arange(-3, df['num_var'].max()+1/3, 1/3)\ng = sb.FacetGrid(data = df, hue = 'cat_var', size = 5)\ng.map(plt.hist, \"num_var\", bins = bin_edges, histtype = 'step')\ng.add_legend()\n```\nNote that I'm performing the multiple `hist` calls through the use of [FacetGrid](https://seaborn.pydata.org/generated/seaborn.FacetGrid.html), setting the categorical variable on the \"hue\" parameter rather than the \"col\" parameter. You'll see more of this parameter of FacetGrid in the next lesson. I've also added an `add_legend` method call so that we can identify which level is associated with each curve.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 570852,
+              "key": "e93c1913-6d9d-40b5-8591-046b3fea9cd9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab4b468_l4-c13-lineplot4/l4-c13-lineplot4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e93c1913-6d9d-40b5-8591-046b3fea9cd9",
+              "caption": "",
+              "alt": "",
+              "width": 435,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 570854,
+              "key": "05d9731d-c583-4483-b0df-292474979d6b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Unfortunately, the \"Alpha\" curve seems to be pretty lost behind the other three curves since the relatively low number of counts is causing a lot of overlap. Perhaps connecting the centers of the bars with a line, like what was seen in the first `errorbar` example, would be better.\n\nFunctions you provide to the `map` method of FacetGrid objects do not need to be built-ins. Below, I've written a function to perform the summarization operations seen above to plot an `errorbar` line for each level of the categorical variable, then fed that function (`freq_poly`) to `map`.\n```python\ndef freq_poly(x, bins = 10, **kwargs):\n    \"\"\" Custom frequency polygon / line plot code. \"\"\"\n    # set bin edges if none or int specified\n    if type(bins) == int:\n        bins = np.linspace(x.min(), x.max(), bins+1)\n    bin_centers = (bin_edges[1:] + bin_edges[:-1]) / 2\n    \n    # compute counts\n    data_bins = pd.cut(x, bins, right = False,\n                       include_lowest = True)\n    counts = x.groupby(data_bins).count()\n    \n    # create plot\n    plt.errorbar(x = bin_centers, y = counts, **kwargs)\n    \nbin_edges = np.arange(-3, df['num_var'].max()+1/3, 1/3)\ng = sb.FacetGrid(data = df, hue = 'cat_var', size = 5)\ng.map(freq_poly, \"num_var\", bins = bin_edges)\ng.add_legend()\n```\n`**kwargs` is used to allow additional keyword arguments to be set for the `errorbar` function.\n\n(Documentation: [numpy `linspace`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html))",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571166,
+              "key": "49c8e99a-7641-4470-ae6f-32af3c7e5ebf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab545af_l4-c13-lineplot5/l4-c13-lineplot5.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/49c8e99a-7641-4470-ae6f-32af3c7e5ebf",
+              "caption": "",
+              "alt": "",
+              "width": 435,
+              "height": 360,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 568577,
+          "key": "f0110b63-1b88-488c-b383-e0cf11b60f40",
+          "title": "Additional Plot Practice",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f0110b63-1b88-488c-b383-e0cf11b60f40",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 590358,
+              "key": "a2e02a33-2b91-4d7b-aece-93bcc6029dc8",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewf503afd5",
+              "pool_id": "jupyter",
+              "view_id": "f4492fc9-6f51-4aa0-87c8-3f688cead8b9",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Additional_Plot_Practice.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 568578,
+          "key": "7cbc9e3d-3f89-45cb-9ad0-dda8a22f1a8c",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7cbc9e3d-3f89-45cb-9ad0-dda8a22f1a8c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568660,
+              "key": "55a4cf2c-3b39-4ea2-a4af-66fdabf0282f",
+              "title": "L4 151 Lesson Summary V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5igqM44KEmw",
+                "china_cdn_id": "5igqM44KEmw.mp4"
+              }
+            },
+            {
+              "id": 729649,
+              "key": "9f3f5645-5484-43db-bb8b-8a5c709b20b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you'd like to work through the notebooks on your own machine or otherwise outside the classroom, you can find the code in this [GitHub repo](https://github.com/udacity/AIPND).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 568579,
+          "key": "cb344c1a-dc89-4866-9d2b-841fe590d5e4",
+          "title": "Extra: Q-Q Plots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cb344c1a-dc89-4866-9d2b-841fe590d5e4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568661,
+              "key": "dfd67a9e-08d5-4528-bcfe-ef9708c91a08",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There might be cases where you are interested to see how closely your numeric data follows some hypothetical distribution. This might be important for certain parametric statistical tests, like checking for assumptions of normality. In cases like this, you can use a quantile-quantile plot, or **Q-Q plot**, to make a visual comparison between your data and your reference distribution. Take for example the following comparison of the following data and a hypothetical normal distribution using the sample statistics:\n\n```python\n# create a histogram of the data\nbin_size = 0.5\nbin_edges = np.arange(4, 18 + bin_size, bin_size)\nplt.hist(data = df, x = 'num_var', bins = bin_edges);\n\n# overlay a theoretical normal distribution on top\nsamp_mean = df['num_var'].mean()\nsamp_sd = df['num_var'].std()\n\nfrom scipy.stats import norm\nx = np.linspace(4, 18, 200)\ny = norm.pdf(x, samp_mean, samp_sd) # normal distribution heights\ny *= df.shape[0] * bin_size # scale the distribution height\n\nplt.plot(x, y)\n```\nThe matplotlib [`plot`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) function is a generic function for plotting y-values against x-values, by default a line connecting each x-y pair in sequence. In this case, I first use numpy's [`linspace`](https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.linspace.html) function to generate x-values across the range of the plot. Note that the first two arguments match the `bin_edges` limits, while the third argument specifies the number of values to generate between the two endpoints. Then, I use the scipy package's [`norm`](https://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.norm.html) class to get the height of the normal distribution curve at those x-values, using the sample mean and standard deviation as distribution parameters. `pdf` stands for probability density function, which returns the normal distribution height (density) at each value of x. These values are such that the total area under the curve will add up to 1. Since we've got a histogram with absolute counts on the y-axis, we need to scale the curve so it's on the same scale as the main plot: we do this by multiplying the curve heights by the number of data points and bin size. The code above gives us the following plot:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781772,
+              "key": "4d45f558-f881-4b03-9ff6-09f9e09acdb3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be4d7a4_l4-c16-qqplot1/l4-c16-qqplot1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4d45f558-f881-4b03-9ff6-09f9e09acdb3",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 781790,
+              "key": "dca6a4fd-4d40-4c9c-9477-3246449168b9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "From a visual inspection of this overlaid plot, it looks like the data is a bit sparse on the right side compared to the expected normal distribution. There's also a bit of a spike of values between 11 and 12. On the other hand, the left side of the curve isn't too far off from the expected distribution, though it might be said that we might be missing some expected points in the left tail of the distribution. The question that we'd like to address is if there's enough evidence from what we've observed to say that the data is significantly different from the expected normal distribution.\n\nOne way we could approach this is through a statistical test, such as using scipy's [`shapiro`](https://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.stats.shapiro.html) function to perform the Shapiro-Wilk test. But since this is a course on data visualization, we'll inspect this question visually, using the Q-Q plot type teased at the top of the page. The main idea of the plot is this: if the data was normally distributed, then we'd expect a certain pattern in terms of how far each data point is from the mean of the distribution. If we order the points from smallest to largest, then we could compare how large the _k_-th ranked data point is against the _k_-th ranked point from the expected distribution.\n\nTo get these expected values, we'll make use of the `norm` class's `ppf` function, which stands for percent point function. The _ppf_ takes as input a proportion (valued between 0 and 1) and returns the value in the distribution that would leave that proportion of the curve to the left. For a standard normal distribution (mean = 0, standard deviation = 1), the <span class='mathquill'>ppf(0.25) = -0.674</span>, <span class='mathquill'>ppf(0.5) = 0</span>, and <span class='mathquill'>ppf(0.75) = 0.674</span>. The main question, then, is what values to stick into the _ppf_.\n\nThere's a few different conventions around this, but they generally take the form of the following equation:\n> Given _n_ data points, the _k_-th value should be at probability point <span class='mathquill'>\\frac{k-a}{n+1-2a}</span>, for some _a_ between 0 and 1 (inclusive).\n\nThis equation distributes the probability points symmetrically about 0.5, and adjusting _a_ changes how much probability is left in the tails of the [0,1] range. Commonly, _a_ is set to a balanced value of 0.5, which gives the equation <span class='mathquill'>\\frac{k-0.5}{n}</span>. Let's put this all together using code:\n\n```python\nn_points = df.shape[0]\nqs = (np.arange(n_points) - .5) / n_points\nexpected_vals = norm.ppf(qs, samp_mean, samp_sd)\n\nplt.scatter(expected_vals, df['num_var'].sort_values())\nplt.plot([4,18],[4,18],'--', color = 'black')\nplt.axis('equal')\nplt.xlabel('Expected Values')\nplt.ylabel('Observed Values')\n```\nIt's a good idea to label the axes in this case. Since the actual and expected data are both on the same scale, the labels are a big help to keep things clear. In addition, rather than just plotting the expected and actual data alone, I've also added another `plot` call to add a diagonal x = y line. If the data matches the actual values perfectly on the expected value, they will fall directly on that diagonal line. The `plt.axis('equal')` line supports the visualization, as it will set the axis scaling to be equal, and the diagonal line will be at a 45 degree angle.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 781917,
+              "key": "5c2ba07e-6c90-48b8-a82e-f24fca1242a7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be5e565_l4-c16-qqplot2/l4-c16-qqplot2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5c2ba07e-6c90-48b8-a82e-f24fca1242a7",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 781998,
+              "key": "df7ec872-8831-4edc-9db6-6c93018ae69a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Excepting the smallest and largest few points, the distribution of observed values is actually fairly in line with the distribution of expected values – that is, it falls along the diagonal line. The smallest and largest observed points are larger than the values that would be expected from the normal distribution, but it's not by much. Given how much farther values can get spread out in the tails of the normal distribution, this shouldn't be a major concern. We're probably fine in treating the data as normally distributed.\n\nUsually, the Q-Q plot is computed and rendered in terms of standardized units, rather than the scale of the original data. A standardized dataset has a mean of 0 and standard deviation of 1, so to convert a set of values into standard scores, we just need to subtract the sample mean from each value to center it around 0, then divide by the sample standard deviation to scale it. Calling methods of the `norm` class without arguments for the mean or standard deviation assume the standard normal distribution. The code changes as follows:\n\n```python\nexpected_scores = norm.ppf(qs)\ndata_scores = (df['num_var'].sort_values() - samp_mean) / samp_sd\n\nplt.scatter(expected_scores, data_scores)\nplt.plot([-2.5,3],[-2.5,3],'--', color = 'black')\nplt.axis('equal')\nplt.xlabel('Expected Standard Scores')\nplt.ylabel('Observed Standard Scores')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782021,
+              "key": "e1d2c4f2-aea9-45dc-b0a1-a32eb8b3103f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be600cf_l4-c16-qqplot3/l4-c16-qqplot3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e1d2c4f2-aea9-45dc-b0a1-a32eb8b3103f",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 782020,
+              "key": "ec8ac73d-dca0-45af-801e-08e5354ad2d9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Notice that the shape of the data has not changed since both datasets have been scaled in the exact same way. One of the reasons for performing this scaling is that it makes it easier to talk about the data values against the expected, theoretical distribution. In the first plot, there's no clear indication of where the center of the data lies, and how spread out the data is from that center. In the latter plot, we can use our expectations for how much of the data should be one or two standard deviations from the mean to better understand how the data is distributed. It also separates the values of the theoretical distribution from any properties of the observed data.\n\nBefore closing this page out, let's take a quick look at the Q-Q plot when the data distribution does _not_ fit the normal distribution assumptions. Instead of generating data from a normal distribution, I'll now generate data from a uniform distribution:\n\n```python\n# generate the data\nnp.random.seed(8322489)\n\nn_points = 120\nunif_data = np.random.uniform(0, 10, n_points)\n\n# set up the figure\nplt.figure(figsize = [12, 5])\n\n# left subplot: plot the data\nplt.subplot(1, 2, 1)\nbin_size = 0.5\nbin_edges = np.arange(0, 10 + bin_size, bin_size)\nplt.hist(x = unif_data, bins = bin_edges);\n\n# overlay a theoretical normal distribution on top\nsamp_mean = unif_data.mean()\nsamp_sd = unif_data.std()\n\nfrom scipy.stats import norm\nx = np.linspace(0, 10, 200)\ny = norm.pdf(x, samp_mean, samp_sd) # normal distribution heights\ny *= n_points * bin_size # scale the distribution height\nplt.plot(x, y)\n\n# right subplot: create a Q-Q plot\nplt.subplot(1, 2, 2)\n\nqs = (np.arange(n_points) - .5) / n_points\nexpected_scores = norm.ppf(qs)\ndata_scores = (np.sort(unif_data) - samp_mean) / samp_sd\n\nplt.scatter(expected_scores, data_scores)\nplt.plot([-2.5,2.5],[-2.5,2.5],'--', color = 'black')\nplt.axis('equal')\nplt.xlabel('Expected Standard Scores')\nplt.ylabel('Observed Standard Scores')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 782024,
+              "key": "3b825f09-e06e-451b-9814-b8b53cda902d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be602af_l4-c16-qqplot4/l4-c16-qqplot4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3b825f09-e06e-451b-9814-b8b53cda902d",
+              "caption": "Left: Original data; Right: Q-Q plot",
+              "alt": "",
+              "width": 864,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 782027,
+              "key": "6e8fb868-312f-4347-a802-204b97ee7f71",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When we compare the random standardized scores drawn from the uniform distribution to the expected scores from the theoretical normal distribution in the Q-Q plot, we see an S-shaped curve. The comparison of values in the middle of the curve are approximately linear in trend, but the slope is steeper than the desired y = x. Meanwhile on the edges, the slope is extremely shallow, as the uniform distribution is fixed to a finite range, but the normal distribution values in the tails are expected to be much further away. You can somewhat see this in the superimposed distribution line in the left-side plot, where even at the edges of the data, there is still quite a bit of height to the theoretical normal curve. All of this contributes to the result that the randomly-generated uniform data can't be well-approximated by the normal distribution.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 568581,
+          "key": "37aa4a54-ea6b-441c-b2e1-b2d996bdff97",
+          "title": "Extra: Swarm Plots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "37aa4a54-ea6b-441c-b2e1-b2d996bdff97",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568663,
+              "key": "54992851-1827-4349-b1d7-dde7ae47f11a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Swarm Plots\n\nIn this lesson, you saw many ways of depicting the relationship between a numeric variable and a categorical variable. Violin plots depicted distributions as density curves, while box plots took a more summary approach, plotting the quantiles as boxes with whiskers. Another alternative to these plots is the **swarm plot**. Similar to a scatterplot, each data point is plotted with position according to its value on the two variables being plotted. Instead of randomly jittering points as in a normal scatterplot, points are placed as close to their actual value as possible without allowing any overlap. A swarm plot can be created in seaborn using the [`swarmplot`](https://seaborn.pydata.org/generated/seaborn.swarmplot.html) function, similar to how you would a call `violinplot` or `boxplot`.\n```python\nplt.figure(figsize = [12, 5])\nbase_color = sb.color_palette()[0]\n\n# left plot: violin plot\nplt.subplot(1, 3, 1)\nax1 = sb.violinplot(data = df, x = 'cat_var', y = 'num_var', color = base_color)\n\n# center plot: box plot\nplt.subplot(1, 3, 2)\nsb.boxplot(data = df, x = 'cat_var', y = 'num_var', color = base_color)\nplt.ylim(ax1.get_ylim()) # set y-axis limits to be same as left plot\n\n# right plot: swarm plot\nplt.subplot(1, 3, 3)\nsb.swarmplot(data = df, x = 'cat_var', y = 'num_var', color = base_color)\nplt.ylim(ax1.get_ylim()) # set y-axis limits to be same as left plot\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571252,
+              "key": "79903a76-8c83-4759-a0fb-b2bfda76565a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab55333_l4-c18-swarmplot1/l4-c18-swarmplot1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/79903a76-8c83-4759-a0fb-b2bfda76565a",
+              "caption": "",
+              "alt": "",
+              "width": 864,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 571248,
+              "key": "e2798bda-9e49-4fc9-b77e-3d560a1ff1c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Looking at the plots side by side, you can see relative pros and cons of the swarm plot. Unlike the violin plot and box plot, every point is plotted, so we can now compare the frequency of each group in the same plot. While there is some distortion due to location jitter, we also have a more concrete picture of where the points actually lie, removing the long tails that can be present in violin plots.\n\nHowever, it is only reasonable to use a swarm plot if we have a small or moderate amount of data. If we have too many points, then the restrictions against overlap will cause too much distortion or require a lot of space to plot the data comfortably. In addition, having too many points can actually be a distraction, making it harder to see the key signals in the visualization. Use your findings from univariate visualizations to inform which bivariate visualizations will be best, or simply experiment with different plot types to see what is most informative.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 568580,
+          "key": "a5e5b3af-fe44-40cf-aadf-3ee5c0630eaf",
+          "title": "Extra: Rug and Strip Plots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a5e5b3af-fe44-40cf-aadf-3ee5c0630eaf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568662,
+              "key": "7d7efbab-0c5c-48ba-9d33-fda3c44142fc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Rug and Strip Plots\n\nYou might encounter, or be interested in, marginal distributions that are plotted alongside bivariate plots such as scatterplots. A marginal distribution is simply the univariate distribution of a variable, ignoring the values of any other variable. For quantitative data, histograms or density curves are fine choices for marginal plot, but you might also see the **rug plot** employed. In a rug plot, all of the data points are plotted on a single axis, one tick mark or line for each one. Compared to a marginal histogram, the rug plot suffers somewhat in terms of readability of the distribution, but it is more compact in its representation of the data.\n\nSeaborn's [JointGrid](https://seaborn.pydata.org/generated/seaborn.JointGrid.html) class enables this plotting of bivariate relationship with marginal univariate plots for numeric data. The `plot_joint` method specifies a plotting function for the main, joint plot for the two variables, while the `plot_marginals` method specifies the plotting function for the two marginal plots. Here, we make use of seaborn's [`rugplot`](https://seaborn.pydata.org/generated/seaborn.rugplot.html) function.\n\n```python\ng = sb.JointGrid(data = df, x = 'num_var1', y = 'num_var2')\ng.plot_joint(plt.scatter)\ng.plot_marginals(sb.rugplot, height = 0.25)\n```\nThe \"height\" parameter specifies the rug ticks to be 0.25 the height of the marginal axis size.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571395,
+              "key": "6c6fba40-2d65-4145-a0a2-4447825491d7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab58c38_l4-c17-rugplot1/l4-c17-rugplot1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6c6fba40-2d65-4145-a0a2-4447825491d7",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 432,
+              "instructor_notes": null
+            },
+            {
+              "id": 571396,
+              "key": "7eb62330-a1ba-4483-b8d4-e01566328b3e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The rug plot is fine here since the data isn't particularly numerous or overly dense. In other circumstances, a histogram or density curve will be more appropriate. You probably won't consider the rug plot as a primary plot choice, but it can be a good supporter plot in certain circumstances.\n\nAnother supporting plot type similar to the rug plot is the **strip plot**. It's like a swarm plot (see the previous page) but without any dodging or jittering to keep points separate or off the categorical line. You can also think of it as a rug plot faceted by categorical levels. You can use seaborn's [`swarmplot`](https://seaborn.pydata.org/generated/seaborn.swarmplot.html) function to add a swarm plot to any other plot. The `inner = \"stick\"` and `inner = \"point\"` options can also be used with the `violinplot` function to include a swarm plot inside of the violin areas, instead of a box plot.\n```python\nplt.figure(figsize = [10, 5])\nbase_color = sb.color_palette()[0]\n\n# left plot: strip plot\nplt.subplot(1, 2, 1)\nax1 = sb.stripplot(data = df, x = 'num_var', y = 'cat_var',\n                   color = base_color)\n\n# right plot: violin plot with inner strip plot as lines\nplt.subplot(1, 2, 2)\nsb.violinplot(data = df, x = 'num_var', y = 'cat_var', color = base_color,\n             inner = 'stick')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572366,
+              "key": "033905f6-549a-4eaa-8daa-14a05a40cc99",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab9416a_l4-c17-rugplot2/l4-c17-rugplot2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/033905f6-549a-4eaa-8daa-14a05a40cc99",
+              "caption": "",
+              "alt": "",
+              "width": 720,
+              "height": 360,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 568582,
+          "key": "28e18872-f2c7-4940-b9de-560c8c47a060",
+          "title": "Extra: Stacked Plots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "28e18872-f2c7-4940-b9de-560c8c47a060",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568664,
+              "key": "7d639d3a-259a-4baf-a863-624a3920edbb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "One common plotting technique has not been discussed thus far in the course, and that’s **stacking**. Stacked bar charts and histograms are not uncommon, but there are often better plot choices available.\n\nThe most basic stacked chart takes a single bar representing the full count, and divides it into colored segments based on frequencies on a categorical variable. If this sounds familiar, that's because it almost perfectly coincides with the description of a pie chart, except that the shape being divided is different.\n\n```python\n# pre-processing: count and sort by the number of instances of each category\nsorted_counts = df['cat_var'].value_counts()\n\n# establish the Figure\nplt.figure(figsize = [12, 5])\n\n# left plot: pie chart\nplt.subplot(1, 2, 1)\nplt.pie(sorted_counts, labels = sorted_counts.index, startangle = 90,\n        counterclock = False);\nplt.axis('square');\n\n# right plot: horizontally stacked bar\nplt.subplot(1, 2, 2)\nbaseline = 0\nfor i in range(sorted_counts.shape[0]):\n    plt.barh(y = 1, width = sorted_counts[i], left = baseline)\n    baseline += sorted_counts[i]\n\nplt.legend(sorted_counts.index)  # add a legend for labeling\nplt.ylim([0,2]) # give some vertical spacing around the bar\n```\nThe stacked bar is built through successive calls of the matplotlib [`barh`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.barh.html) function; each time the function is called, the bar that is plotted is assigned a new color. The choice of \"y\" is arbitrary: it'll just center the bar around y = 1, but it doesn't have any inherent meaning. The \"left\" parameter specifies the left edge of each bar added to the stack, which starts at the `baseline` of 0 and is built up with each stacked bar. Note in this case that the bar is being plotted with absolute counts, rather than proportions. A discussion of absolute vs. relative frequencies will come later down the page!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 778478,
+              "key": "55a9482f-2bfd-4fea-ab2d-880cd43cdade",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5bdcb28b_l4-c19-stackedbars1/l4-c19-stackedbars1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/55a9482f-2bfd-4fea-ab2d-880cd43cdade",
+              "caption": "",
+              "alt": "",
+              "width": 864,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 778248,
+              "key": "0fca329b-edd4-4903-a3cf-96d8b25885b6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Given this similarity, cautions regarding use of the stacked bar are fairly similar to that of the pie chart:\n- Make sure that relative frequencies are a meaningful comparison.\n- Try to limit yourself to a small number of categories, up to about five.\n- Make sure that categories are arranged in a sensible order, e.g. by frequency for nominal data or by levels for ordinal data.\n\nOtherwise, the standard bar chart is a reliable option that should be used in most cases. Only use the pie chart or singly divided bar if there's a compelling reason to do so.\n\nThe debate becomes more interesting when multiple features get involved. When should we feel free to create a stacked bar chart versus using a clustered bar chart? There are two major categories of stacked bar chart that I want to focus on here: plotting by absolute frequency and plotting by relative frequency. We'll start with code for an absolute frequency stacked chart below.\n\n```python\ncat1_order = ['East', 'South', 'West', 'North']\ncat2_order = ['Type X', 'Type Y', 'Type Z', 'Type O']\n\nplt.figure(figsize = [12, 5])\n\n# left plot: clustered bar chart, absolute counts\nplt.subplot(1, 2, 1)\nsb.countplot(data = df, x = 'cat_var1', hue = 'cat_var2',\n             order = cat1_order, hue_order = cat2_order)\nplt.legend()\n\n# right plot: stacked bar chart, absolute counts\nplt.subplot(1, 2, 2)\n\nbaselines = np.zeros(len(cat1_order))\n# for each second-variable category:\nfor i in range(len(cat2_order)):\n    # isolate the counts of the first category,\n    cat2 = cat2_order[i]\n    inner_counts = df[df['cat_var2'] == cat2]['cat_var1'].value_counts()\n    # then plot those counts on top of the accumulated baseline\n    plt.bar(x = np.arange(len(cat1_order)), height = inner_counts[cat1_order],\n            bottom = baselines)\n    baselines += inner_counts[cat1_order]\n    \nplt.xticks(np.arange(len(cat1_order)), cat1_order)\nplt.legend(cat2_order)\n```\nThe strategy for this plot is very similar to the single stacked bar shown above, except that we're using the standard [`bar`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.bar.html) with \"x\" and \"bottom\" parameters, and that `baselines` is a list of base heights. We want to create all of the bars for a particular secondary category at the same time so that creation of the legend has a 1:1 mapping to `bar` calls. You might notice below that the order of labels in the legend is the reverse of the order in which the bars are stacked. You'll see code to handle this in the relative frequency plot below!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 779601,
+              "key": "b7b8e4a0-0464-4c7a-b239-09dc765aed2c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be095c0_l4-c19-stackedbars2/l4-c19-stackedbars2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b7b8e4a0-0464-4c7a-b239-09dc765aed2c",
+              "caption": "",
+              "alt": "",
+              "width": 864,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 778305,
+              "key": "3b9597a9-955d-4466-8d25-a36ff0a15423",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The stacked bar chart plotted by absolute frequency carries one big advantage over the clustered bar chart: for the variable plotted on the x-axis, it's clear which category level has the highest frequency, in this case \"East\". The values of this variable can be interpreted just like the univariate bar chart. The disadvantage of the stacked bar chart comes with interpretation of the second, stacked variable. If you want to compare the relative counts of this second variable across levels of the first, you can really only do that for the category plotted on the baseline, which in this case is the blue one, \"Type X\". For the remaining categories, it's much harder to make the comparison of values – you can't really tell that the counts of \"Type O\" are larger in the \"South\" than the \"North\" from the stacked chart, where it's directly comparable in the clustered bar chart.\n\nNow, let's take a look at what happens when we create the stacked bar chart with relative frequencies instead, where each bar is scaled to a total height of 1.\n\n```python\ncat1_order = ['East', 'South', 'West', 'North']\ncat2_order = ['Type X', 'Type Y', 'Type Z', 'Type O']\n\nartists = [] # for storing references to plot elements\nbaselines = np.zeros(len(cat1_order))\ncat1_counts = df['cat_var1'].value_counts()\n\n# for each second-variable category:\nfor i in range(len(cat2_order)):\n    # isolate the counts of the first category,\n    cat2 = cat2_order[i]\n    inner_counts = df[df['cat_var2'] == cat2]['cat_var1'].value_counts()\n    inner_props = inner_counts / cat1_counts\n    # then plot those counts on top of the accumulated baseline\n    bars = plt.bar(x = np.arange(len(cat1_order)),\n                   height = inner_props[cat1_order],\n                   bottom = baselines)\n    artists.append(bars)\n    baselines += inner_props[cat1_order]\n    \nplt.xticks(np.arange(len(cat1_order)), cat1_order)\nplt.legend(reversed(artists), reversed(cat2_order), framealpha = 1,\n           bbox_to_anchor = (1, 0.5), loc = 6);\n```\n\nThere are two main changes to this code compared to the previous plot. First of all, the `cat1_counts` variable has been computed to change the absolute frequencies into relative frequencies within each x-axis category. Secondly, some code has been added to reverse the order of bars in the legend. The `artists` variable has been added to store references to each of the bar groups added from each `bar` call. Then in the [`legend`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.legend.html) function call, we make use of the built-in Python function [`reversed`](https://docs.python.org/3/library/functions.html#reversed) to reverse the order in which the artists and labels are included in the legend. The additional parameters affect the positioning of the legend: setting an anchor for the legend box on the right side of the plot via \"bbox_to_anchor\", and positioning the anchor to the legend's left with \"loc = 6\".",
+              "instructor_notes": ""
+            },
+            {
+              "id": 779631,
+              "key": "1fcf0976-18ba-488f-aac4-2981cfdfc660",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be0a0aa_l4-c19-stackedbars3/l4-c19-stackedbars3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1fcf0976-18ba-488f-aac4-2981cfdfc660",
+              "caption": "",
+              "alt": "",
+              "width": 476,
+              "height": 281,
+              "instructor_notes": null
+            },
+            {
+              "id": 778306,
+              "key": "9d8d5a53-2682-4ced-aa62-f5649a6e706e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Since the bars are all the same height of 1 with a relative frequency stacked bar chart, we lose the ability to compare the absolute counts on the categorical variable plotted on the x-axis (i.e. we can't tell that \"East\" has the most counts and \"North\" the least amount). In exchange, we can now compare the relative prevalence of the stacked variable on both the first category on the bottom (\"Type X\") as well as the category on the top (\"Type O\"). We can now see that, in terms of relative frequency, \"Type X\" has a fairly consistent presence in \"South\", \"West\", and \"North\", and that \"Type O\" has its highest relative frequency in \"North\". Unfortunately, this still doesn't help us make easy comparisons about the \"Type Y\" and \"Type Z\" categories that are sandwiched in between. This major limitation is a big reason why other plot types like clustered bar or line charts are often preferable to stacking.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571380,
+              "key": "54cac0ae-7605-4696-b899-a8144f2b3d89",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Reading\n\n- Eager Eyes: [Stacked Bars are the Worst](https://eagereyes.org/techniques/stacked-bars-are-the-worst)\n- Data Revelations: [How to take the “screaming cats” out of stacked bar and area charts](http://www.datarevelations.com/stackedbars.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 572500,
+          "key": "9bc43497-5cbb-4ad3-8a68-37c145cfd2c0",
+          "title": "Extra: Ridgeline Plots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9bc43497-5cbb-4ad3-8a68-37c145cfd2c0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572511,
+              "key": "46f8a2dd-8784-4d43-a563-d8ba9675c2b9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Ridgeline Plots\n\nOne of the hot new visualization types from recent years is the **ridgeline plot**. In a nutshell, the ridgeline plot is a series of vertically faceted line plots or density curves, but with somewhat overlapping y-axes. This can be thought of as a contrast to the line plot variation seen in the \"Line Plots\" part of the lesson, where multiple lines were plotted on the same axes, with different hues. On this page, I'll walk through the creation of a ridgeline plot using some of the demonstration data shown in the \"Faceting\" page:\n\n```python\ngroup_means = df.groupby(['many_cat_var']).mean()\ngroup_order = group_means.sort_values(['num_var'], ascending = False).index\n\ng = sb.FacetGrid(data = df, col = 'many_cat_var', col_wrap = 5, size = 2,\n                 col_order = group_order)\ng.map(plt.hist, 'num_var', bins = np.arange(5, 15+1, 1))\ng.set_titles('{col_name}')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 779720,
+              "key": "dcfb4a49-5af4-4301-912b-c4987cf61b22",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab2f284_l4-c11-faceting3/l4-c11-faceting3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dcfb4a49-5af4-4301-912b-c4987cf61b22",
+              "caption": "Faceted plot, whose data will be converted into a ridgeline form",
+              "alt": "",
+              "width": 720,
+              "height": 432,
+              "instructor_notes": null
+            },
+            {
+              "id": 779726,
+              "key": "c14d3c61-5f8f-4e24-991c-0fa2a5cbff74",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Two things immediately come to mind for changing the faceted histograms into a ridgeline plot. First of all, changing the form of the distribution plots from histograms to kernel density estimates (as seen in the Extras of the previous lesson) will make the overlaps a bit smoother. Second, we need to facet the levels by rows so that they're all stacked up on top of one another.\n\n```python\ngroup_means = df.groupby(['many_cat_var']).mean()\ngroup_order = group_means.sort_values(['num_var'], ascending = False).index\n\ng = sb.FacetGrid(data = df, row = 'many_cat_var', size = 0.75, aspect = 7,\n                 row_order = group_order)\ng.map(sb.kdeplot, 'num_var', shade = True)\ng.set_titles('{row_name}')\n```\n`FacetGrid` and `set_titles` change \"col\" to \"row\", also removing \"col_wrap\". The \"size\" and \"aspect\" dimensions have also been adjusted for the large vertical stacking of facets. The `map` function changes to `kdeplot` and removes \"bins\", adding the \"shade\" parameter in its place.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 779728,
+              "key": "8c7d1211-7208-4bf4-8444-f69efca52680",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be0d242_l4-c20-ridgeline1/l4-c20-ridgeline1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8c7d1211-7208-4bf4-8444-f69efca52680",
+              "caption": "",
+              "alt": "",
+              "width": 378,
+              "height": 810,
+              "instructor_notes": null
+            },
+            {
+              "id": 779753,
+              "key": "f6372a68-709e-4f71-820e-88adde1fe1cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now we've got all of the group distributions stacked on top of one another for a uni-dimensional comparison, but the plot's still pretty tall. Next, we'll create some overlap between the individual subplots.\n\n```python\ngroup_means = df.groupby(['many_cat_var']).mean()\ngroup_order = group_means.sort_values(['num_var'], ascending = False).index\n\n# adjust the spacing of subplots with gridspec_kws\ng = sb.FacetGrid(data = df, row = 'many_cat_var', size = 0.5, aspect = 12,\n                 row_order = group_order, gridspec_kws = {'hspace' : -0.2})\ng.map(sb.kdeplot, 'num_var', shade = True)\n\n# remove the y-axes\ng.set(yticks=[])\ng.despine(left=True)\n\ng.set_titles('{row_name}')\n```\nI've added the \"gridspec_kws\" parameter to the `FacetGrid` call to adjust the arrangement of subplots in the grid through Matplotlib's [`GridSpec`](https://matplotlib.org/api/_as_gen/matplotlib.gridspec.GridSpec.html) class. By setting \"hspec\" to a negative value, the subplot axes bounds will overlap vertically. The \"size\" and \"aspect\" parameters have also been adjusted. While I'm at it, I'll add some code on the `FacetGrid` object to remove the y-axis through the `despine` method and remove the ticks through the `set` method. They're going to start overlapping, and we don't really need them – we're mostly interested in the relative positions of the distributions rather than specific heights.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 779757,
+              "key": "1e076c54-49ee-4ba8-b8f5-95065e0084b7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be0dd78_l4-c20-ridgeline2/l4-c20-ridgeline2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1e076c54-49ee-4ba8-b8f5-95065e0084b7",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 540,
+              "instructor_notes": null
+            },
+            {
+              "id": 779788,
+              "key": "41dc35ca-c588-4bdf-a90d-f7e4bf95fe05",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The individual subplots now overlap, but we've still got a problem: the backgrounds of the subplots are opaque, thus obscuring all but the tops of all of the individual group distributions, with the exception of the lowest. In addition, the individual subplot titles overlap the other distributions with some ambiguity: these should be moved elsewhere in the individual plots. The revised code and plot look like this:\n\n```python\ngroup_means = df.groupby(['many_cat_var']).mean()\ngroup_order = group_means.sort_values(['num_var'], ascending = False).index\n\ng = sb.FacetGrid(data = df, row = 'many_cat_var', size = 0.5, aspect = 12,\n                 row_order = group_order, gridspec_kws = {'hspace' : -0.2})\ng.map(sb.kdeplot, 'num_var', shade = True)\n\ng.set(yticks=[])\ng.despine(left=True)\n\n# set the transparency of each subplot to full\ng.map(lambda **kwargs: plt.gca().patch.set_alpha(0))\n\n# remove subplot titles and write in new labels\ndef label_text(x, **kwargs):\n    plt.text(4, 0.02, x.iloc[0], ha = 'center', va = 'bottom')\ng.map(label_text, 'many_cat_var')\ng.set_xlabels('num_var')\ng.set_titles('')\n```\nWe make clever use of the FacetGrid object's `map` function to perform the plot modifications. Previously, you've seen `map` used where the first argument is a plotting function, the following arguments are positional variable strings, and any additional arguments are keyword arguments for the plotting function. In actuality, you can set any function as the first argument, which will be applied to each facet. To apply the transparency using `map`, I set up an anonymous lambda function that gets the current Axes ([`gca`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.gca.html)), selects its background ([`patch`](https://matplotlib.org/api/_as_gen/matplotlib.patches.Patch.html)), and sets its transparency to full.\n\nAs for the second `map` argument, it sends a pandas Series to the function specified by the first argument. This Series is filtered to include only the column specified by the second `map` argument, with only the rows appropriate for each facet. In this case, I exploit the fact that the 'many_cat_var' column is filled with copies of the categorical feature string to specify the [`text`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.text.html) string, with hardcoded positional values appropriate to the plot. (`map` also sends a few general keyword arguments like 'color' automatically to the specified function, hence the need for `**kwargs` to capture them despite not specifying any myself.) One downside to this approach is that the x-axis labels get replaced with 'many_cat_var' after the `map` call, thus requiring the addition of a `set_xlabels` function call to reset the string.\n\nThe final ridgeline plot looks like this, where we can see the distribution of our numeric variable on each category, sorted by mean:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 779794,
+              "key": "6b4a5efb-c7f3-452b-bcb0-23c34d2c03e8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be0ea2b_l4-c20-ridgeline3/l4-c20-ridgeline3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6b4a5efb-c7f3-452b-bcb0-23c34d2c03e8",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 540,
+              "instructor_notes": null
+            },
+            {
+              "id": 779722,
+              "key": "a2c28453-af2f-45ef-8197-ab54859c80c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Reading\n\n- Seaborn: [ridge plot example](https://seaborn.pydata.org/examples/kde_ridgeplot.html) - I actually used this example to clean up my initial attempts. It's got a little bit more aesthetic cleaning than the above demonstration.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

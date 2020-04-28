@@ -1,0 +1,2461 @@
+{
+  "data": {
+    "lesson": {
+      "id": 410888,
+      "key": "49462f74-b030-4bb6-bf67-8281c9181404",
+      "title": "Multiple Linear Regression",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn to apply multiple linear regression models in python.  Learn to interpret the results and understand if your model fits well.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/49462f74-b030-4bb6-bf67-8281c9181404/410888/1544438119419/Multiple+Linear+Regression+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/49462f74-b030-4bb6-bf67-8281c9181404/410888/1544438113569/Multiple+Linear+Regression+Subtitles.zip"
+          },
+          {
+            "name": "Data",
+            "uri": "https://video.udacity-data.com/topher/2017/November/5a1a2d07_data/data.zip"
+          },
+          {
+            "name": "MLR Notebooks and Solutions",
+            "uri": "https://video.udacity-data.com/topher/2019/January/5c3d63b2_mlr-notebooks-and-solutions/mlr-notebooks-and-solutions.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 410890,
+          "key": "aed0973e-5233-4f90-800d-e6dd32b63a04",
+          "title": "Video: Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aed0973e-5233-4f90-800d-e6dd32b63a04",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468393,
+              "key": "335209a9-805a-466a-a250-814d82c2033d",
+              "title": "Introduction to Multiple Linear Regression",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b26v8HK-8-o",
+                "china_cdn_id": "b26v8HK-8-o.mp4"
+              }
+            },
+            {
+              "id": 468421,
+              "key": "ddf6e691-2891-46be-b109-50cc8f63b5cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, you will be extending your knowledge of simple linear regression, where you were predicting a quantitative response variable using a quantitative explanatory variable.  That is, you were using an equation that looked like this:\n\n<span class=\"mathquill\">\\hat{y} = b_0 + b_1x_1</span>\n\nIn this lesson, you will learn about multiple linear regression.  In these cases, you will be using both quantitative and categorical x-variables to predict a quantitative response.  That is, you will be creating equations that like this to predict your response:\n\n<span class=\"mathquill\">\\hat{y} = b_0 + b_1x_1 + b_2x_2 + b_3x_3 + b_4x_4</span>\n\nFurthermore, you will learn about how to assess problems that can happen in multiple linear regression, how to address these problems, and how to assess how well your model is performing.  It turns out **Rsquared** can be used, but might be misleading.  And, unfortunately, the correlation coefficient is only a measure of the linear relationship between **two quantitative** variables, so it will not be very useful in the multiple linear regression case.  \n\nHere is a wonderful free supplementary book: [Introduction to Statistical Learning](http://www-bcf.usc.edu/~gareth/ISL/ISLR%20First%20Printing.pdf). This is an absolutely spectacular book for getting started with machine learning, and Chapter 3 discusses many of the ideas in this lesson. The programming performed in the text is in R, but here is an additional resource, not created by the book's authors, that provides Jupyter Notebooks in Python with notes and answers to nearly all the questions from the book: https://www.reddit.com/r/learnpython/comments/6rkh3u/introduction_to_statistical_learning_with_python/",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 439335,
+          "key": "761ba542-6c1a-45a0-a04b-588871ef07ce",
+          "title": "Video: Multiple Linear Regression",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "761ba542-6c1a-45a0-a04b-588871ef07ce",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468464,
+              "key": "2af70b60-3aa4-4d5c-83bd-b0014c6ae49b",
+              "title": "Multiple Linear Regression",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rvYZp99nj6c",
+                "china_cdn_id": "rvYZp99nj6c.mp4"
+              }
+            },
+            {
+              "id": 468472,
+              "key": "8a766a95-6dde-40d0-bc8a-837bb8669aad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you want to fully grasp **how** the functions we will be using in Python work to fit multiple linear regression models, it is absolutely necessary to have a firm grasp of linear algebra.  Though you can complete this class (and fit multiple linear regression models in Python) without knowing linear algebra, linear algebra is useful for understanding why you do or do not obtain certain results from Python, as well as troubleshooting if something goes wrong with fitting your model.  \n\nYou will see a few instances of strange output that you may obtain from multiple linear regression output as you work through this course.  Two additional resources are listed below if you need a linear algebra refresher before you continue!\n\n* [Khan Academy's free course on Linear Algebra](https://www.khanacademy.org/math/linear-algebra) in case you need a refresher.<br><br>\n\n* The linear algebra (matrix math) and NumPy refresher - navigate to your Extracurricular section in the leftmost-panel of your classroom to view.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 439338,
+          "key": "ccd132fe-6af6-42fe-8b26-4bf1584eb9e9",
+          "title": "Screencast: Fitting A Multiple Linear Regression Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ccd132fe-6af6-42fe-8b26-4bf1584eb9e9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468412,
+              "key": "c47f3115-7374-459d-9e88-5f341cfeaeeb",
+              "title": "Fitting A Multiple Linear Regression Model",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EZNvBF66_b0",
+                "china_cdn_id": "EZNvBF66_b0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 439337,
+          "key": "0d51be5a-1be5-4035-ad5f-1dcd49129566",
+          "title": "Notebook + Quiz: Fitting A MLR Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0d51be5a-1be5-4035-ad5f-1dcd49129566",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 461407,
+              "key": "3e76528f-44de-47f5-a3b7-4f64826ac86a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view7ce737fb",
+              "pool_id": "jupyter",
+              "view_id": "7ce737fb-6f41-45ec-87d2-72fa390d5a78",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Multiple%20Linear%20Regression%20Introduction.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 461408,
+              "key": "387dc94d-c9ec-4139-b3d2-f480eb7cbf3a",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "387dc94d-c9ec-4139-b3d2-f480eb7cbf3a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Based on the results of your simple linear regression models, match each of the variables to the correct claim about their significance in predicting price.  "
+                },
+                "concepts_label": "Variable",
+                "answers_label": "Statistically Significant or Not",
+                "concepts": [
+                  {
+                    "text": "Bedrooms",
+                    "correct_answer": {
+                      "id": "a1510601746581",
+                      "text": "Statistically Significant"
+                    }
+                  },
+                  {
+                    "text": "Bathrooms",
+                    "correct_answer": {
+                      "id": "a1510602055310",
+                      "text": "Statistically Significant"
+                    }
+                  },
+                  {
+                    "text": "Area",
+                    "correct_answer": {
+                      "id": "a1510602062193",
+                      "text": "Statistically Significant"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1510602149379",
+                    "text": "Not Statistically Significant"
+                  },
+                  {
+                    "id": "a1510602062193",
+                    "text": "Statistically Significant"
+                  },
+                  {
+                    "id": "a1510601746581",
+                    "text": "Statistically Significant"
+                  },
+                  {
+                    "id": "a1510602161643",
+                    "text": "Not Statistically Significant"
+                  },
+                  {
+                    "id": "a1510602159761",
+                    "text": "Not Statistically Significant"
+                  },
+                  {
+                    "id": "a1510602055310",
+                    "text": "Statistically Significant"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 461410,
+              "key": "3177210b-ff38-4aa4-b869-0503e3d8116f",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3177210b-ff38-4aa4-b869-0503e3d8116f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you sum the Rsquared values from each of the three simple linear regression models together, what is the result?",
+                "answers": [
+                  {
+                    "id": "a1510602511742",
+                    "text": "Less than 1",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510602944698",
+                    "text": "Exactly equal to 1",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510602951714",
+                    "text": "Greater than 1",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510602956430",
+                    "text": "We cannot know.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 461426,
+              "key": "4f587b55-60ca-4e00-9e40-987427fbba97",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4f587b55-60ca-4e00-9e40-987427fbba97",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Based on the results of your multiple linear regression model using all of the variables, match each of the variables to the correct claim about their significance in predicting price.  "
+                },
+                "concepts_label": "Variable",
+                "answers_label": "Statistically Significant or Not",
+                "concepts": [
+                  {
+                    "text": "Bedrooms",
+                    "correct_answer": {
+                      "id": "a1510604744724",
+                      "text": "Not Statistically Significant"
+                    }
+                  },
+                  {
+                    "text": "Bathrooms",
+                    "correct_answer": {
+                      "id": "a1510604779446",
+                      "text": "Not Statistically Significant"
+                    }
+                  },
+                  {
+                    "text": "Area",
+                    "correct_answer": {
+                      "id": "a1510604782795",
+                      "text": "Statistically Significant"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1510604801140",
+                    "text": "Not Statistically Significant"
+                  },
+                  {
+                    "id": "a1510604779446",
+                    "text": "Not Statistically Significant"
+                  },
+                  {
+                    "id": "a1510604782795",
+                    "text": "Statistically Significant"
+                  },
+                  {
+                    "id": "a1510604799510",
+                    "text": "Statistically Significant"
+                  },
+                  {
+                    "id": "a1510604798126",
+                    "text": "Statistically Significant"
+                  },
+                  {
+                    "id": "a1510604744724",
+                    "text": "Not Statistically Significant"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 461427,
+              "key": "d7e39cc8-92b8-4577-a8b0-fad3080264f6",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d7e39cc8-92b8-4577-a8b0-fad3080264f6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "When adding all of your variables into a single multiple linear regression model, what was true of your Rsquared value?",
+                "answers": [
+                  {
+                    "id": "a1510605592656",
+                    "text": "It is less than 1.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510605691162",
+                    "text": "It is exactly equal to 1.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510605700803",
+                    "text": "It is greater than 1.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510605706658",
+                    "text": "We cannot know.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 461429,
+              "key": "47431bee-0a79-4693-a9fe-7219f4991380",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "47431bee-0a79-4693-a9fe-7219f4991380",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "When adding **style** to the multiple linear regression model, the following happens:",
+                "answers": [
+                  {
+                    "id": "a1510606134940",
+                    "text": "We get another coefficient associated with style added to the model.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510606169482",
+                    "text": "We get a coefficient for each level of the style added to the model.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510606181784",
+                    "text": "The model is fit, but no output is provided in the summary.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510606211571",
+                    "text": "There is an error, because an object cannot be added to the multiple linear regression model.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 439336,
+          "key": "76b1a9e9-0cc5-40f8-a45d-a189cab90d6e",
+          "title": "Screencast + Text: How Does MLR Work?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "76b1a9e9-0cc5-40f8-a45d-a189cab90d6e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468414,
+              "key": "b984db71-e228-4df6-95cf-2ebaf38e046b",
+              "title": "How Does MLR Work?",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bvM6eUYyurA",
+                "china_cdn_id": "bvM6eUYyurA.mp4"
+              }
+            },
+            {
+              "id": 469175,
+              "key": "2c53b58b-af53-40e3-a039-8dca49d327df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The text noted at the end of the video is provided below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 442314,
+              "key": "dfdee63f-15a1-4c77-9915-75f6f308da33",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### How Do We Find the \"Right\" Coefficients in Multiple Linear Regression\n\nIn the simple linear regression section, you saw how we were interested in minimizing the squared distance between each actual data point and the predicted value from our model.  \n\nBut in multiple linear regression, we are actually looking at points that live in not just a two dimensional space.  \n\nFor a full derivation of how this works, [this](https://web.stanford.edu/~mrosenfe/soc_meth_proj3/matrix_OLS_NYU_notes.pdf) article provides a breakdown of the steps.  \n\nThe takeaway for us is that we can find the optimal <span class=\"mathquill\">\\beta</span> estimates by calculating <span class=\"mathquill\">(X'X)^{-1}X'y</span>.\n\nIn the following video, you will use statsmodels to obtain the coefficients similar to how we did it in the last concept, but you will also solve for the coefficients using the equation above to show the results are not magic.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 439340,
+          "key": "c7377454-d8cc-4d9e-b90a-ab16bbe1f76e",
+          "title": "Video: Multiple Linear Regression Model Results",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c7377454-d8cc-4d9e-b90a-ab16bbe1f76e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468823,
+              "key": "5d8ff0f2-3a77-4a1c-9f17-5da7e5d0f9fd",
+              "title": "Interpreting Multiplie Linear Regression Coefficients",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qRD3OVX8UMM",
+                "china_cdn_id": "qRD3OVX8UMM.mp4"
+              }
+            },
+            {
+              "id": 468841,
+              "key": "5e995d30-437a-4282-8bc9-b1b9c4fa66c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "_Note: at 0:33 the unit in the video should be ft<sup>2</sup> not ft<sup>3</sup>_\n\nIn this video, the coefficients had positive and negative values.  Therefore, we can interpret each coefficient as the **predicted increase or decrease in the response for every one unit increase in the explanatory variable, holding all other variables in the model constant**.  \n\nHowever, in general, coefficients might be positive or negative.  Therefore, each coefficient is the predicted **change** in the response for every one unit increase in the explanatory variable, holding all other variables in the model constant.\n\nThis interpretation is very similar to what you saw in the last lesson with the simple addition of the phrase **\"holding all other variables constant\"** meaning only the variable attached to the coefficient changes, while all other variables stay the same.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 468827,
+          "key": "3a7ff57b-a8f5-4ec6-9344-bf2dfa60ff8b",
+          "title": "Quiz: Interpreting Coefficients in MLR",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3a7ff57b-a8f5-4ec6-9344-bf2dfa60ff8b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468828,
+              "key": "8c244d65-0c24-46d2-96f8-2161b9778eef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Interpreting Coefficients Attached to Quantitative Variables\n\nWe are now moving into material that combines math, code, and the real world.  It is important to make sure we have all of the basics down before we jump into coding problems. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468829,
+              "key": "77e77479-1745-448f-9a6c-3b2d818d130b",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "77e77479-1745-448f-9a6c-3b2d818d130b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Consider we are predicting the price of a stock based on the accounting information of a company.  Drag the type of each variable next to the variable name."
+                },
+                "concepts_label": "Name",
+                "answers_label": "Type",
+                "concepts": [
+                  {
+                    "text": "Number of Employees",
+                    "correct_answer": {
+                      "id": "a1512494352319",
+                      "text": "Quantitative"
+                    }
+                  },
+                  {
+                    "text": "Country Location of Headquarters",
+                    "correct_answer": {
+                      "id": "a1512494433527",
+                      "text": "Categorical"
+                    }
+                  },
+                  {
+                    "text": "Industry of the Company",
+                    "correct_answer": {
+                      "id": "a1512494459027",
+                      "text": "Categorical"
+                    }
+                  },
+                  {
+                    "text": "Price of All Assets",
+                    "correct_answer": {
+                      "id": "a1512494465886",
+                      "text": "Quantitative"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1512494465886",
+                    "text": "Quantitative"
+                  },
+                  {
+                    "id": "a1512494659743",
+                    "text": "Categorical"
+                  },
+                  {
+                    "id": "a1512494663660",
+                    "text": "Categorical"
+                  },
+                  {
+                    "id": "a1512494433527",
+                    "text": "Categorical"
+                  },
+                  {
+                    "id": "a1512494667927",
+                    "text": "Quantitative"
+                  },
+                  {
+                    "id": "a1512494459027",
+                    "text": "Categorical"
+                  },
+                  {
+                    "id": "a1512494352319",
+                    "text": "Quantitative"
+                  },
+                  {
+                    "id": "a1512494672187",
+                    "text": "Quantitative"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 468830,
+              "key": "ff2043b2-c70f-4cf0-ad77-768e8430e4a4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Now imagine...\n\nWe build a linear model using the above four aspects to predict the stock price of each company, which variables can you add based on what you have learned so far?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468834,
+              "key": "e7046d12-7571-429a-a270-43655bf1b1d5",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e7046d12-7571-429a-a270-43655bf1b1d5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Mark all of the below where you can directly add the variable into a multiple linear regression model using what you have learned so far.",
+                "answers": [
+                  {
+                    "id": "a1512494713697",
+                    "text": "Number of Employees",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512494778696",
+                    "text": "Country Location of Headquarters",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1512494792847",
+                    "text": "Industry of the Company",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1512494800608",
+                    "text": "Price of All Assets",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 468835,
+              "key": "6d6037bc-e1da-412b-924c-58eff416cd2a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Now imagine...\n\nWe fit a multiple linear regression model using the <span class=\"mathquill\">x_1</span>, **number of employees**, and the <span class=\"mathquill\">x_2</span>, **price of all assets**, to predict <span class=\"mathquill\">y</span>, the **price of the stock**.\n\nWe obtain a linear model of the form:\n\n<span class=\"mathquill\">\\hat{y} = b_0 + b_1x_1 + b_2x_2</span>\n\nwhere:\n\n* <span class=\"mathquill\">b_0 = -3.20 </span>\n* <span class=\"mathquill\">b_1 =  0.60 </span>\n* <span class=\"mathquill\">b_2 =  0.24 </span>\n\nUse this information to answer the quiz questions below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468838,
+              "key": "5ba915db-3ec4-485f-839d-fcd6f6860c13",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5ba915db-3ec4-485f-839d-fcd6f6860c13",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Based on the results of your multiple linear regression model, which of the below would be correct interpretations?  Mark all that apply.",
+                "answers": [
+                  {
+                    "id": "a1512495906793",
+                    "text": "If a company has no employees and no assets, we predict they have a stock price of -3.20.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512495997572",
+                    "text": "For each additional employee a company adds, we predict an increase in stock price by 0.60 if the amount in assets remains the same.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512496073525",
+                    "text": "For each unit increase in assets, we predict an increase in stock price by 0.24 if the number of employees stays constant.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512496124368",
+                    "text": "We could continue to add variables to this model, and the interpretation of these coefficients would basically stay the same, but we would add more variables to the \"held constant\" portion of the interpretation.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 439341,
+          "key": "46600ea0-fda4-45ab-a555-3a9ecc71fecb",
+          "title": "Video: Dummy Variables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "46600ea0-fda4-45ab-a555-3a9ecc71fecb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468395,
+              "key": "0d6a0242-a5d9-4b49-89c0-23ba413c929d",
+              "title": "Dummy Variables",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-QTgDd-fZuA",
+                "china_cdn_id": "-QTgDd-fZuA.mp4"
+              }
+            },
+            {
+              "id": 473945,
+              "key": "bf8f5aca-14d7-4285-808a-38c0cfedab9b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The way that we add categorical variables into our multiple linear regression models is by using dummy variables.  The most common way dummy variables are added is through 1, 0 encoding.  In this encoding method, you create a new column for each **level** of a category (in this case A, B, or C).  Then our new columns either hold a 1 or 0 depending on the presence of the level in the original column.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 473947,
+              "key": "61148c52-f560-424f-92c3-5a2cac3398b1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a297de8_screen-shot-2017-12-07-at-9.43.05-am/screen-shot-2017-12-07-at-9.43.05-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/61148c52-f560-424f-92c3-5a2cac3398b1",
+              "caption": "",
+              "alt": "",
+              "width": 400,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 473948,
+              "key": "cdf101f1-862e-42b9-92f4-42557ec95ff2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When we add these dummy variables to our multiple linear regression models, we always drop one of the columns.  The column you drop is called the **baseline**.  The coefficients you obtain from the output of your multiple linear regression models are then an indication of how the encoded levels compare to the baseline level (the dropped level).\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 468871,
+          "key": "cc3449d3-0d5c-447c-adb9-4a5b4d391761",
+          "title": "Text: Dummy Variables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cc3449d3-0d5c-447c-adb9-4a5b4d391761",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468872,
+              "key": "ec104339-bbf9-41b0-80fc-8681c615d937",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### The Math Behind Dummy Variables\n\nIn the last video, you were introduced to the idea the way that categorical variables will be changed to **dummy variables** in order to be added to your linear models.\n\nThen, you will need to drop one of the **dummy columns** in order to make your matrices [full rank](https://www.cds.caltech.edu/~murray/amwiki/index.php/FAQ:_What_does_it_mean_for_a_non-square_matrix_to_be_full_rank%3F).  \n\nIf you remember back to the closed form solution for the coefficients in regression, we have <span class=\"mathquill\">\\beta</span> is estimated by <span class=\"mathquill\">(X'X)^{-1}X'y</span>.\n\nIn order to take the inverse of <span class=\"mathquill\">(X'X)</span>, the matrix <span class=\"mathquill\">X</span> must be full rank.  That is, all of the columns of <span class=\"mathquill\">X</span> must be linearly independent.\n\nIf you do not drop one of the columns (from the model, not from the dataframe) when creating the dummy variables, your solution is unstable and results from Python are unreliable.  You will see an example of what happens if you do not drop one of the dummy columns in the next concept.\n\nThe takeaway is ... **when you create dummy variables using 0, 1 encodings, you always need to drop one of the columns from the model to make sure your matrices are full rank (and that your solutions are reliable from Python).** \n\nThe reason for this is linear algebra.  Specifically, in order to invert matrices, a matrix must be full rank (that is, all the columns need to be linearly independent).  Therefore, you need to drop one of the dummy columns, to create linearly independent columns (and a full rank matrix).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 439935,
+          "key": "605f3ff7-425a-487f-9946-3f22147718dc",
+          "title": "Dummy Variables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "605f3ff7-425a-487f-9946-3f22147718dc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468852,
+              "key": "41b842e7-9a87-4079-bd38-17da100a1e60",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "41b842e7-9a87-4079-bd38-17da100a1e60",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you are interested in adding a categorical variable to a regression model that tells us the colors of a street light: **red**, **yellow**, and **green**, how many dummy variable columns will be added to your linear regression model?",
+                "answers": [
+                  {
+                    "id": "a1512497823173",
+                    "text": "1",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1512497827143",
+                    "text": "2",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512497828713",
+                    "text": "3",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1512497830262",
+                    "text": "4",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 468856,
+              "key": "9a6273c8-c368-4a02-9565-a4478d82e549",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9a6273c8-c368-4a02-9565-a4478d82e549",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If I have a categorical variable with two levels **yes** or **no**, how many dummy variables would needed to be added to a linear model to use this variable?",
+                "answers": [
+                  {
+                    "id": "a1512498195812",
+                    "text": "1",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512498259173",
+                    "text": "2",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1512498262498",
+                    "text": "3",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 468855,
+              "key": "55005327-e4c9-48bd-b507-7f3958d9835c",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "55005327-e4c9-48bd-b507-7f3958d9835c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Imagine you own a restaurant, and you have a ratings scale of: 'great', 'good', 'okay', 'poor', or 'awful'.  You would like to understand the tip given based on this rating, so you build a linear model, using dummy variables to represent the ratings.  **How many total coefficients are in your model?**",
+                "answers": [
+                  {
+                    "id": "a1512497862913",
+                    "text": "3",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1512498004853",
+                    "text": "4",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1512498006299",
+                    "text": "5",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512498007801",
+                    "text": "6",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 468870,
+              "key": "24b4f58d-9f28-43a6-9a82-396a5de40981",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "24b4f58d-9f28-43a6-9a82-396a5de40981",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the below are true regarding the dummy variables we add to our multiple linear regression models?  Let X be the X matrix as defined in the previous Screencast.  **Mark all that are true.**",
+                "answers": [
+                  {
+                    "id": "a1512499139642",
+                    "text": "There should always be as many dummy variables added to your X matrix as the number of levels of each categorical variable minus 1.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512499151556",
+                    "text": "The reason for dropping a dummy variable is to assure that all of our columns are linearly independent.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512499160805",
+                    "text": "The reason for dropping a dummy variable is to assure that the dot product of X'X is invertible.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512499169738",
+                    "text": "The reason for dropping a dummy variable is to assure that your X matrix is full rank.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 439342,
+          "key": "2d6fdb24-ce3b-4893-a6ba-46d551eba7a6",
+          "title": "Screencast: Dummy Variables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2d6fdb24-ce3b-4893-a6ba-46d551eba7a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468415,
+              "key": "7c825579-4b26-46fb-8e1f-2b26998797d7",
+              "title": "Dummy Variable Interpretation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TxP_TD0kbOo",
+                "china_cdn_id": "TxP_TD0kbOo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 439343,
+          "key": "d8903a98-7fde-4e1b-823e-2edc0e296864",
+          "title": "Notebook + Quiz: Dummy Variables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d8903a98-7fde-4e1b-823e-2edc0e296864",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 461530,
+              "key": "5cac1121-46fb-4eff-8d8a-ddb11d11f600",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewe8a1ae60",
+              "pool_id": "jupyter",
+              "view_id": "e8a1ae60-85b0-4789-bbf2-275dc8fd8d9b",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/DummyVariables.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 461534,
+              "key": "d914053c-1270-44e2-b778-4e7c0a249b82",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d914053c-1270-44e2-b778-4e7c0a249b82",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Use the linear model results from the first question to mark all of the below that are true.",
+                "answers": [
+                  {
+                    "id": "a1510616512740",
+                    "text": "The confidence interval for the intercept is a range from a very very large negative number to a very very large positive number.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510616648849",
+                    "text": "The confidence interval for the slope associated with neighborhood A is a range from a very very large negative number to a very very large positive number.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510616683972",
+                    "text": "The confidence interval for the slope associated with neighborhood B is a range from a very very large negative number to a very very large positive number.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510616694235",
+                    "text": "The confidence interval for the slope associated with neighborhood C is a range from a very very large negative number to a very very large positive number.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 461540,
+              "key": "38116d3f-21e6-4162-ad15-231cd640e388",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "38116d3f-21e6-4162-ad15-231cd640e388",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Based on the results of your multiple linear regression model from question 2, match each neighborhood to the description that correctly describes how the neighborhood homes compare to the other neighborhoods."
+                },
+                "concepts_label": "Neighborhood",
+                "answers_label": "Description",
+                "concepts": [
+                  {
+                    "text": "A",
+                    "correct_answer": {
+                      "id": "a1510617531555",
+                      "text": "On average, this neighborhood is the **second** most expensive of the three neighborhoods."
+                    }
+                  },
+                  {
+                    "text": "B",
+                    "correct_answer": {
+                      "id": "a1510617829908",
+                      "text": "On average, this neighborhood is the **most** expensive."
+                    }
+                  },
+                  {
+                    "text": "C",
+                    "correct_answer": {
+                      "id": "a1510617833157",
+                      "text": "On average, this neighborhood is the **least** expensive."
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1510617531555",
+                    "text": "On average, this neighborhood is the **second** most expensive of the three neighborhoods."
+                  },
+                  {
+                    "id": "a1510617833157",
+                    "text": "On average, this neighborhood is the **least** expensive."
+                  },
+                  {
+                    "id": "a1510617829908",
+                    "text": "On average, this neighborhood is the **most** expensive."
+                  }
+                ]
+              }
+            },
+            {
+              "id": 461544,
+              "key": "62a37d7d-1347-41de-81c5-e87cf337e11c",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "62a37d7d-1347-41de-81c5-e87cf337e11c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Using your results from question 2 in the notebook, select each of the statements below that are true.",
+                "answers": [
+                  {
+                    "id": "a1510618139991",
+                    "text": "There is statistically significant evidence that the average home price in neighborhood B differs from the average home price in neighborhood A.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510618313918",
+                    "text": "There is statistically significant evidence that the average home price in neighborhood A differs from the average home price in neighborhood C.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510618341650",
+                    "text": "There is statistically significant evidence that the average home price in neighborhood B differs from the average home price in neighborhood C.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 461570,
+              "key": "3f476ce2-a587-4105-8581-09efa741f3aa",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3f476ce2-a587-4105-8581-09efa741f3aa",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Use the results from your multiple linear regression model in question 4 above to match the values to the appropriate spot in the descriptions below."
+                },
+                "concepts_label": "Description",
+                "answers_label": "Value",
+                "concepts": [
+                  {
+                    "text": "______% of the variability in price can be explained by the linear model built using bedrooms, bathrooms, neighborhood, and home style.",
+                    "correct_answer": {
+                      "id": "a1510620660399",
+                      "text": "80.9"
+                    }
+                  },
+                  {
+                    "text": "For every additional bedroom a home has we can expect the price to increase by ______, holding all other variables constant.",
+                    "correct_answer": {
+                      "id": "a1510621041115",
+                      "text": "173200"
+                    }
+                  },
+                  {
+                    "text": "For every additional bathroom a home has we can expect the price to increase by ______, holding all other variables constant.",
+                    "correct_answer": {
+                      "id": "a1510621110506",
+                      "text": "99960"
+                    }
+                  },
+                  {
+                    "text": "We  expect that a victorian house will cost ______ more than a ______ house, all else being equal.",
+                    "correct_answer": {
+                      "id": "a1510621855436",
+                      "text": "70560, ranch"
+                    }
+                  },
+                  {
+                    "text": "We  expect that a house in neighborhood C will cost ______ less than a neighborhood ______ house, all else being equal.",
+                    "correct_answer": {
+                      "id": "a1510621864683",
+                      "text": "7168, A"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1510621049229",
+                    "text": "0"
+                  },
+                  {
+                    "id": "a1510620660399",
+                    "text": "80.9"
+                  },
+                  {
+                    "id": "a1510621835752",
+                    "text": "9996"
+                  },
+                  {
+                    "id": "a1510621110506",
+                    "text": "99960"
+                  },
+                  {
+                    "id": "a1510626950363",
+                    "text": "70560, lodge"
+                  },
+                  {
+                    "id": "a1510621855436",
+                    "text": "70560, ranch"
+                  },
+                  {
+                    "id": "a1510626959931",
+                    "text": "7168,  B"
+                  },
+                  {
+                    "id": "a1510621044736",
+                    "text": "8.1"
+                  },
+                  {
+                    "id": "a1510621041115",
+                    "text": "173200"
+                  },
+                  {
+                    "id": "a1510621864683",
+                    "text": "7168, A"
+                  },
+                  {
+                    "id": "a1510621829403",
+                    "text": "17320"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 439344,
+          "key": "4491b470-6c2b-4662-81b8-8b3d3f4390c5",
+          "title": "Video: Dummy Variables Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4491b470-6c2b-4662-81b8-8b3d3f4390c5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468469,
+              "key": "308b6f11-1c3f-479e-8ff4-bf786abbe81f",
+              "title": "Dummy Variables Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "r7Lek8rsIcg",
+                "china_cdn_id": "r7Lek8rsIcg.mp4"
+              }
+            },
+            {
+              "id": 473956,
+              "key": "e4781e1e-8c20-45a6-9931-4b6b865d3f15",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Though Python and R use 1, 0 encodings in the default functionality, there are many ways we might encode dummy variables.  [SAS](https://www.sas.com/en_us/software/stat.html) is a common programming language that uses a different encoding than you have used so far. Being comfortable with the binary (1, 0) encodings we've been using is really all you need, but if you are curious about other encodings you can try out the quiz on the next page to see how this works.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 439941,
+          "key": "9814e26c-2845-4d09-bf4f-c8d0b4a417de",
+          "title": "[Optional] Notebook + Quiz: Other Encodings",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9814e26c-2845-4d09-bf4f-c8d0b4a417de",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 811220,
+              "key": "b404f4c2-639b-44b6-87b7-a972c03e4923",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There is a key difference between the binary 1, 0 encodings that you've been working with, and the -1, 0, 1 encoding system: In the 1, 0 coding system, comparisons are to the baseline category as we've discussed, whereas **in the 1, 0, -1 coding system comparisons are to the overall average**.  \n\nThe coding has all been done in this notebook. In this optional concept, you may study the notebook and interpret the results in the quiz questions below.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 462604,
+              "key": "63eeda43-177a-4766-b8dc-2729740d93cb",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view2ea72d37",
+              "pool_id": "jupyter",
+              "view_id": "2ea72d37-2df0-4359-927d-0e0634eacf47",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/One_Zero_Negative_One%20Coding.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 463169,
+              "key": "425c51fc-ef08-4ff7-b3f8-b6d40b9e0223",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "425c51fc-ef08-4ff7-b3f8-b6d40b9e0223",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Use the two models you fit above to fill in the blank with the correct value for each of the interpretations below."
+                },
+                "concepts_label": "Description",
+                "answers_label": "Value",
+                "concepts": [
+                  {
+                    "text": "`_____`% of the variability in price can be explained by the home style.",
+                    "correct_answer": {
+                      "id": "a1510767763475",
+                      "text": "33.9"
+                    }
+                  },
+                  {
+                    "text": "`_____` is the predicted average home price regardless of home style.",
+                    "correct_answer": {
+                      "id": "a1510768764777",
+                      "text": "642100"
+                    }
+                  },
+                  {
+                    "text": "For every victorian house we predict a `____` price increase, holding all else constant.",
+                    "correct_answer": {
+                      "id": "a1510769483865",
+                      "text": "There is nothing for this blank.  This is not an interpretation for any of the coefficients."
+                    }
+                  },
+                  {
+                    "text": "As compared to a lodge home, we predict a victorian home to have a higher price by `_____`, holding all else constant. ",
+                    "correct_answer": {
+                      "id": "a1510770463763",
+                      "text": "741100"
+                    }
+                  },
+                  {
+                    "text": "As compared to the average home, we predict the price of a victorian home to be `______` greater, holding all other variables constant.",
+                    "correct_answer": {
+                      "id": "a1510774019547",
+                      "text": "404000"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1510770463763",
+                    "text": "741100"
+                  },
+                  {
+                    "id": "a1510767763475",
+                    "text": "33.9"
+                  },
+                  {
+                    "id": "a1510769483865",
+                    "text": "There is nothing for this blank.  This is not an interpretation for any of the coefficients."
+                  },
+                  {
+                    "id": "a1510774019547",
+                    "text": "404000"
+                  },
+                  {
+                    "id": "a1510768764777",
+                    "text": "642100"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 463182,
+              "key": "9b5786e0-d14e-4048-99d9-04602a70f20d",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9b5786e0-d14e-4048-99d9-04602a70f20d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In order to predict the baseline category in the 1, 0 coding, you use the intercept.  In the 1, 0, -1 coding, you need to multiply each categorical coefficient by -1 to get at the missing category.  With this in mind, what is the predicted average price for lodges using the 1, 0, -1 coding model?  ",
+                "answers": [
+                  {
+                    "id": "a1510778338872",
+                    "text": "305050",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510778662732",
+                    "text": "270100",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510778686577",
+                    "text": "642100",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510778692480",
+                    "text": "Not enough information to find.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 439348,
+          "key": "e69f2749-dae6-47ca-a11b-bb88c03fc2c9",
+          "title": "Video: Potential Problems",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e69f2749-dae6-47ca-a11b-bb88c03fc2c9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 467904,
+              "key": "5b1f4c5a-7d2d-463c-81cf-809c9836f109",
+              "title": "Potential Problems",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "lGwB6YRThbI",
+                "china_cdn_id": "lGwB6YRThbI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 442317,
+          "key": "df69d406-341a-4dd1-827d-31a85e9d8ac1",
+          "title": "[Optional] Text: Linear Model Assumptions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "df69d406-341a-4dd1-827d-31a85e9d8ac1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 442318,
+              "key": "431e0bf3-15b0-45de-94b8-de11041c7289",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Model Assumptions And How To Address Each\n\nHere are the five potential problems related to Multiple Linear Regression that we mentioned in the previous video, that are addressed in [Introduction to Statistical Learning](http://www-bcf.usc.edu/~gareth/ISL/ISLR%20Seventh%20Printing.pdf):\n\n1. Non-linearity of the response-predictor relationships\n2. Correlation of error terms\n3. Non-constant Variance and Normally Distributed Errors\n4. Outliers/ High leverage points\n5. Multicollinearity\n\nThis text is a summary of how to identify whether these problems exist, as well as how to address them. \n This is a common interview question asked by statisticians, but its practical importance is hit or miss depending on the purpose of your model.  In the upcoming concepts, we will look more closely at specific points that I believe deserve more attention, but below you will see a more exhaustive introduction to each topic.  Let's take a closer look at each of these items.  \n\n#### Linearity\n\nThe assumption of linearity is that a linear model is the relationship that truly exists between your response and predictor variables.  If this isn't true, then your predictions will not be very accurate.  Additionally, the linear relationships associated with your coefficients really aren't useful either.\n\nIn order to assess if a linear relationship is reasonable, a plot of the residuals <span class=\"mathquill\">(y - \\hat{y})</span> by the predicted values <span class=\"mathquill\">(\\hat{y})</span> is often  useful.  If there are curvature patterns in this plot, it suggests that a linear model might not actually fit the data, and some other relationship exists between the predictor variables and response.  There are many ways to create non-linear models (even using the linear model form), and you will be introduced to a few of these later in this lesson.\n\nIn the image at the bottom of this page, these are considered the **biased** models.  Ideally, we want to see a random scatter of points like the top left residual plot in the image.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463218,
+              "key": "f7d6d982-192b-41f9-be90-ec6de021fb14",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n#### Correlated Errors\n\nCorrelated errors frequently occur when our data are collected over time (like in forecasting stock prices or interest rates in the future) or data are spatially related (like predicting flood or drought regions).  We can often improve our predictions by using information from the past data points (for time) or the points nearby (for space).  \n\nThe main problem with not accounting for correlated errors is that you can often use this correlation to your advantage to better predict future events or events spatially close to one another. \n\nOne of the most common ways to identify if you have correlated errors is based on the domain from which the data were collected.  If you are unsure, there is a test known as a [Durbin-Watson](https://en.wikipedia.org/wiki/Durbin%E2%80%93Watson_statistic) test that is commonly used to assess whether correlation of the errors is an issue.  Then [ARIMA or ARMA](http://www.statsref.com/HTML/index.html?arima.html) models are commonly implemented to use this correlation to make better predictions.\n\n#### Non-constant Variance and Normally Distributed Errors\n\nNon-constant variance is when the spread of your predicted values differs depending on which value you are trying to predict.  This isn't a huge problem in terms of predicting well.  However, it does lead to confidence intervals and p-values that are inaccurate.  Confidence intervals for the coefficients will be too wide for areas where the actual values are closer to the predicted values, but too narrow for areas where the actual values are more spread out from the predicted values.\n\nCommonly, a log (or some other transformation of the response variable is done) in order to \"get rid\" of the non-constant variance.  In order to choose the transformation, a [Box-Cox](http://www.statisticshowto.com/box-cox-transformation/) is commonly used.\n\nNon-constant variance can be assessed again using a plot of the residuals by the predicted values.  In the image at the bottom of the page, non-constant variance is labeled as **heteroscedastic**.  Ideally, we want an unbiased model with homoscedastic residuals (consistent across the range of values).  \n\nThough the text does not discuss normality of the residuals, this is an important assumption of regression if you are interested in creating reliable confidence intervals.  More on this topic is provided [here](http://www.itl.nist.gov/div898/handbook/pri/section2/pri24.htm).\n\n#### Outliers/Leverage Points\n\nOutliers and leverage points are points that lie far away from the regular trends of your data.  These points can have a large influence on your solution.  In practice, these points might even be typos.  If you are aggregating data from multiple sources, it is possible that some of the data values were carried over incorrectly or aggregated incorrectly.  \n\nOther times outliers are accurate and true data points, not necessarily measurement or data entry errors.  In these cases, 'fixing' is more subjective. Often the strategy for working with these points is dependent on the goal of your analysis.  Linear models using ordinary least squares, in particular, are not very robust.  That is, large outliers may greatly change our results.  There are techniques to combat this - largely known as **regularization** techniques.  These are beyond the scope of this class, but they are quickly discussed in the [free course on machine learning](https://classroom.udacity.com/courses/ud120).\n\n#### Multi-collinearity\n\nMulticollinearity is when we have predictor variables that are correlated with one another.  One of the main concerns of multicollinearity is that it can lead to coefficients being flipped from the direction we expect from simple linear regression.\n\nOne of the most common ways to identify multicollinearity is with bivariate plots or with **variance inflation factors (or VIFs)**.  This is a topic we will dive into in the next concept, so we won't spend as much time on it here.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463225,
+              "key": "d32e8be5-39dc-49ec-91e4-080716bd688d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0d2a76_resid-plots/resid-plots.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d32e8be5-39dc-49ec-91e4-080716bd688d",
+              "caption": "",
+              "alt": "",
+              "width": 567,
+              "height": 424,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 463279,
+          "key": "11f71035-3e54-43b2-a276-c2c65ebb82c2",
+          "title": "Screencast: Multicollinearity & VIFs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "11f71035-3e54-43b2-a276-c2c65ebb82c2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468417,
+              "key": "ec69fbca-7a46-418f-885b-402abd02dd6b",
+              "title": "Multicollinearity  & VIFs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wbtrXMusDe8",
+                "china_cdn_id": "wbtrXMusDe8.mp4"
+              }
+            },
+            {
+              "id": 463664,
+              "key": "ad121b6c-1a47-4385-80ad-4b36eefc18ec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You saw in this video two different ways of identifying multicollinearity:\n\n1. We can look at the correlation of each explanatory variable with each other explanatory variable (with a plot or the correlation coefficient).<br><br>\n2. We can look at Variance Inflation Factors (VIFs) for each variable. This calculation will be shown in more detail in the next video.\n\nWe saw that when x-variables are related to one another, we can have flipped relationships in our multiple linear regression models from what we would expect when looking at the bivariate linear regression relationships.\n\nFor more on VIFs and multicollinearity, [here is the referenced post from the video on VIFs](https://etav.github.io/python/vif_factor_python.html).  ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 439345,
+          "key": "f4e0c62f-21ed-437e-a90a-258aebea93ff",
+          "title": "Video: Multicollinearity & VIFs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f4e0c62f-21ed-437e-a90a-258aebea93ff",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468465,
+              "key": "cc4d9c91-6319-41b0-a748-ad5663cc3861",
+              "title": "Multicollinearity & VIFs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uiF3UcDWwPI",
+                "china_cdn_id": "uiF3UcDWwPI.mp4"
+              }
+            },
+            {
+              "id": 474056,
+              "key": "0b1ee7fe-f956-4cde-96d6-2840ea02961f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**We would like x-variables to be related to the response, but not to be related to one another.**  When our x-variables are correlated with one another, this is known as **multicollinearity**.  Multicollinearity has two potential negative impacts.  As you saw in the previous example, \n\n1. The expected relationships between your x-variables and the response may not hold when multicollinearity is present.  That is, you may expect a positive relationship between the explanatory variables and the response (based on the bivariate relationships), but in the multiple linear regression case, it turns out the relationship is negative.<br><br>\n2. Our hypothesis testing results may not be reliable.  It turns out that having correlated explanatory variables means that our coefficient estimates are less stable.  That is, standard deviations (often called standard errors) associated with your regression coefficients are quite large.  Therefore, a particular variable might be useful for predicting the response, but because of the relationship it has with other x-variables, you will no longer see this association.\n\nWe have also looked at two different ways of identifying multicollinearity:\n\n1. Looking at the correlation of each explanatory variable with each other explanatory variable (with a plot or the correlation coefficient).<br>\n2. Looking at VIFs for each variable.\n\nWhen VIFs are greater than 10, this suggests that multicollinearity is certainly a problem in your model.  Some experts even suggest that VIFs of greater than 5 can be problematic. In most cases, not just one VIF is high, but rather many VIFs are high, as these are measures of how related variables are with one another.  \n\nThe most common way of working with correlated explanatory variables in a multiple linear regression model is simply to remove one of the variables that is most related to the other variables.  Choosing an explanatory variable that you aren't interested in, or isn't as important to you, is a common choice.  ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 439346,
+          "key": "aa9f6f56-8aaf-49c7-a93b-235624a56d3a",
+          "title": "Notebook + Quiz: Multicollinearity & VIFs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aa9f6f56-8aaf-49c7-a93b-235624a56d3a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463675,
+              "key": "1a187e49-18fe-47d7-a0bd-bebf601043b7",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa8fbe705",
+              "pool_id": "jupyter",
+              "view_id": "a8fbe705-64d2-4fd4-9446-efff424380ee",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Multicollinearity%20%26%20VIFs.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 463678,
+              "key": "b130fcdf-3d76-466c-9ad0-ebd41f178ea5",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b130fcdf-3d76-466c-9ad0-ebd41f178ea5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Based on the scatterplot matrix in the first question, select all the below statements that are true.",
+                "answers": [
+                  {
+                    "id": "a1510871400117",
+                    "text": "It appears that the predictor variables are correlated with one another.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510871934559",
+                    "text": "The variables that appear to be most correlated are the number of bedrooms and bathrooms.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510871935293",
+                    "text": "There should not be a problem with multicollinearity in using all three of these variables to predict price.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 463685,
+              "key": "0a34997a-ed82-4eed-bde5-f49ec1aa406c",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0a34997a-ed82-4eed-bde5-f49ec1aa406c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select all that are true about the coefficients in your multiple linear regression model.",
+                "answers": [
+                  {
+                    "id": "a1510872742441",
+                    "text": "As the number of bedrooms increases, we predict the price to increase.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510872800858",
+                    "text": "As the number of bathrooms increases, we predict the price to increase.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510872813373",
+                    "text": "As the area of the home increases, we predict the price to increase.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 463715,
+              "key": "e308324a-0437-464d-a53a-487a9e3be4ba",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e308324a-0437-464d-a53a-487a9e3be4ba",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which one of the statements below reflects the action that should be taken based on the VIFs?",
+                "answers": [
+                  {
+                    "id": "a1510879052094",
+                    "text": "We need to remove all of the variables from the model because they all have VIFs greater than 10.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510879112651",
+                    "text": "We should remove both bedrooms and bathrooms, because they both have VIFs greater than 10.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510879131731",
+                    "text": "We should remove either bedrooms or bathrooms, because they both have VIFs greater than 10.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510879149369",
+                    "text": "Keeping all the variables in the model is okay despite having large VIFs because removing one of the variables will reduce our Rsquared.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 463730,
+              "key": "f80d0deb-6dbc-4e7a-8b27-3a1b53a4c1ca",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f80d0deb-6dbc-4e7a-8b27-3a1b53a4c1ca",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Mark all of the statements below that are true with regard to your final results.",
+                "answers": [
+                  {
+                    "id": "a1510879971213",
+                    "text": "All VIFs are now below 10.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510880030261",
+                    "text": "All of the coefficients are now positive, as we would expect.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1510880048434",
+                    "text": "To three digits the Rsquared value stayed the same, suggesting we didn't really need both bedrooms and bathrooms in the model.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 439347,
+          "key": "f67b9d0c-8f1a-4b8f-b8a3-25d4dc82a2f5",
+          "title": "Video: Higher Order Terms",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f67b9d0c-8f1a-4b8f-b8a3-25d4dc82a2f5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468403,
+              "key": "5fb9c52c-4d65-4d06-8a6c-5be077f371a9",
+              "title": "Interactions And Higher Order Terms",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AOfXMiJgo48",
+                "china_cdn_id": "AOfXMiJgo48.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 439349,
+          "key": "88806955-71d7-4ac2-a724-f73bbd62f29c",
+          "title": "Text: Higher Order Terms",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "88806955-71d7-4ac2-a724-f73bbd62f29c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468432,
+              "key": "0591b610-103a-4a17-917f-f25567a0e086",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### How to Identify Higher Order Terms?\n\nHigher order terms in linear models are created when multiplying two or more x-variables by one another.  Common higher order terms include **quadratics** (<span  class=\"mathquill\">x_1^2</span>)  and **cubics** (<span  class=\"mathquill\">x_1^3</span>) , where an x-variable is multiplied by itself, as well as **interactions** (<span  class=\"mathquill\">x_1x_2</span>)  , where two or more x-variables are multiplied by one another.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 474027,
+              "key": "0bd0badc-8e7d-4d5e-87b8-cb05c907694e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a29a5f5_screen-shot-2017-12-07-at-1.33.46-pm/screen-shot-2017-12-07-at-1.33.46-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0bd0badc-8e7d-4d5e-87b8-cb05c907694e",
+              "caption": "",
+              "alt": "",
+              "width": 1282,
+              "height": 1024,
+              "instructor_notes": null
+            },
+            {
+              "id": 473970,
+              "key": "10e7cfe5-e32b-4de6-b7b1-1151189f0453",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nIn a model with no higher order terms, you might have an equation like:\n\n<span  class=\"mathquill\">\\hat{y} = b_0 + b_1x_1 + b_2x_2</span>\n\nThen we might decide the linear model can be improved with higher order terms.  The equation might change to:\n\n<span  class=\"mathquill\">\\hat{y} = b_0 + b_1x_1 + b_2x_1^2 +b_3x_2 + b_4x_1x_2</span>\n\nHere, we have introduced a quadratic (<span  class=\"mathquill\">b_2x_1^2</span>) and an interaction (<span  class=\"mathquill\">b_4x_1x_2</span>)  term into the model.  \n\nIn general, these terms can help you fit more complex relationships in your data.  However, they also take away from the ease of interpreting coefficients, as we have seen so far.  You might be wondering: \"How do I identify if I need one of these higher order terms?\"\n\nWhen creating models with **quadratic**, **cubic**, or even higher orders of a variable, we are essentially looking at how many curves there are in the relationship between the explanatory and response variables.  \n\nIf there is one curve, like in the plot below, then you will want to add a quadratic.  Clearly, we can see a line isn't the best fit for this relationship.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468436,
+              "key": "5bb76227-0e8b-4e6a-b5be-74ef12af2484",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/58868097_quadraticlinearregression/quadraticlinearregression.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5bb76227-0e8b-4e6a-b5be-74ef12af2484",
+              "caption": "",
+              "alt": "",
+              "width": 541,
+              "height": 435,
+              "instructor_notes": null
+            },
+            {
+              "id": 468435,
+              "key": "0bb40827-f2df-4e47-8e13-58a891dc3f47",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Then, if we want to add a cubic relationship, it is because we see two curves in the relationship between the explanatory and response variable.  An example of this is shown in the plot below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468439,
+              "key": "d5d7721a-67ff-4542-9c47-bdfccb153a22",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a25c33e_resid2/resid2.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d5d7721a-67ff-4542-9c47-bdfccb153a22",
+              "caption": "https://tamino.wordpress.com/2011/03/31/so-what/",
+              "alt": "",
+              "width": 1024,
+              "height": 667,
+              "instructor_notes": null
+            },
+            {
+              "id": 473925,
+              "key": "28ad4b85-9692-4242-ae1e-e4cb5c681901",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Diving into these relationships a little more closely and creating them in your linear models in Python will be the focus in the upcoming videos.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 473923,
+          "key": "4dff97f4-5903-4a10-bc9b-26eb2e8c876f",
+          "title": "Screencast: How to Add Higher Order Terms",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4dff97f4-5903-4a10-bc9b-26eb2e8c876f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 473924,
+              "key": "f53ff8bc-29c2-45ec-a722-6c38c49f4009",
+              "title": "Interactions &  Higher Order Terms",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gMHwogzqPOk",
+                "china_cdn_id": "gMHwogzqPOk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 439350,
+          "key": "f99b8016-25fb-4e8f-b312-7dc7cc16daef",
+          "title": "Video: Interpreting Interactions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f99b8016-25fb-4e8f-b312-7dc7cc16daef",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468401,
+              "key": "c2cf92ea-e084-44a4-9a6b-3cb0fcd209f0",
+              "title": "Interpreting Interactions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XV6S2srsdxw",
+                "china_cdn_id": "XV6S2srsdxw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 474066,
+          "key": "4fafac62-34d5-4067-8b20-741c468968bf",
+          "title": "Text: Interpreting Interactions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4fafac62-34d5-4067-8b20-741c468968bf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 474089,
+              "key": "27007bfc-e7e0-486e-adcd-bf2f90453b0f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Interaction Terms\n\nIn the previous video, you were introduced to how you might interpret interactions, and how you might observe the need for an interaction in your model.  \n\nMathematically, an interaction is created by multiplying two variables by one another and adding this term to our linear regression model.  \n\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 474093,
+              "key": "0da2eee8-2ab2-4da0-9025-7ede2370a0de",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a29d2bd_screen-shot-2017-12-07-at-3.45.19-pm/screen-shot-2017-12-07-at-3.45.19-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0da2eee8-2ab2-4da0-9025-7ede2370a0de",
+              "caption": "",
+              "alt": "",
+              "width": 200,
+              "height": 100,
+              "instructor_notes": null
+            },
+            {
+              "id": 474092,
+              "key": "f82869f0-3e8a-426d-aad0-a814f8102493",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The example from the previous video used **area** (<span class=\"mathquill\">x_1</span>) and the **neighborhood** (<span class=\"mathquill\">x_2</span>) of a home (either **A** or **B**) to predict the home **price** (<span class=\"mathquill\">y</span>).  At the top of the screen in the video, you might have noticed the equation for a linear model using these variables as:\n\n<span class=\"mathquill\">\\hat{y} = b_0 + b_1x_1 + b_2x_2</span>\n\nThis example does not involve an interaction term, and this model is appropriate if the relationship of the variables looks like that in the plot below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 474094,
+              "key": "0d4b3327-b0c5-4f09-85d1-17f3fd3faf46",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a29d393_screen-shot-2017-12-07-at-3.48.20-pm/screen-shot-2017-12-07-at-3.48.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0d4b3327-b0c5-4f09-85d1-17f3fd3faf46",
+              "caption": "",
+              "alt": "",
+              "width": 600,
+              "height": 500,
+              "instructor_notes": null
+            },
+            {
+              "id": 474096,
+              "key": "c4eab913-fb52-419f-b836-47ac7bb83b54",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "where  <span class=\"mathquill\">b_1</span> is the way we estimate the relationship between **area** and **price**, which in this model we believe to be the same regardless of the neighborhood.\n\nThen <span class=\"mathquill\">b_2</span> is the difference in price depending on which neighborhood you are in, which is the **vertical** distance between the two lines here:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 474101,
+              "key": "4d1e8e71-4e9a-465d-9bbc-206d791c5d58",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a29d544_screen-shot-2017-12-07-at-3.56.39-pm/screen-shot-2017-12-07-at-3.56.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4d1e8e71-4e9a-465d-9bbc-206d791c5d58",
+              "caption": "",
+              "alt": "",
+              "width": 600,
+              "height": 500,
+              "instructor_notes": null
+            },
+            {
+              "id": 474128,
+              "key": "9b05cd99-cd1a-4a54-be69-5fde188a9be0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Notice here that:\n- The way that **area** is related to **price** is the same regardless of **neighborhood**. \n\nAND \n\n- The difference in **price** for the different **neighborhoods** is the same regardless of the **area**. \n\nWhen these statements are true, we do not need an interaction term in our model. However, we need an interaction when **the way that area is related to price is different depending on the neighborhood**.\n\nMathematically, when the way area relates to price depends on the neighborhood, this suggests we should add an interaction. By adding the interaction, we allow the slopes of the line for each neighborhood to be different, as shown in the plot below. Here we have added the interaction, and you can see this allows for a difference in these two slopes.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 617510,
+              "key": "cb7191a7-4803-4773-acc1-fedbad9dcdd4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ae5fcb3_screen-shot-2018-04-29-at-10.10.52-am/screen-shot-2018-04-29-at-10.10.52-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cb7191a7-4803-4773-acc1-fedbad9dcdd4",
+              "caption": "",
+              "alt": "",
+              "width": 600,
+              "height": 500,
+              "instructor_notes": null
+            },
+            {
+              "id": 474131,
+              "key": "081379df-effe-44d3-b72b-b8ec9d978453",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "These lines might even cross or grow apart quickly.  Either of these would suggest an interaction is present between **area** and **neighborhood** in the way they related to the **price**.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 439351,
+          "key": "fb7b82f0-47fa-4ec7-a55f-766b52afc361",
+          "title": "Notebook + Quiz: Interpreting Model Coefficients",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fb7b82f0-47fa-4ec7-a55f-766b52afc361",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 464503,
+              "key": "177e2322-9686-445f-b8dd-e6f1be091fc4",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewe044d3f2",
+              "pool_id": "jupyter",
+              "view_id": "e044d3f2-e339-49ba-9034-641ab03184f1",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Interpreting%20Model%20Coefficients.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 464603,
+              "key": "cd0171db-6750-4500-94fa-789437457147",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cd0171db-6750-4500-94fa-789437457147",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Using your first model match each value to the correct description of that value."
+                },
+                "concepts_label": "Description",
+                "answers_label": "Value",
+                "concepts": [
+                  {
+                    "text": "The predicted difference in the price of a home in neighborhood in A as compared to neighborhood C, holding other variables constant.",
+                    "correct_answer": {
+                      "id": "a1511384580853",
+                      "text": "-194.25"
+                    }
+                  },
+                  {
+                    "text": "For every one unit increase in the area of a home, we predict the price of the home to increase by _______ (holding all other variables constant)?",
+                    "correct_answer": {
+                      "id": "a1511384808137",
+                      "text": "348.74"
+                    }
+                  },
+                  {
+                    "text": "The predicted home price if the home is a lodge in neighborhood C with an area of 0.",
+                    "correct_answer": {
+                      "id": "a1511384905887",
+                      "text": "-198300"
+                    }
+                  },
+                  {
+                    "text": "The predicted difference in price between a victorian and lodge home, holding all other variables constant is _______.",
+                    "correct_answer": {
+                      "id": "a1511385033103",
+                      "text": "lodge is more expensive by 6262.73."
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1511385731307",
+                    "text": "we cannot answer"
+                  },
+                  {
+                    "id": "a1511384808137",
+                    "text": "348.74"
+                  },
+                  {
+                    "id": "a1511385736673",
+                    "text": "we cannot answer"
+                  },
+                  {
+                    "id": "a1511385033103",
+                    "text": "lodge is more expensive by 6262.73."
+                  },
+                  {
+                    "id": "a1511385726931",
+                    "text": "we cannot answer"
+                  },
+                  {
+                    "id": "a1511384580853",
+                    "text": "-194.25"
+                  },
+                  {
+                    "id": "a1511385710102",
+                    "text": "victorian is more expensive by 6262.73."
+                  },
+                  {
+                    "id": "a1511384905887",
+                    "text": "-198300"
+                  },
+                  {
+                    "id": "a1511385722669",
+                    "text": "we cannot answer"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 464636,
+              "key": "de6abc35-cb7c-48f5-9b22-8f76df03248b",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "de6abc35-cb7c-48f5-9b22-8f76df03248b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Using the results from your second model, match the values to the appropriate descriptions."
+                },
+                "concepts_label": "Description",
+                "answers_label": "Value",
+                "concepts": [
+                  {
+                    "text": "For every one unit increase in the area of the home, we predict the price to increase by _______.",
+                    "correct_answer": {
+                      "id": "a1511390038504",
+                      "text": "It depends."
+                    }
+                  },
+                  {
+                    "text": "For every one unit increase in the area of the home squared, the predicted increase in price is by ______.",
+                    "correct_answer": {
+                      "id": "a1511390612423",
+                      "text": "It depends."
+                    }
+                  },
+                  {
+                    "text": "Based on the results, do you think adding a higher order term for area is useful in predicting the price of the home?",
+                    "correct_answer": {
+                      "id": "a1511390662037",
+                      "text": "No"
+                    }
+                  },
+                  {
+                    "text": "The predicted difference between the price of a ranch home and a lodge, holding all other variables constant is _______.",
+                    "correct_answer": {
+                      "id": "a1511390828997",
+                      "text": "9917.25"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1511390962193",
+                    "text": "It depends."
+                  },
+                  {
+                    "id": "a1511390662037",
+                    "text": "No"
+                  },
+                  {
+                    "id": "a1511390654120",
+                    "text": "0.0029"
+                  },
+                  {
+                    "id": "a1511390828997",
+                    "text": "9917.25"
+                  },
+                  {
+                    "id": "a1511390592206",
+                    "text": "334.01"
+                  },
+                  {
+                    "id": "a1511390038504",
+                    "text": "It depends."
+                  },
+                  {
+                    "id": "a1511390732279",
+                    "text": "Yes"
+                  },
+                  {
+                    "id": "a1511390612423",
+                    "text": "It depends."
+                  }
+                ]
+              }
+            },
+            {
+              "id": 464641,
+              "key": "4348f4f6-0564-49ce-998c-ab7685a2cd02",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4348f4f6-0564-49ce-998c-ab7685a2cd02",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Based on your results, choose the best answer below.  Feel free to fit new models as necessary to answer this question.",
+                "answers": [
+                  {
+                    "id": "a1511391472769",
+                    "text": "The first model is the best, because it has a high R-squared.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1511391506112",
+                    "text": "The second one is the best, because all the negative coefficients in the first model are clearly not correct.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1511391569426",
+                    "text": "The second one is best, because it has fewer variables.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1511392379218",
+                    "text": "A best model might only include the area, and a dummy variable for neighborhood B vs. the other neighborhoods.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 439357,
+          "key": "b6643be3-e95f-41f1-ad3a-68966c574f19",
+          "title": "Video: Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b6643be3-e95f-41f1-ad3a-68966c574f19",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468398,
+              "key": "d0454f4c-abe8-4225-a6cb-41411b4665c6",
+              "title": "Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VM6GGNC2q8I",
+                "china_cdn_id": "VM6GGNC2q8I.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 442320,
+          "key": "107321ba-246c-49f5-9da3-6c74b14c430b",
+          "title": "Text: Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "107321ba-246c-49f5-9da3-6c74b14c430b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 464714,
+              "key": "4a52ec5a-cb2a-404f-aee8-aee18d8ef8fc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Recap\n\n\n1. You learned how to build a multiple linear regression model in Python, which was actually very similar to what you did in the last lesson on simple linear regression.<br><br>\n\n2. You learned how to encode dummy variables, and interpret the coefficients attached to each.<br><br>\n\n3. You learned about higher order terms, and how this impacts your ability to interpret coefficients.<br><br>\n\n4. You learned how to identify what it would mean for an interaction to be needed in a multiple linear regression model, as well as how to identify other higher order terms.  But again, these do make interpreting coefficients directly less of a priority, and move your model towards one that, rather, aims to predict better at the expense of interpretation.<br><br>\n\n5. You learned about the model assumptions, and we took a closer look at multicollinearity.  You learned about variance inflation factors, and how multicollinearity impacts the model coefficients and standard errors.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

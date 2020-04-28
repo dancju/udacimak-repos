@@ -1,0 +1,1486 @@
+{
+  "data": {
+    "lesson": {
+      "id": 918921,
+      "key": "d0050e50-105d-4b62-bf85-b6c5882b3453",
+      "title": "[Advanced] SQL Window Functions",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Compare one row to another without doing any joins using one of the most powerful concepts in SQL data analysis: window functions.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/d0050e50-105d-4b62-bf85-b6c5882b3453/918921/1581974110605/%5BAdvanced%5D+SQL+Window+Functions+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/d0050e50-105d-4b62-bf85-b6c5882b3453/918921/1581974106576/%5BAdvanced%5D+SQL+Window+Functions+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 392073,
+          "key": "209ab8f1-1802-46ce-906b-f03e61fa4c90",
+          "title": "Video: Introduction to Window Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "209ab8f1-1802-46ce-906b-f03e61fa4c90",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406806,
+              "key": "450059d9-1f6c-41b0-9b81-cc4e74abb742",
+              "title": "Introduction to Window Functions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "u3qLjP8KMKc",
+                "china_cdn_id": "u3qLjP8KMKc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 391937,
+          "key": "4c71795c-8ebf-4a3f-b951-494220b702cc",
+          "title": "Video: Window Functions 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4c71795c-8ebf-4a3f-b951-494220b702cc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 464196,
+              "key": "d8deae77-71b0-411a-8e1b-a8733a26fc35",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introducing Window Functions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 406843,
+              "key": "be363782-30a2-4342-913f-7504a315bdc8",
+              "title": " Window Functions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gp0RPgkDHsQ",
+                "china_cdn_id": "gp0RPgkDHsQ.mp4"
+              }
+            },
+            {
+              "id": 464018,
+              "key": "355f914c-2f4b-400e-8c7b-290244bf80a6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "PostgreSQL’s documentation does an excellent job of [introducing the concept of Window Functions](https://www.postgresql.org/docs/9.1/static/tutorial-window.html):\na window function performs a calculation across a set of table rows that are somehow related to the current row. This is comparable to the type of calculation that can be done with an aggregate function. But unlike regular aggregate functions, use of a window function does not cause rows to become grouped into a single output row — the rows retain their separate identities. Behind the scenes, the window function is able to access more than just the current row of the query result.\n\nThrough introducing window functions, we have also introduced two statements that you may not be familiar with: **OVER** and **PARTITION BY**. These are key to window functions. Not every window function uses **PARTITION BY**; we can also use **ORDER BY** or no statement at all depending on the query we want to run. You will practice using these clauses in the upcoming quizzes. If you want more details right now, [this resource](https://blog.sqlauthority.com/2015/11/04/sql-server-what-is-the-over-clause-notes-from-the-field-101/) from Pinal Dave is helpful.\n\n*Note: You can’t use window functions and standard aggregations in the same query. More specifically, you can’t include window functions in a **GROUP BY** clause.*",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 391947,
+          "key": "e5128501-1815-44aa-bacb-11647d145874",
+          "title": "Quiz: Window Functions 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e5128501-1815-44aa-bacb-11647d145874",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463198,
+              "key": "6b896970-cb6b-4e4a-a09c-48c12c2f3646",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating a Running Total Using Window Functions\n\nUsing Derek's previous video as an example, create another running total. This time, create a running total of `standard_amt_usd` (in the `orders` table) over order time with no date truncation.  Your final table should have two columns: one with the amount being added for each new row, and a second with the running total.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463267,
+              "key": "14937223-f85a-4f2f-bf0a-d64545eeca7d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "82656be9-0cf2-4713-88dd-36080e737f21",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392052,
+          "key": "65b5e55c-6ef1-4e5a-a2f3-7e0e627d5158",
+          "title": "Solutions: Window Functions 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "65b5e55c-6ef1-4e5a-a2f3-7e0e627d5158",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463219,
+              "key": "e125488e-5c06-4053-9033-74fd83e59870",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating a Running Total Using Window Functions\n\n```\nSELECT standard_amt_usd,\n       SUM(standard_amt_usd) OVER (ORDER BY occurred_at) AS running_total\nFROM orders\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558950,
+              "key": "693ea85e-6526-4b15-808a-87835246c461",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "05c8408b-85db-4c4a-a85e-df639863487b",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 463220,
+          "key": "2bb46607-9fd8-4b97-981c-83059d3cb70a",
+          "title": "Quiz: Window Functions 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2bb46607-9fd8-4b97-981c-83059d3cb70a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463223,
+              "key": "e3548f90-d634-4ca0-9ecf-4796b1003428",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating a *Partitioned* Running Total Using Window Functions\nNow, modify your query from the previous quiz to include partitions. Still create a running total of `standard_amt_usd` (in the `orders` table) over order time, but this time, date truncate `occurred_at` by year and partition by that same year-truncated `occurred_at` variable.  Your final table should have three columns: One with the amount being added for each row, one for the truncated date, and a final column with the running total within each year.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558951,
+              "key": "3594973c-6b88-4dbf-850f-9ab3a13aafb5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "8e72239d-eb94-48af-8be3-4f9de3c338f4",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 463221,
+          "key": "7660e14b-de50-4ab3-aac2-a92ca7c3bb25",
+          "title": "Solutions: Window Functions 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7660e14b-de50-4ab3-aac2-a92ca7c3bb25",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463224,
+              "key": "75d07a6d-964b-496e-9515-819a159607a3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating a *Partitioned* Running Total Using Window Functions\n\n```\nSELECT standard_amt_usd,\n       DATE_TRUNC('year', occurred_at) as year,\n       SUM(standard_amt_usd) OVER (PARTITION BY DATE_TRUNC('year', occurred_at) ORDER BY occurred_at) AS running_total\nFROM orders\n```\n\nIf you'd like another example of partitioning, check out the top answer from this Stack Overflow post:\n [“Partition By” Keyword](https://stackoverflow.com/questions/561836/oracle-partition-by-keyword)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558952,
+              "key": "213a2997-0955-44f5-bb43-86025ec0af3d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "6a4eb666-356e-44e0-8053-2065fbd6cae9",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 391956,
+          "key": "1fe06581-64d7-47b8-847b-de19a7f9f0bf",
+          "title": "Video: ROW_NUMBER & RANK",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1fe06581-64d7-47b8-847b-de19a7f9f0bf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406850,
+              "key": "b84726aa-24cd-4768-8145-39415ac1ea6c",
+              "title": "Running Totals And Count",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rNJwmnzUTxg",
+                "china_cdn_id": "rNJwmnzUTxg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 391958,
+          "key": "c3ed3adf-8e4a-4242-80d6-2b1e6cfdac3c",
+          "title": "Quiz: ROW_NUMBER & RANK",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c3ed3adf-8e4a-4242-80d6-2b1e6cfdac3c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463269,
+              "key": "869ab5e9-02f2-4af3-b2db-9271686640dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Ranking Total Paper Ordered by Account\nSelect the `id`, `account_id`, and `total` variable from the `orders` table, then create a column called `total_rank` that ranks this total amount of paper ordered (from highest to lowest) *for each account* using a partition. Your final table should have these four columns.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558953,
+              "key": "5e6b3a1b-67c4-48e0-a4ef-06f8899bf2bd",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "d829f872-f03c-42b0-be83-fd60981908a6",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392054,
+          "key": "54746c40-fe86-45ba-9a5b-241cde6a7ca5",
+          "title": "Solutions: ROW_NUMBER & RANK",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "54746c40-fe86-45ba-9a5b-241cde6a7ca5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463677,
+              "key": "4712d68a-b442-49de-9530-f88d0d9f82be",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Ranking Total Paper Ordered by Account\n\n```\nSELECT id,\n       account_id,\n       total,\n       RANK() OVER (PARTITION BY account_id ORDER BY total DESC) AS total_rank\nFROM orders\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558954,
+              "key": "4a354313-c621-4383-923e-a78b81a33046",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "0d267932-8fa1-4dd0-991e-6007d5e0a32a",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 391960,
+          "key": "edc382f6-fef6-44f1-ad09-1532488a13d9",
+          "title": "Video: Aggregates in Window Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "edc382f6-fef6-44f1-ad09-1532488a13d9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406851,
+              "key": "19a40d6d-2144-4e7a-95f8-c260ebf630fc",
+              "title": "Aggregates in Window Functions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Dxew5w3VF7k",
+                "china_cdn_id": "Dxew5w3VF7k.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 392064,
+          "key": "5d3e8246-977d-48ab-a679-09dfdce6b3bf",
+          "title": "Quiz: Aggregates in Window Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d3e8246-977d-48ab-a679-09dfdce6b3bf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463724,
+              "key": "d7090a3f-3d79-4919-9d6b-b8dca6482fbd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Aggregates in Window Functions with and without ORDER BY\nRun the query that Derek wrote in the previous video in the first SQL Explorer below. Keep the query results in mind; you'll be comparing them to the results of another query next.\n\n```\nSELECT id,\n       account_id,\n       standard_qty,\n       DATE_TRUNC('month', occurred_at) AS month,\n       DENSE_RANK() OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS dense_rank,\n       SUM(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS sum_std_qty,\n       COUNT(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS count_std_qty,\n       AVG(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS avg_std_qty,\n       MIN(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS min_std_qty,\n       MAX(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS max_std_qty\nFROM orders\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558955,
+              "key": "a1e80cd9-7d91-41c8-9454-406f7396424a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "798c4da7-0599-442b-95c0-6a6fe7f17355",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 463743,
+              "key": "db60f78b-d49c-41b5-9e46-1997e2297a11",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now remove `ORDER BY DATE_TRUNC('month',occurred_at)` in each line of the query that contains it in the SQL Explorer below. Evaluate your new query, compare it to the results in the SQL Explorer above, and answer the subsequent quiz questions.\n\n```\nSELECT id,\n       account_id,\n       standard_qty,\n       DATE_TRUNC('month', occurred_at) AS month,\n       DENSE_RANK() OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS dense_rank,\n       SUM(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS sum_std_qty,\n       COUNT(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS count_std_qty,\n       AVG(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS avg_std_qty,\n       MIN(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS min_std_qty,\n       MAX(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS max_std_qty\nFROM orders\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558956,
+              "key": "e5a3c1c3-92ca-43ff-bbd2-d9ecddec6af1",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "d9f81c84-2293-45fe-bf25-d44717b4e1de",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 463741,
+              "key": "c186a4fe-e60f-4d9f-bb19-8318c4d6507f",
+              "title": "dense_rank",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c186a4fe-e60f-4d9f-bb19-8318c4d6507f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "What is the value of `dense_rank` in every row for the following `account_id` values?"
+                },
+                "concepts_label": "account_id",
+                "answers_label": "dense_rank",
+                "concepts": [
+                  {
+                    "text": "1001",
+                    "correct_answer": {
+                      "id": "a1510896876649",
+                      "text": "1"
+                    }
+                  },
+                  {
+                    "text": "1011",
+                    "correct_answer": {
+                      "id": "a1510896942092",
+                      "text": "1"
+                    }
+                  },
+                  {
+                    "text": "1021",
+                    "correct_answer": {
+                      "id": "a1510896942788",
+                      "text": "1"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1510896964457",
+                    "text": "2"
+                  },
+                  {
+                    "id": "a1510896978659",
+                    "text": "3"
+                  },
+                  {
+                    "id": "a1510896942788",
+                    "text": "1"
+                  },
+                  {
+                    "id": "a1510896942092",
+                    "text": "1"
+                  },
+                  {
+                    "id": "a1510896963411",
+                    "text": "2"
+                  },
+                  {
+                    "id": "a1510896977068",
+                    "text": "3"
+                  },
+                  {
+                    "id": "a1510896876649",
+                    "text": "1"
+                  },
+                  {
+                    "id": "a1510896978034",
+                    "text": "3"
+                  },
+                  {
+                    "id": "a1510896962427",
+                    "text": "2"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 463744,
+              "key": "9e5a08da-f1bf-46ff-80f9-aeb3e045e378",
+              "title": "sum_std_qty",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9e5a08da-f1bf-46ff-80f9-aeb3e045e378",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "What is the value of `sum_std_qty` in the **first row** for the following `account_id` values?"
+                },
+                "concepts_label": "account_id",
+                "answers_label": "sum_std_qty",
+                "concepts": [
+                  {
+                    "text": "1001",
+                    "correct_answer": {
+                      "id": "a1510897584890",
+                      "text": "7896"
+                    }
+                  },
+                  {
+                    "text": "1011",
+                    "correct_answer": {
+                      "id": "a1510897629545",
+                      "text": "527"
+                    }
+                  },
+                  {
+                    "text": "1021",
+                    "correct_answer": {
+                      "id": "a1510897630268",
+                      "text": "3152"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1510897584890",
+                    "text": "7896"
+                  },
+                  {
+                    "id": "a1510897708836",
+                    "text": "123"
+                  },
+                  {
+                    "id": "a1510897629545",
+                    "text": "527"
+                  },
+                  {
+                    "id": "a1510897710870",
+                    "text": "516"
+                  },
+                  {
+                    "id": "a1510897713144",
+                    "text": "1"
+                  },
+                  {
+                    "id": "a1510897630268",
+                    "text": "3152"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 463745,
+              "key": "4b1d396f-2308-4631-ba15-413643da8e65",
+              "title": "Reflect",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4b1d396f-2308-4631-ba15-413643da8e65",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What is happening when you omit the `ORDER BY` clause when doing aggregates with window functions? Use the results from the queries above to guide your thoughts then jot these thoughts down in a few sentences in the text box below."
+              },
+              "answer": {
+                "text": "Thank you. Continue to the next page to see our explanation.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 392066,
+          "key": "4114a763-685c-4f79-abc1-95c2b2271f46",
+          "title": "Solutions: Aggregates in Window Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4114a763-685c-4f79-abc1-95c2b2271f46",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463746,
+              "key": "d0862c53-6ba9-4002-aa99-c1ce112b1200",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Aggregates in Window Functions with and without ORDER BY\n\n\nThe `ORDER BY` clause is one of two clauses integral to window functions. The `ORDER` and `PARTITION` define what is referred to as the “window”—the ordered subset of data over which calculations are made. Removing `ORDER BY` just leaves an unordered partition; in our query's case, each column's value is simply an aggregation (e.g., sum, count, average, minimum, or maximum) of all the `standard_qty` values in its respective `account_id`.\n\nAs Stack Overflow user mathguy [explains](https://stackoverflow.com/questions/41364665/analytic-count-over-partition-with-and-without-order-by-clause):\n\n>The easiest way to think about this - leaving the `ORDER BY` out is equivalent to \"ordering\" in a way that all rows in the partition are \"equal\" to each other. Indeed, you can get the same effect by explicitly adding the `ORDER BY` clause like this:  `ORDER BY 0` (or \"order by\" any constant expression), or even, more emphatically, `ORDER BY NULL`.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 463274,
+          "key": "1b5cabbf-3301-4def-a477-aa88849900b1",
+          "title": "Video: Aliases for Multiple Window Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1b5cabbf-3301-4def-a477-aa88849900b1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463277,
+              "key": "6f296ad4-6cad-4094-9e47-0593d2f84d99",
+              "title": "Aliases for Multiple Window Functions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RWe03bULYnM",
+                "china_cdn_id": "RWe03bULYnM.mp4"
+              }
+            },
+            {
+              "id": 464021,
+              "key": "dd32293d-8e5f-403d-927c-1e5c66e0c7d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can check out a complete list of window functions in Postgres (the syntax Mode uses) in the [Postgres documentation](https://www.postgresql.org/docs/8.4/static/functions-window.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 463275,
+          "key": "5f0a0dde-5b16-4760-bfff-2c08104d4140",
+          "title": "Quiz: Aliases for Multiple Window Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5f0a0dde-5b16-4760-bfff-2c08104d4140",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463749,
+              "key": "b1d9658f-fcda-4d63-b8be-0913b479935d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Shorten Your Window Function Queries by Aliasing",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463752,
+              "key": "901df83a-e010-478d-9d48-a95ed3fa3629",
+              "title": "Window Function Alias",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "901df83a-e010-478d-9d48-a95ed3fa3629",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Using Derek's example in the previous window, deconstruct the window function alias into its two parts: the *alias* part and the *window function* part."
+                },
+                "concepts_label": "Part",
+                "answers_label": "Query text",
+                "concepts": [
+                  {
+                    "text": "Alias part",
+                    "correct_answer": {
+                      "id": "a1510925510745",
+                      "text": "WINDOW main_window AS"
+                    }
+                  },
+                  {
+                    "text": "Window function part",
+                    "correct_answer": {
+                      "id": "a1510925680363",
+                      "text": "(PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at))"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1510925767472",
+                    "text": "OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS"
+                  },
+                  {
+                    "id": "a1510925746943",
+                    "text": "OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at))"
+                  },
+                  {
+                    "id": "a1510925510745",
+                    "text": "WINDOW main_window AS"
+                  },
+                  {
+                    "id": "a1510925680363",
+                    "text": "(PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at))"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 463753,
+              "key": "3efb5b00-e5d4-4d78-8d6f-1e250782f23a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, create and use an alias to shorten the following query (which is different than the one in Derek's previous video) that has multiple window functions. Name the alias `account_year_window`, which is more descriptive than `main_window` in the example above.\n\n```\nSELECT id,\n       account_id,\n       DATE_TRUNC('year',occurred_at) AS year,\n       DENSE_RANK() OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS dense_rank,\n       total_amt_usd,\n       SUM(total_amt_usd) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS sum_total_amt_usd,\n       COUNT(total_amt_usd) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS count_total_amt_usd,\n       AVG(total_amt_usd) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS avg_total_amt_usd,\n       MIN(total_amt_usd) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS min_total_amt_usd,\n       MAX(total_amt_usd) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS max_total_amt_usd\nFROM orders\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558957,
+              "key": "c66a6fed-c905-45b8-a1fa-5b26b1549d8d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "25e0aa18-b4ed-4ab3-99a1-3d37cb1c62f8",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 463276,
+          "key": "8fc90b95-544f-43ab-bd42-712c1000bfa9",
+          "title": "Solutions: Aliases for Multiple Window Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8fc90b95-544f-43ab-bd42-712c1000bfa9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463751,
+              "key": "ac96bf7b-20de-4bd7-8850-c323548486e3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Aliases for Multiple Window Functions\n```\nSELECT id,\n       account_id,\n       DATE_TRUNC('year',occurred_at) AS year,\n       DENSE_RANK() OVER account_year_window AS dense_rank,\n       total_amt_usd,\n       SUM(total_amt_usd) OVER account_year_window AS sum_total_amt_usd,\n       COUNT(total_amt_usd) OVER account_year_window AS count_total_amt_usd,\n       AVG(total_amt_usd) OVER account_year_window AS avg_total_amt_usd,\n       MIN(total_amt_usd) OVER account_year_window AS min_total_amt_usd,\n       MAX(total_amt_usd) OVER account_year_window AS max_total_amt_usd\nFROM orders \nWINDOW account_year_window AS (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at))\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558958,
+              "key": "0b59618c-ac02-43c5-8dd9-4280ec7c9dd6",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "d1789fea-96af-4a3a-8f35-f0d15559d0f8",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 406853,
+          "key": "d164195e-6cca-401c-ae28-2c89063b1fd7",
+          "title": "Video: Comparing a Row to Previous Row",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d164195e-6cca-401c-ae28-2c89063b1fd7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406854,
+              "key": "23f02267-6b0d-4b71-879d-dbcd96a32932",
+              "title": "Comparing Row to Previous Row",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Z_x5ZJyDZog",
+                "china_cdn_id": "Z_x5ZJyDZog.mp4"
+              }
+            },
+            {
+              "id": 644449,
+              "key": "296b4f6c-1690-4bb7-afdd-79254f37a990",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Instructor Notes**\n\nLet’s look at this again. We have broken down the syntax to explain LAG and LEAD functions separately.\n\n### LAG function\n**Purpose**<br>\nIt returns the value from a previous row to the current row in the table.<br>\n\n**Step 1:**<br>\nLet’s first look at the **inner query** and see what this creates.\n\n```\nSELECT \taccount_id, SUM(standard_qty) AS standard_sum\nFROM       orders\nGROUP BY   1\n```\n**What you see after running this SQL code:**\n1. The query sums the standard_qty amounts for each account_id to give the standard paper each account has purchased over all time. E.g., account_id 2951 has purchased 8181 units of standard paper. \n2.  Notice that the results are not ordered by account_id or standard_qty.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 644450,
+              "key": "fc21430e-8a1c-4af9-9d5d-2584613c1341",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b1acb5a_lag-1-innerquery/lag-1-innerquery.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fc21430e-8a1c-4af9-9d5d-2584613c1341",
+              "caption": "",
+              "alt": "",
+              "width": 434,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 644451,
+              "key": "8be63559-9d31-40fe-91a6-ef1be4db73c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 2: **<br>\nWe start building the **outer query**, and name the inner query as `sub`.\n```\nSELECT account_id, standard_sum   \nFROM   (\n        SELECT   account_id, SUM(standard_qty) AS standard_sum\n        FROM     orders\n        GROUP BY 1\n       ) sub\n```\n<br>\n\nThis still returns the same table you see above, which is also shown below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 650702,
+              "key": "9b3d84c8-4744-47a8-b581-b175c442d572",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b21c5f0_screen-shot-2018-06-13-at-6.32.38-pm/screen-shot-2018-06-13-at-6.32.38-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9b3d84c8-4744-47a8-b581-b175c442d572",
+              "caption": "",
+              "alt": "",
+              "width": 1658,
+              "height": 542,
+              "instructor_notes": null
+            },
+            {
+              "id": 650701,
+              "key": "d0c22c66-0fc6-4b62-b59e-27f466e9329b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 3 (Part A):**<br>\nWe add the Window Function `OVER (ORDER BY standard_sum)` in the outer query that will create a result set in ascending order based on the *standard_sum* column.\n```\nSELECT account_id, \n       standard_sum,\n       LAG(standard_sum) OVER (ORDER BY standard_sum) AS lag\nFROM   (\n        SELECT   account_id, SUM(standard_qty) AS standard_sum\n        FROM     orders\n        GROUP BY 1\n       ) sub\n```\n\nThis ordered column will set us up for the other part of the Window Function (see below).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 644453,
+              "key": "0a746350-0058-44c2-8b1c-b94866f29b34",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 3 (Part B):**<br>\nThe `LAG` function creates a new column called _lag_ as part of the **outer query**: `LAG(standard_sum) OVER (ORDER BY standard_sum) AS lag`. This new column named _lag_ uses the values from the ordered *standard_sum* (Part A within Step 3). \n```\nSELECT account_id,\n       standard_sum,\n       LAG(standard_sum) OVER (ORDER BY standard_sum) AS lag\nFROM   (\n        SELECT   account_id,\n                 SUM(standard_qty) AS standard_sum\n        FROM     demo.orders\n        GROUP BY 1\n       ) sub\n```\n\nEach row’s value in _lag_ is pulled from the previous row. E.g., for account_id 1901, the value in _lag_ will come from the previous row. However, since there is no previous row to pull from, the value in _lag_ for account_id 1901 will be NULL. For account_id 3371, the value in _lag_ will be pulled from the previous row (i.e., account_id 1901), which will be 0. This goes on for each row in the table.\n\n**What you see after running this SQL code:**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 644454,
+              "key": "ce1b0e16-9349-4df4-be6f-535c58a8b0d0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b1acbab_lag/lag.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ce1b0e16-9349-4df4-be6f-535c58a8b0d0",
+              "caption": "",
+              "alt": "",
+              "width": 870,
+              "height": 431,
+              "instructor_notes": null
+            },
+            {
+              "id": 644455,
+              "key": "9e483501-2b66-44e9-bae2-99ff4169b112",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 4:**<br>\nTo compare the values between the rows, we need to use both columns (*standard_sum* and *lag*). We add a new column named `lag_difference`, which subtracts the *lag* value from the value in *standard_sum* for each row in the table:<br>`standard_sum - LAG(standard_sum) OVER (ORDER BY standard_sum) AS lag_difference`\n```\nSELECT account_id,\n       standard_sum,\n       LAG(standard_sum) OVER (ORDER BY standard_sum) AS lag,\n       standard_sum - LAG(standard_sum) OVER (ORDER BY standard_sum) AS lag_difference\nFROM (\n       SELECT account_id,\n       SUM(standard_qty) AS standard_sum\n       FROM orders \n       GROUP BY 1\n      ) sub\n```\n\nEach value in *lag_difference* is comparing the row values between the 2 columns (*standard_sum* and *lag*). E.g., since the value for *lag* in the case of account_id 1901 is NULL, the value in *lag_difference* for account_id 1901 will be NULL. However, for account_id 3371, the value in *lag_difference* will compare the value 79 (*standard_sum* for account_id 3371) with 0 (*lag* for account_id 3371) resulting in 79. This goes on for each row in the table.\n\n**What you see after running this SQL code:**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 644456,
+              "key": "1a608c14-7b16-4d83-b2d4-7d94d224808f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b1acbca_lag-diff/lag-diff.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1a608c14-7b16-4d83-b2d4-7d94d224808f",
+              "caption": "",
+              "alt": "",
+              "width": 907,
+              "height": 430,
+              "instructor_notes": null
+            },
+            {
+              "id": 690315,
+              "key": "e58b3a5a-d492-4049-9b64-bea759cb08b9",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "-----",
+              "instructor_notes": ""
+            },
+            {
+              "id": 644457,
+              "key": "4c26c01a-2364-499e-a150-3637c7552f79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Now let’s look at the LEAD function. **\n### LEAD function\n**Purpose**:  \nReturn the value from the row following the current row in the table.\n\n**Step 1:**<br>\nLet’s first look at the **inner query** and see what this creates.\n```\nSELECT \taccount_id,\n           SUM(standard_qty) AS standard_sum\nFROM       demo.orders\nGROUP BY   1\n```\n**What you see after running this SQL code:** \n1. The query sums the standard_qty amounts for each account_id to give the standard paper each account has purchased over all time. E.g., account_id 2951 has purchased 8181 units of standard paper. \n2. Notice that the results are not ordered by account_id or standard_qty. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 644459,
+              "key": "7f738fb8-741b-415a-9541-cc6bebb3641d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b1acbe8_lag-1-innerquery/lag-1-innerquery.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7f738fb8-741b-415a-9541-cc6bebb3641d",
+              "caption": "",
+              "alt": "",
+              "width": 434,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 644461,
+              "key": "91632033-7997-4a92-9eaa-9649ae83e826",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 2: **<br>\nWe start building the **outer query**, and name the inner query as `sub`.\n```\nSELECT account_id,\n       standard_sum   \nFROM   (\n        SELECT   account_id,\n                 SUM(standard_qty) AS standard_sum\n        FROM     demo.orders\n        GROUP BY 1\n       ) sub\n```\n\nThis will produce the same table as above, but sets us up for the next part.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 690314,
+              "key": "b3226f73-d546-417c-b64b-84226a4f7b8e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/August/5b6a2727_lag-1-innerquery/lag-1-innerquery.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b3226f73-d546-417c-b64b-84226a4f7b8e",
+              "caption": "",
+              "alt": "",
+              "width": 434,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 650703,
+              "key": "ea2b58a1-8d9d-4a21-96f8-d47b73df0560",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 3 (Part A):**<br>\nWe add the Window Function `(OVER BY standard_sum)` in the outer query that will create a result set  ordered in ascending order of the *standard_sum* column.\n```\nSELECT account_id,\n       standard_sum,\n       LEAD(standard_sum) OVER (ORDER BY standard_sum) AS lead\nFROM   (\n        SELECT   account_id,\n                 SUM(standard_qty) AS standard_sum\n        FROM     demo.orders\n        GROUP BY 1\n       ) sub\n```\n\nThis ordered column will set us up for the other part of the Window Function (see below).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 644465,
+              "key": "7e197529-5bd7-4856-91ca-4c41d08f6188",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 3 (Part B):**<br>\nThe `LEAD` function in the Window Function statement creates a new column called *lead* as part of the outer query: `LEAD(standard_sum) OVER (ORDER BY standard_sum) AS lead`\n\nThis new column named *lead* uses the values from *standard_sum* (in the ordered table from Step 3 (Part A)). Each row’s value in *lead* is pulled from the row after it. E.g., for account_id 1901, the value in *lead* will come from the row following it (i.e., for account_id 3371). Since the value is 79, the value in *lead* for account_id 1901 will be 79. For account_id 3371, the value in *lead* will be pulled from the following row (i.e., account_id 1961), which will be 102. This goes on for each row in the table.\n```\nSELECT account_id,\n       standard_sum,\n       LEAD(standard_sum) OVER (ORDER BY standard_sum) AS lead\nFROM   (\n        SELECT   account_id,\n                 SUM(standard_qty) AS standard_sum\n        FROM     demo.orders\n        GROUP BY 1\n       ) sub\n```\n**What you see after running this SQL code:**\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 644467,
+              "key": "724004bd-ed45-458b-a801-51b02bb552ea",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b1acc3c_lead-3/lead-3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/724004bd-ed45-458b-a801-51b02bb552ea",
+              "caption": "",
+              "alt": "",
+              "width": 869,
+              "height": 431,
+              "instructor_notes": null
+            },
+            {
+              "id": 644468,
+              "key": "59595a16-e088-4362-97c7-814c837d589b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 4:**\nTo compare the values between the rows, we need to use both columns (*standard_sum* and *lag*). We add a column named *lead_difference*, which subtracts the value in *standard_sum* from *lead* for each row in the table:\n`LEAD(standard_sum) OVER (ORDER BY standard_sum) - standard_sum AS lead_difference`\n\n```\nSELECT account_id,\n       standard_sum,\n       LEAD(standard_sum) OVER (ORDER BY standard_sum) AS lead,\n       LEAD(standard_sum) OVER (ORDER BY standard_sum) - standard_sum AS lead_difference\nFROM (\nSELECT account_id,\n       SUM(standard_qty) AS standard_sum\n       FROM orders \n       GROUP BY 1\n     ) sub\n```\nEach value in *lead_difference* is comparing the row values between the 2 columns (*standard_sum* and *lead*). E.g., for account_id 1901, the value in *lead_difference* will compare the value 0 (*standard_sum* for account_id 1901) with 79 (*lead* for account_id 1901) resulting in 79. This goes on for each row in the table. \n\n\n**What you see after running this SQL code:**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 644469,
+              "key": "16bff367-341f-42ba-b8eb-72f85f129c89",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b1acc55_lead-diff/lead-diff.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/16bff367-341f-42ba-b8eb-72f85f129c89",
+              "caption": "",
+              "alt": "",
+              "width": 904,
+              "height": 433,
+              "instructor_notes": null
+            },
+            {
+              "id": 644470,
+              "key": "f3edc0ae-7a9e-46e7-a463-d3f3ec55115e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Scenarios for using LAG and LEAD functions\nYou can use LAG and LEAD functions whenever you are trying to compare the values in adjacent rows or rows that are offset by a certain number.\n\n*Example 1: *\nYou have a sales dataset with the following data and need to compare how the market segments fare against each other on profits earned. \n\n| Market Segment | Profits earned by each market segment|\n| :-----------------------: | :------------------------:|\n| A| $550| \n| B | $500| \n|C | $670| \n|D | $730| \n|E | $982| \n\n\n*Example 2:*\nYou have an inventory dataset with the following data and need to compare the number of days elapsed between each subsequent order placed for Item A. \n\n| Inventory | Order_id|Dates when orders were placed|\n| :--------:| :---------:|:-------:|\n| Item A |001|11/2/2017|\n|Item A|002|11/5/2017|\n|Item A|003|11/8/2017|\n|Item A|004|11/15/2017|\n|Item A|005|11/28/2017|\n\nAs you can see, these are useful data analysis tools that you can use for more complex analysis!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 406855,
+          "key": "1035caf3-8d0c-4077-9c52-5185f162f2d9",
+          "title": "Quiz: Comparing a Row to Previous Row",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1035caf3-8d0c-4077-9c52-5185f162f2d9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463760,
+              "key": "1a302ed0-0277-4e5d-bca3-10445b976736",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Comparing a Row to Previous Row\nIn the previous video, Derek outlines how to compare a row to a previous or subsequent row. This technique can be useful when analyzing time-based events. Imagine you're an analyst at Parch & Posey and you want to determine how the current order's total revenue (\"total\" meaning from sales of all types of paper) compares to the next order's total revenue.\n\nModify Derek's query from the previous video in the SQL Explorer below to perform this analysis. You'll need to use `occurred_at` and `total_amt_usd` in the `orders` table along with `LEAD` to do so. In your query results, there should  be four columns: `occurred_at`, `total_amt_usd`, `lead`, and `lead_difference`.\n\n```\nSELECT account_id,\n       standard_sum,\n       LAG(standard_sum) OVER (ORDER BY standard_sum) AS lag,\n       LEAD(standard_sum) OVER (ORDER BY standard_sum) AS lead,\n       standard_sum - LAG(standard_sum) OVER (ORDER BY standard_sum) AS lag_difference,\n       LEAD(standard_sum) OVER (ORDER BY standard_sum) - standard_sum AS lead_difference\nFROM (\nSELECT account_id,\n       SUM(standard_qty) AS standard_sum\n  FROM orders \n GROUP BY 1\n ) sub\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558959,
+              "key": "70873ce4-9b23-4c95-beaf-49ce62e3d0e4",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "190615ba-8d97-4ef1-acbe-dfef00cb07f3",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 406856,
+          "key": "36df7e26-867b-45c2-a40b-efcf9da8fb2e",
+          "title": "Solutions: Comparing a Row to Previous Row",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "36df7e26-867b-45c2-a40b-efcf9da8fb2e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463759,
+              "key": "0bc52177-4633-447f-90f1-632476d40172",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Comparing a Row to a Previous Row\n```\nSELECT occurred_at,\n       total_amt_usd,\n       LEAD(total_amt_usd) OVER (ORDER BY occurred_at) AS lead,\n       LEAD(total_amt_usd) OVER (ORDER BY occurred_at) - total_amt_usd AS lead_difference\nFROM (\nSELECT occurred_at,\n       SUM(total_amt_usd) AS total_amt_usd\n  FROM orders \n GROUP BY 1\n) sub\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558960,
+              "key": "4b5d44b3-10df-4b6b-a1bc-a8e884702fe8",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "c8f03de7-e957-498a-b44c-6ccfd5aa642f",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 464019,
+          "key": "6c899be4-567b-49eb-a06a-0cf97d759f07",
+          "title": "Video: Introduction to Percentiles",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6c899be4-567b-49eb-a06a-0cf97d759f07",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 464020,
+              "key": "25317f4b-23ce-4174-aca2-5c789b2263cf",
+              "title": "Introduction to Percentiles",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "t7SX2ZEdxKA",
+                "china_cdn_id": "t7SX2ZEdxKA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 392074,
+          "key": "92f9fbfc-b4e9-49ac-9ba0-c0359d6363d3",
+          "title": "Video: Percentiles",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "92f9fbfc-b4e9-49ac-9ba0-c0359d6363d3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 410185,
+              "key": "d2c68067-7de4-457b-9537-881b3a5648ba",
+              "title": "Percentiles",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Qro8uvysnys",
+                "china_cdn_id": "Qro8uvysnys.mp4"
+              }
+            },
+            {
+              "id": 392099,
+              "key": "e6d575a7-9f13-4859-b458-85e77c5f4b91",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can use window functions to identify what percentile (or quartile, or any other subdivision) a given row falls into. The syntax is `NTILE(*# of buckets*)`. In this case, `ORDER BY` determines which column to use to determine the quartiles (or whatever number of ‘tiles you specify).\n\n## Expert Tip\n\nIn cases with relatively few rows in a window, the `NTILE` function doesn’t calculate exactly as you might expect. For example, If you only had two records and you were measuring percentiles, you’d expect one record to define the 1st percentile, and the other record to define the 100th percentile. Using the `NTILE` function, what you’d actually see is one record in the 1st percentile, and one in the 2nd percentile.\n\nIn other words, when you use a NTILE function but the number of rows in the partition is less than the NTILE(number of groups), then NTILE will divide the rows into as many groups as there are members (rows) in the set but then stop short of the requested number of groups. If you’re working with very small windows, keep this in mind and consider using quartiles or similarly small bands.\n\nYou can check out a complete list of window functions in Postgres (the syntax Mode uses) in the [Postgres documentation](https://www.postgresql.org/docs/8.4/static/functions-window.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 392075,
+          "key": "1fca23b4-1d41-45d0-8c7e-182121298f5d",
+          "title": "Quiz: Percentiles",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1fca23b4-1d41-45d0-8c7e-182121298f5d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 409596,
+              "key": "fdc44e23-4423-4fcd-8d00-35815d6400e3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Percentiles with Partitions\n\nYou can use partitions with percentiles to determine the percentile of a specific subset of all rows. Imagine you're an analyst at Parch & Posey and you want to determine the largest orders (in terms of quantity) a specific customer has made to encourage them to order more similarly sized large orders. You only want to consider the `NTILE` for that customer's `account_id`.\n\nIn the SQL Explorer below, write three queries (separately) that reflect each of the following:\n\n1.  Use the `NTILE` functionality to divide the accounts into 4 levels in terms of the amount of `standard_qty` for their orders.  Your resulting table should have the `account_id`, the `occurred_at` time for each order, the total amount of `standard_qty` paper purchased, and one of four levels in a `standard_quartile` column.<br><br>\n\n2. Use the `NTILE` functionality to divide the accounts into two levels in terms of the amount of `gloss_qty` for their orders.  Your resulting table should have the `account_id`, the `occurred_at` time for each order, the total amount of `gloss_qty` paper purchased, and one of two levels in a `gloss_half` column.<br><br>\n\n3. Use the `NTILE` functionality to divide the orders for each account into 100 levels in terms of the amount of `total_amt_usd` for their orders.  Your resulting table should have the `account_id`, the `occurred_at` time for each order, the total amount of `total_amt_usd` paper purchased, and one of 100 levels in a `total_percentile` column.<br><br>\n\n**Note:** To make it easier to interpret the results, order by the account_id in each of the queries.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558962,
+              "key": "7a0732f6-c584-4ee0-8c88-ce3f735ad059",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "a86e3cf2-38f6-446e-9aa0-1bb28ca14862",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392076,
+          "key": "ddc851c9-8bb1-48f5-b0ec-67f89638f0d7",
+          "title": "Solutions: Percentiles",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ddc851c9-8bb1-48f5-b0ec-67f89638f0d7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463770,
+              "key": "01f020f5-602a-436b-a322-ae7ba230a88e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Percentiles with Partitions\n\n### 1.\n\n```\nSELECT\n       account_id,\n       occurred_at,\n       standard_qty,\n       NTILE(4) OVER (PARTITION BY account_id ORDER BY standard_qty) AS standard_quartile\n  FROM orders \n ORDER BY account_id DESC\n```\n\n### 2.\n\n```\nSELECT\n       account_id,\n       occurred_at,\n       gloss_qty,\n       NTILE(2) OVER (PARTITION BY account_id ORDER BY gloss_qty) AS gloss_half\n  FROM orders \n ORDER BY account_id DESC\n```\n\n### 3.\n\n```\nSELECT\n       account_id,\n       occurred_at,\n       total_amt_usd,\n       NTILE(100) OVER (PARTITION BY account_id ORDER BY total_amt_usd) AS total_percentile\n  FROM orders \n ORDER BY account_id DESC\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558961,
+              "key": "850c231d-6237-453d-9360-3088562ce41d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82656be9",
+              "pool_id": "sqlwidget",
+              "view_id": "c79936d1-01c9-4252-b99a-d800d0e18222",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392077,
+          "key": "4a0e6e4a-e94c-40c3-8389-1a09a5bd9126",
+          "title": "Video: Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4a0e6e4a-e94c-40c3-8389-1a09a5bd9126",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406818,
+              "key": "b568dcd1-454f-4ec8-825c-506b57cc2fde",
+              "title": "Window Functions Conclusion",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2ZdocDMw7D8",
+                "china_cdn_id": "2ZdocDMw7D8.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

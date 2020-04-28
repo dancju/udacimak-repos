@@ -1,0 +1,1506 @@
+{
+  "data": {
+    "lesson": {
+      "id": 918918,
+      "key": "894c3f27-f665-4d1e-884f-170a5bbfb992",
+      "title": "SQL Aggregations",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you will learn how to aggregate data using SQL functions like SUM, AVG, and COUNT. Additionally, CASE, HAVING, and DATE functions provide you an incredible problem solving toolkit.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/894c3f27-f665-4d1e-884f-170a5bbfb992/918918/1581973961835/SQL+Aggregations+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/894c3f27-f665-4d1e-884f-170a5bbfb992/918918/1581973956776/SQL+Aggregations+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 371813,
+          "key": "283d9eba-2541-47ab-8111-6dd57ff3f066",
+          "title": "Video: Introduction to Aggregation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "283d9eba-2541-47ab-8111-6dd57ff3f066",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402948,
+              "key": "c2882ede-6eeb-4a7d-baea-e1622ff50711",
+              "title": "Introduction to Aggregations",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5vRf_Ntoxfw",
+                "china_cdn_id": "5vRf_Ntoxfw.mp4"
+              }
+            },
+            {
+              "id": 402950,
+              "key": "bc5e23d7-63c2-402c-a474-3284edfc4387",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the following concepts you will be learning in detail about each of the aggregate functions mentioned as well as some additional aggregate functions that are used in SQL all the time.  Let's get started!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 371814,
+          "key": "8b786661-faf4-4664-8fa8-af196b826d5c",
+          "title": "Video: Introduction to NULLs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8b786661-faf4-4664-8fa8-af196b826d5c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402951,
+              "key": "b6a4e6a7-bbad-4065-9282-84fd644afaf9",
+              "title": "NULLs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WYUkLKn6XCw",
+                "china_cdn_id": "WYUkLKn6XCw.mp4"
+              }
+            },
+            {
+              "id": 402952,
+              "key": "4d892f38-77ac-4de3-acdf-336f079e20f1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**NULLs** are a datatype that specifies where no data exists in SQL.  They are often ignored in our aggregation functions, which you will get a first look at in the next concept using **COUNT**.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 402953,
+          "key": "46f30a9c-fe2e-49d5-89fb-f8984212a176",
+          "title": "Video: NULLs and Aggregation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "46f30a9c-fe2e-49d5-89fb-f8984212a176",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402954,
+              "key": "03ec1ef2-9d99-45e9-ba5d-f5cca46380c6",
+              "title": "Data Types and NULLs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RgTcYwKqtYI",
+                "china_cdn_id": "RgTcYwKqtYI.mp4"
+              }
+            },
+            {
+              "id": 402955,
+              "key": "181f5414-be83-4800-b052-36541242e85e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Notice that **NULL**s are different than a zero - they are cells where data does not exist. \n\nWhen identifying **NULL**s in a **WHERE** clause, we write **IS NULL** or **IS NOT NULL**.  We don't use `=`, because **NULL** isn't considered a value in SQL.  Rather, it is a property of the data.\n\n# NULLs - Expert Tip\n\nThere are two common ways in which you are likely to encounter **NULL**s:\n\n*  **NULL**s frequently occur when performing a **LEFT** or **RIGHT JOIN**. You saw in the last lesson - when some rows in the left table of a left join are not matched with rows in the right table, those rows will contain some **NULL** values in the result set.<br><br>\n\n*  **NULL**s can also occur from simply missing data in our database.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 371823,
+          "key": "9676f80f-c6a6-4592-881e-1a40712d16ed",
+          "title": "Video + Text: First Aggregation - COUNT",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9676f80f-c6a6-4592-881e-1a40712d16ed",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 403022,
+              "key": "0360d283-6e32-4e65-8c85-6d433ae14497",
+              "title": "COUNT",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b4FCWAEGmLg",
+                "china_cdn_id": "b4FCWAEGmLg.mp4"
+              }
+            },
+            {
+              "id": 372261,
+              "key": "5ae6809d-9482-4923-be29-bd30da35065f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### COUNT the Number of Rows in a Table\n\nTry your hand at finding the number of rows in each table.  Here is an example of finding all the rows in the **accounts** table.\n\n```\nSELECT COUNT(*)\nFROM accounts;\n```\n\nBut we could have just as easily chosen a column to drop into the aggregation function:\n\n```\nSELECT COUNT(accounts.id)\nFROM accounts;\n```\n\nThese two statements are equivalent, but this isn't always the case, which we will see in the next video.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372351,
+              "key": "a56e3033-8110-4de1-90d5-34ffb951be69",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "32b0af4c-8e70-413c-899c-456d713b1599",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 403027,
+          "key": "26b6c76b-d2aa-4f97-ae90-e1f5f3d701f8",
+          "title": "Video: COUNT & NULLs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "26b6c76b-d2aa-4f97-ae90-e1f5f3d701f8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419942,
+              "key": "cf20d068-df6f-4153-a988-6d4d3667a44a",
+              "title": "COUNT & NULLs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ngxgqfFFFLQ",
+                "china_cdn_id": "ngxgqfFFFLQ.mp4"
+              }
+            },
+            {
+              "id": 403029,
+              "key": "e4b6a197-9329-4374-bd2e-056ae221edf4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Notice that **COUNT** does not consider rows that have **NULL** values.  Therefore, this can be useful for quickly identifying which rows have missing data.  You will learn **GROUP BY** in an upcoming concept, and then each of these aggregators will become much more useful.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372268,
+          "key": "e7fa8140-4c55-41fc-8bfd-8acc64bf0f4f",
+          "title": "Video: SUM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e7fa8140-4c55-41fc-8bfd-8acc64bf0f4f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 403036,
+              "key": "bcf95bb8-2386-413d-b2c9-54c2a8661c22",
+              "title": "SUM",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0zUP14PeiXk",
+                "china_cdn_id": "0zUP14PeiXk.mp4"
+              }
+            },
+            {
+              "id": 392035,
+              "key": "68c92e9b-84ec-4034-839a-0f5ea56b4a5e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Unlike **COUNT**, you can only use **SUM** on numeric columns.  However, **SUM** will ignore **NULL** values, as do the other aggregation functions you will see in the upcoming lessons.\n\n### Aggregation Reminder\n\nAn important thing to remember: **aggregators only aggregate vertically - the values of a column**. If you want to perform a calculation across rows, you would do this with [simple arithmetic](https://community.modeanalytics.com/sql/tutorial/sql-operators/#arithmetic-in-sql).\n\nWe saw this in the first lesson if you need a refresher, but the quiz in the next concept should assure you still remember how to aggregate across rows.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372270,
+          "key": "a9f5ce88-e9ae-4baf-8950-1389a77816bd",
+          "title": "Quiz: SUM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a9f5ce88-e9ae-4baf-8950-1389a77816bd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372295,
+              "key": "4ecfdba3-c9a8-4d8e-8824-e5bfd9a545f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Aggregation Questions\n\nUse the **SQL** environment below to find the solution for each of the following questions.  If you get stuck or want to check your answers, you can find the answers at the top of the next concept.\n\n1.  Find the total amount of **poster_qty** paper ordered in the **orders** table.<br><br>\n2.  Find the total amount of **standard_qty** paper ordered in the **orders** table.<br><br>\n3.  Find the total dollar amount of sales using the **total_amt_usd** in the **orders** table.<br><br>\n4.  Find the total amount spent on **standard_amt_usd** and **gloss_amt_usd** paper for each order in the orders table.  This should give a dollar amount for each order in the table.<br><br>\n5. Find the **standard_amt_usd** per unit of **standard_qty** paper.  Your solution should use both an aggregation and a mathematical operator.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558915,
+              "key": "c9c937e4-57d6-48cd-b451-0ef58c91587f",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "44750ed6-7dda-46ca-9edf-72b20146632e",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392033,
+          "key": "43d137b0-d718-4097-940c-3a980fd8fb41",
+          "title": "Solution: SUM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "43d137b0-d718-4097-940c-3a980fd8fb41",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 392034,
+              "key": "48196471-4e3a-4d74-9c21-9fb61b3b32cd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### SUM Solutions\n\n1.  Find the total amount of **poster_qty** paper ordered in the **orders** table.\n```\nSELECT SUM(poster_qty) AS total_poster_sales\nFROM orders;\n```\n\n2.  Find the total amount of **standard_qty** paper ordered in the **orders** table.\n```\nSELECT SUM(standard_qty) AS total_standard_sales\nFROM orders;\n```\n\n3.  Find the total dollar amount of sales using the **total_amt_usd** in the **orders** table.\n```\nSELECT SUM(total_amt_usd) AS total_dollar_sales\nFROM orders;\n```\n\n4.  Find the total amount for each individual order that was spent on **standard** and **gloss** paper in the orders table.  This should give a dollar amount for each order in the table. <br><br> **Notice, this solution did not use an aggregate**.\n```\nSELECT standard_amt_usd + gloss_amt_usd AS total_standard_gloss\nFROM orders;\n```\n\n5. Though the **price/standard_qty** paper varies from one order to the next.  I would like this ratio across all of the sales made in the **orders** table.<br><br>**Notice, this solution used both an aggregate and our mathematical operators**\n```\nSELECT SUM(standard_amt_usd)/SUM(standard_qty) AS standard_price_per_unit\nFROM orders;\n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558916,
+              "key": "11b1f76f-ffc5-4094-bfd1-a7d501359d09",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "ace8439e-90cf-411e-a9d0-4bb5d7c78238",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 372297,
+          "key": "be4065a1-fbd5-4d14-8175-24e44a8a25ba",
+          "title": "Video: MIN & MAX",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "be4065a1-fbd5-4d14-8175-24e44a8a25ba",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 403034,
+              "key": "050d53ed-343d-4d75-a636-88564f6bc161",
+              "title": "MIN & MAX",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1ewVsgWUih8",
+                "china_cdn_id": "1ewVsgWUih8.mp4"
+              }
+            },
+            {
+              "id": 372300,
+              "key": "60be71a8-2b53-48a2-912e-9915f457b58f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Notice that here we were simultaneously obtaining the **MIN** and **MAX** number of orders of each paper type.  However, you could run each individually.\n\nNotice that **MIN** and **MAX** are aggregators that again ignore **NULL** values.  Check the expert tip below for a cool trick with **MAX** & **MIN**.\n\n### Expert Tip\n\nFunctionally, **MIN** and **MAX** are similar to **COUNT** in that they can be used on non-numerical columns. Depending on the column type, **MIN** will return the lowest number, earliest date, or non-numerical value as early in the alphabet as possible. As you might suspect, **MAX** does the opposite—it returns the highest number, the latest date, or the non-numerical value closest alphabetically to “Z.”\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372302,
+          "key": "cc13036e-79b8-4ed9-b034-391bd2fd6a38",
+          "title": "Video: AVG",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cc13036e-79b8-4ed9-b034-391bd2fd6a38",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402937,
+              "key": "4b2accb8-7739-44be-b9be-e8728fc734d1",
+              "title": "AVG",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "diqCDztOL64",
+                "china_cdn_id": "diqCDztOL64.mp4"
+              }
+            },
+            {
+              "id": 372306,
+              "key": "096a1adb-9eda-4394-a153-0b2de732e75b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Similar to other software **AVG** returns the mean of the data - that is the sum of all of the values in the column divided by the number of values in a column.  This aggregate function again ignores the **NULL** values in both the numerator and the denominator.\n\nIf you want to count **NULL**s as zero, you will need to use **SUM** and **COUNT**.  However, this is probably not a good idea if the **NULL** values truly just represent unknown values for a cell.  \n\n### MEDIAN - Expert Tip\n\nOne quick note that a median might be a more appropriate measure of center for this data, but finding the median happens to be a pretty difficult thing to get using SQL alone — so difficult that finding a median is occasionally asked as an interview question.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372304,
+          "key": "cb699cd9-3391-4748-86d2-0158c1de37c0",
+          "title": "Quiz: MIN, MAX, & AVG",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cb699cd9-3391-4748-86d2-0158c1de37c0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372493,
+              "key": "5a05309c-0d67-4f0e-8a44-194e8458e76a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Questions: MIN, MAX, & AVERAGE \n\nUse the **SQL** environment below to assist with answering the following questions.  Whether you get stuck or you just want to double check your solutions, my answers can be found at the top of the next concept.\n\n1. When was the earliest order ever placed?  You only need to return the date.<br><br>\n2. Try performing the same query as in question 1 without using an aggregation function. <br><br>\n3. When did the most recent (latest) **web_event** occur?<br><br>\n4. Try to perform the result of the previous query without using an aggregation function.<br><br>\n5. Find the mean (**AVERAGE**) amount spent per order on each paper type, as well as the mean amount of each paper type purchased per order.  Your final answer should have 6 values - one for each paper type for the average number of sales, as well as the average amount.<br><br>\n6. Via the video, you might be interested in how to calculate the MEDIAN.  Though this is more advanced than what we have covered so far try finding - what is the MEDIAN **total_usd** spent on all **orders**?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558917,
+              "key": "51b8a32b-7d14-4e2d-8a32-d64913367c59",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "fc12d32d-224a-49de-a9ea-83fb30bebf8a",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392036,
+          "key": "8f65cc46-cd5b-4da4-b648-24313ff8a560",
+          "title": "Solutions: MIN, MAX, & AVG",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8f65cc46-cd5b-4da4-b648-24313ff8a560",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 392037,
+              "key": "dbfb427b-9e6c-4b5e-ae3c-5eda43c43f3c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solutions: MIN, MAX, and AVERAGE\n\n1. When was the earliest order ever placed?\n```\nSELECT MIN(occurred_at) \nFROM orders;\n```\n2. Try performing the same query as in question 1 without using an aggregation function. <br><br>\n```\nSELECT occurred_at \nFROM orders \nORDER BY occurred_at\nLIMIT 1;\n```\n3. When did the most recent (latest) **web_event** occur?\n```\nSELECT MAX(occurred_at)\nFROM web_events;\n```\n4. Try to perform the result of the previous query without using an aggregation function.\n```\nSELECT occurred_at\nFROM web_events\nORDER BY occurred_at DESC\nLIMIT 1;\n```\n5. Find the mean (**AVERAGE**) amount spent per order on each paper type, as well as the mean amount of each paper type purchased per order.  Your final answer should have 6 values - one for each paper type for the average number of sales, as well as the average amount.\n```\nSELECT AVG(standard_qty) mean_standard, AVG(gloss_qty) mean_gloss, \n              AVG(poster_qty) mean_poster, AVG(standard_amt_usd) mean_standard_usd, \n              AVG(gloss_amt_usd) mean_gloss_usd, AVG(poster_amt_usd) mean_poster_usd\nFROM orders;\n```\n6. Via the video, you might be interested in how to calculate the MEDIAN.  Though this is more advanced than what we have covered so far try finding - what is the MEDIAN **total_usd** spent on all **orders**? Note, this is more advanced than the topics we have covered thus far to build a general solution, but we can hard code a solution in the following way.\n```\nSELECT *\nFROM (SELECT total_amt_usd\n         FROM orders\n         ORDER BY total_amt_usd\n         LIMIT 3457) AS Table1\nORDER BY total_amt_usd DESC\nLIMIT 2;\n```\nSince there are 6912 orders - we want the average of the 3457 and 3456 order amounts when ordered.  This is the average of 2483.16 and 2482.55.   This gives the median of **2482.855**.  This obviously isn't an ideal way to compute.  If we obtain new orders, we would have to change the limit.  SQL didn't even calculate the median for us.  The above used a SUBQUERY, but you could use any method to find the two necessary values, and then you just need the average of them.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558918,
+              "key": "70d01fda-9f64-4cca-900f-43c7b95090e8",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "8eec9694-ff01-4a23-b9dd-1f3b3d783152",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 372307,
+          "key": "0a0f7f0d-8aac-4df0-a862-5a0cc6395bde",
+          "title": "Video: GROUP BY",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0a0f7f0d-8aac-4df0-a862-5a0cc6395bde",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402939,
+              "key": "29b8c3b5-b521-4e96-ad5b-c2e075d248d1",
+              "title": "GROUP BY",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9vb67TF4WV0",
+                "china_cdn_id": "9vb67TF4WV0.mp4"
+              }
+            },
+            {
+              "id": 372309,
+              "key": "12cfe3a0-fa60-49af-b60b-14498e82e79e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The key takeaways here:\n\n* **GROUP BY** can be used to aggregate data within subsets of the data.  For example, grouping for different accounts, different regions, or different sales representatives.<br><br>\n\n* Any column in the **SELECT** statement that is not within an aggregator must be in the **GROUP BY** clause.<br><br>\n\n* The **GROUP BY** always goes between **WHERE** and **ORDER BY**.<br><br>\n\n* **ORDER BY** works like **SORT** in spreadsheet software.\n\n### GROUP BY - Expert Tip\n\nBefore we dive deeper into aggregations using **GROUP BY** statements, it is worth noting that SQL evaluates the aggregations before the **LIMIT** clause. If you don’t group by any columns, you’ll get a 1-row result—no problem there. If you group by a column with enough unique values that it exceeds the **LIMIT** number, the aggregates will be calculated, and then some rows will simply be omitted from the results.\n\nThis is actually a nice way to do things because you know you’re going to get the correct aggregates. If SQL cuts the table down to 100 rows, then performed the aggregations, your results would be substantially different. The above query’s results exceed 100 rows, so it’s a perfect example. In the next concept, use the SQL environment to try removing the **LIMIT** and running it again to see what changes.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372310,
+          "key": "1d61769f-cde5-4f4a-b4db-e5c0de9b3285",
+          "title": "Quiz: GROUP BY",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d61769f-cde5-4f4a-b4db-e5c0de9b3285",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372513,
+              "key": "c95536d4-4393-46d0-92f2-1477919a843a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### GROUP BY Note\n\nNow that you have been introduced to **JOIN**s, **GROUP BY**, and aggregate functions, the real power of **SQL** starts to come to life.  Try some of the below to put your skills to the test!\n\n### Questions: GROUP BY\n\nUse the **SQL** environment below to assist with answering the following questions.  Whether you get stuck or you just want to double check your solutions, my answers can be found at the top of the next concept.  \n\nOne part that can be difficult to recognize is when it might be easiest to use an aggregate or one of the other SQL functionalities.  Try some of the below to see if you can differentiate to find the easiest solution.\n\n1. Which **account** (by name) placed the earliest order?  Your solution should have the **account name** and the **date** of the order.<br><br>\n2.  Find the total sales in **usd** for each account.  You should include two columns - the total sales for each company's orders in **usd** and the company **name**.<br><br>\n3. Via what **channel** did the most recent (latest) **web_event** occur, which **account** was associated with this **web_event**? Your query should return only three values - the **date**, **channel**, and **account name**.<br><br>\n4. Find the total number of times each type of **channel** from the **web_events** was used.  Your final table should have two columns - the **channel** and the number of times the channel was used.<br><br>\n5. Who was the **primary contact** associated with the earliest **web_event**?  <br><br>\n6. What was the smallest order placed by each **account** in terms of **total usd**.  Provide only two columns - the account **name** and the **total usd**. Order from smallest dollar amounts to largest.<br><br>\n7.  Find the number of **sales reps** in each region.  Your final table should have two columns - the **region** and the number of **sales_reps**. Order from fewest reps to most reps.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558919,
+              "key": "8dd299f6-1556-4cf9-862c-44eea9278018",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "93f3ba56-6159-4d1b-a164-46c477a9d715",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392038,
+          "key": "4c0c398a-b614-4d21-865e-ea99db51fd6b",
+          "title": "Solutions: GROUP BY",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4c0c398a-b614-4d21-865e-ea99db51fd6b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 392039,
+              "key": "c7faeb5d-276c-4260-b85f-688cfbaa4203",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solutions: GROUP BY\n\n1. Which **account** (by name) placed the earliest order?  Your solution should have the **account name** and the **date** of the order.\n```\nSELECT a.name, o.occurred_at\nFROM accounts a\nJOIN orders o\nON a.id = o.account_id\nORDER BY occurred_at\nLIMIT 1;\n```\n2.  Find the total sales in **usd** for each account.  You should include two columns - the total sales for each company's orders in **usd** and the company **name**.\n```\nSELECT a.name, SUM(total_amt_usd) total_sales\nFROM orders o\nJOIN accounts a\nON a.id = o.account_id\nGROUP BY a.name;\n```\n3. Via what **channel** did the most recent (latest) **web_event** occur, which **account** was associated with this **web_event**? Your query should return only three values - the **date**, **channel**, and **account name**.\n```\nSELECT w.occurred_at, w.channel, a.name\nFROM web_events w\nJOIN accounts a\nON w.account_id = a.id \nORDER BY w.occurred_at DESC\nLIMIT 1;\n```\n4. Find the total number of times each type of **channel** from the **web_events** was used.  Your final table should have two columns - the **channel** and the number of times the channel was used.\n```\nSELECT w.channel, COUNT(*)\nFROM web_events w\nGROUP BY w.channel\n```\n5. Who was the **primary contact** associated with the earliest **web_event**? \n```\nSELECT a.primary_poc\nFROM web_events w\nJOIN accounts a\nON a.id = w.account_id\nORDER BY w.occurred_at\nLIMIT 1;\n```\n6. What was the smallest order placed by each **account** in terms of **total usd**.  Provide only two columns - the account **name** and the **total usd**.  Order from smallest dollar amounts to largest.\n```\nSELECT a.name, MIN(total_amt_usd) smallest_order\nFROM accounts a\nJOIN orders o\nON a.id = o.account_id\nGROUP BY a.name\nORDER BY smallest_order;\n```\nSort of strange we have a bunch of orders with no dollars.  We might want to look into those. <br><br>\n7.  Find the number of **sales reps** in each region.  Your final table should have two columns - the **region** and the number of **sales_reps**.  Order from fewest reps to most reps.\n```\nSELECT r.name, COUNT(*) num_reps\nFROM region r\nJOIN sales_reps s\nON r.id = s.region_id\nGROUP BY r.name\nORDER BY num_reps;\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558920,
+              "key": "169c8862-e507-4a8a-8006-179b2506ac9b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "fd1d6d85-c2b6-4d92-9e3c-65dab76eaefc",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 372311,
+          "key": "4fa22b85-f179-48b1-99f1-de24c2d7e92b",
+          "title": "Video: GROUP BY Part II",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4fa22b85-f179-48b1-99f1-de24c2d7e92b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419941,
+              "key": "14ea087e-5a49-4f0c-ac33-6fe2b021136e",
+              "title": "GROUP BY Part II",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0HQ-TshNNQA",
+                "china_cdn_id": "0HQ-TshNNQA.mp4"
+              }
+            },
+            {
+              "id": 372313,
+              "key": "2afc69ea-a174-4668-9ef5-0c4d447831d5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Key takeaways:\n\n* You can **GROUP BY** multiple columns at once, as we showed here.  This is often useful to aggregate across a number of different segments.  <br><br>\n* The order of columns listed in the **ORDER BY** clause does make a difference.  You are ordering the columns from left to right.\n\n### GROUP BY - Expert Tips\n\n* The order of column names in your **GROUP BY** clause doesn’t matter—the results will be the same regardless. If we run the same query and reverse the order in the **GROUP BY** clause, you can see we get the same results.<br><br>\n\n* As with **ORDER BY**, you can substitute numbers for column names in the **GROUP BY** clause. It’s generally recommended to do this only when you’re grouping many columns, or if something else is causing the text in the GROUP BY clause to be excessively long.<br><br>\n\n* A reminder here that any column that is not within an aggregation must show up in your GROUP BY statement.  If you forget, you will likely get an error.  However, in the off chance that your query does work, you might not like the results! \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372314,
+          "key": "5a403f64-56e2-4a3c-8f3e-288c5a9b51c0",
+          "title": "Quiz: GROUP BY Part II",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5a403f64-56e2-4a3c-8f3e-288c5a9b51c0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 373553,
+              "key": "b65fc7d2-5fa9-4c72-87c7-06bbd5af3ad4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Questions: GROUP BY Part II\n\nUse the **SQL** environment below to assist with answering the following questions.  Whether you get stuck or you just want to double check your solutions, my answers can be found at the top of the next concept.  \n\n1. For each account, determine the average amount of each type of paper they purchased across their orders. Your result should have four columns - one for the account **name** and one for the average quantity purchased for each of the paper types for each account. <br><br>\n\n2.   For each account, determine the average amount spent per order on each paper type. Your result should have four columns - one for the account **name** and one for the average amount spent on each paper type.<br><br>\n\n3.  Determine the number of times a particular **channel** was used in the **web_events** table for each **sales rep**.  Your final table should have three columns - the **name of the sales rep**, the **channel**, and the number of occurrences.  Order your table with the highest number of occurrences first.<br><br>\n\n4.  Determine the number of times a particular **channel** was used in the **web_events** table for each **region**.  Your final table should have three columns - the **region name**, the **channel**, and the number of occurrences.  Order your table with the highest number of occurrences first.<br><br>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558921,
+              "key": "72d950d7-6554-4ad8-a32c-d70d5b41574f",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "7da468c6-d157-4522-a026-3aeb545796d7",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392040,
+          "key": "b5cc36bc-4bfe-41c1-aae2-281984d6c39b",
+          "title": "Solutions: GROUP BY Part II",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b5cc36bc-4bfe-41c1-aae2-281984d6c39b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 392041,
+              "key": "50cad11d-c0eb-49b9-bd50-eb5f1f79e032",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solutions: GROUP BY Part II\n\n1. For each account, determine the average amount of each type of paper they purchased across their orders. Your result should have four columns - one for the account **name** and one for the average spent on each of the paper types. \n```\nSELECT a.name, AVG(o.standard_qty) avg_stand, AVG(o.gloss_qty) avg_gloss, AVG(o.poster_qty) avg_post\nFROM accounts a\nJOIN orders o\nON a.id = o.account_id\nGROUP BY a.name;\n```\n2.   For each account, determine the average amount spent per order on each paper type. Your result should have four columns - one for the account **name** and one for the average amount spent on each paper type.\n```\nSELECT a.name, AVG(o.standard_amt_usd) avg_stand, AVG(o.gloss_amt_usd) avg_gloss, AVG(o.poster_amt_usd) avg_post\nFROM accounts a\nJOIN orders o\nON a.id = o.account_id\nGROUP BY a.name;\n```\n3.  Determine the number of times a particular **channel** was used in the **web_events** table for each **sales rep**.  Your final table should have three columns - the **name of the sales rep**, the **channel**, and the number of occurrences.  Order your table with the highest number of occurrences first.\n```\nSELECT s.name, w.channel, COUNT(*) num_events\nFROM accounts a\nJOIN web_events w\nON a.id = w.account_id\nJOIN sales_reps s\nON s.id = a.sales_rep_id\nGROUP BY s.name, w.channel\nORDER BY num_events DESC;\n```\n4.  Determine the number of times a particular **channel** was used in the **web_events** table for each **region**.  Your final table should have three columns - the **region name**, the **channel**, and the number of occurrences.  Order your table with the highest number of occurrences first.\n```\nSELECT r.name, w.channel, COUNT(*) num_events\nFROM accounts a\nJOIN web_events w\nON a.id = w.account_id\nJOIN sales_reps s\nON s.id = a.sales_rep_id\nJOIN region r\nON r.id = s.region_id\nGROUP BY r.name, w.channel\nORDER BY num_events DESC;\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558922,
+              "key": "618deb6e-7fb5-4d0e-a30e-3475bfc51322",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "2a90af95-9363-4cd7-9d82-0e71753f6f63",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 372315,
+          "key": "e73c0ee2-986b-4a6c-8fd7-8d2941383084",
+          "title": "Video: DISTINCT",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e73c0ee2-986b-4a6c-8fd7-8d2941383084",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402941,
+              "key": "879a2d21-afce-4884-bf50-0766f809d0fc",
+              "title": "DISTINCT",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YDJEHkgKORY",
+                "china_cdn_id": "YDJEHkgKORY.mp4"
+              }
+            },
+            {
+              "id": 372318,
+              "key": "b06402ca-56a3-4002-9014-7a16ef07e515",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**DISTINCT** is always used in **SELECT** statements, and it provides the unique rows for all columns written in the **SELECT** statement.  Therefore, you only use **DISTINCT** once in any particular **SELECT** statement. \n\nYou could write:\n\n```\nSELECT DISTINCT column1, column2, column3\nFROM table1;\n```\nwhich would return the unique (or **DISTINCT**) rows across all three columns.\n\nYou would **not** write:\n\n```\nSELECT DISTINCT column1, DISTINCT column2, DISTINCT column3\nFROM table1;\n```\n\n\n You can think of **DISTINCT** the same way you might think of the statement \"unique\".  \n\n### DISTINCT - Expert Tip\n\nIt’s worth noting that using **DISTINCT**, particularly in aggregations, can slow your queries down quite a bit. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372319,
+          "key": "a3f13925-4ff9-4769-85cd-c7c4fa346258",
+          "title": "Quiz: DISTINCT",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a3f13925-4ff9-4769-85cd-c7c4fa346258",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 377060,
+              "key": "55281b88-fdc4-4155-a696-751ca1c3e78a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Questions: DISTINCT\n\nUse the **SQL** environment below to assist with answering the following questions.  Whether you get stuck or you just want to double check your solutions, my answers can be found at the top of the next concept.  \n\n1. Use **DISTINCT** to test if there are any accounts associated with more than one region.<br><br>\n\n2.  Have any **sales reps** worked on more than one account?<br><br>\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558923,
+              "key": "99abfa3d-5482-4351-9550-6641881dbd92",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "81a51917-75e8-4966-882f-53737bdbf2fa",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392042,
+          "key": "0ea17f24-c61b-445b-b33e-b7560f151c1e",
+          "title": "Solutions: DISTINCT",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0ea17f24-c61b-445b-b33e-b7560f151c1e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 392043,
+              "key": "2728eaf2-73c9-4556-a397-5ff635dff3b3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solutions: DISTINCT\n\n1. Use **DISTINCT** to test if there are any accounts associated with more than one region.<br><br>\nThe below two queries have the same number of resulting rows (351), so we know that every account is associated with only one region.  If each account was associated with more than one region, the first query should have returned more rows than the second query.\n```\nSELECT a.id as \"account id\", r.id as \"region id\", \na.name as \"account name\", r.name as \"region name\"\nFROM accounts a\nJOIN sales_reps s\nON s.id = a.sales_rep_id\nJOIN region r\nON r.id = s.region_id;\n```\nand \n```\nSELECT DISTINCT id, name\nFROM accounts;\n```\n\n2.  Have any **sales reps** worked on more than one account?<br><br>\nActually all of the sales reps have worked on more than one account.  The fewest number of accounts any sales rep works on is 3.  There are 50 sales reps, and they all have more than one account.  Using **DISTINCT** in the second query assures that all of the sales reps are accounted for in the first query. \n```\nSELECT s.id, s.name, COUNT(*) num_accounts\nFROM accounts a\nJOIN sales_reps s\nON s.id = a.sales_rep_id\nGROUP BY s.id, s.name\nORDER BY num_accounts;\n```\nand\n```\nSELECT DISTINCT id, name\nFROM sales_reps;\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558924,
+              "key": "a4071a7c-e4d8-4abb-b840-a0960e62031e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "ef40b95f-1ab9-40a3-9815-1434243928b2",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 372320,
+          "key": "10e079f5-bd0c-43d9-a728-184cadfd173d",
+          "title": "Video: HAVING",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "10e079f5-bd0c-43d9-a728-184cadfd173d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 464440,
+              "key": "7b4214ac-eafd-41d0-ba8a-83ae26c70f3a",
+              "title": "Having",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "D4gmN0vnk58",
+                "china_cdn_id": "D4gmN0vnk58.mp4"
+              }
+            },
+            {
+              "id": 372322,
+              "key": "05da155c-ee23-453a-a04a-8a6cfbc1e3fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### HAVING - Expert Tip\n\n**HAVING** is the “clean” way to filter a query that has been aggregated, but this is also commonly done using a [subquery](https://community.modeanalytics.com/sql/tutorial/sql-subqueries/).  Essentially, any time you want to perform a **WHERE** on an element of your query that was created by an aggregate, you need to use **HAVING** instead.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372323,
+          "key": "626dbb04-14f8-4215-ac69-81d323e4bf59",
+          "title": "HAVING",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "626dbb04-14f8-4215-ac69-81d323e4bf59",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 403076,
+              "key": "e86700eb-2305-4bf7-a252-51788d12ac30",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e86700eb-2305-4bf7-a252-51788d12ac30",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Often there is confusion about the difference between **WHERE** and **HAVING**.  Select all the statements that are true regarding **HAVING** and **WHERE** statements.",
+                "answers": [
+                  {
+                    "id": "a1505845998283",
+                    "text": "**WHERE** subsets the returned data based on a logical condition.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505846090728",
+                    "text": "**WHERE** appears after the **FROM**, **JOIN**, and **ON** clauses, but before **GROUP BY**.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505846120686",
+                    "text": "**HAVING** appears after the **GROUP BY** clause, but before the **ORDER BY** clause.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505846169235",
+                    "text": "**HAVING** is like **WHERE**, but it works on logical statements involving aggregations.  ",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 377079,
+              "key": "5847ff51-b1ab-4560-ba88-89bcd938091d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Questions: HAVING\n\nUse the **SQL** environment below to assist with answering the following questions.  Whether you get stuck or you just want to double check your solutions, my answers can be found at the top of the next concept.  \n\n1. How many of the **sales reps** have more than 5 accounts that they manage?<br><br>\n\n2. How many **accounts** have more than 20 orders?<br><br>\n\n3. Which account has the most orders?<br><br>\n\n4. Which accounts spent more than 30,000 usd total across all orders?<br><br>\n\n5. Which accounts spent less than 1,000 usd total across all orders?<br><br>\n\n6. Which account has spent the most with us?<br><br>\n\n7. Which account has spent the least with us?<br><br>\n\n8. Which accounts used `facebook` as a **channel** to contact customers more than 6 times?<br><br>\n\n9. Which account used `facebook` most as a **channel**?  <br><br>\n\n10. Which channel was most frequently used by most accounts?\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558925,
+              "key": "c20e0a86-aefd-4707-8c96-62b638261d13",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "a2881c36-8144-42a0-951c-796a13cd0f7c",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392044,
+          "key": "f42c74b4-9136-4aee-8506-ac4e2833a0da",
+          "title": "Solutions: HAVING",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f42c74b4-9136-4aee-8506-ac4e2833a0da",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 392045,
+              "key": "4b05e255-9a5a-41c3-aa27-41395a5e998e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solutions: HAVING \n\n1. How many of the **sales reps** have more than 5 accounts that they manage?\n```\nSELECT s.id, s.name, COUNT(*) num_accounts\nFROM accounts a\nJOIN sales_reps s\nON s.id = a.sales_rep_id\nGROUP BY s.id, s.name\nHAVING COUNT(*) > 5\nORDER BY num_accounts;\n```\nand technically, we can get this using a **SUBQUERY** as shown below.  This same logic can be used for the other queries, but this will not be shown.\n```\nSELECT COUNT(*) num_reps_above5\nFROM(SELECT s.id, s.name, COUNT(*) num_accounts\n        FROM accounts a\n        JOIN sales_reps s\n        ON s.id = a.sales_rep_id\n        GROUP BY s.id, s.name\n        HAVING COUNT(*) > 5\n        ORDER BY num_accounts) AS Table1;\n```\n\n2. How many **accounts** have more than 20 orders?<br><br>\n```\nSELECT a.id, a.name, COUNT(*) num_orders\nFROM accounts a\nJOIN orders o\nON a.id = o.account_id\nGROUP BY a.id, a.name\nHAVING COUNT(*) > 20\nORDER BY num_orders;\n```\n3. Which account has the most orders?\n```\nSELECT a.id, a.name, COUNT(*) num_orders\nFROM accounts a\nJOIN orders o\nON a.id = o.account_id\nGROUP BY a.id, a.name\nORDER BY num_orders DESC\nLIMIT 1;\n```\n\n4. How many accounts spent more than 30,000 usd total across all orders?\n```\nSELECT a.id, a.name, SUM(o.total_amt_usd) total_spent\nFROM accounts a\nJOIN orders o\nON a.id = o.account_id\nGROUP BY a.id, a.name\nHAVING SUM(o.total_amt_usd) > 30000\nORDER BY total_spent;\n```\n\n5. How many accounts spent less than 1,000 usd total across all orders?\n```\nSELECT a.id, a.name, SUM(o.total_amt_usd) total_spent\nFROM accounts a\nJOIN orders o\nON a.id = o.account_id\nGROUP BY a.id, a.name\nHAVING SUM(o.total_amt_usd) < 1000\nORDER BY total_spent;\n```\n6. Which account has spent the most with us?\n```\nSELECT a.id, a.name, SUM(o.total_amt_usd) total_spent\nFROM accounts a\nJOIN orders o\nON a.id = o.account_id\nGROUP BY a.id, a.name\nORDER BY total_spent DESC\nLIMIT 1;\n```\n\n7. Which account has spent the least with us?\n```\nSELECT a.id, a.name, SUM(o.total_amt_usd) total_spent\nFROM accounts a\nJOIN orders o\nON a.id = o.account_id\nGROUP BY a.id, a.name\nORDER BY total_spent\nLIMIT 1;\n```\n\n8. Which accounts used `facebook` as a **channel** to contact customers more than 6 times?\n```\nSELECT a.id, a.name, w.channel, COUNT(*) use_of_channel\nFROM accounts a\nJOIN web_events w\nON a.id = w.account_id\nGROUP BY a.id, a.name, w.channel\nHAVING COUNT(*) > 6 AND w.channel = 'facebook'\nORDER BY use_of_channel;\n```\n\n9. Which account used `facebook` most as a **channel**? \n```\nSELECT a.id, a.name, w.channel, COUNT(*) use_of_channel\nFROM accounts a\nJOIN web_events w\nON a.id = w.account_id\nWHERE w.channel = 'facebook'\nGROUP BY a.id, a.name, w.channel\nORDER BY use_of_channel DESC\nLIMIT 1;\n```\n*Note:* This query above only works if there are no ties for the account that used facebook the most. It is a best practice to use a larger limit number first such as 3 or 5 to see if there are ties before using LIMIT 1.\n\n\n10. Which channel was most frequently used by most accounts?\n```\nSELECT a.id, a.name, w.channel, COUNT(*) use_of_channel\nFROM accounts a\nJOIN web_events w\nON a.id = w.account_id\nGROUP BY a.id, a.name, w.channel\nORDER BY use_of_channel DESC\nLIMIT 10;\n```\nAll of the top 10 are `direct`.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558926,
+              "key": "2652de02-c428-4904-ba6b-3a1cf232a6e5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "7c6e9de0-8522-4eb2-9de0-8911aebe86f4",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 372324,
+          "key": "e034f651-4fa6-425f-bd73-fd21b880d485",
+          "title": "Video: DATE Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e034f651-4fa6-425f-bd73-fd21b880d485",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402943,
+              "key": "3cf618c1-b269-4638-987d-3e1f38a04375",
+              "title": "DATE Functions I",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "E7Z6GMFVmIY",
+                "china_cdn_id": "E7Z6GMFVmIY.mp4"
+              }
+            },
+            {
+              "id": 403077,
+              "key": "d25cd0b2-f065-4b44-9add-cca7ccc3e556",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**GROUP**ing **BY** a date column is not usually very useful in SQL, as these columns tend to have transaction data down to a second.  Keeping date information at such a granular data is both a blessing and a curse, as it gives really precise information (a blessing), but it makes grouping information together directly difficult (a curse).  \n\nLucky for us, there are a number of built in SQL functions that are aimed at helping us improve our experience in working with dates.\n\n**Here we saw that dates are stored in year, month, day, hour, minute, second, which helps us in truncating.  In the next concept, you will see a number of functions we can use in SQL to take advantage of this functionality.**\n\nIn [this link you can find the formatting of dates around the world, as referenced in the video](https://en.wikipedia.org/wiki/Date_format_by_country).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 402859,
+          "key": "578859bf-1a3a-4c8d-8787-2b93cd33dae7",
+          "title": "Video: DATE Functions II",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "578859bf-1a3a-4c8d-8787-2b93cd33dae7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419943,
+              "key": "dc667bc5-6aa9-4063-988d-d7763aa126cd",
+              "title": "DATE Functions Part II",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UPWkDhW4cLI",
+                "china_cdn_id": "UPWkDhW4cLI.mp4"
+              }
+            },
+            {
+              "id": 403083,
+              "key": "4ef3941a-b872-4952-8476-3edc9081cecc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The first function you are introduced to in working with dates is **DATE_TRUNC**.\n\n**DATE_TRUNC** allows you to truncate your date to a particular part of your date-time column.  Common trunctions are `day`, `month`, and `year`.  [Here](https://blog.modeanalytics.com/date-trunc-sql-timestamp-function-count-on/) is a great blog post by Mode Analytics on the power of this function. \n\n**DATE_PART** can be useful for pulling a specific portion of a date, but notice pulling `month` or day of the week (`dow`) means that you are no longer keeping the years in order.  Rather you are grouping for certain components regardless of which year they belonged in.\n\nFor additional functions you can use with dates, check out the documentation [here](https://www.postgresql.org/docs/9.1/static/functions-datetime.html), but the **DATE_TRUNC** and **DATE_PART** functions definitely give you a great start!\n\nYou can reference the columns in your select statement in **GROUP BY** and **ORDER BY** clauses with numbers that follow the order they appear in the select statement. For example\n\nSELECT standard_qty, COUNT(*)\n\nFROM orders\n\nGROUP BY 1   *(this 1 refers to standard_qty since it is the first of the columns included in the select statement)*\n\nORDER BY 1    *(this 1 refers to standard_qty since it is the first of the columns included in the select statement)*\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372325,
+          "key": "20715cb3-3ceb-4760-98c4-bc52017cc8e6",
+          "title": "Quiz: DATE Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "20715cb3-3ceb-4760-98c4-bc52017cc8e6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 377148,
+              "key": "33949888-5b08-4a2f-ba5b-4c0718887df1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Questions: Working With DATEs\n\nUse the **SQL** environment below to assist with answering the following questions.  Whether you get stuck or you just want to double check your solutions, my answers can be found at the top of the next concept.  \n\n1. Find the sales in terms of total dollars for all orders in each `year`, ordered from greatest to least. Do you notice any trends in the yearly sales totals?<br><br>\n\n2. Which **month** did Parch & Posey have the greatest sales in terms of total dollars?  Are all months evenly represented by the dataset?<br><br>\n\n3. Which **year** did Parch & Posey have the greatest sales in terms of total number of orders?  Are all years evenly represented by the dataset?<br><br>\n\n4. Which **month** did Parch & Posey have the greatest sales in terms of total number of orders?  Are all months evenly represented by the dataset?<br><br>\n\n5. In which **month** of which **year** did `Walmart` spend the most on gloss paper in terms of dollars?<br><br>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558927,
+              "key": "5428cb6f-ece9-4664-85d9-13e7c14b1502",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "dee89d43-965c-469b-ae66-588dead49f27",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 392046,
+          "key": "21d65bc3-7dc7-4d79-a2d7-d70b2d2c18a0",
+          "title": "Solutions: DATE Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "21d65bc3-7dc7-4d79-a2d7-d70b2d2c18a0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 392047,
+              "key": "c4ed623f-3c42-45e6-8ac7-369b470d3b96",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solutions: Working With DATEs\n\n1. Find the sales in terms of total dollars for all orders in each `year`, ordered from greatest to least. Do you notice any trends in the yearly sales totals?<br><br>\n\n    ```\n    SELECT DATE_PART('year', occurred_at) ord_year,  SUM(total_amt_usd) total_spent\n    FROM orders\n    GROUP BY 1\n    ORDER BY 2 DESC;\n    ```\n    When we look at the yearly totals, you might notice that 2013 and 2017 have much smaller totals than all other years.  If we look further at the monthly data, we see that for `2013` and `2017` there is only one month of sales for each of these years (12 for 2013 and 1 for 2017).\n  Therefore, neither of these are evenly represented.  Sales have been increasing year over year, with 2016 being the largest sales to date.  At this rate, we might expect 2017 to have the largest sales.<br><br>\n\n2. Which **month** did Parch & Posey have the greatest sales in terms of total dollars?  Are all months evenly represented by the dataset?<br><br>\nIn order for this to be 'fair', we should remove the sales from 2013 and 2017.  For the same reasons as discussed above.\n```\nSELECT DATE_PART('month', occurred_at) ord_month, SUM(total_amt_usd) total_spent\nFROM orders\nWHERE occurred_at BETWEEN '2014-01-01' AND '2017-01-01'\nGROUP BY 1\nORDER BY 2 DESC; \n```\nThe greatest sales amounts occur in December (12). <br><br> \n\n3. Which **year** did Parch & Posey have the greatest sales in terms of total number of orders?  Are all years evenly represented by the dataset?\n```\nSELECT DATE_PART('year', occurred_at) ord_year,  COUNT(*) total_sales\nFROM orders\nGROUP BY 1\nORDER BY 2 DESC;\n``` \nAgain, 2016 by far has the most amount of orders, but again 2013 and 2017 are not evenly represented to the other years in the dataset.<br><br>\n4. Which **month** did Parch & Posey have the greatest sales in terms of total number of orders?  Are all months evenly represented by the dataset?\n```\nSELECT DATE_PART('month', occurred_at) ord_month, COUNT(*) total_sales\nFROM orders\nWHERE occurred_at BETWEEN '2014-01-01' AND '2017-01-01'\nGROUP BY 1\nORDER BY 2 DESC; \n```\nDecember still has the most sales, but interestingly, November has the second most sales (but not the most dollar sales.  To make a fair comparison from one month to another 2017 and 2013 data were removed.<br><br>\n5. In which **month** of which **year** did `Walmart` spend the most on gloss paper in terms of dollars?\n```\nSELECT DATE_TRUNC('month', o.occurred_at) ord_date, SUM(o.gloss_amt_usd) tot_spent\nFROM orders o \nJOIN accounts a\nON a.id = o.account_id\nWHERE a.name = 'Walmart'\nGROUP BY 1\nORDER BY 2 DESC\nLIMIT 1;\n``` \nMay 2016 was when Walmart spent the most on gloss paper.<br><br>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558928,
+              "key": "bf0b3348-d99d-4f04-a6e1-909cd55be556",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "2fe7cc51-74a3-4c04-96ce-83101eab997a",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 372334,
+          "key": "5a1c618b-1597-4947-8980-84d49b8415e6",
+          "title": "Video: CASE Statements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5a1c618b-1597-4947-8980-84d49b8415e6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 403037,
+              "key": "5cce01b7-4f39-4174-9891-f9eed161a3d0",
+              "title": "11 CASE V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BInXuTY_FzE",
+                "china_cdn_id": "BInXuTY_FzE.mp4"
+              }
+            },
+            {
+              "id": 372337,
+              "key": "48ab32fc-9eab-46c0-9245-a20c57298ddc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### CASE - Expert Tip\n\n* The CASE statement always goes in the SELECT clause.<br><br>\n2. CASE must include the following components: WHEN, THEN, and END. ELSE is an optional component to catch cases that didn’t meet any of the other previous CASE conditions.<br><br>\n3. You can make any conditional statement using any conditional operator (like [WHERE](https://mode.com/resources/sql-tutorial/sql-where)) between WHEN and THEN. This includes stringing together multiple conditional statements using AND and OR.<br><br>\n4. You can include multiple WHEN statements, as well as an ELSE statement again, to deal with any unaddressed conditions.\n\n\n### Example\n\nIn a quiz question in the previous Basic SQL lesson, you saw this question:\n\n1. Create a column that divides the `standard_amt_usd` by the `standard_qty` to find the unit price for standard paper for each order. Limit the results to the first 10 orders, and include the `id` and `account_id` fields.  **NOTE - you will be thrown an error with the correct solution to this question.  This is for a division by zero.  You will learn how to get a solution without an error to this query when you learn about CASE statements in a later section.**<br><br>  \n\nLet's see how we can use the **CASE** statement to get around this error.\n\n```\nSELECT id, account_id, standard_amt_usd/standard_qty AS unit_price\nFROM orders\nLIMIT 10;\n```\n\nNow, let's use a **CASE** statement.  This way any time the **standard_qty** is zero, we will return 0, and otherwise we will return the **unit_price**.  \n\n```\nSELECT account_id, CASE WHEN standard_qty = 0 OR standard_qty IS NULL THEN 0\n                        ELSE standard_amt_usd/standard_qty END AS unit_price\nFROM orders\nLIMIT 10;\n```\n\nNow the first part of the statement will catch any of those division by zero values that were causing the error, and the other components will compute the division as necessary.  You will notice, we essentially charge all of our accounts 4.99 for standard paper. It makes sense this doesn't fluctuate, and it is more accurate than adding 1 in the denominator like our quick fix might have been in the earlier lesson.\n\nYou can try it yourself using the environment below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558929,
+              "key": "fb01a1d6-32a3-4841-8b27-17aae806a3e6",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "7f54c85f-5857-4854-99e6-1a2b2d6e0d4f",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 372340,
+          "key": "85c05f4e-2ef1-4ee6-b2c6-ee01c1cf2ca2",
+          "title": "Video: CASE & Aggregations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "85c05f4e-2ef1-4ee6-b2c6-ee01c1cf2ca2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402947,
+              "key": "c596b8af-b610-48c5-9c4f-4cd269e8b7c1",
+              "title": "CASE Statements and Aggregations",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "asSXB6iD3z4",
+                "china_cdn_id": "asSXB6iD3z4.mp4"
+              }
+            },
+            {
+              "id": 403106,
+              "key": "a306ba04-a528-4383-9db7-fd39d72e4ee5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This one is pretty tricky.  Try running the query yourself to make sure you understand what is happening. The next concept will give you some practice writing **CASE** statements on your own.  In this video, we showed that getting the same information using a **WHERE** clause means only being able to get one set of data from the **CASE** at a time.   \n\nThere are some advantages to separating data into separate columns like this depending on what you want to do, but often this level of separation might be easier to do in another programming language - rather than with SQL.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372338,
+          "key": "7d7aa4d8-98ca-4062-b868-e66863dee18d",
+          "title": "Quiz: CASE",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7d7aa4d8-98ca-4062-b868-e66863dee18d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 377155,
+              "key": "4d10409e-a240-499a-bb28-c50b5a8bb647",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Questions: CASE\n\nUse the **SQL** environment below to assist with answering the following questions.  Whether you get stuck or you just want to double check your solutions, my answers can be found at the top of the next concept.  \n\n1. Write a query to display for each order, the account ID, total amount of the order, and the level of the order - ‘Large’ or ’Small’ - depending on if the order is $3000 or more, or smaller than $3000.\n\n\n2. Write a query to display the number of orders in each of three categories, based on the `total` number of items in each order. The three categories are: 'At Least 2000', 'Between 1000 and 2000' and 'Less than 1000'.\n\n\n3. We would like to understand 3 different levels of customers based on the amount associated with their purchases.  The top level includes anyone with a Lifetime Value (total sales of all orders) `greater than 200,000` usd.  The second level is between `200,000 and 100,000` usd.  The lowest level is anyone `under 100,000` usd.  Provide a table that includes the **level** associated with each **account**.  You should provide the **account name**, the **total sales of all orders** for the customer, and the **level**.   Order with the top spending customers listed first.<br><br>\n\n4. We would now like to perform a similar calculation to the first, but we want to obtain the total amount spent by customers only in `2016` and `2017`.  Keep the same **level**s as in the previous question.  Order with the top spending customers listed first.<br><br>\n\n5. We would like to identify top performing **sales reps**, which are sales reps associated with more than 200 orders.   Create a table with the **sales rep name**, the total number of orders, and a column with `top` or `not` depending on if they have more than 200 orders.  Place the top sales people first in your final table.<br><br>\n\n6. The previous didn't account for the middle, nor the dollar amount associated with the sales.  Management decides they want to see these characteristics represented as well.  We would like to identify top performing **sales reps**, which are sales reps associated with more than `200` orders or more than `750000` in total sales.   The `middle` group has any **rep** with more than 150 orders or `500000` in sales.  Create a table with the **sales rep name**, the total number of orders, total sales across all orders, and a column with `top`, `middle`, or `low` depending on this criteria.  Place the top sales people based on dollar amount of sales first in your final table.  You might see a few upset sales people by this criteria!\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558930,
+              "key": "4cb2c22b-466c-49a3-bc44-997e5533a6a6",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "72131e7c-4754-4004-892f-fa2a5ab4a671",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 377154,
+          "key": "33a0f467-1bc5-4eca-b8b5-1a3bfc2281c3",
+          "title": "Solutions: CASE",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "33a0f467-1bc5-4eca-b8b5-1a3bfc2281c3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 377156,
+              "key": "97891f06-5e2f-4b26-bfe4-e1d8cebf0fd6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solutions: CASE\n\n1. Write a query to display for each order, the account ID, total amount of the order, and the level of the order - ‘Large’ or ’Small’ - depending on if the order is $3000 or more, or less than $3000.\n```\nSELECT account_id, total_amt_usd,\n   CASE WHEN total_amt_usd > 3000 THEN 'Large'\n   ELSE 'Small' END AS order_level\n   FROM orders;\n```\n\n\n2. Write a query to display the number of orders in each of three categories, based on the `total` number of items in each order. The three categories are: 'At Least 2000', 'Between 1000 and 2000' and 'Less than 1000'.\n```\nSELECT CASE WHEN total >= 2000 THEN 'At Least 2000'\n\t  WHEN total >= 1000 AND total < 2000 THEN 'Between 1000 and 2000'\n      ELSE 'Less than 1000' END AS order_category,\nCOUNT(*) AS order_count\nFROM orders\nGROUP BY 1;\n```\n\n3. We would like to understand 3 different branches of customers based on the amount associated with their purchases.  The top branch includes anyone with a Lifetime Value (total sales of all orders) `greater than 200,000` usd.  The second branch is between `200,000 and 100,000` usd.  The lowest branch is anyone `under 100,000` usd.  Provide a table that includes the **level** associated with each **account**.  You should provide the **account name**, the **total sales of all orders** for the customer, and the **level**.   Order with the top spending customers listed first.\n```\nSELECT a.name, SUM(total_amt_usd) total_spent, \n        CASE WHEN SUM(total_amt_usd) > 200000 THEN 'top'\n        WHEN  SUM(total_amt_usd) > 100000 THEN 'middle'\n        ELSE 'low' END AS customer_level\nFROM orders o\nJOIN accounts a\nON o.account_id = a.id \nGROUP BY a.name\nORDER BY 2 DESC;\n```\n\n4. We would now like to perform a similar calculation to the first, but we want to obtain the total amount spent by customers only in `2016` and `2017`.  Keep the same **level**s as in the previous question.  Order with the top spending customers listed first.\n```\nSELECT a.name, SUM(total_amt_usd) total_spent, \n        CASE WHEN SUM(total_amt_usd) > 200000 THEN 'top'\n        WHEN  SUM(total_amt_usd) > 100000 THEN 'middle'\n        ELSE 'low' END AS customer_level\nFROM orders o\nJOIN accounts a\nON o.account_id = a.id\nWHERE occurred_at > '2015-12-31' \nGROUP BY 1\nORDER BY 2 DESC;\n```\n5. We would like to identify top performing **sales reps**, which are sales reps associated with more than 200 orders.   Create a table with the **sales rep name**, the total number of orders, and a column with `top` or `not` depending on if they have more than 200 orders.  Place the top sales people first in your final table.\n```\nSELECT s.name, COUNT(*) num_ords,\n        CASE WHEN COUNT(*) > 200 THEN 'top'\n        ELSE 'not' END AS sales_rep_level\nFROM orders o\nJOIN accounts a\nON o.account_id = a.id \nJOIN sales_reps s\nON s.id = a.sales_rep_id\nGROUP BY s.name\nORDER BY 2 DESC;\n```\nIt is worth mentioning that this assumes each name is unique - which has been done a few times.  We otherwise would want to break by the name and the id of the table.<br><br>\n6. The previous didn't account for the middle, nor the dollar amount associated with the sales.  Management decides they want to see these characteristics represented as well.  We would like to identify top performing **sales reps**, which are sales reps associated with more than `200` orders or more than `750000` in total sales.   The `middle` group has any **rep** with more than 150 orders or `500000` in sales.  Create a table with the **sales rep name**, the total number of orders, total sales across all orders, and a column with `top`, `middle`, or `low` depending on this criteria.  Place the top sales people based on dollar amount of sales first in your final table.\n```\nSELECT s.name, COUNT(*), SUM(o.total_amt_usd) total_spent, \n        CASE WHEN COUNT(*) > 200 OR SUM(o.total_amt_usd) > 750000 THEN 'top'\n        WHEN COUNT(*) > 150 OR SUM(o.total_amt_usd) > 500000 THEN 'middle'\n        ELSE 'low' END AS sales_rep_level\nFROM orders o\nJOIN accounts a\nON o.account_id = a.id \nJOIN sales_reps s\nON s.id = a.sales_rep_id\nGROUP BY s.name\nORDER BY 3 DESC;\n```\nYou might see a few upset sales people by this criteria!\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558931,
+              "key": "f5617d7d-f450-4cbd-ae20-55dd1cd3ced0",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b0af4c",
+              "pool_id": "sqlwidget",
+              "view_id": "cfd835d9-cbec-46dc-80f1-d04975b8e177",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 372343,
+          "key": "d813136e-9730-4045-99cc-4d5197ed5664",
+          "title": "Text: Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d813136e-9730-4045-99cc-4d5197ed5664",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372344,
+              "key": "53812cf1-186c-4d67-89b7-6f5716fb0acb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### RECAP\n\nEach of the sections has been labeled to assist if you need to revisit a particular topic.  Intentionally, the solutions for a particular section are actually not in the labeled section, because my hope is this will force you to practice if you have a question about a particular topic we covered.  \n\nYou have now gained a ton of useful skills associated with **SQL**.  The combination of **JOINs** and **Aggregations** are one of the reasons **SQL** is such a powerful tool.  \n\nIf there was a particular topic you struggled with, I suggest coming back and revisiting the questions with a fresh mind.  The more you practice the better, but you also don't want to get stuck on the same problem for an extended period of time!\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

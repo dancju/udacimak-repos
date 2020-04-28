@@ -1,0 +1,1827 @@
+{
+  "data": {
+    "lesson": {
+      "id": 503835,
+      "key": "b86503df-e416-4f0e-9e2d-a7a3c08d0bc3",
+      "title": "Univariate Exploration of Data",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you will see how you can use matplotlib and seaborn to produce informative visualizations of single variables.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/b86503df-e416-4f0e-9e2d-a7a3c08d0bc3/503835/1544267069041/Univariate+Exploration+of+Data+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/b86503df-e416-4f0e-9e2d-a7a3c08d0bc3/503835/1544267065444/Univariate+Exploration+of+Data+Subtitles.zip"
+          },
+          {
+            "name": "pokemon.csv",
+            "uri": "https://video.udacity-data.com/topher/2018/April/5ac2906c_pokemon/pokemon.csv"
+          },
+          {
+            "name": "fuel_econ.csv",
+            "uri": "https://video.udacity-data.com/topher/2018/April/5ac2907f_fuel-econ/fuel-econ.csv"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 503836,
+          "key": "1d01ba1d-a76c-4709-a833-97b5772f6ab2",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d01ba1d-a76c-4709-a833-97b5772f6ab2",
+            "completed_at": "2020-03-31T22:41:34.279Z",
+            "last_viewed_at": "2020-03-31T22:46:46.914Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 562482,
+              "key": "f55df0d1-beb9-4372-92d3-72dd0e5455c4",
+              "title": "L3 011 Intro V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4BpAF4MYKm8",
+                "china_cdn_id": "4BpAF4MYKm8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 503837,
+          "key": "f65e11a1-e5f5-4cb2-be57-5db700af0e7a",
+          "title": "Tidy Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f65e11a1-e5f5-4cb2-be57-5db700af0e7a",
+            "completed_at": "2020-03-31T22:44:01.275Z",
+            "last_viewed_at": "2020-04-02T21:35:33.782Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 512964,
+              "key": "56a9c345-bbfc-44a9-959f-fe6a7a2267fc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is Tidy Data?\n\nIn this course, it is expected that your data is organized in some kind of tidy format. In short, a [tidy dataset](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) is a tabular dataset where:\n- each variable is a column\n- each observation is a row\n- each type of observational unit is a table\n\nThe first three images below depict a tidy dataset. This tidy dataset is in the field of healthcare and has two tables: one for patients (with their patient ID, name, and age) and one for treatments (with patient ID, what drug that patient is taking, and the dose of that drug).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 512992,
+              "key": "0c6251d2-fe0e-4c70-8db8-3fe5ff127318",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6278e8_tidy-data-one/tidy-data-one.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0c6251d2-fe0e-4c70-8db8-3fe5ff127318",
+              "caption": "*Each variable in a tidy dataset must have its own column*",
+              "alt": "An image of two tables (patients and treatments) with all of the individual columns highlighted",
+              "width": 1182,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 512993,
+              "key": "ea74295a-418c-42c6-8e20-0a33c885a4ce",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6278ea_tidy-data-two/tidy-data-two.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ea74295a-418c-42c6-8e20-0a33c885a4ce",
+              "caption": "*Each observation in a tidy dataset must have its own row*",
+              "alt": "An image of two tables (patients and treatments) with all of the individual rows highlighted",
+              "width": 1182,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 512994,
+              "key": "8ac88c77-40ea-4085-bb7d-302a2ee3b78d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6278ec_tidy-data-three/tidy-data-three.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8ac88c77-40ea-4085-bb7d-302a2ee3b78d",
+              "caption": "*Each observational unit in a tidy dataset must have its own table*",
+              "alt": "An image of two tables (patients and treatments) with each table highlighted",
+              "width": 1182,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 512996,
+              "key": "e7c820dd-b440-42a9-aea8-548ce4d0482d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The next image depicts the same data but in one representation of a non-tidy format (there are other possible non-tidy representations). The *Drug A*, *Drug B*, and *Drug C* columns should form one 'Drug' column, since this is one variable. The entire table should be separated into two tables: a patients table and a treatments table.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 512995,
+              "key": "20d53747-38eb-4f6f-8eff-dfd4292d9905",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a6278e7_tidy-data-four/tidy-data-four.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/20d53747-38eb-4f6f-8eff-dfd4292d9905",
+              "caption": "*Only the second rule of tidy data is satisfied in this non-tidy representation of the above data: each observation forms a row*",
+              "alt": "A non-tidy representation of the patients and treatments table. Each variable does not form a column and one table exists for two observational units.",
+              "width": 1182,
+              "height": 397,
+              "instructor_notes": null
+            },
+            {
+              "id": 512965,
+              "key": "b58576bb-b414-44e4-a1fd-ad72c9864aa8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "While the data provided to you in the course will all be tidy, in practice, you may need to perform tidying work before exploration. You should be comfortable with reshaping your data or perform transformations to split or combine features in your data, resulting in new data columns. This work should be performed in the wrangling stage of the data analysis process, so if you need to know more about these operations, it is recommended that you refer back to the data wrangling content from earlier in the program.\n\nThis is also not to say that tidy data is the _only_ useful form that data can take. In fact, as you work with a dataset, you might need to summarize it in a non-tidy form in order to generate appropriate visualizations. You'll see one example of this in the bivariate plotting lesson, where categorical counts need to put into a matrix form in order to create a heat map.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 503838,
+          "key": "67ba40a3-42b6-4216-a100-19c5e565dfbe",
+          "title": "Bar Charts",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "67ba40a3-42b6-4216-a100-19c5e565dfbe",
+            "completed_at": "2020-03-31T22:54:01.705Z",
+            "last_viewed_at": "2020-04-02T05:47:50.771Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 562484,
+              "key": "45d900c7-ebaf-4061-b364-97bb81019834",
+              "title": "L3 031 Bar Charts V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ybXcduB6cXA",
+                "china_cdn_id": "ybXcduB6cXA.mp4"
+              }
+            },
+            {
+              "id": 572431,
+              "key": "56e965e5-b7ad-4397-9763-e52458eb35cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 562485,
+              "key": "a53ef98b-ec59-4bf2-b0d9-8cd1602cf6a4",
+              "title": "DataVis L3 03 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "srRhFrSPdvs",
+                "china_cdn_id": "srRhFrSPdvs.mp4"
+              }
+            },
+            {
+              "id": 513008,
+              "key": "2ec9199b-604b-4cff-b012-fc7a2bc9512b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Bar Charts\n\nA **bar chart** is used to depict the distribution of a categorical variable. In a bar chart, each level of the categorical variable is depicted with a bar, whose height indicates the frequency of data points that take on that level. A basic bar chart of frequencies can be created through the use of seaborn's [`countplot`](https://seaborn.pydata.org/generated/seaborn.countplot.html) function:\n\n```python\nsb.countplot(data = df, x = 'cat_var')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565253,
+              "key": "1148fdb1-e87f-471a-bd80-465eee382f22",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aa9b7c3_l3-c03-barchart1/l3-c03-barchart1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1148fdb1-e87f-471a-bd80-465eee382f22",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565252,
+              "key": "4e46b694-7e6e-43e9-b753-e2e4585750ef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For the example given, you can see that the Beta level has the highest frequency at over 100 counts, followed by Gamma and Alpha, with Delta the least frequent at around 50. By default, each category is given a different color. This might come in handy for building associations between these category labels and encodings in plots with more variables. Otherwise, it's a good idea to simplify the plot and reduce unnecessary distractions by plotting all bars in the same color. This can be set using the \"color\" parameter:\n```python\nbase_color = sb.color_palette()[0]\nsb.countplot(data = df, x = 'cat_var', color = base_color)\n```\n[`color_palette`](https://seaborn.pydata.org/generated/seaborn.color_palette.html) returns a list of RGB tuples. Each tuple consists of three digits specifying the red, green, and blue channel values to specify a color. Calling this function without any parameters returns the current / default palette, and we take the first color to be the color for all bars.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565274,
+              "key": "66cadd01-4a02-4173-b26f-97f97ce9d588",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aa9bcf3_l3-c03-barchart2/l3-c03-barchart2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/66cadd01-4a02-4173-b26f-97f97ce9d588",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565290,
+              "key": "ae83e357-c230-4be9-b618-25d4c7b6d5a8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "One thing that we might want to do with a bar chart is to sort the data in some way. For nominal-type data, one common operation is to sort the data in terms of frequency. With our data in a pandas DataFrame, we can use various DataFrame methods to compute and extract an ordering, then set that ordering on the \"order\" parameter:\n```python\nbase_color = sb.color_palette()[0]\ncat_order = df['cat_var'].value_counts().index\nsb.countplot(data = df, x = 'cat_var', color = base_color, order = cat_order)\n```\n(Documentation: [`Series.value_counts()`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.value_counts.html))",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565291,
+              "key": "c52c4492-4ad5-435e-a6a3-12d049a144f6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aa9c9b7_l3-c03-barchart3/l3-c03-barchart3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c52c4492-4ad5-435e-a6a3-12d049a144f6",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565292,
+              "key": "e65c4188-5907-4462-8187-0138cdd5346a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For ordinal-type data, we probably want to sort the bars in order of the variables. While we could sort the levels by frequency like above, we usually care about whether the most frequent values are at high levels, low levels, etc. The best thing for us to do in this case is to convert the column into an ordered categorical data type. By default, pandas reads in string data as object types, and will plot the bars in the order in which the unique values were seen. By converting the data into an ordered type, the order of categories becomes innate to the feature, and we won't need to specify an \"order\" parameter each time it's required in a plot.\n```python\n# this method requires pandas v0.21 or later\nlevel_order = ['Alpha', 'Beta', 'Gamma', 'Delta']\nordered_cat = pd.api.types.CategoricalDtype(ordered = True, categories = level_order)\ndf['cat_var'] = df['cat_var'].astype(ordered_cat)\n\n# # use this method if you have pandas v0.20.3 or earlier\n# df['cat_var'] = df['cat_var'].astype('category', ordered = True,\n#                                      categories = level_order)\n\nbase_color = sb.color_palette()[0]\nsb.countplot(data = df, x = 'cat_var', color = base_color)\n```\n(Documentation: [CategoricalDtype](https://pandas.pydata.org/pandas-docs/version/0.23.4/generated/pandas.api.types.CategoricalDtype.html))",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565293,
+              "key": "39e22677-d339-4593-a99e-56c145bb813c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aa9cc51_l3-c03-barchart4/l3-c03-barchart4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/39e22677-d339-4593-a99e-56c145bb813c",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565271,
+              "key": "90a247ab-67f2-4496-bb59-3ad09d9b9237",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Should you find that you need to sort an ordered categorical type in a different order, you can always temporarily override the data type by setting the \"order\" parameter as above.\n\n## Additional Variations\n\nIf your data is in a pandas Series, 1-d NumPy array, or list, you can also just set it as the first argument to the `countplot` function, as we do with the Series `data_var` here:\n```python\nsb.countplot(data_var)\n```\n\nIf you have a lot of category levels, or the category names are long, then you might end up with overcrowding of the tick labels. One way to address this is through creation of a horizontal bar chart. In a horizontal bar chart, it is the length of each bar that indicates frequency, rather than the height. In the code, instead of setting the data or variable on the \"x\" parameter, you can set the variable to be plotted on the parameter \"y\":\n```python\nbase_color = sb.color_palette()[0]\nsb.countplot(data = df, y = 'cat_var', color = base_color)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565296,
+              "key": "d3b3e014-8716-4535-afee-95ea9cebde44",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aa9cf92_l3-c03-barchart5/l3-c03-barchart5.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d3b3e014-8716-4535-afee-95ea9cebde44",
+              "caption": "",
+              "alt": "",
+              "width": 440,
+              "height": 269,
+              "instructor_notes": null
+            },
+            {
+              "id": 565298,
+              "key": "39c4163b-4384-477d-a913-0696913627df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Alternatively, you can use matplotlib's [`xticks`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.xticks.html) function and its \"rotation\" parameter to change the orientation in which the labels will be depicted (as degrees counter-clockwise from horizontal):\n```python\nbase_color = sb.color_palette()[0]\nsb.countplot(data = df, x = 'cat_var', color = base_color)\nplt.xticks(rotation = 90)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565299,
+              "key": "91443769-c565-453a-ac5c-8ed1277a1cfa",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aa9d1d5_l3-c03-barchart6/l3-c03-barchart6.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/91443769-c565-453a-ac5c-8ed1277a1cfa",
+              "caption": "",
+              "alt": "",
+              "width": 430,
+              "height": 304,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 503841,
+          "key": "bd9948e9-eda5-48b7-8c6f-e97192a9ac48",
+          "title": "Absolute vs. Relative Frequency",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bd9948e9-eda5-48b7-8c6f-e97192a9ac48",
+            "completed_at": "2020-04-01T05:28:51.819Z",
+            "last_viewed_at": "2020-04-04T05:03:55.812Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 562491,
+              "key": "e83cd6b1-b012-44d9-9f31-cfd60340d327",
+              "title": "L3 041 Absolute V Relative Frequency V5",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FpnZ7dH4FqU",
+                "china_cdn_id": "FpnZ7dH4FqU.mp4"
+              }
+            },
+            {
+              "id": 572432,
+              "key": "377242b2-e3c3-42f2-9ad6-74dbe31ec418",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 562492,
+              "key": "473bd2d7-dca1-4533-9faf-882a1898774f",
+              "title": "DataVis L3 04 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HLum_ys7RJ0",
+                "china_cdn_id": "HLum_ys7RJ0.mp4"
+              }
+            },
+            {
+              "id": 565533,
+              "key": "31db17a1-abff-4e9f-9dfe-0f10d66764be",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "(Note: Towards the end of the video, the text labeling works since the bars have been sorted by frequency. For a more general method, see the section at the bottom of this page.)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 513011,
+              "key": "ad7df70c-ee51-438d-ba71-7d93bbf8b514",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Absolute vs. Relative Frequency\n\nBy default, seaborn's `countplot` function will summarize and plot the data in terms of **absolute frequency**, or pure counts. In certain cases, you might want to understand the distribution of data or want to compare levels in terms of proportions of the whole. In this case, you will want to plot the data in terms of **relative frequency**, where the height indicates the proportion of data taking each level, rather than the absolute count.\n\nOne method of plotting the data in terms of relative frequency on a bar chart is to just relabel the counts axis in terms of proportions. The underlying data will be the same, it will simply be the scale of the axis ticks that will be changed.\n\n```python\n# get proportion taken by most common group for derivation\n# of tick marks\nn_points = df.shape[0]\nmax_count = df['cat_var'].value_counts().max()\nmax_prop = max_count / n_points\n\n# generate tick mark locations and names\ntick_props = np.arange(0, max_prop, 0.05)\ntick_names = ['{:0.2f}'.format(v) for v in tick_props]\n\n# create the plot\nbase_color = sb.color_palette()[0]\nsb.countplot(data = df, x = 'cat_var', color = base_color)\nplt.yticks(tick_props * n_points, tick_names)\nplt.ylabel('proportion')\n```\nThe [`xticks`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.xticks.html) and [`yticks`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.yticks.html) functions aren't only about rotating the tick labels. You can also get and set their locations and labels as well. The first argument takes the tick locations: in this case, the tick proportions multiplied back to be on the scale of counts. The second argument takes the tick names: in this case, the tick proportions formatted as strings to two decimal places.\n\nI've also added a [`ylabel`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.ylabel.html) call to make it clear that we're no longer working with straight counts.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565505,
+              "key": "b6520697-bd94-4af8-825b-7a7f51f1326a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaaa643_l3-c04-relfreqchart1/l3-c04-relfreqchart1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b6520697-bd94-4af8-825b-7a7f51f1326a",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565520,
+              "key": "53e6477d-376b-4a74-8077-0c6004ef530b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Variation\n\nRather than plotting the data on a relative frequency scale, you might use text annotations to label the frequencies on bars instead. This requires writing a loop over the tick locations and labels and adding one text element for each bar.\n\n```python\n# create the plot\nbase_color = sb.color_palette()[0]\nsb.countplot(data = df, x = 'cat_var', color = base_color)\n\n# add annotations\nn_points = df.shape[0]\ncat_counts = df['cat_var'].value_counts()\nlocs, labels = plt.xticks() # get the current tick locations and labels\n\n# loop through each pair of locations and labels\nfor loc, label in zip(locs, labels):\n\n    # get the text property for the label to get the correct count\n    count = cat_counts[label.get_text()]\n    pct_string = '{:0.1f}%'.format(100*count/n_points)\n\n    # print the annotation just below the top of the bar\n    plt.text(loc, count-8, pct_string, ha = 'center', color = 'w')\n```\nI use the `.get_text()` method to obtain the category name, so I can get the count of each category level. At the end, I use the [`text`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.text.html#matplotlib.pyplot.text) function to print each percentage, with the x-position, y-position, and string as the three main parameters to the function.\n\n(Documentation: [Text objects](https://matplotlib.org/api/text_api.html?highlight=get_text#matplotlib.text.Text))",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565521,
+              "key": "01ad137e-2892-409f-80df-4fa5733e616e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaaad18_l3-c04-relfreqchart2/l3-c04-relfreqchart2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/01ad137e-2892-409f-80df-4fa5733e616e",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 562499,
+          "key": "c33c9906-5be2-4c59-8012-eab668a50d3d",
+          "title": "Counting Missing Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c33c9906-5be2-4c59-8012-eab668a50d3d",
+            "completed_at": "2020-04-02T00:31:19.978Z",
+            "last_viewed_at": "2020-04-02T05:43:14.761Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 565572,
+              "key": "9af22efe-88f3-4919-8762-89d5057f959d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Counting Missing Data\nOne interesting way we can apply bar charts is through the visualization of missing data. We can use pandas functions to create a table with the number of missing values in each column.\n```python\ndf.isna().sum()\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565588,
+              "key": "4e549810-d920-4391-88a7-9d34511d7abc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaabcb3_l3-c05-missingdata1/l3-c05-missingdata1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4e549810-d920-4391-88a7-9d34511d7abc",
+              "caption": "",
+              "alt": "",
+              "width": 112,
+              "height": 115,
+              "instructor_notes": null
+            },
+            {
+              "id": 565590,
+              "key": "976fcf20-cb54-493c-9b40-e2546e305426",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "What if we want to visualize these missing value counts? We could treat the variable names as levels of a categorical variable, and create a resulting bar plot. However, since the data is not in its tidy, unsummarized form, we need to make use of a different plotting function. Seaborn's [`barplot`](https://seaborn.pydata.org/generated/seaborn.barplot.html) function is built to depict a summary of one quantitative variable against levels of a second, qualitative variable, but can be used here.\n\n```python\nna_counts = df.isna().sum()\nbase_color = sb.color_palette()[0]\nsb.barplot(na_counts.index.values, na_counts, color = base_color)\n```\nThe first argument to the function contains the x-values (column names), the second argument the y-values (our counts).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565591,
+              "key": "b493bac2-2c37-493c-b469-88c49f04bd3d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaabf07_l3-c05-missingdata2/l3-c05-missingdata2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b493bac2-2c37-493c-b469-88c49f04bd3d",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565592,
+              "key": "d039984d-e06c-41c8-9f78-9e76ee8a0243",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As a general note, this is a useful function to keep in mind if your data is summarized and you still want to build a bar chart. If your data is not yet summarized, however, just use the `countplot` function so that you don't need to do extra summarization work. In addition, you'll see what `barplot`'s main purpose is in the next lesson, when we discuss adaptations of univariate plots for plotting bivariate data.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 503842,
+          "key": "4a54ec42-2e6e-4be7-ba48-7d93485aad59",
+          "title": "Bar Chart Practice",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4a54ec42-2e6e-4be7-ba48-7d93485aad59",
+            "completed_at": "2020-04-02T05:52:11.945Z",
+            "last_viewed_at": "2020-04-02T05:52:09.784Z",
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 587324,
+              "key": "d5ba87de-3720-4a8b-9e1b-c7c96fc1c225",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view43937ed7",
+              "pool_id": "jupyter",
+              "view_id": "43937ed7-5c29-47f1-b519-a6260ec48cc5",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Bar_Chart_Practice.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 503843,
+          "key": "e7d15a6d-4d4b-418e-b85e-3cf0ed6f6740",
+          "title": "Pie Charts",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e7d15a6d-4d4b-418e-b85e-3cf0ed6f6740",
+            "completed_at": "2020-04-02T18:15:42.492Z",
+            "last_viewed_at": "2020-04-02T18:15:37.163Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 562495,
+              "key": "a72797f4-0fc5-4887-be73-f076c5b1f344",
+              "title": "L3 071 Pie Charts V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kSrJGJHTKV8",
+                "china_cdn_id": "kSrJGJHTKV8.mp4"
+              }
+            },
+            {
+              "id": 513015,
+              "key": "f4bfe6d5-80eb-4142-80ed-50b3adfda42c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Pie Charts\n\nA **pie chart** is a common univariate plot type that is used to depict relative frequencies for levels of a categorical variable. Frequencies in a pie chart are depicted as wedges drawn on a circle: the larger the angle or area, the more common the categorical value taken.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565600,
+              "key": "d12dcebc-c398-45aa-8924-5354b88a57fd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaad0c8_l3-c07-piecharts2/l3-c07-piecharts2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d12dcebc-c398-45aa-8924-5354b88a57fd",
+              "caption": "Pie chart (left) and bar chart (right) displaying the same categorical counts.",
+              "alt": "",
+              "width": 864,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 565618,
+              "key": "4425b384-d0b7-4094-b0eb-e2987eac2cc8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Unfortunately, pie charts are a fairly limited plot type in the range of scenarios where they can be used, and it is easy for chart makers to try and spice up pie charts in a way that makes them more difficult to read. If you want to use a pie chart, try to follow certain guidelines:\n\n* Make sure that your interest is in relative frequencies. Areas should represent parts of a whole, rather than measurements on a second variable (unless that second variable can logically be summed up into some whole).\n* Limit the number of slices plotted. A pie chart works best with two or three slices, though it's also possible to plot with four or five slices as long as the wedge sizes can be distinguished. If you have a lot of categories, or categories that have small proportional representation, consider grouping them together so that fewer wedges are plotted, or use an 'Other' category to handle them.\n* Plot the data systematically. One typical method of plotting a pie chart is to start from the top of the circle, then plot each categorical level clockwise from most frequent to least frequent. If you have three categories and are interested in the comparison of two of them, a common plotting method is to place the two categories of interest on either side of the 12 o'clock direction, with the third category filling in the remaining space at the bottom.\n\nIf these guidelines cannot be met, then you should probably make use of a bar chart instead. A bar chart is a safer choice in general. The bar heights are more precisely interpreted than areas or angles, and a bar chart can be displayed more compactly than a pie chart. There's also more flexibility with a bar chart for plotting variables with a lot of levels, like plotting the bars horizontally.\n\nYou can create a pie chart with matplotlib's [`pie`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.pie.html) function. This function requires that the data be in a summarized form: the primary argument to the function will be the wedge sizes.\n```python\n# code for the pie chart seen above\nsorted_counts = df['cat_var'].value_counts()\nplt.pie(sorted_counts, labels = sorted_counts.index, startangle = 90,\n        counterclock = False);\nplt.axis('square')\n```\nTo follow the guidelines in the bullet points above, I include the \"startangle = 90\" and \"counterclock = False\" arguments to start the first slice at vertically upwards, and will plot the sorted counts in a clockwise fashion. The [`axis`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.axis.html) function call and 'square' argument makes it so that the scaling of the plot is equal on both the x- and y-axes. Without this call, the pie could end up looking oval-shaped, rather than a circle.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565621,
+              "key": "66ce5767-74f4-434d-ba06-9c82a2fd1fb6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Variation\n\nA sister plot to the pie chart is the **donut plot**. It's just like a pie chart, except that there's a hole in the center of the plot. Perceptually, there's not much difference between a donut plot and a pie chart, and donut plots should be used with the same guidelines as a pie chart. Aesthetics might be one of the reasons why you would choose one or the other. For instance, you might see statistics reported in the hole of a donut plot to better make use of available space.\n\nTo create a donut plot, you can add a \"wedgeprops\" argument to the `pie` function call. By default, the radius of the pie (circle) is 1; setting the wedges' width property to less than 1 removes coloring from the center of the circle.\n```python\nsorted_counts = df['cat_var'].value_counts()\nplt.pie(sorted_counts, labels = sorted_counts.index, startangle = 90,\n        counterclock = False, wedgeprops = {'width' : 0.4});\nplt.axis('square')\n```\n(Documentation: [Wedge patches](https://matplotlib.org/api/_as_gen/matplotlib.patches.Wedge.html))",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565636,
+              "key": "c9ff6fb1-db62-4915-81b6-73c9927f408a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaae08c_l3-c07-piecharts3/l3-c07-piecharts3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c9ff6fb1-db62-4915-81b6-73c9927f408a",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565635,
+              "key": "4cb8c3cb-e9c8-4af3-afb2-ca956ad3fbc8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Reading\n- Eager Eyes: [Understanding Pie Charts](https://eagereyes.org/pie-charts)\n- Eager Eyes: [An Illustrated Tour of the Pie Chart Study Results](https://eagereyes.org/blog/2016/an-illustrated-tour-of-the-pie-chart-study-results) - how accurately do people perceive different formulations of the pie chart?\n- Datawrapper: [What to Consider when Creating a Pie Chart](https://academy.datawrapper.de/article/127-what-to-consider-when-creating-a-pie-chart)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 503844,
+          "key": "c0f67015-ef78-4bd8-98ea-78c25b5ac5b2",
+          "title": "Histograms",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c0f67015-ef78-4bd8-98ea-78c25b5ac5b2",
+            "completed_at": "2020-04-04T05:04:00.756Z",
+            "last_viewed_at": "2020-04-21T22:25:13.468Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 562496,
+              "key": "55aa5d94-c302-4878-a0cd-36f9197f8b14",
+              "title": "L3 081 Histograms V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RLez9L0htGQ",
+                "china_cdn_id": "RLez9L0htGQ.mp4"
+              }
+            },
+            {
+              "id": 572436,
+              "key": "4efa44a4-c66d-4fa4-85bf-a8c05b103950",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 562497,
+              "key": "d130ff3f-b159-4505-9100-a78592e544f7",
+              "title": "DataVis L3 08 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "f1we_0dUSXg",
+                "china_cdn_id": "f1we_0dUSXg.mp4"
+              }
+            },
+            {
+              "id": 513018,
+              "key": "2b4b16a5-b467-4182-83fa-34134f8d66b6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Histograms\n\nA **histogram** is used to plot the distribution of a numeric variable. It's the quantitative version of the bar chart. However, rather than plot one bar for each unique numeric value, values are grouped into continuous bins, and one bar for each bin is plotted depicting the number. For instance, using the default settings for matplotlib's [`hist`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist.html) function:\n```python\nplt.hist(data = df, x = 'num_var')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565639,
+              "key": "a5567624-34f1-453a-b29f-36edd04ec379",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaae934_l3-c08-histograms1/l3-c08-histograms1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a5567624-34f1-453a-b29f-36edd04ec379",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565640,
+              "key": "16a38321-3cb6-4fcc-be54-29d2c96772ef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can see that there are eight data points that fall in the range between about 0 and 2.5 in the leftmost bin, and nine points in the range from about 2.5 to 5 in the adjacent bin. Overall, a generally bimodal distribution is observed (one with two peaks or humps). The direct adjacency of the bars in the histogram, in contrast to the separated bars in a bar chart, emphasize the fact that the data takes on a continuous range of values. When a data value is on a bin edge, it is counted in the bin to its right. The exception is the rightmost bin edge, which places data values equal to the uppermost limit into the right-most bin (to the upper limit's left).\n\nBy default, the `hist` function divides the data into 10 bins, based on the range of values taken. In almost every case, we will want to change these settings. Usually, having only ten bins is too few to really understand the distribution of the data. And the default tick marks are often not on nice, 'round' values that make the ranges taken by each bin easy to interpret. Wouldn't it be better if I said \"between 0 and 2.5\" instead of \"between _about_ 0 and 2.5\", and \"from 2.5 to 5\" instead of \"from _about_ 2.5 to 5\" above?\n\nYou can use descriptive statistics (e.g. via [`df['num_var'].describe()`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.describe.html)) to gauge what minimum and maximum bin limits might be appropriate for the plot. These bin edges can be set using numpy's [`arange`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html) function:\n```python\nbin_edges = np.arange(0, df['num_var'].max()+1, 1)\nplt.hist(data = df, x = 'num_var', bins = bin_edges)\n```\nThe first argument to `arange` is the leftmost bin edge, the second argument the upper limit, and the third argument the bin width. Note that even though I've specified the \"max\" value in the second argument, I've added a \"+1\" (the bin width). That is because `arange` will only return values that are strictly less than the upper limit. Adding in \"+1\" is a safety measure to ensure that the rightmost bin edge is at least the maximum data value, so that all of the data points are plotted. The leftmost bin is set as a hardcoded value to get a nice, interpretable value, though you could use functions like numpy's [`around`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.around.html) if you wanted to approach that end programmatically.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565642,
+              "key": "94a80c65-0e9e-45c1-81d7-0f9510e9597c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaaf362_l3-c08-histograms2/l3-c08-histograms2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/94a80c65-0e9e-45c1-81d7-0f9510e9597c",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565643,
+              "key": "48d27028-b51b-4b52-addc-c259dec91243",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When creating histograms, it's useful to play around with different bin widths to see what represents the data best. Too many bins, and you may see too much noise that interferes with identification of the underlying signal. Too few bins, and you may not be able to see the true signal in the first place.\n```python\nplt.figure(figsize = [10, 5]) # larger figure size for subplots\n\n# histogram on left, example of too-large bin size\nplt.subplot(1, 2, 1) # 1 row, 2 cols, subplot 1\nbin_edges = np.arange(0, df['num_var'].max()+4, 4)\nplt.hist(data = df, x = 'num_var', bins = bin_edges)\n\n# histogram on right, example of too-small bin size\nplt.subplot(1, 2, 2) # 1 row, 2 cols, subplot 2\nbin_edges = np.arange(0, df['num_var'].max()+1/4, 1/4)\nplt.hist(data = df, x = 'num_var', bins = bin_edges)\n```\nThis example puts two plots side by side through use of the [`subplot`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html) function, whose arguments specify the number of rows, columns, and index of the active subplot (in that order). The [`figure()`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html) function is called with the \"figsize\" parameter so that we can have a larger figure to support having multiple subplots. (More details on figures and subplots are coming up next in the lesson.)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565644,
+              "key": "1c1ef198-e92c-4122-82da-8b7a1463baa7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaaf900_l3-c08-histograms3/l3-c08-histograms3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1c1ef198-e92c-4122-82da-8b7a1463baa7",
+              "caption": "",
+              "alt": "",
+              "width": 720,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 565646,
+              "key": "886a23fa-83c6-46c9-9d82-94f14e2ff8f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Alternative Approach\n\nThe seaborn function [`distplot`](https://seaborn.pydata.org/generated/seaborn.distplot.html) can also be used to plot a histogram, and is integrated with other univariate plotting functions.\n```python\nsb.distplot(df['num_var'])\n```\nWhen we specify the data to be plotted, note that the first argument _must_ be the Series or array with the points to be plotted. This is in contrast to our ability to specify a data source and column as separate arguments, like we've seen with and `countplot` and `hist`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565654,
+              "key": "7123f637-a3f8-44d8-82d3-117c1e9e44ed",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aab083d_l3-c08-histograms4/l3-c08-histograms4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7123f637-a3f8-44d8-82d3-117c1e9e44ed",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565657,
+              "key": "073d8af1-6fc8-4533-8ff2-b138d709b7a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The `distplot` function has built-in rules for specifying histogram bins, and by default plots a curve depicting the kernel density estimate (KDE) on top of the data. The vertical axis is based on the KDE, rather than the histogram: you shouldn't expect the total heights of the bars to equal 1, but the area under the curve should equal 1. If you want to learn more about KDEs, check out the extra page at the end of the lesson.\n\nDespite the fact that the default bin-selection formula used by `distplot` might be better than the choice of ten bins that `.hist` uses, you'll still want to do some tweaking to align the bins to 'round' values. You can use other parameter settings to plot just the histogram and specify the bins like before:\n```python\nbin_edges = np.arange(0, df['num_var'].max()+1, 1)\nsb.distplot(df['num_var'], bins = bin_edges, kde = False,\n            hist_kws = {'alpha' : 1})\n```\nThe alpha (transparency) setting must be associated as a dictionary to \"hist_kws\" since there are other underlying plotting functions, like the KDE, that have their own optional keyword parameters.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565658,
+              "key": "fb7d6f04-326b-4416-af2a-59fcf525f76b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaaf362_l3-c08-histograms2/l3-c08-histograms2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fb7d6f04-326b-4416-af2a-59fcf525f76b",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565659,
+              "key": "b9deb564-8dbb-4724-bc0b-1a8991473ecc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The result of the code above is exactly like the histogram above with bin width of 1. The units of the vertical axis are also back in terms of counts. \n\nIn summary, if your exploration is only interested in the histogram-depiction of the data, and not the additional functionality offered by `distplot`, then you might be better off with just using Matplotlib's `hist` function for simplicity. On the other hand, if you want a quick start on choosing a representative bin size for histogram plotting, you might take a quick look at the basic `distplot` first before getting into the customization.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 503845,
+          "key": "8b672628-12cf-411e-b052-9b337a1044e6",
+          "title": "Histogram Practice",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8b672628-12cf-411e-b052-9b337a1044e6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 590346,
+              "key": "35efcba1-2e9a-4a09-b6c9-630e7c8e72f3",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view43937ed7",
+              "pool_id": "jupyter",
+              "view_id": "e4212d96-e9ef-4a7f-87a2-ffbad151f50d",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Histogram_Practice.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 693916,
+          "key": "83335e78-7d71-423b-84a9-f47cdf64c0f9",
+          "title": "Figures, Axes, and Subplots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "83335e78-7d71-423b-84a9-f47cdf64c0f9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 693940,
+              "key": "6e38cc0d-457c-404f-ae99-708aa5d1fbad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Figures, Axes, and Subplots\n\nAt this point, you've seen and had some practice with some basic plotting functions using matplotlib and seaborn. The previous page introduced something a little bit new: creating two side-by-side plots through the use of matplotlib's [`subplot()`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html) function. If you have any questions about how that or the [`figure()`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html) function worked, then read on. This page will discuss the basic structure of visualizations using matplotlib and how subplots work in that structure.\n\nThe base of a visualization in matplotlib is a [Figure](https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html) object. Contained within each Figure will be one or more [Axes](https://matplotlib.org/api/axes_api.html) objects, each Axes object containing a number of other elements that represent each plot. In the earliest examples, these objects have been created implicitly. Let's say that the following expression is run inside a Jupyter notebook to create a histogram:\n```python\nplt.hist(data = df, x = 'num_var')\n```\nSince we don't have a Figure area to plot inside, Python first creates a Figure object. And since the Figure doesn't start with any Axes to draw the histogram onto, an Axes object is created inside the Figure. Finally, the histogram is drawn within that Axes.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 698527,
+              "key": "624e04df-27e6-4c69-9d35-2524ddcbcf8c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/August/5b804b9b_l3-c09b-subplotsa/l3-c09b-subplotsa.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/624e04df-27e6-4c69-9d35-2524ddcbcf8c",
+              "caption": "",
+              "alt": "",
+              "width": 1336,
+              "height": 339,
+              "instructor_notes": null
+            },
+            {
+              "id": 698533,
+              "key": "a2cb8c9a-62f3-4280-869a-2daf7a9e1b9f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This hierarchy of objects is useful to know about so that we can take more control over the layout and aesthetics of our plots. One alternative way we could have created the histogram is to explicitly set up the Figure and Axes like this:\n\n```python\nfig = plt.figure()\nax = fig.add_axes([.125, .125, .775, .755])\nax.hist(data = df, x = 'num_var')\n```\n[`figure()`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html) creates a new Figure object, a reference to which has been stored in the variable `fig`. One of the Figure methods is [`.add_axes()`](https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.add_axes), which creates a new Axes object in the Figure. The method requires one list as argument specifying the dimensions of the Axes: the first two elements of the list indicate the position of the lower-left hand corner of the Axes (in this case one quarter of the way from the lower-left corner of the Figure) and the last two elements specifying the Axes width and height, respectively. We refer to the Axes in the variable `ax`. Finally, we use the Axes method [`.hist()`](https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.hist.html#matplotlib.axes.Axes.hist) just like we did before with `plt.hist()`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 698534,
+              "key": "0ea8ccee-64bf-4700-8700-8dedfd6daabd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaae934_l3-c08-histograms1/l3-c08-histograms1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0ea8ccee-64bf-4700-8700-8dedfd6daabd",
+              "caption": "This plot is just like the first histogram on the Histograms page.",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 698535,
+              "key": "4a2f786f-111e-40e5-8f16-012c6f415a50",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To use Axes objects with seaborn, seaborn functions usually have an \"ax\" parameter to specify upon which Axes a plot will be drawn.\n```python\nfig = plt.figure()\nax = fig.add_axes([.125, .125, .775, .755])\nbase_color = sb.color_palette()[0]\nsb.countplot(data = df, x = 'cat_var', color = base_color, ax = ax)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 698536,
+              "key": "f5af888a-ebe0-4e32-b9ac-7fb50d095529",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aa9bcf3_l3-c03-barchart2/l3-c03-barchart2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f5af888a-ebe0-4e32-b9ac-7fb50d095529",
+              "caption": "This is the same as the second plot on the Bar Charts page.",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 698537,
+              "key": "46a91dda-8d79-427f-9abc-5015dd0529fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the above two cases, there was no purpose to explicitly go through the Figure and Axes creation steps. And indeed, in most cases, you can just use the basic matplotlib and seaborn functions as is. Each function targets a Figure or Axes, and they'll automatically target the most recent Figure or Axes worked with. As an example of this, let's review in detail how [`subplot()`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html) was used on the Histograms page:\n```python\nplt.figure(figsize = [10, 5]) # larger figure size for subplots\n\n# example of somewhat too-large bin size\nplt.subplot(1, 2, 1) # 1 row, 2 cols, subplot 1\nbin_edges = np.arange(0, df['num_var'].max()+4, 4)\nplt.hist(data = df, x = 'num_var', bins = bin_edges)\n\n# example of somewhat too-small bin size\nplt.subplot(1, 2, 2) # 1 row, 2 cols, subplot 2\nbin_edges = np.arange(0, df['num_var'].max()+1/4, 1/4)\nplt.hist(data = df, x = 'num_var', bins = bin_edges)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 698538,
+              "key": "79db3e9d-c440-4b8c-bbbb-103aeb32078b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aaaf900_l3-c08-histograms3/l3-c08-histograms3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/79db3e9d-c440-4b8c-bbbb-103aeb32078b",
+              "caption": "",
+              "alt": "",
+              "width": 720,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 698539,
+              "key": "d7e7e0ee-2bb1-4e6b-b493-c8d825fb8766",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "First of all, `plt.figure(figsize = [10, 5])`creates a new Figure, with the \"figsize\" argument setting the width and height of the overall figure to 10 inches by 5 inches, respectively. Even if we don't assign any variable to return the function's output, Python will still implicitly know that further plotting calls that need a Figure will refer to that Figure as the active one.\n\nThen, `plt.subplot(1, 2, 1)` creates a new Axes in our Figure, its size determined by the `subplot()` function arguments. The first two arguments says to divide the figure into one row and two columns, and the third argument says to create a new Axes in the first slot. Slots are numbered from left to right in rows from top to bottom. Note in particular that the index numbers start at 1 (rather than the usual Python indexing starting from 0). (You'll see the indexing a little better in the example at the end of the page.) Again, Python will implicitly set that Axes as the current Axes, so when the `plt.hist()` call comes, the histogram is plotted in the left-side subplot.\n\nFinally, `plt.subplot(1, 2, 2)` creates a new Axes in the second subplot slot, and sets that one as the current Axes. Thus, when the next `plt.hist()` call comes, the histogram gets drawn in the right-side subplot.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 698540,
+              "key": "f0feaa96-50dc-4104-9ab1-71ac786ab3f4",
+              "title": "Subplots Exploration Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f0feaa96-50dc-4104-9ab1-71ac786ab3f4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What if we removed `plt.subplot(1, 2, 2)` from the above code block, and just ran the rest of the lines? What would the outcome plot look like? (**HINT**: Try playing around with some code for yourself to come up with an answer!)",
+                "answers": [
+                  {
+                    "id": "a1535143077570",
+                    "text": "We would see only one set of bars, for the first `.hist()` call.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1535143184826",
+                    "text": "We would see only one set of bars, for the second `.hist()` call.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1535143185580",
+                    "text": "We would see two sets of bars, plotted one on top of the other.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1535143186363",
+                    "text": "We would see one set of axes, occupying the left side of the figure.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1535143186979",
+                    "text": "We would see one set of axes, occupying the right side of the figure.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1535143332313",
+                    "text": "We would see one set of axes, filling the full figure length.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 698555,
+              "key": "59b3e8b7-3c92-418e-89ce-b4242fedd10c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Additional Techniques\n\nTo close this page, we'll quickly run through a few other ways of dealing with Axes and subplots. The techniques above should suffice for basic plot creation, but you might want to keep the following in the back of your mind as additional tools to break out as needed.\n\nIf you don't assign Axes objects as they're created, you can retrieve the current Axes using [`ax = plt.gca()`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.gca.html), or you can get a list of all Axes in a Figure `fig` by using [`axes = fig.get_axes()`](https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.get_axes). As for creating subplots, you can use [`fig.add_subplot()`](https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.add_subplot) in the same way as `plt.subplot()` above. If you already know that you're going to be creating a bunch of subplots, you can use the [`plt.subplots()`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html) function:\n```python\nfig, axes = plt.subplots(3, 4) # grid of 3x4 subplots\naxes = axes.flatten() # reshape from 3x4 array into 12-element vector\nfor i in range(12):\n    plt.sca(axes[i]) # set the current Axes\n    plt.text(0.5, 0.5, i+1) # print conventional subplot index number to middle of Axes\n```\nAs a special note for the text, the Axes limits are [0,1] on each Axes by default, and we increment the iterator counter `i` by 1 to get the subplot index, if we were creating the subplots through `subplot()`. (Reference: [`plt.sca()`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.sca.html), [`plt.text()`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.text.html))",
+              "instructor_notes": ""
+            },
+            {
+              "id": 698569,
+              "key": "f73280ea-6652-4f2c-af33-2511631cd07d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/August/5b8084be_l3-c09b-subplots4/l3-c09b-subplots4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f73280ea-6652-4f2c-af33-2511631cd07d",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 698542,
+              "key": "aeca3505-d9c5-4edc-85ee-1064e89d919d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Documentation\n\nDocumentation pages for Figure and Axes objects are linked below. Note that they're pretty dense, so I don't suggest reading them until you need to dig down deeper and override matplotlib or seaborn's default behavior. Even then, they _are_ just reference pages, so they're better for skimming or searching in case other internet resources don't provide enough detail.\n\n- [Figure](https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html)\n- [Axes](https://matplotlib.org/api/axes_api.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 503846,
+          "key": "74ab8c07-01e4-407c-8941-350a2cf49e78",
+          "title": "Choosing a Plot for Discrete Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "74ab8c07-01e4-407c-8941-350a2cf49e78",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 513021,
+              "key": "33233dad-2e0b-4874-ade0-b0185a1d9f07",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Choosing a Plot for Discrete Data\n\nIf you want to plot a discrete quantitative variable, it is possible to select either a histogram or a bar chart to depict the data.\n\nThe histogram is the most immediate choice since the data is numeric, but there's one particular consideration to make regarding the bin edges. Since data points fall on set values, it can help to reduce ambiguity by putting bin edges between the actual values taken by the data. Your readers may not know that values on bin edges end up in the bin to their right, so this can help remove potential confusion when they interpret the plot. Compare the two visualizations of 100 random die rolls below (in `die_rolls`), with bin edges _on_ the values in the left subplot, and bin edges _in between_ values in the right subplot.\n\n```python\nplt.figure(figsize = [10, 5])\n\n# histogram on the left, bin edges on integers\nplt.subplot(1, 2, 1)\nbin_edges = np.arange(2, 12+1.1, 1) # note `+1.1`, see below\nplt.hist(die_rolls, bins = bin_edges)\nplt.xticks(np.arange(2, 12+1, 1))\n\n# histogram on the right, bin edges between integers\nplt.subplot(1, 2, 2)\nbin_edges = np.arange(1.5, 12.5+1, 1)\nplt.hist(die_rolls, bins = bin_edges)\nplt.xticks(np.arange(2, 12+1, 1))\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565162,
+              "key": "abd876f4-09cd-4033-9a91-172e86e33919",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aa9881b_l3-c10-dierolls1/l3-c10-dierolls1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/abd876f4-09cd-4033-9a91-172e86e33919",
+              "caption": "",
+              "alt": "The same data is plotted in both subplots, but the alignment of the bin edges is different.",
+              "width": 720,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 565161,
+              "key": "3bdb62e0-87eb-4fd1-be6e-9536ddf2e0f9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You'll notice for the left histogram, in a deviation from the examples that have come before, I've added 1.1 to the max value (12) for setting the bin edges, rather than just the desired bin width of 1. Recall that data that is equal to the rightmost bin edge gets lumped in to the last bin. This presents a potential problem in perception when a lot of data points take the maximum value, and so is especially relevant when the data takes on discrete values. The 1.1 adds an additional bin to the end to store the die rolls of value 12 alone, to avoid having the last bar catch both 11 and 12.\n\nAlternatively to the histogram, consider if a bar chart with non-connected bins might serve your purposes better. The plot below takes the code from before, but adds the \"rwidth\" parameter to set the proportion of the bin widths that will be filled by each histogram bar.\n\n```python\nbin_edges = np.arange(1.5, 12.5+1, 1)\nplt.hist(die_rolls, bins = bin_edges, rwidth = 0.7)\nplt.xticks(np.arange(2, 12+1, 1))\n```\nWith \"rwidth\" set to 0.7, the bars will take up 70% of the space allocated by each bin, with 30% of the space left empty. This changes the default display of the histogram (which you could think of as \"rwidth = 1\") into a bar chart.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565190,
+              "key": "2ef94dbd-976a-4266-99c4-040e80909e97",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aa996d1_l3-c10-dierolls2/l3-c10-dierolls2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2ef94dbd-976a-4266-99c4-040e80909e97",
+              "caption": "",
+              "alt": "Gaps between bars makes it clear that the data is discrete in nature.",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 513022,
+              "key": "1e492cac-ebd3-4679-bc05-7dd7860625a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "By adding gaps between bars, you emphasize the fact that the data is discrete in value. On the other hand, plotting your quantitative data in this manner might cause it to be interpreted as ordinal-type data, which can have an effect on overall perception. \n\nFor continuous numeric data, you should not make use of the \"rwidth\" parameter, since the gaps imply discreteness of value. As another caution, it might be tempting to use seaborn's `countplot` function to plot the distribution of a discrete numeric variable as bars. Be careful about doing this, since each unique numeric value will get a bar, regardless of the spacing in values between bars. (For example, if the unique values were {1, 2, 4, 5}, missing 3, `countplot` would only plot four bars, with the bars for 2 and 4 right next to one another.) Also, even if your data is technically discrete numeric, you should probably not consider either of the variants depicted on this page unless the number of unique values is small enough to allow for the half-unit shift or discrete bars to be interpretable. If you have a large number of unique values over a large enough range, it's better to stick with the standard histogram than risk interpretability issues.\n\nWhile you might justify plotting discrete numeric data using a bar chart, you’ll be less apt to justify the opposite: plotting ordinal data as a histogram. The space between bars in a bar chart helps to remind the reader that values are not contiguous in an ‘interval’-type fashion: only that there is an order in levels. With that space removed as in a histogram, it's harder to remember this important bit of interpretation.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 503847,
+          "key": "1523cdaa-1c53-47fd-ab3e-a31631dcacad",
+          "title": "Descriptive Statistics, Outliers and Axis Limits",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1523cdaa-1c53-47fd-ab3e-a31631dcacad",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 562498,
+              "key": "1c154c9e-1d3a-4f1e-a09b-49a7a41f69c3",
+              "title": "L3 111 Descriptive Stats Outliers And Axis Limits V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kQoK7UwrGh0",
+                "china_cdn_id": "kQoK7UwrGh0.mp4"
+              }
+            },
+            {
+              "id": 572441,
+              "key": "6ee95e8d-14c9-4c15-bd7a-efd6c3b73d0f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 562500,
+              "key": "edf64e10-5b8c-471b-b77c-0875152cc055",
+              "title": "DataVis L3 11 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "C8DGwJa_adA",
+                "china_cdn_id": "C8DGwJa_adA.mp4"
+              }
+            },
+            {
+              "id": 513026,
+              "key": "12a73a1e-5db9-4c67-83b0-db0132cbb503",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Descriptive Statistics, Outliers, and Axis Limits\n\nAs you create your plots and perform your exploration, make sure that you pay attention to what the plots tell you that go beyond just the basic descriptive statistics. Note any aspects of the data like number of modes and skew, and note the presence of outliers in the data for further investigation.\n\nRelated to the latter point, you might need to change the limits or scale of what is plotted to take a closer look at the underlying patterns in the data. This page covers the topic of axis limits; the next the topic of scales and transformations. In order to change a histogram's axis limits, you can add a Matplotlib [`xlim`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.xlim.html) call to your code. The function takes a tuple of two numbers specifying the upper and lower bounds of the x-axis range. Alternatively, the `xlim` function can be called with two numeric arguments to the same result.\n```python\nplt.figure(figsize = [10, 5])\n\n# histogram on left: full data\nplt.subplot(1, 2, 1)\nbin_edges = np.arange(0, df['skew_var'].max()+2.5, 2.5)\nplt.hist(data = df, x = 'skew_var', bins = bin_edges)\n\n# histogram on right: focus in on bulk of data < 35\nplt.subplot(1, 2, 2)\nbin_edges = np.arange(0, 35+1, 1)\nplt.hist(data = df, x = 'skew_var', bins = bin_edges)\nplt.xlim(0, 35) # could also be called as plt.xlim((0, 35))\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565662,
+              "key": "348c6ac2-99e8-4acf-9977-7c60e66c657f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aab1bfb_l3-c11-outliers1/l3-c11-outliers1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/348c6ac2-99e8-4acf-9977-7c60e66c657f",
+              "caption": "",
+              "alt": "",
+              "width": 720,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 565667,
+              "key": "83661503-5e06-40f8-9add-76be5aaf3ce0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the generic example above, we might be interested in comparing patterns in other variables between data points that take values less than 35 to those that take values greater than 35. For anything that is concentrated on the bulk of the data in the former group (< 35), use of axis limits can allow focusing on data points in that range without needing to go through creation of a new DataFrame filtering out the data points in the latter group (> 35).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 503849,
+          "key": "7623c273-f807-4da3-9ce4-93124bc9ce42",
+          "title": "Scales and Transformations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7623c273-f807-4da3-9ce4-93124bc9ce42",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 562501,
+              "key": "739b6a7e-ff04-40e0-b922-ffb8266523d7",
+              "title": "L3 121 Scales And Transformations V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "PE53ga2bOME",
+                "china_cdn_id": "PE53ga2bOME.mp4"
+              }
+            },
+            {
+              "id": 572442,
+              "key": "2457508e-e0d1-4cac-9f48-73e1c917d71c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 562502,
+              "key": "9a0a73a9-addf-4d5f-9ad9-a4f6e1ce1463",
+              "title": "DataVis L3 12 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fo0VIbQRBJk",
+                "china_cdn_id": "fo0VIbQRBJk.mp4"
+              }
+            },
+            {
+              "id": 513031,
+              "key": "5d00e0b6-4956-4373-8db7-2b44b8ecd156",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<hr>\n## Scales and Transformations\n\nCertain data distributions will find themselves amenable to scale transformations. The most common example of this is data that follows an approximately [log-normal](https://en.wikipedia.org/wiki/Log-normal_distribution) distribution. This is data that, in their natural units, can look highly skewed: lots of points with low values, with a very long tail of data points with large values. However, after applying a logarithmic transform to the data, the data will follow a normal distribution. (If you need a refresher on the logarithm function, check out [this lesson on Khan Academy](https://www.khanacademy.org/math/algebra2/exponential-and-logarithmic-functions).)\n```python\nplt.figure(figsize = [10, 5])\n\n# left histogram: data plotted in natural units\nplt.subplot(1, 2, 1)\nbin_edges = np.arange(0, data.max()+100, 100)\nplt.hist(data, bins = bin_edges)\nplt.xlabel('values')\n\n# right histogram: data plotted after direct log transformation\nplt.subplot(1, 2, 2)\nlog_data = np.log10(data) # direct data transform\nlog_bin_edges = np.arange(0.8, log_data.max()+0.1, 0.1)\nplt.hist(log_data, bins = log_bin_edges)\nplt.xlabel('log(values)')\n```\n(Documentation: [numpy `log10`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.log10.html), [matplotlib `xlabel`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.xlabel.html))",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565705,
+              "key": "bdee5cc6-638e-43b9-bf06-c9daaab1307d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5beca4ca_l3-c12-transforms1/l3-c12-transforms1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bdee5cc6-638e-43b9-bf06-c9daaab1307d",
+              "caption": "",
+              "alt": "",
+              "width": 720,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 565699,
+              "key": "b9a693a4-c3fa-49ff-a26e-d5245fa814a0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the plot on the left, the few data points with value above 1000 mash the majority of the points into the bins on the far left. With the plot on the right, the logarithmic transform makes those large points look in line with the rest: a raw value of 1000 becomes a value of 3 under log transform, and a raw value of 100 becomes a log-transformed value of 2. The big problem with the right-side plot is that the units on the x-axis are difficult to interpret: for most people, it is only easy to convert from log values to natural values on the integers (and this assumes a nice base like 10 as used in the example).\n\nThis is where scale transformations are handy. In a scale transformation, the gaps between values are based on the transformed scale, but you can interpret data in the variable's natural units. It is also a convenient approach since you won't need to engineer new features. Matplotlib's [`xscale`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.xscale.html) function includes a few built-in transformations: we'll use the 'log' scale here.\n```python\nbin_edges = np.arange(0, data.max()+100, 100)\nplt.hist(data, bins = bin_edges)\nplt.xscale('log')\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565774,
+              "key": "d5452476-03ab-40f6-9469-aa817815d429",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aab631b_l3-c12-transforms2/l3-c12-transforms2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d5452476-03ab-40f6-9469-aa817815d429",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565798,
+              "key": "b09c02aa-17f6-47e7-80ce-ef667a7c4ff5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Notice two things about the plot now. Even though the data is on a log scale, the bins are still linearly spaced. This means that they change size from wide on the left to thin on the right, as the values increase multiplicatively. Secondly, the default label settings are still somewhat tricky to interpret, and are sparse as well.\n\nTo address the bin size issue, we just need to change them so that they are evenly-spaced powers of 10. Depending on what you are plotting, a different base power like 2 might be useful instead. For the ticks, we can use [`xticks`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.xticks.html) to specify locations and labels in their natural units. Remember: we aren't changing the values taken by the data, only how they're displayed. Between integer powers of 10, we don't have clean values for even markings, but we can still get close. Setting ticks in cycles of 1-3-10 or 1-2-5-10 are very useful for base-10 log transforms.\n```python\nbin_edges = 10 ** np.arange(0.8, np.log10(data.max())+0.1, 0.1)\nplt.hist(data, bins = bin_edges)\nplt.xscale('log')\ntick_locs = [10, 30, 100, 300, 1000, 3000]\nplt.xticks(tick_locs, tick_locs)\n```\nIt is important that the `xticks` are specified _after_ `xscale` since that function has its own built-in tick settings.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565799,
+              "key": "cf4b2609-fcf9-4448-ba33-a8237571fea4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aab6792_l3-c12-transforms3/l3-c12-transforms3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cf4b2609-fcf9-4448-ba33-a8237571fea4",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565805,
+              "key": "38d91845-3680-4059-ab75-367a8d7d97c1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We've ended up with the same plot as when we performed the direct log transform, but now with a much nicer set of tick marks and labels.\n\n## Alternative Approach\n\nBe aware that a logarithmic transformation is not the only one possible. When we perform a logarithmic transformation, our data values have to all be positive; it's impossible to take a log of zero or a negative number. In addition, the transformation implies that additive steps on the log scale will result in multiplicative changes in the natural scale, an important implication when it comes to data modeling. The type of transformation that you choose may be informed by the context for the data. For example, [this Wikipedia section](https://en.wikipedia.org/wiki/Log-normal_distribution#Occurrence_and_applications) provides a few examples of places where log-normal distributions have been observed.\n\nIf you want to use a different transformation that's not available in `xscale`, then you'll have to perform some feature engineering. In cases like this, we want to be systematic by writing a function that applies both the transformation and its inverse. The inverse will be useful in cases where we specify values in their transformed units and need to get the natural units back. For the purposes of demonstration, let's say that we want to try plotting the above data on a square-root transformation. (Perhaps the numbers represent areas, and we think it makes sense to model the data on a rough estimation of radius, length, or some other 1-d dimension.) We can create a visualization on this transformed scale like this:\n```python\ndef sqrt_trans(x, inverse = False):\n    \"\"\" transformation helper function \"\"\"\n    if not inverse:\n        return np.sqrt(x)\n    else:\n        return x ** 2\n\nbin_edges = np.arange(0, sqrt_trans(data.max())+1, 1)\nplt.hist(data.apply(sqrt_trans), bins = bin_edges)\ntick_locs = np.arange(0, sqrt_trans(data.max())+10, 10)\nplt.xticks(tick_locs, sqrt_trans(tick_locs, inverse = True).astype(int))\n```\nNote that `data` is a pandas Series, so we can use the [`apply`](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.apply.html) method for the function. If it were a NumPy Array, we would need to apply the function like in the other cases. The tick locations could have also been specified with the natural values, where we apply the standard transformation function on the first argument of `xticks` instead.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565837,
+              "key": "5f9d338f-baff-4569-b77b-06e7ccad89fa",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aab784e_l3-c12-transforms4/l3-c12-transforms4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5f9d338f-baff-4569-b77b-06e7ccad89fa",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 513033,
+          "key": "492395f7-8a52-4da0-ba5a-72689f25718e",
+          "title": "Scales and Transformations Practice",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "492395f7-8a52-4da0-ba5a-72689f25718e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 590349,
+              "key": "cd10a331-497e-4cb2-9f06-a4ef712b35b9",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view43937ed7",
+              "pool_id": "jupyter",
+              "view_id": "e7a22c4c-618a-4eab-97ef-f68b1654c574",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Scales_and_Transformations_Practice.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 503850,
+          "key": "a3eee132-0ea6-4410-8406-0e732fcd330d",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a3eee132-0ea6-4410-8406-0e732fcd330d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 565151,
+              "key": "78e26bc9-c172-4c5a-bf7e-fbec4a0271d7",
+              "title": "L3 141 Lesson Summary V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7ZaSMbsJUWU",
+                "china_cdn_id": "7ZaSMbsJUWU.mp4"
+              }
+            },
+            {
+              "id": 729648,
+              "key": "27458106-93cb-425f-a8dc-56e177a9bb4b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you'd like to work through the notebooks on your own machine or otherwise outside the classroom, you can find the code in this [GitHub repo](https://github.com/udacity/AIPND).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 503851,
+          "key": "cfbaee5f-1a27-4457-8a67-8421bf19cb05",
+          "title": "Extra: Kernel Density Estimation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cfbaee5f-1a27-4457-8a67-8421bf19cb05",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 513039,
+              "key": "8145f50f-65d6-4f06-ac2e-ebb40185c55d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "At the end of this lesson and the next, you’ll find some extra concepts that didn’t really fit into the main lesson flow. These concepts will cover a few additional univariate plots that you might be interested in using or might observe in your own research. While bar charts and histograms should cover your most common needs, the plots in this section might prove useful for both the exploratory and explanatory sides of data visualization.\n<hr>\n## Kernel Density Estimation\n\nEarlier in this lesson, you saw an example of [kernel density estimation](https://en.wikipedia.org/wiki/Kernel_density_estimation) (KDE) through the use of seaborn's [`distplot`](https://seaborn.pydata.org/generated/seaborn.distplot.html#seaborn.distplot) function, which plots a KDE on top of a histogram.\n```python\nsb.distplot(df['num_var'])\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565846,
+              "key": "cb946d8b-4fa1-4e69-b510-0a2aea09df23",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aab083d_l3-c08-histograms4/l3-c08-histograms4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cb946d8b-4fa1-4e69-b510-0a2aea09df23",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 565879,
+              "key": "4fa206a1-29a0-4955-9ac5-3587b61f5fb6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Kernel density estimation is one way of estimating the probability density function of a variable. In a KDE plot, you can think of each observation as replaced by a small ‘lump’ of area. Stacking these lumps all together produces the final density curve. The default settings use a normal-distribution kernel, but most software that can produce KDE plots also include other kernel function options.\n\nSeaborn's `distplot` function calls another function, [`kdeplot`](https://seaborn.pydata.org/generated/seaborn.kdeplot.html), to generate the KDE. The demonstration code below also uses a third function called by `distplot` for illustration, [`rugplot`](https://seaborn.pydata.org/generated/seaborn.rugplot.html). In a rugplot, data points are depicted as dashes on a number line.\n```python\ndata = [0.0, 3.0, 4.5, 8.0]\nplt.figure(figsize = [12, 5])\n\n# left plot: showing kde lumps with the default settings\nplt.subplot(1, 3, 1)\nsb.distplot(data, hist = False, rug = True, rug_kws = {'color' : 'r'})\n\n# central plot: kde with narrow bandwidth to show individual probability lumps\nplt.subplot(1, 3, 2)\nsb.distplot(data, hist = False, rug = True, rug_kws = {'color' : 'r'},\n            kde_kws = {'bw' : 1})\n\n# right plot: choosing a different, triangular kernel function (lump shape)\nplt.subplot(1, 3, 3)\nsb.distplot(data, hist = False, rug = True, rug_kws = {'color' : 'r'},\n            kde_kws = {'bw' : 1.5, 'kernel' : 'tri'})\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 565880,
+              "key": "426610e8-1d78-4f47-865d-9d241c46387f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5aab7fe3_l3-c15-kde1/l3-c15-kde1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/426610e8-1d78-4f47-865d-9d241c46387f",
+              "caption": "",
+              "alt": "",
+              "width": 864,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 513041,
+              "key": "d96a048c-ec56-434c-96a6-a66668ab5f50",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Interpreting proportions from this plot type is slightly trickier than a standard histogram: the vertical axis indicates a density of data rather than straightforward proportions. Under a KDE plot, the total area between the 0-line and the curve will be 1. The probability of an outcome falling between two values is found by computing the area under the curve that falls between those values. Making area judgments like this without computer assistance is difficult and likely to be inaccurate.\n\nDespite the fact that making specific probability judgments are not as intuitive with KDE plots as histograms, there are still reasons to use kernel density estimation. If there are relatively few data points available, KDE provides a smooth estimate of the overall distribution of data. These ideas may not be so easily conveyed through histograms, in which the large discreteness of jumps may end up misleading.\n\nIt should also be noted that there is a bandwidth parameter in KDE that specifies how wide the density lumps are. Similar to bin width for histograms, we need to choose a bandwidth size that best shows the signal in the data. A too-small bandwidth can make the data look noisier than it really is, and a too-large bandwidth can smooth out useful features that we could use to make inferences about the data. It’s good to keep this in mind in case the default bandwidths chosen by your visualization software don’t look quite right or if you need to perform further investigations.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 503853,
+          "key": "48ccde12-1496-48e0-ba5e-1b3fa2aa0083",
+          "title": "Extra: Waffle Plots",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "48ccde12-1496-48e0-ba5e-1b3fa2aa0083",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 571242,
+              "key": "6d890efe-0106-46de-9c3f-c1b050b9bfb8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Waffle Plots\n\nOne alternative univariate plot type that you might see for categorical data is the **waffle plot**, also known as the square pie chart. While the standard pie chart uses a circle to represent the whole, a waffle plot is plotted onto a square divided into a 10x10 grid. Each small square in the grid represents one percent of the data, and a number of squares are colored by category to indicate total proportions. Compared to a pie chart, it is much easier to make precise assessments of relative frequencies.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780421,
+              "key": "652c7b3c-886b-4495-b125-2a00c0a50783",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be2398e_l3-c16-waffleplots3/l3-c16-waffleplots3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/652c7b3c-886b-4495-b125-2a00c0a50783",
+              "caption": "You've seen code for the pie chart (left) previously in the lesson. Code for the waffle plot (right) will be walked through below.",
+              "alt": "",
+              "width": 785,
+              "height": 335,
+              "instructor_notes": null
+            },
+            {
+              "id": 780230,
+              "key": "f2966d36-e9e4-455d-a563-04c16f838728",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There's no built-in function for waffle plots in Matplotlib or Seaborn, so we'll need to take some additional steps in order to build one with the tools available. First, we need to create a function to decide how many blocks to allocate to each category. The function below, `percentage_blocks`, uses a rule where each category gets a number of blocks equal to the number of full percentage points it covers. The remaining blocks to get to the full one hundred are assigned to the categories with the largest fractional parts.\n\n```python\ndef percentage_blocks(df, var):\n    \"\"\"\n    Take as input a dataframe and variable, and return a Pandas series with\n    approximate percentage values for filling out a waffle plot.\n    \"\"\"\n    # compute base quotas\n    percentages = 100 * df[var].value_counts() / df.shape[0]\n    counts = np.floor(percentages).astype(int) # integer part = minimum quota\n    decimal = (percentages - counts).sort_values(ascending = False)\n    \n    # add in additional counts to reach 100\n    rem = 100 - counts.sum()\n    for cat in decimal.index[:rem]:\n        counts[cat] += 1\n    \n    return counts\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780263,
+              "key": "b92c5b3a-9c4a-4105-a033-74bd13ae33b2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be215e8_l3-c16-waffleplotsa/l3-c16-waffleplotsa.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b92c5b3a-9c4a-4105-a033-74bd13ae33b2",
+              "caption": "Note that if we just rounded the proportions (center), we would round all of them up, ending up with a total of 101 blocks.",
+              "alt": "",
+              "width": 906,
+              "height": 130,
+              "instructor_notes": null
+            },
+            {
+              "id": 780367,
+              "key": "8f5598d3-d21b-4156-8fef-421bc3166c36",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now it's time to actually plot those counts as boxes in the waffle plot form. To do this, we'll make use of Matplotlib's [`bar`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.bar.html) function. We could have used this function earlier in the lesson to create our bar charts instead of Seaborn's `countplot`, but it would have required us to aggregate the data first to get the height of each bar. For the case of the waffle plot, we're going to specify the x- and y- coordinates of the boxes, and set their widths and heights to be equal, to create squares. The initial plotting code looks like this:\n\n```python\nwaffle_counts = percentage_blocks(df, 'cat_var')\n\nprev_count = 0\n# for each category,\nfor cat in range(waffle_counts.shape[0]):\n    # get the block indices\n    blocks = np.arange(prev_count, prev_count + waffle_counts[cat])\n    # and put a block at each index's location\n    x = blocks % 10 # use mod operation to get ones digit\n    y = blocks // 10 # use floor division to get tens digit\n    plt.bar(x = x, height = 0.8, width = 0.8, bottom = y)\n    prev_count += waffle_counts[cat]\n```\nThe blocks are drawn from left to right, bottom to top, using the ones and tens digits for numbers from 0 to 99 to specify the x- and y- positions, respectively. A loop is used to call the `bar` function once for each category; each time it is called, the plotted bars are assigned a different color.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780370,
+              "key": "03c771d0-b374-411d-9c0b-7a493ad71269",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be2305a_l3-c16-waffleplots1/l3-c16-waffleplots1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/03c771d0-b374-411d-9c0b-7a493ad71269",
+              "caption": "",
+              "alt": "",
+              "width": 432,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 780416,
+              "key": "b2b51b1a-2fad-4095-ad97-f451422c3755",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The last steps that we need to do involve aesthetic cleaning to polish it up for interpretability. We can take away the plot border and ticks, since they're arbitrary, but we should change the limits so that the boxes are square. We should also add a legend so that the mapping from colors to category levels is clear.\n\n```python\nwaffle_counts = percentage_blocks(df, 'cat_var')\n\nprev_count = 0\n# for each category,\nfor cat in range(waffle_counts.shape[0]):\n    # get the block indices\n    blocks = np.arange(prev_count, prev_count + waffle_counts[cat])\n    # and put a block at each index's location\n    x = blocks % 10 # use mod operation to get ones digit\n    y = blocks // 10 # use floor division to get tens digit\n    plt.bar(x = x, height = 0.8, width = 0.8, bottom = y)\n    prev_count += waffle_counts[cat]\n\n# aesthetic wrangling\nplt.legend(waffle_counts.index, bbox_to_anchor = (1, 0.5), loc = 6)\nplt.axis('off')\nplt.axis('square')\n```\nThe two calls to Matplotlib's [`axis`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.axis.html) function make use of two convenience strings for arguments: 'off' removes the axis lines, ticks, and labels, while 'square' ensures that the scaling on each axis is equal within a square bounding box. As for the [`legend`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.legend.html) call, the first argument is a list of categories as obtained from the sorted `waffle_counts` Series variable. This will match each category to each `bar` call, in order. The \"bbox_to_anchor\" argument sets an anchor for the legend to the right side of the plot, and \"loc = 6\" positions the anchor to the center left of the legend. The final plot is as it looks at the top of the page:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780417,
+              "key": "a01c7cc6-c280-4fb1-a3cd-421123b3d943",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be2387b_l3-c16-waffleplots2/l3-c16-waffleplots2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a01c7cc6-c280-4fb1-a3cd-421123b3d943",
+              "caption": "",
+              "alt": "",
+              "width": 360,
+              "height": 281,
+              "instructor_notes": null
+            },
+            {
+              "id": 513045,
+              "key": "c1e5c156-1690-43ed-852d-1a1ef85b6728",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Other variants of the waffle plot exist to extend it beyond just displaying probabilities. By associating each square with an amount rather than a percentage, we can use waffle plots to show absolute frequencies instead. This might cause us to end up with something other than 100 squares.\n\n```python\n# each box represents five full counts\nwaffle_counts = (df['cat_var'].value_counts() / 5).astype(int)\n\nprev_count = 0\n# for each category,\nfor cat in range(waffle_counts.shape[0]):\n    # get the block indices\n    blocks = np.arange(prev_count, prev_count + waffle_counts[cat])\n    # and put a block at each index's location\n    x = blocks % 10\n    y = blocks // 10\n    plt.bar(y, 0.8, 0.8, x)\n    prev_count += waffle_counts[cat]\n\n# box size legend\nplt.bar(7.5, 0.8, 0.8, 2, color = 'white', edgecolor = 'black', lw = 2)\nplt.text(8.1, 2.4,'= 5 data points', va = 'center')\n\n# aesthetic wrangling\nplt.legend(waffle_counts.index, bbox_to_anchor = (0.8, 0.5), loc = 6)\nplt.axis('off')\nplt.axis('square')\n```\nIn the above code, `waffle_counts` has been adjusted so that each box represents 5 data points. Most of the code is the same as before, though it should be noted that the `x` and `y` variables have been swapped in the `bar` function so that the boxes are plotted in columns from left to right. Additional `bar` and [`text`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.text.html) calls have been added to the plot to act as an ad hoc legend. The positions of these elements, and the legend, have been adjusted manually through some trial and error to improve the aesthetic appeal. Note that this constitutes more of an explanatory polishing than it is a part of exploration!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780443,
+              "key": "7a2e316c-4c2d-4e56-b8e9-f2e82f7759e4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/November/5be24166_l3-c16-waffleplots4/l3-c16-waffleplots4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7a2e316c-4c2d-4e56-b8e9-f2e82f7759e4",
+              "caption": "",
+              "alt": "",
+              "width": 328,
+              "height": 281,
+              "instructor_notes": null
+            },
+            {
+              "id": 771418,
+              "key": "ae3edaf9-e4c1-4b1b-b281-ead055ef8914",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As a further extension, there's no restriction against us using icons for each tally, rather than just squares. Infographics often take this approach, by having each icon represent some number of units (e.g. one person icon representing one million people). But while it can be tempting to use icons to represent values as a bit of visual flair, an icon-based plot contains more chart junk than a bar chart that conveys the same information. There’s a larger cognitive challenge in having to count a number of icons to understand the scale of a value, compared to just referencing a box's endpoint on a labeled axis.\n\nOne other downside of the waffle plot is that it is not commonly supported out of the box for most visualization libraries, including Matplotlib and Seaborn. The length of the demonstration code presented above is a testament to that. The effort required to create a meaningful and useful waffle plot means that it is best employed carefully as a part of explanatory visualizations. During the exploratory phase, you're better off using more traditional plots like the bar chart to more rapidly build your understanding of the data.\n\n## Additional Resources\n\nYou don't actually need to go through all of the code wrangling shown above to create waffle plots in Python. The [PyWaffle](https://github.com/ligyxy/PyWaffle) package can be used with Matplotlib's `figure` function to create waffle plots, with a few options for the orientation and order of icons, but you'll need to install it separately since it's not a major package. One of the main reasons why I didn't use it above is that the syntax for using it is very different from what you've seen and will see in this course. If you want to make use of the library, check out the examples on the linked GitHub page.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

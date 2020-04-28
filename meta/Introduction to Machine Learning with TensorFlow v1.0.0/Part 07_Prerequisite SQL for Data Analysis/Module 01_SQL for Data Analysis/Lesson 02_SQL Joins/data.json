@@ -1,0 +1,1901 @@
+{
+  "data": {
+    "lesson": {
+      "id": 918917,
+      "key": "a5fd4f28-055a-44ec-b189-53e9d63bbea0",
+      "title": "SQL Joins",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you will learn how to combine data from multiple tables together.  ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/a5fd4f28-055a-44ec-b189-53e9d63bbea0/918917/1581973920125/SQL+Joins+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/a5fd4f28-055a-44ec-b189-53e9d63bbea0/918917/1581973915930/SQL+Joins+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 369109,
+          "key": "192237ba-14c1-460c-ac69-ab455741cdc2",
+          "title": "Video: Motivation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "192237ba-14c1-460c-ac69-ab455741cdc2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402957,
+              "key": "55fbcda3-1c30-4805-a084-1083901a70f4",
+              "title": "Introduction to JOINs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YvZ010GU-Ck",
+                "china_cdn_id": "YvZ010GU-Ck.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 369480,
+          "key": "824ea43f-a26d-49d9-ad94-bc10ed3d758b",
+          "title": "Video: Why Would We Want to Split Data Into Separate Tables?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "824ea43f-a26d-49d9-ad94-bc10ed3d758b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402962,
+              "key": "30b2df4b-c115-47d6-bb9d-7d2fb2129b02",
+              "title": "Why Not Store Everything in One Table?",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rvY4A6FpS40",
+                "china_cdn_id": "rvY4A6FpS40.mp4"
+              }
+            },
+            {
+              "id": 402963,
+              "key": "1d8fbd32-263f-4ba9-87d9-807697ef168d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "So above, we understand that all of the information related to an account is not in the **orders** table, but why not?  Watch the below video to find out!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 402956,
+              "key": "74cbb003-e3c6-4b0e-8c1c-14ffcb79b3b9",
+              "title": "Why Use Separate Tables?",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UIQBtpmqYOs",
+                "china_cdn_id": "UIQBtpmqYOs.mp4"
+              }
+            },
+            {
+              "id": 369494,
+              "key": "ed3624ee-b637-4b8d-b19e-cb7aa0756e37",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Database Normalization\n\nWhen creating a database, it is really important to think about how data will be stored.  This is known as **normalization**, and it is a huge part of most SQL classes.  If you are in charge of setting up a new database, it is important to have a thorough understanding of database **normalization**.\n\nThere are essentially three ideas that are aimed at database normalization:\n\n1. Are the tables storing logical groupings of the data?\n2. Can I make changes in a single location, rather than in many tables for the same information?\n3. Can I access and manipulate data quickly and efficiently?\n\nThis is discussed in detail [here](https://www.itprotoday.com/sql-server/sql-design-why-you-need-database-normalization).\n\nHowever, most analysts are working with a database that was already set up with the necessary properties in place. As analysts of data, you don't really need to think too much about data **normalization**.  You just need to be able to pull the data from the database, so you can start making insights.  This will be our focus in this lesson.\n\n ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 369495,
+          "key": "6edb9f4a-cacf-40d0-924c-cb5d826fd9a6",
+          "title": "Video: Introduction to JOINs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6edb9f4a-cacf-40d0-924c-cb5d826fd9a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 403039,
+              "key": "dfa89213-fa57-4b51-ab3e-020e2d96c84c",
+              "title": "Your First JOIN",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HkX9fkNRbU8",
+                "china_cdn_id": "HkX9fkNRbU8.mp4"
+              }
+            },
+            {
+              "id": 369497,
+              "key": "fc9db01b-ea89-4558-bd8c-ad4d2cc902a8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\nThis entire lesson will be focused on **JOIN**s.  The whole purpose of **JOIN** statements is to allow us to pull data from more than one table at a time.\n\nAgain - **JOIN**s are useful for allowing us to pull data from multiple tables.  This is both simple and powerful all at the same time.\n\nWith the addition of the **JOIN** statement to our toolkit, we will also be adding the **ON** statement.\n\nWe use **ON** clause to specify a **JOIN** condition which is a logical statement to combine the table in `FROM` and `JOIN` statements. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 369514,
+          "key": "3f221ddd-423a-41c9-914a-2104d0994618",
+          "title": "Text + Quiz: Your First JOIN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3f221ddd-423a-41c9-914a-2104d0994618",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 369515,
+              "key": "13399927-a1a4-45dd-9fff-57ec9c81b814",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Write Your First JOIN\n\nBelow we see an example of a query using a **JOIN** statement. Let's discuss what the different clauses of this query mean.\n```\nSELECT orders.*\nFROM orders\nJOIN accounts\nON orders.account_id = accounts.id;\n```\nAs we've learned, the **SELECT** clause indicates which column(s) of data you'd like to see in the output (For Example, orders.* gives us all the columns in orders table in the output). The **FROM** clause indicates the first table from which we're pulling data, and the **JOIN** indicates the second table. The **ON** clause specifies the column on which you'd like to merge the two tables together.\nTry running this query yourself below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558899,
+              "key": "40211c51-d47a-4f15-9e8e-8a1067e556b2",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa24f4820",
+              "pool_id": "sqlwidget",
+              "view_id": "a948b9e2-0f4f-4870-9105-6fae898b816a",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 402834,
+              "key": "3107f43d-3bf2-4b1c-810c-a6a27efdd476",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What to Notice\n\nWe are able to pull data from two tables:\n\n1. **orders**\n2. **accounts**\n\nAbove, we are only pulling data from the **orders** table since in the SELECT statement we only reference columns from the **orders** table.\n\nThe **ON** statement holds the two columns that get linked across the two tables.  This will be the focus in the next concepts.\n\n### Additional Information\n\nIf we wanted to only pull individual elements from either the **orders** or **accounts** table, we can do this by using the exact same information in the **FROM** and **ON** statements.  However, in your **SELECT** statement, you will need to know how to specify tables and columns in the **SELECT** statement:\n\n1. The table name is always **before** the period.\n2. The column you want from that table is always **after** the period.\n\nFor example, if we want to pull only the **account name** and the dates in which that account placed an order, but none of the other columns, we can do this with the following query:\n\n```\nSELECT accounts.name, orders.occurred_at\nFROM orders\nJOIN accounts\nON orders.account_id = accounts.id;\n```\n\nThis query only pulls two columns, not all the information in these two tables.  Alternatively, the below query pulls all the columns from _both_ the **accounts** and **orders** table.\n\n```\nSELECT *\nFROM orders\nJOIN accounts\nON orders.account_id = accounts.id;\n```\n\nAnd the first query you ran pull all the information from _only_ the **orders** table:\n\n```\nSELECT orders.*\nFROM orders\nJOIN accounts\nON orders.account_id = accounts.id;\n```\n\nJoining tables allows you access to each of the tables in the **SELECT** statement through the table name, and the columns will always follow a **.** after the table name.\n\nNow it's your turn.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 492671,
+              "key": "9de85b50-ccef-4c15-8804-115a54edb773",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### Quiz Questions\n\n1. Try pulling all the data from the **accounts** table, and all the data from the **orders** table.<br><br>\n2. Try pulling **standard_qty**, **gloss_qty**, and **poster_qty** from the **orders** table, and the **website** and the **primary_poc** from the **accounts** table.  \n\nAnother environment is below to practice these two questions, and you can check your solutions on the next concept.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 402835,
+              "key": "f5134d16-9af9-46f3-b3a3-147b7a2e1347",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa24f4820",
+              "pool_id": "sqlwidget",
+              "view_id": "c54afe8b-d216-4179-8124-f952b92825ae",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 402837,
+          "key": "cd17232f-e208-4f0a-80ab-567d932917c6",
+          "title": "Solution: Your First JOIN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cd17232f-e208-4f0a-80ab-567d932917c6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402838,
+              "key": "711f8aae-f748-40a2-b049-ef7d4cb9059c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solutions\n\n1. \n\n```\nSELECT orders.*, accounts.*\nFROM accounts\nJOIN orders\nON accounts.id = orders.account_id;\n```\nNotice this result is the same as if you switched the tables in the **FROM** and **JOIN**.  Additionally, which side of the `=` a column is listed doesn't matter.\n\n2. \n```\nSELECT orders.standard_qty, orders.gloss_qty, \n          orders.poster_qty,  accounts.website, \n          accounts.primary_poc\nFROM orders\nJOIN accounts\nON orders.account_id = accounts.id\n```\nNotice that we need to specify every table a column comes from in the **SELECT** statement.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558900,
+              "key": "1fd16a06-589f-43e0-9d5e-c281994b335c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa24f4820",
+              "pool_id": "sqlwidget",
+              "view_id": "d7f3a09b-16ea-453f-8691-f70f800c7352",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 369243,
+          "key": "57f82755-506c-4fb5-af0f-312b52ed340e",
+          "title": "Text: ERD Reminder",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "57f82755-506c-4fb5-af0f-312b52ed340e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 369248,
+              "key": "6e5edda3-9ccf-46fa-8d38-32737ac4f976",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Entity Relationship Diagrams\n\nFrom the last lesson, you might remember that an **entity relationship diagram** (ERD) is a common way to view data in a database. It is also a key element to understanding how we can pull data from multiple tables.\n\nIt will be beneficial to have an idea of what the ERD looks like for Parch & Posey handy, so I have posted it again below.  **You might even print a copy to have with you as you work through the exercises in the remaining content.**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 436686,
+              "key": "592270e8-4f32-490f-aa8e-44073ca2fa77",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/October/59e946e7_erd/erd.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/592270e8-4f32-490f-aa8e-44073ca2fa77",
+              "caption": "",
+              "alt": "",
+              "width": 812,
+              "height": 560,
+              "instructor_notes": null
+            },
+            {
+              "id": 369252,
+              "key": "76ae0504-f951-4202-814b-d6d539707f8a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Tables & Columns\n\nIn the Parch & Posey database there are 5 tables: \n1. **web_events**\n2. **accounts**\n3. **orders**\n4. **sales_reps**\n5. **region** \n\nYou will notice some of the columns in the tables have **PK** or **FK** next to the column name, while other columns don't have a label at all.\n\nIf you look a little closer, you might notice that the **PK** is associated with the first column in every table.  The **PK** here stands for **primary key**.  **A primary key exists in every table, and it is a column that has a unique value for every row.**  \n\nIf you look at the first few rows of any of the tables in our database, you will notice that this first, **PK**, column is always unique.  For this database it is always called `id`, but that is not true of all databases.\n\nYou can explore the database ERD below by clicking on the table names in the left menu of the workspace below. Or you can query the first row of these tables in the workspace to see some examples of the content inside of each field.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 713389,
+              "key": "a270e2d6-b32d-4b75-80c9-fd9a234b7726",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa24f4820",
+              "pool_id": "sqlwidget",
+              "view_id": "sql-evaluator-rddil8rnjih",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 369262,
+          "key": "049377d5-471c-4695-9233-e44c956cef9c",
+          "title": "Text: Primary and Foreign Keys",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "049377d5-471c-4695-9233-e44c956cef9c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 369264,
+              "key": "8bec90fc-c299-488a-8a4b-e4bf1ddf99c5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Keys\n### Primary Key (PK)\n\nA **primary key** is a unique column in a particular table.  This is the first column in each of our tables.  Here, those columns are all called **id**, but that doesn't necessarily have to be the name.  **It is common that the primary key is the first column in our tables in most databases.**\n\n### Foreign Key (FK)\n\nA **foreign key** is a column in one table that is a primary key in a different table. We can see in the Parch & Posey ERD that the foreign keys are:\n\n1. **region_id**\n2. **account_id**\n3. **sales_rep_id**\n\nEach of these is linked to the **primary key** of another table.  An example is shown in the image below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 369265,
+              "key": "e43bd273-c89f-44b0-8294-082ce081a436",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/598d2378_screen-shot-2017-08-10-at-8.23.48-pm/screen-shot-2017-08-10-at-8.23.48-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e43bd273-c89f-44b0-8294-082ce081a436",
+              "caption": "",
+              "alt": null,
+              "width": 1200,
+              "height": 512,
+              "instructor_notes": null
+            },
+            {
+              "id": 369266,
+              "key": "190ec4a7-ba45-4356-a567-d7424015915e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Primary - Foreign Key Link\n\nIn the above image you can see that:\n1. The **region_id** is the foreign key.\n2. The region_id is **linked** to id - this is the primary-foreign key link that connects these two tables.\n3. The crow's foot shows that the **FK** can actually appear in many rows in the **sales_reps** table.\n4. While the single line is telling us that the **PK** shows that id appears only once per row in this table.  \n\nIf you look through the rest of the database, you will notice this is always the case for a primary-foreign key relationship.  In the next concept, you can make sure you have this down!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 369267,
+          "key": "76fb20b3-8863-4bcf-bd5a-e54b01850717",
+          "title": "Quiz: Primary - Foreign Key Relationship",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "76fb20b3-8863-4bcf-bd5a-e54b01850717",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 369268,
+              "key": "3e4b1425-fbe8-47c8-8fa8-85637af61ad8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Helpful ERD For Answering the Below Questions\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463699,
+              "key": "fcfbcb2a-24b8-454d-a261-6712ae353fa6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e261c_screen-shot-2017-11-16-at-3.54.06-pm/screen-shot-2017-11-16-at-3.54.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fcfbcb2a-24b8-454d-a261-6712ae353fa6",
+              "caption": "",
+              "alt": "",
+              "width": 1540,
+              "height": 960,
+              "instructor_notes": null
+            },
+            {
+              "id": 369271,
+              "key": "ab1520e2-936b-4972-907c-ab200255e0b7",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ab1520e2-936b-4972-907c-ab200255e0b7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the appropriate definition or description to each term or column."
+                },
+                "concepts_label": "Definition or Column Description",
+                "answers_label": "Term or Column",
+                "concepts": [
+                  {
+                    "text": "Has a unique value for every row in that column.  There is one in every table.",
+                    "correct_answer": {
+                      "id": "a1502422317500",
+                      "text": "Primary Key "
+                    }
+                  },
+                  {
+                    "text": "The **link** to the primary key that exists in another table.",
+                    "correct_answer": {
+                      "id": "a1502422355905",
+                      "text": "Foreign Key "
+                    }
+                  },
+                  {
+                    "text": "The primary key in every table of our example database.",
+                    "correct_answer": {
+                      "id": "a1502422405886",
+                      "text": "id"
+                    }
+                  },
+                  {
+                    "text": "A foreign key that exists in both the **web_events** and **orders** tables.",
+                    "correct_answer": {
+                      "id": "a1502422507213",
+                      "text": "account_id"
+                    }
+                  },
+                  {
+                    "text": "The **ON** statement associated with a **JOIN** of the **web_events** and **accounts** tables.",
+                    "correct_answer": {
+                      "id": "a1505765942629",
+                      "text": "ON web_events.account_id = accounts.id"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1505766081939",
+                    "text": "ON accounts.account_id = web_events.id"
+                  },
+                  {
+                    "id": "a1505765942629",
+                    "text": "ON web_events.account_id = accounts.id"
+                  },
+                  {
+                    "id": "a1505766058657",
+                    "text": "ON web_events.id = accounts.id"
+                  },
+                  {
+                    "id": "a1502422317500",
+                    "text": "Primary Key "
+                  },
+                  {
+                    "id": "a1502422507213",
+                    "text": "account_id"
+                  },
+                  {
+                    "id": "a1502422405886",
+                    "text": "id"
+                  },
+                  {
+                    "id": "a1502422355905",
+                    "text": "Foreign Key "
+                  },
+                  {
+                    "id": "a1505766069597",
+                    "text": "ON accounts.id = web_events.id"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 369277,
+              "key": "e5e880cd-f7b5-4159-9833-30321ba0768a",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e5e880cd-f7b5-4159-9833-30321ba0768a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select all that are true for primary keys.",
+                "answers": [
+                  {
+                    "id": "a1502422713216",
+                    "text": "There is one and only one of these columns in every table.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502422734656",
+                    "text": "They are a column in a table.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502422756843",
+                    "text": "There might be more than one primary key for a table.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502422838459",
+                    "text": "They are a row in a table.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502422844165",
+                    "text": "Every database only has one primary key for the whole database.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 369282,
+              "key": "66d65722-51a9-4b26-8a62-5d1d3c6f982d",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "66d65722-51a9-4b26-8a62-5d1d3c6f982d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select all that are true of foreign keys.",
+                "answers": [
+                  {
+                    "id": "a1502423010399",
+                    "text": "They are always linked to a primary key.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502423030835",
+                    "text": "They are unique for every row in a table.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502423041448",
+                    "text": "Every table must have a foreign key.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502423066016",
+                    "text": "A table can only have one foreign key.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502423077956",
+                    "text": "In the above database, every foreign key is associated with the crow-foot notation, which suggests it can appear multiple times in the column of a table.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 369523,
+          "key": "6bcadea2-78dd-4aa5-a9f1-f84be429067b",
+          "title": "Text + Quiz: JOIN Revisited",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6bcadea2-78dd-4aa5-a9f1-f84be429067b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 369524,
+              "key": "c978dbfa-cd6d-47d0-a081-9a2a1ce81d7d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# JOIN Revisited\n\nLet's look back at the first JOIN you wrote.\n\n```\nSELECT orders.*\nFROM orders\nJOIN accounts\nON orders.account_id = accounts.id;\n```\n\nHere is the ERD for these two tables:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 369526,
+              "key": "f25048f0-3208-4eb6-a176-f92a8b177c2d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/598dfda7_screen-shot-2017-08-11-at-11.54.30-am/screen-shot-2017-08-11-at-11.54.30-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f25048f0-3208-4eb6-a176-f92a8b177c2d",
+              "caption": "",
+              "alt": null,
+              "width": 528,
+              "height": 373,
+              "instructor_notes": null
+            },
+            {
+              "id": 369527,
+              "key": "101d312b-7be2-4298-957b-f28a18d549da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Notice\n\nNotice our SQL query has the two tables we would like to join - one in the **FROM** and the other in the **JOIN**.  Then in the **ON**, we will **ALWAYs** have the **PK** equal to the **FK**:\n\nThe way we join any two tables is in this way: linking the **PK** and **FK** (generally in an **ON** statement).\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 369534,
+              "key": "0376b35a-d33c-44a7-b6a0-436ea7be9509",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/598e0b9e_screen-shot-2017-08-10-at-8.10.13-pm/screen-shot-2017-08-10-at-8.10.13-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0376b35a-d33c-44a7-b6a0-436ea7be9509",
+              "caption": "",
+              "alt": null,
+              "width": 1180,
+              "height": 496,
+              "instructor_notes": null
+            },
+            {
+              "id": 369533,
+              "key": "5b4c7684-8689-4699-a828-cbebb69c2816",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5b4c7684-8689-4699-a828-cbebb69c2816",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "# Practice\n\nUse the image above to assist you.  If we wanted to join the `sales_reps` and `region` tables together, how would you do it",
+                "answers": [
+                  {
+                    "id": "a1502478197685",
+                    "text": "ON sales_reps.id = region.id",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502478260991",
+                    "text": "ON sales_reps.id = region.name",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502478275040",
+                    "text": "ON sales_reps.region_id = region.id",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502478293023",
+                    "text": "ON region.id = sales_reps.id",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 369624,
+              "key": "64e99937-13b9-41a5-b7df-89f071ad67e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# JOIN More than Two Tables\n\nThis same logic can actually assist in joining more than two tables together.  Look at the three tables below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 369625,
+              "key": "90e0b63f-a6f0-473b-8225-091696c95cf4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/598e2e15_screen-shot-2017-08-11-at-3.21.34-pm/screen-shot-2017-08-11-at-3.21.34-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/90e0b63f-a6f0-473b-8225-091696c95cf4",
+              "caption": "",
+              "alt": null,
+              "width": 709,
+              "height": 349,
+              "instructor_notes": null
+            },
+            {
+              "id": 369628,
+              "key": "0a1c66cc-0855-4ef8-8d84-31b12be0785e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# The Code\n\nIf we wanted to join all three of these tables, we could use the same logic.  The code below pulls all of the data from all of the joined tables.\n\n```\nSELECT *\nFROM web_events\nJOIN accounts\nON web_events.account_id = accounts.id\nJOIN orders\nON accounts.id = orders.account_id\n```\n\nAlternatively, we can create a **SELECT** statement that could pull specific columns from any of the three tables.  Again, our **JOIN** holds a table, and **ON** is a link for our **PK** to equal the **FK**.  \n\nTo pull specific columns, the **SELECT** statement will need to specify the table that you are wishing to pull the column from, as well as the column name.  We could pull only three columns in the above by changing the select statement to the below, but maintaining the rest of the JOIN information:\n\n```\nSELECT web_events.channel, accounts.name, orders.total\n```\n\nWe could continue this same process to link all of the tables if we wanted.  For efficiency reasons, we probably don't want to do this unless we actually need information from all of the tables.  ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 369519,
+          "key": "55347cdd-f5c4-4741-b054-03a8a4b4eae4",
+          "title": "Video: Alias",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "55347cdd-f5c4-4741-b054-03a8a4b4eae4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 403038,
+              "key": "906c5d6e-4f3e-4369-850d-87e49cddd761",
+              "title": "ALIAS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "viWHJaxWTvw",
+                "china_cdn_id": "viWHJaxWTvw.mp4"
+              }
+            },
+            {
+              "id": 369522,
+              "key": "ae973e04-fa18-49fb-8d3a-e4380c96a338",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nWhen we **JOIN** tables together, it is nice to give each table an **alias**.  Frequently an alias is just the first letter of the table name.  You actually saw something similar for column names in the **Arithmetic Operators** concept.  \n\nExample:\n\n```\nFROM tablename AS t1\nJOIN tablename2 AS t2\n```\n\nBefore, you saw something like:\n\n```\nSELECT col1 + col2 AS total, col3\n```\n\nFrequently, you might also see these statements without the **AS** statement.  Each of the above could be written in the following way instead, and they would still produce the **exact same results**:\n\n```\nFROM tablename t1\nJOIN tablename2 t2\n```\n\nand\n\n```\nSELECT col1 + col2 total, col3\n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 527760,
+              "key": "c7bba74e-d71b-4164-b65e-3d21513da2a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Aliases for Columns in Resulting Table\n\nWhile aliasing tables is the most common use case. It can also be used to alias the columns selected to have the resulting table reflect a more readable name.\n\nExample:\n\n```\nSelect t1.column1 aliasname, t2.column2 aliasname2\nFROM tablename AS t1\nJOIN tablename2 AS t2\n```\n\nThe alias name fields will be what shows up in the returned table instead of t1.column1 and t2.column2\n\n| aliasname   \t| aliasname2  \t|\n|-------------\t|-------------\t|\n| example row \t| example row \t|\n| example row \t| example row \t|",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 369555,
+          "key": "83da273e-73e7-48b6-a743-219de50b788f",
+          "title": "Quiz: JOIN Questions Part I",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "83da273e-73e7-48b6-a743-219de50b788f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 369556,
+              "key": "6869c357-3b07-486e-9cb9-47e868e52c9c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Question Mania\n\nNow that you have been introduced to JOINs, let's practice to build your skills and comfort with this new tool.  Below I have provided the **ERD** and a bunch of questions.  The solutions for the questions can be found on the next concept for you to check your answers or just in case you get stuck!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463700,
+              "key": "1bb2bfb5-af70-48f8-b7b0-deb8c7245295",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e2670_screen-shot-2017-11-16-at-3.54.06-pm/screen-shot-2017-11-16-at-3.54.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1bb2bfb5-af70-48f8-b7b0-deb8c7245295",
+              "caption": "",
+              "alt": "",
+              "width": 1540,
+              "height": 960,
+              "instructor_notes": null
+            },
+            {
+              "id": 369623,
+              "key": "c88df4e7-bbdc-4524-9584-6b43e826e9df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "I recommend testing your queries with the environment below, and then saving them to a file.  Then compare your file to my solutions on the next concept!\n\n# Questions\n\n1. Provide a table for all **web_events** associated with account **name** of `Walmart`.  There should be three columns.  Be sure to include the `primary_poc`, time of the event, and the `channel` for each event.  Additionally, you might choose to add a fourth column to assure only `Walmart` events were chosen. <br><br>\n2. Provide a table that provides the **region** for each **sales_rep** along with their associated **accounts**.  Your final table should include three columns: the region **name**, the sales rep **name**, and the account **name**. Sort the accounts alphabetically (A-Z) according to account name. <br><br>\n3.  Provide the **name** for each region for every **order**, as well as the account **name** and the **unit price** they paid (total_amt_usd/total) for the order.  Your final table should have 3 columns: **region name**, **account name**, and **unit price**.  A few accounts have 0 for **total**, so I divided by (total + 0.01) to assure not dividing by zero.<br><br>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558903,
+              "key": "b27a8e0c-235b-46b0-b9f9-66b9be8044b1",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa24f4820",
+              "pool_id": "sqlwidget",
+              "view_id": "df8f7848-759f-4d31-bc3b-3f6d312123ff",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 371478,
+              "key": "27f35ae5-910b-4576-8244-6051db9c75a3",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "27f35ae5-910b-4576-8244-6051db9c75a3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Mark all the below that are true.  ",
+                "answers": [
+                  {
+                    "id": "a1502725632679",
+                    "text": "The **ON** statement **should** always occur with the foreign key being equal to the primary key.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502725698374",
+                    "text": "**SQL** **requires** the **ON** statement always occur with the foreign key being equal to the primary key.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502725721056",
+                    "text": "**JOIN** statements allow us to pull data from multiple tables in a **SQL** database.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502726132662",
+                    "text": "You can use all of the commands we saw in the first lesson along with **JOIN** statements.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502726133344",
+                    "text": "The only way to pull data together from multiple tables is using a **JOIN** statement.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 371498,
+              "key": "24b35f61-5103-4325-85da-f2567d10927a",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "24b35f61-5103-4325-85da-f2567d10927a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select all of the below statements that are true.",
+                "answers": [
+                  {
+                    "id": "a1502732764332",
+                    "text": "If we want to alias a table, we **must** use an **AS** in our query.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502733186945",
+                    "text": "If we want to alias a column, we **must** use an **AS** in our query.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502733472038",
+                    "text": "Aliasing is common to shorten table names when we start **JOIN**ing multiple tables together.  ",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 369557,
+          "key": "776191b3-68e5-4314-bba7-fec0e9857729",
+          "title": "Solutions: JOIN Questions Part I",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "776191b3-68e5-4314-bba7-fec0e9857729",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 369711,
+              "key": "48385eaa-3399-4b64-9aa1-e4df57dfef94",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solutions\n\n1. Provide a table for all the for all **web_events** associated with account **name** of `Walmart`.  There should be three columns.  Be sure to include the `primary_poc`, time of the event, and the `channel` for each event.  Additionally, you might choose to add a fourth column to assure only `Walmart` events were chosen. \n```\nSELECT a.primary_poc, w.occurred_at, w.channel, a.name\nFROM web_events w\nJOIN accounts a\nON w.account_id = a.id\nWHERE a.name = 'Walmart';\n```\n2. Provide a table that provides the **region** for each **sales_rep** along with their associated **accounts**.  Your final table should include three columns: the region **name**, the sales rep **name**, and the account **name**.  Sort the accounts alphabetically (A-Z) according to account name.\n```\nSELECT r.name region, s.name rep, a.name account\nFROM sales_reps s\nJOIN region r\nON s.region_id = r.id\nJOIN accounts a\nON a.sales_rep_id = s.id\nORDER BY a.name;\n```\n3.  Provide the **name** for each region for every **order**, as well as the account **name** and the **unit price** they paid (total_amt_usd/total) for the order.  Your final table should have 3 columns: **region name**, **account name**, and **unit price**.  A few accounts have 0 for **total**, so I divided by (total + 0.01) to assure not dividing by zero.\n```\nSELECT r.name region, a.name account, \n           o.total_amt_usd/(o.total + 0.01) unit_price\nFROM region r\nJOIN sales_reps s\nON s.region_id = r.id\nJOIN accounts a\nON a.sales_rep_id = s.id\nJOIN orders o\nON o.account_id = a.id;\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558904,
+              "key": "14e3ae71-b536-434d-8770-f2a9fcc76ac1",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa24f4820",
+              "pool_id": "sqlwidget",
+              "view_id": "60618d38-5a9f-46c6-8ce1-1a9014a3424c",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 369768,
+          "key": "08c5b089-9606-4cdd-9ca4-d12f5d04b425",
+          "title": "Video: Motivation for Other JOINs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "08c5b089-9606-4cdd-9ca4-d12f5d04b425",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402959,
+              "key": "22bc61e2-0c04-49ce-a089-da3d15fc193a",
+              "title": "Motivation for Other JOINs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3qdv1Ojc9Og",
+                "china_cdn_id": "3qdv1Ojc9Og.mp4"
+              }
+            },
+            {
+              "id": 403073,
+              "key": "414a8fa6-e88f-4072-b62f-f17fc3cfc711",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Expert Tip\n\nYou have had a bit of an introduction to these **one-to-one** and **one-to-many** relationships when we introduced **PK**s and **FK**s.  Notice, traditional databases do not allow for **many-to-many** relationships, as these break the schema down pretty quickly.  A very good answer is provided [here](https://stackoverflow.com/questions/7339143/why-no-many-to-many-relationships). \n\nThe types of relationships that exist in a database matter less to analysts, but you do need to understand why you would perform different types of **JOIN**s, and what data you are pulling from the database.  These ideas will be expanded upon in the next concepts.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 369769,
+          "key": "434b0766-b87b-4833-b6d9-f0b17b26ab45",
+          "title": "Video: LEFT and RIGHT JOINs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "434b0766-b87b-4833-b6d9-f0b17b26ab45",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 403048,
+              "key": "c43e93e1-a8bc-4032-90c4-6c9a1edf6ac1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Notice\n\nThere are two videos in this concept:\n\n1. The first shows JOINs the way you have currently been working with data.\n2. The second shows **LEFT** and **RIGHT** JOIN statements.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 403043,
+              "key": "4866152d-15be-45c7-b757-2dde5d33fb01",
+              "title": "JOINs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CxuHtd1Daqk",
+                "china_cdn_id": "CxuHtd1Daqk.mp4"
+              }
+            },
+            {
+              "id": 951361,
+              "key": "726aaefd-ac5e-4f12-8354-f6a99f5ef619",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "*Errata*: In the above video, there is an error in the SQL included - the final line should include the table aliases, so they final line would be `ON o.account_id = a.id;`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 403046,
+              "key": "1d903f67-97d9-4fbe-866b-2cf82200746e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Above you learned about the JOINs you have been writing so far - that is an **INNER JOIN**.  In the video below, you will learn about other ways that we might want to **JOIN** our data depending on the question we are asking.\n\n______",
+              "instructor_notes": ""
+            },
+            {
+              "id": 402960,
+              "key": "dead3efd-4a14-4c38-837a-a45cc626cad1",
+              "title": "Other JOINs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4edRxFmWUEw",
+                "china_cdn_id": "4edRxFmWUEw.mp4"
+              }
+            },
+            {
+              "id": 403064,
+              "key": "72e715f0-d8eb-4940-b5b6-094c2977cd35",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### JOINs\n\nNotice each of these new **JOIN** statements pulls all the same rows as an **INNER JOIN**, which you saw by just using **JOIN**, but they also potentially pull some additional rows.  \n\nIf there is not matching information in the **JOIN**ed table, then you will have columns with empty cells.  These empty cells introduce a new data type called **NULL**.  You will learn about **NULL**s in detail in the next lesson, but for now you have a quick introduction as you can consider any cell without data as **NULL**.\n  ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 369777,
+          "key": "1f196edd-3923-4db2-a509-040be4ac3210",
+          "title": "Text: Other JOIN Notes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1f196edd-3923-4db2-a509-040be4ac3210",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 369778,
+              "key": "65fae4ae-11c2-44f5-8012-dd859fd0b7f7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# JOIN Check In \n### INNER JOINs\n\nNotice **every** JOIN we have done up to this point has been an **INNER JOIN**.  That is, we have always pulled rows only if they exist as a match across two tables.  \n\nOur new **JOIN**s allow us to pull rows that might only exist in one of the two tables.  This will introduce a new data type called **NULL**.  This data type will be discussed in detail in the next lesson.\n\n### Quick Note\n\nYou might see the SQL syntax of \n\n```\nLEFT OUTER JOIN\n```\nOR\n```\nRIGHT OUTER JOIN\n```\nThese are the exact same commands as the **LEFT JOIN** and **RIGHT JOIN** we learned about in the previous video.  \n\n### OUTER JOINS\nThe last type of join is a full outer join.  This will return the inner join result set, as well as any unmatched rows from either of the two tables being joined.  \n\nAgain this returns rows that **do not match** one another from the two tables.  The use cases for a full outer join are **very rare**.  \n\nYou can see examples of outer joins at the link [here](http://www.w3resource.com/sql/joins/perform-a-full-outer-join.php) and a description of the rare use cases [here](https://stackoverflow.com/questions/2094793/when-is-a-good-situation-to-use-a-full-outer-join).  We will not spend time on these given the few instances you might need to use them.\n\nSimilar to the above, you might see the language **FULL OUTER JOIN**, which is the same as **OUTER JOIN**.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 369772,
+          "key": "b84358f0-5156-41c2-9497-2a45a7f36035",
+          "title": "LEFT and RIGHT JOIN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b84358f0-5156-41c2-9497-2a45a7f36035",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 371513,
+              "key": "dc5fc582-ad77-4672-947f-9dbc1bc59298",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "dc5fc582-ad77-4672-947f-9dbc1bc59298",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select all of the below that are true.",
+                "answers": [
+                  {
+                    "id": "a1502734210259",
+                    "text": "A **LEFT JOIN** and **RIGHT JOIN** do the same thing if we change the tables that are in the **FROM** and **JOIN** statements.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502734398208",
+                    "text": "A **LEFT JOIN** will **at least** return all the rows that are in an **INNER JOIN**.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502734431427",
+                    "text": "**JOIN** and **INNER JOIN** are the same.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502734444700",
+                    "text": "A **LEFT OUTER JOIN** is the same as **LEFT JOIN**.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 371601,
+              "key": "048f2da8-95b8-4c76-b553-57533a796bf0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/59920464_screen-shot-2017-08-14-at-1.12.55-pm/screen-shot-2017-08-14-at-1.12.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/048f2da8-95b8-4c76-b553-57533a796bf0",
+              "caption": "",
+              "alt": null,
+              "width": 1466,
+              "height": 587,
+              "instructor_notes": null
+            },
+            {
+              "id": 371605,
+              "key": "66aaa005-44b5-4341-863a-9e59e18b2400",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Above are two small tables for you to test your knowledge of **JOIN**s.  You can click on the image to get a better view.\n\n **Country** has 6 rows and 2 columns:\n* **countryid** and **countryName**\n\n**State** has 6 rows and 3 columns:\n* **stateid**, **countryid**, and **stateName**\n\n\n  Use the above tables to determine the solution to the following questions. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 371620,
+              "key": "9543afb8-e626-4c08-a166-f883553f1b88",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9543afb8-e626-4c08-a166-f883553f1b88",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match each statement to the item it describes."
+                },
+                "concepts_label": "Description",
+                "answers_label": "Item",
+                "concepts": [
+                  {
+                    "text": "The primary key of the **Country** table.",
+                    "correct_answer": {
+                      "id": "a1502742297333",
+                      "text": "Country.countryid"
+                    }
+                  },
+                  {
+                    "text": "The primary key of the **State** table.",
+                    "correct_answer": {
+                      "id": "a1502743248368",
+                      "text": "State.stateid"
+                    }
+                  },
+                  {
+                    "text": "The foreign key that would be used in **JOIN**ing the tables.",
+                    "correct_answer": {
+                      "id": "a1502743285301",
+                      "text": "State.countryid"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1502743366429",
+                    "text": "State.stateName"
+                  },
+                  {
+                    "id": "a1502743346310",
+                    "text": "Country.countryName"
+                  },
+                  {
+                    "id": "a1502743285301",
+                    "text": "State.countryid"
+                  },
+                  {
+                    "id": "a1502743248368",
+                    "text": "State.stateid"
+                  },
+                  {
+                    "id": "a1502742297333",
+                    "text": "Country.countryid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 371625,
+              "key": "6abba5d4-2a22-4eec-9448-f27b2b78dfef",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/59921134_screen-shot-2017-08-14-at-1.12.55-pm/screen-shot-2017-08-14-at-1.12.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6abba5d4-2a22-4eec-9448-f27b2b78dfef",
+              "caption": "",
+              "alt": null,
+              "width": 1466,
+              "height": 587,
+              "instructor_notes": null
+            },
+            {
+              "id": 371626,
+              "key": "ca0e115e-8b31-48f2-9baf-271a286da7ff",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The above two tables are given again just for minimizing scrolling.  If you were to perform the following query:\n\n```\nSELECT c.countryid, c.countryName, s.stateName\nFROM Country c\nJOIN State s\nON c.countryid = s.countryid;\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 371647,
+              "key": "b47fecf2-7e42-41f0-9b53-0b9be9de6859",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b47fecf2-7e42-41f0-9b53-0b9be9de6859",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the results of the query to the description."
+                },
+                "concepts_label": "Description",
+                "answers_label": "Result",
+                "concepts": [
+                  {
+                    "text": "The number of columns in resulting table.",
+                    "correct_answer": {
+                      "id": "a1502744965152",
+                      "text": "3"
+                    }
+                  },
+                  {
+                    "text": "The number of rows in the resulting table.",
+                    "correct_answer": {
+                      "id": "a1502744997291",
+                      "text": "6"
+                    }
+                  },
+                  {
+                    "text": "The number of times countryid `1` will show up in resulting table.",
+                    "correct_answer": {
+                      "id": "a1502744998328",
+                      "text": "2"
+                    }
+                  },
+                  {
+                    "text": "The number of times countryid `6` will show up in the resulting table.",
+                    "correct_answer": {
+                      "id": "a1502744999194",
+                      "text": "0"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1502745144549",
+                    "text": "5"
+                  },
+                  {
+                    "id": "a1502745132163",
+                    "text": "1"
+                  },
+                  {
+                    "id": "a1502745149555",
+                    "text": "8"
+                  },
+                  {
+                    "id": "a1502745133934",
+                    "text": "4"
+                  },
+                  {
+                    "id": "a1502745146083",
+                    "text": "7"
+                  },
+                  {
+                    "id": "a1502744998328",
+                    "text": "2"
+                  },
+                  {
+                    "id": "a1502744965152",
+                    "text": "3"
+                  },
+                  {
+                    "id": "a1502744999194",
+                    "text": "0"
+                  },
+                  {
+                    "id": "a1502745152359",
+                    "text": "12"
+                  },
+                  {
+                    "id": "a1502744997291",
+                    "text": "6"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 371624,
+              "key": "a78d3931-3430-4acc-8cda-daa7fbd12730",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/59921120_screen-shot-2017-08-14-at-1.12.55-pm/screen-shot-2017-08-14-at-1.12.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a78d3931-3430-4acc-8cda-daa7fbd12730",
+              "caption": "",
+              "alt": null,
+              "width": 1466,
+              "height": 587,
+              "instructor_notes": null
+            },
+            {
+              "id": 371622,
+              "key": "87ff4c7a-46f9-481e-a73f-7a64a5c63af3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The above two tables are given again just for minimizing scrolling.  If you were to perform the following query:\n\n```\nSELECT c.countryid, c.countryName, s.stateName\nFROM Country c\nLEFT JOIN State s\nON c.countryid = s.countryid;\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 371623,
+              "key": "bdc8c35a-3fea-4434-ba56-6a638194d884",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bdc8c35a-3fea-4434-ba56-6a638194d884",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the results of the query to the description."
+                },
+                "concepts_label": "Description",
+                "answers_label": "Results",
+                "concepts": [
+                  {
+                    "text": "The number of columns in resulting table.",
+                    "correct_answer": {
+                      "id": "a1502743877088",
+                      "text": "3"
+                    }
+                  },
+                  {
+                    "text": "The number of rows in the resulting table.",
+                    "correct_answer": {
+                      "id": "a1502744076702",
+                      "text": "8"
+                    }
+                  },
+                  {
+                    "text": "The number of times countryid `1` will show up in resulting table.",
+                    "correct_answer": {
+                      "id": "a1502744089777",
+                      "text": "2"
+                    }
+                  },
+                  {
+                    "text": "The number of times countryid `6` will show up in the resulting table.",
+                    "correct_answer": {
+                      "id": "a1502744171617",
+                      "text": "1"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1502744076702",
+                    "text": "8"
+                  },
+                  {
+                    "id": "a1502744249740",
+                    "text": "7"
+                  },
+                  {
+                    "id": "a1502744201203",
+                    "text": "6"
+                  },
+                  {
+                    "id": "a1502743877088",
+                    "text": "3"
+                  },
+                  {
+                    "id": "a1502746757861",
+                    "text": "0"
+                  },
+                  {
+                    "id": "a1502744255764",
+                    "text": "9"
+                  },
+                  {
+                    "id": "a1502744171617",
+                    "text": "1"
+                  },
+                  {
+                    "id": "a1502744259115",
+                    "text": "10"
+                  },
+                  {
+                    "id": "a1502744089777",
+                    "text": "2"
+                  },
+                  {
+                    "id": "a1502744245186",
+                    "text": "4"
+                  },
+                  {
+                    "id": "a1502744241089",
+                    "text": "5"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 371649,
+          "key": "d57c222e-1ac5-43d4-8685-e3365f200735",
+          "title": "Solutions: LEFT and RIGHT JOIN ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d57c222e-1ac5-43d4-8685-e3365f200735",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 371651,
+              "key": "44ded8ef-5871-495c-85c8-34e3cc36a59e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# LEFT and RIGHT JOIN Solutions\n\nThis section is a walkthrough of those final two problems in the previous concept. First, another look at the two tables we are working with:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 371655,
+              "key": "441c4486-fa15-4726-86dd-a2d78f286f4f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/59922214_screen-shot-2017-08-14-at-1.12.55-pm/screen-shot-2017-08-14-at-1.12.55-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/441c4486-fa15-4726-86dd-a2d78f286f4f",
+              "caption": "",
+              "alt": null,
+              "width": 1466,
+              "height": 806,
+              "instructor_notes": null
+            },
+            {
+              "id": 371657,
+              "key": "c923d83e-5718-4f95-9eac-73dd155efcb5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### INNER JOIN Question\n\nThe questions are aimed to assure you have a conceptual idea of what is happening with **LEFT** and **INNER  JOIN**s before you need to use them for more difficult problems.\n\nFor an **INNER JOIN** like the one here:\n```\nSELECT c.countryid, c.countryName, s.stateName\nFROM Country c\nJOIN State s\nON c.countryid = s.countryid;\n```\nWe are essentially **JOIN**ing the matching **PK**-**FK** links from the two tables, as shown in the below image.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 371659,
+              "key": "5d63b6f0-35ac-4570-bcde-fc39fc802e36",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/599227b3_screen-shot-2017-08-14-at-3.41.58-pm/screen-shot-2017-08-14-at-3.41.58-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5d63b6f0-35ac-4570-bcde-fc39fc802e36",
+              "caption": "",
+              "alt": null,
+              "width": 1479,
+              "height": 668,
+              "instructor_notes": null
+            },
+            {
+              "id": 371658,
+              "key": "939da6ab-06ae-49d6-b86c-b59577f6da5a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The resulting table will look like:\n\n| **countryid**  | **countryName**  | **stateName**  | \n|--:|--:|---|\n| 1  | India   | Maharashtra  | \n| 1  | India | Punjab  | \n| 2  | Nepal  | Kathmandu  | \n| 3  | United States  | California  | \n| 3  | United States  | Texas  | \n| 4  | Canada  | Alberta  | ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 371660,
+              "key": "d9d77fec-29f2-40e5-a439-a0aa5b1347fa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### LEFT JOIN Question\n\nThe questions are aimed to assure you have a conceptual idea of what is happening with **LEFT** and **INNER  JOIN**s before you need to use them for more difficult problems.\n\nFor a **LEFT JOIN** like the one here:\n```\nSELECT c.countryid, c.countryName, s.stateName\nFROM Country c\nLEFT JOIN State s\nON c.countryid = s.countryid;\n```\nWe are essentially **JOIN**ing the matching **PK**-**FK** links from the two tables, as we did before, but we are also pulling all the additional rows from the **Country** table even if they don't have a match in the **State** table.  Therefore, we obtain all the rows of the **INNER JOIN**, but we also get additional rows from the table in the **FROM**.  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 371664,
+              "key": "825e60d9-7ed3-4ab5-baa2-23018ab15920",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/59922cad_screen-shot-2017-08-14-at-4.04.44-pm/screen-shot-2017-08-14-at-4.04.44-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/825e60d9-7ed3-4ab5-baa2-23018ab15920",
+              "caption": "",
+              "alt": null,
+              "width": 1471,
+              "height": 622,
+              "instructor_notes": null
+            },
+            {
+              "id": 371665,
+              "key": "6b0cf2b4-d547-4b69-80e6-aef017b62bed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The resulting table will look like:\n\n| **countryid**  | **countryName**  | **stateName**  | \n|--:|--:|---|\n| 1  | India   | Maharashtra  | \n| 1  | India | Punjab  | \n| 2  | Nepal  | Kathmandu  | \n| 3  | United States  | California  | \n| 3  | United States  | Texas  | \n| 4  | Canada  | Alberta  | \n| 5  | Sri Lanka  | NULL  | \n| 6  | Brazil  | NULL | \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 371662,
+              "key": "86227bc3-7b9a-49c9-a322-ff1946ce3af9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### FINAL LEFT JOIN Note\n\nIf we were to flip the tables, we would actually obtain the same exact result as the **JOIN** statement:\n\n```\nSELECT c.countryid, c.countryName, s.stateName\nFROM State s\nLEFT JOIN Country c\nON c.countryid = s.countryid;\n```\nThis is because if **State** is on the **LEFT** table, all of the rows exist in the **RIGHT** table again.\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 371668,
+              "key": "d84ccaec-ff2c-44b2-97da-80b5ea47a069",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/59922e2e_screen-shot-2017-08-14-at-4.10.54-pm/screen-shot-2017-08-14-at-4.10.54-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d84ccaec-ff2c-44b2-97da-80b5ea47a069",
+              "caption": "",
+              "alt": null,
+              "width": 1479,
+              "height": 638,
+              "instructor_notes": null
+            },
+            {
+              "id": 371667,
+              "key": "82e27548-bd14-4d87-8e17-5eaeba9a59c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The resulting table will look like:\n\n| **countryid**  | **countryName**  | **stateName**  | \n|--:|--:|---|\n| 1  | India   | Maharashtra  | \n| 1  | India | Punjab  | \n| 2  | Nepal  | Kathmandu  | \n| 3  | United States  | California  | \n| 3  | United States  | Texas  | \n| 4  | Canada  | Alberta  | ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 369774,
+          "key": "e28e03da-aff8-4304-9910-6ae4d74c7a52",
+          "title": "Video: JOINs and Filtering",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e28e03da-aff8-4304-9910-6ae4d74c7a52",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 402961,
+              "key": "f770c117-073a-4c8e-9743-6bcf5e4044e6",
+              "title": "JOINs and Filtering",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aI1kbDDNs4w",
+                "china_cdn_id": "aI1kbDDNs4w.mp4"
+              }
+            },
+            {
+              "id": 369776,
+              "key": "28b702e8-0b6f-42e0-92fc-c62ee041b774",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nA simple rule to remember this is that, when the database executes this query, it executes the join and everything in the **ON** clause first. Think of this as building the new result set. That result set is then filtered using the **WHERE** clause.\n\nThe fact that this example is a left join is important. Because inner joins only return the rows for which the two tables match, moving this filter to the **ON** clause of an inner join will produce the same result as keeping it in the **WHERE** clause.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 369779,
+          "key": "2a249dad-12c9-45ea-87c2-70a7dd4a35b1",
+          "title": "Quiz: Last Check",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2a249dad-12c9-45ea-87c2-70a7dd4a35b1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463701,
+              "key": "bd44f8ef-9478-4fbe-8a4a-21f8aa8a0779",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e26a5_screen-shot-2017-11-16-at-3.54.06-pm/screen-shot-2017-11-16-at-3.54.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bd44f8ef-9478-4fbe-8a4a-21f8aa8a0779",
+              "caption": "",
+              "alt": "",
+              "width": 1540,
+              "height": 960,
+              "instructor_notes": null
+            },
+            {
+              "id": 371472,
+              "key": "a774cbd1-5582-497c-b180-5fee07bf2736",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "I recommend testing your queries with the environment below, and then saving them to a file.  Then compare your file to my solutions on the next concept!\n\n`If you have two or more columns in your SELECT that have the same name after the table name such as accounts.name and sales_reps.name you will need to alias them. Otherwise it will only show one of the columns. You can alias them like accounts.name AS AcountName, sales_rep.name AS SalesRepName`\n\n\n\n# Questions\n\n1. Provide a table that provides the **region** for each **sales_rep** along with their associated **accounts**.  This time only for the `Midwest` region.  Your final table should include three columns: the region **name**, the sales rep **name**, and the account **name**.  Sort the accounts alphabetically (A-Z) according to account name.<br><br>\n2. Provide a table that provides the **region** for each **sales_rep** along with their associated **accounts**.  This time only for accounts where the sales rep has a first name starting with `S` and in the `Midwest` region.  Your final table should include three columns: the region **name**, the sales rep **name**, and the account **name**. Sort the accounts alphabetically (A-Z) according to account name. <br><br>\n3. Provide a table that provides the **region** for each **sales_rep** along with their associated **accounts**.  This time only for accounts where the sales rep has a **last** name starting with `K` and in the `Midwest` region.  Your final table should include three columns: the region **name**, the sales rep **name**, and the account **name**. Sort the accounts alphabetically (A-Z) according to account name.<br><br>\n4.  Provide the **name** for each region for every **order**, as well as the account **name** and the **unit price** they paid (total_amt_usd/total) for the order.  However, you should only provide the results if the **standard order quantity** exceeds `100`. Your final table should have 3 columns: **region name**, **account name**, and **unit price**.  In order to avoid a division by zero error, adding .01 to the denominator here is helpful total_amt_usd/(total+0.01).  <br><br>\n5.  Provide the **name** for each region for every **order**, as well as the account **name** and the **unit price** they paid (total_amt_usd/total) for the order.  However, you should only provide the results if the **standard order quantity** exceeds `100` and the **poster order quantity** exceeds `50`.  Your final table should have 3 columns: **region name**, **account name**, and **unit price**. Sort for the smallest **unit price** first. In order to avoid a division by zero error, adding .01 to the denominator here is helpful (total_amt_usd/(total+0.01). <br><br>\n6.  Provide the **name** for each region for every **order**, as well as the account **name** and the **unit price** they paid (total_amt_usd/total) for the order.  However, you should only provide the results if the **standard order quantity** exceeds `100` and the **poster order quantity** exceeds `50`.  Your final table should have 3 columns: **region name**, **account name**, and **unit price**. Sort for the largest **unit price** first. In order to avoid a division by zero error, adding .01 to the denominator here is helpful (total_amt_usd/(total+0.01). <br><br>\n7. What are the different **channel**s used by **account id** `1001`?  Your final table should have only 2 columns: **account name** and the different **channel**s.  You can try **SELECT DISTINCT** to narrow down the results to only the unique values.<br><br>\n8. Find all the orders that occurred in `2015`.  Your final table should have 4 columns: **occurred_at**, **account name**, **order total**, and **order total_amt_usd**.  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558905,
+              "key": "9d2e20fd-fe2e-471e-9dcc-9130a0c57368",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa24f4820",
+              "pool_id": "sqlwidget",
+              "view_id": "52419a9e-fad2-4e1f-958b-a6328335dc46",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 369780,
+          "key": "e12ccca0-1634-44a4-b34a-0344c07f3652",
+          "title": "Solutions: Last Check",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e12ccca0-1634-44a4-b34a-0344c07f3652",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 371499,
+              "key": "6446126b-a94b-4efb-b465-b04761060188",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solutions\n\n1. Provide a table that provides the **region** for each **sales_rep** along with their associated **accounts**.  This time only for the `Midwest` region.  Your final table should include three columns: the region **name**, the sales rep **name**, and the account **name**. Sort the accounts alphabetically (A-Z) according to account name.\n```\nSELECT r.name region, s.name rep, a.name account\nFROM sales_reps s\nJOIN region r\nON s.region_id = r.id\nJOIN accounts a\nON a.sales_rep_id = s.id\nWHERE r.name = 'Midwest'\nORDER BY a.name;\n```\n2. Provide a table that provides the **region** for each **sales_rep** along with their associated **accounts**.  This time only for accounts where the sales rep has a first name starting with `S` and in the `Midwest` region.  Your final table should include three columns: the region **name**, the sales rep **name**, and the account **name**.  Sort the accounts alphabetically (A-Z) according to account name.\n```\nSELECT r.name region, s.name rep, a.name account\nFROM sales_reps s\nJOIN region r\nON s.region_id = r.id\nJOIN accounts a\nON a.sales_rep_id = s.id\nWHERE r.name = 'Midwest' AND s.name LIKE 'S%'\nORDER BY a.name;\n```\n3. Provide a table that provides the **region** for each **sales_rep** along with their associated **accounts**.  This time only for accounts where the sales rep has a **last** name starting with `K` and in the `Midwest` region.  Your final table should include three columns: the region **name**, the sales rep **name**, and the account **name**. Sort the accounts alphabetically (A-Z) according to account name.\n```\nSELECT r.name region, s.name rep, a.name account\nFROM sales_reps s\nJOIN region r\nON s.region_id = r.id\nJOIN accounts a\nON a.sales_rep_id = s.id\nWHERE r.name = 'Midwest' AND s.name LIKE '% K%'\nORDER BY a.name;\n```\n4.  Provide the **name** for each region for every **order**, as well as the account **name** and the **unit price** they paid (total_amt_usd/total) for the order.  However, you should only provide the results if the **standard order quantity** exceeds `100`. Your final table should have 3 columns: **region name**, **account name**, and **unit price**. \n```\nSELECT r.name region, a.name account, o.total_amt_usd/(o.total + 0.01) unit_price\nFROM region r\nJOIN sales_reps s\nON s.region_id = r.id\nJOIN accounts a\nON a.sales_rep_id = s.id\nJOIN orders o\nON o.account_id = a.id\nWHERE o.standard_qty > 100;\n```\n5.  Provide the **name** for each region for every **order**, as well as the account **name** and the **unit price** they paid (total_amt_usd/total) for the order.  However, you should only provide the results if the **standard order quantity** exceeds `100` and the **poster order quantity** exceeds `50`.  Your final table should have 3 columns: **region name**, **account name**, and **unit price**. Sort for the smallest **unit price** first. \n```\nSELECT r.name region, a.name account, o.total_amt_usd/(o.total + 0.01) unit_price\nFROM region r\nJOIN sales_reps s\nON s.region_id = r.id\nJOIN accounts a\nON a.sales_rep_id = s.id\nJOIN orders o\nON o.account_id = a.id\nWHERE o.standard_qty > 100 AND o.poster_qty > 50\nORDER BY unit_price;\n```\n6.  Provide the **name** for each region for every **order**, as well as the account **name** and the **unit price** they paid (total_amt_usd/total) for the order.  However, you should only provide the results if the **standard order quantity** exceeds `100` and the **poster order quantity** exceeds `50`.  Your final table should have 3 columns: **region name**, **account name**, and **unit price**. Sort for the largest **unit price** first. \n```\nSELECT r.name region, a.name account, o.total_amt_usd/(o.total + 0.01) unit_price\nFROM region r\nJOIN sales_reps s\nON s.region_id = r.id\nJOIN accounts a\nON a.sales_rep_id = s.id\nJOIN orders o\nON o.account_id = a.id\nWHERE o.standard_qty > 100 AND o.poster_qty > 50\nORDER BY unit_price DESC;\n```\n\n7. What are the different **channel**s used by **account id** `1001`?  Your final table should have only 2 columns: **account name** and the different **channel**s.  You can try **SELECT DISTINCT** to narrow down the results to only the unique values.\n```\nSELECT DISTINCT a.name, w.channel\nFROM accounts a\nJOIN web_events w\nON a.id = w.account_id\nWHERE a.id = '1001';\n```\n8. Find all the orders that occurred in `2015`.  Your final table should have 4 columns: **occurred_at**, **account name**, **order total**, and **order total_amt_usd**.  \n```\nSELECT o.occurred_at, a.name, o.total, o.total_amt_usd\nFROM accounts a\nJOIN orders o\nON o.account_id = a.id\nWHERE o.occurred_at BETWEEN '01-01-2015' AND '01-01-2016'\nORDER BY o.occurred_at DESC;\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558906,
+              "key": "ce2ed343-100b-42f9-8715-cf581bad2d93",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa24f4820",
+              "pool_id": "sqlwidget",
+              "view_id": "a205b569-b307-4734-957d-9498e6b0ebce",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "allowSubmit": false,
+                    "frameBorder": "0"
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 369781,
+          "key": "f0e65adc-db97-4a50-937d-0d393828f2c8",
+          "title": "Text: Recap & Looking Ahead",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f0e65adc-db97-4a50-937d-0d393828f2c8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 371538,
+              "key": "0b5efde8-08e4-45bb-9823-b06ec1eb4345",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Recap\n\n### Primary and Foreign Keys\n\nYou learned a key element for **JOIN**ing tables in a database has to do with primary and foreign keys:\n\n* **primary keys** - are unique for every row in a table.  These are generally the first column in our database (like you saw with the **id** column for every table in the Parch & Posey database).\n\n* **foreign keys** - are the **primary key** appearing in another table, which allows the rows to be non-unique.  \n\nChoosing the set up of data in our database is very important, but not usually the job of a data analyst.  This process is known as **Database Normalization**.\n\n### JOINs\n\nIn this lesson, you learned how to combine data from multiple tables using **JOIN**s.  The three **JOIN** statements you are most likely to use are:\n\n1. **JOIN** - an **INNER JOIN** that only pulls data that exists in both tables.\n2. **LEFT JOIN** - pulls all the data that exists in both tables, as well as all of the rows from the table in the **FROM** even if they do not exist in the **JOIN** statement.\n3. **RIGHT JOIN** - pulls all the data that exists in both tables, as well as all of the rows from the table in the **JOIN** even if they do not exist in the **FROM** statement.\n\nThere are a few more advanced **JOIN**s that we did not cover here, and they are used in very specific use cases.  [UNION and UNION ALL](https://www.w3schools.com/sql/sql_union.asp), [CROSS JOIN](http://www.w3resource.com/sql/joins/cross-join.php), and the tricky [SELF JOIN](https://www.w3schools.com/sql/sql_join_self.asp).  These are more advanced than this course will cover, but it is useful to be aware that they exist, as they are useful in special cases.\n\n### Alias\n\nYou learned that you can alias tables and columns using **AS** or not using it.  This allows you to be more efficient in the number of characters you need to write, while at the same time you can assure that your column headings are informative of the data in your table.\n\n# Looking Ahead\n\nThe next lesson is aimed at **aggregating** data.  You have already learned a ton, but **SQL** might still feel a bit disconnected from **statistics** and using **Excel** like platforms.  Aggregations will allow you to write **SQL** code that will allow for more complex queries, which assist in answering questions like:\n\n* Which **channel** generated more revenue?\n* Which **account** had an order with the most items?\n* Which **sales_rep** had the most orders?  or least orders?  How many orders did they have?\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

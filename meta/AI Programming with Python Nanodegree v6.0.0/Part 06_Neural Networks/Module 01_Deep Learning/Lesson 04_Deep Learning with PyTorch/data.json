@@ -1,0 +1,1018 @@
+{
+  "data": {
+    "lesson": {
+      "id": 783257,
+      "key": "f85e98c9-3e76-4fa6-8f7f-fb7e79a742a5",
+      "title": "Deep Learning with PyTorch",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to use PyTorch for building deep learning models",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/f85e98c9-3e76-4fa6-8f7f-fb7e79a742a5/783257/1556035188231/Deep+Learning+with+PyTorch+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/f85e98c9-3e76-4fa6-8f7f-fb7e79a742a5/783257/1556035180763/Deep+Learning+with+PyTorch+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 771573,
+          "key": "8b8cc2c9-ff20-4f6a-adac-71a9b47100b5",
+          "title": "Welcome!",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8b8cc2c9-ff20-4f6a-adac-71a9b47100b5",
+            "completed_at": "2020-03-28T19:06:36.379Z",
+            "last_viewed_at": "2020-03-28T19:12:28.598Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 771574,
+              "key": "caa78e0b-1ee7-485d-8d3b-0e86fa14fdf0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2016/December/58472d92_mat-headshot/mat-headshot.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/caa78e0b-1ee7-485d-8d3b-0e86fa14fdf0",
+              "caption": "Hi, I'm Mat!",
+              "alt": "Image of Mat Leonard",
+              "width": 250,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 771578,
+              "key": "69cc6796-3eee-4fb6-9d6f-6fa9f9ccdff9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Welcome!\n\nWelcome! In this lesson, you'll learn how to use PyTorch for building deep learning models. PyTorch was released in early 2017 and has been making a pretty big impact in the deep learning community. It's developed as an open source project by the [Facebook AI Research team](https://research.fb.com/category/facebook-ai-research-fair/), but is being adopted by teams everywhere in industry and academia. In my experience, it's the best framework for learning deep learning and just a delight to work with in general. By the end of this lesson, you'll have trained your own deep learning model that can classify images of cats and dogs. \n\nI'll first give you a basic introduction to PyTorch, where we'll cover **tensors** - the main data structure of PyTorch. I'll show you how to create tensors, how to do simple operations, and how tensors interact with NumPy.\n\nThen you'll learn about a module called **autograd** that PyTorch uses to calculate gradients for training neural networks. Autograd, in my opinion, is amazing. It does all the work of backpropagation for you by calculating the gradients at each operation in the network which you can then use to update the network weights.\n\nNext you'll use PyTorch to build a network and run data forward through it. After that, you'll define a loss and an optimization method to train the neural network on a dataset of handwritten digits. You'll also learn how to test that your network is able to generalize through **validation**.\n\nHowever, you'll find that your network doesn't work too well with more complex images. You'll learn how to use pre-trained networks to improve the performance of your classifier, a technique known as **transfer learning**.\n\nFollow along with the videos and work through the exercises in your own notebooks. If you get stuck, check out my solution videos and notebooks.\n\n\n## Get the notebooks\n\nThe notebooks for this lesson will be provided in the classroom, but if you wish to follow along on your local machine, then the instructions below will help you get setup and ready to learn!\n\nAll the notebooks for this lesson are available from [our deep learning repo on GitHub](https://github.com/udacity/deep-learning-v2-pytorch). Please clone the repo by typing\n\n```git clone https://github.com/udacity/deep-learning-v2-pytorch.git```\n \nin your terminal. Then navigate to the `intro-to-pytorch` directory in the repo. \n\nFollow along in your notebooks to complete the exercises. I'll also be providing solutions to the exercises, both in videos and in the notebooks marked `(Solution)`.\n\n## Dependencies\n\nThese notebooks require PyTorch v0.4 or newer, and torchvision. The easiest way to install PyTorch and torchvision locally is by following [the instructions on the PyTorch site](https://pytorch.org/get-started/locally/). Choose the stable version, your appropriate OS and Python versions, and how you'd like to install it. You'll also need to install numpy and jupyter notebooks, the newest versions of these should work fine. Using the conda package manager is generally best for this,\n\n```conda install numpy jupyter notebook```\n\nIf you haven't used conda before, [please read the documentation](https://conda.io/docs/) to learn how to create environments and install packages. I suggest installing Miniconda instead of the whole Anaconda distribution. The normal package manager pip also works well. If you have a preference, go with that.\n\nThe final part of the series has a soft requirement of a GPU used to accelerate network computations. Even if you don't have a GPU available, you'll still be able to run the code and finish the exercises. PyTorch uses a library called [CUDA](https://developer.nvidia.com/cuda-zone) to accelerate operations using the GPU. If you have a GPU that CUDA supports, you'll be able to install all the necessary libraries by installing PyTorch with conda. If you can't use a local GPU, you can use cloud platforms such as [AWS](https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html), [GCP](https://cloud.google.com/gpu/), and [FloydHub](https://www.floydhub.com/) to train your networks on a GPU.\n\nOur Nanodegree programs also provide GPU workspaces in the classroom, as well as credits for AWS.\n\n## Feedback\n\nIf you have problems with the notebooks, please contact support or create an issue on the repo. We're also happy to incorporate your improvements through pull requests.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783494,
+          "key": "88a8d73c-6035-479c-86ba-e836d743f01a",
+          "title": "Pre-Notebook",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "88a8d73c-6035-479c-86ba-e836d743f01a",
+            "completed_at": "2020-03-28T19:18:24.143Z",
+            "last_viewed_at": "2020-04-18T05:52:44.059Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783873,
+              "key": "0c0bc3be-4f78-4cbf-9942-083c3a27036d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Notebooks: Intro to PyTorch\n\nTime to get started building networks with PyTorch! We've prepared a set of eight notebooks that lead you through building deep neural networks in PyTorch. Work your way through the notebooks completing the exercises as best as you can. Feel free to check out our solutions both in the videos and in the solution notebooks, but remember that it's super important that you **type in the correct code yourself**. If you want to learn how to do this, you have to write in the code yourself, understand what every line of the code is doing, and get everything to work properly yourself. Please use our solutions only to guide your learning.\n\n**It's suggested that you open these notebooks in a new, working tab and continue working on it as you go through the instructional videos in this tab.** This way you can toggle between learning new skills and coding/applying new skills.\n\nTo open the notebooks, you have two options:\n>- Go to the next page in the classroom (recommended).\n- Clone the repo from [Github](https://github.com/udacity/deep-learning-v2-pytorch) and open the Jupyter notebooks in the **intro-to-pytorch** folder.  You can either download the repository with `git clone https://github.com/udacity/deep-learning-v2-pytorch.git`, or download it as an archive file from [this link](https://github.com/udacity/deep-learning-v2-pytorch/archive/master.zip).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783298,
+          "key": "70526adf-40d3-4446-ac32-d3f798739745",
+          "title": "Notebook Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "70526adf-40d3-4446-ac32-d3f798739745",
+            "completed_at": "2020-03-28T19:18:23.961Z",
+            "last_viewed_at": "2020-04-15T04:34:08.689Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783477,
+              "key": "b29bf50e-3acd-44aa-9420-1a19aab8dc0c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r671845c783298xJUPYTERjazpl4g0",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-mubhm",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "mldatasets",
+                      "paths": [
+                        {
+                          "src": "/",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/tree/deep-learning-v2-pytorch/intro-to-pytorch"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 771580,
+          "key": "4e645270-9102-4683-b1b9-a2376e68f10d",
+          "title": "Single layer neural networks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4e645270-9102-4683-b1b9-a2376e68f10d",
+            "completed_at": "2020-04-18T05:52:45.209Z",
+            "last_viewed_at": "2020-04-18T05:52:45.184Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791792,
+              "key": "c9370d90-4f2c-451c-90ff-f7594ae9cba4",
+              "title": "PyTorch V2 Part 1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6Z7WntXays8",
+                "china_cdn_id": "6Z7WntXays8.mp4"
+              }
+            },
+            {
+              "id": 796796,
+              "key": "d2e1cecd-969f-456b-aa26-655e2cb406d0",
+              "title": "Part 1 - 1",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d2e1cecd-969f-456b-aa26-655e2cb406d0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Calculate the output of this single layer network using `torch.sum()` or `.sum()`."
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Mat's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 771581,
+          "key": "b76675ad-2bfc-4404-b32e-fb1977a25adb",
+          "title": "Single layer neural networks solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b76675ad-2bfc-4404-b32e-fb1977a25adb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791793,
+              "key": "3bd0239f-cc49-4679-86a2-95de0efb9ca5",
+              "title": "PyTorch V2 Part 1 Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mNJ8CujTtpo",
+                "china_cdn_id": "mNJ8CujTtpo.mp4"
+              }
+            },
+            {
+              "id": 796797,
+              "key": "709c0960-b652-430e-b8f7-3cc3402d257f",
+              "title": "Part 1 - 2",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "709c0960-b652-430e-b8f7-3cc3402d257f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Calculate the output of this single layer network using matrix multiplication."
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Mat's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 771586,
+          "key": "d247ddbd-3b02-4ebc-9504-714ee404ba46",
+          "title": "Networks Using Matrix Multiplication",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d247ddbd-3b02-4ebc-9504-714ee404ba46",
+            "completed_at": "2020-04-15T04:34:17.782Z",
+            "last_viewed_at": "2020-04-15T04:34:16.014Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791794,
+              "key": "7b620104-437b-4ead-849d-8c8506ac5016",
+              "title": "PyTorch V2 Part 1 Solution 2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QLaGMz8Ca3E",
+                "china_cdn_id": "QLaGMz8Ca3E.mp4"
+              }
+            },
+            {
+              "id": 796798,
+              "key": "db8ea131-7f6b-4793-8560-9cef8a51cced",
+              "title": "Part 1 - 3",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "db8ea131-7f6b-4793-8560-9cef8a51cced",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Calculate the output for the multi-layer network."
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Mat's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 771597,
+          "key": "da2e8b6f-1674-43cd-80a9-f43640caac2f",
+          "title": "Multilayer Networks Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "da2e8b6f-1674-43cd-80a9-f43640caac2f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791795,
+              "key": "cd851641-5b4f-4ae0-b62e-d5ed8dd7a947",
+              "title": "PyTorch V2 Part 1 Solution 3 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iMIo9p5iSbE",
+                "china_cdn_id": "iMIo9p5iSbE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 771599,
+          "key": "0d735345-f080-49c4-8fbf-a68012923f50",
+          "title": "Neural Networks in PyTorch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0d735345-f080-49c4-8fbf-a68012923f50",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791796,
+              "key": "d07683a2-4e8e-44dc-af92-daa55fe438dd",
+              "title": "PyTorch V2 Part 2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CSQOdOb2mlg",
+                "china_cdn_id": "CSQOdOb2mlg.mp4"
+              }
+            },
+            {
+              "id": 797199,
+              "key": "e6633123-a2bf-4ae3-a9b9-ae67aa8d275f",
+              "title": "Part 2 - 1",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e6633123-a2bf-4ae3-a9b9-ae67aa8d275f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Build a multi-layer network to identify handwritten digits in an image."
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Mat's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 771600,
+          "key": "2f3c20c8-cd2e-4aef-a41b-1cfc052e0444",
+          "title": "Neural Networks Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2f3c20c8-cd2e-4aef-a41b-1cfc052e0444",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791797,
+              "key": "eeefca6c-c294-4612-b6e1-0250efd11a0d",
+              "title": "PyTorch V2 Part 2 Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zym36ihtOMY",
+                "china_cdn_id": "zym36ihtOMY.mp4"
+              }
+            },
+            {
+              "id": 797200,
+              "key": "8d1e5c15-c4d0-4ab1-bf35-2660e96e7df6",
+              "title": "Part 2 - 2",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8d1e5c15-c4d0-4ab1-bf35-2660e96e7df6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Implement the softmax function."
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Mat's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 771603,
+          "key": "1d15f027-74be-44d9-a3e5-e33ca6e96e0d",
+          "title": "Implementing Softmax Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d15f027-74be-44d9-a3e5-e33ca6e96e0d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791798,
+              "key": "877a5502-f199-47b8-9950-4f2fa70eec67",
+              "title": "PyTorch V2 Part 2 Solution 2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8KRX7HvqfP0",
+                "china_cdn_id": "8KRX7HvqfP0.mp4"
+              }
+            },
+            {
+              "id": 797201,
+              "key": "e0854ce5-1719-4db6-a31a-8eb7dbad5ce7",
+              "title": "Part 2 - 3",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e0854ce5-1719-4db6-a31a-8eb7dbad5ce7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Build a multi-layer network that utilizes the ReLU activation function in its hidden layers."
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Mat's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 771604,
+          "key": "d715dea0-7fa5-4da7-b2c0-8fe186485d53",
+          "title": "Network Architectures in PyTorch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d715dea0-7fa5-4da7-b2c0-8fe186485d53",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791799,
+              "key": "30efcd99-56d3-4b32-952d-64fa9b0d0d87",
+              "title": "PyTorch V2 Part 3 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9ILiZwbi9dA",
+                "china_cdn_id": "9ILiZwbi9dA.mp4"
+              }
+            },
+            {
+              "id": 797203,
+              "key": "731d221a-1767-48e4-98f7-c8d0018b0089",
+              "title": "Part 3 - 1",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "731d221a-1767-48e4-98f7-c8d0018b0089",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Build a multi-layer network that utilizes log-softmax as the output activation function, calculate the loss using the negative log likelihood loss."
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Mat's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 771606,
+          "key": "037b1900-5331-4ab0-805b-7b55b802bff7",
+          "title": "Network Architectures Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "037b1900-5331-4ab0-805b-7b55b802bff7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791800,
+              "key": "a9ad5a88-dd05-4800-8696-6359098655a7",
+              "title": "PyTorch V2 Part 3 Solution V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zBWlOeX2sQM",
+                "china_cdn_id": "zBWlOeX2sQM.mp4"
+              }
+            },
+            {
+              "id": 797204,
+              "key": "b0707a14-e3f5-4b11-83a8-10141efc4318",
+              "title": "Part 3 - 2",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b0707a14-e3f5-4b11-83a8-10141efc4318",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Implement the training pass for our network.",
+                "View it's predictions!"
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Mat's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 771617,
+          "key": "05ca99ad-68d2-4f08-97ee-f214ebfbc2d1",
+          "title": "Training a Network Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "05ca99ad-68d2-4f08-97ee-f214ebfbc2d1",
+            "completed_at": "2020-04-15T04:34:20.739Z",
+            "last_viewed_at": "2020-04-18T05:52:41.469Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791801,
+              "key": "9565dd97-2358-4a78-bf9f-986932bf3c46",
+              "title": "PyTorch V2 Part 3 Solution 2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ExyFG2MjsKs",
+                "china_cdn_id": "ExyFG2MjsKs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 771618,
+          "key": "90d76d3d-b0f3-4288-8568-6b2155cd0722",
+          "title": "Classifying Fashion-MNIST",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "90d76d3d-b0f3-4288-8568-6b2155cd0722",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791802,
+              "key": "5981ad40-dd41-4374-92de-482e246babd6",
+              "title": "PyTorch - Part 4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AEJV_RKZ7VU",
+                "china_cdn_id": "AEJV_RKZ7VU.mp4"
+              }
+            },
+            {
+              "id": 797221,
+              "key": "07be261d-263f-4759-be3b-d9e96392672e",
+              "title": "Part 4",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "07be261d-263f-4759-be3b-d9e96392672e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Build and train a neural network to classify clothing images."
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Mat's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 771619,
+          "key": "30ce17d6-657c-45e5-8d8b-1527383bcfc4",
+          "title": "Fashion-MNIST Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30ce17d6-657c-45e5-8d8b-1527383bcfc4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791803,
+              "key": "070062e9-36a5-41e6-8ea8-7b8a353e27e1",
+              "title": "PyTorch V2 Part 4 Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "R6Y4hPLVQWM",
+                "china_cdn_id": "R6Y4hPLVQWM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 771620,
+          "key": "c729c4db-6e81-4e0b-8c0a-13395659d405",
+          "title": "Inference and Validation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c729c4db-6e81-4e0b-8c0a-13395659d405",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791804,
+              "key": "2a20d2b2-2553-47d5-9477-4afd291da4f7",
+              "title": "PyTorch V2 Part 5 V1 (1)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XACXlkIdS7Y",
+                "china_cdn_id": "XACXlkIdS7Y.mp4"
+              }
+            },
+            {
+              "id": 797222,
+              "key": "36a007e4-f0b3-4445-b075-7bf8514a3502",
+              "title": "Part 5 - 1",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "36a007e4-f0b3-4445-b075-7bf8514a3502",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Implement the validation loop and print out the total accuracy."
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Mat's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 771621,
+          "key": "7921d0d6-b19c-474e-b8fd-2379c69d75ed",
+          "title": "Validation Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7921d0d6-b19c-474e-b8fd-2379c69d75ed",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791805,
+              "key": "c29487b9-6629-4d8f-90b6-84ef1a05db02",
+              "title": "PyTorch V2 Part 5 Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AjrXltxqsK4",
+                "china_cdn_id": "AjrXltxqsK4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 771623,
+          "key": "71b4cb42-e7ca-4a8e-8087-645fc2aaed61",
+          "title": "Dropout Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "71b4cb42-e7ca-4a8e-8087-645fc2aaed61",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791806,
+              "key": "91502db2-570b-4689-9add-e238d4da7b4b",
+              "title": "PyTorch V2 Part 5 Solution 2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3Py2SbtZLbc",
+                "china_cdn_id": "3Py2SbtZLbc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 771624,
+          "key": "5e408ee7-83b5-41d1-9f31-3c1a237d8986",
+          "title": "Saving and Loading Models",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5e408ee7-83b5-41d1-9f31-3c1a237d8986",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 825490,
+              "key": "2941f679-cef4-4ca6-b823-3848a171e9d9",
+              "title": "Saving & Loading Models V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "psmrPu-mseA",
+                "china_cdn_id": "psmrPu-mseA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 771625,
+          "key": "80e61337-4d42-4292-9a3b-791f65733d23",
+          "title": "Loading Image Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "80e61337-4d42-4292-9a3b-791f65733d23",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791808,
+              "key": "60446feb-3052-4555-8f0d-1c8ccd490608",
+              "title": "PyTorch - Part 7",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hFu7GTfRWks",
+                "china_cdn_id": "hFu7GTfRWks.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 771626,
+          "key": "b033f42a-7ade-429c-a793-d6aade7d7490",
+          "title": "Loading Image Data Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b033f42a-7ade-429c-a793-d6aade7d7490",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791809,
+              "key": "d08f2270-ab9b-4172-97a6-2e7aaef9c517",
+              "title": "PyTorch V2 Part 7 Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "d_NhvI1yEf0",
+                "china_cdn_id": "d_NhvI1yEf0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 783875,
+          "key": "437bd8b1-a94d-4f60-8833-17877c14cfd5",
+          "title": "Pre-Notebook with GPU",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "437bd8b1-a94d-4f60-8833-17877c14cfd5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783876,
+              "key": "78f1b423-639a-4aa1-ad54-6beddc7c7405",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## GPU Workspaces\n\nPart 8 here shows you how to accelerate network computations using a GPU. So, the next workspace is **GPU-enabled**, which means you can select to train on a GPU instance. Since you are limited on the GPU hours you have, the recommendation is this:\n* Work in CPU mode while developing your models and such.\n* Make sure the network is learning (the training loss is dropping) using just the CPU.\n* When you're ready to train for real and optimize the hyperparameters, **enable** the GPU\n\nAll models and data they see as input will have to be moved to the GPU device, so take note of the relevant movement code in the model creation and training process.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 783495,
+          "key": "572cd59e-540f-43d9-906f-33d22a4452a6",
+          "title": "Notebook Workspace w/ GPU",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "572cd59e-540f-43d9-906f-33d22a4452a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 783496,
+              "key": "813e6e68-fece-4543-87d0-99c7afadf257",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r671845c783495xJUPYTERuxr27yif",
+              "pool_id": "jupytergpu",
+              "view_id": "jupyter-mfhp5",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "mldatasets",
+                      "paths": [
+                        {
+                          "src": "/",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/tree/deep-learning-v2-pytorch/intro-to-pytorch"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 771627,
+          "key": "c33dec4c-ff16-465f-88e9-e95365e7b522",
+          "title": "Transfer Learning II",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c33dec4c-ff16-465f-88e9-e95365e7b522",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791810,
+              "key": "ebbf7f6d-36ac-4dbc-8943-e13ef3caf624",
+              "title": "PyTorch - Part 8",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "S9F7MtJ5jls",
+                "china_cdn_id": "S9F7MtJ5jls.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 771628,
+          "key": "b49de1e2-9871-44e5-a9dd-e16f07e1e807",
+          "title": "Transfer Learning Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b49de1e2-9871-44e5-a9dd-e16f07e1e807",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791811,
+              "key": "5204f71f-0953-4002-b028-7b8e6a2b8a68",
+              "title": "PyTorch V2 Part 8 Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4n6T93hKRD4",
+                "china_cdn_id": "4n6T93hKRD4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 771632,
+          "key": "df0a096c-c06f-47a3-a189-dd2a4e8968d0",
+          "title": "Tips, Tricks, and Other Notes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "df0a096c-c06f-47a3-a189-dd2a4e8968d0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 771635,
+              "key": "bad96550-1e64-4bfc-92af-5e3a9718ad59",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Watch those shapes\nIn general, you'll want to check that the tensors going through your model and other code are the correct shapes. Make use of the `.shape` method during debugging and development.\n\n##  A few things to check if your network isn't training appropriately\nMake sure you're clearing the gradients in the training loop with `optimizer.zero_grad()`. If you're doing a validation loop, be sure to set the network to evaluation mode with `model.eval()`, then back to training mode  with `model.train()`.\n\n## CUDA errors\n\nSometimes you'll see this error:\n\n```RuntimeError: Expected object of type torch.FloatTensor but found type torch.cuda.FloatTensor for argument #1 ‘mat1’```\n\nYou'll notice the second type is `torch.cuda.FloatTensor`, this means it's a tensor that has been moved to the GPU. It's expecting a tensor with type `torch.FloatTensor`, no `.cuda` there, which means the tensor should be on the CPU. PyTorch can only perform operations on tensors that are on the same device, so either both CPU or both GPU. If you're trying to run your network on the GPU, check to make sure you've moved the model and all necessary tensors to the GPU with `.to(device)` where `device` is either `\"cuda\"` or `\"cpu\"`.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

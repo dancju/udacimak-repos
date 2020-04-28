@@ -1,0 +1,1022 @@
+{
+  "data": {
+    "lesson": {
+      "id": 918847,
+      "key": "0833758f-18a7-4119-8007-b2c3bbb3ffdf",
+      "title": "Clustering",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Clustering is one of the most common methods of unsupervised learning. Here, we'll discuss the K-means clustering algorithm.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/0833758f-18a7-4119-8007-b2c3bbb3ffdf/918847/1581973784931/Clustering+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/0833758f-18a7-4119-8007-b2c3bbb3ffdf/918847/1581973779670/Clustering+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 601496,
+          "key": "fa3a018e-1cae-4e13-905f-4ccc5e171fcf",
+          "title": "Video: Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fa3a018e-1cae-4e13-905f-4ccc5e171fcf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 652400,
+              "key": "90ec1c42-6987-46d9-a92b-aa0e391a13d0",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "k7YOVTkFRJM",
+                "china_cdn_id": "k7YOVTkFRJM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 601498,
+          "key": "5053d38e-f8f2-4489-85f7-b91535fdfd6b",
+          "title": "Text: Course Outline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5053d38e-f8f2-4489-85f7-b91535fdfd6b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 601499,
+              "key": "cdb0a29b-e9f1-4258-90de-c3ca1ca2a383",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Course Outline\n\nBefore we get started, let's take a quick look at what will be covered in this course on **unsupervised learning**.\n\nUnsupervised learning is all about understanding how to group our data when we either \n\n`1.` Do not have a label to predict.  An example of this is using an algorithm to look at brain scans to find areas that may raise concern.  You don't have labels on the images to understand what areas might raise reason for concern, but you can understand which areas are most similar or different from one another.\n\n`2.` Are not trying to predict a label, but rather group our data together for some other reason!  One example of this is when you have tons of data, and you would like to condense it down to a fewer number of features to be used.\n\n_____\n\nWith that in mind, here are the topics for this lesson:\n\n### I. Clustering\n\nClustering is one of the most popular unsupervised approaches.  In a first look at clustering, you will gain an understanding of what clustering your data means.  Then, you will see how the k-means algorithm works.  You will put your skills to work to find groupings of similar movies!\n\n### II. Hierarchical and Density Based Clustering\n\nAnother set of clustering algorithms takes an approach of using density based 'closeness' measures.  At the end of the lesson, you will see how this can be used in traffic classification, as well as in anomaly detection (finding points that aren't like others in your dataset).\n\n### III. Gaussian Mixture Models and Cluster Validation\n\nTo extend the density based approaches, you will get some practice with gaussian mixture models.  This technique is not far from what you learned in the previous lesson, and it is the last of the clustering algorithms you will learn before moving to matrix decomposition methods.\n\n### IV. Principal Component Analysis\n\nPrincipal component analysis is one of the most popular decomposition methods available today.  In this lesson, you will learn how matrix decomposition methods work conceptually.  Then you will apply principal component analysis to images of handwritten digits to reduce the dimensionality of these images.  \n\n\n### V. Random Projection and Independent Component Analysis\n\nAnother way to decompose data is through independent component analysis.  In this lesson, you will see how this method can pull apart audio related to a piano, cello, and television that has been overlaid in the same file.\n\n\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 601500,
+          "key": "0dbb0c50-a1c6-4a18-82f4-7b667b0de739",
+          "title": "Video: Two Types of Unsupervised Learning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0dbb0c50-a1c6-4a18-82f4-7b667b0de739",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 652406,
+              "key": "36861913-6f86-48c3-aefb-d84d5bd5730c",
+              "title": "Two Types of Unsupervised Learning",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aHK_rpaS_ts",
+                "china_cdn_id": "aHK_rpaS_ts.mp4"
+              }
+            },
+            {
+              "id": 627071,
+              "key": "6d8923af-be46-42de-8388-701d10cc9133",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Types of Unsupervised Learning\n\nThere are two popular methods for unsupervised machine learning.\n\n1. Clustering - which groups data together based on similarities\n\n2. Dimensionality Reduction - which condenses a large number of features into a (usually much) smaller set of features.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 601502,
+          "key": "5888a926-b8f8-43cf-ace1-98c4af5aaa52",
+          "title": "Video: K-Means Use Cases",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5888a926-b8f8-43cf-ace1-98c4af5aaa52",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 652408,
+              "key": "b478e04b-e593-4c40-84f2-51d9840837e9",
+              "title": "04 KMeans Use Cases 1 1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "25paySwVdAA",
+                "china_cdn_id": "25paySwVdAA.mp4"
+              }
+            },
+            {
+              "id": 627072,
+              "key": "8c05ca5c-c4bf-45ed-91e2-88e6a6fe495a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### K-Means\n\nThe K-Means algorithm is used to cluster all sorts of data.\n\nIt can group together\n\n1. Books of similar genres or written by the same authors.\n2. Similar movies.\n3. Similar music.\n4. Similar groups of customers.\n\nThis clustering can lead to product, movie, music and other types of recommendations. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 601504,
+          "key": "44fb1d28-9fdf-491e-870e-d565d7e24069",
+          "title": "Video: K-Means",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "44fb1d28-9fdf-491e-870e-d565d7e24069",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 652409,
+              "key": "c5df7de7-b1d5-45da-865b-9fe6b92b5b10",
+              "title": "KMeans",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "B9jdQFpPEk0",
+                "china_cdn_id": "B9jdQFpPEk0.mp4"
+              }
+            },
+            {
+              "id": 627216,
+              "key": "1ca268f8-8ca3-4097-9326-02b321d269a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### K-Means\n\nIn the K-means algorithm **'k' represents the number of clusters you have in your dataset**.  In this video, you saw that a k value of two makes a lot of sense.  There is one cluster of points with shorter distances for when I travel to work.  A second cluster is created when I travel to my parents' house.  \n\nVisually inspecting your data easily shows these two clusters.  On the next page, you will have an opportunity to make sure you have this technique for finding clusters mastered.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 601506,
+          "key": "0efa246c-96bd-401c-932a-8da4e1761bf0",
+          "title": "Quiz: Identifying Clusters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0efa246c-96bd-401c-932a-8da4e1761bf0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 617114,
+              "key": "907800f3-5876-4485-ad69-a3cf210e6e69",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view1f0631c6",
+              "pool_id": "jupyter",
+              "view_id": "1f0631c6-ee7b-436b-be92-1116ae8a65a3",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Identifying_Clusters.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 601507,
+          "key": "d7771695-ad82-4bea-aae1-6d351eb50f0d",
+          "title": "Video: Changing K",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d7771695-ad82-4bea-aae1-6d351eb50f0d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 652411,
+              "key": "7c64fc0d-7fac-47d7-a164-12c856b9f0ed",
+              "title": "07 Changing K 1 V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Bd3M-xUlqEI",
+                "china_cdn_id": "Bd3M-xUlqEI.mp4"
+              }
+            },
+            {
+              "id": 627218,
+              "key": "06d3492e-c347-41da-a090-d3f8a8ba65f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Choosing K\n\nSo far you have identified `k` when you can visually inspect your data to identify the number of clusters.  However, in practice, you often have tons of data with many features.  This can make visualizing your clusters impossible.  \n\nIn these cases, choosing k is often an art and a science.  Often researchers have an idea of what k should be ahead of time.  In other cases, no one has any idea what k should be!  How do we choose k in these cases?  Don't worry there is a general method used for these cases.  On the next page, you will see how it works!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 601518,
+          "key": "32176573-40d7-4275-a7ad-a6babec1025d",
+          "title": "Video: Elbow Method",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "32176573-40d7-4275-a7ad-a6babec1025d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 652412,
+              "key": "7c675eae-3121-4a9f-ac72-9fc119999c4c",
+              "title": "Elbow Method For Finding K",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "e7fqXpo63n8",
+                "china_cdn_id": "e7fqXpo63n8.mp4"
+              }
+            },
+            {
+              "id": 627261,
+              "key": "c969d8fc-7d52-454c-8579-c0669c462b01",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Elbow Method\n\nWhen you have no idea how many clusters exist in your dataset, a common strategy for determining `k` is the **elbow method**.  In the elbow method, you create a plot of the number of clusters (on the x-axis) vs. the average distance of the center of the cluster to each point (on the y-axis).  This plot is called a **scree plot**\n\nThe average distance will always decrease with each additional cluster center.  However, with fewer clusters, those decreases will be more substantial.  At some point, adding new clusters will no longer create a substantial decrease in the average distance.  This point is known as the **elbow**.\n\nOn the next page, you will see some of these ideas come to life in Python.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 601520,
+          "key": "963a92ba-6442-45d0-8f13-d7aa8a820084",
+          "title": "Screencast: K-Means in Scikit Learn",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "963a92ba-6442-45d0-8f13-d7aa8a820084",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 627976,
+              "key": "3b725fef-a886-4b30-bc30-486ed3155248",
+              "title": "10  KMeans In Scikit Learn V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jkEgQLOcCGo",
+                "china_cdn_id": "jkEgQLOcCGo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 601521,
+          "key": "023022db-9155-4303-a844-5aa37664ee2f",
+          "title": "Notebook: Your Turn",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "023022db-9155-4303-a844-5aa37664ee2f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 617319,
+              "key": "71809249-856c-41eb-aaf8-66bce2b8434f",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view1f0631c6",
+              "pool_id": "jupyter",
+              "view_id": "ab7bc555-b1e6-4399-8d33-8d7390ef929e",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Changing%20K.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 601522,
+          "key": "fb0c36e3-479d-47f7-9c31-713b678f54e9",
+          "title": "Screencast: Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fb0c36e3-479d-47f7-9c31-713b678f54e9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 627977,
+              "key": "d1f0b9ca-aa3f-4dd7-a22a-c09eebf0a179",
+              "title": "12 KMeans In Scikit Learn Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IIVsWFq2DXk",
+                "china_cdn_id": "IIVsWFq2DXk.mp4"
+              }
+            },
+            {
+              "id": 617320,
+              "key": "ecac9eea-6121-4329-83d1-78aeb6613039",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view1f0631c6",
+              "pool_id": "jupyter",
+              "view_id": "7276da75-05d4-4f1d-8321-7c86d6bcd71d",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Changing%20K%20-%20Solution.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 601523,
+          "key": "7665d186-214a-4006-930b-20879faa1b37",
+          "title": "Video: How Does K-Means Work?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7665d186-214a-4006-930b-20879faa1b37",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 667634,
+              "key": "62a19ab4-0eec-48fe-b32e-b353da66bd38",
+              "title": "How Does K-Means Work?",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pL-pMCDgJuw",
+                "china_cdn_id": "pL-pMCDgJuw.mp4"
+              }
+            },
+            {
+              "id": 627270,
+              "key": "1c1e937a-7888-4124-8bb1-c3947b64b7c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### How Does K-Means Work?\n\nEven before this video, you know most of what you needed to about how the k-means algorithm works:\n\n1. You choose k as the number of clusters you believe to be in your dataset or...\n2. You use the elbow method to determine k for your data.\n\nThen this number of clusters is created within your dataset, where each point is assigned to each group.\n\n--------\n\nHowever, to understand what edge cases might occur when grouping points together, it is necessary to understand exactly what the k-means algorithm is doing.  Here is one method for computing k-means:\n\n`1.` Randomly place k centroids amongst your data.\n\nThen within a loop until convergence perform the following two steps:\n\n`2.` Assign each point to the closest centroid.\n\n`3.` Move the centroid to the center of the points assigned to it.\n\nAt the end of this process, you should have k-clusters of points.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 601525,
+          "key": "ecc38fda-2657-44e4-9bbb-8f64c6525f66",
+          "title": "Screencast + Text: How Does K-Means Work?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ecc38fda-2657-44e4-9bbb-8f64c6525f66",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 627979,
+              "key": "70543ea1-f323-4042-8213-1807c5dc6ab2",
+              "title": "14 How Does KMeans Work V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "y7yZyyHgyYU",
+                "china_cdn_id": "y7yZyyHgyYU.mp4"
+              }
+            },
+            {
+              "id": 617326,
+              "key": "c1ed9f4b-8178-41e2-b7ee-a6dbaa47c3a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### How Does K-Means Work?\n\nThe [blog by Naftali Harris](https://www.naftaliharris.com/blog/visualizing-k-means-clustering/) is spectacular at showing you how k-means works for a number of situations.  You can try it yourself!\n\nAs an exercise for yourself, you might try coding up the algorithm yourself in Python. [This blog by Mubaris Hassan](https://mubaris.com/2017/10/01/kmeans-clustering-in-python/) may be helpful if you decide to take on this task!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 601555,
+          "key": "37105ca3-b29e-458e-8e0f-a5bde92a2a5e",
+          "title": "How Does K-Means Work?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "37105ca3-b29e-458e-8e0f-a5bde92a2a5e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 627282,
+              "key": "20bc1b80-e5dc-4398-ae06-50e8c7cd4306",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "20bc1b80-e5dc-4398-ae06-50e8c7cd4306",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For some set of data, a value of k centroids will always lead to the exact same clustering of your data.",
+                "answers": [
+                  {
+                    "id": "a1526077355980",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1526077444365",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 627283,
+              "key": "05d71053-52c0-4b38-a244-f5d3dd593288",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "05d71053-52c0-4b38-a244-f5d3dd593288",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "It is possible to add a centroid in k-means and have the average distance for each point to the nearest centroid to increase.",
+                "answers": [
+                  {
+                    "id": "a1526077674284",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1526077840776",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 627284,
+              "key": "628225d8-9e69-441e-8978-6f84cf135f94",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "628225d8-9e69-441e-8978-6f84cf135f94",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match each action to the order in which it occurs in the k-means algorithm."
+                },
+                "concepts_label": "Step",
+                "answers_label": "Process",
+                "concepts": [
+                  {
+                    "text": "First",
+                    "correct_answer": {
+                      "id": "a1526078130845",
+                      "text": "Randomly assign centroids."
+                    }
+                  },
+                  {
+                    "text": "Second",
+                    "correct_answer": {
+                      "id": "a1526078169933",
+                      "text": "Assign points to the nearest centroid."
+                    }
+                  },
+                  {
+                    "text": "Third",
+                    "correct_answer": {
+                      "id": "a1526078174983",
+                      "text": "Move centroids to the center of the points nearest them."
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1526078174983",
+                    "text": "Move centroids to the center of the points nearest them."
+                  },
+                  {
+                    "id": "a1526078169933",
+                    "text": "Assign points to the nearest centroid."
+                  },
+                  {
+                    "id": "a1526078130845",
+                    "text": "Randomly assign centroids."
+                  }
+                ]
+              }
+            },
+            {
+              "id": 627286,
+              "key": "a389601e-d67f-4954-9458-66f4e13c71a4",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a389601e-d67f-4954-9458-66f4e13c71a4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For any dataset, choosing the number of clusters (k) is simple.  ",
+                "answers": [
+                  {
+                    "id": "a1526078432627",
+                    "text": "Yes, it is always proportional to the number of points.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1526078480220",
+                    "text": "Yes, we just use scree plots, and we find the elbow.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1526078492352",
+                    "text": "No, there are a number of possible methods.  ",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 601526,
+          "key": "be566f0a-1214-4f0e-8435-57713f9cb214",
+          "title": "Video: Is that the Optimal Solution?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "be566f0a-1214-4f0e-8435-57713f9cb214",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 667633,
+              "key": "01e62f94-96c9-4866-95a0-78b73639bf70",
+              "title": "Is That The Optimal Solution?",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "g5aPtCpBNmw",
+                "china_cdn_id": "g5aPtCpBNmw.mp4"
+              }
+            },
+            {
+              "id": 627381,
+              "key": "ba956f36-8de8-456f-ba7b-cff7d02a2514",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### A Couple Other Points\n\nIn this video, you saw that how the starting points of the centroids can actually make a difference as to the final results you obtain from the k-means algorithm.  \n\nIn order to assure you have the \"best\" set of clusters, the algorithm you saw earlier will be performed a few times with different starting points.  The best set of clusters is then the clustering that creates the smallest average distance from each point to its corresponding centroid.  ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 601528,
+          "key": "e46b1f5b-e3bd-4e45-98ee-ed166be028a6",
+          "title": "Video: Feature Scaling",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e46b1f5b-e3bd-4e45-98ee-ed166be028a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 667631,
+              "key": "c4869801-9b64-483d-8dfd-d1be2f004fdc",
+              "title": "Feature Scaling",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rpTVp7C8AXo",
+                "china_cdn_id": "rpTVp7C8AXo.mp4"
+              }
+            },
+            {
+              "id": 627397,
+              "key": "dcb54739-f513-4bf4-b1c4-b3cb271b54a0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Feature Scaling\n\nFor any machine learning algorithm that uses distances as a part of its optimization, it is important to scale your features.  \n\nYou saw this earlier in regularized forms of regression like Ridge and Lasso, but it is also true for k-means.  In future sections on PCA and ICA, feature scaling will again be important for the successful optimization of your machine learning algorithms.\n\n_____\n\nThough there are a large number of ways that you can go about scaling your features, there are two ways that are most common:\n\n1. **Normalizing** or **Max-Min Scaling** - this type of scaling transforms variable values to between 0 and 1.\n2. **Standardizing** or **Z-Score Scaling** - this type of scaling transforms variable values so they have a mean of 0 and standard deviation of 1. \n\nLet's look at a more concrete example of this, as well as see how to perform these operations in Python.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 601530,
+          "key": "ef251115-f1b9-4d19-8b7c-63d6c080052b",
+          "title": "Video: Feature Scaling Example",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ef251115-f1b9-4d19-8b7c-63d6c080052b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 667627,
+              "key": "4f6ed122-9691-429c-8623-15f33a435cd6",
+              "title": "Feature Scaling Example",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-Axyt0bPCT0",
+                "china_cdn_id": "-Axyt0bPCT0.mp4"
+              }
+            },
+            {
+              "id": 627403,
+              "key": "34b8c4a9-08d3-4f46-b89a-b4b0e8c550e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Feature Scaling\n\nHere you saw one example where k = 2 for the same dataset.  However, depending on the scaling of the features in the dataset, we ended up with 2 completely different clusters.\n\nIn most cases, you will want to use **Standardized** scaling.  On the next page, you will get some practice using python to scale data using the two scaling methods we have looked at:\n\n1. **Normalizing**\n2. **Standardizing**\n\nStandardizing your data (both features in the above case), would assure that we get consistent clustering of our data each time. Manipulating the clusters created by adjusting the feature scalings for either feature is cheating (or likely to provide misleading results)!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 652420,
+          "key": "3e07b99f-6518-43cb-a93e-71bd4d9cb96d",
+          "title": "Notebook: Feature Scaling Example",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3e07b99f-6518-43cb-a93e-71bd4d9cb96d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 652425,
+              "key": "e46b3fcf-327a-44e5-8249-568d59dfa79d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view1f0631c6",
+              "pool_id": "jupyter",
+              "view_id": "33b0c394-bb5e-4b5b-ab39-6c791d15345b",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Feature%20Scaling%20Example.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 601532,
+          "key": "d76e3cf2-2d52-49cf-9bad-a820637a1ab1",
+          "title": "Notebook: Feature Scaling",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d76e3cf2-2d52-49cf-9bad-a820637a1ab1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 617402,
+              "key": "77bd3b46-db66-4739-82b7-f94927c7307d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view1f0631c6",
+              "pool_id": "jupyter",
+              "view_id": "bbd9d901-33af-499c-97c3-ba09e3bd3b4c",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Feature%20Scaling.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 601553,
+          "key": "e90c3830-f290-43da-8adf-24285e2788cb",
+          "title": "Screencast: Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e90c3830-f290-43da-8adf-24285e2788cb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 627980,
+              "key": "7d98f3f3-ee6b-4784-8722-22cc2ce6c1fa",
+              "title": "19  Feature Scaling Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xddMZP2SQ1U",
+                "china_cdn_id": "xddMZP2SQ1U.mp4"
+              }
+            },
+            {
+              "id": 780759,
+              "key": "d9d6f5c1-9573-4f79-a189-001071610080",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Notice\n\nThere was a mistake in the above video, can you figure out what it was?  Use the quiz below to see if you can find resolve the mistake.  Then check the notebook below the quiz to see a correct solution.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 780763,
+              "key": "0f5fe3be-e21b-428e-a5f1-5349222e9044",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0f5fe3be-e21b-428e-a5f1-5349222e9044",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "The above video is incorrect:",
+                "answers": [
+                  {
+                    "id": "a1541628433103",
+                    "text": "The scaling using min max didn't actually produce data between 0 and 1.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1541628484957",
+                    "text": "The scaling using standard scaler didn't actually produce data with a mean 0 and a standard deviation of 1.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1541628509639",
+                    "text": "When we look at the clusters of the data, we should have used the scaled data to refit the kmeans algorithm before looking at the clusters.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1541628550637",
+                    "text": "None of the above.  The video was correct, and professionals never make mistakes ever.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 617404,
+              "key": "ea41c58e-e7e5-4f34-bc63-fa29616b8815",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view1f0631c6",
+              "pool_id": "jupyter",
+              "view_id": "d8d38b89-45ae-4731-a2d8-d27dde8152ee",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Feature%20Scaling%20-%20Solution.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 601540,
+          "key": "d1e7b0d2-753c-416e-abb1-2da337222b77",
+          "title": "Video: Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d1e7b0d2-753c-416e-abb1-2da337222b77",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 667638,
+              "key": "72a49c81-9de4-4f49-a02f-15cf522c6d0e",
+              "title": "Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AeDSl4KSVIE",
+                "china_cdn_id": "AeDSl4KSVIE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 601538,
+          "key": "555bb677-541a-43de-9098-b53e0ac9395c",
+          "title": "Text: Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "555bb677-541a-43de-9098-b53e0ac9395c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 627406,
+              "key": "e9210f27-414e-496b-9dc7-ae929246bc5f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Clustering Recap\n\nWe just covered a bunch of information!  Here is a quick recap!\n\n#### I. Clustering\n\nYou learned about clustering, a popular method for unsupervised machine learning.  We looked at three ways to identify clusters in your dataset.  \n\n1. **Visual Inspection** of your data.\n2. **Pre-conceived** ideas of the number of clusters.\n3. **The elbow method**, which compares the average distance of each point to the cluster center for different numbers of centers.\n\n#### II. K-Means\n\nYou saw the k-means algorithm for clustering data, which has 3 steps:\n\n`1.` Randomly place k-centroids amongst your data.\n\nThen repeat the following two steps until convergence (the centroids don't change):\n\n`2.` Look at the distance from each centroid to each point.  Assign each point to the closest centroid. \n\n`3.` Move the centroid to the center of the points assigned to it.\n\n#### III.  Concerns with K-Means\n\nFinally, we discussed some concerns with the k-means algorithm.  These concerns included:\n\n`1.` **Concern:** The random placement of the centroids may lead to non-optimal solutions.\n\n**Solution:** Run the algorithm multiple times and choose the centroids that create the smallest average distance of the points to the centroids.\n\n`2.` **Concern:** Depending on the scale of the features, you may end up with different groupings of your points.\n\n**Solution:** Scale the features using Standardizing, which will create features with mean 0 and standard deviation 1 before running the k-means algorithm.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

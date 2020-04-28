@@ -1,0 +1,2255 @@
+{
+  "data": {
+    "lesson": {
+      "id": 929970,
+      "key": "bc39e1bc-9e36-4be8-9b4d-b6a5d4b7855e",
+      "title": "Deep Learning with TensorFlow",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to use TensorFlow for building deep learning models.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/bc39e1bc-9e36-4be8-9b4d-b6a5d4b7855e/929970/1581974023815/Deep+Learning+with+TensorFlow+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/bc39e1bc-9e36-4be8-9b4d-b6a5d4b7855e/929970/1581974015079/Deep+Learning+with+TensorFlow+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 929971,
+          "key": "08c7655c-2895-4f03-92a8-8176b3368a0e",
+          "title": "Welcome!",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "08c7655c-2895-4f03-92a8-8176b3368a0e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 947780,
+              "key": "d581c481-5b98-4a2a-9015-4b575572af44",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5db34f74_screen-shot-2019-10-25-at-12.38.42-pm/screen-shot-2019-10-25-at-12.38.42-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d581c481-5b98-4a2a-9015-4b575572af44",
+              "caption": "_Juan Delgado and Michael Virgo_",
+              "alt": "Juan Delgado and Michael Virgo",
+              "width": 533,
+              "height": 240,
+              "instructor_notes": null
+            },
+            {
+              "id": 947781,
+              "key": "45228ccb-8a00-4752-bb85-91aa1ba95de4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Welcome!\n\nWelcome! In this lesson, you'll learn how to use TensorFlow for building deep learning models. TensorFlow is an open source machine learning library developed by Google and has been making a pretty big impact in the deep learning community and is being adopted by teams everywhere in industry and academia. In my experience, it's the absolute best framework for learning deep learning and it is just a delight to work with in general. By the end of this lesson, you'll have trained your own deep learning model that can classify images of cats and dogs. \n\nYou will start by getting a basic introduction to TensorFlow, where you will learn about  **tensors** - the main data structure of TensorFlow. You will learn how to create tensors and use them to create neural networks. \n\nNext, you will learn how to use TensorFlow and Keras to build and train neural networks, and how to test your models using test sets and validation sets.\n\nFinally, you will learn how to use pre-trained networks to improve the performance of your models, a technique known as **transfer learning**.\n\nFollow along with the videos and work through the exercises in your own notebooks. If you get stuck, check out my solution videos and notebooks.\n\n## Get the notebooks\n\nAll the notebooks for this lesson are available from on the [GitHub repo](https://github.com/udacity/intro-to-ml-tensorflow). \n\nFollow along in your notebooks to complete the exercises. I'll also be providing solutions to the exercises, both in videos and in the notebooks marked `(Solution)`.\n\n## Dependencies\n\nThese notebooks require TensorFlow 2.0 or newer, TensorFlow Datasets, and TensorFlow Hub. The easiest way to install TensorFlow 2.0, TensorFlow Datasets, and TensorFlow Hub is via `pip`. \n\nYou'll also need to install NumPy and Jupyter notebooks, the newest versions of these should work fine. Using the conda package manager is generally best for this,\n\n```conda install numpy jupyter notebook```\n\nIf you haven't used conda before, [please read the documentation](https://conda.io/docs/) to learn how to create environments and install packages. You can also install Miniconda instead of the whole Anaconda distribution. The normal package manager `pip` also works well in conda. If you have a preference, go with that.\n\nThe final part of the series has a soft requirement of a GPU used to accelerate network computations. Even if you don't have a GPU available, you'll still be able to run the code and finish the exercises. If you can't use a local GPU, you can use cloud platforms such as [Google Cloud GPUs](https://cloud.google.com/gpu/) to train your networks on a GPU. You can also check out Google's [Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb). Google's Colaboratory is a free Jupyter notebook environment that requires no setup and runs entirely in the cloud. With Google's Colaboratory you have the option to run your code with a GPU for free! \n\nOur Nanodegree programs also provide GPU workspaces in the classroom.\n\n## Feedback\n\nIf you have problems with the notebooks, please contact support or create an issue on the repo. We're also happy to incorporate your improvements through pull requests.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929985,
+          "key": "cab5d1ba-1659-480a-a9d1-95ff1039834d",
+          "title": "Pre-Notebooks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cab5d1ba-1659-480a-a9d1-95ff1039834d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 941995,
+              "key": "98357f45-b9dc-4d1a-94af-385764dd0928",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Notebooks\n\nTime to get started building networks with TensorFlow! We've prepared a set of eight notebooks that lead you through building deep neural networks in TensorFlow. Work your way through the notebooks completing the exercises as best as you can. Feel free to check out our solutions both in the videos and in the solution notebooks, but remember that it's super important that you **type in the correct code yourself**. If you want to learn how to do this, you have to write in the code yourself, understand what every line of the code is doing, and get everything to work properly yourself. Please use our solutions only to guide your learning.\n\n**It's suggested that you open these notebooks in a new, working tab and continue working on it as you go through the instructional videos.** This way you can toggle between learning new skills and coding/applying new skills.\n\nTo open the notebooks go to the next page in the classroom. If you'd instead prefer to work on your local machine, you can find the notebooks in the [GitHub repo](https://github.com/udacity/intro-to-ml-tensorflow).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 929986,
+          "key": "fe69fb24-35fd-41b5-b304-aceb92462997",
+          "title": "Notebooks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fe69fb24-35fd-41b5-b304-aceb92462997",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930234,
+              "key": "ca107224-95bd-4afb-ac7a-1330f2c88e8a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r906364c929986xJUPYTERwbvx9owe",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-e34pj",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "jupyter-envs",
+                      "paths": [
+                        {
+                          "src": "/conda-with-tensorflow2-gpu/conda",
+                          "dest": "/opt/conda"
+                        }
+                      ]
+                    },
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 940353,
+          "key": "96edba9a-1b7a-44d8-a487-c52363e9d65c",
+          "title": "Introduction to TensorFlow",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "96edba9a-1b7a-44d8-a487-c52363e9d65c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959901,
+              "key": "6183498e-2e3b-4e3d-b3a7-a040301dbb1f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Introduction to TensorFlow",
+              "instructor_notes": ""
+            },
+            {
+              "id": 940354,
+              "key": "2465af70-2f46-4d0c-9bbf-e5293e77799a",
+              "title": "UD230 L1 Intro To Neural Networks With Tensor Flow",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WiQh7_HEiDE",
+                "china_cdn_id": "WiQh7_HEiDE.mp4"
+              }
+            },
+            {
+              "id": 959804,
+              "key": "9e32d2e3-7753-46eb-b83b-5dcf2ee0a569",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[TensorFlow](https://www.tensorflow.org/) is an open-source library developed by Google to help you create and train machine learning models. The fundamental data structure for neural networks are known as tensors, and TensorFlow is built around these tensors.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959805,
+              "key": "cb93df2f-c7de-40c1-af1b-a1e42170fe77",
+              "title": "Tensors",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cb93df2f-c7de-40c1-af1b-a1e42170fe77",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following arrays qualify as tensors?",
+                "answers": [
+                  {
+                    "id": "a1575594301212",
+                    "text": "1-dimensional array",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575594349839",
+                    "text": "2-dimensional array",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575594359883",
+                    "text": "An array with 3 or more dimensions",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575594375991",
+                    "text": "n-dimensional array",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 940356,
+          "key": "fc3f445e-e8a5-420e-b988-e2bcef9ca50a",
+          "title": "Single Layer Neural Network",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fc3f445e-e8a5-420e-b988-e2bcef9ca50a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959902,
+              "key": "978a4f47-7afc-48cb-a271-5690c7ef4f38",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Single Layer Neural Network",
+              "instructor_notes": ""
+            },
+            {
+              "id": 940357,
+              "key": "c1e503f2-81b9-4811-bed2-7594a82934e5",
+              "title": "UD230 L2 Single Layer Neural Network",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "V12S-hPVg_c",
+                "china_cdn_id": "V12S-hPVg_c.mp4"
+              }
+            },
+            {
+              "id": 959808,
+              "key": "b6c31302-b254-4b87-8915-fffe4b0b14bf",
+              "title": "Early TensorFlow Functions",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b6c31302-b254-4b87-8915-fffe4b0b14bf",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the below TensorFlow functions to their usage."
+                },
+                "concepts_label": "Usage",
+                "answers_label": "TensorFlow Function",
+                "concepts": [
+                  {
+                    "text": "Performs element-wise multiplication on two inputs",
+                    "correct_answer": {
+                      "id": "a1575594871048",
+                      "text": "`tf.multiply()`"
+                    }
+                  },
+                  {
+                    "text": "Performs matrix multiplication on two inputs",
+                    "correct_answer": {
+                      "id": "a1575594992916",
+                      "text": "`tf.matmul()`"
+                    }
+                  },
+                  {
+                    "text": "Computes the sum of elements across an input tensor's dimensions",
+                    "correct_answer": {
+                      "id": "a1575594993604",
+                      "text": "`tf.reduce_sum()`"
+                    }
+                  },
+                  {
+                    "text": "Computes the element-wise exponential of an input",
+                    "correct_answer": {
+                      "id": "a1575595026967",
+                      "text": "`tf.exp()`"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1575594993604",
+                    "text": "`tf.reduce_sum()`"
+                  },
+                  {
+                    "id": "a1575594992916",
+                    "text": "`tf.matmul()`"
+                  },
+                  {
+                    "id": "a1575595026967",
+                    "text": "`tf.exp()`"
+                  },
+                  {
+                    "id": "a1575594871048",
+                    "text": "`tf.multiply()`"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 959809,
+              "key": "9327029b-c66f-4386-9481-7bd18f7bf944",
+              "title": "tf.matmul Transpose",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9327029b-c66f-4386-9481-7bd18f7bf944",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "The `tf.matmul()` function has two optional arguments, `tranpose_a` and `transpose_b`, that can transpose the input matrices. True or False: Setting either of these to `True` will transpose the original related matrix outside of its use in the function.",
+                "answers": [
+                  {
+                    "id": "a1575595364603",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1575595508926",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 940358,
+          "key": "2b86d927-1671-45fe-9670-d2ae29c06b7c",
+          "title": "Multi-Layer Neural Network",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2b86d927-1671-45fe-9670-d2ae29c06b7c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959903,
+              "key": "e7e1a5e7-9ced-493f-9482-22dadc4a106f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Multi-Layer Neural Network",
+              "instructor_notes": ""
+            },
+            {
+              "id": 940359,
+              "key": "96b44ac3-c2c3-4cd2-b6f0-362435ed156f",
+              "title": "UD230 L3 Multi-Layer Neural Network",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "q6TsTChc6nk",
+                "china_cdn_id": "q6TsTChc6nk.mp4"
+              }
+            },
+            {
+              "id": 959810,
+              "key": "1ebc864b-ae25-4c9d-b6d3-64fd8d48d1bc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The real power of neural networks comes from when you stack multiple layers together, forming a multi-layer neural network.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959811,
+              "key": "1562198f-fa7b-4761-a145-76d0893eb500",
+              "title": "Multilayers Weights and Biases",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1562198f-fa7b-4761-a145-76d0893eb500",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Given a multi-layer neural network with 10 input units, 5 hidden units in a middle layer, and 2 output units, which of the following would be valid shapes for the weights and biases? W1/B1 connects the inputs to the hidden layer, and W2/B2 connects the hidden layer to the output layer.",
+                "answers": [
+                  {
+                    "id": "a1575595811592",
+                    "text": "W1: (10, 2)",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1575595974143",
+                    "text": "W2: (5, 2)",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575595974738",
+                    "text": "B1: (1, 5)",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575595976815",
+                    "text": "B2: (2, 1)",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 940360,
+          "key": "ff0cb8e4-e3c4-41a7-a93a-a46a67cb4b12",
+          "title": "NumPy to TF and Back",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ff0cb8e4-e3c4-41a7-a93a-a46a67cb4b12",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959904,
+              "key": "a922e615-c4c6-41d7-85a3-0b32d6685c46",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# NumPy to TF and Back",
+              "instructor_notes": ""
+            },
+            {
+              "id": 940361,
+              "key": "5d3fcf5e-5bd6-4a9f-8cd3-d10931488e84",
+              "title": "UD230 L4 Numpy To TF And Back",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YUDloY_mFkw",
+                "china_cdn_id": "YUDloY_mFkw.mp4"
+              }
+            },
+            {
+              "id": 959812,
+              "key": "76c0e871-9679-4f34-8006-3687add45930",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "One of the great features of TensorFlow is the built-in ability to easy convert to and from Numpy arrays with its tensors. If you have a Numpy `ndarray`, you can easily convert it to a TensorFlow tensor using the `tf.convert_to_tensor()` function. In reverse, if you have a `tf.Tensor`, you can use the `.numpy()` command on the tensor itself to convert it to an `ndarray`. Make sure to actually assign the output of these to a new variable! \n\nNote that the tensor and Numpy array will have independent values, so changing one will not change the array.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 940362,
+          "key": "dc0b8e9d-bf57-443a-b40b-4943ca045d2d",
+          "title": "MNIST",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dc0b8e9d-bf57-443a-b40b-4943ca045d2d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959905,
+              "key": "c13c2018-3053-4d6f-9a84-8d983773b1ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# MNIST",
+              "instructor_notes": ""
+            },
+            {
+              "id": 940363,
+              "key": "d6f8d2da-f8ef-4b22-9b0c-8a5c3decad1e",
+              "title": "UD230 L5 MNIST Dataset",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bn5J2rIogFk",
+                "china_cdn_id": "bn5J2rIogFk.mp4"
+              }
+            },
+            {
+              "id": 959899,
+              "key": "c1aab2b7-ff38-487f-be3f-ea7f6d99fec9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There are [plenty of different datasets](https://www.tensorflow.org/datasets/catalog/overview) available from the `tensorflow_datasets` library, which we shortened in the code to `tfds`. Loading one of the datasets is simple with the `tfds.load()` function, which takes in the dataset name (in this case `'mnist'`), as well as some other optional arguments such as: 1) the dataset split to get (training, test, validation), 2) whether to shuffle the data, 3) if the data is to be used as part of a supervised learning algorithm (including labels), 4) whether to include metadata about the dataset itself, and [more](https://www.tensorflow.org/datasets/api_docs/python/tfds/load).\n\nYou can use the `.take()` function with an integer as an argument to get a certain number of images at once from the dataset.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959900,
+              "key": "ffb57ce5-c912-4057-bc70-65ca8b7dd0f7",
+              "title": "Available TF Datasets",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ffb57ce5-c912-4057-bc70-65ca8b7dd0f7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the below are also available datasets from the `tensorflow_datasets` library?",
+                "answers": [
+                  {
+                    "id": "a1575913890927",
+                    "text": "`cifar10`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575913920187",
+                    "text": "`kitti`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575913920738",
+                    "text": "`newsroom`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575913921390",
+                    "text": "`titanic`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 940365,
+          "key": "eb8b446e-cf52-440d-af89-abc616ede33b",
+          "title": "Creating Pipelines",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "eb8b446e-cf52-440d-af89-abc616ede33b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959906,
+              "key": "24ee047f-e0c5-4c15-9824-084918be8b44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Creating Pipelines",
+              "instructor_notes": ""
+            },
+            {
+              "id": 940366,
+              "key": "d414828c-9f4a-47dc-b5d8-38ea9654cb2c",
+              "title": "UD230 L6 Creating Pipelines",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dAela3ioqyY",
+                "china_cdn_id": "dAela3ioqyY.mp4"
+              }
+            },
+            {
+              "id": 940367,
+              "key": "e2081f6c-4134-4b44-87cb-d0d0ff4a530f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We should note that all the transformations used in our pipeline are completely optional. The number and type of transformations you choose to build your pipeline will change depending on your application. Also, as you saw, some of the transformations, such as `cache()` and `prefetch()` are used just for the sole purpose of efficiency and are also completely optional.\n\nIn our case, we used `.cache()` first, then `.shuffle()` (which we could also use when we load the dataset from `tfds`) along with the desired amount of the data to shuffle, `.batch()` with the desired `batch_size`, then `map()` our preprocessing function to that data, and `prefetch` the first of these batches.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 947359,
+          "key": "9b624424-84e9-437c-95bb-214976b786ce",
+          "title": "Implementing Softmax",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9b624424-84e9-437c-95bb-214976b786ce",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959907,
+              "key": "2949a7df-d75b-4672-baa0-2c2d01d054c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Implementing Softmax",
+              "instructor_notes": ""
+            },
+            {
+              "id": 947360,
+              "key": "3fce9898-f5e0-4d1a-8c10-5a55d13cdcd1",
+              "title": "UD230 L7 Implementing Softmax",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BzR8ZwWuOps",
+                "china_cdn_id": "BzR8ZwWuOps.mp4"
+              }
+            },
+            {
+              "id": 959909,
+              "key": "38cc579d-55ac-42eb-984d-9b9cb969b7de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Softmax is a very common activation function used at the end of neural networks performing image classification - whether it's a simple yes/no of whether a certain class appears, up to 1,000 or more classes.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959908,
+              "key": "902c2688-40c9-4881-a22f-db57793a5454",
+              "title": "Built-in TF Softmax",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "902c2688-40c9-4881-a22f-db57793a5454",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In this exercise, you implemented a Softmax function yourself. TensorFlow also includes one of its own built-in Softmax activation functions you can use. Using the [TensorFlow API documentation](https://www.tensorflow.org/api_docs/python/), which of the following can be used to call it?",
+                "answers": [
+                  {
+                    "id": "a1575914920040",
+                    "text": "`tf.layers.softmax`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1575914931740",
+                    "text": "`tf.nn.softmax`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575914932328",
+                    "text": "`tf.math.softmax`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 947363,
+          "key": "7c16a5cd-85da-4d9a-8d48-f81cfe48d38e",
+          "title": "Neural Networks with TensorFlow",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7c16a5cd-85da-4d9a-8d48-f81cfe48d38e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959910,
+              "key": "843de94a-2182-45b4-aed5-e4c3e854a5dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Neural Networks with TensorFlow",
+              "instructor_notes": ""
+            },
+            {
+              "id": 947364,
+              "key": "f4a7f384-87aa-4326-930b-47ca1f780aa8",
+              "title": "UD230 L8 Neural Networks With TensorFlow",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wVHVUSL88no",
+                "china_cdn_id": "wVHVUSL88no.mp4"
+              }
+            },
+            {
+              "id": 959911,
+              "key": "3e1e1fc0-ebb2-408c-a4c7-d7df72ae450b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Keras helps further simplify working with neural networks running on TensorFlow under the hood. You can more easily stack layers with `tf.keras.Sequential`, making sure to feed an `input_shape` to the first layer of the network. You can also either add separate `Activation` layers, or feed an activation as an argument within certain layers, such as the `Dense` fully-connected layers.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 947366,
+          "key": "edd05c00-5f3f-4f16-b60a-921f8dfb8dfa",
+          "title": "Looking at Weights and Biases",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "edd05c00-5f3f-4f16-b60a-921f8dfb8dfa",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959913,
+              "key": "40e6f131-0b0a-4995-89ec-f315242d28a8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Looking at Weights and Biases",
+              "instructor_notes": ""
+            },
+            {
+              "id": 947367,
+              "key": "4d5df5df-bcaf-4381-9f11-f4d3942e6871",
+              "title": "UD230 L9 Looking At Weights And Biases",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-QzicorrCPI",
+                "china_cdn_id": "-QzicorrCPI.mp4"
+              }
+            },
+            {
+              "id": 959917,
+              "key": "04682f9d-65b7-4ee3-a7d0-3ced0f6f5be0",
+              "title": "TF Keras Initializers",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "04682f9d-65b7-4ee3-a7d0-3ced0f6f5be0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Using the [TF Keras Initializers list](https://www.tensorflow.org/api_docs/python/tf/keras/initializers), match the below descriptions to their related initializer classes."
+                },
+                "concepts_label": "Description",
+                "answers_label": "Initializer",
+                "concepts": [
+                  {
+                    "text": "Values more than two standard deviations from the mean are discarded and redrawn.",
+                    "correct_answer": {
+                      "id": "a1575915705993",
+                      "text": "`TruncatedNormal`"
+                    }
+                  },
+                  {
+                    "text": "Creates a uniform distribution between two limits calculated partly based on the number of input and output units.",
+                    "correct_answer": {
+                      "id": "a1575915758519",
+                      "text": "`GlorotUniform`"
+                    }
+                  },
+                  {
+                    "text": "Uses a scaling factor along with the ability to create either a normal or uniform distribution.",
+                    "correct_answer": {
+                      "id": "a1575915759687",
+                      "text": "`VarianceScaling`"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1575915759687",
+                    "text": "`VarianceScaling`"
+                  },
+                  {
+                    "id": "a1575915705993",
+                    "text": "`TruncatedNormal`"
+                  },
+                  {
+                    "id": "a1575915758519",
+                    "text": "`GlorotUniform`"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 947368,
+          "key": "f4415c0a-8823-4263-95b2-839a52aa377a",
+          "title": "Making Predictions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f4415c0a-8823-4263-95b2-839a52aa377a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 947369,
+              "key": "af8fd9a2-0648-4134-be91-c22393c713dc",
+              "title": "UD230 L10 Making Predictions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NZQEw8cHToQ",
+                "china_cdn_id": "NZQEw8cHToQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 947880,
+          "key": "a58ce290-4633-420b-8121-2723c1ba215f",
+          "title": "Subclassing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a58ce290-4633-420b-8121-2723c1ba215f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959923,
+              "key": "13a53d07-adc7-4ba3-8813-46f1951c0436",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Subclassing",
+              "instructor_notes": ""
+            },
+            {
+              "id": 947881,
+              "key": "cf3014b6-78ae-4228-8216-5ff4f8b5b9fc",
+              "title": "UD230 L11 Subclassing",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b7mdjl-ukfI",
+                "china_cdn_id": "b7mdjl-ukfI.mp4"
+              }
+            },
+            {
+              "id": 959924,
+              "key": "93c1f220-6f7b-450d-b911-58419a2118fc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Subclassing is a powerful way to add further customization not available through the default `Sequential` model in `tf.keras` to add additional operations. As you advance further and further with your neural network skills, it's an important topic to remember that still allows for most of the simplicity of Keras while allowing for a little more specific fine-tuning of your network.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959931,
+              "key": "01667c33-db0b-4894-8250-cbc760f17652",
+              "title": "Thinking about Subclassing",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "01667c33-db0b-4894-8250-cbc760f17652",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What are some of the use cases where you think subclassing would be useful?"
+              },
+              "answer": {
+                "text": "There is a lot of potential here - the main one I thought of was for adding a new type of operation that isn't directly supported in TensorFlow or Keras just yet.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 947882,
+          "key": "4c2c2b8b-0301-4fd3-bc24-01cac4d97923",
+          "title": "Adding Layers with .add",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4c2c2b8b-0301-4fd3-bc24-01cac4d97923",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 947883,
+              "key": "ffc21506-78a1-4600-b141-53b04c5f608b",
+              "title": "UD230 L12 Adding Layers With .Add",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dqTaQhdJiuw",
+                "china_cdn_id": "dqTaQhdJiuw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 947884,
+          "key": "3e068d64-961f-420d-8397-93b1d342c3e2",
+          "title": "Clearing the Graph",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3e068d64-961f-420d-8397-93b1d342c3e2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959934,
+              "key": "bba4f41a-1f00-4b6b-ae30-b6bb984cc9e6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Clearing the Graph",
+              "instructor_notes": ""
+            },
+            {
+              "id": 947885,
+              "key": "afaeff39-c45b-412b-a5fa-f43494a26a2b",
+              "title": "UD230 L13 Clearing The Graph",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "T2-ftK349gU",
+                "china_cdn_id": "T2-ftK349gU.mp4"
+              }
+            },
+            {
+              "id": 966223,
+              "key": "719b19d1-7b3d-46eb-8af1-7c4aeac929db",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You may be unfamiliar with what these \"graphs\" are we keep mentioning if you haven't read about or taken a class on graph theory. If you need a brief primer, check out this [great post](https://medium.com/tebs-lab/deep-neural-networks-as-computational-graphs-867fcaa56c9) on the topic.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959935,
+              "key": "a9ed2813-9e07-4f12-9671-17d4683e4130",
+              "title": "Clearing the Graph",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a9ed2813-9e07-4f12-9671-17d4683e4130",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Try running the cell a few times without clearing the graph as well. Do you notice anything happening with the model summary?",
+                "answers": [
+                  {
+                    "id": "a1575917406475",
+                    "text": "The model keeps getting larger and larger",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1575917455618",
+                    "text": "The layer names continue getting higher in number",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575917456203",
+                    "text": "The workspace crashes",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1575917457172",
+                    "text": "Nothing happens",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 947886,
+          "key": "040c6238-5e2a-42e1-9d78-1cfd77074586",
+          "title": "Getting the Model Ready for Training",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "040c6238-5e2a-42e1-9d78-1cfd77074586",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959941,
+              "key": "36fc7e73-24d9-4e52-b197-f8af10299bcd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Getting the Model Ready for Training",
+              "instructor_notes": ""
+            },
+            {
+              "id": 947887,
+              "key": "46da16c8-28bd-4f4e-9edf-ac814cfe9eaf",
+              "title": "UD230 L14 Getting The Model Ready For Training",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aUw7yaVRATo",
+                "china_cdn_id": "aUw7yaVRATo.mp4"
+              }
+            },
+            {
+              "id": 959943,
+              "key": "757065d9-0a83-477b-a637-5ca01d1e0c51",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "`tf.keras` uses the `model.compile()` method first to compile the neural network, taking in at least an `optimizer` and `loss` function, as well as often a set of `metrics` such as accuracy.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959942,
+              "key": "81361706-71ff-45b1-a5bf-9e53c2b23a3e",
+              "title": "Different Loss Functions",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "81361706-71ff-45b1-a5bf-9e53c2b23a3e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "We used `sparse_categorical_crossentropy` as our loss function in this exercise. If you had a dataset of home prices and were trying to predict a new home price, which [loss function](https://www.tensorflow.org/api_docs/python/tf/keras/losses) might work best for this situation?",
+                "answers": [
+                  {
+                    "id": "a1575926057793",
+                    "text": "`sparse_categorical_crossentropy`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1575926068048",
+                    "text": "`cosine_similarity`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1575926068858",
+                    "text": "`mean_squared_error`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575926069474",
+                    "text": "`binary_crossentropy`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 947888,
+          "key": "4675584b-5edb-452c-8bd2-6b9ed8cc71dd",
+          "title": "Training the Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4675584b-5edb-452c-8bd2-6b9ed8cc71dd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 947889,
+              "key": "01867491-8d5c-4f82-b24c-47b9f273d8ba",
+              "title": "UD230 L15 Training The Model",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WEimChPQoiM",
+                "china_cdn_id": "WEimChPQoiM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 947890,
+          "key": "31332e7e-6342-455d-860f-5758d0e2466f",
+          "title": "Automatic Differentiation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "31332e7e-6342-455d-860f-5758d0e2466f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959944,
+              "key": "6b1bbef3-045a-40cd-bf0a-32ccc8d6f4cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Automatic Differentiation",
+              "instructor_notes": ""
+            },
+            {
+              "id": 947891,
+              "key": "f9a164b8-6c8d-4c6b-bde9-902996914932",
+              "title": "UD230 L16 Automatic Differentiation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "th27HrFHvR4",
+                "china_cdn_id": "th27HrFHvR4.mp4"
+              }
+            },
+            {
+              "id": 959945,
+              "key": "c07588af-a975-4918-9801-824a66dca59e",
+              "title": "tf.GradientTape",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c07588af-a975-4918-9801-824a66dca59e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "True or False: You must calculate the `tf.GradientTape` yourself each time you build a neural network in TensorFlow.",
+                "answers": [
+                  {
+                    "id": "a1575927069446",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1575927082503",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 950315,
+          "key": "4c943dca-fd6e-4820-aec3-c1c0e99c5781",
+          "title": "Fashion-MNIST",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4c943dca-fd6e-4820-aec3-c1c0e99c5781",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 950316,
+              "key": "62ea5f0c-dfac-474f-954b-2d0a01904174",
+              "title": "UD230 L17 Fashion-MNIST",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gx9rZl-LHl8",
+                "china_cdn_id": "gx9rZl-LHl8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 956093,
+          "key": "c800a8b6-ba68-4555-9dea-cc873dbe0909",
+          "title": "Inference & Validation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c800a8b6-ba68-4555-9dea-cc873dbe0909",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 956121,
+              "key": "1e28acb6-21f5-4e49-9dac-f4ab3bc4b1f0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating A Validation Set",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956122,
+              "key": "b95d0a18-f712-47ff-8e0a-ecb9f033c913",
+              "title": "CreatingOurValidationAndTestSets",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fQa0nhn7q4c",
+                "china_cdn_id": "fQa0nhn7q4c.mp4"
+              }
+            },
+            {
+              "id": 956123,
+              "key": "0f2ffc10-40f2-4157-94d3-b944afbe6bc1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the above video, we used `tfds.Split.ALL.subsplit` to make a 60/20/20 split for training, validation and test sets, although some TensorFlow datasets have these subsections already built in. Depending on the dataset, you may also want to make sure to shuffle the data at this point as well. Why is the training set shuffled but the validation and test sets are not? Shuffling the training set can help avoid getting stuck in the same local minima if we used the same order of batches early on in an epoch each time. We don't need to shuffle the validation or test sets since no weight update occurs when running them, so regardless of order the result (in this case just calculating accuracy and loss) will be the same.\n\nNow that we have a validation set ready for use with inference, let's check out what the results of the trained model on the training set vs. validation set can tell us about the model itself.\n\n## Assessing Overfitting from a Validation Curve",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956124,
+              "key": "2f47bdf6-3650-4bca-acc8-2f855a905992",
+              "title": "AssessingOverfittingintheValidationCurve",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "au9NNWOvSgA",
+                "china_cdn_id": "au9NNWOvSgA.mp4"
+              }
+            },
+            {
+              "id": 959947,
+              "key": "1f4e5e3b-4f8a-45b2-bfcf-52b877d30076",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can feed in the validation batch data to `validation_data` in `model.fit` so that after each training epoch, the model will check its performance (but not train) against the validation set.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959948,
+              "key": "6a027b25-4632-48dd-b694-75b90d1c0e07",
+              "title": "Overfitting",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6a027b25-4632-48dd-b694-75b90d1c0e07",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the below might be good techniques to avoid overfitting to the training data?",
+                "answers": [
+                  {
+                    "id": "a1575927747487",
+                    "text": "Stop training when the training and validation curves start to diverge by a certain amount",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575927758241",
+                    "text": "Save down the best validation accuracy model from during training",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575927759216",
+                    "text": "Add layers like Dropout to help generalize the network",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575927802360",
+                    "text": "None of the above",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 956119,
+          "key": "65ba19e0-cff1-4c2b-9d78-2da539dc10c3",
+          "title": "Early Stopping",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "65ba19e0-cff1-4c2b-9d78-2da539dc10c3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959949,
+              "key": "2ae16e8c-242f-418a-a25d-28126b3e359d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Early Stopping",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956125,
+              "key": "9fa83c44-c7d6-4a95-bb56-d8f365b69a9c",
+              "title": "EarlyStopping",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "G41UxfokOBg",
+                "china_cdn_id": "G41UxfokOBg.mp4"
+              }
+            },
+            {
+              "id": 959950,
+              "key": "9b248c9a-94c8-4d4e-9f8e-8e0502157a76",
+              "title": "Callbacks",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9b248c9a-94c8-4d4e-9f8e-8e0502157a76",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Take a quick look at the [overview page](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks) on `tf.keras` callbacks. Besides Early Stopping, are there any other callbacks you think might be useful?"
+              },
+              "answer": {
+                "text": "There's plenty of potential answers here - they are many applications of each of these callbacks. I noticed that [Model Checkpoint](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint) is one that is useful for saving down models, either after every epoch or only the best model per a certain metric. We'll move onto working with Dropout in TensorFlow next, but keep these other callbacks in mind for your own training.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 956120,
+          "key": "0a5b9cd5-2cb6-4050-99e8-d96ecadbec3d",
+          "title": "Dropout",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0a5b9cd5-2cb6-4050-99e8-d96ecadbec3d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 956126,
+              "key": "7e4d56f7-98fc-401f-af8f-e26ad775db2d",
+              "title": "Dropout",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bm9V8cqPEC4",
+                "china_cdn_id": "bm9V8cqPEC4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 956094,
+          "key": "4ef1b050-13fe-4e83-9552-503d9c16731d",
+          "title": "Dropout Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4ef1b050-13fe-4e83-9552-503d9c16731d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959954,
+              "key": "4fa9afd6-412e-40f7-ac47-cdfab8e00a1f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Dropout Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956127,
+              "key": "7257521c-68b6-40b8-bf03-1314509d47b3",
+              "title": "InferenceAndValidSolution 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "T39OW1M_ycI",
+                "china_cdn_id": "T39OW1M_ycI.mp4"
+              }
+            },
+            {
+              "id": 959955,
+              "key": "7a916778-12fb-42a6-bd70-2a53b53b366d",
+              "title": "Dropout in Testing",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7a916778-12fb-42a6-bd70-2a53b53b366d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "True or False: You need to manually remove Dropout layers in your `tf.keras` model when you test it out on new data.",
+                "answers": [
+                  {
+                    "id": "a1575928496508",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1575928529391",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 956095,
+          "key": "6ab1c646-2863-463c-9161-a8ddc9a35e50",
+          "title": "Saving & Loading",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6ab1c646-2863-463c-9161-a8ddc9a35e50",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 956129,
+              "key": "e87b63a6-2457-4712-85b7-95080f65851e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Saving & Loading\n\nBeing able to re-use trained models is of course a key part of deep learning. Let's look at a few methods of saving and loading models, including HDF5 with Keras, TensorFlow Saved Models, and by using the `ModelCheckpoint` callback.\n\n## Saving & Loading - HDF5 files",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956128,
+              "key": "d021d81f-4be1-4a8c-a3c5-dd76b5af4221",
+              "title": "SavingandLoadingtoHDF5",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "d5p6QIKtAo8",
+                "china_cdn_id": "d5p6QIKtAo8.mp4"
+              }
+            },
+            {
+              "id": 956130,
+              "key": "344f9c8e-6e07-4203-9250-ba98fc3e030d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Saving & Loading - TensorFlow Saved Models\n\nHDF5 is a common way to save down model files trained with `tf.keras`, but there is also another way to save down models as TensorFlow Saved Models, which will instead create a `.pb` protobuf file that can be used in regular TensorFlow (sans Keras). Let's look into this in more depth.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956132,
+              "key": "f2243708-210c-4f95-87cc-1b65a5732423",
+              "title": "SavingandLoadingwithTF",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CvRgC1GZfwc",
+                "china_cdn_id": "CvRgC1GZfwc.mp4"
+              }
+            },
+            {
+              "id": 956131,
+              "key": "586fa725-1daa-4b56-938f-d0ad7e13c53d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Saving During Training\n\nYou may have noticed the `ModelCheckpoint` callback in an earlier quiz after we discussed `EarlyStopping`. Let's now look into its usage to further expand your abilities in saving models.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 956133,
+              "key": "df5621d1-b5fb-48cb-8794-5f8dd3c2017f",
+              "title": "SavingDuringTraining",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rIVjWBAAelk",
+                "china_cdn_id": "rIVjWBAAelk.mp4"
+              }
+            },
+            {
+              "id": 959960,
+              "key": "ed5fef3b-c21b-4316-b06c-3e0a05bdaa14",
+              "title": "Loading in Keras",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ed5fef3b-c21b-4316-b06c-3e0a05bdaa14",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "True or False: **All three** methods of saving models are able to be loaded back into `tf.keras` as a Keras model through different functionality.",
+                "answers": [
+                  {
+                    "id": "a1575930013153",
+                    "text": "True",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1575930057044",
+                    "text": "False",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 956096,
+          "key": "12048212-bc87-45bc-bfa5-d3328822a917",
+          "title": "Loading Images with TensorFlow",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "12048212-bc87-45bc-bfa5-d3328822a917",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 956107,
+              "key": "476c839f-6348-4737-81c5-0495a15b5f9e",
+              "title": "Loading Images With TensorFlow",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GwFRjVUH-3Y",
+                "china_cdn_id": "GwFRjVUH-3Y.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 956097,
+          "key": "3a86bb91-da63-40e8-8921-e368c5bb1c5f",
+          "title": "Data Augmentation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3a86bb91-da63-40e8-8921-e368c5bb1c5f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 956134,
+              "key": "67f4f143-1714-4f91-a930-8f42afc9f883",
+              "title": "Data Augmentation 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QmBJl5nlWWM",
+                "china_cdn_id": "QmBJl5nlWWM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 956098,
+          "key": "9ff5747f-f6de-444a-82b2-3d8460957605",
+          "title": "Data Augmentation Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9ff5747f-f6de-444a-82b2-3d8460957605",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 956135,
+              "key": "8517f26a-bb7e-4f28-9267-fa04c2072620",
+              "title": "Data Augmentation Solution V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4JYWnUVXu2w",
+                "china_cdn_id": "4JYWnUVXu2w.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 952988,
+          "key": "fa2a1abb-b5d8-47c8-b374-f2cdc9906717",
+          "title": "Pre-Notebooks with GPU",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fa2a1abb-b5d8-47c8-b374-f2cdc9906717",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 952989,
+              "key": "bfc44ed5-e53b-46bd-b331-0c351a2fc939",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## GPU Workspaces\n\nNotebook 8 shows you how TensorFlow accelerates network computations using a GPU. So, the next workspace is **GPU-enabled**, which means you can train your models on a GPU instance. Since you are limited on the GPU hours you have, the recommendation is this:\n\n* Work in CPU mode while developing your models and such.\n* Make sure the network is learning (the training loss is dropping) using just the CPU.\n* When you're ready to train for real and optimize the hyperparameters, **make sure to save your notebook**, then **enable** the GPU (or the your work may be erased!). You will need to re-run previous cells as the notebook runtime will be reset when switching from CPU to GPU and vice versa.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 952990,
+          "key": "21703bb5-6625-4b77-97bc-bf6adc4fe3cf",
+          "title": "GPU-enabled Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "21703bb5-6625-4b77-97bc-bf6adc4fe3cf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 952991,
+              "key": "d2da5904-df18-4688-88b3-2893881a221c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r906364c952990xJUPYTER96fy2nn5",
+              "pool_id": "jupytergpu",
+              "view_id": "jupyter-4nos4",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "jupyter-envs",
+                      "paths": [
+                        {
+                          "src": "/conda-with-tensorflow2-gpu/conda",
+                          "dest": "/opt/conda"
+                        }
+                      ]
+                    },
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 966243,
+          "key": "558eb9ce-b4c3-4a3d-aafb-2ca37eb79222",
+          "title": "A Note on Transfer Learning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "558eb9ce-b4c3-4a3d-aafb-2ca37eb79222",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 966244,
+              "key": "ff3d2a38-2fc0-4f34-ae4f-a673a8fc2fed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# A Note on Transfer Learning\n\nNext, we'll cover a concept called transfer learning, which helps you leverage pre-trained neural networks toward your own application, often including additional training and/or fine tuning. We'll hand you over to our colleague, David Silver, for a brief overview of the topic on the next page, before we come back to tackle Transfer Learning using TensorFlow.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 267041,
+          "key": "10489223-72fa-4393-848b-f882ba3cf7f9",
+          "title": "Transfer Learning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "10489223-72fa-4393-848b-f882ba3cf7f9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 267042,
+              "key": "30cc48a3-41ba-42db-af84-5bd74fdf3c53",
+              "title": "Transfer Learning",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pkCUxzJNtfI",
+                "china_cdn_id": "pkCUxzJNtfI.mp4"
+              }
+            },
+            {
+              "id": 267045,
+              "key": "11f2f3df-91c0-4318-a080-f6341d4cc522",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### The Four Main Cases When Using Transfer Learning\n\nTransfer learning involves taking a pre-trained neural network and adapting the neural network to a new, different data set. \n\nDepending on both:\n* the size of the new data set, and\n* the similarity of the new data set to the original data set\n\nthe approach for using transfer learning will be different. There are four main cases:\n1. new data set is small, new data is similar to original training data\n2. new data set is small, new data is different from original training data\n3. new data set is large, new data is similar to original training data\n4. new data set is large, new data is different from original training data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267048,
+              "key": "e55ffe4e-6d35-497a-b16d-138eda148382",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a608ea_02-guide-how-transfer-learning-v3-01/02-guide-how-transfer-learning-v3-01.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e55ffe4e-6d35-497a-b16d-138eda148382",
+              "caption": "Four Cases When Using Transfer Learning",
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 267140,
+              "key": "ed90d7b7-00db-4eb2-aaa4-c03e94210815",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A large data set might have one million images. A small data could have two-thousand images. The dividing line between a large data set and small data set is somewhat subjective. Overfitting is a concern when using transfer learning with a small data set. \n\nImages of dogs and images of wolves would be considered similar; the images would share common characteristics. A data set of flower images would be different from a data set of dog images. \n\nEach of the four transfer learning cases has its own approach. In the following sections, we will look at each case one by one.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267049,
+              "key": "c2186220-3496-46af-bea1-3e9c112d2cae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Demonstration Network\n\nTo explain how each situation works, we will start with a generic pre-trained convolutional neural network and explain how to adjust the network for each case. Our example network contains three convolutional layers and three fully connected layers:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267134,
+              "key": "86f6a042-a114-40d3-9141-ec5158968a5b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a73a2e_02-guide-how-transfer-learning-v3-02/02-guide-how-transfer-learning-v3-02.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/86f6a042-a114-40d3-9141-ec5158968a5b",
+              "caption": "General Overview of a Neural Network",
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 267054,
+              "key": "380cdbc6-5961-4fdb-a7f0-740921fae034",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here is an generalized overview of what the convolutional neural network does: \n* the first layer will detect edges in the image\n* the second layer will detect shapes\n* the third convolutional layer detects higher level features\n\nEach transfer learning case will use the pre-trained convolutional neural network in a different way.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267055,
+              "key": "2710af2e-3d0f-4828-8fa1-14c73a79f4c5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Case 1: Small Data Set, Similar Data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267053,
+              "key": "ffdcf1f2-fddb-4611-844e-aad97cfb8308",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a60b70_02-guide-how-transfer-learning-v3-03/02-guide-how-transfer-learning-v3-03.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ffdcf1f2-fddb-4611-844e-aad97cfb8308",
+              "caption": "Case 1: Small Data Set with Similar Data",
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 267052,
+              "key": "3a88b87c-da84-4eaa-81ad-d257e04792b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If the new data set is small and similar to the original training data:\n- slice off the end of the neural network\n- add a new fully connected layer that matches the number of classes in the new data set\n- randomize the weights of the new fully connected layer; freeze all the weights from the pre-trained network\n- train the network to update the weights of the new fully connected layer\n\nTo avoid overfitting on the small data set, the weights of the original network will be held constant rather than re-training the weights. \n\nSince the data sets are similar, images from each data set will have similar higher level features. Therefore most or all of the pre-trained neural network layers already contain relevant information about the new data set and should be kept.\n\nHere's how to visualize this approach:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267137,
+              "key": "dfc52cfb-7dd9-423b-aa01-eac92fcdd76c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a73c8d_02-guide-how-transfer-learning-v3-04/02-guide-how-transfer-learning-v3-04.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dfc52cfb-7dd9-423b-aa01-eac92fcdd76c",
+              "caption": "Neural Network with Small Data Set, Similar Data",
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 267056,
+              "key": "63154992-23e5-46e2-ae0e-acf80cf74d10",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Case 2: Small Data Set, Different Data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267057,
+              "key": "57260f21-a20a-4cae-99df-678488d1b52d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a60eaf_02-guide-how-transfer-learning-v3-05/02-guide-how-transfer-learning-v3-05.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/57260f21-a20a-4cae-99df-678488d1b52d",
+              "caption": "Case 2: Small Data Set, Different Data",
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 267070,
+              "key": "0fecc0b7-17e8-487a-9d1a-bd2a743c0d8b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If the new data set is small and different from the original training data:\n* slice off most of the pre-trained layers near the beginning of the network\n* add to the remaining pre-trained layers a new fully connected layer that matches the number of classes in the new data set\n* randomize the weights of the new fully connected layer; freeze all the weights from the pre-trained network\n* train the network to update the weights of the new fully connected layer\n\nBecause the data set is small, overfitting is still a concern. To combat overfitting, the weights of the original neural network will be held constant, like in the first case.\n\nBut the original training set and the new data set do not share higher level features. In this case, the new network will only use the layers containing lower level features.\n\nHere is how to visualize this approach:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267135,
+              "key": "db312e3f-e980-4818-8905-449c22a1d4e7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a73bd8_02-guide-how-transfer-learning-v3-06/02-guide-how-transfer-learning-v3-06.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/db312e3f-e980-4818-8905-449c22a1d4e7",
+              "caption": "Neural Network with Small Data Set, Different Data",
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 267071,
+              "key": "7e308082-b593-46af-87e2-5b9714133d46",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Case 3: Large Data Set, Similar Data\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267072,
+              "key": "ff4a5348-6f15-4996-95a0-75d597444a73",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a6176d_02-guide-how-transfer-learning-v3-07/02-guide-how-transfer-learning-v3-07.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ff4a5348-6f15-4996-95a0-75d597444a73",
+              "caption": "Case 3: Large Data Set, Similar Data",
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 267073,
+              "key": "386c2d5d-f001-48bf-b171-8e61693cf0f1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If the new data set is large and similar to the original training data:\n- remove the last fully connected layer and replace with a layer matching the number of classes in the new data set\n- randomly initialize the weights in the new fully connected layer\n- initialize the rest of the weights using the pre-trained weights \n-  re-train the entire neural network\n\nOverfitting is not as much of a concern when training on a large data set; therefore, you can re-train all of the weights.\n\nBecause the original training set and the new data set share higher level features, the entire neural network is used as well.\n\nHere is how to visualize this approach:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267138,
+              "key": "cec1f2eb-f01e-4497-a526-2c5ac1d20216",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a73ccd_02-guide-how-transfer-learning-v3-08/02-guide-how-transfer-learning-v3-08.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cec1f2eb-f01e-4497-a526-2c5ac1d20216",
+              "caption": "Neural Network with Large Data Set, Similar Data",
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 267075,
+              "key": "1a13d1b3-ae08-4dfb-b8f2-5db2a7824253",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Case 4: Large Data Set, Different Data\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267076,
+              "key": "58c72e1f-89f4-4030-a8fa-54b86961b8bd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a61e66_02-guide-how-transfer-learning-v3-09/02-guide-how-transfer-learning-v3-09.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/58c72e1f-89f4-4030-a8fa-54b86961b8bd",
+              "caption": "Case 4: Large Data Set, Different Data",
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 267078,
+              "key": "e80aa3a9-09a0-4c3b-b4ac-c86f8d181e1c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If the new data set is large and different from the original training data:\n- remove the last fully connected layer and replace with a layer matching the number of classes in the new data set\n- retrain the network from scratch with randomly initialized weights\n- alternatively, you could just use the same strategy as the \"large and similar\" data case\n\nEven though the data set is different from the training data, initializing the weights from the pre-trained network might make training faster. So this case is exactly the same as the case with a large, similar data set.\n\nIf using the pre-trained network as a starting point does not produce a successful model, another option is to randomly initialize the convolutional neural network weights and train the network from scratch.\n\nHere is how to visualize this approach:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267139,
+              "key": "5b565855-909a-4453-b6b4-3e8c423b388e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a73d0d_02-guide-how-transfer-learning-v3-10/02-guide-how-transfer-learning-v3-10.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5b565855-909a-4453-b6b4-3e8c423b388e",
+              "caption": "Neural Network with Large Data Set, Different Data",
+              "alt": null,
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 956099,
+          "key": "d223dd08-5970-425e-b6d8-bac73f7e6a1c",
+          "title": "Transfer Learning II",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d223dd08-5970-425e-b6d8-bac73f7e6a1c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 956138,
+              "key": "61916e87-01d5-40ac-abb4-ec2362485c19",
+              "title": "Transfer Learning 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iIF9ZNw0ejs",
+                "china_cdn_id": "iIF9ZNw0ejs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 956100,
+          "key": "5835f9eb-12bb-497e-89ee-3fceb0ab53f3",
+          "title": "Transfer Learning Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5835f9eb-12bb-497e-89ee-3fceb0ab53f3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 956111,
+              "key": "afa3202a-3c19-48d4-8372-96dac07230f7",
+              "title": "Transfer Learning Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yC31_wGflWw",
+                "china_cdn_id": "yC31_wGflWw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 959995,
+          "key": "cfd49e99-21b5-428c-960d-8bcb1b9e64fd",
+          "title": "Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cfd49e99-21b5-428c-960d-8bcb1b9e64fd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 959996,
+              "key": "d0a4b44b-dda8-4337-a872-6493c18b21a0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Recap",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959997,
+              "key": "256bc619-b548-4eb5-8f39-76e49a3f9f6f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2016/October/580acb04_tensorflow/tensorflow.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/256bc619-b548-4eb5-8f39-76e49a3f9f6f",
+              "caption": "",
+              "alt": "The TensorFlow logo",
+              "width": 640,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 959998,
+              "key": "e8cfb6c4-b1e9-4ce1-bb7b-c450256995fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You've come a long way in this lesson in learning how to use TensorFlow for building and training neural networks! You went from single layer to multi-layer neural networks, created an input pipeline, and built out the full infrastructure to compile and train a model. You learned more on adding validation data to your training and avoiding overfitting, as well as utilizing Keras callbacks like Early Stopping and Model Checkpoint to help get the best model out of training. Lastly, you looked at saving and loading models in Keras and TensorFlow, adding data augmentation, as well as about GPU acceleration and utilizing transfer learning for faster training.\n\nNext up, you'll put your new TensorFlow skills to the test to build an Image Classifier in the upcoming project!",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

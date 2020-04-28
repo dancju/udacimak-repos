@@ -1,0 +1,974 @@
+{
+  "data": {
+    "lesson": {
+      "id": 293440,
+      "key": "5e203cba-a6a7-4f9f-8a72-65ea05b1f74b",
+      "title": "Working On Another Developer's Repository",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you'll learn how to fork another developer's project. Collaborating with other developers can be a tricky process, so you'll learn how to contribute to a public project.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/5e203cba-a6a7-4f9f-8a72-65ea05b1f74b/293440/1517447081394/Working%20On%20Another%20Developer%27s%20Repository%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/5e203cba-a6a7-4f9f-8a72-65ea05b1f74b/293440/1517447071821/Working%20On%20Another%20Developer%27s%20Repository%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 293445,
+          "key": "f39041e9-6a05-45df-a3c8-a520304eb661",
+          "title": "Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f39041e9-6a05-45df-a3c8-a520304eb661",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299700,
+              "key": "26ca2cbf-70d8-408c-bc2a-a8e570fa2d40",
+              "title": "Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VkqtlJuZ9rs",
+                "china_cdn_id": "VkqtlJuZ9rs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 293446,
+          "key": "9462fdee-18d9-4e88-9442-85fcc5e42b69",
+          "title": "Forking A Repository",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9462fdee-18d9-4e88-9442-85fcc5e42b69",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299701,
+              "key": "57321f0b-861a-49f5-b737-95b2789b5974",
+              "title": "Forking a Repository - What Is Forking",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "z4mkVwqVztc",
+                "china_cdn_id": "z4mkVwqVztc.mp4"
+              }
+            },
+            {
+              "id": 299272,
+              "key": "5a5b4d1e-a4ae-43d2-8dda-90a991f8c7b9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In version control terminology if you \"fork\" a repository that means you _duplicate_ it. Typically you fork a repository that belongs to someone else. So you make an identical copy of _their_ repository and that duplicate copy now belongs to _you_.\n\nThis concept of \"forking\" is also different from \"cloning\". When you clone a repository, you get an identical copy of the repository. But cloning happens on your _local_ machine and you clone a _remote_ repository. When you fork a repository, a new duplicate copy of the _remote_ repository is created. This new copy is _also a remote_ repository, but it now belongs to you.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299273,
+              "key": "adee76f6-7d16-43fc-9620-04f49bc7c301",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## A `fork` Subcommand?\n\nForking is not done on the command line; there is no `git fork` command. Go ahead, try running the following command:\n\n```bash\n$ git fork\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300129,
+              "key": "fd8a5dbe-3012-412e-8c7d-e9b5456e45f0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe6766_ud456-l2-02-git-fork-error/ud456-l2-02-git-fork-error.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fd8a5dbe-3012-412e-8c7d-e9b5456e45f0",
+              "caption": "_Running the (nonexistent!) `git fork` command on the terminal. Git doesn't have a `fork` subcommand, so it responds with a suggestion to use an alternative command._",
+              "alt": "Running the (nonexistent!) `git fork` command on the terminal. Git doesn't have a `fork` subcommand, so it responds with a suggestion to use an alternative command.",
+              "width": 1970,
+              "height": 936,
+              "instructor_notes": null
+            },
+            {
+              "id": 299275,
+              "key": "bf124dd4-5141-4159-b2d5-797bfc605f90",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you can see, trying to run the `git fork` command produces an error. (Also, `fsck` is not a rude word, it means \"filesystem check\" and refers to auditing the files for consistency.)\n\n## Alter a Cloned Repo",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299277,
+              "key": "4d4a375a-1e39-4cff-ab47-7ba2b2440a98",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4d4a375a-1e39-4cff-ab47-7ba2b2440a98",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "use `git clone` to clone [Lam's my-travel-plans project](https://github.com/udacity/course-collaboration-travel-plans)",
+                "make at least one change to it",
+                "commit the change(s)",
+                "use `git push` to push your change back to Lam's project"
+              ],
+              "positive_feedback": "Great job doing each of these steps! Now answer the following question.",
+              "video_feedback": null,
+              "description": "Do the following steps and answer the question below."
+            },
+            {
+              "id": 299278,
+              "key": "2b4dff1e-703c-4569-84af-6904b238e14f",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2b4dff1e-703c-4569-84af-6904b238e14f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Were you able to successfully push your changes to the remote repository?",
+                "answers": [
+                  {
+                    "id": "a1492729065474",
+                    "text": "Yes",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492729071965",
+                    "text": "No",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 299279,
+              "key": "392e635d-0ae0-4a3c-9f97-bbf8cd87b1a5",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "392e635d-0ae0-4a3c-9f97-bbf8cd87b1a5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "One of the lines that was displayed after you tried to push includes the word \"fatal\". What comes right after that word?",
+                "answers": [
+                  {
+                    "id": "a1492729106475",
+                    "text": "you don't have the correct permissions",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492729131365",
+                    "text": "unable to access",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492729133018",
+                    "text": "are you the owner",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492729138160",
+                    "text": "try using a different account",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 299280,
+              "key": "20e3e509-8937-4c3f-825a-493b6c882092",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We can see from this little experiment that if a repository doesn't belong to your account then it means you do not have permission to modify it. \n\nThis is where forking comes in! Instead of modifying the original repository directly, if you fork the repository to your own account then you will have full control over that repository.\n\n\n### Forking Lam's Project\nI'm going to clone Lam's project myself. My account does not have permission to edit her repository directly, so I'll fork the repository to my own account.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299281,
+              "key": "bfebd9e4-4223-4022-bbf8-8dc72e564fa0",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bfebd9e4-4223-4022-bbf8-8dc72e564fa0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Go to [Lam's my-travel-plans project](https://github.com/udacity/course-collaboration-travel-plans) in your browser",
+                "Click the fork button to copy over her repository to your account",
+                "Verify that you now have Lam's project listed in your Repositories"
+              ],
+              "positive_feedback": "Great job doing each of these steps!",
+              "video_feedback": null,
+              "description": "I want you to sign into your GitHub account and follow along with the rest of these steps:"
+            },
+            {
+              "id": 299282,
+              "key": "27b239d7-70a3-4d05-adac-0e938e0d8a67",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's take a look at the name of the repository:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300134,
+              "key": "f5997489-92f3-4a6f-b87b-4b57b11f4933",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe6893_ud456-l2-02-clone-linked-to-fork/ud456-l2-02-clone-linked-to-fork.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f5997489-92f3-4a6f-b87b-4b57b11f4933",
+              "caption": "_Forking a project displays the new project name next to your GitHub profile name. Also, below that it says where the original project exists._",
+              "alt": "A Screenshot showing GitHub. Forking a project displays the new project name next to your GitHub profile name. Also, below that it says where the original project exists",
+              "width": 1026,
+              "height": 366,
+              "instructor_notes": null
+            },
+            {
+              "id": 299285,
+              "key": "8a85072c-4d86-48cf-b45c-a44da22b3c76",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "See how this shows my account name (richardkalehoff) and the name of the repository? But then just beneath that it says \"forked from udacity/course-collaboration-travel-plans\". This shows that this project is in _my_ account but that it has a connection to the original project that it was copied from.\n\nThat's pretty neat, right?!? You can fork any public repository that's up on GitHub right now - which means you can get a copy of that repository in your own account that you will have total control over.\n\nWhy don't you go fork a few repositories just to get some practice! Here a few you can try it out on:\n\n* https://github.com/udacity/course-git-blog-project\n* https://github.com/udacity/frontend-nanodegree-styleguide\n* https://github.com/GoogleChrome/lighthouse\n* https://github.com/jquery/jquery\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299286,
+              "key": "e76e97ba-ff40-4ff9-aa1d-e4b0c43c33b2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Push/Pull To The Fork \n\nBecause forking a repository gives you a copy of it in your account, you can clone at down to your computer, make changes to it, and then push those changes back to the forked repository. But you need to keep in mind that it'll be pushing the changes back to _your_ remote repository not to the _original_ remote repository that you forked from.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299702,
+              "key": "75f337f6-642f-43a5-85fc-6b8a203e81a2",
+              "title": "L2 - Pushing To A Fork",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WRgNpr19t48",
+                "china_cdn_id": "WRgNpr19t48.mp4"
+              }
+            },
+            {
+              "id": 299289,
+              "key": "6b4e30d6-e07f-47e1-9d65-bdfc5ab746c7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nForking is an action that's done on a hosting service, like GitHub. Forking a repository creates an identical copy of the original repository and moves this copy to your account. You have total control over this forked repository. Modifying your forked repository does not alter the original repository in any way.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293447,
+          "key": "5764b331-ef76-44f5-b627-a917fa97d870",
+          "title": "Reviewing Existing Work",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5764b331-ef76-44f5-b627-a917fa97d870",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299290,
+              "key": "53bb1d4a-8b42-4f5a-a175-0b137b6e130b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reviewing Existing Work\n\nWhen you're the sole developer on a project, it's easy to know what progress has been done on the project because you did everything yourself. Things can become a bit more complicated, though, when you're working on a team - whether that team is local in an office or if you are developing with someone just across the internet.\n\nSometimes it can be hard to see what the other developers have been doing on the project. Especially if developers are working across multiple different branches. How can I see all of the commits that Deepesh made? Or what if Christine made a change and said that her commit resolves issue 47 in our project's ticket tracking system. How can we discover the all of this information in the repository?\n\nWe can discover details about what other developers have done by using the extremely powerful `git log` command.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299291,
+              "key": "0904c1e8-e1c3-4624-bbcb-e6b664cc2f03",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Clone Lighthouse Project\n\nWe first need to download a project that is being worked on by multiple different people. Let's download the Lighthouse project by Google that's an app for auditing, performance metrics, and best practices for Progressive web apps. \n\nHere's the [Lighthouse project on GitHub](https://github.com/GoogleChrome/lighthouse).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299294,
+              "key": "ee624f91-04f4-464a-b87d-4efb08eca80c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f943c9_ud456-l2-03-clone-lighthouse-project/ud456-l2-03-clone-lighthouse-project.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ee624f91-04f4-464a-b87d-4efb08eca80c",
+              "caption": "_Cloning Google's Lighthouse project from GitHub._",
+              "alt": "Cloning Google's Lighthouse project from GitHub.",
+              "width": 2584,
+              "height": 1238,
+              "instructor_notes": null
+            },
+            {
+              "id": 299295,
+              "key": "48dd32c3-1695-47e9-871d-a19b42a50b5c",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "48dd32c3-1695-47e9-871d-a19b42a50b5c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "clone the [Lighthouse project](https://github.com/GoogleChrome/lighthouse)",
+                "`cd` into the directory"
+              ],
+              "positive_feedback": "Perfect! Let's continue!",
+              "video_feedback": null,
+              "description": "Let's make sure we're both on the same page. Make sure to:"
+            },
+            {
+              "id": 299297,
+              "key": "130cad7f-45d7-472a-a0fc-820f3d550277",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Filtering Collaborator's Commits\n\nBeing able to narrow down the commits to just the ones you're looking for can be a chore. Let's look at the different ways we can discover information that our collaborators have done!\n\n### Group By Commit Author\nThis is not a massive project, but it does have well over 1,000 commits. A quick way that we can see how many commits each contributor has added to the repository is to use the `git shortlog` command:\n\n```bash\n$ git shortlog\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299299,
+              "key": "a87707b5-7590-4e89-9203-43e85417b07a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f944d6_ud456-l2-03-git-shortlog/ud456-l2-03-git-shortlog.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a87707b5-7590-4e89-9203-43e85417b07a",
+              "caption": "_The terminal showing the results of running the `git shortlog` command. It displays all commits sorted by author._",
+              "alt": "The terminal showing the results of running the `git shortlog` command. It displays all commits sorted by author.",
+              "width": 2626,
+              "height": 1342,
+              "instructor_notes": null
+            },
+            {
+              "id": 299301,
+              "key": "c221b51b-d725-4ea3-baa8-183f785996d0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the screenshot above we can see that:\n\n* Abby Armada has made one commit in the repository\n* Addy Osmani has made seven commits\n* Adriano Caheté has made one commit\n* André Cipriani Bandarra has made one commit\n\n`git shortlog` displays an alphabetical list of names and the commit messages that go along with them. If we just want to see just the number of commits that each developer has made, we can add a couple of flags: `-s` to show just the number of commits (rather than each commit's message) and `-n` to sort them numerically (rather than alphabetically by author name).\n\n```bash\n$ git shortlog -s -n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299302,
+              "key": "74cd45bc-ce98-4c5f-8262-e0ee38ded86b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f94565_ud456-l2-03-git-shortlog-flags/ud456-l2-03-git-shortlog-flags.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/74cd45bc-ce98-4c5f-8262-e0ee38ded86b",
+              "caption": "_`git shortlog` with the `-s -n` flags to show only the number of commits each author has made, sorted numerically._",
+              "alt": "`git shortlog` with the `-s -n` flags to show only the number of commits each author has made, sorted numerically.",
+              "width": 2626,
+              "height": 1342,
+              "instructor_notes": null
+            },
+            {
+              "id": 299311,
+              "key": "f1505ec9-74fd-4329-851a-2002c84b3203",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We can see in the image above that Surma has added five commits to the Lighthouse project. These five commits are spread out throughout the repository.  What if we want to see _just_ these five commits by Surma, though?\n\n### Filter By Author\n\nAnother way that we can display all of the commits by an author is to use the regular `git log` command but include the `--author` flag to filter the commits to the provided author.\n\n```bash\n$ git log --author=Surma\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299313,
+              "key": "16b91246-85ea-48d2-b172-3cfefe7a9841",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f94e0b_ud456-l2-03-git-log-author/ud456-l2-03-git-log-author.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/16b91246-85ea-48d2-b172-3cfefe7a9841",
+              "caption": "_The terminal application showing the result of running `git log --author=Surma`. The output displays only the commits that Surma made._",
+              "alt": "The terminal application showing the result of running `git log --author=Surma`. The output displays only the commits that Surma made.",
+              "width": 1702,
+              "height": 1342,
+              "instructor_notes": null
+            },
+            {
+              "id": 299338,
+              "key": "518b7761-9072-4432-be2d-70e7e5adffab",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "518b7761-9072-4432-be2d-70e7e5adffab",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you run `git shortlog -s -n`, again, you'll see that there is a \"Paul Irish\" and a \"Paul Lewis\". If the following command were run:\n\n```bash\n$ git log --author=Paul\n```\n\nWhat would it display?",
+                "answers": [
+                  {
+                    "id": "a1492733508980",
+                    "text": "commits by only Paul Irish",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492733586231",
+                    "text": "commits by only Paul Lewis",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492733592058",
+                    "text": "commits by both Paul Irish and Paul Lewis",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492733603770",
+                    "text": "it would ask you to choose either Paul Irish or Paul Lewis",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492733623885",
+                    "text": "nothing would display",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 299460,
+              "key": "15b2607e-cc7d-4fd6-ab79-979ebdbf89de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If we wanted to see only the commits by Paul Lewis we have to run:\n\n```bash\n$ git log --author=\"Paul Lewis\"\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299463,
+              "key": "60817766-ae94-4cc8-ae4f-026bc5ee7ca2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ### ⚠️  Quotes Are Important ⚠️\n\n> Pay attention to the use of the quotes in the previous command. If it were written _without_ the quotes like this `git log --author=Paul Lewis`, it would not work. If it's formatted this way _without_ the quotes, Git would think that `Lewis` is not part of the \"author\" flag, and it would cause an error. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299464,
+              "key": "785dbd11-5236-4883-a391-fac06669971c",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "785dbd11-5236-4883-a391-fac06669971c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are the first seven characters of the SHA for Paul Lewis' _first_ commit in the Lighthouse project?",
+                "matchers": [
+                  {
+                    "expression": "c09a442"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 299467,
+              "key": "1ba792ed-f554-442e-90bf-9ac587c7dbfc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Filter Commits By Search\n\nBefore going through this section on filtering by searching, I feel like I need to stress how important it is to write good, _descriptive_ commit messages. If you write a descriptive commit message, then it's so much easier to search through the commit messages, later, to find exactly what you're looking for.\n\nAnd remember, if the commit message is not enough for you to explain what the commit is for, you can provide a detailed description of exactly why the commit is needed in the description area.\n\nLet see an example of extra details in a commit in the lighthouse project by looking at commit `5966b66`:\n\n```bash\n$ git show 5966b66\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299468,
+              "key": "2476bbd6-2892-4ab8-9e52-fe81d7a0df19",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58f9533a_ud456-l2-03-commit-with-description/ud456-l2-03-commit-with-description.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2476bbd6-2892-4ab8-9e52-fe81d7a0df19",
+              "caption": "_The terminal application showing commit `5966b66` from the Lighthouse project. The author has provided additional information about the commit._",
+              "alt": "The terminal application showing commit `5966b66` from the Lighthouse project. The author has provided additional information about the commit.",
+              "width": 2458,
+              "height": 1342,
+              "instructor_notes": null
+            },
+            {
+              "id": 299470,
+              "key": "ee8acf5e-888b-4b0a-b5c4-4155cde949ea",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The commit message is `Configure Lighthouse run by whitelisting aggregations (#1830)`. But there's a lot more text than just that. Beneath the commit message, you'll find a couple of lines with additional information about the commit. This section provides further information on the _why_ this commit was needed.\n\nSo why do we care about all of this detail? For one thing, it's easier for you to go back and review the changes made to the repository, and it easier for others to review the changes to. Another thing is filtering commits by information in the current message or description area.  \n\nWe can filter commits with the `--grep` flag. \n\nHow about we filter down to just the commits that reference the word \"bug\". We can do that with either of the following commands:\n\n```bash\n$ git log --grep=bug\n$ git log --grep bug\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299480,
+              "key": "d79620fb-b17b-49d4-8d5d-8e07dd5c5f07",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ### ⚠️  Watch Out For Spacing ⚠️\n\n> Remember that spacing is an issue, here, too. If you're trying to search for something that is multiple words and has spaces between the words, you need to wrap everything in quotes. For example, to search for `unit tests` you would need to use the following command, `git log --grep=\"unit tests\"`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299483,
+              "key": "7e43dbff-9b2d-4d19-ac84-c8387230fb89",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ### 💡 More On `grep` 💡 \n\n> If you don't know what `grep` is then the `--grep` flag might not seem like a logical choice for the flag's name. Grep is a pattern matching tool. It is _way_ beyond the scope of this course to cover grep. But as a brief intro, if you were to run `git log --grep \"fort\"`, then Git will display only the commits that have the character `f` followed by the character `o` followed by `r` followed by `t`.\n\n> For more info on Grep, check out our [Shell Workshop course](https://www.udacity.com/course/shell-workshop--ud206).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299488,
+              "key": "efeb9d48-f926-4e7f-b584-7a11703baef9",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "efeb9d48-f926-4e7f-b584-7a11703baef9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "One of the following browsers had a CSS bug that was fixed by a commit. Use `git log` and the `--grep` flag to figure out which browser had the bug.",
+                "answers": [
+                  {
+                    "id": "a1492738454425",
+                    "text": "Chrome",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492738460183",
+                    "text": "Safari",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492738467326",
+                    "text": "Firefox",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492738467856",
+                    "text": "Edge",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492738468474",
+                    "text": "Opera",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 299489,
+              "key": "83b380a5-890f-4f34-8cba-09af45bf29a0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nThe `git log` command is extremely powerful, and you can use it to discover a lot about a repository. But it can be especially helpful to discover information about a repository that you're collaborating on with others. You can use `git log` to:\n\n* group commits by author with `git shortlog`\n    ```bash\n    $ git shortlog\n    ```\n* filter commits with the `--author` flag\n    ```bash\n    $ git log --author=\"Richard Kalehoff\"\n    ```\n\n* filter commits using the `--grep` flag\n    ```bash\n    $ git log --grep=\"border radius issue in Safari\"\n    ```\n\ngrep is a complicated topic and you can find out more about it [here on the Wiki page](https://en.wikipedia.org/wiki/Grep) or in our [Shell Workshop course](https://www.udacity.com/course/shell-workshop--ud206).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 293448,
+          "key": "040ba8b2-066f-48fa-829d-1c66558c7e75",
+          "title": "Determining What To Work On",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "040ba8b2-066f-48fa-829d-1c66558c7e75",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299703,
+              "key": "1d974471-8f89-49d0-a4c4-7ea5f1f6e9cd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What To Work On\n\nLet's say you're using some third-party library to help you build a project. What happens if, while you're using this third-party library, you come across a bug or a misspelling? You have the skill to be able to fix it, but you don't have direct access to make modifications to the original library. Well that's not a problem because you know that forking another developer's repository copies it to your account and gives you full access to `git pull` and `git push` to it!\n\nBut what are you supposed to do now that you've got full access to a duplicate of the other developer's project. We'll look at this in the next section but if you have forked a project and you have code in your fork that's not in the original project, you can get code into the original project by sending the original project's maintainer a request to include your code changes. This request is known as a \"Pull Requests\". Again, we'll look at sending and working with pull requests in the next lesson.\n\nSo you know it's possible to get your code in the original project and you know you want to help and fix this spelling/code mistake. So you got something to work on! But how do you go about actually contributing to the project in the way that the original project maintainer will be happy with and will end up actually incorporating your changes?\n\nThe first thing you should always look for in a project is a file with the name `CONTRIBUTING.md`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299704,
+              "key": "149bc03c-3421-4319-992b-2e31757d1165",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## CONTRIBUTING.md File\n\nThe name of the `CONTRIBUTING.md file is typically written in all caps so that it's easily seen. As you could probably tell by its name, this file lists out the information you should follow to contribute to the project. You should look for this file before you start doing development work of any kind. \n\nLet's look at the lighthouse project's contributing file:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300135,
+              "key": "f80b12ab-90d4-43ff-8c34-83caef87383a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe68e7_ud456-l2-04-lighthouse-contributing-file/ud456-l2-04-lighthouse-contributing-file.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f80b12ab-90d4-43ff-8c34-83caef87383a",
+              "caption": "_Google's Lighthouse project's CONTRIBUTING.md file._",
+              "alt": "Google's Lighthouse project's CONTRIBUTING.md file shown in GitHub",
+              "width": 2416,
+              "height": 1416,
+              "instructor_notes": null
+            },
+            {
+              "id": 299706,
+              "key": "f53a568c-323b-4674-96bd-2a45ad5209e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can see that the top line of the file says:\n\n> We'd love your help! This doc covers how to become a contributor and submit code to the project.\n\nThere are two main sections to this file:\n* the \"For Contributors\" section\n* the \"For Maintainers\" section\n\nEach one of these sections has subsections of its own to instruct readers on how to contribute to and work with this project. \n\nLet's take a look at the section on signing the contributors license. Here's what it looks like at the time of making the course:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300137,
+              "key": "675363ca-039b-4804-a585-02b8c1b07f2d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe6919_ud456-l2-04-sign-contributor-license/ud456-l2-04-sign-contributor-license.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/675363ca-039b-4804-a585-02b8c1b07f2d",
+              "caption": "_The Contributor License Agreement section of Google's Lighthouse project's CONTRIBUTING.md file._",
+              "alt": "The Contributor License Agreement section of Google's Lighthouse project's CONTRIBUTING.md file in GitHub",
+              "width": 2372,
+              "height": 984,
+              "instructor_notes": null
+            },
+            {
+              "id": 299708,
+              "key": "c3c8ef86-d61f-436e-8cd3-b8c756d0d932",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can see that to be able to contribute to this project you need to sign Google's Contributor License Agreement.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299709,
+              "key": "83306cdb-70f5-4748-9a66-d924450adf6d",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "83306cdb-70f5-4748-9a66-d924450adf6d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Take a look through [the Lighthouse project's contributing file](https://github.com/GoogleChrome/lighthouse/blob/master/CONTRIBUTING.md). What file contains the information about the code styles for the Lighthouse project?",
+                "matchers": [
+                  {
+                    "expression": "\\.eslintrc"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 299710,
+              "key": "e0a95531-2b2e-4c22-a588-8e065595b422",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you can see this contributor file has a ton of information in it. So you should definitely look for a CONTRIBUTING.md file when you want to contribute to a project.\n\n## GitHub Issues\nIf your code change is a simple spelling mistake then you can probably just go ahead and make that change. But if your change is more substantial where it modifies a number of files in a significant way, then you probably want to get approval by the project's maintainer(s) before you start working on it. You definitely don't want to spend a couple hours making changes to the project only to find out that someone else is doing the exact same thing. You'd just be wasting a lot of time and energy duplicating work.\n\nIn a CONTRIBUTING.md file it explains _how_ your code should be formatted and the steps you should go about to contribute, but how do you know _what_ you should contribute? You should talk to the project maintainers directly. GitHub has a fantastic interface for asking questions of the project maintainer in an open way that lets everyone see what's being done with the project.\n\nThis is the GitHub Issues interface:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300138,
+              "key": "403c46f6-8d18-4ebc-9f9e-d2af5469b87a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe6978_ud456-l2-04-lighthouse-issues/ud456-l2-04-lighthouse-issues.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/403c46f6-8d18-4ebc-9f9e-d2af5469b87a",
+              "caption": "_The Issues page of the Lighthouse project._",
+              "alt": "The Issues page of the Lighthouse project in GitHub",
+              "width": 2468,
+              "height": 1854,
+              "instructor_notes": null
+            },
+            {
+              "id": 299712,
+              "key": "48ee2421-fdf6-42d5-ab61-251496f30738",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, \"issues\" doesn't mean that there's actually a bug, it can just be any change that needs to be made to the project. GitHub's issue tractor is quite sophisticated. Each issue can:\n\n* have a label or multiple labels applied to it\n* can be assigned to an individual\n* can be assigned a milestone (for example the issue will be resolved by the next major release)\n\nBut probably one of the most important aspects of the issue tracker is that each issue can have its own comments, so a conversation can form around the issue.\n\nCheck out [this issue](https://github.com/GoogleChrome/lighthouse/issues/1842) that has a number of comments:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300139,
+              "key": "5e00f5e0-f3bb-4f96-b38c-a3cd4ce21de0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe699d_ud456-l2-04-issue-comments/ud456-l2-04-issue-comments.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5e00f5e0-f3bb-4f96-b38c-a3cd4ce21de0",
+              "caption": "_The first few comments of an issue dealing with compatibility of Chrome and the Lighthouse extension._",
+              "alt": "The first few comments of an issue dealing with compatibility of Chrome and the Lighthouse extension.",
+              "width": 2332,
+              "height": 1942,
+              "instructor_notes": null
+            },
+            {
+              "id": 299714,
+              "key": "6bbf074d-b153-402f-9f28-778582e3d3da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Another thing that's nice about issues is:\n* they let you subscribe to an issue so you'll be notified of new comments and code changes\n* you can communicate back and forth with a project maintainer on a specific change\n\nBefore you contribute anything to a file, check out the instructions in `CONTRIBUTING.md`. Then check out the project's issues and look to see if there's anything that's similar to what you want to contribute. If there is, then subscribe to that issue and read the existing conversation to see if you can help.\n\nIf you've looked through the list of issues and don't see one that similar to what you want to do, then you can create a new issue of your own. On every page of the GitHub issues interface, you'll find the new issue button:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300140,
+              "key": "7974fc9c-0037-4ac4-a72f-04f60656b629",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe69c2_ud456-l2-04-new-issue-button/ud456-l2-04-new-issue-button.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7974fc9c-0037-4ac4-a72f-04f60656b629",
+              "caption": "_The new issue button on the Lighthouse project's issue page._",
+              "alt": "The new issue button on the Lighthouse project's issue page in GitHub",
+              "width": 2266,
+              "height": 1602,
+              "instructor_notes": null
+            },
+            {
+              "id": 299716,
+              "key": "8c019c07-021e-4427-8f0b-5a2ea97ae8d3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Clicking on that button brings you to create a new issue ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 300141,
+              "key": "2af57580-c97a-40e2-b59f-bb79e44e3b2a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58fe69e0_ud456-l2-04-submit-new-issue/ud456-l2-04-submit-new-issue.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2af57580-c97a-40e2-b59f-bb79e44e3b2a",
+              "caption": "_The new issue page for the Lighthouse project. A notice about reviewing the guidelines for contributing displays above the form._",
+              "alt": "The new issue page for the Lighthouse project. A notice about reviewing the guidelines for contributing displays above the form.",
+              "width": 2458,
+              "height": 1874,
+              "instructor_notes": null
+            },
+            {
+              "id": 299718,
+              "key": "887920b3-2fbe-4d7a-a5a5-abe8d78fe3a8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## New Issue Page\n\nOne really cool thing about the new issue page is that, if the project has a CONTRIBUTING.md file, it will display a notification at the top of the page recommending that you check out the guidelines on how to contribute to the project. Clicking on the \"guidelines for contributing\" link takes you to the CONTRIBUTING.md file. \n\nThe GitHub issues interface support markdown so when you create your issue you can use Markdown to format it and exactly the way you want by including links, images, bulleted lists, and code blocks. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299719,
+              "key": "7814bdb0-e537-46f8-b07f-bf624d87d11b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ### 💡 Learn Markdown! 💡 \n\n> From the README file, to the New Issue Page, to commenting, Markdown is incredibly important! If you're new to Markdown, we discuss everything about it in our [Writing READMEs](https://www.udacity.com/course/writing-readmes--ud777) course. It's short, so why not take an hour to learn this incredible skill!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299720,
+              "key": "03a203f8-c28c-4b08-87a2-3b194fbe4788",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Just like crafting a descriptive commit message, you want to create an issue with an informative title that explains briefly what you want to do. Then, in the comments section, provide plenty of detail on what the change is, or why you think it's needed, or how this will make the project better.\n\nTypically, the project's maintainer has a full-time job and works on their project on the side, so give them some time to respond to your issue before you dive in and start making your changes. Once the project maintainer has given you the go-ahead it's time to start working on the changes you want to contribute back to the project.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299721,
+              "key": "e2326bf9-c221-4694-8370-a864e4d75df0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Topic Branches\n\nThe best way to organize the set of commits/changes you want to contribute back to the project is to _put them all on a topic branch_. Now what do I mean by a **topic branch**? Unlike the master branch which is the default branch that holds all of the commits for your entire project, a topic branch host commits for just a single concept or single area of change.\n\nFor example if there is a problem with the login form for logging into the website, then a branch name to address this specific issue could be called:\n\n* `login`\n* `login-bug`\n* `signup-bug`\n* `login-form-bug`\n* etc.\n\nThere are plenty of names that can be used for a topic branch's name. You just want to use a clear descriptive name for the branch so that if, for example, you list out all of the branches you can immediately see what changes are supposed to be in a branch just by its name.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299722,
+              "key": "d8766d99-dd23-4ef7-82e9-ca606a804e10",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d8766d99-dd23-4ef7-82e9-ca606a804e10",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "One of the branches in the Lighthouse project is named `add-a11y-tests`. Do you think that's a good name for a topic branch?\n\n(Hint - `a11y` stands for \"accessibility\". In the word \"accessibility\", there are eleven letters between the `a` and the `y`, so it gets shortened to just `a11y`!)",
+                "answers": [
+                  {
+                    "id": "a1492989843579",
+                    "text": "Yes",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492989849879",
+                    "text": "No",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 299723,
+              "key": "9333e338-a304-427e-bbca-11cc8862a369",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "One thing to keep in mind is that sometimes a project has specific requirements on what to name your topic branch. For example, if a branch is going to be addressing bug fixes, then many projects require a `bugfix-` prefix. Going back to our branch that was dealing with a bug with the login form, it would have to be named something like `bugfix-login-form`. So definitely check out the CONTRIBUTING.md file to see if they provide instructions on what you should name your topic branches.\n\n## Best Practices\n\n### Write Descriptive Commit Messages\n\nWhile we're talking about naming branches clearly that describe _what_ changes the branch contains, I need to throw in another reminder about how critical it is to write clear, descriptive, commit messages. The more descriptive your branch name and commit messages are the more likely it is that the project's maintainer will not have to ask you questions about the purpose of your code or have dig into the code themselves. The less work the maintainer has to do, the faster they'll include your changes into the project.\n\n### Create Small, Focused Commits\n\nThis has been stressed numerous times before but make sure when you are committing changes to the project that you make smaller commits. Don't make massive commits that record 10+ file changes and changes to hundreds of lines of code. You want to make smaller, more frequent commits that record just a handful of file changes with a smaller number of line changes. \n\nThink about it this way: if the developer does not like _a portion_ of the changes you're adding to a massive commit, there's no way for them to say, \"I like commit A, but just not the part where you change the sidebar's background color.\" A commit can't be broken down into smaller chunks, so make sure your commits are in small enough chunks and that each commit is focused on altering just one thing. This way the maintainer can say I like commits A, B, C, D,  and F but not commit E. \n\n### Update The README\n\nAnd lastly if any of the code changes that you're adding drastically changes the project you should update the README file to instruct others about this change. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299724,
+              "key": "a5a20709-64c8-4d80-962d-0f62cf4551f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nBefore you start doing any work, make sure to look for the project's CONTRIBUTING.md file.\n\nNext, it's a good idea to look at the GitHub issues for the project\n* look at the existing issues to see if one is similar to the change you want to contribute\n* if necessary create a new issue\n* communicate the changes you'd like to make to the project maintainer in the issue\n\nWhen you start developing, commit all of your work on a topic branch:\n* do not work on the master branch\n* make sure to give the topic branch clear, descriptive name\n\nAs a general best practice for writing commits:\n* make frequent, smaller commits\n* use clear and descriptive commit messages\n* update the README file, if necessary",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

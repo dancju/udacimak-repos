@@ -1,0 +1,1167 @@
+{
+  "data": {
+    "lesson": {
+      "id": 918839,
+      "key": "594b4203-2b83-4b12-8453-51e8bdde2aee",
+      "title": "Implementing Gradient Descent",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Mat will introduce you to a different error function and guide you through implementing gradient descent using NumPy matrix multiplication.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/594b4203-2b83-4b12-8453-51e8bdde2aee/918839/1581973972253/Implementing+Gradient+Descent+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/594b4203-2b83-4b12-8453-51e8bdde2aee/918839/1581973969325/Implementing+Gradient+Descent+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 463928,
+          "key": "ddab5f22-c333-46a4-b89a-9a3d27751c04",
+          "title": "Mean Squared Error Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ddab5f22-c333-46a4-b89a-9a3d27751c04",
+            "completed_at": "2020-04-14T03:28:04.272Z",
+            "last_viewed_at": "2020-04-18T01:22:35.644Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463932,
+              "key": "a5121e25-dd07-44a4-90b4-c48afad64959",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2016/December/58472d92_mat-headshot/mat-headshot.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a5121e25-dd07-44a4-90b4-c48afad64959",
+              "caption": "     Hi, it's Mat!",
+              "alt": "An image of your instructor Matt",
+              "width": 250,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 463931,
+              "key": "b571d1ef-b4f3-4022-b0fa-4a609830ec1e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Log-Loss vs Mean Squared Error\n\nIn the previous section, Luis taught you about the log-loss function. There are many other error functions used for neural networks. Let me teach you another one, called the mean squared error. As the name says, this one is the mean of the squares of the differences between the predictions and the labels. In the following section I'll go over it in detail, then we'll get to implement backpropagation with it on the same student admissions dataset.\n\nAnd as a bonus, we'll be implementing this in a very effective way using matrix multiplication with NumPy!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 256159,
+          "key": "7d480208-0453-4457-97c3-56c720c23a89",
+          "title": "Gradient Descent",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7d480208-0453-4457-97c3-56c720c23a89",
+            "completed_at": "2020-04-17T06:30:19.195Z",
+            "last_viewed_at": "2020-04-19T03:05:22.634Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256161,
+              "key": "a2b0d6a5-1174-411c-87c0-0e5147183b2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Gradient Descent with Squared Errors\n\nWe want to find the weights for our neural networks. Let's start by thinking about the goal. The network needs to make predictions as close as possible to the real values. To measure this, we use a metric of how wrong the predictions are, the **error**. A common metric is the sum of the squared errors (SSE):\n\n<div class=\"mathquill\">E = \\frac{1}{2}\\sum_{\\mu} \\sum_j \\left[ y^{\\mu}_j - \\hat{y} ^{\\mu}_j \\right]^2</div>\n\nwhere <span class=\"mathquill\">\\hat y</span> is the prediction and <span class=\"mathquill\">y</span> is the true value, and you take the sum over all output units <span class=\"mathquill\">j</span> and another sum over all data points <span class=\"mathquill\">\\mu</span>. This might seem like a really complicated equation at first, but it's fairly simple once you understand the symbols and can say what's going on in words. \n\nFirst, the inside sum over <span class=\"mathquill\">j</span>. This variable <span class=\"mathquill\">j</span> represents the output units of the network. So this inside sum is saying for each output unit, find the difference between the true value <span class=\"mathquill\">y</span> and the predicted value from the network <span class=\"mathquill\">\\hat y</span>, then square the difference, then sum up all those squares.\n\nThen the other sum over <span class=\"mathquill\">\\mu</span> is a sum over all the data points. So, for each data point you calculate the inner sum of the squared differences for each output unit. Then you sum up those squared differences for each data point. That gives you the overall error for all the output predictions for all the data points.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262764,
+              "key": "b1d58dba-1241-4817-93bf-8d5d85de93f6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The SSE is a good choice for a few reasons. The square ensures the error is always positive and larger errors are penalized more than smaller errors. Also, it makes the math nice, always a plus.\n\nRemember that the output of a neural network, the prediction, depends on the weights\n\n<div class=\"mathquill\">\\hat{y}^{\\mu}_j = f \\left( \\sum_i{ w_{ij} x^{\\mu}_i  }\\right)</div>\n\nand accordingly the error depends on the weights\n\n<div class=\"mathquill\">E = \\frac{1}{2}\\sum_{\\mu} \\sum_j \\left[ y^{\\mu}_j - f \\left( \\sum_i{ w_{ij} x^{\\mu}_i  }\\right) \\right]^2</div>\n\nWe want the network's prediction error to be as small as possible and the weights are the knobs we can use to make that happen. Our goal is to find weights <span class=\"mathquill\">w_{ij}</span> that minimize the squared error <span class=\"mathquill\">E</span>. To do this with a neural network, typically you'd use **gradient descent**.\n\n## Enter Gradient Descent",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256160,
+              "key": "ee21bb72-7eb7-41ac-bc26-3c65f232bd9a",
+              "title": "Gradient Descent",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "29PmNG7fuuM",
+                "china_cdn_id": "29PmNG7fuuM.mp4"
+              }
+            },
+            {
+              "id": 256163,
+              "key": "a5d675a8-ad02-402a-9754-ff2ad610c748",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As Luis said, with gradient descent, we take multiple small steps towards our goal. In this case, we want to change the weights in steps that reduce the error. Continuing the analogy, the error is our mountain and we want to get to the bottom. Since the fastest way down a mountain is in the steepest direction, the steps taken should be in the direction that minimizes the error the most. We can find this direction by calculating the *gradient* of the squared error.\n\n*Gradient* is another term for rate of change or slope. If you need to brush up on this concept, check out Khan Academy's [great lectures](https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/gradient-and-directional-derivatives/v/gradient) on the topic.\n\n To calculate a rate of change, we turn to calculus, specifically derivatives. A derivative of a function <span class=\"mathquill\">f(x)</span> gives you another function <span class=\"mathquill\">f'(x)</span> that returns the slope of <span class=\"mathquill\">f(x)</span> at point <span class=\"mathquill\">x</span>. For example, consider <span class=\"mathquill\">f(x)=x^2</span>. The derivative of <span class=\"mathquill\">x^2</span> is <span class=\"mathquill\">f'(x) = 2x</span>. So, at <span class=\"mathquill\">x = 2</span>, the slope is <span class=\"mathquill\">f'(2) = 4</span>. Plotting this out, it looks like:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257293,
+              "key": "1fce3562-a676-4a58-81c4-772db2ed6a5d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/587bfcfd_derivative-example/derivative-example.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1fce3562-a676-4a58-81c4-772db2ed6a5d",
+              "caption": "Example of a gradient",
+              "alt": null,
+              "width": 1048,
+              "height": 875,
+              "instructor_notes": null
+            },
+            {
+              "id": 257291,
+              "key": "672800f5-d308-4a07-97ed-ee91bd835630",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The gradient is just a derivative generalized to functions with more than one variable. We can use calculus to find the gradient at any point in our error function, which depends on the input weights. You'll see how the gradient descent step is derived on the next page.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257290,
+              "key": "88acfc5d-b704-4777-be9c-79b2e536f1f1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Below I've plotted an example of the error of a neural network with two inputs, and accordingly, two weights. You can read this like a topographical map where points on a contour line have the same error and darker contour lines correspond to larger errors.\n\nAt each step, you calculate the error and the gradient, then use those to determine how much to change each weight. Repeating this process will eventually find weights that are close to the minimum of the error function, the black dot in the middle.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256164,
+              "key": "bf8d1191-6d28-4940-9625-b033ca0e5720",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/587ba606_gradient-descent/gradient-descent.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bf8d1191-6d28-4940-9625-b033ca0e5720",
+              "caption": "Gradient descent steps to the lowest error",
+              "alt": null,
+              "width": 508,
+              "height": 437,
+              "instructor_notes": null
+            },
+            {
+              "id": 257305,
+              "key": "8a922136-5689-4ea3-bc3c-5d00f724419e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Caveats\n\nSince the weights will just go wherever the gradient takes them, they can end up where the error is low, but not the lowest. These spots are called local minima. If the weights are initialized with the wrong values, gradient descent could lead the weights into a local minimum, illustrated below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257306,
+              "key": "53b0f168-9dce-4a56-9601-2a965e171392",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/587c5ebd_local-minima/local-minima.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/53b0f168-9dce-4a56-9601-2a965e171392",
+              "caption": "Gradient descent leading into a local minimum",
+              "alt": null,
+              "width": 514,
+              "height": 415,
+              "instructor_notes": null
+            },
+            {
+              "id": 257307,
+              "key": "e29fcadc-23f6-43a3-abf3-6e80f387e805",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There are methods to avoid this, such as using [momentum](https://distill.pub/2017/momentum/).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 263146,
+          "key": "3156ccf8-9bd0-4019-83b9-ab39c53bf541",
+          "title": "Gradient Descent: The Math",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3156ccf8-9bd0-4019-83b9-ab39c53bf541",
+            "completed_at": "2020-04-18T01:50:04.755Z",
+            "last_viewed_at": "2020-04-19T03:05:25.286Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 264355,
+              "key": "7af49468-0443-4d00-9e41-8767226e312a",
+              "title": "Gradient Descent-Math",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "### Notes\n\nCheck out Khan Academy's [Multivariable calculus lessons](https://www.khanacademy.org/math/multivariable-calculus) if you are unfamiliar with the subject.",
+              "video": {
+                "youtube_id": "7sxA5Ap8AWM",
+                "china_cdn_id": "7sxA5Ap8AWM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 263151,
+          "key": "f7c2a82b-7a05-45ac-9e3b-b881a5fb29c1",
+          "title": "Gradient Descent: The Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f7c2a82b-7a05-45ac-9e3b-b881a5fb29c1",
+            "completed_at": "2020-04-18T02:50:12.833Z",
+            "last_viewed_at": "2020-04-19T03:05:26.638Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 263182,
+              "key": "08b25087-7cfc-4aa0-92c7-dd21aee53fbc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Gradient Descent: The Code\n\nFrom before we saw that one weight update can be calculated as:\n\n<span class='mathquill'>\\Delta w_i = \\eta \\, \\delta x_i</span>\n\nwith the error term <span class='mathquill'>\\delta</span> as\n\n<span class='mathquill'> \\delta = (y - \\hat y) f'(h) =  (y - \\hat y) f'(\\sum w_i x_i)</span>\n\nRemember, in the above equation <span class='mathquill'>(y - \\hat y)</span> is the output error, and <span class='mathquill'>f'(h)</span> refers to the derivative of the activation function, <span class='mathquill'>f(h)</span>. We'll call that derivative the output gradient.\n\nNow I'll write this out in code for the case of only one output unit. We'll also be using the sigmoid as the activation function <span class='mathquill'>f(h)</span>.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 263192,
+              "key": "fa6dd186-b849-49bc-8320-8014b1812d83",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```python\n# Defining the sigmoid function for activations\ndef sigmoid(x):\n    return 1/(1+np.exp(-x))\n\n# Derivative of the sigmoid function\ndef sigmoid_prime(x):\n    return sigmoid(x) * (1 - sigmoid(x))\n\n# Input data\nx = np.array([0.1, 0.3])\n# Target\ny = 0.2\n# Input to output weights\nweights = np.array([-0.8, 0.5])\n\n# The learning rate, eta in the weight step equation\nlearnrate = 0.5\n\n# the linear combination performed by the node (h in f(h) and f'(h))\nh = x[0]*weights[0] + x[1]*weights[1]\n# or h = np.dot(x, weights)\n\n# The neural network output (y-hat)\nnn_output = sigmoid(h)\n\n# output error (y - y-hat)\nerror = y - nn_output\n\n# output gradient (f'(h))\noutput_grad = sigmoid_prime(h)\n\n# error term (lowercase delta)\nerror_term = error * output_grad\n\n# Gradient descent step \ndel_w = [ learnrate * error_term * x[0],\n          learnrate * error_term * x[1]]\n# or del_w = learnrate * error_term * x\n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 966808,
+              "key": "78ffec23-984c-4899-beb7-9a723dae0f71",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "*Note*: If you are wondering where the derivative of the `sigmoid` function comes from (`sigmoid_prime` above), check out the derivation in [this post](https://math.stackexchange.com/questions/78575/derivative-of-sigmoid-function-sigma-x-frac11e-x).\n\nIn the quiz below, you'll implement gradient descent in code yourself, although with a few differences (which we'll leave to you to figure out!) from the above example.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 263206,
+              "key": "0a1cb95a-e990-4986-8ab2-bda1131ec63d",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "0a1cb95a-e990-4986-8ab2-bda1131ec63d",
+                "completed_at": "2020-04-18T05:09:22.823Z",
+                "last_viewed_at": "2020-04-18T05:09:39.283Z",
+                "unstructured": "{\"gradient.py\":\"import numpy as np\\n\\ndef sigmoid(x):\\n    \\\"\\\"\\\"\\n    Calculate sigmoid\\n    \\\"\\\"\\\"\\n    return 1/(1+np.exp(-x))\\n\\ndef sigmoid_prime(x):\\n    \\\"\\\"\\\"\\n    # Derivative of the sigmoid function\\n    \\\"\\\"\\\"\\n    return sigmoid(x) * (1 - sigmoid(x))\\n\\nlearnrate = 0.5\\nx = np.array([1, 2, 3, 4])\\ny = np.array(0.5)\\n\\n# Initial weights\\nw = np.array([0.5, -0.5, 0.3, 0.1])\\n\\n### Calculate one gradient descent step for each weight\\n### Note: Some steps have been consolidated, so there are\\n###       fewer variable names than in the above sample code\\n\\n# TODO: Calculate the node's linear combination of inputs and weights\\nh = np.dot(x, w)\\n\\n# TODO: Calculate output of neural network\\nnn_output = sigmoid(h)\\n\\n# TODO: Calculate error of neural network\\nerror = y - nn_output\\n\\n# TODO: Calculate the error term\\n#       Remember, this requires the output gradient, which we haven't\\n#       specifically added a variable for.\\nerror_term = error*sigmoid_prime(h)\\n\\n# TODO: Calculate change in weights\\ndel_w = learnrate * error_term * x\\n\\nprint('Neural Network output:')\\nprint(nn_output)\\nprint('Amount of Error:')\\nprint(error)\\nprint('Change in Weights:')\\nprint(del_w)\",\"solution.py\":\"import numpy as np\\n\\ndef sigmoid(x):\\n    \\\"\\\"\\\"\\n    Calculate sigmoid\\n    \\\"\\\"\\\"\\n    return 1/(1+np.exp(-x))\\n\\ndef sigmoid_prime(x):\\n    \\\"\\\"\\\"\\n    # Derivative of the sigmoid function\\n    \\\"\\\"\\\"\\n    return sigmoid(x) * (1 - sigmoid(x))\\n\\nlearnrate = 0.5\\nx = np.array([1, 2, 3, 4])\\ny = np.array(0.5)\\n\\n# Initial weights\\nw = np.array([0.5, -0.5, 0.3, 0.1])\\n\\n### Calculate one gradient descent step for each weight\\n### Note: Some steps have been consolidated, so there are\\n###       fewer variable names than in the above sample code\\n\\n# TODO: Calculate the node's linear combination of inputs and weights\\nh = np.dot(x, w)\\n\\n# TODO: Calculate output of neural network\\nnn_output = sigmoid(h)\\n\\n# TODO: Calculate error of neural network\\nerror = y - nn_output\\n\\n# TODO: Calculate the error term\\n#       Remember, this requires the output gradient, which we haven't\\n#       specifically added a variable for.\\nerror_term = error * sigmoid_prime(h)\\n# Note: The sigmoid_prime function calculates sigmoid(h) twice,\\n#       but you've already calculated it once. You can make this\\n#       code more efficient by calculating the derivative directly\\n#       rather than calling sigmoid_prime, like this:\\n# error_term = error * nn_output * (1 - nn_output)\\n\\n# TODO: Calculate change in weights\\ndel_w = learnrate * error_term * x\\n\\nprint('Neural Network output:')\\nprint(nn_output)\\nprint('Amount of Error:')\\nprint(error)\\nprint('Change in Weights:')\\nprint(del_w)\"}"
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5843986687328256",
+                "initial_code_files": [
+                  {
+                    "text": "import numpy as np\n\ndef sigmoid(x):\n    \"\"\"\n    Calculate sigmoid\n    \"\"\"\n    return 1/(1+np.exp(-x))\n\ndef sigmoid_prime(x):\n    \"\"\"\n    # Derivative of the sigmoid function\n    \"\"\"\n    return sigmoid(x) * (1 - sigmoid(x))\n\nlearnrate = 0.5\nx = np.array([1, 2, 3, 4])\ny = np.array(0.5)\n\n# Initial weights\nw = np.array([0.5, -0.5, 0.3, 0.1])\n\n### Calculate one gradient descent step for each weight\n### Note: Some steps have been consolidated, so there are\n###       fewer variable names than in the above sample code\n\n# TODO: Calculate the node's linear combination of inputs and weights\nh = None\n\n# TODO: Calculate output of neural network\nnn_output = None\n\n# TODO: Calculate error of neural network\nerror = None\n\n# TODO: Calculate the error term\n#       Remember, this requires the output gradient, which we haven't\n#       specifically added a variable for.\nerror_term = None\n\n# TODO: Calculate change in weights\ndel_w = None\n\nprint('Neural Network output:')\nprint(nn_output)\nprint('Amount of Error:')\nprint(error)\nprint('Change in Weights:')\nprint(del_w)",
+                    "name": "gradient.py"
+                  },
+                  {
+                    "text": "import numpy as np\n\ndef sigmoid(x):\n    \"\"\"\n    Calculate sigmoid\n    \"\"\"\n    return 1/(1+np.exp(-x))\n\ndef sigmoid_prime(x):\n    \"\"\"\n    # Derivative of the sigmoid function\n    \"\"\"\n    return sigmoid(x) * (1 - sigmoid(x))\n\nlearnrate = 0.5\nx = np.array([1, 2, 3, 4])\ny = np.array(0.5)\n\n# Initial weights\nw = np.array([0.5, -0.5, 0.3, 0.1])\n\n### Calculate one gradient descent step for each weight\n### Note: Some steps have been consolidated, so there are\n###       fewer variable names than in the above sample code\n\n# TODO: Calculate the node's linear combination of inputs and weights\nh = np.dot(x, w)\n\n# TODO: Calculate output of neural network\nnn_output = sigmoid(h)\n\n# TODO: Calculate error of neural network\nerror = y - nn_output\n\n# TODO: Calculate the error term\n#       Remember, this requires the output gradient, which we haven't\n#       specifically added a variable for.\nerror_term = error * sigmoid_prime(h)\n# Note: The sigmoid_prime function calculates sigmoid(h) twice,\n#       but you've already calculated it once. You can make this\n#       code more efficient by calculating the derivative directly\n#       rather than calling sigmoid_prime, like this:\n# error_term = error * nn_output * (1 - nn_output)\n\n# TODO: Calculate change in weights\ndel_w = learnrate * error_term * x\n\nprint('Neural Network output:')\nprint(nn_output)\nprint('Amount of Error:')\nprint(error)\nprint('Change in Weights:')\nprint(del_w)",
+                    "name": "solution.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 256143,
+          "key": "4b167ce0-9d45-45e1-bfe6-891b2c68ac94",
+          "title": "Implementing Gradient Descent",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4b167ce0-9d45-45e1-bfe6-891b2c68ac94",
+            "completed_at": "2020-04-18T05:14:21.687Z",
+            "last_viewed_at": "2020-04-20T18:49:20.228Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256158,
+              "key": "ebd35347-9eb9-450b-9cd6-6f478f84b98f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Implementing gradient descent\n\nOkay, now we know how to update our weights:\n\n<span class='mathquill'>\\Delta w_{ij} = \\eta * \\delta_j * x_i </span>,\n\nYou've seen how to implement that for a single update, but how do we translate that code to calculate many weight updates so our network will learn?\n\nAs an example, I'm going to have you use gradient descent to train a network on graduate school admissions data (found at [http://www.ats.ucla.edu/stat/data/binary.csv](https://stats.idre.ucla.edu/stat/data/binary.csv)). This dataset has three input features: GRE score, GPA, and the rank of the undergraduate school (numbered 1 through 4). Institutions with rank 1 have the highest prestige, those with rank 4 have the lowest.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257846,
+              "key": "cae7de8d-35a6-4f53-9541-d839ffd4f09f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/58800860_admissions-data/admissions-data.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cae7de8d-35a6-4f53-9541-d839ffd4f09f",
+              "caption": "",
+              "alt": null,
+              "width": 1263,
+              "height": 1105,
+              "instructor_notes": null
+            },
+            {
+              "id": 257850,
+              "key": "46e2f894-8bdc-4494-83b9-440d89757b9d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The goal here is to predict if a student will be admitted to a graduate program based on these features. For this, we'll use a network with one output layer with one unit. We'll use a sigmoid function for the output unit activation. \n\n## Data cleanup\nYou might think there will be three input units, but we actually need to transform the data first. The `rank` feature is categorical, the numbers don't encode any sort of relative values. Rank 2 is not twice as much as rank 1, rank 3 is not 1.5 more than rank 2.  Instead, we need to use [dummy variables][1] to encode `rank`, splitting the data into four new columns encoded with ones or zeros. Rows with rank 1 have one in the rank 1 dummy column, and zeros in all other columns. Rows with rank 2 have one in the rank 2 dummy column, and zeros in all other columns. And so on.\n\n[1]: https://en.wikipedia.org/wiki/Dummy_variable_(statistics)\n\nWe'll also need to standardize the GRE and GPA data, which means to scale the values such that they have zero mean and a standard deviation of 1. This is necessary because the sigmoid function squashes really small and really large inputs. The gradient of really small and large inputs is zero, which means that the gradient descent step will go to zero too. Since the GRE and GPA values are fairly large, we have to be really careful about how we initialize the weights or the gradient descent steps will die off and the network won't train. Instead, if we standardize the data, we can initialize the weights easily and everyone is happy.\n\nThis is just a brief run-through, you'll learn more about preparing data later. If you're interested in how I did this, check out the `data_prep.py` file in the programming exercise below.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257858,
+              "key": "0c580bc2-b0a9-4952-bfd0-f2ce6093efe8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/58800f01_example-data/example-data.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0c580bc2-b0a9-4952-bfd0-f2ce6093efe8",
+              "caption": "Ten rows of the data after transformations.",
+              "alt": null,
+              "width": 908,
+              "height": 662,
+              "instructor_notes": null
+            },
+            {
+              "id": 264351,
+              "key": "b12eab17-e6b7-43a3-a8c8-0a0cf3823abf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that the data is ready, we see that there are six input features: `gre`, `gpa`, and the four `rank` dummy variables.\n\n### Mean Square Error\n\nWe're going to make a small change to how we calculate the error here. Instead of the SSE, we're going to use the **mean** of the square errors (MSE). Now that we're using a lot of data, summing up all the weight steps can lead to really large updates that make the gradient descent diverge. To compensate for this, you'd need to use a quite small learning rate. Instead, we can just divide by the number of records in our data, <span class='mathquill'>m</span> to take the average. This way, no matter how much data we use, our learning rates will typically be in the range of 0.01 to 0.001. Then, we can use the MSE (shown below) to calculate the gradient and the result is the same as before, just averaged instead of summed.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 264352,
+              "key": "3da8626b-9845-4882-a560-ce1bd8c0618d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/589dec33_mse/mse.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3da8626b-9845-4882-a560-ce1bd8c0618d",
+              "caption": "",
+              "alt": null,
+              "width": 289,
+              "height": 79,
+              "instructor_notes": null
+            },
+            {
+              "id": 257861,
+              "key": "56d2de9a-6170-41d7-85e3-1f59c461fba2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here's the general algorithm for updating the weights with gradient descent:\n* Set the weight step to zero: <span class='mathquill'>\\Delta w_i = 0</span>\n* For each record in the training data: \n    * Make a forward pass through the network, calculating the output <span class='mathquill'>\\hat y = f(\\sum_i w_i x_i)</span>\n    * Calculate the error term for the output unit, <span class='mathquill'>\\delta = (y - \\hat y) * f'(\\sum_i w_i x_i)</span>\n    * Update the weight step <span class='mathquill'>\\Delta w_i =  \\Delta w_i + \\delta x_i</span>\n* Update the weights <span class='mathquill'>w_i = w_i + \\eta \\Delta w_i / m</span> where <span class='mathquill'>\\eta</span> is the learning rate and <span class='mathquill'>m</span> is the number of records. Here we're averaging the weight steps to help reduce any large variations in the training data.\n* Repeat for <span class='mathquill'>e</span> epochs.\n\nYou can also update the weights on each record instead of averaging the weight steps after going through all the records.\n\nRemember that we're using the sigmoid for the activation function, \n<span class='mathquill'>f(h) = 1/(1+e^{-h})</span>\n\nAnd the gradient of the sigmoid is\n<span class='mathquill'>f'(h) = f(h) (1 - f(h))</span>\n\nwhere <span class='mathquill'>h</span> is the input to the output unit,\n\n<span class='mathquill'>h = \\sum_i w_i x_i</span>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257880,
+              "key": "0e3eb0e2-ec79-4e9e-b96c-37f8bfc274a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Implementing with NumPy\n\nFor the most part, this is pretty straightforward with NumPy.\n\nFirst, you'll need to initialize the weights. We want these to be small such that the input to the sigmoid is in the linear region near 0 and not squashed at the high and low ends. It's also important to initialize them randomly so that they all have different starting values and diverge, breaking symmetry. So, we'll initialize the weights from a normal distribution centered at 0. A good value for the scale is <span class='mathquill'>1/\\sqrt{n}</span> where <span class='mathquill'>n</span> is the number of input units. This keeps the input to the sigmoid low for increasing numbers of input units.\n\n```python\nweights = np.random.normal(scale=1/n_features**.5, size=n_features)\n```\n\nNumPy provides a function `np.dot()` that calculates the dot product of two arrays, which conveniently calculates <span class='mathquill'>h</span> for us. The dot product multiplies two arrays element-wise, the first element in array 1 is multiplied by the first element in array 2, and so on. Then, each product is summed.\n\n```python\n# input to the output layer\noutput_in = np.dot(weights, inputs)\n```\n\nAnd finally, we can update <span class='mathquill'>\\Delta w_i</span> and <span class='mathquill'>w_i</span> by incrementing them with `weights += ...` which is shorthand for `weights = weights + ...`.\n\n### Efficiency tip!\nYou can save some calculations since we're using a sigmoid here. For the sigmoid function, <span class='mathquill'>f'(h) = f(h) (1 - f(h))</span>. That means that once you calculate <span class='mathquill'>f(h)</span>, the activation of the output unit, you can use it to calculate the gradient for the error gradient.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257883,
+              "key": "724d6d3f-a47c-44a6-8847-73303bf0ff11",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Programming exercise\n\nBelow, you'll implement gradient descent and train the network on the admissions data. Your goal here is to train the network until you reach a minimum in the mean square error (MSE) on the training set. You need to implement:\n\n* The network output: `output`.\n* The output error: `error`.\n* The error term: `error_term`.\n* Update the weight step: `del_w +=`.\n* Update the weights: `weights +=`.\n\nAfter you've written these parts, run the training by pressing \"Test Run\". The MSE will print out, as well as the accuracy on a test set, the fraction of correctly predicted admissions.\n\nFeel free to play with the hyperparameters and see how it changes the MSE.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256157,
+              "key": "1ffe00ac-ae6f-40ed-8aa4-645c0cbced5a",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "1ffe00ac-ae6f-40ed-8aa4-645c0cbced5a",
+                "completed_at": "2020-04-18T20:16:06.731Z",
+                "last_viewed_at": "2020-04-18T20:21:55.471Z",
+                "unstructured": "{\"gradient.py\":\"import numpy as np\\nfrom data_prep import features, targets, features_test, targets_test\\n\\n\\ndef sigmoid(x):\\n    \\\"\\\"\\\"\\n    Calculate sigmoid\\n    \\\"\\\"\\\"\\n    return 1 / (1 + np.exp(-x))\\n\\n# TODO: We haven't provided the sigmoid_prime function like we did in\\n#       the previous lesson to encourage you to come up with a more\\n#       efficient solution. If you need a hint, check out the comments\\n#       in solution.py from the previous lecture.\\ndef sigmoid_prime(x):\\n    return sigmoid(x) * (1 - sigmoid(x))\\n\\n# Use to same seed to make debugging easier\\nnp.random.seed(42)\\n\\nn_records, n_features = features.shape\\nlast_loss = None\\n\\n# Initialize weights\\nweights = np.random.normal(scale=1 / n_features**.5, size=n_features)\\n\\n# Neural Network hyperparameters\\nepochs = 1000\\nlearnrate = 0.5\\n\\nfor e in range(epochs):\\n    del_w = np.zeros(weights.shape)\\n    for x, y in zip(features.values, targets):\\n        # Loop through all records, x is the input, y is the target\\n\\n        # Note: We haven't included the h variable from the previous\\n        #       lesson. You can add it if you want, or you can calculate\\n        #       the h together with the output\\n\\n        # TODO: Calculate the output\\n        output = sigmoid(np.dot(x, weights))\\n\\n        # TODO: Calculate the error\\n        error = y - output\\n\\n        # TODO: Calculate the error term\\n        error_term =  error * sigmoid_prime(output) \\n\\n        # TODO: Calculate the change in weights for this sample\\n        #       and add it to the total weight change\\n        del_w += error_term * x\\n\\n    # TODO: Update weights using the learning rate and the average change in weights\\n    weights += (learnrate * del_w/n_records)\\n\\n    # Printing out the mean square error on the training set\\n    if e % (epochs / 10) == 0:\\n        out = sigmoid(np.dot(features, weights))\\n        loss = np.mean((out - targets) ** 2)\\n        if last_loss and last_loss < loss:\\n            print(\\\"Train loss: \\\", loss, \\\"  WARNING - Loss Increasing\\\")\\n        else:\\n            print(\\\"Train loss: \\\", loss)\\n        last_loss = loss\\n\\n\\n# Calculate accuracy on test data\\ntes_out = sigmoid(np.dot(features_test, weights))\\npredictions = tes_out > 0.5\\naccuracy = np.mean(predictions == targets_test)\\nprint(\\\"Prediction accuracy: {:.3f}\\\".format(accuracy))\",\"data_prep.py\":\"import numpy as np\\nimport pandas as pd\\n\\nadmissions = pd.read_csv('binary.csv')\\n\\n# Make dummy variables for rank\\ndata = pd.concat([admissions, pd.get_dummies(admissions['rank'], prefix='rank')], axis=1)\\ndata = data.drop('rank', axis=1)\\n\\n# Standarize features\\nfor field in ['gre', 'gpa']:\\n    mean, std = data[field].mean(), data[field].std()\\n    data.loc[:,field] = (data[field]-mean)/std\\n    \\n# Split off random 10% of the data for testing\\nnp.random.seed(42)\\nsample = np.random.choice(data.index, size=int(len(data)*0.9), replace=False)\\ndata, test_data = data.ix[sample], data.drop(sample)\\n\\n# Split into features and targets\\nfeatures, targets = data.drop('admit', axis=1), data['admit']\\nfeatures_test, targets_test = test_data.drop('admit', axis=1), test_data['admit']\",\"binary.csv\":\"admit,gre,gpa,rank\\n0,380,3.61,3\\n1,660,3.67,3\\n1,800,4,1\\n1,640,3.19,4\\n0,520,2.93,4\\n1,760,3,2\\n1,560,2.98,1\\n0,400,3.08,2\\n1,540,3.39,3\\n0,700,3.92,2\\n0,800,4,4\\n0,440,3.22,1\\n1,760,4,1\\n0,700,3.08,2\\n1,700,4,1\\n0,480,3.44,3\\n0,780,3.87,4\\n0,360,2.56,3\\n0,800,3.75,2\\n1,540,3.81,1\\n0,500,3.17,3\\n1,660,3.63,2\\n0,600,2.82,4\\n0,680,3.19,4\\n1,760,3.35,2\\n1,800,3.66,1\\n1,620,3.61,1\\n1,520,3.74,4\\n1,780,3.22,2\\n0,520,3.29,1\\n0,540,3.78,4\\n0,760,3.35,3\\n0,600,3.4,3\\n1,800,4,3\\n0,360,3.14,1\\n0,400,3.05,2\\n0,580,3.25,1\\n0,520,2.9,3\\n1,500,3.13,2\\n1,520,2.68,3\\n0,560,2.42,2\\n1,580,3.32,2\\n1,600,3.15,2\\n0,500,3.31,3\\n0,700,2.94,2\\n1,460,3.45,3\\n1,580,3.46,2\\n0,500,2.97,4\\n0,440,2.48,4\\n0,400,3.35,3\\n0,640,3.86,3\\n0,440,3.13,4\\n0,740,3.37,4\\n1,680,3.27,2\\n0,660,3.34,3\\n1,740,4,3\\n0,560,3.19,3\\n0,380,2.94,3\\n0,400,3.65,2\\n0,600,2.82,4\\n1,620,3.18,2\\n0,560,3.32,4\\n0,640,3.67,3\\n1,680,3.85,3\\n0,580,4,3\\n0,600,3.59,2\\n0,740,3.62,4\\n0,620,3.3,1\\n0,580,3.69,1\\n0,800,3.73,1\\n0,640,4,3\\n0,300,2.92,4\\n0,480,3.39,4\\n0,580,4,2\\n0,720,3.45,4\\n0,720,4,3\\n0,560,3.36,3\\n1,800,4,3\\n0,540,3.12,1\\n1,620,4,1\\n0,700,2.9,4\\n0,620,3.07,2\\n0,500,2.71,2\\n0,380,2.91,4\\n1,500,3.6,3\\n0,520,2.98,2\\n0,600,3.32,2\\n0,600,3.48,2\\n0,700,3.28,1\\n1,660,4,2\\n0,700,3.83,2\\n1,720,3.64,1\\n0,800,3.9,2\\n0,580,2.93,2\\n1,660,3.44,2\\n0,660,3.33,2\\n0,640,3.52,4\\n0,480,3.57,2\\n0,700,2.88,2\\n0,400,3.31,3\\n0,340,3.15,3\\n0,580,3.57,3\\n0,380,3.33,4\\n0,540,3.94,3\\n1,660,3.95,2\\n1,740,2.97,2\\n1,700,3.56,1\\n0,480,3.13,2\\n0,400,2.93,3\\n0,480,3.45,2\\n0,680,3.08,4\\n0,420,3.41,4\\n0,360,3,3\\n0,600,3.22,1\\n0,720,3.84,3\\n0,620,3.99,3\\n1,440,3.45,2\\n0,700,3.72,2\\n1,800,3.7,1\\n0,340,2.92,3\\n1,520,3.74,2\\n1,480,2.67,2\\n0,520,2.85,3\\n0,500,2.98,3\\n0,720,3.88,3\\n0,540,3.38,4\\n1,600,3.54,1\\n0,740,3.74,4\\n0,540,3.19,2\\n0,460,3.15,4\\n1,620,3.17,2\\n0,640,2.79,2\\n0,580,3.4,2\\n0,500,3.08,3\\n0,560,2.95,2\\n0,500,3.57,3\\n0,560,3.33,4\\n0,700,4,3\\n0,620,3.4,2\\n1,600,3.58,1\\n0,640,3.93,2\\n1,700,3.52,4\\n0,620,3.94,4\\n0,580,3.4,3\\n0,580,3.4,4\\n0,380,3.43,3\\n0,480,3.4,2\\n0,560,2.71,3\\n1,480,2.91,1\\n0,740,3.31,1\\n1,800,3.74,1\\n0,400,3.38,2\\n1,640,3.94,2\\n0,580,3.46,3\\n0,620,3.69,3\\n1,580,2.86,4\\n0,560,2.52,2\\n1,480,3.58,1\\n0,660,3.49,2\\n0,700,3.82,3\\n0,600,3.13,2\\n0,640,3.5,2\\n1,700,3.56,2\\n0,520,2.73,2\\n0,580,3.3,2\\n0,700,4,1\\n0,440,3.24,4\\n0,720,3.77,3\\n0,500,4,3\\n0,600,3.62,3\\n0,400,3.51,3\\n0,540,2.81,3\\n0,680,3.48,3\\n1,800,3.43,2\\n0,500,3.53,4\\n1,620,3.37,2\\n0,520,2.62,2\\n1,620,3.23,3\\n0,620,3.33,3\\n0,300,3.01,3\\n0,620,3.78,3\\n0,500,3.88,4\\n0,700,4,2\\n1,540,3.84,2\\n0,500,2.79,4\\n0,800,3.6,2\\n0,560,3.61,3\\n0,580,2.88,2\\n0,560,3.07,2\\n0,500,3.35,2\\n1,640,2.94,2\\n0,800,3.54,3\\n0,640,3.76,3\\n0,380,3.59,4\\n1,600,3.47,2\\n0,560,3.59,2\\n0,660,3.07,3\\n1,400,3.23,4\\n0,600,3.63,3\\n0,580,3.77,4\\n0,800,3.31,3\\n1,580,3.2,2\\n1,700,4,1\\n0,420,3.92,4\\n1,600,3.89,1\\n1,780,3.8,3\\n0,740,3.54,1\\n1,640,3.63,1\\n0,540,3.16,3\\n0,580,3.5,2\\n0,740,3.34,4\\n0,580,3.02,2\\n0,460,2.87,2\\n0,640,3.38,3\\n1,600,3.56,2\\n1,660,2.91,3\\n0,340,2.9,1\\n1,460,3.64,1\\n0,460,2.98,1\\n1,560,3.59,2\\n0,540,3.28,3\\n0,680,3.99,3\\n1,480,3.02,1\\n0,800,3.47,3\\n0,800,2.9,2\\n1,720,3.5,3\\n0,620,3.58,2\\n0,540,3.02,4\\n0,480,3.43,2\\n1,720,3.42,2\\n0,580,3.29,4\\n0,600,3.28,3\\n0,380,3.38,2\\n0,420,2.67,3\\n1,800,3.53,1\\n0,620,3.05,2\\n1,660,3.49,2\\n0,480,4,2\\n0,500,2.86,4\\n0,700,3.45,3\\n0,440,2.76,2\\n1,520,3.81,1\\n1,680,2.96,3\\n0,620,3.22,2\\n0,540,3.04,1\\n0,800,3.91,3\\n0,680,3.34,2\\n0,440,3.17,2\\n0,680,3.64,3\\n0,640,3.73,3\\n0,660,3.31,4\\n0,620,3.21,4\\n1,520,4,2\\n1,540,3.55,4\\n1,740,3.52,4\\n0,640,3.35,3\\n1,520,3.3,2\\n1,620,3.95,3\\n0,520,3.51,2\\n0,640,3.81,2\\n0,680,3.11,2\\n0,440,3.15,2\\n1,520,3.19,3\\n1,620,3.95,3\\n1,520,3.9,3\\n0,380,3.34,3\\n0,560,3.24,4\\n1,600,3.64,3\\n1,680,3.46,2\\n0,500,2.81,3\\n1,640,3.95,2\\n0,540,3.33,3\\n1,680,3.67,2\\n0,660,3.32,1\\n0,520,3.12,2\\n1,600,2.98,2\\n0,460,3.77,3\\n1,580,3.58,1\\n1,680,3,4\\n1,660,3.14,2\\n0,660,3.94,2\\n0,360,3.27,3\\n0,660,3.45,4\\n0,520,3.1,4\\n1,440,3.39,2\\n0,600,3.31,4\\n1,800,3.22,1\\n1,660,3.7,4\\n0,800,3.15,4\\n0,420,2.26,4\\n1,620,3.45,2\\n0,800,2.78,2\\n0,680,3.7,2\\n0,800,3.97,1\\n0,480,2.55,1\\n0,520,3.25,3\\n0,560,3.16,1\\n0,460,3.07,2\\n0,540,3.5,2\\n0,720,3.4,3\\n0,640,3.3,2\\n1,660,3.6,3\\n1,400,3.15,2\\n1,680,3.98,2\\n0,220,2.83,3\\n0,580,3.46,4\\n1,540,3.17,1\\n0,580,3.51,2\\n0,540,3.13,2\\n0,440,2.98,3\\n0,560,4,3\\n0,660,3.67,2\\n0,660,3.77,3\\n1,520,3.65,4\\n0,540,3.46,4\\n1,300,2.84,2\\n1,340,3,2\\n1,780,3.63,4\\n1,480,3.71,4\\n0,540,3.28,1\\n0,460,3.14,3\\n0,460,3.58,2\\n0,500,3.01,4\\n0,420,2.69,2\\n0,520,2.7,3\\n0,680,3.9,1\\n0,680,3.31,2\\n1,560,3.48,2\\n0,580,3.34,2\\n0,500,2.93,4\\n0,740,4,3\\n0,660,3.59,3\\n0,420,2.96,1\\n0,560,3.43,3\\n1,460,3.64,3\\n1,620,3.71,1\\n0,520,3.15,3\\n0,620,3.09,4\\n0,540,3.2,1\\n1,660,3.47,3\\n0,500,3.23,4\\n1,560,2.65,3\\n0,500,3.95,4\\n0,580,3.06,2\\n0,520,3.35,3\\n0,500,3.03,3\\n0,600,3.35,2\\n0,580,3.8,2\\n0,400,3.36,2\\n0,620,2.85,2\\n1,780,4,2\\n0,620,3.43,3\\n1,580,3.12,3\\n0,700,3.52,2\\n1,540,3.78,2\\n1,760,2.81,1\\n0,700,3.27,2\\n0,720,3.31,1\\n1,560,3.69,3\\n0,720,3.94,3\\n1,520,4,1\\n1,540,3.49,1\\n0,680,3.14,2\\n0,460,3.44,2\\n1,560,3.36,1\\n0,480,2.78,3\\n0,460,2.93,3\\n0,620,3.63,3\\n0,580,4,1\\n0,800,3.89,2\\n1,540,3.77,2\\n1,680,3.76,3\\n1,680,2.42,1\\n1,620,3.37,1\\n0,560,3.78,2\\n0,560,3.49,4\\n0,620,3.63,2\\n1,800,4,2\\n0,640,3.12,3\\n0,540,2.7,2\\n0,700,3.65,2\\n1,540,3.49,2\\n0,540,3.51,2\\n0,660,4,1\\n1,480,2.62,2\\n0,420,3.02,1\\n1,740,3.86,2\\n0,580,3.36,2\\n0,640,3.17,2\\n0,640,3.51,2\\n1,800,3.05,2\\n1,660,3.88,2\\n1,600,3.38,3\\n1,620,3.75,2\\n1,460,3.99,3\\n0,620,4,2\\n0,560,3.04,3\\n0,460,2.63,2\\n0,700,3.65,2\\n0,600,3.89,3\\n\",\"solution.py\":\"import numpy as np\\nfrom data_prep import features, targets, features_test, targets_test\\n\\n\\ndef sigmoid(x):\\n    \\\"\\\"\\\"\\n    Calculate sigmoid\\n    \\\"\\\"\\\"\\n    return 1 / (1 + np.exp(-x))\\n\\n# TODO: We haven't provided the sigmoid_prime function like we did in\\n#       the previous lesson to encourage you to come up with a more\\n#       efficient solution. If you need a hint, check out the comments\\n#       in solution.py from the previous lecture.\\n\\n# Use to same seed to make debugging easier\\nnp.random.seed(42)\\n\\nn_records, n_features = features.shape\\nlast_loss = None\\n\\n# Initialize weights\\nweights = np.random.normal(scale=1 / n_features**.5, size=n_features)\\n\\n# Neural Network hyperparameters\\nepochs = 1000\\nlearnrate = 0.5\\n\\nfor e in range(epochs):\\n    del_w = np.zeros(weights.shape)\\n    for x, y in zip(features.values, targets):\\n        # Loop through all records, x is the input, y is the target\\n\\n        # Activation of the output unit\\n        #   Notice we multiply the inputs and the weights here \\n        #   rather than storing h as a separate variable \\n        output = sigmoid(np.dot(x, weights))\\n\\n        # The error, the target minus the network output\\n        error = y - output\\n\\n        # The error term\\n        #   Notice we calulate f'(h) here instead of defining a separate\\n        #   sigmoid_prime function. This just makes it faster because we\\n        #   can re-use the result of the sigmoid function stored in\\n        #   the output variable\\n        error_term = error * output * (1 - output)\\n\\n        # The gradient descent step, the error times the gradient times the inputs\\n        del_w += error_term * x\\n\\n    # Update the weights here. The learning rate times the \\n    # change in weights, divided by the number of records to average\\n    weights += learnrate * del_w / n_records\\n\\n    # Printing out the mean square error on the training set\\n    if e % (epochs / 10) == 0:\\n        out = sigmoid(np.dot(features, weights))\\n        loss = np.mean((out - targets) ** 2)\\n        if last_loss and last_loss < loss:\\n            print(\\\"Train loss: \\\", loss, \\\"  WARNING - Loss Increasing\\\")\\n        else:\\n            print(\\\"Train loss: \\\", loss)\\n        last_loss = loss\\n\\n\\n# Calculate accuracy on test data\\ntes_out = sigmoid(np.dot(features_test, weights))\\npredictions = tes_out > 0.5\\naccuracy = np.mean(predictions == targets_test)\\nprint(\\\"Prediction accuracy: {:.3f}\\\".format(accuracy))\"}"
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5642657712963584",
+                "initial_code_files": [
+                  {
+                    "text": "import numpy as np\nfrom data_prep import features, targets, features_test, targets_test\n\n\ndef sigmoid(x):\n    \"\"\"\n    Calculate sigmoid\n    \"\"\"\n    return 1 / (1 + np.exp(-x))\n\n# TODO: We haven't provided the sigmoid_prime function like we did in\n#       the previous lesson to encourage you to come up with a more\n#       efficient solution. If you need a hint, check out the comments\n#       in solution.py from the previous lecture.\n\n# Use to same seed to make debugging easier\nnp.random.seed(42)\n\nn_records, n_features = features.shape\nlast_loss = None\n\n# Initialize weights\nweights = np.random.normal(scale=1 / n_features**.5, size=n_features)\n\n# Neural Network hyperparameters\nepochs = 1000\nlearnrate = 0.5\n\nfor e in range(epochs):\n    del_w = np.zeros(weights.shape)\n    for x, y in zip(features.values, targets):\n        # Loop through all records, x is the input, y is the target\n\n        # Note: We haven't included the h variable from the previous\n        #       lesson. You can add it if you want, or you can calculate\n        #       the h together with the output\n\n        # TODO: Calculate the output\n        output = None\n\n        # TODO: Calculate the error\n        error = None\n\n        # TODO: Calculate the error term\n        error_term = None\n\n        # TODO: Calculate the change in weights for this sample\n        #       and add it to the total weight change\n        del_w += 0\n\n    # TODO: Update weights using the learning rate and the average change in weights\n    weights += 0\n\n    # Printing out the mean square error on the training set\n    if e % (epochs / 10) == 0:\n        out = sigmoid(np.dot(features, weights))\n        loss = np.mean((out - targets) ** 2)\n        if last_loss and last_loss < loss:\n            print(\"Train loss: \", loss, \"  WARNING - Loss Increasing\")\n        else:\n            print(\"Train loss: \", loss)\n        last_loss = loss\n\n\n# Calculate accuracy on test data\ntes_out = sigmoid(np.dot(features_test, weights))\npredictions = tes_out > 0.5\naccuracy = np.mean(predictions == targets_test)\nprint(\"Prediction accuracy: {:.3f}\".format(accuracy))",
+                    "name": "gradient.py"
+                  },
+                  {
+                    "text": "import numpy as np\nimport pandas as pd\n\nadmissions = pd.read_csv('binary.csv')\n\n# Make dummy variables for rank\ndata = pd.concat([admissions, pd.get_dummies(admissions['rank'], prefix='rank')], axis=1)\ndata = data.drop('rank', axis=1)\n\n# Standarize features\nfor field in ['gre', 'gpa']:\n    mean, std = data[field].mean(), data[field].std()\n    data.loc[:,field] = (data[field]-mean)/std\n    \n# Split off random 10% of the data for testing\nnp.random.seed(42)\nsample = np.random.choice(data.index, size=int(len(data)*0.9), replace=False)\ndata, test_data = data.ix[sample], data.drop(sample)\n\n# Split into features and targets\nfeatures, targets = data.drop('admit', axis=1), data['admit']\nfeatures_test, targets_test = test_data.drop('admit', axis=1), test_data['admit']",
+                    "name": "data_prep.py"
+                  },
+                  {
+                    "text": "admit,gre,gpa,rank\n0,380,3.61,3\n1,660,3.67,3\n1,800,4,1\n1,640,3.19,4\n0,520,2.93,4\n1,760,3,2\n1,560,2.98,1\n0,400,3.08,2\n1,540,3.39,3\n0,700,3.92,2\n0,800,4,4\n0,440,3.22,1\n1,760,4,1\n0,700,3.08,2\n1,700,4,1\n0,480,3.44,3\n0,780,3.87,4\n0,360,2.56,3\n0,800,3.75,2\n1,540,3.81,1\n0,500,3.17,3\n1,660,3.63,2\n0,600,2.82,4\n0,680,3.19,4\n1,760,3.35,2\n1,800,3.66,1\n1,620,3.61,1\n1,520,3.74,4\n1,780,3.22,2\n0,520,3.29,1\n0,540,3.78,4\n0,760,3.35,3\n0,600,3.4,3\n1,800,4,3\n0,360,3.14,1\n0,400,3.05,2\n0,580,3.25,1\n0,520,2.9,3\n1,500,3.13,2\n1,520,2.68,3\n0,560,2.42,2\n1,580,3.32,2\n1,600,3.15,2\n0,500,3.31,3\n0,700,2.94,2\n1,460,3.45,3\n1,580,3.46,2\n0,500,2.97,4\n0,440,2.48,4\n0,400,3.35,3\n0,640,3.86,3\n0,440,3.13,4\n0,740,3.37,4\n1,680,3.27,2\n0,660,3.34,3\n1,740,4,3\n0,560,3.19,3\n0,380,2.94,3\n0,400,3.65,2\n0,600,2.82,4\n1,620,3.18,2\n0,560,3.32,4\n0,640,3.67,3\n1,680,3.85,3\n0,580,4,3\n0,600,3.59,2\n0,740,3.62,4\n0,620,3.3,1\n0,580,3.69,1\n0,800,3.73,1\n0,640,4,3\n0,300,2.92,4\n0,480,3.39,4\n0,580,4,2\n0,720,3.45,4\n0,720,4,3\n0,560,3.36,3\n1,800,4,3\n0,540,3.12,1\n1,620,4,1\n0,700,2.9,4\n0,620,3.07,2\n0,500,2.71,2\n0,380,2.91,4\n1,500,3.6,3\n0,520,2.98,2\n0,600,3.32,2\n0,600,3.48,2\n0,700,3.28,1\n1,660,4,2\n0,700,3.83,2\n1,720,3.64,1\n0,800,3.9,2\n0,580,2.93,2\n1,660,3.44,2\n0,660,3.33,2\n0,640,3.52,4\n0,480,3.57,2\n0,700,2.88,2\n0,400,3.31,3\n0,340,3.15,3\n0,580,3.57,3\n0,380,3.33,4\n0,540,3.94,3\n1,660,3.95,2\n1,740,2.97,2\n1,700,3.56,1\n0,480,3.13,2\n0,400,2.93,3\n0,480,3.45,2\n0,680,3.08,4\n0,420,3.41,4\n0,360,3,3\n0,600,3.22,1\n0,720,3.84,3\n0,620,3.99,3\n1,440,3.45,2\n0,700,3.72,2\n1,800,3.7,1\n0,340,2.92,3\n1,520,3.74,2\n1,480,2.67,2\n0,520,2.85,3\n0,500,2.98,3\n0,720,3.88,3\n0,540,3.38,4\n1,600,3.54,1\n0,740,3.74,4\n0,540,3.19,2\n0,460,3.15,4\n1,620,3.17,2\n0,640,2.79,2\n0,580,3.4,2\n0,500,3.08,3\n0,560,2.95,2\n0,500,3.57,3\n0,560,3.33,4\n0,700,4,3\n0,620,3.4,2\n1,600,3.58,1\n0,640,3.93,2\n1,700,3.52,4\n0,620,3.94,4\n0,580,3.4,3\n0,580,3.4,4\n0,380,3.43,3\n0,480,3.4,2\n0,560,2.71,3\n1,480,2.91,1\n0,740,3.31,1\n1,800,3.74,1\n0,400,3.38,2\n1,640,3.94,2\n0,580,3.46,3\n0,620,3.69,3\n1,580,2.86,4\n0,560,2.52,2\n1,480,3.58,1\n0,660,3.49,2\n0,700,3.82,3\n0,600,3.13,2\n0,640,3.5,2\n1,700,3.56,2\n0,520,2.73,2\n0,580,3.3,2\n0,700,4,1\n0,440,3.24,4\n0,720,3.77,3\n0,500,4,3\n0,600,3.62,3\n0,400,3.51,3\n0,540,2.81,3\n0,680,3.48,3\n1,800,3.43,2\n0,500,3.53,4\n1,620,3.37,2\n0,520,2.62,2\n1,620,3.23,3\n0,620,3.33,3\n0,300,3.01,3\n0,620,3.78,3\n0,500,3.88,4\n0,700,4,2\n1,540,3.84,2\n0,500,2.79,4\n0,800,3.6,2\n0,560,3.61,3\n0,580,2.88,2\n0,560,3.07,2\n0,500,3.35,2\n1,640,2.94,2\n0,800,3.54,3\n0,640,3.76,3\n0,380,3.59,4\n1,600,3.47,2\n0,560,3.59,2\n0,660,3.07,3\n1,400,3.23,4\n0,600,3.63,3\n0,580,3.77,4\n0,800,3.31,3\n1,580,3.2,2\n1,700,4,1\n0,420,3.92,4\n1,600,3.89,1\n1,780,3.8,3\n0,740,3.54,1\n1,640,3.63,1\n0,540,3.16,3\n0,580,3.5,2\n0,740,3.34,4\n0,580,3.02,2\n0,460,2.87,2\n0,640,3.38,3\n1,600,3.56,2\n1,660,2.91,3\n0,340,2.9,1\n1,460,3.64,1\n0,460,2.98,1\n1,560,3.59,2\n0,540,3.28,3\n0,680,3.99,3\n1,480,3.02,1\n0,800,3.47,3\n0,800,2.9,2\n1,720,3.5,3\n0,620,3.58,2\n0,540,3.02,4\n0,480,3.43,2\n1,720,3.42,2\n0,580,3.29,4\n0,600,3.28,3\n0,380,3.38,2\n0,420,2.67,3\n1,800,3.53,1\n0,620,3.05,2\n1,660,3.49,2\n0,480,4,2\n0,500,2.86,4\n0,700,3.45,3\n0,440,2.76,2\n1,520,3.81,1\n1,680,2.96,3\n0,620,3.22,2\n0,540,3.04,1\n0,800,3.91,3\n0,680,3.34,2\n0,440,3.17,2\n0,680,3.64,3\n0,640,3.73,3\n0,660,3.31,4\n0,620,3.21,4\n1,520,4,2\n1,540,3.55,4\n1,740,3.52,4\n0,640,3.35,3\n1,520,3.3,2\n1,620,3.95,3\n0,520,3.51,2\n0,640,3.81,2\n0,680,3.11,2\n0,440,3.15,2\n1,520,3.19,3\n1,620,3.95,3\n1,520,3.9,3\n0,380,3.34,3\n0,560,3.24,4\n1,600,3.64,3\n1,680,3.46,2\n0,500,2.81,3\n1,640,3.95,2\n0,540,3.33,3\n1,680,3.67,2\n0,660,3.32,1\n0,520,3.12,2\n1,600,2.98,2\n0,460,3.77,3\n1,580,3.58,1\n1,680,3,4\n1,660,3.14,2\n0,660,3.94,2\n0,360,3.27,3\n0,660,3.45,4\n0,520,3.1,4\n1,440,3.39,2\n0,600,3.31,4\n1,800,3.22,1\n1,660,3.7,4\n0,800,3.15,4\n0,420,2.26,4\n1,620,3.45,2\n0,800,2.78,2\n0,680,3.7,2\n0,800,3.97,1\n0,480,2.55,1\n0,520,3.25,3\n0,560,3.16,1\n0,460,3.07,2\n0,540,3.5,2\n0,720,3.4,3\n0,640,3.3,2\n1,660,3.6,3\n1,400,3.15,2\n1,680,3.98,2\n0,220,2.83,3\n0,580,3.46,4\n1,540,3.17,1\n0,580,3.51,2\n0,540,3.13,2\n0,440,2.98,3\n0,560,4,3\n0,660,3.67,2\n0,660,3.77,3\n1,520,3.65,4\n0,540,3.46,4\n1,300,2.84,2\n1,340,3,2\n1,780,3.63,4\n1,480,3.71,4\n0,540,3.28,1\n0,460,3.14,3\n0,460,3.58,2\n0,500,3.01,4\n0,420,2.69,2\n0,520,2.7,3\n0,680,3.9,1\n0,680,3.31,2\n1,560,3.48,2\n0,580,3.34,2\n0,500,2.93,4\n0,740,4,3\n0,660,3.59,3\n0,420,2.96,1\n0,560,3.43,3\n1,460,3.64,3\n1,620,3.71,1\n0,520,3.15,3\n0,620,3.09,4\n0,540,3.2,1\n1,660,3.47,3\n0,500,3.23,4\n1,560,2.65,3\n0,500,3.95,4\n0,580,3.06,2\n0,520,3.35,3\n0,500,3.03,3\n0,600,3.35,2\n0,580,3.8,2\n0,400,3.36,2\n0,620,2.85,2\n1,780,4,2\n0,620,3.43,3\n1,580,3.12,3\n0,700,3.52,2\n1,540,3.78,2\n1,760,2.81,1\n0,700,3.27,2\n0,720,3.31,1\n1,560,3.69,3\n0,720,3.94,3\n1,520,4,1\n1,540,3.49,1\n0,680,3.14,2\n0,460,3.44,2\n1,560,3.36,1\n0,480,2.78,3\n0,460,2.93,3\n0,620,3.63,3\n0,580,4,1\n0,800,3.89,2\n1,540,3.77,2\n1,680,3.76,3\n1,680,2.42,1\n1,620,3.37,1\n0,560,3.78,2\n0,560,3.49,4\n0,620,3.63,2\n1,800,4,2\n0,640,3.12,3\n0,540,2.7,2\n0,700,3.65,2\n1,540,3.49,2\n0,540,3.51,2\n0,660,4,1\n1,480,2.62,2\n0,420,3.02,1\n1,740,3.86,2\n0,580,3.36,2\n0,640,3.17,2\n0,640,3.51,2\n1,800,3.05,2\n1,660,3.88,2\n1,600,3.38,3\n1,620,3.75,2\n1,460,3.99,3\n0,620,4,2\n0,560,3.04,3\n0,460,2.63,2\n0,700,3.65,2\n0,600,3.89,3\n",
+                    "name": "binary.csv"
+                  },
+                  {
+                    "text": "import numpy as np\nfrom data_prep import features, targets, features_test, targets_test\n\n\ndef sigmoid(x):\n    \"\"\"\n    Calculate sigmoid\n    \"\"\"\n    return 1 / (1 + np.exp(-x))\n\n# TODO: We haven't provided the sigmoid_prime function like we did in\n#       the previous lesson to encourage you to come up with a more\n#       efficient solution. If you need a hint, check out the comments\n#       in solution.py from the previous lecture.\n\n# Use to same seed to make debugging easier\nnp.random.seed(42)\n\nn_records, n_features = features.shape\nlast_loss = None\n\n# Initialize weights\nweights = np.random.normal(scale=1 / n_features**.5, size=n_features)\n\n# Neural Network hyperparameters\nepochs = 1000\nlearnrate = 0.5\n\nfor e in range(epochs):\n    del_w = np.zeros(weights.shape)\n    for x, y in zip(features.values, targets):\n        # Loop through all records, x is the input, y is the target\n\n        # Activation of the output unit\n        #   Notice we multiply the inputs and the weights here \n        #   rather than storing h as a separate variable \n        output = sigmoid(np.dot(x, weights))\n\n        # The error, the target minus the network output\n        error = y - output\n\n        # The error term\n        #   Notice we calulate f'(h) here instead of defining a separate\n        #   sigmoid_prime function. This just makes it faster because we\n        #   can re-use the result of the sigmoid function stored in\n        #   the output variable\n        error_term = error * output * (1 - output)\n\n        # The gradient descent step, the error times the gradient times the inputs\n        del_w += error_term * x\n\n    # Update the weights here. The learning rate times the \n    # change in weights, divided by the number of records to average\n    weights += learnrate * del_w / n_records\n\n    # Printing out the mean square error on the training set\n    if e % (epochs / 10) == 0:\n        out = sigmoid(np.dot(features, weights))\n        loss = np.mean((out - targets) ** 2)\n        if last_loss and last_loss < loss:\n            print(\"Train loss: \", loss, \"  WARNING - Loss Increasing\")\n        else:\n            print(\"Train loss: \", loss)\n        last_loss = loss\n\n\n# Calculate accuracy on test data\ntes_out = sigmoid(np.dot(features_test, weights))\npredictions = tes_out > 0.5\naccuracy = np.mean(predictions == targets_test)\nprint(\"Prediction accuracy: {:.3f}\".format(accuracy))",
+                    "name": "solution.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 256144,
+          "key": "7d0a1958-be25-4efb-ab81-360d9aa4f764",
+          "title": "Multilayer Perceptrons",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7d0a1958-be25-4efb-ab81-360d9aa4f764",
+            "completed_at": "2020-04-18T20:22:15.706Z",
+            "last_viewed_at": "2020-04-19T01:26:24.633Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 258949,
+              "key": "72c1fa53-ceb8-4993-afee-e5f0090aa42f",
+              "title": "Multilayer perceptrons",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Rs9petvTBLk",
+                "china_cdn_id": "Rs9petvTBLk.mp4"
+              }
+            },
+            {
+              "id": 258861,
+              "key": "081ade49-ba2f-447c-9ecf-f3e36efe1255",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Implementing the hidden layer\n\n##### Prerequisites\n\nBelow, we are going to walk through the math of neural networks in a multilayer perceptron. With multiple perceptrons, we are going to move to using vectors and matrices. To brush up, be sure to view the following:\n\n1. Khan Academy's [introduction to vectors](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/vectors/v/vector-introduction-linear-algebra).\n2. Khan Academy's [introduction to matrices](https://www.khanacademy.org/math/precalculus/precalc-matrices).\n\n##### Derivation\n\nBefore, we were dealing with only one output node which made the code straightforward. However now that we have multiple input units and multiple hidden units, the weights between them will require two indices: <span class='mathquill'> w_{ij} </span> where <span class='mathquill'>i</span> denotes input units and <span class='mathquill'>j</span> are the hidden units.\n\nFor example, the following image shows our network, with its input units labeled <span class='mathquill'>x_1, x_2,</span> and <span class='mathquill'>x_3</span>, and its hidden nodes labeled <span class='mathquill'>h_1</span> and <span class='mathquill'>h_2</span>:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 263479,
+              "key": "c22ee73f-ff58-47da-a248-e319cbb046d2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/589973b5_network-with-labeled-nodes/network-with-labeled-nodes.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c22ee73f-ff58-47da-a248-e319cbb046d2",
+              "caption": "",
+              "alt": null,
+              "width": 900,
+              "height": 900,
+              "instructor_notes": null
+            },
+            {
+              "id": 263483,
+              "key": "c0ba1b48-b7c8-4b7f-b0ab-8522eee3904b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The lines indicating the weights leading to <span class='mathquill'>h_1</span> have been colored differently from those leading to <span class='mathquill'>h_2</span> just to make it easier to read.\n\nNow to index the weights, we take the input unit number for the <span class='mathquill'>_i</span> and the hidden unit number for the <span class='mathquill'>_j.</span>  That gives us \n\n<span class='mathquill'>w_{11}</span>\n\nfor the weight leading from <span class='mathquill'>x_1</span> to <span class='mathquill'>h_1</span>, and \n\n<span class='mathquill'>w_{12}</span>\n\nfor the weight leading from <span class='mathquill'>x_1</span> to <span class='mathquill'>h_2</span>.\n\nThe following image includes all of the weights between the input layer and the hidden layer, labeled with their appropriate <span class='mathquill'>w_{ij}</span> indices:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 263484,
+              "key": "ee96afdd-a46e-4be6-b6b2-39fc9c8ff2b5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/589978f4_network-with-labeled-weights/network-with-labeled-weights.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ee96afdd-a46e-4be6-b6b2-39fc9c8ff2b5",
+              "caption": "",
+              "alt": null,
+              "width": 900,
+              "height": 900,
+              "instructor_notes": null
+            },
+            {
+              "id": 263485,
+              "key": "6e77b896-943f-4bbb-a341-3ea6e419995d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Before, we were able to write the weights as an array, indexed as <span class='mathquill'>w_i</span>. \n\nBut now, the weights need to be stored in a **matrix**, indexed as <span class='mathquill'>w_{ij}</span>. Each **row** in the matrix will correspond to the weights **leading out** of a **single input unit**, and each **column** will correspond to the weights **leading in** to a **single hidden unit**. For our three input units and two hidden units, the weights matrix looks like this:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266709,
+              "key": "6f15956b-0cf5-4c07-a7b0-db1c8db26653",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a49908_multilayer-diagram-weights/multilayer-diagram-weights.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6f15956b-0cf5-4c07-a7b0-db1c8db26653",
+              "caption": "Weights matrix for 3 input units and 2 hidden units",
+              "alt": null,
+              "width": 600,
+              "height": 284,
+              "instructor_notes": null
+            },
+            {
+              "id": 258867,
+              "key": "160619aa-5f6d-4401-88a6-8e3ddf42533c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Be sure to compare the matrix above with the diagram shown before it so you can see where the different weights in the network end up in the matrix.\n\nTo initialize these weights in NumPy, we have to provide the shape of the matrix. If `features` is a 2D array containing the input data:\n\n```python\n# Number of records and input units\nn_records, n_inputs = features.shape\n# Number of hidden units\nn_hidden = 2\nweights_input_to_hidden = np.random.normal(0, n_inputs**-0.5, size=(n_inputs, n_hidden))\n```\n\nThis creates a 2D array (i.e. a matrix) named `weights_input_to_hidden` with dimensions `n_inputs` by `n_hidden`. Remember how the input to a hidden unit is the sum of all the inputs multiplied by the hidden unit's weights. So for each hidden layer unit, <span class='mathquill'>h_j</span>, we need to calculate the following:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 263464,
+              "key": "74bfbba1-1195-4e67-b3ce-0ed3e3f78f38",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/589958d5_hidden-layer-weights/hidden-layer-weights.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/74bfbba1-1195-4e67-b3ce-0ed3e3f78f38",
+              "caption": "",
+              "alt": null,
+              "width": 220,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 258872,
+              "key": "4434399b-e95e-4c56-9d44-a6254f2fd107",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To do that, we now need to use [matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication). If your linear algebra is rusty, I suggest taking a look at the suggested resources in the prerequisites section. For this part though, you'll only need to know how to multiply a matrix with a vector.\n\nIn this case, we're multiplying the inputs (a row vector here) by the weights. To do this, you take the dot (inner) product of the inputs with each column in the weights matrix. For example, to calculate the input to the first hidden unit, <span class='mathquill'>j = 1</span>, you'd take the dot product of the inputs with the first column of the weights matrix, like so:\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261453,
+              "key": "82fcbaec-580b-42d1-b862-f18b3eae3c14",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/58895788_input-times-weights/input-times-weights.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/82fcbaec-580b-42d1-b862-f18b3eae3c14",
+              "caption": "Calculating the input to the first hidden unit with the first column of the weights matrix. ",
+              "alt": null,
+              "width": 623,
+              "height": 529,
+              "instructor_notes": null
+            },
+            {
+              "id": 262199,
+              "key": "94726d0f-6454-44b5-bb3c-6611d1f60966",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/588ae392_codecogseqn-2/codecogseqn-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/94726d0f-6454-44b5-bb3c-6611d1f60966",
+              "caption": "",
+              "alt": null,
+              "width": 400,
+              "height": 30,
+              "instructor_notes": null
+            },
+            {
+              "id": 258875,
+              "key": "1cb8d777-67f1-426d-b080-b99971b0d828",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "And for the second hidden layer input, you calculate the dot product of the inputs with the second column. And so on and so forth.\n\nIn NumPy, you can do this for all the inputs and all the outputs at once using `np.dot`\n\n```python\nhidden_inputs = np.dot(inputs, weights_input_to_hidden)\n```\n\nYou could also define your weights matrix such that it has dimensions `n_hidden` by `n_inputs` then multiply like so where the inputs form a *column vector*:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262225,
+              "key": "b0d94818-c8f0-4c81-a573-d5fbf775220c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/588b7c74_inputs-matrix/inputs-matrix.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b0d94818-c8f0-4c81-a573-d5fbf775220c",
+              "caption": "",
+              "alt": null,
+              "width": 621,
+              "height": 179,
+              "instructor_notes": null
+            },
+            {
+              "id": 263711,
+              "key": "242b8f65-e895-4a5b-832e-5dcb4de92f56",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Note:** The weight indices have changed in the above image and no longer match up with the labels used in the earlier diagrams. That's because, in matrix notation, the row index always precedes the column index, so it would be misleading to label them the way we did in the neural net diagram. Just keep in mind that this is the same weight matrix as before, but rotated so the first column is now the first row, and the second column is now the second row. If we *were* to use the labels from the earlier diagram, the weights would fit into the matrix in the following locations:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 263712,
+              "key": "06d40e12-57c1-4a5a-b697-c00eb1d22bd1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/589acab9_weight-label-reference/weight-label-reference.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/06d40e12-57c1-4a5a-b697-c00eb1d22bd1",
+              "caption": "Weight matrix shown with labels matching earlier diagrams.",
+              "alt": null,
+              "width": 328,
+              "height": 120,
+              "instructor_notes": null
+            },
+            {
+              "id": 263714,
+              "key": "10b641b0-0708-4128-b712-c1fc5a365cf5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Remember, the above is **not** a correct view of the **indices**, but it uses the labels from the earlier neural net diagrams to show you where each weight ends up in the matrix.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 258878,
+              "key": "0285eae5-af54-4cfd-a611-8a9553550c2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The important thing with matrix multiplication is that *the dimensions match*. For matrix multiplication to work, there has to be the same number of elements in the dot products. In the first example, there are three columns in the input vector, and three rows in the weights matrix. In the second example, there are three columns in the weights matrix and three rows in the input vector. If the dimensions don't match, you'll get this:\n\n```python\n# Same weights and features as above, but swapped the order\nhidden_inputs = np.dot(weights_input_to_hidden, features)\n---------------------------------------------------------------------------\nValueError                                Traceback (most recent call last)\n<ipython-input-11-1bfa0f615c45> in <module>()\n----> 1 hidden_in = np.dot(weights_input_to_hidden, X)\n\nValueError: shapes (3,2) and (3,) not aligned: 2 (dim 1) != 3 (dim 0)\n```\nThe dot product can't be computed for a 3x2 matrix and 3-element array.  That's because the 2 columns in the matrix don't match the number of elements in the array.  Some of the dimensions that could work would be the following:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262784,
+              "key": "72b656f0-00d7-4750-a182-0b354d1d9705",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58924a8d_matrix-mult-3/matrix-mult-3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/72b656f0-00d7-4750-a182-0b354d1d9705",
+              "caption": "",
+              "alt": null,
+              "width": 804,
+              "height": 870,
+              "instructor_notes": null
+            },
+            {
+              "id": 262425,
+              "key": "8937be23-6ae3-4e19-8a72-e26a79f0cace",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The rule is that if you're multiplying an array from the left, the array must have the same number of elements as there are rows in the matrix. And if you're multiplying the *matrix* from the left, the number of columns in the matrix must equal the number of elements in the array on the right.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 258879,
+              "key": "44aaa4c0-84cd-45f3-bc76-f56c9869f0f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Making a column vector\n\nYou see above that sometimes you'll want a column vector, even though by default NumPy arrays work like row vectors. It's possible to get the transpose of an array like so `arr.T`, but for a 1D array, the transpose will return a row vector. Instead, use `arr[:,None]` to create a column vector:\n\n```python\n\nprint(features)\n> array([ 0.49671415, -0.1382643 ,  0.64768854])\n\nprint(features.T)\n> array([ 0.49671415, -0.1382643 ,  0.64768854])\n\nprint(features[:, None])\n> array([[ 0.49671415],\n       [-0.1382643 ],\n       [ 0.64768854]])\n```\n\nAlternatively, you can create arrays with two dimensions. Then, you can use `arr.T` to get the column vector.\n\n```python\n\nnp.array(features, ndmin=2)\n> array([[ 0.49671415, -0.1382643 ,  0.64768854]])\n\nnp.array(features, ndmin=2).T\n> array([[ 0.49671415],\n       [-0.1382643 ],\n       [ 0.64768854]])\n```\n\nI personally prefer keeping all vectors as 1D arrays, it just works better in my head.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 258880,
+              "key": "df21b814-d669-4532-bbd0-68f87c90ba48",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Programming quiz\n\nBelow, you'll implement a forward pass through a 4x3x2 network, with sigmoid activation functions for both layers.\n\nThings to do:\n* Calculate the input to the hidden layer.\n* Calculate the hidden layer output.\n* Calculate the input to the output layer.\n* Calculate the output of the network.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256165,
+              "key": "764bff31-8ce4-4f03-9181-33e5f8e126ee",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "764bff31-8ce4-4f03-9181-33e5f8e126ee",
+                "completed_at": "2020-04-18T23:05:34.683Z",
+                "last_viewed_at": "2020-04-18T23:05:55.161Z",
+                "unstructured": "{\"multilayer.py\":\"import numpy as np\\n\\ndef sigmoid(x):\\n    \\\"\\\"\\\"\\n    Calculate sigmoid\\n    \\\"\\\"\\\"\\n    return 1/(1+np.exp(-x))\\n\\n# Network size\\nN_input = 4\\nN_hidden = 3\\nN_output = 2\\n\\nnp.random.seed(42)\\n# Make some fake data\\nX = np.random.randn(4)\\n\\nweights_input_to_hidden = np.random.normal(0, scale=0.1, size=(N_input, N_hidden))\\nweights_hidden_to_output = np.random.normal(0, scale=0.1, size=(N_hidden, N_output))\\n\\n\\n# TODO: Make a forward pass through the network\\n\\nhidden_layer_in = np.dot(X, weights_input_to_hidden)\\nhidden_layer_out = sigmoid(hidden_layer_in) \\n\\nprint('Hidden-layer Output:')\\nprint(hidden_layer_out)\\n\\noutput_layer_in = np.dot(hidden_layer_out, weights_hidden_to_output)\\noutput_layer_out = sigmoid(output_layer_in)\\n\\nprint('Output-layer Output:')\\nprint(output_layer_out)\",\"solution.py\":\"import numpy as np\\n\\ndef sigmoid(x):\\n    \\\"\\\"\\\"\\n    Calculate sigmoid\\n    \\\"\\\"\\\"\\n    return 1/(1+np.exp(-x))\\n\\n# Network size\\nN_input = 4\\nN_hidden = 3\\nN_output = 2\\n\\nnp.random.seed(42)\\n# Make some fake data\\nX = np.random.randn(4)\\n\\nweights_input_to_hidden = np.random.normal(0, scale=0.1, size=(N_input, N_hidden))\\nweights_hidden_to_output = np.random.normal(0, scale=0.1, size=(N_hidden, N_output))\\n\\n\\n# TODO: Make a forward pass through the network\\n\\nhidden_layer_in = np.dot(X, weights_input_to_hidden)\\nhidden_layer_out = sigmoid(hidden_layer_in)\\n\\nprint('Hidden-layer Output:')\\nprint(hidden_layer_out)\\n\\noutput_layer_in = np.dot(hidden_layer_out, weights_hidden_to_output)\\noutput_layer_out = sigmoid(output_layer_in)\\n\\nprint('Output-layer Output:')\\nprint(output_layer_out)\"}"
+              },
+              "instruction": null,
+              "question": {
+                "title": "Multilayer perceptron",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5526341140217856",
+                "initial_code_files": [
+                  {
+                    "text": "import numpy as np\n\ndef sigmoid(x):\n    \"\"\"\n    Calculate sigmoid\n    \"\"\"\n    return 1/(1+np.exp(-x))\n\n# Network size\nN_input = 4\nN_hidden = 3\nN_output = 2\n\nnp.random.seed(42)\n# Make some fake data\nX = np.random.randn(4)\n\nweights_input_to_hidden = np.random.normal(0, scale=0.1, size=(N_input, N_hidden))\nweights_hidden_to_output = np.random.normal(0, scale=0.1, size=(N_hidden, N_output))\n\n\n# TODO: Make a forward pass through the network\n\nhidden_layer_in = None\nhidden_layer_out = None\n\nprint('Hidden-layer Output:')\nprint(hidden_layer_out)\n\noutput_layer_in = None\noutput_layer_out = None\n\nprint('Output-layer Output:')\nprint(output_layer_out)",
+                    "name": "multilayer.py"
+                  },
+                  {
+                    "text": "import numpy as np\n\ndef sigmoid(x):\n    \"\"\"\n    Calculate sigmoid\n    \"\"\"\n    return 1/(1+np.exp(-x))\n\n# Network size\nN_input = 4\nN_hidden = 3\nN_output = 2\n\nnp.random.seed(42)\n# Make some fake data\nX = np.random.randn(4)\n\nweights_input_to_hidden = np.random.normal(0, scale=0.1, size=(N_input, N_hidden))\nweights_hidden_to_output = np.random.normal(0, scale=0.1, size=(N_hidden, N_output))\n\n\n# TODO: Make a forward pass through the network\n\nhidden_layer_in = np.dot(X, weights_input_to_hidden)\nhidden_layer_out = sigmoid(hidden_layer_in)\n\nprint('Hidden-layer Output:')\nprint(hidden_layer_out)\n\noutput_layer_in = np.dot(hidden_layer_out, weights_hidden_to_output)\noutput_layer_out = sigmoid(output_layer_in)\n\nprint('Output-layer Output:')\nprint(output_layer_out)",
+                    "name": "solution.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 256145,
+          "key": "87d85ff2-db15-438b-9be8-d097ea917f1e",
+          "title": "Backpropagation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "87d85ff2-db15-438b-9be8-d097ea917f1e",
+            "completed_at": "2020-04-18T23:09:24.372Z",
+            "last_viewed_at": "2020-04-20T18:49:22.714Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 258941,
+              "key": "f02d9fb5-4b50-4f58-80d0-bfbe3f2ac65d",
+              "title": "Backpropagation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MZL97-2joxQ",
+                "china_cdn_id": "MZL97-2joxQ.mp4"
+              }
+            },
+            {
+              "id": 259035,
+              "key": "0aba01cf-f766-4959-a796-562fefe82495",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Backpropagation\n\nNow we've come to the problem of how to make a multilayer neural network *learn*. Before, we saw how to update weights with gradient descent. The backpropagation algorithm is just an extension of that, using the chain rule to find the error with the respect to the weights connecting the input layer to the hidden layer (for a two layer network).\n\nTo update the weights to hidden layers using gradient descent, you need to know how much error each of the hidden units contributed to the final output. Since the output of a layer is determined by the weights between layers, the error resulting from units is scaled by the weights going forward through the network. Since we know the error at the output, we can use the weights to work backwards to hidden layers.\n\nFor example, in the output layer, you have errors <span class='mathquill'>\\delta^o_k</span> attributed to each output unit <span class='mathquill'>k</span>. Then, the error attributed to hidden unit <span class='mathquill'>j</span> is the output errors, scaled by the weights between the output and hidden layers (and the gradient):\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262309,
+              "key": "e8e8131d-1e97-4b07-b191-7945a68e26a8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/588bc0c6_backprop-error/backprop-error.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e8e8131d-1e97-4b07-b191-7945a68e26a8",
+              "caption": "",
+              "alt": null,
+              "width": 218,
+              "height": 30,
+              "instructor_notes": null
+            },
+            {
+              "id": 260063,
+              "key": "b364d662-5820-47d9-95e5-0594117ceff5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Then, the gradient descent step is the same as before, just with the new errors:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262312,
+              "key": "31b3a138-35c2-4987-afbe-cb052ff87d66",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/588bc23b_backprop-weight-update/backprop-weight-update.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/31b3a138-35c2-4987-afbe-cb052ff87d66",
+              "caption": "",
+              "alt": null,
+              "width": 140,
+              "height": 32,
+              "instructor_notes": null
+            },
+            {
+              "id": 260065,
+              "key": "ffa4d00f-6cd5-449e-a376-261729549cb2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "where <span class=\"mathquill\">w_{ij}</span> are the weights between the inputs and hidden layer and <span class=\"mathquill\">x_i</span> are input unit values. This form holds for however many layers there are. The weight steps are equal to the step size times the output error of the layer times the values of the inputs to that layer",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262315,
+              "key": "0ef065b9-7e76-45f1-8c69-99177fc8bc9f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/588bc2d4_backprop-general/backprop-general.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0ef065b9-7e76-45f1-8c69-99177fc8bc9f",
+              "caption": "",
+              "alt": null,
+              "width": 194,
+              "height": 25,
+              "instructor_notes": null
+            },
+            {
+              "id": 260079,
+              "key": "9300f31a-9ee8-47d8-a556-7eb9e77d3dfc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here, you get the output error, <span class=\"mathquill\">\\delta_{output}</span>, by propagating the errors backwards from higher layers. And the input values, <span class=\"mathquill\">V_{in}</span> are the inputs to the layer, the hidden layer activations to the output unit for example.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262275,
+              "key": "f11c022a-cb7c-4ddd-8248-4357ad1df333",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Working through an example\n\nLet's walk through the steps of calculating the weight updates for a simple two layer network.  Suppose there are two input values, one hidden unit, and one output unit, with sigmoid activations on the hidden and output units. The following image depicts this network. (**Note:** the input values are shown as nodes at the bottom of the image, while the network's output value is shown as <span class='mathquill'>\\hat y</span> at the top. The inputs themselves do not count as a layer, which is why this is considered a two layer network.)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262281,
+              "key": "0624caba-3895-48b9-8db1-8404983e4b33",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/588bb45d_backprop-network/backprop-network.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0624caba-3895-48b9-8db1-8404983e4b33",
+              "caption": "",
+              "alt": null,
+              "width": 197,
+              "height": 360,
+              "instructor_notes": null
+            },
+            {
+              "id": 262289,
+              "key": "7df14459-ccce-4f33-8fd1-32ce28cec8ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Assume we're trying to fit some binary data and the target is <span class=\"mathquill\">y = 1</span>. We'll start with the forward pass, first calculating the input to the hidden unit \n\n<span class=\"mathquill\">h = \\sum_i w_i x_i = 0.1 \\times 0.4 - 0.2 \\times 0.3 = -0.02</span>\n\nand the output of the hidden unit\n\n<span class=\"mathquill\">a = f(h) = \\mathrm{sigmoid}(-0.02) = 0.495</span>.\n\nUsing this as the input to the output unit, the output of the network is \n\n<span class=\"mathquill\">\\hat y = f(W \\cdot a) = \\mathrm{sigmoid}(0.1 \\times 0.495) = 0.512</span>.\n\nWith the network output, we can start the backwards pass to calculate the weight updates for both layers. Using the fact that for the sigmoid function <span class=\"mathquill\">f'(W \\cdot a) = f(W \\cdot a) (1 - f(W \\cdot a))</span>, the error term for the output unit is \n\n<span class=\"mathquill\"> \\delta^o = (y - \\hat y) f'(W \\cdot a) = (1 - 0.512) \\times 0.512 \\times(1 - 0.512) = 0.122</span>.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262292,
+              "key": "047ee82c-ace9-4909-b031-8a7bb2e3a7c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now we need to calculate the error term for the hidden unit with backpropagation. Here we'll scale the error term from the output unit by the weight <span class=\"mathquill\">W</span> connecting it to the hidden unit. For the hidden unit error term, <span class=\"mathquill\">\\delta^h_j = \\sum_k W_{jk} \\delta^o_k f'(h_j)</span>, but since we have one hidden unit and one output unit, this is much simpler.\n\n<span class=\"mathquill\">\\delta^h = W \\delta^o f'(h) = 0.1 \\times 0.122 \\times 0.495 \\times (1 - 0.495) = 0.003</span>\n\nNow that we have the errors, we can calculate the gradient descent steps. The hidden to output weight step is the learning rate, times the output unit error, times the hidden unit activation value.\n\n<span class=\"mathquill\">\\Delta W = \\eta  \\delta^o a = 0.5 \\times 0.122 \\times 0.495 = 0.0302</span>\n\nThen, for the input to hidden weights <span class=\"mathquill\">w_i</span>, it's the learning rate times the hidden unit error, times the input values.\n\n<span class=\"mathquill\">\\Delta w_i = \\eta \\delta^h x_i = (0.5 \\times 0.003 \\times 0.1, 0.5 \\times 0.003 \\times 0.3) = (0.00015, 0.00045)</span>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262307,
+              "key": "d336a69d-f3a0-4168-9209-fc0d5cf2f027",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "From this example, you can see one of the effects of using the sigmoid function for the activations. The maximum derivative of the sigmoid function is 0.25, so the errors in the output layer get reduced by at least 75%, and errors in the hidden layer are scaled down by at least 93.75%! You can see that if you have a lot of layers, using a sigmoid activation function will quickly reduce the weight steps to tiny values in layers near the input. This is known as the **vanishing gradient** problem. Later in the course you'll learn about other activation functions that perform better in this regard and are more commonly used in modern network architectures.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261271,
+              "key": "fd90b0a4-ee0d-497a-ac3b-40cb90269a9f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Implementing in NumPy\n\nFor the most part you have everything you need to implement backpropagation with NumPy.\n\nHowever, previously we were only dealing with error terms from one unit. Now, in the weight update, we have to consider the error for *each unit* in the hidden layer, <span class='mathquill'>\\delta_j</span>:\n\n<span class='mathquill'> \\Delta w_{ij} = \\eta \\delta_j x_i </span>\n\nFirstly, there will likely be a different number of input and hidden units, so trying to multiply the errors and the inputs as row vectors will throw an error:\n\n```python\nhidden_error*inputs\n---------------------------------------------------------------------------\nValueError                                Traceback (most recent call last)\n<ipython-input-22-3b59121cb809> in <module>()\n----> 1 hidden_error*x\n\nValueError: operands could not be broadcast together with shapes (3,) (6,) \n```\n\nAlso, <span class='mathquill'>w_{ij}</span> is a matrix now, so the right side of the assignment must have the same shape as the left side. Luckily, NumPy takes care of this for us. If you multiply a row vector array with a column vector array, it will multiply the first element in the column by each element in the row vector and set that as the first row in a new 2D array. This continues for each element in the column vector, so you get a 2D array that has shape `(len(column_vector), len(row_vector))`.\n\n```python\nhidden_error*inputs[:,None]\narray([[ -8.24195994e-04,  -2.71771975e-04,   1.29713395e-03],\n       [ -2.87777394e-04,  -9.48922722e-05,   4.52909055e-04],\n       [  6.44605731e-04,   2.12553536e-04,  -1.01449168e-03],\n       [  0.00000000e+00,   0.00000000e+00,  -0.00000000e+00],\n       [  0.00000000e+00,   0.00000000e+00,  -0.00000000e+00],\n       [  0.00000000e+00,   0.00000000e+00,  -0.00000000e+00]])\n```\n\nIt turns out this is exactly how we want to calculate the weight update step. As before, if you have your inputs as a 2D array with one row, you can also do `hidden_error*inputs.T`, but that won't work if `inputs` is a 1D array.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261277,
+              "key": "6500501c-f21a-4fe8-a381-ce1288fda205",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Backpropagation exercise\n\nBelow, you'll implement the code to calculate one backpropagation update step for two sets of weights. I wrote the forward pass - your goal is to code the backward pass.\n\nThings to do\n\n* Calculate the network's output error.\n* Calculate the output layer's error term.\n* Use backpropagation to calculate the hidden layer's error term.\n* Calculate the change in weights (the delta weights) that result from propagating the errors back through the network.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 260128,
+              "key": "074548ad-04eb-45c2-902d-2fdb1e88e11c",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "074548ad-04eb-45c2-902d-2fdb1e88e11c",
+                "completed_at": "2020-04-19T02:58:21.619Z",
+                "last_viewed_at": "2020-04-19T03:05:12.953Z",
+                "unstructured": "{\"backprop.py\":\"import numpy as np\\n\\n\\ndef sigmoid(x):\\n    \\\"\\\"\\\"\\n    Calculate sigmoid\\n    \\\"\\\"\\\"\\n    return 1 / (1 + np.exp(-x))\\n\\n\\nx = np.array([0.5, 0.1, -0.2])\\ntarget = 0.6\\nlearnrate = 0.5\\n\\nweights_input_hidden = np.array([[0.5, -0.6],\\n                                 [0.1, -0.2],\\n                                 [0.1, 0.7]])\\n\\nweights_hidden_output = np.array([0.1, -0.3])\\n\\n## Forward pass\\nhidden_layer_input = np.dot(x, weights_input_hidden)\\nhidden_layer_output = sigmoid(hidden_layer_input)\\n\\noutput_layer_in = np.dot(hidden_layer_output, weights_hidden_output)\\noutput = sigmoid(output_layer_in)\\n\\n## Backwards pass\\n## TODO: Calculate output error\\nerror = (target - output) \\n\\n# TODO: Calculate error term for output layer\\noutput_error_term = error * output * (1 - output)\\n\\n# TODO: Calculate error term for hidden layer\\nhidden_error_term = np.dot(weights_hidden_output,output_error_term) * (hidden_layer_output * (1 - hidden_layer_output))\\n\\n# TODO: Calculate change in weights for hidden layer to output layer\\ndelta_w_h_o = learnrate * output_error_term * hidden_layer_output\\n\\n# TODO: Calculate change in weights for input layer to hidden layer\\ndelta_w_i_h = learnrate * hidden_error_term * x[:,None]\\n\\nprint('Change in weights for hidden layer to output layer:')\\nprint(delta_w_h_o)\\nprint('Change in weights for input layer to hidden layer:')\\nprint(delta_w_i_h)\\n\",\"solution.py\":\"import numpy as np\\n\\n\\ndef sigmoid(x):\\n    \\\"\\\"\\\"\\n    Calculate sigmoid\\n    \\\"\\\"\\\"\\n    return 1 / (1 + np.exp(-x))\\n\\n\\nx = np.array([0.5, 0.1, -0.2])\\ntarget = 0.6\\nlearnrate = 0.5\\n\\nweights_input_hidden = np.array([[0.5, -0.6],\\n                                 [0.1, -0.2],\\n                                 [0.1, 0.7]])\\n\\nweights_hidden_output = np.array([0.1, -0.3])\\n\\n## Forward pass\\nhidden_layer_input = np.dot(x, weights_input_hidden)\\nhidden_layer_output = sigmoid(hidden_layer_input)\\n\\noutput_layer_in = np.dot(hidden_layer_output, weights_hidden_output)\\noutput = sigmoid(output_layer_in)\\n\\n## Backwards pass\\n## TODO: Calculate output error\\nerror = target - output\\n\\n# TODO: Calculate error term for output layer\\noutput_error_term = error * output * (1 - output)\\n\\n# TODO: Calculate error term for hidden layer\\nhidden_error_term = np.dot(output_error_term, weights_hidden_output) * \\\\\\n                    hidden_layer_output * (1 - hidden_layer_output)\\n\\n# TODO: Calculate change in weights for hidden layer to output layer\\ndelta_w_h_o = learnrate * output_error_term * hidden_layer_output\\n\\n# TODO: Calculate change in weights for input layer to hidden layer\\ndelta_w_i_h = learnrate * hidden_error_term * x[:, None]\\n\\nprint('Change in weights for hidden layer to output layer:')\\nprint(delta_w_h_o)\\nprint('Change in weights for input layer to hidden layer:')\\nprint(delta_w_i_h)\\n\"}"
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5471472698130432",
+                "initial_code_files": [
+                  {
+                    "text": "import numpy as np\n\n\ndef sigmoid(x):\n    \"\"\"\n    Calculate sigmoid\n    \"\"\"\n    return 1 / (1 + np.exp(-x))\n\n\nx = np.array([0.5, 0.1, -0.2])\ntarget = 0.6\nlearnrate = 0.5\n\nweights_input_hidden = np.array([[0.5, -0.6],\n                                 [0.1, -0.2],\n                                 [0.1, 0.7]])\n\nweights_hidden_output = np.array([0.1, -0.3])\n\n## Forward pass\nhidden_layer_input = np.dot(x, weights_input_hidden)\nhidden_layer_output = sigmoid(hidden_layer_input)\n\noutput_layer_in = np.dot(hidden_layer_output, weights_hidden_output)\noutput = sigmoid(output_layer_in)\n\n## Backwards pass\n## TODO: Calculate output error\nerror = None\n\n# TODO: Calculate error term for output layer\noutput_error_term = None\n\n# TODO: Calculate error term for hidden layer\nhidden_error_term = None\n\n# TODO: Calculate change in weights for hidden layer to output layer\ndelta_w_h_o = None\n\n# TODO: Calculate change in weights for input layer to hidden layer\ndelta_w_i_h = None\n\nprint('Change in weights for hidden layer to output layer:')\nprint(delta_w_h_o)\nprint('Change in weights for input layer to hidden layer:')\nprint(delta_w_i_h)\n",
+                    "name": "backprop.py"
+                  },
+                  {
+                    "text": "import numpy as np\n\n\ndef sigmoid(x):\n    \"\"\"\n    Calculate sigmoid\n    \"\"\"\n    return 1 / (1 + np.exp(-x))\n\n\nx = np.array([0.5, 0.1, -0.2])\ntarget = 0.6\nlearnrate = 0.5\n\nweights_input_hidden = np.array([[0.5, -0.6],\n                                 [0.1, -0.2],\n                                 [0.1, 0.7]])\n\nweights_hidden_output = np.array([0.1, -0.3])\n\n## Forward pass\nhidden_layer_input = np.dot(x, weights_input_hidden)\nhidden_layer_output = sigmoid(hidden_layer_input)\n\noutput_layer_in = np.dot(hidden_layer_output, weights_hidden_output)\noutput = sigmoid(output_layer_in)\n\n## Backwards pass\n## TODO: Calculate output error\nerror = target - output\n\n# TODO: Calculate error term for output layer\noutput_error_term = error * output * (1 - output)\n\n# TODO: Calculate error term for hidden layer\nhidden_error_term = np.dot(output_error_term, weights_hidden_output) * \\\n                    hidden_layer_output * (1 - hidden_layer_output)\n\n# TODO: Calculate change in weights for hidden layer to output layer\ndelta_w_h_o = learnrate * output_error_term * hidden_layer_output\n\n# TODO: Calculate change in weights for input layer to hidden layer\ndelta_w_i_h = learnrate * hidden_error_term * x[:, None]\n\nprint('Change in weights for hidden layer to output layer:')\nprint(delta_w_h_o)\nprint('Change in weights for input layer to hidden layer:')\nprint(delta_w_i_h)\n",
+                    "name": "solution.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 258881,
+          "key": "b2bbdc9a-9f48-4735-b408-71cf67f5b000",
+          "title": "Implementing Backpropagation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b2bbdc9a-9f48-4735-b408-71cf67f5b000",
+            "completed_at": "2020-04-20T19:01:16.603Z",
+            "last_viewed_at": "2020-04-20T19:01:15.826Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 258882,
+              "key": "852ad070-4c0c-43e5-bd92-7fece82e25da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Implementing backpropagation\n\nNow we've seen that the error term for the output layer is\n\n<span class='mathquill'>\\delta_k = (y_k - \\hat y_k) f'(a_k)</span>\n\nand the error term for the hidden layer is\n\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262319,
+              "key": "95e33fe1-8ad2-4b9d-b10a-91466febfbca",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/January/588bc453_hidden-errors/hidden-errors.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/95e33fe1-8ad2-4b9d-b10a-91466febfbca",
+              "caption": "",
+              "alt": null,
+              "width": 219,
+              "height": 35,
+              "instructor_notes": null
+            },
+            {
+              "id": 258887,
+              "key": "6bf0cc1b-3e10-4542-b2a3-ed5b59fe0b74",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For now we'll only consider a simple network with one hidden layer and one output unit. Here's the general algorithm for updating the weights with backpropagation:\n* Set the weight steps for each layer to zero\n    * The input to hidden weights <span class=\"mathquill\">\\Delta w_{ij} = 0</span>\n    * The hidden to output weights <span class=\"mathquill\">\\Delta W_j = 0</span>\n* For each record in the training data: \n    * Make a forward pass through the network, calculating the output <span class=\"mathquill\">\\hat y</span>\n    * Calculate the error gradient in the output unit, <span class=\"mathquill\">\\delta^o = (y - \\hat y)  f'(z)</span> where <span class=\"mathquill\">z = \\sum_j W_j a_j</span>, the input to the output unit.\n    * Propagate the errors to the hidden layer <span class=\"mathquill\">\\delta^h_j = \\delta^o W_j  f'(h_j)</span>\n    * Update the weight steps:\n\n        * <span class='mathquill\">\\Delta W_j = \\Delta W_j + \\delta^o a_j</span>\n        * <span class='mathquill\">\\Delta w_{ij} = \\Delta w_{ij} + \\delta^h_j a_i </span>\n\n* Update the weights, where <span class=\"mathquill\">\\eta</span> is the learning rate and <span class=\"mathquill\">m</span> is the number of records:\n   \n * <span class='mathquill\"> W_j = W_j  + \\eta \\Delta W_j / m</span>\n * <span class='mathquill\"> w_{ij} = w_{ij}  + \\eta \\Delta w_{ij} / m</span>\n\n* Repeat for <span class=\"mathquill\">e</span> epochs.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 258885,
+              "key": "4669e574-a391-40dc-82cc-86e52f5caedb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Backpropagation exercise\n\nNow you're going to implement the backprop algorithm for a network trained on the graduate school admission data. You should have everything you need from the previous exercises to complete this one.\n\nYour goals here:\n\n* Implement the forward pass.\n* Implement the backpropagation algorithm.\n* Update the weights.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 258884,
+              "key": "0ff4bd94-b1d5-49db-a1d3-c1c30ec2a6e1",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "**Note:** This code takes a while to execute, so Udacity's servers sometimes return with an error saying it took too long. If that happens, it usually works if you try again. ",
+              "user_state": {
+                "node_key": "0ff4bd94-b1d5-49db-a1d3-c1c30ec2a6e1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6471909664489472",
+                "initial_code_files": [
+                  {
+                    "text": "import numpy as np\nfrom data_prep import features, targets, features_test, targets_test\n\nnp.random.seed(21)\n\ndef sigmoid(x):\n    \"\"\"\n    Calculate sigmoid\n    \"\"\"\n    return 1 / (1 + np.exp(-x))\n\n\n# Hyperparameters\nn_hidden = 2  # number of hidden units\nepochs = 900\nlearnrate = 0.005\n\nn_records, n_features = features.shape\nlast_loss = None\n# Initialize weights\nweights_input_hidden = np.random.normal(scale=1 / n_features ** .5,\n                                        size=(n_features, n_hidden))\nweights_hidden_output = np.random.normal(scale=1 / n_features ** .5,\n                                         size=n_hidden)\n\nfor e in range(epochs):\n    del_w_input_hidden = np.zeros(weights_input_hidden.shape)\n    del_w_hidden_output = np.zeros(weights_hidden_output.shape)\n    for x, y in zip(features.values, targets):\n        ## Forward pass ##\n        # TODO: Calculate the output\n        hidden_input = None\n        hidden_output = None\n        output = None\n\n        ## Backward pass ##\n        # TODO: Calculate the network's prediction error\n        error = None\n\n        # TODO: Calculate error term for the output unit\n        output_error_term = None\n\n        ## propagate errors to hidden layer\n\n        # TODO: Calculate the hidden layer's contribution to the error\n        hidden_error = None\n        \n        # TODO: Calculate the error term for the hidden layer\n        hidden_error_term = None\n        \n        # TODO: Update the change in weights\n        del_w_hidden_output += 0\n        del_w_input_hidden += 0\n\n    # TODO: Update weights  (don't forget to division by n_records or number of samples)\n    weights_input_hidden += 0\n    weights_hidden_output += 0\n\n    # Printing out the mean square error on the training set\n    if e % (epochs / 10) == 0:\n        hidden_output = sigmoid(np.dot(x, weights_input_hidden))\n        out = sigmoid(np.dot(hidden_output,\n                             weights_hidden_output))\n        loss = np.mean((out - targets) ** 2)\n\n        if last_loss and last_loss < loss:\n            print(\"Train loss: \", loss, \"  WARNING - Loss Increasing\")\n        else:\n            print(\"Train loss: \", loss)\n        last_loss = loss\n\n# Calculate accuracy on test data\nhidden = sigmoid(np.dot(features_test, weights_input_hidden))\nout = sigmoid(np.dot(hidden, weights_hidden_output))\npredictions = out > 0.5\naccuracy = np.mean(predictions == targets_test)\nprint(\"Prediction accuracy: {:.3f}\".format(accuracy))\n",
+                    "name": "backprop.py"
+                  },
+                  {
+                    "text": "import numpy as np\nimport pandas as pd\n\nadmissions = pd.read_csv('binary.csv')\n\n# Make dummy variables for rank\ndata = pd.concat([admissions, pd.get_dummies(admissions['rank'], prefix='rank')], axis=1)\ndata = data.drop('rank', axis=1)\n\n# Standarize features\nfor field in ['gre', 'gpa']:\n    mean, std = data[field].mean(), data[field].std()\n    data.loc[:,field] = (data[field]-mean)/std\n    \n# Split off random 10% of the data for testing\nnp.random.seed(21)\nsample = np.random.choice(data.index, size=int(len(data)*0.9), replace=False)\ndata, test_data = data.ix[sample], data.drop(sample)\n\n# Split into features and targets\nfeatures, targets = data.drop('admit', axis=1), data['admit']\nfeatures_test, targets_test = test_data.drop('admit', axis=1), test_data['admit']",
+                    "name": "data_prep.py"
+                  },
+                  {
+                    "text": "admit,gre,gpa,rank\n0,380,3.61,3\n1,660,3.67,3\n1,800,4,1\n1,640,3.19,4\n0,520,2.93,4\n1,760,3,2\n1,560,2.98,1\n0,400,3.08,2\n1,540,3.39,3\n0,700,3.92,2\n0,800,4,4\n0,440,3.22,1\n1,760,4,1\n0,700,3.08,2\n1,700,4,1\n0,480,3.44,3\n0,780,3.87,4\n0,360,2.56,3\n0,800,3.75,2\n1,540,3.81,1\n0,500,3.17,3\n1,660,3.63,2\n0,600,2.82,4\n0,680,3.19,4\n1,760,3.35,2\n1,800,3.66,1\n1,620,3.61,1\n1,520,3.74,4\n1,780,3.22,2\n0,520,3.29,1\n0,540,3.78,4\n0,760,3.35,3\n0,600,3.4,3\n1,800,4,3\n0,360,3.14,1\n0,400,3.05,2\n0,580,3.25,1\n0,520,2.9,3\n1,500,3.13,2\n1,520,2.68,3\n0,560,2.42,2\n1,580,3.32,2\n1,600,3.15,2\n0,500,3.31,3\n0,700,2.94,2\n1,460,3.45,3\n1,580,3.46,2\n0,500,2.97,4\n0,440,2.48,4\n0,400,3.35,3\n0,640,3.86,3\n0,440,3.13,4\n0,740,3.37,4\n1,680,3.27,2\n0,660,3.34,3\n1,740,4,3\n0,560,3.19,3\n0,380,2.94,3\n0,400,3.65,2\n0,600,2.82,4\n1,620,3.18,2\n0,560,3.32,4\n0,640,3.67,3\n1,680,3.85,3\n0,580,4,3\n0,600,3.59,2\n0,740,3.62,4\n0,620,3.3,1\n0,580,3.69,1\n0,800,3.73,1\n0,640,4,3\n0,300,2.92,4\n0,480,3.39,4\n0,580,4,2\n0,720,3.45,4\n0,720,4,3\n0,560,3.36,3\n1,800,4,3\n0,540,3.12,1\n1,620,4,1\n0,700,2.9,4\n0,620,3.07,2\n0,500,2.71,2\n0,380,2.91,4\n1,500,3.6,3\n0,520,2.98,2\n0,600,3.32,2\n0,600,3.48,2\n0,700,3.28,1\n1,660,4,2\n0,700,3.83,2\n1,720,3.64,1\n0,800,3.9,2\n0,580,2.93,2\n1,660,3.44,2\n0,660,3.33,2\n0,640,3.52,4\n0,480,3.57,2\n0,700,2.88,2\n0,400,3.31,3\n0,340,3.15,3\n0,580,3.57,3\n0,380,3.33,4\n0,540,3.94,3\n1,660,3.95,2\n1,740,2.97,2\n1,700,3.56,1\n0,480,3.13,2\n0,400,2.93,3\n0,480,3.45,2\n0,680,3.08,4\n0,420,3.41,4\n0,360,3,3\n0,600,3.22,1\n0,720,3.84,3\n0,620,3.99,3\n1,440,3.45,2\n0,700,3.72,2\n1,800,3.7,1\n0,340,2.92,3\n1,520,3.74,2\n1,480,2.67,2\n0,520,2.85,3\n0,500,2.98,3\n0,720,3.88,3\n0,540,3.38,4\n1,600,3.54,1\n0,740,3.74,4\n0,540,3.19,2\n0,460,3.15,4\n1,620,3.17,2\n0,640,2.79,2\n0,580,3.4,2\n0,500,3.08,3\n0,560,2.95,2\n0,500,3.57,3\n0,560,3.33,4\n0,700,4,3\n0,620,3.4,2\n1,600,3.58,1\n0,640,3.93,2\n1,700,3.52,4\n0,620,3.94,4\n0,580,3.4,3\n0,580,3.4,4\n0,380,3.43,3\n0,480,3.4,2\n0,560,2.71,3\n1,480,2.91,1\n0,740,3.31,1\n1,800,3.74,1\n0,400,3.38,2\n1,640,3.94,2\n0,580,3.46,3\n0,620,3.69,3\n1,580,2.86,4\n0,560,2.52,2\n1,480,3.58,1\n0,660,3.49,2\n0,700,3.82,3\n0,600,3.13,2\n0,640,3.5,2\n1,700,3.56,2\n0,520,2.73,2\n0,580,3.3,2\n0,700,4,1\n0,440,3.24,4\n0,720,3.77,3\n0,500,4,3\n0,600,3.62,3\n0,400,3.51,3\n0,540,2.81,3\n0,680,3.48,3\n1,800,3.43,2\n0,500,3.53,4\n1,620,3.37,2\n0,520,2.62,2\n1,620,3.23,3\n0,620,3.33,3\n0,300,3.01,3\n0,620,3.78,3\n0,500,3.88,4\n0,700,4,2\n1,540,3.84,2\n0,500,2.79,4\n0,800,3.6,2\n0,560,3.61,3\n0,580,2.88,2\n0,560,3.07,2\n0,500,3.35,2\n1,640,2.94,2\n0,800,3.54,3\n0,640,3.76,3\n0,380,3.59,4\n1,600,3.47,2\n0,560,3.59,2\n0,660,3.07,3\n1,400,3.23,4\n0,600,3.63,3\n0,580,3.77,4\n0,800,3.31,3\n1,580,3.2,2\n1,700,4,1\n0,420,3.92,4\n1,600,3.89,1\n1,780,3.8,3\n0,740,3.54,1\n1,640,3.63,1\n0,540,3.16,3\n0,580,3.5,2\n0,740,3.34,4\n0,580,3.02,2\n0,460,2.87,2\n0,640,3.38,3\n1,600,3.56,2\n1,660,2.91,3\n0,340,2.9,1\n1,460,3.64,1\n0,460,2.98,1\n1,560,3.59,2\n0,540,3.28,3\n0,680,3.99,3\n1,480,3.02,1\n0,800,3.47,3\n0,800,2.9,2\n1,720,3.5,3\n0,620,3.58,2\n0,540,3.02,4\n0,480,3.43,2\n1,720,3.42,2\n0,580,3.29,4\n0,600,3.28,3\n0,380,3.38,2\n0,420,2.67,3\n1,800,3.53,1\n0,620,3.05,2\n1,660,3.49,2\n0,480,4,2\n0,500,2.86,4\n0,700,3.45,3\n0,440,2.76,2\n1,520,3.81,1\n1,680,2.96,3\n0,620,3.22,2\n0,540,3.04,1\n0,800,3.91,3\n0,680,3.34,2\n0,440,3.17,2\n0,680,3.64,3\n0,640,3.73,3\n0,660,3.31,4\n0,620,3.21,4\n1,520,4,2\n1,540,3.55,4\n1,740,3.52,4\n0,640,3.35,3\n1,520,3.3,2\n1,620,3.95,3\n0,520,3.51,2\n0,640,3.81,2\n0,680,3.11,2\n0,440,3.15,2\n1,520,3.19,3\n1,620,3.95,3\n1,520,3.9,3\n0,380,3.34,3\n0,560,3.24,4\n1,600,3.64,3\n1,680,3.46,2\n0,500,2.81,3\n1,640,3.95,2\n0,540,3.33,3\n1,680,3.67,2\n0,660,3.32,1\n0,520,3.12,2\n1,600,2.98,2\n0,460,3.77,3\n1,580,3.58,1\n1,680,3,4\n1,660,3.14,2\n0,660,3.94,2\n0,360,3.27,3\n0,660,3.45,4\n0,520,3.1,4\n1,440,3.39,2\n0,600,3.31,4\n1,800,3.22,1\n1,660,3.7,4\n0,800,3.15,4\n0,420,2.26,4\n1,620,3.45,2\n0,800,2.78,2\n0,680,3.7,2\n0,800,3.97,1\n0,480,2.55,1\n0,520,3.25,3\n0,560,3.16,1\n0,460,3.07,2\n0,540,3.5,2\n0,720,3.4,3\n0,640,3.3,2\n1,660,3.6,3\n1,400,3.15,2\n1,680,3.98,2\n0,220,2.83,3\n0,580,3.46,4\n1,540,3.17,1\n0,580,3.51,2\n0,540,3.13,2\n0,440,2.98,3\n0,560,4,3\n0,660,3.67,2\n0,660,3.77,3\n1,520,3.65,4\n0,540,3.46,4\n1,300,2.84,2\n1,340,3,2\n1,780,3.63,4\n1,480,3.71,4\n0,540,3.28,1\n0,460,3.14,3\n0,460,3.58,2\n0,500,3.01,4\n0,420,2.69,2\n0,520,2.7,3\n0,680,3.9,1\n0,680,3.31,2\n1,560,3.48,2\n0,580,3.34,2\n0,500,2.93,4\n0,740,4,3\n0,660,3.59,3\n0,420,2.96,1\n0,560,3.43,3\n1,460,3.64,3\n1,620,3.71,1\n0,520,3.15,3\n0,620,3.09,4\n0,540,3.2,1\n1,660,3.47,3\n0,500,3.23,4\n1,560,2.65,3\n0,500,3.95,4\n0,580,3.06,2\n0,520,3.35,3\n0,500,3.03,3\n0,600,3.35,2\n0,580,3.8,2\n0,400,3.36,2\n0,620,2.85,2\n1,780,4,2\n0,620,3.43,3\n1,580,3.12,3\n0,700,3.52,2\n1,540,3.78,2\n1,760,2.81,1\n0,700,3.27,2\n0,720,3.31,1\n1,560,3.69,3\n0,720,3.94,3\n1,520,4,1\n1,540,3.49,1\n0,680,3.14,2\n0,460,3.44,2\n1,560,3.36,1\n0,480,2.78,3\n0,460,2.93,3\n0,620,3.63,3\n0,580,4,1\n0,800,3.89,2\n1,540,3.77,2\n1,680,3.76,3\n1,680,2.42,1\n1,620,3.37,1\n0,560,3.78,2\n0,560,3.49,4\n0,620,3.63,2\n1,800,4,2\n0,640,3.12,3\n0,540,2.7,2\n0,700,3.65,2\n1,540,3.49,2\n0,540,3.51,2\n0,660,4,1\n1,480,2.62,2\n0,420,3.02,1\n1,740,3.86,2\n0,580,3.36,2\n0,640,3.17,2\n0,640,3.51,2\n1,800,3.05,2\n1,660,3.88,2\n1,600,3.38,3\n1,620,3.75,2\n1,460,3.99,3\n0,620,4,2\n0,560,3.04,3\n0,460,2.63,2\n0,700,3.65,2\n0,600,3.89,3\n",
+                    "name": "binary.csv"
+                  },
+                  {
+                    "text": "import numpy as np\nfrom data_prep import features, targets, features_test, targets_test\n\nnp.random.seed(21)\n\ndef sigmoid(x):\n    \"\"\"\n    Calculate sigmoid\n    \"\"\"\n    return 1 / (1 + np.exp(-x))\n\n\n# Hyperparameters\nn_hidden = 2  # number of hidden units\nepochs = 900\nlearnrate = 0.005\n\nn_records, n_features = features.shape\nlast_loss = None\n# Initialize weights\nweights_input_hidden = np.random.normal(scale=1 / n_features ** .5,\n                                        size=(n_features, n_hidden))\nweights_hidden_output = np.random.normal(scale=1 / n_features ** .5,\n                                         size=n_hidden)\n\nfor e in range(epochs):\n    del_w_input_hidden = np.zeros(weights_input_hidden.shape)\n    del_w_hidden_output = np.zeros(weights_hidden_output.shape)\n    for x, y in zip(features.values, targets):\n        ## Forward pass ##\n        # TODO: Calculate the output\n        hidden_input = np.dot(x, weights_input_hidden)\n        hidden_output = sigmoid(hidden_input)\n\n        output = sigmoid(np.dot(hidden_output,\n                                weights_hidden_output))\n\n        ## Backward pass ##\n        # TODO: Calculate the network's prediction error\n        error = y - output\n\n        # TODO: Calculate error term for the output unit\n        output_error_term = error * output * (1 - output)\n\n        ## propagate errors to hidden layer\n\n        # TODO: Calculate the hidden layer's contribution to the error\n        hidden_error = np.dot(output_error_term, weights_hidden_output)\n\n        # TODO: Calculate the error term for the hidden layer\n        hidden_error_term = hidden_error * hidden_output * (1 - hidden_output)\n\n        # TODO: Update the change in weights\n        del_w_hidden_output += output_error_term * hidden_output\n        del_w_input_hidden += hidden_error_term * x[:, None]\n\n    # TODO: Update weights\n    weights_input_hidden += learnrate * del_w_input_hidden / n_records\n    weights_hidden_output += learnrate * del_w_hidden_output / n_records\n\n    # Printing out the mean square error on the training set\n    if e % (epochs / 10) == 0:\n        hidden_output = sigmoid(np.dot(x, weights_input_hidden))\n        out = sigmoid(np.dot(hidden_output,\n                             weights_hidden_output))\n        loss = np.mean((out - targets) ** 2)\n\n        if last_loss and last_loss < loss:\n            print(\"Train loss: \", loss, \"  WARNING - Loss Increasing\")\n        else:\n            print(\"Train loss: \", loss)\n        last_loss = loss\n\n# Calculate accuracy on test data\nhidden = sigmoid(np.dot(features_test, weights_input_hidden))\nout = sigmoid(np.dot(hidden, weights_hidden_output))\npredictions = out > 0.5\naccuracy = np.mean(predictions == targets_test)\nprint(\"Prediction accuracy: {:.3f}\".format(accuracy))\n",
+                    "name": "solution.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 261273,
+          "key": "cd32bc63-e329-4ffb-ad50-2d77e698e85f",
+          "title": "Further Reading",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cd32bc63-e329-4ffb-ad50-2d77e698e85f",
+            "completed_at": "2020-04-18T05:14:25.165Z",
+            "last_viewed_at": "2020-04-18T05:14:37.650Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261275,
+              "key": "a342b715-1ef0-4755-b6df-dbb7a155f7a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further reading\n\nBackpropagation is fundamental to deep learning. TensorFlow and other libraries will perform the backprop for you, but you should really *really* understand the algorithm. We'll be going over backprop again, but here are some extra resources for you:\n\n* From Andrej Karpathy:  [Yes, you should understand backprop](https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b#.vt3ax2kg9)\n\n* Also from Andrej Karpathy, [a lecture from Stanford's CS231n course](https://www.youtube.com/watch?v=59Hbtz7XgjM)",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

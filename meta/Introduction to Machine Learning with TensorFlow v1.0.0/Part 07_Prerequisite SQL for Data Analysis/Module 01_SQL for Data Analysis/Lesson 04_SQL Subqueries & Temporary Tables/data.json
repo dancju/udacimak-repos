@@ -1,0 +1,1153 @@
+{
+  "data": {
+    "lesson": {
+      "id": 918919,
+      "key": "4fe1a447-aad7-4d68-bcf4-1903fbc64585",
+      "title": "SQL Subqueries & Temporary Tables",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you will be learning to answer much more complex business questions using nested querying methods - also known as subqueries.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/4fe1a447-aad7-4d68-bcf4-1903fbc64585/918919/1581973996022/SQL+Subqueries+%26+Temporary+Tables+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/4fe1a447-aad7-4d68-bcf4-1903fbc64585/918919/1581973992220/SQL+Subqueries+%26+Temporary+Tables+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 391908,
+          "key": "b53dc474-19a9-4969-8fdf-5d1f164b18ff",
+          "title": "Video: Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b53dc474-19a9-4969-8fdf-5d1f164b18ff",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 409821,
+              "key": "df634d45-9177-4300-b609-2ae32712c8ab",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2Y279421n3A",
+                "china_cdn_id": "2Y279421n3A.mp4"
+              }
+            },
+            {
+              "id": 406865,
+              "key": "7b5ce799-6f24-4adf-bf60-0f477a6b4a79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What this lesson is about...\n\nUp to this point you have learned a lot about working with data using SQL.  This lesson will focus on three topics:\n\n1. Subqueries\n2. Table Expressions\n3. Persistent Derived Tables\n\n___\n\nBoth **subqueries** and **table expressions** are methods for being able to write a query that creates a table, and then write a query that interacts with this newly created table.  Sometimes the question you are trying to answer doesn't have an answer when working directly with existing tables in database.  \n\nHowever, if we were able to create new tables from the existing tables, we know we could query these new tables to answer our question.  This is where the queries of this lesson come to the rescue.  \n\nIf you can't yet think of a question that might require such a query, don't worry because you are about to see a whole bunch of them!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 391909,
+          "key": "125cd218-c091-452f-a942-57b88479b9a6",
+          "title": "Video: Introduction to Subqueries",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "125cd218-c091-452f-a942-57b88479b9a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 409823,
+              "key": "fe4a191f-5044-4944-ad71-ce31d8fadb52",
+              "title": "Introduction to Subqueries",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "s8ZJMj4gscY",
+                "china_cdn_id": "s8ZJMj4gscY.mp4"
+              }
+            },
+            {
+              "id": 406866,
+              "key": "06070fa3-9651-43ee-9930-c9e787142bad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Whenever we need to use existing tables to create a new table that we then want to query again, this is an indication that we will need to use some sort of **subquery**.  In the next couple of concepts, we will walk through an example together.  Then you will get some practice tackling some additional problems on your own.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 391911,
+          "key": "1e2056cd-eae2-4ef4-860a-a11077b71db8",
+          "title": "Video + Quiz: Write Your First Subquery",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1e2056cd-eae2-4ef4-860a-a11077b71db8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406809,
+              "key": "b6d74195-44c2-41f9-833c-9e4216e26588",
+              "title": "Your First Subquery",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cTM1jPYXLoQ",
+                "china_cdn_id": "cTM1jPYXLoQ.mp4"
+              }
+            },
+            {
+              "id": 403993,
+              "key": "f0ae87a7-c8c0-41a5-8500-b81a11743ccf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Your First Subquery\n\nThe first time you write a subquery it might seem really complex.  Let's try breaking it down into its different parts.  \n\nIf you get stuck look again at the video above.  We want to find the average number of events for each day for each channel.  The first table will provide us the number of events for each day and channel, and then we will need to average these values together using a second query.\n\nYou try solving this yourself.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 404022,
+              "key": "b16a8055-bea8-493b-b2d1-6aac3aeca0a6",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b16a8055-bea8-493b-b2d1-6aac3aeca0a6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Use the test environment below to find the number of events that occur for each day for each channel.",
+                "Quiz 1",
+                "Now create a subquery that simply provides all of the data from your first query.",
+                "Quiz 2",
+                "Now find the average number of events for each channel.  Since you broke out by day earlier, this is giving you an average per day.",
+                "Quiz 3"
+              ],
+              "positive_feedback": "Nice job!  Understanding how to nest one query within another query is key to answering many questions that pertain to any company storing data in a relational database.",
+              "video_feedback": null,
+              "description": "Tasks to complete."
+            },
+            {
+              "id": 558932,
+              "key": "0d5320d9-2cd2-4265-bddf-c99c0c910c15",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view69866f7d",
+              "pool_id": "sqlwidget",
+              "view_id": "59ec31ee-31ae-4a93-b9ae-500591dd4ce7",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 406803,
+              "key": "2077b970-31df-4880-bbd5-c95ab8261cbb",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2077b970-31df-4880-bbd5-c95ab8261cbb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "### Quiz 1\n\nOn which day-channel pair did the most events occur. (Mark all that are true)",
+                "answers": [
+                  {
+                    "id": "a1505946676759",
+                    "text": "January 1, 2017; direct",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505946822841",
+                    "text": "December 31, 2016; facebook",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505946834945",
+                    "text": "November 3, 2016; direct",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505946835747",
+                    "text": "December 21, 2016; direct",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 406804,
+              "key": "b32f9cb1-eb81-4d62-8916-cf850b981717",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b32f9cb1-eb81-4d62-8916-cf850b981717",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "### Quiz 2\n\nMark all of the below that are true regarding writing your subquery.",
+                "answers": [
+                  {
+                    "id": "a1505947140879",
+                    "text": "The original query goes in the **FROM** statement.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505947532354",
+                    "text": "The original query goes in the **SELECT** statement.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505947544506",
+                    "text": "An `*` is used in the **SELECT** statement to pull all of the data from the original query.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505947584030",
+                    "text": "You **MUST** use an alias for the table you nest within the outer query.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 406867,
+              "key": "4c0e459f-7cb6-46d1-b122-86c8f2680619",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4c0e459f-7cb6-46d1-b122-86c8f2680619",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match each channel to its corresponding average number of events per day."
+                },
+                "concepts_label": "Channel",
+                "answers_label": "Average Number of Events/Day",
+                "concepts": [
+                  {
+                    "text": "direct",
+                    "correct_answer": {
+                      "id": "a1505959047580",
+                      "text": "4.90"
+                    }
+                  },
+                  {
+                    "text": "facebook",
+                    "correct_answer": {
+                      "id": "a1505959244950",
+                      "text": "1.60"
+                    }
+                  },
+                  {
+                    "text": "organic",
+                    "correct_answer": {
+                      "id": "a1505959249245",
+                      "text": "1.67"
+                    }
+                  },
+                  {
+                    "text": "twitter",
+                    "correct_answer": {
+                      "id": "a1505959254298",
+                      "text": "1.32"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1505959249245",
+                    "text": "1.67"
+                  },
+                  {
+                    "id": "a1505959047580",
+                    "text": "4.90"
+                  },
+                  {
+                    "id": "a1505959254298",
+                    "text": "1.32"
+                  },
+                  {
+                    "id": "a1505959244950",
+                    "text": "1.60"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 392048,
+          "key": "3201ff48-00d9-4fdf-b3d6-e32e59809358",
+          "title": "Solutions: Write Your First Subquery",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3201ff48-00d9-4fdf-b3d6-e32e59809358",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406872,
+              "key": "3fa736a1-c9a1-4eff-8483-0ba1646b6721",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solutions to Your First Subquery\n\n1.  First, we needed to group by the day and channel.  Then ordering by the number of events (the third column) gave us a quick way to answer the first question.\n```\nSELECT DATE_TRUNC('day',occurred_at) AS day,\n       channel, COUNT(*) as events\nFROM web_events\nGROUP BY 1,2\nORDER BY 3 DESC;\n```\n2.   Here you can see that to get the entire table in question 1 back,  we included an `*` in our **SELECT** statement.  You will need to be sure to alias your table.  \n```\nSELECT *\nFROM (SELECT DATE_TRUNC('day',occurred_at) AS day,\n                channel, COUNT(*) as events\n          FROM web_events \n          GROUP BY 1,2\n          ORDER BY 3 DESC) sub;\n```\n3. Finally, here we are able to get a table that shows the average number of events a day for each channel.  \n```\nSELECT channel, AVG(events) AS average_events\nFROM (SELECT DATE_TRUNC('day',occurred_at) AS day,\n                channel, COUNT(*) as events\n         FROM web_events \n         GROUP BY 1,2) sub\nGROUP BY channel\nORDER BY 2 DESC;\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558934,
+              "key": "4e8f6e94-e9f7-4b54-930b-23c6d14ee043",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view69866f7d",
+              "pool_id": "sqlwidget",
+              "view_id": "2b7d8d6e-7b64-4e9e-9786-63bdaa44e63e",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 391912,
+          "key": "916b3293-96a4-4f8a-a7ff-022741c84c7a",
+          "title": "Text: Subquery Formatting",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "916b3293-96a4-4f8a-a7ff-022741c84c7a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 403998,
+              "key": "c958e255-878d-4d76-980a-ab454baa26c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Subquery Formatting \n\nWhen writing **Subqueries**, it is easy for your query to look incredibly complex.  In order to assist your reader, which is often just yourself at a future date, formatting SQL will help with understanding your code.  \n\nThe important thing to remember when using subqueries is to provide some way for the reader to easily determine which parts of the query will be executed together. Most people do this by indenting the subquery in some way - you saw this with the solution blocks in the previous concept.  \n\nThe examples in this class are indented quite far—all the way to the parentheses. This isn’t practical if you nest many subqueries, but in general, be thinking about how to write your queries in a readable way.  Examples of the same query written multiple different ways is provided below.  You will see that some are much easier to read than others.\n_____\n### Badly Formatted Queries\n\nThough these poorly formatted examples will execute the same way as the well formatted examples, they just aren't very friendly for understanding what is happening!\n\nHere is the first, where it is impossible to decipher what is going on:\n\n```\nSELECT * FROM (SELECT DATE_TRUNC('day',occurred_at) AS day, channel, COUNT(*) as events FROM web_events GROUP BY 1,2 ORDER BY 3 DESC) sub;\n```\nThis second version, which includes some helpful line breaks, is easier to read than that previous version, but it is still not as easy to read as the queries in the **Well Formatted Query** section.\n```\nSELECT *\nFROM (\nSELECT DATE_TRUNC('day',occurred_at) AS day,\nchannel, COUNT(*) as events\nFROM web_events \nGROUP BY 1,2\nORDER BY 3 DESC) sub;\n```\n\n_____\n### Well Formatted Query\n\nNow for a well formatted example, you can see the table we are pulling from much easier than in the previous queries.  \n\n```\nSELECT *\nFROM (SELECT DATE_TRUNC('day',occurred_at) AS day,\n                channel, COUNT(*) as events\n      FROM web_events \n      GROUP BY 1,2\n      ORDER BY 3 DESC) sub;\n```\n\nAdditionally, if we have a **GROUP BY**, **ORDER BY**, **WHERE**, **HAVING**, or any other statement following our subquery, we would then indent it at the same level as our outer query.\n\nThe query below is similar to the above, but it is applying additional statements to the outer query, so you can see there are **GROUP BY** and **ORDER BY** statements used on the output are not tabbed. The inner query **GROUP BY** and **ORDER BY** statements are indented to match the inner table.\n\n```\nSELECT *\nFROM (SELECT DATE_TRUNC('day',occurred_at) AS day,\n                channel, COUNT(*) as events\n      FROM web_events \n      GROUP BY 1,2\n      ORDER BY 3 DESC) sub\nGROUP BY day, channel, events\nORDER BY 2 DESC;\n```\nThese final two queries are so much easier to read!\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 391913,
+          "key": "f696f544-3daf-4e5b-82f3-824300a8205e",
+          "title": "Video: More On Subqueries",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f696f544-3daf-4e5b-82f3-824300a8205e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406810,
+              "key": "96704cc5-7474-43d0-b08b-6abfc38efd69",
+              "title": "Subqueries Part II",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jko-RrZd0R8",
+                "china_cdn_id": "jko-RrZd0R8.mp4"
+              }
+            },
+            {
+              "id": 406811,
+              "key": "d8ffd747-df40-4d1f-8aca-d85c94a1b2f9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Subqueries Part II\n\nIn the first subquery you wrote, you created a table that you could then query again in the **FROM** statement.  However, if you are only returning a single value, you might use that value in a logical statement like **WHERE**, **HAVING**, or even **SELECT** - the value could be nested within a **CASE** statement.  \n\nOn the next concept, we will work through this example, and then you will get some practice on answering some questions on your own.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 404000,
+              "key": "eadb05bb-d6a2-4481-a0b3-98d70b90da63",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Expert Tip\n\nNote that you should not include an alias when you write a subquery in a conditional statement. This is because the subquery is treated as an individual value (or set of values in the **IN** case) rather than as a table.\n\nAlso, notice the query here compared a single value.  If we returned an entire column **IN** would need to be used to perform a logical argument.  If we are returning an entire table, then we must use an **ALIAS** for the table, and perform additional logic on the entire table.  ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 391915,
+          "key": "6b531825-26f7-453c-a1f7-219c7842b446",
+          "title": "Quiz: More On Subqueries",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6b531825-26f7-453c-a1f7-219c7842b446",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 406946,
+              "key": "ead5df08-1442-4107-ada9-d41cbfc30ead",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quiz: Working Through the Previous Video\n\nUse the task list below to work through the previous example.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 406950,
+              "key": "e774f513-24b1-4d17-9fdf-6d0e5611870f",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e774f513-24b1-4d17-9fdf-6d0e5611870f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Use **DATE_TRUNC** to pull `month` level information about the first order ever placed in the **orders** table.",
+                "Quiz 1",
+                "Use the result of the previous query to find only the orders that took place in the same month and year as the first order, and then pull the average for each type of paper `qty` in this month.",
+                "Quiz 2"
+              ],
+              "positive_feedback": "Nice job!  You can see the solutions to the queries on the next concept, and there are additional practice problems to make sure you really have the hang of subqueries!",
+              "video_feedback": null,
+              "description": "Tasks to complete:"
+            },
+            {
+              "id": 406990,
+              "key": "379971f3-b4ba-4048-9512-dff8b7e2f7e0",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "379971f3-b4ba-4048-9512-dff8b7e2f7e0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What was the month/year combo for the first order placed?",
+                "answers": [
+                  {
+                    "id": "a1506017297142",
+                    "text": "October 2011",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1506017329838",
+                    "text": "October 2012",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1506017337421",
+                    "text": "December 2013",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1506017343644",
+                    "text": "November 2013",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 558935,
+              "key": "ef60fb75-287b-461b-b89d-2b3a76a08b2d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view69866f7d",
+              "pool_id": "sqlwidget",
+              "view_id": "f7099af0-27de-40e7-8784-316a4343b830",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 407003,
+              "key": "e13cc0e5-ec90-47fa-bfa1-0259aca18d45",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e13cc0e5-ec90-47fa-bfa1-0259aca18d45",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match each value to the corresponding description."
+                },
+                "concepts_label": "Description",
+                "answers_label": "Value",
+                "concepts": [
+                  {
+                    "text": "The average amount of standard paper sold on the first month that any order was placed in the **orders** table (in terms of quantity).",
+                    "correct_answer": {
+                      "id": "a1506019645537",
+                      "text": "268"
+                    }
+                  },
+                  {
+                    "text": "The average amount of gloss paper sold on the first month that any order was placed in the **orders** table (in terms of quantity).",
+                    "correct_answer": {
+                      "id": "a1506019674441",
+                      "text": "209"
+                    }
+                  },
+                  {
+                    "text": "The average amount of poster paper sold on the first month that any order was placed in the **orders** table (in terms of quantity).",
+                    "correct_answer": {
+                      "id": "a1506019675703",
+                      "text": "112"
+                    }
+                  },
+                  {
+                    "text": "The total amount spent on all orders on the first month that any order was placed in the **orders** table (in terms of usd).",
+                    "correct_answer": {
+                      "id": "a1506019765719",
+                      "text": "377331"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1506019675703",
+                    "text": "112"
+                  },
+                  {
+                    "id": "a1506019645537",
+                    "text": "268"
+                  },
+                  {
+                    "id": "a1506019674441",
+                    "text": "209"
+                  },
+                  {
+                    "id": "a1506019765719",
+                    "text": "377331"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 392050,
+          "key": "b3556581-c309-4af3-9926-a0677be9f31f",
+          "title": "Solutions: More On Subqueries",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b3556581-c309-4af3-9926-a0677be9f31f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 407017,
+              "key": "114cb2c0-ec72-4492-b03e-18b58b63d12c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Queries Needed to Find the Solutions to the Previous Quiz\n\n1. Here is the necessary quiz to pull the first month/year combo from the orders table.\n```\nSELECT DATE_TRUNC('month', MIN(occurred_at)) \nFROM orders;\n```\n\n2. Then to pull the average for each, we could do this all in one query, but for readability, I provided two queries below to perform each separately.  \n\n```\nSELECT AVG(standard_qty) avg_std, AVG(gloss_qty) avg_gls, AVG(poster_qty) avg_pst\nFROM orders\nWHERE DATE_TRUNC('month', occurred_at) = \n     (SELECT DATE_TRUNC('month', MIN(occurred_at)) FROM orders);\n\nSELECT SUM(total_amt_usd)\nFROM orders\nWHERE DATE_TRUNC('month', occurred_at) = \n      (SELECT DATE_TRUNC('month', MIN(occurred_at)) FROM orders);\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 559005,
+              "key": "cfe25829-fc09-4b16-a6ca-bd45bf412305",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view69866f7d",
+              "pool_id": "sqlwidget",
+              "view_id": "e6259d94-e4c1-4ada-b1ad-bd5c00944e24",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 403994,
+          "key": "a4ea6477-dbb6-4890-ac82-ad19f60cc3c5",
+          "title": "Quiz:  Subquery Mania",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a4ea6477-dbb6-4890-ac82-ad19f60cc3c5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463702,
+              "key": "491fa07b-1426-44fb-9b41-42e7d0a2164d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e2796_screen-shot-2017-11-16-at-3.54.06-pm/screen-shot-2017-11-16-at-3.54.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/491fa07b-1426-44fb-9b41-42e7d0a2164d",
+              "caption": "",
+              "alt": "",
+              "width": 1540,
+              "height": 960,
+              "instructor_notes": null
+            },
+            {
+              "id": 558936,
+              "key": "7c87548f-d364-474d-bf04-42e5bfbb8d81",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view69866f7d",
+              "pool_id": "sqlwidget",
+              "view_id": "b3d90ad3-f46d-4ce3-b2ff-f049c5e0236f",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 407032,
+              "key": "ac021512-0a39-4333-b741-708263910fa5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### More Subqueries Quizzes\n\nAbove is the ERD for the database again - it might come in handy as you tackle the quizzes below. You should write your solution as a subquery or subqueries, not by finding one solution and copying the output. The importance of this is that it allows your query to be dynamic in answering the question - even if the data changes, you still arrive at the right answer.\n\n1. Provide the **name** of the **sales_rep** in each **region** with the largest amount of **total_amt_usd** sales.<br><br>\n\n2. For the region with the largest (sum) of sales **total_amt_usd**, how many **total** (count) orders were placed? <br><br>\n\n3. **How many accounts** had more **total** purchases than the account **name** which has bought the most **standard_qty** paper throughout their lifetime as a customer? <br><br>\n\n4. For the customer that spent the most (in total over their lifetime as a customer) **total_amt_usd**, how many **web_events** did they have for each channel?<br><br>\n\n5. What is the lifetime average amount spent in terms of **total_amt_usd** for the top 10 total spending **accounts**?<br><br>\n\n6. What is the lifetime average amount spent in terms of **total_amt_usd**, including only the companies that spent more per order, on average, than the average of all orders.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 406886,
+          "key": "068e64fb-f86a-4933-b937-fbc94f366851",
+          "title": "Solution: Subquery Mania",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "068e64fb-f86a-4933-b937-fbc94f366851",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 430347,
+              "key": "e3ae797f-ba96-4bda-986b-9093ece426c1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Below is a video showcasing the workflow for solving the first problem.  Each of the problem solutions is shown in text below as well.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 430332,
+              "key": "b3659a09-8b27-4a59-90b5-e41587a44c58",
+              "title": "Subquery Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Y6S3S0LsMrw",
+                "china_cdn_id": "Y6S3S0LsMrw.mp4"
+              }
+            },
+            {
+              "id": 407660,
+              "key": "b27171c4-0eed-4a08-b8d6-443bf62cb0b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solution: Subquery Mania\n\n1. Provide the **name** of the **sales_rep** in each **region** with the largest amount of **total_amt_usd** sales.<br><br>\nFirst, I wanted to find the **total_amt_usd** totals associated with each **sales rep**, and I also wanted the region in which they were located.  The query below provided this information.\n```\nSELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt\nFROM sales_reps s\nJOIN accounts a\nON a.sales_rep_id = s.id\nJOIN orders o\nON o.account_id = a.id\nJOIN region r\nON r.id = s.region_id\nGROUP BY 1,2\nORDER BY 3 DESC;\n```\nNext, I pulled the max for each region, and then we can use this to pull those rows in our final result.\n```\nSELECT region_name, MAX(total_amt) total_amt\n        FROM(SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt\n                FROM sales_reps s\n                JOIN accounts a\n                ON a.sales_rep_id = s.id\n                JOIN orders o\n                ON o.account_id = a.id\n                JOIN region r\n                ON r.id = s.region_id\n                GROUP BY 1, 2) t1\n        GROUP BY 1;\n```\nEssentially, this is a **JOIN** of these two tables, where the region and amount match.\n```\nSELECT t3.rep_name, t3.region_name, t3.total_amt\nFROM(SELECT region_name, MAX(total_amt) total_amt\n        FROM(SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt\n                FROM sales_reps s\n                JOIN accounts a\n                ON a.sales_rep_id = s.id\n                JOIN orders o\n                ON o.account_id = a.id\n                JOIN region r\n                ON r.id = s.region_id\n                GROUP BY 1, 2) t1\n        GROUP BY 1) t2\nJOIN (SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt\n        FROM sales_reps s\n        JOIN accounts a\n        ON a.sales_rep_id = s.id\n        JOIN orders o\n        ON o.account_id = a.id\n        JOIN region r\n        ON r.id = s.region_id\n        GROUP BY 1,2\n        ORDER BY 3 DESC) t3\nON t3.region_name = t2.region_name AND t3.total_amt = t2.total_amt;\n```\n2. For the region with the largest sales **total_amt_usd**, how many **total** orders were placed? <br><br>\nThe first query I wrote was to pull the **total_amt_usd** for each **region**.  \n```\nSELECT r.name region_name, SUM(o.total_amt_usd) total_amt\nFROM sales_reps s\nJOIN accounts a\nON a.sales_rep_id = s.id\nJOIN orders o\nON o.account_id = a.id\nJOIN region r\nON r.id = s.region_id\nGROUP BY r.name;\n```\nThen we just want the region with the max amount from this table.  There are two ways I considered getting this amount.  One was to pull the max using a subquery.  Another way is to order descending and just pull the top value.  \n```\nSELECT MAX(total_amt)\nFROM (SELECT r.name region_name, SUM(o.total_amt_usd) total_amt\n                FROM sales_reps s\n                JOIN accounts a\n                ON a.sales_rep_id = s.id\n                JOIN orders o\n                ON o.account_id = a.id\n                JOIN region r\n                ON r.id = s.region_id\n                GROUP BY r.name) sub;\n```\nFinally, we want to pull the total orders for the region with this amount:\n```\nSELECT r.name, COUNT(o.total) total_orders\nFROM sales_reps s\nJOIN accounts a\nON a.sales_rep_id = s.id\nJOIN orders o\nON o.account_id = a.id\nJOIN region r\nON r.id = s.region_id\nGROUP BY r.name\nHAVING SUM(o.total_amt_usd) = (\n         SELECT MAX(total_amt)\n         FROM (SELECT r.name region_name, SUM(o.total_amt_usd) total_amt\n                 FROM sales_reps s\n                 JOIN accounts a\n                 ON a.sales_rep_id = s.id\n                 JOIN orders o\n                 ON o.account_id = a.id\n                 JOIN region r\n                 ON r.id = s.region_id\n                 GROUP BY r.name) sub);\n```\nThis provides the **Northeast** with **2357** orders.<br><br>\n3. **How many accounts** had more **total** purchases than the account **name** which has bought the most **standard_qty** paper throughout their lifetime as a customer? <br><br>\nFirst, we want to find the account that had the most **standard_qty** paper.  The query here pulls that account, as well as the total amount:\n```\nSELECT a.name account_name, SUM(o.standard_qty) total_std, SUM(o.total) total\nFROM accounts a\nJOIN orders o\nON o.account_id = a.id\nGROUP BY 1\nORDER BY 2 DESC\nLIMIT 1;\n```\nNow, I want to use this to pull all the accounts with more total sales:\n```\nSELECT a.name\nFROM orders o\nJOIN accounts a\nON a.id = o.account_id\nGROUP BY 1\nHAVING SUM(o.total) > (SELECT total \n                      FROM (SELECT a.name act_name, SUM(o.standard_qty) tot_std, SUM(o.total) total\n                            FROM accounts a\n                            JOIN orders o\n                            ON o.account_id = a.id\n                            GROUP BY 1\n                            ORDER BY 2 DESC\n                            LIMIT 1) sub);\n```\nThis is now a list of all the accounts with more total orders.  We can get the count with just another simple subquery.\n```\nSELECT COUNT(*)\nFROM (SELECT a.name\n          FROM orders o\n          JOIN accounts a\n          ON a.id = o.account_id\n          GROUP BY 1\n          HAVING SUM(o.total) > (SELECT total \n                      FROM (SELECT a.name act_name, SUM(o.standard_qty) tot_std, SUM(o.total) total\n                            FROM accounts a\n                            JOIN orders o\n                            ON o.account_id = a.id\n                            GROUP BY 1\n                            ORDER BY 2 DESC\n                            LIMIT 1) inner_tab)\n                ) counter_tab;\n```\n\n4. For the customer that spent the most (in total over their lifetime as a customer) **total_amt_usd**, how many **web_events** did they have for each channel?<br><br>\nHere, we first want to pull the customer with the most spent in lifetime value.\n```\nSELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent\nFROM orders o\nJOIN accounts a\nON a.id = o.account_id\nGROUP BY a.id, a.name\nORDER BY 3 DESC\nLIMIT 1;\n```\nNow, we want to look at the number of events on each channel this company had, which we can match with just the **id**.\n```\nSELECT a.name, w.channel, COUNT(*)\nFROM accounts a\nJOIN web_events w\nON a.id = w.account_id AND a.id =  (SELECT id\n                        FROM (SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent\n                              FROM orders o\n                              JOIN accounts a\n                              ON a.id = o.account_id\n                              GROUP BY a.id, a.name\n                              ORDER BY 3 DESC\n                              LIMIT 1) inner_table)\nGROUP BY 1, 2\nORDER BY 3 DESC;\n```\nI added an **ORDER BY** for no real reason, and the account name to assure I was only pulling from one account.<br><br>\n5. What is the lifetime average amount spent in terms of **total_amt_usd** for the top 10 total spending **accounts**?<br><br>\nFirst, we just want to find the top 10 accounts in terms of highest **total_amt_usd**.\n```\nSELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent\nFROM orders o\nJOIN accounts a\nON a.id = o.account_id\nGROUP BY a.id, a.name\nORDER BY 3 DESC\nLIMIT 10;\n```\nNow, we just want the average of these 10 amounts.\n```\nSELECT AVG(tot_spent)\nFROM (SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent\n         FROM orders o\n         JOIN accounts a\n         ON a.id = o.account_id\n         GROUP BY a.id, a.name\n         ORDER BY 3 DESC\n          LIMIT 10) temp;\n```\n<br>\n6. What is the lifetime average amount spent in terms of **total_amt_usd**, including only the companies that spent more per order, on average, than the average of all orders.<br><br>\nFirst, we want to pull the average of all accounts in terms of **total_amt_usd**:\n```\nSELECT AVG(o.total_amt_usd) avg_all\nFROM orders o\n```\nThen, we want to only pull the accounts with more than this average amount.  \n```\nSELECT o.account_id, AVG(o.total_amt_usd)\nFROM orders o\nGROUP BY 1\nHAVING AVG(o.total_amt_usd) > (SELECT AVG(o.total_amt_usd) avg_all\n                                  FROM orders o);\n```\nFinally, we just want the average of these values.  \n```\nSELECT AVG(avg_amt)\nFROM (SELECT o.account_id, AVG(o.total_amt_usd) avg_amt\n       FROM orders o\n       GROUP BY 1\n       HAVING AVG(o.total_amt_usd) > (SELECT AVG(o.total_amt_usd) avg_all\n                                      FROM orders o)) temp_table;\n```\n\n### Wow! That was intense.  Nice job if you got these!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558937,
+              "key": "1c1c684c-2557-4483-a7c7-a168f9b1f1bc",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view69866f7d",
+              "pool_id": "sqlwidget",
+              "view_id": "00987449-1598-453e-b62b-141495f57152",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 391936,
+          "key": "45018964-e64d-46a7-bd77-98bcae5854f1",
+          "title": "Video: WITH",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "45018964-e64d-46a7-bd77-98bcae5854f1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 413130,
+              "key": "abcbf7b0-7aca-4243-aac8-80743b096b85",
+              "title": "Common Table Expressions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qtEKO7B8bXQ",
+                "china_cdn_id": "qtEKO7B8bXQ.mp4"
+              }
+            },
+            {
+              "id": 407594,
+              "key": "ea6c2fda-f0a0-42c6-853d-7e474f9d95f0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The **WITH** statement is often called a **Common Table Expression** or **CTE**.  Though these expressions serve the exact same purpose as subqueries, they are more common in practice, as they tend to be cleaner for a future reader to follow the logic.  \n\nIn the next concept, we will walk through this example a bit more slowly to make sure you have all the similarities between subqueries and these expressions down for you to use in practice!  If you are already feeling comfortable skip ahead to practice the quiz section.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 413128,
+              "key": "5864943f-9c88-4058-82e3-038d357cb531",
+              "title": "Subqueries Using WITH",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IszTmDKyKHI",
+                "china_cdn_id": "IszTmDKyKHI.mp4"
+              }
+            },
+            {
+              "id": 478494,
+              "key": "06685be1-25c6-408b-ba73-53e0f621a842",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "On the next page, you will see the details of this query.  This might take some back and forth to see how the syntax works.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 404002,
+          "key": "e8d2e92f-de56-48c8-9812-68dfa5eaa1a9",
+          "title": "Text + Quiz: WITH vs. Subquery",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e8d2e92f-de56-48c8-9812-68dfa5eaa1a9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 404013,
+              "key": "9287b3ac-1e0b-41ec-a9df-1cb227ebf934",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Your First WITH (CTE)\n\nThe same question as you saw in `your first subquery` is provided here along with the solution.   \n\n\n**QUESTION:** You need to find the average number of events for each channel per day.  \n\n**SOLUTION:**\n\n```\nSELECT channel, AVG(events) AS average_events\nFROM (SELECT DATE_TRUNC('day',occurred_at) AS day,\n             channel, COUNT(*) as events\n      FROM web_events \n      GROUP BY 1,2) sub\nGROUP BY channel\nORDER BY 2 DESC;\n```\n\n_______\nLet's try this again using a **WITH** statement.\n\nNotice, you can pull the inner query:\n\n```\nSELECT DATE_TRUNC('day',occurred_at) AS day, \n       channel, COUNT(*) as events\nFROM web_events \nGROUP BY 1,2\n```\n\nThis is the part we put in the **WITH** statement.  Notice, we are aliasing the table as `events` below:\n\n```\nWITH events AS (\n          SELECT DATE_TRUNC('day',occurred_at) AS day, \n                        channel, COUNT(*) as events\n          FROM web_events \n          GROUP BY 1,2)\n```\n\nNow, we can use this newly created `events` table as if it is any other table in our database:\n\n```\nWITH events AS (\n          SELECT DATE_TRUNC('day',occurred_at) AS day, \n                        channel, COUNT(*) as events\n          FROM web_events \n          GROUP BY 1,2)\n\nSELECT channel, AVG(events) AS average_events\nFROM events\nGROUP BY channel\nORDER BY 2 DESC;\n```\n______\n\nFor the above example, we don't need anymore than the one additional table, but imagine we needed to create a second table to pull from.  We can create an additional table to pull from in the following way:\n\n```\nWITH table1 AS (\n          SELECT *\n          FROM web_events),\n\n     table2 AS (\n          SELECT *\n          FROM accounts)\n\n\nSELECT *\nFROM table1\nJOIN table2\nON table1.account_id = table2.id;\n```\nYou can add more and more tables using the **WITH** statement in the same way.  The quiz at the bottom will assure you are catching all of the necessary components of these new queries.\n\nFeel free to explore how this works with the environment below.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558938,
+              "key": "db93c1fe-19c8-4de2-b922-9f0b72146b91",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view69866f7d",
+              "pool_id": "sqlwidget",
+              "view_id": "72925ea3-b472-4341-96e2-fc4cbbae2368",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 407654,
+              "key": "0e488992-741b-4902-a99d-f25d84a99f24",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0e488992-741b-4902-a99d-f25d84a99f24",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select all of the below that are true regarding **WITH** statements.",
+                "answers": [
+                  {
+                    "id": "a1506043939650",
+                    "text": "When creating multiple tables using **WITH**, you add a comma after every table leading to your final query.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1506043956321",
+                    "text": "When creating multiple tables using **WITH**, you add a comma after every table except the last table leading to your final query.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1506044320353",
+                    "text": "The new table name is always aliased using `table_name AS`, which is followed by your query nested between parentheses.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1506044339994",
+                    "text": "You begin each new table using a **WITH** statement.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 391935,
+          "key": "d1933c0d-4e3d-4e8c-bb60-a9a86f596e91",
+          "title": "Quiz: WITH",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d1933c0d-4e3d-4e8c-bb60-a9a86f596e91",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463703,
+              "key": "3e864be2-61a4-4116-aa5c-fc7e2e8f3ee3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e27ba_screen-shot-2017-11-16-at-3.54.06-pm/screen-shot-2017-11-16-at-3.54.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3e864be2-61a4-4116-aa5c-fc7e2e8f3ee3",
+              "caption": "",
+              "alt": "",
+              "width": 1540,
+              "height": 960,
+              "instructor_notes": null
+            },
+            {
+              "id": 403996,
+              "key": "3a7825f9-6d39-40fd-bf8e-3584b6a6bfcf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### WITH Quizzes\n\nEssentially a **WITH** statement performs the same task as a **Subquery**.  Therefore, you can write any of the queries we worked with in the \"Subquery Mania\" using a **WITH**.  That's what you'll do here.  Try to perform each of the earlier queries again, but using a **WITH** instead of a subquery.  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558939,
+              "key": "da1b29db-136c-4de3-8c20-b3d38e2953eb",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view69866f7d",
+              "pool_id": "sqlwidget",
+              "view_id": "a7c8c2f7-0c85-403f-aa44-20677113b87f",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 407656,
+              "key": "05877628-51d7-4a2b-a1d8-cc62a2d2b24e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Above is the ERD for the database again - it might come in handy as you tackle the quizzes below.   You should write your solution as using a **WITH** statement, not by finding one solution and copying the output.  The importance of this is that it allows your query to be dynamic in answering the question - even if the data changes, you still arrive at the right answer.\n\n1. Provide the **name** of the **sales_rep** in each **region** with the largest amount of **total_amt_usd** sales.<br><br>\n\n2. For the region with the largest sales **total_amt_usd**, how many **total** orders were placed? <br><br>\n\n3. **How many accounts** had more **total** purchases than the account **name** which has bought the most **standard_qty** paper throughout their lifetime as a customer? <br><br>\n\n4. For the customer that spent the most (in total over their lifetime as a customer) **total_amt_usd**, how many **web_events** did they have for each channel?<br><br>\n\n5. What is the lifetime average amount spent in terms of **total_amt_usd** for the top 10 total spending **accounts**?<br><br>\n\n6. What is the lifetime average amount spent in terms of **total_amt_usd**, including only the companies that spent more per order, on average, than the average of all orders.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 392051,
+          "key": "3b5e8d4a-b035-42cd-a353-ab4e0d21e804",
+          "title": "Solutions: WITH",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3b5e8d4a-b035-42cd-a353-ab4e0d21e804",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 407661,
+              "key": "2e679960-37d5-4530-a809-84d6ab325cfe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### WITH Solutions\n\nBelow, you will see each of the previous solutions restructured using the **WITH** clause.  This is often an easier way to read a query.\n\n1. Provide the **name** of the **sales_rep** in each **region** with the largest amount of **total_amt_usd** sales.<br><br>\n```\nWITH t1 AS (\n     SELECT s.name rep_name, r.name region_name, SUM(o.total_amt_usd) total_amt\n      FROM sales_reps s\n      JOIN accounts a\n      ON a.sales_rep_id = s.id\n      JOIN orders o\n      ON o.account_id = a.id\n      JOIN region r\n      ON r.id = s.region_id\n      GROUP BY 1,2\n      ORDER BY 3 DESC), \nt2 AS (\n      SELECT region_name, MAX(total_amt) total_amt\n      FROM t1\n      GROUP BY 1)\nSELECT t1.rep_name, t1.region_name, t1.total_amt\nFROM t1\nJOIN t2\nON t1.region_name = t2.region_name AND t1.total_amt = t2.total_amt;\n```\n2. For the region with the largest sales **total_amt_usd**, how many **total** orders were placed? <br><br>\n```\nWITH t1 AS (\n      SELECT r.name region_name, SUM(o.total_amt_usd) total_amt\n      FROM sales_reps s\n      JOIN accounts a\n      ON a.sales_rep_id = s.id\n      JOIN orders o\n      ON o.account_id = a.id\n      JOIN region r\n      ON r.id = s.region_id\n      GROUP BY r.name), \nt2 AS (\n      SELECT MAX(total_amt)\n      FROM t1)\nSELECT r.name, COUNT(o.total) total_orders\nFROM sales_reps s\nJOIN accounts a\nON a.sales_rep_id = s.id\nJOIN orders o\nON o.account_id = a.id\nJOIN region r\nON r.id = s.region_id\nGROUP BY r.name\nHAVING SUM(o.total_amt_usd) = (SELECT * FROM t2);\n```\n3.  For the account that purchased the most (in total over their lifetime as a customer) **standard_qty** paper, **how many accounts** still had more in **total** purchases? <br><br>\n```\nWITH t1 AS (\n      SELECT a.name account_name, SUM(o.standard_qty) total_std, SUM(o.total) total\n      FROM accounts a\n      JOIN orders o\n      ON o.account_id = a.id\n      GROUP BY 1\n      ORDER BY 2 DESC\n      LIMIT 1), \nt2 AS (\n      SELECT a.name\n      FROM orders o\n      JOIN accounts a\n      ON a.id = o.account_id\n      GROUP BY 1\n      HAVING SUM(o.total) > (SELECT total FROM t1))\nSELECT COUNT(*)\nFROM t2;\n```\n4. For the customer that spent the most (in total over their lifetime as a customer) **total_amt_usd**, how many **web_events** did they have for each channel?<br><br>\n```\nWITH t1 AS (\n      SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent\n      FROM orders o\n      JOIN accounts a\n      ON a.id = o.account_id\n      GROUP BY a.id, a.name\n      ORDER BY 3 DESC\n      LIMIT 1)\nSELECT a.name, w.channel, COUNT(*)\nFROM accounts a\nJOIN web_events w\nON a.id = w.account_id AND a.id =  (SELECT id FROM t1)\nGROUP BY 1, 2\nORDER BY 3 DESC;\n```\n5. What is the lifetime average amount spent in terms of **total_amt_usd** for the top 10 total spending **accounts**?<br><br>\n```\nWITH t1 AS (\n      SELECT a.id, a.name, SUM(o.total_amt_usd) tot_spent\n      FROM orders o\n      JOIN accounts a\n      ON a.id = o.account_id\n      GROUP BY a.id, a.name\n      ORDER BY 3 DESC\n      LIMIT 10)\nSELECT AVG(tot_spent)\nFROM t1;\n```\n<br>\n6. What is the lifetime average amount spent in terms of **total_amt_usd**, including only the companies that spent more per order, on average, than the average of all orders.<br><br>\n```\nWITH t1 AS (\n      SELECT AVG(o.total_amt_usd) avg_all\n      FROM orders o\n      JOIN accounts a\n      ON a.id = o.account_id),\nt2 AS (\n      SELECT o.account_id, AVG(o.total_amt_usd) avg_amt\n      FROM orders o\n      GROUP BY 1\n      HAVING AVG(o.total_amt_usd) > (SELECT * FROM t1))\nSELECT AVG(avg_amt)\nFROM t2;\n```\n### Wow! That was intense.  Nice job if you got these!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 558940,
+              "key": "def78dba-28e4-4a8e-99a1-39d2ccae42ea",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view69866f7d",
+              "pool_id": "sqlwidget",
+              "view_id": "606c0b20-cd2b-434a-872e-9b9805513529",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "allowSubmit": false
+                  },
+                  "kind": "sql-evaluator"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 478499,
+              "key": "0bd84b6d-59e7-420b-ad87-66a80eb25504",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0bd84b6d-59e7-420b-ad87-66a80eb25504",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Look back through your solutions to subqueries and CTEs (WITH statements), which do you find more readable?  Which is better for performance?",
+                "answers": [
+                  {
+                    "id": "a1513204725118",
+                    "text": "CTEs are more readable.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513204773985",
+                    "text": "CTEs are more efficient, as the tables aren't recreated with each subquery portion.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 392071,
+          "key": "dd0fcc23-910e-4328-bf88-811c101650ef",
+          "title": "Video: Subquery Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd0fcc23-910e-4328-bf88-811c101650ef",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 409825,
+              "key": "80b6dc6c-a900-4f3d-8d29-d45a80316ef1",
+              "title": "Subquery Conclusion",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TUYvx2K9-5k",
+                "china_cdn_id": "TUYvx2K9-5k.mp4"
+              }
+            },
+            {
+              "id": 408626,
+              "key": "5d0f4712-6fbd-4a07-a6d3-0007ffd4dec2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Recap\n\nThis lesson was the first of the more advanced sequence in writing SQL.  Arguably, the advanced features of **Subqueries** and **CTEs** are the most widely used in an analytics role within a company.  Being able to break a problem down into the necessary tables and finding a solution using the resulting table is very useful in practice. \n\nIf you didn't get the solutions to these queries on the first pass, don't be afraid to come back another time and give them another try.  Additionally, you might try coming up with some questions of your own to see if you can find the solution.  \n\nThe remaining portions of this course may be key to certain analytics roles, but you have now covered all of the main SQL topics you are likely to use on a day to day basis.  ",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

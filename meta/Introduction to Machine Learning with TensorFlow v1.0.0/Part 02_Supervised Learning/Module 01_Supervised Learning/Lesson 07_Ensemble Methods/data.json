@@ -1,0 +1,622 @@
+{
+  "data": {
+    "lesson": {
+      "id": 909516,
+      "key": "5ede2611-a25e-46ee-8daf-b015bf43cd43",
+      "title": "Ensemble Methods",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Bagging and boosting are two common ensemble methods for combining simple algorithms to make more advanced models that work better than the simple algorithms would on their own.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/5ede2611-a25e-46ee-8daf-b015bf43cd43/909516/1581974120158/Ensemble+Methods+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/5ede2611-a25e-46ee-8daf-b015bf43cd43/909516/1581974116250/Ensemble+Methods+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 495981,
+          "key": "640bd304-59e0-4285-a8a9-69eb5ba57f25",
+          "title": "Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "640bd304-59e0-4285-a8a9-69eb5ba57f25",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 543004,
+              "key": "299745c6-5564-48aa-9d9c-eaab691c23b9",
+              "title": "MLND SL EM 01 Intro V1 MAIN V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5v9KqIo6CFE",
+                "china_cdn_id": "5v9KqIo6CFE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 629841,
+          "key": "927ea1fc-1e44-4ef9-836e-a2dbfcd79d9d",
+          "title": "Ensembles",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "927ea1fc-1e44-4ef9-836e-a2dbfcd79d9d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 629842,
+              "key": "cec3ae05-ecf0-4b28-bf32-5fae92498610",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Ensembles\n\nThis whole lesson (on ensembles) is about how we can combine (or ensemble) the models you have already seen in a way that makes the combination of these models better at predicting than the individual models.  \n\nCommonly the \"weak\" learners you use are decision trees.  In fact the default for most ensemble methods is a decision tree in sklearn.  However, you can change this value to any of the models you have seen so far.\n\n____\n\n### Why Would We Want to Ensemble Learners Together?\n\nThere are two competing variables in finding a well fitting machine learning model: **Bias** and **Variance**.  It is common in interviews for you to be asked about this topic and how it pertains to different modeling techniques.  As a first pass, [the wikipedia is quite useful](https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff).  However, I will give you my perspective and examples:\n\n**Bias**: When a model has high bias, this means that means it doesn't do a good job of bending to the data.  An example of an algorithm that usually has high bias is linear regression.  Even with completely different datasets, we end up with the same line fit to the data.  When models have high bias, this is bad.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631346,
+              "key": "eba15f4b-a137-4720-834c-bd7202eeafdb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2016/August/57af91bb_anscombes-quartet-3/anscombes-quartet-3.svg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/eba15f4b-a137-4720-834c-bd7202eeafdb",
+              "caption": "",
+              "alt": "",
+              "width": 700,
+              "height": 700,
+              "instructor_notes": null
+            },
+            {
+              "id": 631347,
+              "key": "527d3b66-d3aa-4e6b-8bbc-9d641d8cbcba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Variance**: When a model has high variance, this means that it changes drastically to meet the needs of every point in our dataset.  Linear models like the one above has low variance, but high bias.  An example of an algorithm that tends to have high variance and low bias is a decision tree (especially decision trees with no early stopping parameters).  A decision tree, as a high variance algorithm, will attempt to split every point into its own branch if possible.  This is a trait of high variance, low bias algorithms - they are extremely flexible to fit exactly whatever data they see.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631348,
+              "key": "9a959e0f-fac9-4191-9b33-17064f96b965",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2016/December/58633876_decision-tree-sketch/decision-tree-sketch.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9a959e0f-fac9-4191-9b33-17064f96b965",
+              "caption": "",
+              "alt": "",
+              "width": 700,
+              "height": 700,
+              "instructor_notes": null
+            },
+            {
+              "id": 631358,
+              "key": "96c08901-a326-48b5-bc05-1ed9fb8e9ce7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "By combining algorithms, we can often build models that perform better by meeting in the middle in terms of bias and variance.  There are some other tactics that are used to combine algorithms in ways that help them perform better as well.  These ideas are based on minimizing bias and variance based on mathematical theories, like the central limit theorem.\n\n#### Introducing Randomness Into Ensembles\n\nAnother method that is used to improve ensemble methods is to introduce randomness into high variance algorithms before they are ensembled together.  The introduction of randomness combats the tendency of these algorithms to overfit (or fit directly to the data available).  There are two main ways that randomness is introduced:\n\n1. **Bootstrap the data** - that is, sampling the data with replacement and fitting your algorithm to the sampled data.\n\n2.  **Subset the features** - in each split of a decision tree or with each algorithm used in an ensemble, only a subset of the total possible features are used.  \n\nIn fact, these are the two random components used in the next algorithm you are going to see called **random forests**.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 495738,
+          "key": "8e742247-fadb-43fa-91d2-2334da96c370",
+          "title": "Random Forests",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8e742247-fadb-43fa-91d2-2334da96c370",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 521255,
+              "key": "2f56b5c5-70d8-401d-98eb-d375f1978fed",
+              "title": "MLND SL DT 13 Random Forests MAIN V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "n5DhXhcYKcw",
+                "china_cdn_id": "n5DhXhcYKcw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 495982,
+          "key": "28c44d37-e0f0-4d75-9c5a-19730fa705b9",
+          "title": "Bagging",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "28c44d37-e0f0-4d75-9c5a-19730fa705b9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 543005,
+              "key": "8bd1d40a-8b92-4a72-84c5-9a709c0d8d02",
+              "title": "MLND SL EM 02 Bagging V1 MAIN V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9L_B0Jcio3c",
+                "china_cdn_id": "9L_B0Jcio3c.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 495983,
+          "key": "331fb696-7767-4adb-b729-31972d00453f",
+          "title": "AdaBoost",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "331fb696-7767-4adb-b729-31972d00453f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 543006,
+              "key": "f3028949-27b3-492f-8d37-a4d40f28f0b7",
+              "title": "MLND SL EM 03 AdaBoost V1 MAIN V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HD6SRBWKGUE",
+                "china_cdn_id": "HD6SRBWKGUE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 495984,
+          "key": "4574241d-58ef-4288-9d39-e744f7224ba2",
+          "title": "Weighting the Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4574241d-58ef-4288-9d39-e744f7224ba2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 543007,
+              "key": "31385e13-8cc2-4526-9e11-c61db1934e80",
+              "title": "MLND SL EM 04 Weighting The Data MAIN V1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "O-hh_x0iYW8",
+                "china_cdn_id": "O-hh_x0iYW8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 495985,
+          "key": "b84e57ba-d3bf-43dd-b917-29749de452a7",
+          "title": "Weighting the Models 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b84e57ba-d3bf-43dd-b917-29749de452a7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 543008,
+              "key": "76801ed6-816c-44c1-895f-9951d906ff27",
+              "title": "MLND SL EM 05 Weighting The Models MAIN V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wn6K536dPLc",
+                "china_cdn_id": "wn6K536dPLc.mp4"
+              }
+            },
+            {
+              "id": 495992,
+              "key": "555305a6-ad96-4911-bb28-8e6a988347e6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Which model is worse?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 495991,
+              "key": "74b2729e-da05-4b6f-a43f-0da394118038",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a4d5756_screen-shot-2018-01-03-at-2.20.30-pm/screen-shot-2018-01-03-at-2.20.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/74b2729e-da05-4b6f-a43f-0da394118038",
+              "caption": "",
+              "alt": "",
+              "width": 2170,
+              "height": 1210,
+              "instructor_notes": null
+            },
+            {
+              "id": 495993,
+              "key": "310d422c-d78f-47b3-aac1-67c9bb6351fa",
+              "title": "Worse model",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "310d422c-d78f-47b3-aac1-67c9bb6351fa",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the three models is the worst, in terms of giving us information?",
+                "answers": [
+                  {
+                    "id": "a1515018101397",
+                    "text": "The one that always tells the truth",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1515018120027",
+                    "text": "The one that tells the truth half of the time",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1515018120863",
+                    "text": "The one that always lies",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 495986,
+          "key": "24635e21-ed48-49de-a121-3af862edfd45",
+          "title": "Weighting the Models 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "24635e21-ed48-49de-a121-3af862edfd45",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 543009,
+              "key": "20cc1126-53cb-471a-b3a3-227af5437971",
+              "title": "MLND SL EM 06 Weighting The Models MAIN V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "_NOTE_: At 1:39, the audio should say \"1 minus x\", not \"1 over x\".",
+              "video": {
+                "youtube_id": "unCJ_ifVquU",
+                "china_cdn_id": "unCJ_ifVquU.mp4"
+              }
+            },
+            {
+              "id": 629590,
+              "key": "f8a74136-a02e-47ac-897e-91c66962c888",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Resources on Boosting\n\n1. [The original paper](https://cseweb.ucsd.edu/~yfreund/papers/IntroToBoosting.pdf) - A link to the original paper on boosting by Yoav Freund and Robert E. Schapire.\n\n2. [An explanation about why boosting is so important](http://blog.kaggle.com/2017/01/23/a-kaggle-master-explains-gradient-boosting/) - A great article on boosting by a Kaggle master, Ben Gorman.\n\n3. [A useful Quora post](https://www.quora.com/What-is-an-intuitive-explanation-of-Gradient-Boosting) - A number of useful explanations about boosting.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 495994,
+              "key": "e31e2c30-4f72-40e8-a34a-e4ac3c680c97",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a4d5823_screen-shot-2018-01-03-at-2.23.38-pm/screen-shot-2018-01-03-at-2.23.38-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e31e2c30-4f72-40e8-a34a-e4ac3c680c97",
+              "caption": "",
+              "alt": "",
+              "width": 2400,
+              "height": 1104,
+              "instructor_notes": null
+            },
+            {
+              "id": 495995,
+              "key": "c71f74d4-1c81-4afb-8b88-eb6d2b913ac3",
+              "title": "Weight quiz 1",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c71f74d4-1c81-4afb-8b88-eb6d2b913ac3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Calculate the weight of the first model, with 2 significant digits.",
+                "matchers": [
+                  {
+                    "expression": "1.95"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 495996,
+              "key": "03d284b7-5a26-4c8c-b519-4dc307ae191c",
+              "title": "Weight quiz 2",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "03d284b7-5a26-4c8c-b519-4dc307ae191c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Calculate the weight of the second model.",
+                "matchers": [
+                  {
+                    "expression": "0"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 495997,
+              "key": "16043a15-3f08-46b6-b35d-340ac038af99",
+              "title": "Weight quiz 3",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "16043a15-3f08-46b6-b35d-340ac038af99",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Calculate the weight of the third model, with 2 significant digits.",
+                "matchers": [
+                  {
+                    "expression": "-1.099"
+                  },
+                  {
+                    "expression": "-1.10"
+                  },
+                  {
+                    "expression": "-1.1"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 495987,
+          "key": "1bddaf9f-b9db-4bfa-8a6b-0da3099b2799",
+          "title": "Weighting the Models 3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1bddaf9f-b9db-4bfa-8a6b-0da3099b2799",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 543010,
+              "key": "134a3622-c614-4234-80b6-d16f5e07b0ce",
+              "title": "MLND SL EM 07 Weighting The Models 3 V1 MAIN V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fecp5nmetws",
+                "china_cdn_id": "fecp5nmetws.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 495988,
+          "key": "d90164ed-2a99-408b-a144-94b980db5943",
+          "title": "Combining the Models",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d90164ed-2a99-408b-a144-94b980db5943",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 543011,
+              "key": "ce33ea4b-37c6-4e7b-8fd9-620ef062427b",
+              "title": "MLND SL EM 08 Combining The Models V1 MAIN V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1GxscvKU2Ic",
+                "china_cdn_id": "1GxscvKU2Ic.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 495989,
+          "key": "b405abd9-d6eb-41b9-8441-96d30b54f32e",
+          "title": "AdaBoost in sklearn",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b405abd9-d6eb-41b9-8441-96d30b54f32e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 498700,
+              "key": "3566d4f8-fc79-4601-b1a6-f44df22ac1bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# AdaBoost in sklearn\n\nBuilding an AdaBoost model in sklearn is no different than building any other model. You can use scikit-learn's [`AdaBoostClassifier`](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html) class.  This class provides the functions to define and fit the model to your data.\n\n```python\n>>> from sklearn.ensemble import AdaBoostClassifier\n>>> model = AdaBoostClassifier()\n>>> model.fit(x_train, y_train)\n>>> model.predict(x_test)\n```\n\nIn the example above, the `model` variable is a decision tree model that has been fitted to the data `x_train` and `y_train`.  The functions `fit` and `predict` work exactly as before.\n\n### Hyperparameters\nWhen we define the model, we can specify the hyperparameters. In practice, the most common ones are\n- `base_estimator`: The model utilized for the weak learners (**Warning:** Don't forget to import the model that you decide to use for the weak learner).\n- `n_estimators`: The maximum  number of weak learners used.\n\nFor example, here we define a model which uses decision trees of max_depth 2 as the weak learners, and it allows a maximum of 4 of them.\n```python\n>>> from sklearn.tree import DecisionTreeClassifier\n>>> model = AdaBoostClassifier(base_estimator = DecisionTreeClassifier(max_depth=2), n_estimators = 4)```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630041,
+          "key": "c3461de8-e095-4109-b2d5-063ba4a27d5c",
+          "title": "More Spam Classifying",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c3461de8-e095-4109-b2d5-063ba4a27d5c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630046,
+              "key": "a066d0dc-4c86-4256-abb4-5020960499c0",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewced7f2e6",
+              "pool_id": "jupyter",
+              "view_id": "ced7f2e6-6ea4-423b-b5d4-f795a2388a0a",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Spam_&_Ensembles.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630856,
+          "key": "3aa8ddbc-4fc7-430b-8a36-2fd7674e9911",
+          "title": "Recap & Additional Resources",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3aa8ddbc-4fc7-430b-8a36-2fd7674e9911",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630857,
+              "key": "195294ea-b187-4da0-b4dd-1627ff1cc91f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Recap\n\nIn this lesson, you learned about a number of techniques used in ensemble methods.  Before looking at the techniques, you saw that there are two variables with tradeoffs **Bias** and **Variance**.\n\n* **High Bias, Low Variance** models tend to underfit data, as they are not flexible.  **Linear models** fall into this category of models.\n\n* **High Variance, Low Bias** models tend to overfit data, as they are too flexible. **Decision trees** fall into this category of models.\n\n### Ensemble Models\n\nIn order to find a way to optimize for both variance and bias, we have ensemble methods.  Ensemble methods have become some of the most popular methods used to compete in competitions on Kaggle and used in industry across applications.\n\nThere were two randomization techniques you saw to combat overfitting:\n\n1. **Bootstrap the data** - that is, sampling the data with replacement and fitting your algorithm and fitting your algorithm to the sampled data.\n\n2.  **Subset the features** - in each split of a decision tree or with each algorithm used an ensemble only a subset of the total possible features are used.  \n\n### Techniques\n\nYou saw a number of ensemble methods in this lesson including:\n\n\n* [BaggingClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier)\n* [RandomForestClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier)\n* [AdaBoostClassifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier)\n\nAnother really useful guide for ensemble methods can be found [in the documentation here](http://scikit-learn.org/stable/modules/ensemble.html).  These methods can also all be extended to regression problems, not just classification.\n\n### Additional Resources\n\nAdditionally, here are some great resources on AdaBoost if you'd like to learn some more!\n\n- Here is the original [paper](https://cseweb.ucsd.edu/~yfreund/papers/IntroToBoosting.pdf) from Freund and Schapire.\n- A follow-up [paper](https://cseweb.ucsd.edu/~yfreund/papers/boostingexperiments.pdf) from the same authors regarding several experiments with Adaboost.\n- A great [tutorial](http://rob.schapire.net/papers/explaining-adaboost.pdf) by Schapire.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

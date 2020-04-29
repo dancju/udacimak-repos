@@ -4,7 +4,7 @@ Users of Udacimak can share their JSON files in this repository!
 
 ## Usage
 
-Execute the script `download.sh` and course contents would be downloaded to the directory `data`, or run `udacimak render` manually for flexibility.
+Execute script `download.sh` and course contents would be downloaded into the directory `data`.
 
 ## Contribution
 

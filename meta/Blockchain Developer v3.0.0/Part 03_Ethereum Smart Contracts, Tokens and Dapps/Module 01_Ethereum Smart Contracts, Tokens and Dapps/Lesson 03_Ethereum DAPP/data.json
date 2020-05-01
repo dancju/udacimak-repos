@@ -1,0 +1,2464 @@
+{
+  "data": {
+    "lesson": {
+      "id": 791335,
+      "key": "d4f172a8-aa93-4602-a78a-01ecae56c28f",
+      "title": "Ethereum DAPP",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Create DAPPs using all the Tools learnt so far",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/d4f172a8-aa93-4602-a78a-01ecae56c28f/791335/1555417437461/Ethereum+DAPP+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/d4f172a8-aa93-4602-a78a-01ecae56c28f/791335/1555417431449/Ethereum+DAPP+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 791274,
+          "key": "be2abb08-8629-409a-a7a3-40c0fdc7e402",
+          "title": "Welcome to Creating Dapps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "be2abb08-8629-409a-a7a3-40c0fdc7e402",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791553,
+              "key": "213a7114-41f7-409b-acfa-a2ec45718f53",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Welcome to Creating Dapps\n\nIn this lesson, we are going to build step by step two versions of the Star Notary Project; this will help you to complete Project 5.\n\n1. Star Notary Smart Contract Version 1 (Non-tokenized)\n2. Star Notary Smart Contract Version 2 (Tokenize)\n\n## Learning Objectives\n\n- Practice with the tools you need to create a DApp.\n- Implement a Smart Contract to expose the DApp functionalities.\n- Demonstrate how to test your Smart Contracts functionalities.\n- Identify ERC-721 Non-Fungible Tokens.\n- Create your ERC-721 token.\n\n**Note**: The videos in this lesson are using the Truffle V4 and openzeppelin-solidity v2.0.0, but we will add instructions to use the latest version of Truffle and openzeppelin.\n\n**Note**: You can access the code explained in this lesson in the [Github Repository in the Course_Identity_And_Smart_Contracts](https://github.com/udacity/nd1309-work-code) . The code use the latest version of Truffle (Truffle v5.0.2) and openzeppelin-solidity library (openzeppelin-solidity 2.1.2). The code in the **Instructor Code** section in the entire lesson is updated to use the latest version of Truffle and open-zeppelin-solidity library.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791272,
+              "key": "4b4dc130-5f3f-442a-a256-446b262428b3",
+              "title": "C4L3 02-03 Welcome HS V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4hshyFId6Ts",
+                "china_cdn_id": "4hshyFId6Ts.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 791277,
+          "key": "bbbb7ffe-8266-403b-8360-c2c540366a34",
+          "title": "Tools Required to finish this Lesson",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bbbb7ffe-8266-403b-8360-c2c540366a34",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791487,
+              "key": "7cef276e-3c2d-4b70-aede-0a1a163037ac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What tools and libraries use in this lesson?\n___\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791275,
+              "key": "4b445d05-53ef-45a1-8a46-8b8f0cebc319",
+              "title": "C4L3 04 Tools Required  Part 1 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yaZA3xD6CY4",
+                "china_cdn_id": "yaZA3xD6CY4.mp4"
+              }
+            },
+            {
+              "id": 813657,
+              "key": "fccb87d6-eaa3-4dff-a011-f241915e1bdb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Truffle installation commands\n___\n- Use `truffle -v` to verify if you have Truffle installed.\n- Use `npm install -g truffle ` to install Truffle or update it to the latest version.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813658,
+              "key": "c5316529-6d13-42c7-8bec-3170d067304f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How to use Truffle boxes?\n___\n\n*\"Truffle Boxes are helpful boilerplates that allow you to focus on what makes your DApp unique. In addition to Truffle, Truffle Boxes can contain other helpful modules, Solidity contracts & libraries, front-end views and more; all the way up to complete example dapps\"*\n\nCheck for more information in [Truffle Boxes](https://truffleframework.com/boxes)\n\nTo use one of the many boxes from truffle you will run the following command:\n- `truffle unbox <box_name>`\n\nFor the purpose of this lesson, we are going to use **webpack** box because it will help us with the front-end the application and it is simple to use it.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813659,
+              "key": "7e09aa98-f758-489c-8f97-3f4271bee18a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Setting up your project (1)\n___\n\n1. Verify you have Truffle installed (In your terminal use`truffle -v`) if not you need to install it (in your terminal use `npm install -g truffle`).\n2. Create your project folder (In your terminal use `mkdir starNotaryv1`)\n3. Move to the project folder (`cd starNotaryv1`)\n4. Create your project using (In your terminal `truffle unbox webpack`)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813661,
+              "key": "517104ce-234a-4061-8a09-e85068fb509f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/517104ce-234a-4061-8a09-e85068fb509f",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791555,
+              "key": "10c218f6-3a64-4e9a-a852-a376131a6d23",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Finishing the project configuration\n___",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791276,
+              "key": "56d67d42-2820-4b78-8ff5-6cfa8afd4e69",
+              "title": "C4L3 05 Tools Required  Part 2 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nh7FZ9t3GO8",
+                "china_cdn_id": "nh7FZ9t3GO8.mp4"
+              }
+            },
+            {
+              "id": 813663,
+              "key": "e842b6cb-7c0e-4f5c-bf4d-ef623c42210d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Setting up your project (2)\n---\n\n1. In your project folder (in your terminal use the command `truffle develop` or `sudo truffle develop`).\n2. Check Truffle started in the URl: ` http://127.0.0.1:9545/`\n\n**Note**: If you installed Truffle globally using the command `sudo` you will need to use it when you run the `develop` command `sudo truffle develop`\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791557,
+              "key": "3f238a12-6029-4659-8068-566affed100f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Connect your Metamask to locally running Truffle's Network\n___\n\nYou probably have Metamask installed from the previous lesson, I recommend you to check the version and use the latest one (MetaMask Version 5.3.1), you can do it removing your Chrome Extension and installing it again.\n\n### Configuring your Private network in Metamask\n\n- Go to your Metamask Chrome Extension\n- Use option, Connect using “Custom RPC”, at address http://127.0.0.1:9545/\n- Use the Private Keys provided by Truffle to import at least two accounts.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813664,
+              "key": "d786c0ba-208e-4189-b2f3-f4647f80b9ee",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d786c0ba-208e-4189-b2f3-f4647f80b9ee",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791673,
+              "key": "748c0a47-f250-41df-a077-18b983fd28da",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "748c0a47-f250-41df-a077-18b983fd28da",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Make sure you have Truffle installed",
+                "Make a Project Directory to house all your files and folders",
+                "Install truffle box webpack",
+                "Confirm Metamask is Setup"
+              ],
+              "positive_feedback": "Fantastic! You now have all the tools setup to create a DAPP.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791281,
+          "key": "59978777-e912-4b9d-a767-8c18e769e92c",
+          "title": "Star Notary Smart Contract Version 1 (Non-tokenized)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "59978777-e912-4b9d-a767-8c18e769e92c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791559,
+              "key": "80ce54d8-cbb2-49b4-9d14-56c6c58c4ce0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Let's use Remix to write our contract\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791279,
+              "key": "118d5124-341c-4b98-a558-93dc886955af",
+              "title": "C4L3 07 Write The Smart Contract SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: This video was recorded using an outdated version, please check down below for instructions",
+              "video": {
+                "youtube_id": "WpM49SM1m8k",
+                "china_cdn_id": "WpM49SM1m8k.mp4"
+              }
+            },
+            {
+              "id": 813666,
+              "key": "a5f6ccb0-cac9-485c-847b-49a39850144d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a5f6ccb0-cac9-485c-847b-49a39850144d",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791280,
+              "key": "f94173f4-eb83-40a7-af3c-b7a72a340fbd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor's code\n---\n\n```\npragma solidity >=0.4.24;\n\ncontract StarNotary {\n    \n    string public starName;\n    address public starOwner;\n    \n    event starClaimed(address owner);\n\n    constructor() public {\n        starName = \"Awesome Udacity Star\";\n    }\n\n    function claimStar() public {\n        starOwner = msg.sender;\n        emit starClaimed(msg.sender);\n    }\n    \n}\n```\n\n**Note**: There are a few differences between the code in the video and the one showed in this text, this code works fine for the latest version of the tools you are going to use during this lesson. Also, remember the code can be found in the [Github Repository](https://github.com/udacity/nd1309-work-code/blob/master/Course_Identity_And_Smart_Contracts/starNotaryv1/contracts/StarNotary.sol)\n\n\n ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813667,
+              "key": "03281c32-e92c-4877-b27b-fe5dc9da76ba",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/03281c32-e92c-4877-b27b-fe5dc9da76ba",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791677,
+              "key": "d476daf1-9b18-47f4-b666-775ebd5729f1",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d476daf1-9b18-47f4-b666-775ebd5729f1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Write the Star Notary Contract in Remix.",
+                "Use Javascript VM environment in Remix to claim a star.",
+                "Check to see if the Star Owner changes after claiming the star."
+              ],
+              "positive_feedback": "Good Job! You have successfully written your version 1 Star Notary Contract using Remix.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791285,
+          "key": "176e27a7-8846-4900-9b2b-17d6fc86b546",
+          "title": "Tests with Mocha and Chai",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "176e27a7-8846-4900-9b2b-17d6fc86b546",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791282,
+              "key": "123617d7-05c1-4016-9dd2-51a0eb5b2155",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Tests with Mocha and Chai\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791283,
+              "key": "23f35f1d-832e-45f1-81d7-d9841929b76b",
+              "title": "C4L3 10 Mocha And Chai A",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Q6LPrxHWEvo",
+                "china_cdn_id": "Q6LPrxHWEvo.mp4"
+              }
+            },
+            {
+              "id": 813668,
+              "key": "5bded5cf-6cab-4ca1-85bc-bd1d0088f9b3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5bded5cf-6cab-4ca1-85bc-bd1d0088f9b3",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791560,
+              "key": "218deb6c-26e3-4451-bf8c-e1d7a1a736ae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Mocha and Chai\n---\n\n- Mocha is a Testing Framework for Javascript, it can be used for front end applications and back end applications like Ethereum Decentralized Apps.\n- Chai is an Assertion Library\n- Both are available as NPM packages \n- Very popular between developer for testing their code\n- Truffle supports and comes preinstalled with Mocha and Chai\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791561,
+              "key": "3c6495bf-3b22-4b45-92c9-3171c29ff9da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sample Code showing Mocha and Chai Functions\n---\n\nThis is just an example and it isn't exactly the code you need to write in your exercise:\n\n```\nbeforeEach (async () => {\n     library = await Library.deployed();\n      await contract ('Udacity', function(acc) {\n          accounts = acc;\n      })\n});\n  \ndescribe ('all tests', () => {\n     it ('can create a Library owner', async () => {\n             const owner = await library.owner();\n             assert.equal(owner, accounts[0]);\n      })\n}) \n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813669,
+              "key": "db010db7-b6a0-4bfa-9fdd-2ff0b86006ad",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/db010db7-b6a0-4bfa-9fdd-2ff0b86006ad",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791284,
+              "key": "fb25a05f-6e06-473d-8d6d-7efd7775cb5e",
+              "title": "Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fb25a05f-6e06-473d-8d6d-7efd7775cb5e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Chai is an assertion library",
+                "answers": [
+                  {
+                    "id": "rbk2",
+                    "text": "True",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "False",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 813670,
+              "key": "e97ece27-b0ac-49c4-9015-187faac2a308",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e97ece27-b0ac-49c4-9015-187faac2a308",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791678,
+              "key": "42f3bf24-1448-4567-a18f-517a17ecefab",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "42f3bf24-1448-4567-a18f-517a17ecefab",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Tests are grouped underneath the it keyword, and test cases are grouped under the describe keyword.",
+                "answers": [
+                  {
+                    "id": "a1544476101486",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1544476155158",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 791290,
+          "key": "14152cd3-e6bc-4597-8a62-e585a0635a77",
+          "title": "Write Smart Contracts in Truffle project",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "14152cd3-e6bc-4597-8a62-e585a0635a77",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791286,
+              "key": "dad38afb-94db-4d8e-b36e-a4bf388f8393",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Write Smart Contracts in Truffle project\n---\nWe have implemented our version 1 of a StarNotary Smart Contract before in Remix, now we are going to move the Smart Contract to our Truffle project and edit the necessary files to implement our project.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791738,
+              "key": "663e3d94-b210-43e2-a4e5-a5f58d76d85c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Cleaning up the project\n---\nWe have in the boilerplate code example of contracts and tests files that we are not going to need it anymore, let's clean up those files and set up all the configuration we need.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791287,
+              "key": "85d054fb-ca2a-4a63-94e0-e8e944919d00",
+              "title": "C4L3 13 Port The Contract To Truffle SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of Truffle.",
+              "video": {
+                "youtube_id": "rJ51HdB-nXo",
+                "china_cdn_id": "rJ51HdB-nXo.mp4"
+              }
+            },
+            {
+              "id": 813671,
+              "key": "e8c58a5a-26d6-492d-961e-e77ff248b1ef",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e8c58a5a-26d6-492d-961e-e77ff248b1ef",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813672,
+              "key": "6387211d-9f8e-4e3c-b7b7-86aa7607abc6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nWe recommend you to use for the file name `StarNotary.sol` with the capital letter instead of `starNotary.sol`.\n\n### File StarNotary.sol\n```\npragma solidity >=0.4.24;\n\ncontract StarNotary {\n    \n    string public starName;\n    address public starOwner;\n    \n    event starClaimed(address owner);\n\n    constructor() public {\n        starName = \"Awesome Udacity Star\";\n    }\n\n    function claimStar() public {\n        starOwner = msg.sender;\n        emit starClaimed(msg.sender);\n    }\n    \n}\n```\n\n### File 2_deploy_contracts.js (migrations folder)\n\n```\nconst StarNotary = artifacts.require(\"StarNotary\"); // Name of the StarNotary contract file\n\nmodule.exports = function(deployer) {\n  deployer.deploy(StarNotary);\n};\n```\n\n### File TestStarNotary.js\n\nCreate a file with a name `TestStarNotary.js` in the `test` folder, this file is where we are going to write our tests cases.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813673,
+              "key": "4e549cea-9c81-48ad-a98a-0b07eafe5575",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4e549cea-9c81-48ad-a98a-0b07eafe5575",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791739,
+              "key": "85a89efa-a847-4234-8f50-f1b88fb72496",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Setting up the test file TestStarNotary.js\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791288,
+              "key": "9b5d1efd-f1a3-4c72-8bb7-a51bd37f78d2",
+              "title": "C4L3 14 Step 1  Require The JSON Representation SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version of the tools you are using, check the instructions below for the correct code.",
+              "video": {
+                "youtube_id": "KMiMZqJn_bw",
+                "china_cdn_id": "KMiMZqJn_bw.mp4"
+              }
+            },
+            {
+              "id": 791563,
+              "key": "6f2906bb-9e08-411e-826c-3d762ef337ec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\n\nUse the following code to set up your test file `TestStarNotary.js`\n\n```\n// Importing the StartNotary Smart Contract ABI (JSON representation of the Smart Contract)\nconst StarNotary = artifacts.require(\"StarNotary\");\n\nvar accounts; // List of development accounts provided by Truffle\nvar owner; // Global variable use it in the tests cases\n\n// This called the StartNotary Smart contract and initialize it\ncontract('StarNotary', (accs) => {\n    accounts = accs; // Assigning test accounts\n    owner = accounts[0]; // Assigning the owner test account\n});\n\n// Example test case, it will test if the contract is able to return the starName property \n// initialized in the contract constructor\nit('has correct name', async () => {\n    let instance = await StarNotary.deployed(); // Making sure the Smart Contract is deployed and getting the instance.\n    let starName = await instance.starName.call(); // Calling the starName property\n    assert.equal(starName, \"Awesome Udacity Star\"); // Assert if the starName property was initialized correctly\n});\n```\nIt is important to remember that all this test libraries use Promises, that's why we are using in each function the keywords `async` and `await`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813674,
+              "key": "b65c5bf3-04b9-4177-b7bc-5baa54a80c06",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b65c5bf3-04b9-4177-b7bc-5baa54a80c06",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791289,
+              "key": "65f92a74-f2cb-4898-8428-c705fa84208b",
+              "title": "C4L3 15 Step 2  Deploying The Contract SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version of the tools you are using, check the instructions below for the correct code.",
+              "video": {
+                "youtube_id": "INN_ukvkYHw",
+                "china_cdn_id": "INN_ukvkYHw.mp4"
+              }
+            },
+            {
+              "id": 791564,
+              "key": "9eef88b9-8616-4686-85f5-772d9782d762",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\n\n```\n// This called the StartNotary Smart contract and initialize it\ncontract('StarNotary', (accs) => {\n    accounts = accs; // Assigning test accounts\n    owner = accounts[0]; // Assigning the owner test account\n});\n```\n\nOne difference is that you can't declare a global `instance` variable of the contract, you will need to create an instance in each test case.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813675,
+              "key": "b64308cd-a0cc-4c21-b073-74dabd657847",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b64308cd-a0cc-4c21-b073-74dabd657847",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791679,
+              "key": "52dd94f5-88db-4d32-8dbb-fcea27135629",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "52dd94f5-88db-4d32-8dbb-fcea27135629",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create the test file",
+                "Add the contract function and get an instance of the contract"
+              ],
+              "positive_feedback": "Good Job!",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791297,
+          "key": "2fe2b2ec-35a1-4255-a807-1c8193b7ef27",
+          "title": "Writing testing cases",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2fe2b2ec-35a1-4255-a807-1c8193b7ef27",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791291,
+              "key": "3071e439-c12d-4b78-b1e1-7b1b3dc3593b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Writing testing cases\n---\n\nWe are going to write multiple test cases using `it` blocks to test the Star Notary Smart Contract.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791740,
+              "key": "e6f1a9d6-5a71-4300-8254-9fdbd96d2067",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Test Case 1. Testing `starName` initialization\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791292,
+              "key": "dc7368db-2126-4845-bc6a-9808400bcc6f",
+              "title": "C4L3 17 Test 1 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of Truffle.",
+              "video": {
+                "youtube_id": "ezHjZEVC9eQ",
+                "china_cdn_id": "ezHjZEVC9eQ.mp4"
+              }
+            },
+            {
+              "id": 791566,
+              "key": "db6d8a48-5e19-4991-801a-254e8deef1f6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\n\n```\n// Example test case, it will test if the contract is able to return the starName property \n// initialized in the contract constructor\nit('has correct name', async () => {\n    let instance = await StarNotary.deployed(); // Making sure the Smart Contract is deployed and getting the instance.\n    let starName = await instance.starName.call(); // Calling the starName property\n    assert.equal(starName, \"Awesome Udacity Star\"); // Assert if the starName property was initialized correctly\n});\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813676,
+              "key": "086e261f-ed17-4cb6-8967-77a9e39e4051",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/086e261f-ed17-4cb6-8967-77a9e39e4051",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791741,
+              "key": "f061f064-8e07-4516-bb49-ff47ffbce2b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Test Case 2. A Star can be claimed?\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791293,
+              "key": "4d70eef4-80b5-4838-b039-ed784ca54cab",
+              "title": "C4L3 18 Test 2 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of Truffle.",
+              "video": {
+                "youtube_id": "feFfYBNoEog",
+                "china_cdn_id": "feFfYBNoEog.mp4"
+              }
+            },
+            {
+              "id": 791567,
+              "key": "32cb4c4f-e54b-42af-9507-0489a624b373",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\n\n```\n// Example test case, it will test is the Smart Contract function claimStar assigned the Star to the owner address\nit('can be claimed', async () => {\n    let instance = await StarNotary.deployed(); // Making sure the Smart Contract is deployed and getting the instance.\n    await instance.claimStar({from: owner}); // Calling the Smart Contract function claimStar\n    let starOwner = await instance.starOwner.call(); // Getting the owner address\n    assert.equal(starOwner, owner); // Verifying if the owner address match with owner of the address\n});\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813677,
+              "key": "be121721-800c-42e2-8516-da32a606bd32",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/be121721-800c-42e2-8516-da32a606bd32",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791742,
+              "key": "c36d6295-bb3f-4e49-aa24-32f86ae3cd0e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Test Case 3. Can star ownership change?\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791294,
+              "key": "543758ca-8e80-4b9a-a9cb-b449877a5d30",
+              "title": "C4L3 19 Test 3 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of Truffle.",
+              "video": {
+                "youtube_id": "wZzBDFiI3Wo",
+                "china_cdn_id": "wZzBDFiI3Wo.mp4"
+              }
+            },
+            {
+              "id": 791568,
+              "key": "6201670d-fd9b-432f-8833-801b6e433a49",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\n```\n// Example test case, it will test is the Smart Contract function claimStar assigned the Star to the owner address and it can be changed\nit('can change owners', async () => {\n    let instance = await StarNotary.deployed();\n    let secondUser = accounts[1];\n    await instance.claimStar({from: owner});\n    let starOwner = await instance.starOwner.call();\n    assert.equal(starOwner, owner);\n    await instance.claimStar({from: secondUser});\n    let secondOwner = await instance.starOwner.call();\n    assert.equal(secondOwner, secondUser);\n });\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791295,
+              "key": "c4334cb8-58ff-4fdd-97c6-74776077943e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nComplete TestStarNotary.js file\n\n```\n// Importing the StartNotary Smart Contract ABI (JSON representation of the Smart Contract)\nconst StarNotary = artifacts.require(\"StarNotary\");\n\nvar accounts; // List of development accounts provided by Truffle\nvar owner; // Global variable use it in the tests cases\n\n// This called the StartNotary Smart contract and initialize it\ncontract('StarNotary', (accs) => {\n    accounts = accs; // Assigning test accounts\n    owner = accounts[0]; // Assigning the owner test account\n});\n\n// Example test case, it will test if the contract is able to return the starName property \n// initialized in the contract constructor\nit('has correct name', async () => {\n    let instance = await StarNotary.deployed(); // Making sure the Smart Contract is deployed and getting the instance.\n    let starName = await instance.starName.call(); // Calling the starName property\n    assert.equal(starName, \"Awesome Udacity Star\"); // Assert if the starName property was initialized correctly\n});\n\n// Example test case, it will test is the Smart Contract function claimStar assigned the Star to the owner address\nit('can be claimed', async () => {\n    let instance = await StarNotary.deployed(); // Making sure the Smart Contract is deployed and getting the instance.\n    await instance.claimStar({from: owner}); // Calling the Smart Contract function claimStar\n    let starOwner = await instance.starOwner.call(); // Getting the owner address\n    assert.equal(starOwner, owner); // Verifying if the owner address match with owner of the address\n});\n\n// Example test case, it will test is the Smart Contract function claimStar assigned the Star to the owner address and it can be changed\nit('can change owners', async () => {\n    let instance = await StarNotary.deployed();\n    let secondUser = accounts[1];\n    await instance.claimStar({from: owner});\n    let starOwner = await instance.starOwner.call();\n    assert.equal(starOwner, owner);\n    await instance.claimStar({from: secondUser});\n    let secondOwner = await instance.starOwner.call();\n    assert.equal(secondOwner, secondUser);\n });\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813678,
+              "key": "206af53a-15f6-47a3-9f9f-f8d5b57012bf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/206af53a-15f6-47a3-9f9f-f8d5b57012bf",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813679,
+              "key": "d19e5933-3558-49d9-9137-ec7097f39246",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Running test cases\n---\n\nNow that we have the Smart Contract `StarNotary.sol` implemented and we wrote our test cases is time to run our tests.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813680,
+              "key": "4414811d-ff32-41af-ab93-7dce78c900dc",
+              "title": "Running Starnotary Test Cases",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RTDwp0UrVwA",
+                "china_cdn_id": "RTDwp0UrVwA.mp4"
+              }
+            },
+            {
+              "id": 813681,
+              "key": "a5d4bd3c-aba5-4cd5-ab20-81260762dbde",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Commands\n\n- `truffle develop` or `sudo truffle develop` to run Truffle Development environment.\n- `compile` to compile any changes in the Smart Contract.\n- `migrate --reset` to migrate and create a fresh and clean Smart contract session.\n- `test` to run the test cases.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813682,
+              "key": "7771e0fd-a243-4751-93d4-2093b684e87e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7771e0fd-a243-4751-93d4-2093b684e87e",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791570,
+              "key": "adf96486-936e-40c6-af94-17e227e73738",
+              "title": "Add functionality to starNotary contract",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "adf96486-936e-40c6-af94-17e227e73738",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Add a function in the starNotary contract, called changeName.",
+                "This function should change the name of the star.",
+                "This function should accept one input parameter.",
+                "Write a corresponding test to make sure that you are able to change the name of the star."
+              ],
+              "positive_feedback": "## Star Notary Contract\n\n       pragma solidity ^0.4.23;\n\n       contract StarNotary {\n\n    string public starName;\n    address public starOwner;\n\n    event starClaimed(address owner);\n\n    constructor() public {\n        starName = \"Awesome Udacity Star\";\n       }\n\n    function changeName (string _name) public {\n      starName = _name;\n      }\n\n    function claimStar() public {\n        starOwner = msg.sender;\n        emit starClaimed(msg.sender);\n       }\n    }\n\n## Testing Code\n\n\n     it('can change names', async () => {\n      await instance.claimStar({from: owner});\n      await instance.changeName('New Name', {from: owner});\n      assert.equal(await instance.starName.call(), 'New Name');\n     })",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791300,
+          "key": "183d00d7-1dd8-4369-b3f5-8b00b182908a",
+          "title": "Creating the Front End: Part 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "183d00d7-1dd8-4369-b3f5-8b00b182908a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791569,
+              "key": "61a1518e-021e-45f3-8efc-8846768ccec3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Creating the Front End: Part 1\n---\n\nWe already have the Smart Contract implemented and tested using the test cases, now it is time to allow users to claim a Star.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791298,
+              "key": "59f59f58-ee52-4b34-a930-6243d3ab9703",
+              "title": "C4L3 22 Editing Indexhtml File SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of Truffle.",
+              "video": {
+                "youtube_id": "cTRtp9_jDYk",
+                "china_cdn_id": "cTRtp9_jDYk.mp4"
+              }
+            },
+            {
+              "id": 813683,
+              "key": "0b9ee779-dcf7-4d0e-9f67-e4096b13a56a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0b9ee779-dcf7-4d0e-9f67-e4096b13a56a",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791299,
+              "key": "c6065754-1ef3-4964-bd29-dcbafd7fd5f5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nUse the following code to replace the code in the `index.html` file, feel free to add some styles to your page.\n\n```\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>StarNotary DAPP Front End</title>\n    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>\n  </head>\n  <style>\n    input {\n      display: block;\n      margin-bottom: 12px;\n    }\n  </style>\n  <body>\n    \n    <h1>StarNotary DAPP</h1>\n\n    <br><label for=\"name\">Star Name:</label><h3 id='name'>Star Name: </h3>\n    <br><br><button onclick=\"App.starNameFunc()\">Get Star Name</button>\n    <hr>\n    <br><label for=\"owner\">Star Owner:</label><h3 id='owner'>Star Owner: </h3>\n    <br><br><button onclick=\"App.starOwnerFunc()\">Get Star Owner</button>\n    <br><br>\n    <hr>\n    <br>\n      <h1>Claim Star</h1>\n      <br><br><button id=\"claimStar\" onclick=\"App.claimStarFunc()\">Claim a Star</button>\n      <br><br>\n      <br>\n      <hr>\n        <span id=\"status\"></span>\n      <br>\n\n    <script src=\"index.js\"></script>\n  </body>\n</html>\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813684,
+              "key": "a06d2f7a-0f75-4fcb-9dc7-e446ada42acf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a06d2f7a-0f75-4fcb-9dc7-e446ada42acf",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791680,
+              "key": "f5b45aa5-839e-4dcf-9017-a824a0d319e0",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f5b45aa5-839e-4dcf-9017-a824a0d319e0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create the Index.html file",
+                "Add a button to the get star name",
+                "Add a button to get the star owner",
+                "Add a button to claim the star"
+              ],
+              "positive_feedback": "Good Job! In the next video, we will learn how to edit the Index.js file.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791305,
+          "key": "44cba4f2-f66f-4daa-8078-371cc797413d",
+          "title": "Creating the Front End: Part 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "44cba4f2-f66f-4daa-8078-371cc797413d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791617,
+              "key": "3727e587-1fde-4de1-b4c6-9a16cd84cbda",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Creating the Front End: Part 2\n---\n\nNow we need to connect our Smart Contract functionalities to our Javascript files in the front-end.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791301,
+              "key": "00986c1d-0acf-4b7c-b576-1ccd00c87da8",
+              "title": "C4L3 24 Editing Indexjs File SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of Truffle.",
+              "video": {
+                "youtube_id": "3wa41ZHwge0",
+                "china_cdn_id": "3wa41ZHwge0.mp4"
+              }
+            },
+            {
+              "id": 791302,
+              "key": "a52bbd20-ee64-459c-b1d7-f34d4203cef0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n\nThere are very important differences between how you will do this in the latest version of Truffle, check the code you need to use and replace your `index.js` file:\n\n```\nimport Web3 from \"web3\"; //Importing Web3 object\nimport starNotaryArtifact from \"../../build/contracts/StarNotary.json\"; // Importing the JSON representation of the Smart Contract\n\nconst App = {\n  web3: null,\n  account: null,\n  meta: null, //This object represent the Smart Contract\n\n  start: async function() {\n    const { web3 } = this;\n\n    try {\n      // get contract instance\n      const networkId = await web3.eth.net.getId(); //This method find the network id to retrieve the configuration from truffle-config.js file\n      const deployedNetwork = starNotaryArtifact.networks[networkId]; // Retrieve the Network configuration from truffle-config.js file\n      this.meta = new web3.eth.Contract( // Initializing the contract\n        starNotaryArtifact.abi,\n        deployedNetwork.address,\n      );\n\n      // get accounts\n      const accounts = await web3.eth.getAccounts(); // Getting test accounts\n      this.account = accounts[0]; // Assigning a test account\n    } catch (error) {\n      console.error(\"Could not connect to contract or chain.\");\n    }\n  },\n\n  // function to update the status message in the page\n  setStatus: function(message) {\n    const status = document.getElementById(\"status\");\n    status.innerHTML = message;\n  },\n\n  // function called to show the starName\n  starNameFunc: async function() {\n    const { starName } = this.meta.methods; // to be able to use the functions in your Smart Contract use destructuring to get the function to be call\n    const response = await starName().call(); // calling the starName property from your Smart Contract.\n    const owner = document.getElementById(\"name\"); // Updating Html\n    owner.innerHTML = response;\n  },\n\n  // function called to show the starOwner\n  starOwnerFunc: async function() {\n    const { starOwner } = this.meta.methods; // to be able to use the functions in your Smart Contract use destructuring to get the function to be call\n    const response = await starOwner().call(); // calling the starOwner property from your Smart Contract.\n    const owner = document.getElementById(\"owner\"); // Updating Html\n    owner.innerHTML = response;\n  },\n\n  // function called to claim a Star\n  claimStarFunc: async function(){\n    const { claimStar, starOwner } = this.meta.methods; // to be able to use the functions in your Smart Contract use destructuring to get the function to be call\n    await claimStar().send({from: this.account}); // Use `send` instead of `call` when you called a function in your Smart Contract\n    const response = await starOwner().call();\n    App.setStatus(\"New Star Owner is \" + response + \".\");\n  }\n\n};\n\nwindow.App = App;\n\nwindow.addEventListener(\"load\", async function() {\n  if (window.ethereum) {\n    // use MetaMask's provider\n    App.web3 = new Web3(window.ethereum);\n    await window.ethereum.enable(); // get permission to access accounts from Metamask\n  } else {\n    console.warn(\"No web3 detected. Falling back to http://127.0.0.1:9545. You should remove this fallback when you deploy live\",);\n    // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)\n    App.web3 = new Web3(new Web3.providers.HttpProvider(\"http://127.0.0.1:9545\"),);\n  }\n\n  App.start();\n});\n\n``` \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813685,
+              "key": "a3c6c1c1-e55c-44e0-ad77-083d7506a543",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a3c6c1c1-e55c-44e0-ad77-083d7506a543",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791681,
+              "key": "ee756e74-84e3-4aa1-8d5f-b22acd07e57d",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ee756e74-84e3-4aa1-8d5f-b22acd07e57d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create the Index.js File",
+                "Add a function to get star name",
+                "Add a function to to ger star owner",
+                "Add function to claim a star"
+              ],
+              "positive_feedback": "Good Job! We now have our front end files created. Let's run this front end of our DAPP in the next video.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791618,
+          "key": "428a1e0b-3732-4d9c-9636-1dcc3fe45f81",
+          "title": "Running your DAPP (Version 1)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "428a1e0b-3732-4d9c-9636-1dcc3fe45f81",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791619,
+              "key": "f947340f-149b-4436-a285-7b345573c29e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Running your DAPP \n---\n\nThe great finale! We are going to run and use our entire DApp.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791620,
+              "key": "e933d4f1-66f1-44da-9d67-1cdd25b2581f",
+              "title": "C4L3 26 Lets Run The Front End SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of Truffle.",
+              "video": {
+                "youtube_id": "o58tNyWiD0M",
+                "china_cdn_id": "o58tNyWiD0M.mp4"
+              }
+            },
+            {
+              "id": 813696,
+              "key": "ee54f45a-47ae-4fa1-9160-31374977b79d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ee54f45a-47ae-4fa1-9160-31374977b79d",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791624,
+              "key": "73841769-94aa-472c-b1a0-3c6e41d95567",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nBefore running your application you need to do the last step and it is to change in the `truffle-config.js` file the network configuration to make sure Metamask is able to connect with your development environment:\n\n```\nnetworks: {\n    // Useful for testing. The `development` name is special - truffle uses it by default\n    // if it's defined here and no other network is specified at the command line.\n    // You should run a client (like ganache-cli, geth or parity) in a separate terminal\n    // tab if you use this network and you must also set the `host`, `port` and `network_id`\n    // options below to some value.\n    //\n    development: {\n      host: \"127.0.0.1\",     // Localhost (default: none)\n      port: 9545,            // Standard Ethereum port (default: none)\n      network_id: \"*\",       // Any network (default: none)\n    },\n\n    ...\n```\n\nTo run your application you will need to:\n- Run `truffle develop` or `sudo truffle develop` commands.\n- Run `compile` command.\n- Run `migrate --reset`\n\nThen\n\n- Open a second terminal window, and make sure you are inside your project directory.\n- Run `cd app` to move inside the app folder.\n- Run ` npm run dev` command.\n\nThis will start our port at 8080. Open http://localhost:8080/ in your browser. Make sure the Metamask extension is installed, and you are logged into it, and also have imported the accounts.\n\nRemember the entire exercise can be downloaded from the [Github Repository](https://github.com/udacity/nd1309-work-code/tree/master/Course_Identity_And_Smart_Contracts/starNotaryv1)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813713,
+              "key": "700fc29e-e4ec-431c-9e86-96edaf5ab706",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/700fc29e-e4ec-431c-9e86-96edaf5ab706",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791682,
+              "key": "98df44e5-d8d8-45c0-88fe-03c82f168725",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "98df44e5-d8d8-45c0-88fe-03c82f168725",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Run the front end on port 8080, by using command npm run dev",
+                "Open the front end link on your browser",
+                "Make sure Metamask is setup properly",
+                "Connect Metamask to the private network running on port 9545",
+                "Use all the buttons on the DAPP, to make sure you can get the star name, get star owner and claim the star"
+              ],
+              "positive_feedback": "Congratulations! You have now successfully created your DAPP version 1.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791621,
+          "key": "9d0656d4-ebda-4e9c-b750-7a94d5c92195",
+          "title": "Congratulations on Creating DAPP version 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9d0656d4-ebda-4e9c-b750-7a94d5c92195",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791622,
+              "key": "ada7e58b-90ce-410f-abfe-d8e6c5a5028a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Congratulations!\n---\n\nYou have now successfully created Star Notary DAPP version 1.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791623,
+              "key": "a96757cc-d09d-4862-b7a8-2d98536e8416",
+              "title": "C4L3 27 Congratulations! HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xwHLtI3yokc",
+                "china_cdn_id": "xwHLtI3yokc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 791309,
+          "key": "04ca8910-bc73-474d-992f-655295b5d1ec",
+          "title": "Let's Tokenize the Star Notary Contract",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "04ca8910-bc73-474d-992f-655295b5d1ec",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791306,
+              "key": "0bf4aca4-f25e-489e-a2a5-8539efe71a5d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create Star Notary Token\n---\nIn the next concepts we are going to work on creating a Star token using an ERC-721 token standard.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791307,
+              "key": "a606cb51-3673-4daa-817e-7d7ec6435202",
+              "title": "C4L3 29 Why ERC-721- HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qagjVDEtCBw",
+                "china_cdn_id": "qagjVDEtCBw.mp4"
+              }
+            },
+            {
+              "id": 813716,
+              "key": "ca70f995-449d-4bf1-9c2e-8ecbb37b989f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ca70f995-449d-4bf1-9c2e-8ecbb37b989f",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813717,
+              "key": "16b9ec47-4bb7-43e7-92f6-47d09bcc8d4c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n___\n\nRemember that the videos were recorded using an outdated version of the tools that we are using now,  don't forget to have the latest version of Truffle and Metamask installed in your computer.\n\nAlso the practice we are going to develop in these lessons can be downloaded from this [Github Repository](https://github.com/udacity/nd1309-work-code/tree/master/Course_Identity_And_Smart_Contracts/starNotaryv2)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813718,
+              "key": "6a69d565-d3aa-45ce-baf8-e33f138db4cd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6a69d565-d3aa-45ce-baf8-e33f138db4cd",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791684,
+              "key": "26d89e83-3b75-4df7-824a-b4b06367fb96",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "26d89e83-3b75-4df7-824a-b4b06367fb96",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "ERC-721 is a token standard used for:",
+                "answers": [
+                  {
+                    "id": "a1544477039523",
+                    "text": "Non-Fungible Tokens",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1544477058736",
+                    "text": "Fungible Tokens",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 791685,
+              "key": "7321a9f2-4fa6-45f0-9cdf-0e0aaa6372ae",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7321a9f2-4fa6-45f0-9cdf-0e0aaa6372ae",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "The famous cryptokitties tokens are:",
+                "answers": [
+                  {
+                    "id": "a1544477098756",
+                    "text": "Fungible ",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1544477169551",
+                    "text": "Non-Fungible",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 791314,
+          "key": "0e5f0606-f090-4483-b504-0cda4bd4fe42",
+          "title": "Walkthrough of ERC-721 standard",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0e5f0606-f090-4483-b504-0cda4bd4fe42",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791625,
+              "key": "ddcd510c-5548-4afb-9d26-b2aa6ef80ae3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Recognizing the ERC-721 standard\n___\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791310,
+              "key": "4bd594bf-cb62-4976-ac96-d8f9d7714c22",
+              "title": "C4L3 31 Walkthrough Of ERC721 Standard Part 1 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "nJH9ETHh9v8",
+                "china_cdn_id": "nJH9ETHh9v8.mp4"
+              }
+            },
+            {
+              "id": 813719,
+              "key": "e40d18c5-d9e3-4cdc-ab80-b0f155af0f70",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e40d18c5-d9e3-4cdc-ab80-b0f155af0f70",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813723,
+              "key": "f69069d0-d792-4d31-85da-cba7505351f6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reviewing functions\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791311,
+              "key": "83e9bc0d-9564-4110-81bb-0eb2acb8ac0b",
+              "title": "C4L3 32 Walkthrough Of ERC721 Standard Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "62SHxK7XMMY",
+                "china_cdn_id": "62SHxK7XMMY.mp4"
+              }
+            },
+            {
+              "id": 813722,
+              "key": "b3c94638-e68d-4c74-944c-7fbc416f5719",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b3c94638-e68d-4c74-944c-7fbc416f5719",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813726,
+              "key": "6e55360f-8de8-494a-9e14-7812d0ecfe79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reviewing Events\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791312,
+              "key": "75ba966d-618a-49c7-a5d7-30f832fe78a6",
+              "title": "C4L3 33 Walkthrough Of ERC721 Standard Part 3 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "mtXwIX6tmvY",
+                "china_cdn_id": "mtXwIX6tmvY.mp4"
+              }
+            },
+            {
+              "id": 813724,
+              "key": "9d35821b-083c-4722-a59d-0872fd06fdb7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9d35821b-083c-4722-a59d-0872fd06fdb7",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813725,
+              "key": "08709a4d-9cd7-45f5-8063-bfb6d09360eb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nTo check the most current interface of the ERC-721 token Interface check this [link](http://erc721.org/)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 791630,
+          "key": "7ecdc8e5-e1d3-4a69-8e9a-c1614add89c2",
+          "title": "Creating the StarNotary (Version 2)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7ecdc8e5-e1d3-4a69-8e9a-c1614add89c2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791631,
+              "key": "4a9c09fd-29bb-4593-be35-e30bfbb1d015",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Creating the StarNotary\n---\n\nFor version 2 of the StarNotary exercise, we are going to use the same tools and process we followed in the V1 the only difference is that we are going to use also `openzeppelin-solidity` library to implement our ERC-721 token.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791907,
+              "key": "76ca8bc9-9748-4f74-a66d-bab27c2dfb7b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Preparing the project exercise\n---\n\nYou can check the OpenZeppelin in this [link](https://openzeppelin.org/) and check the code in the Github link in the page.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791633,
+              "key": "1c1137a1-e89d-41e8-a0c9-81efdc4e0089",
+              "title": "C4L3 34 OpenZeppelin Installation Part 1 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "tAdkceGvY8M",
+                "china_cdn_id": "tAdkceGvY8M.mp4"
+              }
+            },
+            {
+              "id": 813727,
+              "key": "9e142a53-2820-431a-82cc-80f1d317db2b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9e142a53-2820-431a-82cc-80f1d317db2b",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813728,
+              "key": "1bef3d67-4dfa-4838-9139-bc49cc0fd7a6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\n\nFollow the steps:\n1. Create a folder for your project `starNotaryV2` using the command `mkdir starNotaryV2`\n2. Use Truffle Boxes to create a project `truffle unbox webpack`\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813729,
+              "key": "6462dce3-9b61-4d2b-b206-1aceddda6573",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6462dce3-9b61-4d2b-b206-1aceddda6573",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791908,
+              "key": "ebe5d419-f252-4288-b37e-b396c091231e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Cleaning the Project and installing dependencies\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791905,
+              "key": "46976fe2-6752-4a7f-994b-86beac579c41",
+              "title": "C4L3 34 OpenZeppelin Installation Part 2 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "_mwp_2pd7Ww",
+                "china_cdn_id": "_mwp_2pd7Ww.mp4"
+              }
+            },
+            {
+              "id": 813730,
+              "key": "d3b6190f-77ad-4574-aea0-facaf2e54556",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d3b6190f-77ad-4574-aea0-facaf2e54556",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791634,
+              "key": "f6e04232-8bb2-43e6-b20d-d6930fdd930d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nIn your project folder (starNotaryV2) install the *openzeppelin-solidity* library\n`npm install openzeppelin-solidity`\n\nSome of the logic in the implementation of ERC-721 Standard in OpenZeppelin have changed since the video was recorded, so check on your project folder after the installation of the openzeppelin-solidity* library to review the functions and try to understand the behavior implemented.\n\nFor example, the function `_addTokenTo` doesn't exist anymore so now we need to use `_mint`, for more detail check on this [link](https://github.com/OpenZeppelin/openzeppelin-solidity/blob/v2.1.2/CHANGELOG.md). Also during the next concepts, I will show you the code with the new behavior.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813731,
+              "key": "ae97499d-b812-443b-b997-4a1bdaeacf15",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ae97499d-b812-443b-b997-4a1bdaeacf15",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791686,
+              "key": "cd290c99-960a-401b-a54f-8a0040e3e9e3",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cd290c99-960a-401b-a54f-8a0040e3e9e3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create your project directory",
+                "Install Truffle Box webpack",
+                "Install open zeppelin module"
+              ],
+              "positive_feedback": "Good job! You have now created your project folder, where we will write our smart contract, a test file and also the front end for the DAPP version 2.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791319,
+          "key": "d25800ce-142e-4c66-956c-97537f7ceed1",
+          "title": "Creating the Smart Contract StarNotary (Version 2)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d25800ce-142e-4c66-956c-97537f7ceed1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791743,
+              "key": "2d6674e3-b5a6-473f-8ede-b57ff71b768a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Creating the Smart Contract StarNotary \n---\n\nWe are going to create our Token Smart Contract.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791315,
+              "key": "dbf980d1-d82f-4e01-8de9-b757a9328f29",
+              "title": "C4L3 35 Writing Contract Part 1 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "cwT4iSTPbcA",
+                "china_cdn_id": "cwT4iSTPbcA.mp4"
+              }
+            },
+            {
+              "id": 813732,
+              "key": "86aab7e0-92ae-4c00-8c65-f8539f7ddb9b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/86aab7e0-92ae-4c00-8c65-f8539f7ddb9b",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813733,
+              "key": "0c4391fc-d86c-40c6-98cc-10fdc4914ace",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nI recommend you to name your Smart Contract file as `StarNotary.sol` instead of `starNotary.sol`.\n\nLet's analyze the changes  in the `createStar` function:\n\n```\n// Create Star using the Struct\n    function createStar(string memory _name, uint256 _tokenId) public { // Passing the name and tokenId as a parameters\n        Star memory newStar = Star(_name); // Star is an struct so we are creating a new Star\n        tokenIdToStarInfo[_tokenId] = newStar; // Creating in memory the Star -> tokenId mapping\n        _mint(msg.sender, _tokenId); // _mint assign the the star with _tokenId to the sender address (ownership)\n    }\n```\n\nAt the end of the concept, you will have the entire code for the Contract and also in the Github repository link.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813734,
+              "key": "f6ace40b-8b0b-4d5c-980d-cf741c073672",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f6ace40b-8b0b-4d5c-980d-cf741c073672",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791745,
+              "key": "e0cc47dc-e1dd-4147-9804-9b30fbb1705b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Implementing functionalities\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791316,
+              "key": "8d895f8d-4140-4213-a83e-ab0506531c62",
+              "title": "C4L3 36 Writing Contract Part 2 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "6PmeVFlqrb0",
+                "china_cdn_id": "6PmeVFlqrb0.mp4"
+              }
+            },
+            {
+              "id": 813735,
+              "key": "79ea80b3-0e6b-415c-85fd-f8fcc559f163",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/79ea80b3-0e6b-415c-85fd-f8fcc559f163",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791637,
+              "key": "5d433ce9-39fe-415e-8475-2b45f32d2b8f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nFile: StarNotary.sol. Read carefully the comments in the code to understand some important changes.\n\n```\npragma solidity >=0.4.24;\n\nimport \"../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol\";\n\ncontract StarNotary is ERC721 {\n\n    struct Star {\n        string name;\n    }\n\n    mapping(uint256 => Star) public tokenIdToStarInfo;\n    mapping(uint256 => uint256) public starsForSale;\n\n    \n    // Create Star using the Struct\n    function createStar(string memory _name, uint256 _tokenId) public { // Passing the name and tokenId as a parameters\n        Star memory newStar = Star(_name); // Star is an struct so we are creating a new Star\n        tokenIdToStarInfo[_tokenId] = newStar; // Creating in memory the Star -> tokenId mapping\n        _mint(msg.sender, _tokenId); // _mint assign the the star with _tokenId to the sender address (ownership)\n    }\n\n    // Putting an Star for sale (Adding the star tokenid into the mapping starsForSale, first verify that the sender is the owner)\n    function putStarUpForSale(uint256 _tokenId, uint256 _price) public {\n        require(ownerOf(_tokenId) == msg.sender, \"You can't sale the Star you don't owned\");\n        starsForSale[_tokenId] = _price;\n    }\n\n\n    // Function that allows you to convert an address into a payable address\n    function _make_payable(address x) internal pure returns (address payable) {\n        return address(uint160(x));\n    }\n\n    function buyStar(uint256 _tokenId) public  payable {\n        require(starsForSale[_tokenId] > 0, \"The Star should be up for sale\");\n        uint256 starCost = starsForSale[_tokenId];\n        address ownerAddress = ownerOf(_tokenId);\n        require(msg.value > starCost, \"You need to have enough Ether\");\n        _transferFrom(ownerAddress, msg.sender, _tokenId); // We can't use _addTokenTo or_removeTokenFrom functions, now we have to use _transferFrom\n        address payable ownerAddressPayable = _make_payable(ownerAddress); // We need to make this conversion to be able to use transfer() function to transfer ethers\n        ownerAddressPayable.transfer(starCost);\n        if(msg.value > starCost) {\n            msg.sender.transfer(msg.value - starCost);\n        }\n    }\n\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813738,
+              "key": "6903cf99-c21e-4ae3-8e84-85405762753d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6903cf99-c21e-4ae3-8e84-85405762753d",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791746,
+              "key": "a5873d1c-8704-48f3-8e13-d321211f3bac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Edit Migrations File for Deployment\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791317,
+              "key": "0bee0c56-fb0a-40d1-9382-f4db37d38e4e",
+              "title": "C4L3 37 Lets Deploy SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "Bh5tS5suKv8",
+                "china_cdn_id": "Bh5tS5suKv8.mp4"
+              }
+            },
+            {
+              "id": 813736,
+              "key": "386b0b60-b1d8-4453-9994-8aa4e054c0bd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/386b0b60-b1d8-4453-9994-8aa4e054c0bd",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791636,
+              "key": "af9c4dc0-d29e-4f90-86e3-4cf670669c6c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nFile: 2_deploy_contracts.js in the *migrations* folder\n\n```\nconst StarNotary = artifacts.require(\"StarNotary\");\n\nmodule.exports = function(deployer) {\n  deployer.deploy(StarNotary);\n};\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813737,
+              "key": "0dc667a2-b604-4451-8f5c-a8450808ea24",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0dc667a2-b604-4451-8f5c-a8450808ea24",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791687,
+              "key": "ea782be4-9ed3-4bee-a4cc-fb78bb32305a",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ea782be4-9ed3-4bee-a4cc-fb78bb32305a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Write Version 2 of Star Notary Smart Contract",
+                "Edited the migrations file, \"2_deploy_contracts\" to deploy the smart contract"
+              ],
+              "positive_feedback": "Fantastic! You now have the version 2 of the Star Notary Contract written. Let's write test cases in the next video to make sure, the smart contract works the way it is intended to.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791323,
+          "key": "cf0f8747-199a-4886-8e24-c4799566698e",
+          "title": "Writing Test Cases StarNotary (Version 2)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cf0f8747-199a-4886-8e24-c4799566698e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791747,
+              "key": "64383b49-f357-428e-92be-32fa7f5e1f18",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Writing Test Cases StarNotary\n---\nAs always let's write some test cases to make sure our Smart Contract functionalities work as expected.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791320,
+              "key": "b83e2192-09bf-43b7-8ee7-9e7b93982d3b",
+              "title": "C4L3 39 Lets Write Tests SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "6LUsa1a0Yhg",
+                "china_cdn_id": "6LUsa1a0Yhg.mp4"
+              }
+            },
+            {
+              "id": 813739,
+              "key": "4fb085b8-8f00-49ea-a8e6-fc824fcb6d1c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4fb085b8-8f00-49ea-a8e6-fc824fcb6d1c",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813740,
+              "key": "e82c2c5b-b11f-4ed6-b3a3-de302163513a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nI recommend you to use the name `TestStarNotary.js` in the folder `test` to match the project in the Github repository.\n\n```\nconst StarNotary = artifacts.require(\"StarNotary\");\n\nvar accounts;\nvar owner;\n\ncontract('StarNotary', (accs) => {\n    accounts = accs;\n    owner = accounts[0];\n});\n\nit('can Create a Star', async() => {\n    let tokenId = 1;\n    let instance = await StarNotary.deployed();\n    await instance.createStar('Awesome Star!', tokenId, {from: accounts[0]})\n    assert.equal(await instance.tokenIdToStarInfo.call(tokenId), 'Awesome Star!')\n});\n\nit('lets user1 put up their star for sale', async() => {\n    let instance = await StarNotary.deployed();\n    let user1 = accounts[1];\n    let starId = 2;\n    let starPrice = web3.utils.toWei(\".01\", \"ether\");\n    await instance.createStar('awesome star', starId, {from: user1});\n    await instance.putStarUpForSale(starId, starPrice, {from: user1});\n    assert.equal(await instance.starsForSale.call(starId), starPrice);\n});\n\n```\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791748,
+              "key": "2f8e6b34-da7e-4142-a2ed-c37b3a666735",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Writing the rest of test cases\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791321,
+              "key": "82f26033-d715-4a1b-9ec2-fc6caefa160e",
+              "title": "C4L3 40 More Tests SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "N1sZs8apdik",
+                "china_cdn_id": "N1sZs8apdik.mp4"
+              }
+            },
+            {
+              "id": 791322,
+              "key": "1514a2ff-2a1a-4f72-8623-d876057a1ac1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nOne main different that you will find between the video and the latest version of Truffle and openzeppelin-solidity library is the functions on the Web3 object, for example:\n` let starPrice = web3.utils.toWei(\".01\", \"ether\");`\nNow the utility functions can be found in the `utils` package of web3. For more detail in those changes you can check on this [link](https://web3js.readthedocs.io/en/1.0/web3-utils.html)\n\nComplete code file: `TestStarNotary.js`\n\n```\nconst StarNotary = artifacts.require(\"StarNotary\");\n\nvar accounts;\nvar owner;\n\ncontract('StarNotary', (accs) => {\n    accounts = accs;\n    owner = accounts[0];\n});\n\nit('can Create a Star', async() => {\n    let tokenId = 1;\n    let instance = await StarNotary.deployed();\n    await instance.createStar('Awesome Star!', tokenId, {from: accounts[0]})\n    assert.equal(await instance.tokenIdToStarInfo.call(tokenId), 'Awesome Star!')\n});\n\nit('lets user1 put up their star for sale', async() => {\n    let instance = await StarNotary.deployed();\n    let user1 = accounts[1];\n    let starId = 2;\n    let starPrice = web3.utils.toWei(\".01\", \"ether\");\n    await instance.createStar('awesome star', starId, {from: user1});\n    await instance.putStarUpForSale(starId, starPrice, {from: user1});\n    assert.equal(await instance.starsForSale.call(starId), starPrice);\n});\n\nit('lets user1 get the funds after the sale', async() => {\n    let instance = await StarNotary.deployed();\n    let user1 = accounts[1];\n    let user2 = accounts[2];\n    let starId = 3;\n    let starPrice = web3.utils.toWei(\".01\", \"ether\");\n    let balance = web3.utils.toWei(\".05\", \"ether\");\n    await instance.createStar('awesome star', starId, {from: user1});\n    await instance.putStarUpForSale(starId, starPrice, {from: user1});\n    let balanceOfUser1BeforeTransaction = await web3.eth.getBalance(user1);\n    await instance.buyStar(starId, {from: user2, value: balance});\n    let balanceOfUser1AfterTransaction = await web3.eth.getBalance(user1);\n    let value1 = Number(balanceOfUser1BeforeTransaction) + Number(starPrice);\n    let value2 = Number(balanceOfUser1AfterTransaction);\n    assert.equal(value1, value2);\n});\n\nit('lets user2 buy a star, if it is put up for sale', async() => {\n    let instance = await StarNotary.deployed();\n    let user1 = accounts[1];\n    let user2 = accounts[2];\n    let starId = 4;\n    let starPrice = web3.utils.toWei(\".01\", \"ether\");\n    let balance = web3.utils.toWei(\".05\", \"ether\");\n    await instance.createStar('awesome star', starId, {from: user1});\n    await instance.putStarUpForSale(starId, starPrice, {from: user1});\n    let balanceOfUser1BeforeTransaction = await web3.eth.getBalance(user2);\n    await instance.buyStar(starId, {from: user2, value: balance});\n    assert.equal(await instance.ownerOf.call(starId), user2);\n});\n\nit('lets user2 buy a star and decreases its balance in ether', async() => {\n    let instance = await StarNotary.deployed();\n    let user1 = accounts[1];\n    let user2 = accounts[2];\n    let starId = 5;\n    let starPrice = web3.utils.toWei(\".01\", \"ether\");\n    let balance = web3.utils.toWei(\".05\", \"ether\");\n    await instance.createStar('awesome star', starId, {from: user1});\n    await instance.putStarUpForSale(starId, starPrice, {from: user1});\n    let balanceOfUser1BeforeTransaction = await web3.eth.getBalance(user2);\n    const balanceOfUser2BeforeTransaction = await web3.eth.getBalance(user2);\n    await instance.buyStar(starId, {from: user2, value: balance, gasPrice:0});\n    const balanceAfterUser2BuysStar = await web3.eth.getBalance(user2);\n    let value = Number(balanceOfUser2BeforeTransaction) - Number(balanceAfterUser2BuysStar);\n    assert.equal(value, starPrice);\n  });\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813741,
+              "key": "2a867bca-d0c6-4400-b562-92871525c0b6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2a867bca-d0c6-4400-b562-92871525c0b6",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791749,
+              "key": "c320d08c-9682-4ad3-812b-db147cc0c8ef",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c320d08c-9682-4ad3-812b-db147cc0c8ef",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a test file",
+                "Write units tests",
+                "Run the tests using truffle development network"
+              ],
+              "positive_feedback": "Fantastic! You have successfully written unit tests to test your smart contract code. Let's create the front end for this DAPP, in the next video.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791326,
+          "key": "652db540-9032-44de-8a6b-2383ec41463f",
+          "title": "Creating the Front End - Part 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "652db540-9032-44de-8a6b-2383ec41463f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791663,
+              "key": "afa6fc67-26f5-43af-87aa-cf08c871f193",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Creating the Front End\n---\nLet's start for changing the html.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791324,
+              "key": "cac5559a-ace1-435a-a110-b09473cec794",
+              "title": "C4L3 42 Editing Index SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "-ThsyYJrmEM",
+                "china_cdn_id": "-ThsyYJrmEM.mp4"
+              }
+            },
+            {
+              "id": 813742,
+              "key": "51b54fe8-5dee-4143-8fb9-11bb1b485ed2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/51b54fe8-5dee-4143-8fb9-11bb1b485ed2",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791325,
+              "key": "ee7a6c34-e0b6-4197-ae0a-17f868e65037",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\n\n```\n<!DOCTYPE html>\n<html>\n  <head>\n    <title>StarNotary DApp</title>\n  </head>\n  <style>\n    input {\n      display: block;\n      margin-bottom: 12px;\n    }\n  </style>\n  <body>\n    <h1>StarNotary Token DAPP</h1>\n\n  <hr>\n\n  <br>\n    <h1>Create a Star</h1>\n    <br><label for=\"starName\">Star Name:</label><input type=\"text\" id=\"starName\"></input>\n    <br><label for=\"starId\">Star ID:</label><input type=\"text\" id=\"starId\"></input>\n    <br><br><button id=\"createStar\" onclick=\"App.createStar()\">Create Star</button>\n    <br><br>\n    <br>\n\n    <span id=\"status\"></span>\n\n    <br>\n    <script src=\"index.js\"></script>\n  </body>\n</html>\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 813743,
+              "key": "a264844a-47e6-4ac9-8a2a-dce649e084ef",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a264844a-47e6-4ac9-8a2a-dce649e084ef",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791751,
+              "key": "15bd4333-855f-4afe-83af-108b06c5a620",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "15bd4333-855f-4afe-83af-108b06c5a620",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create the Index.html file",
+                "Add a text box for the user to enter a Star Name",
+                "Add a text box for the user to enter a Star ID / Token ID",
+                "Add a button to Create a Star, using the values entered by the user"
+              ],
+              "positive_feedback": "Good Job! In the next video, we will learn how to edit the Index.js file.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791330,
+          "key": "defca1ff-a972-40ab-acc8-ea4400de50c2",
+          "title": "Creating the Front End - Part 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "defca1ff-a972-40ab-acc8-ea4400de50c2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791664,
+              "key": "b8583757-f38e-4115-b43f-d1c597a812b9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Objectives\n - Create the front end Index.js script file for the DAPP",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791327,
+              "key": "0ae7e8aa-2536-4883-ae4b-f961764b86b7",
+              "title": "C4L3 44 Editing The Indexjs File SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "8EJDknw-As0",
+                "china_cdn_id": "8EJDknw-As0.mp4"
+              }
+            },
+            {
+              "id": 813745,
+              "key": "01fabfdf-4c83-4a44-82df-e0260b3dc633",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/01fabfdf-4c83-4a44-82df-e0260b3dc633",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 791329,
+              "key": "6952014a-1d60-4db2-93e5-c1174dd72811",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\n```\nimport Web3 from \"web3\";\nimport starNotaryArtifact from \"../../build/contracts/StarNotary.json\";\n\nconst App = {\n  web3: null,\n  account: null,\n  meta: null,\n\n  start: async function() {\n    const { web3 } = this;\n\n    try {\n      // get contract instance\n      const networkId = await web3.eth.net.getId();\n      const deployedNetwork = starNotaryArtifact.networks[networkId];\n      this.meta = new web3.eth.Contract(\n        starNotaryArtifact.abi,\n        deployedNetwork.address,\n      );\n\n      // get accounts\n      const accounts = await web3.eth.getAccounts();\n      this.account = accounts[0];\n    } catch (error) {\n      console.error(\"Could not connect to contract or chain.\");\n    }\n  },\n\n  setStatus: function(message) {\n    const status = document.getElementById(\"status\");\n    status.innerHTML = message;\n  },\n\n  createStar: async function() {\n    const { createStar } = this.meta.methods;\n    const name = document.getElementById(\"starName\").value;\n    const id = document.getElementById(\"starId\").value;\n    await createStar(name, id).send({from: this.account});\n    App.setStatus(\"New Star Owner is \" + this.account + \".\");\n  }\n\n};\n\nwindow.App = App;\n\nwindow.addEventListener(\"load\", async function() {\n  if (window.ethereum) {\n    // use MetaMask's provider\n    App.web3 = new Web3(window.ethereum);\n    await window.ethereum.enable(); // get permission to access accounts\n  } else {\n    console.warn(\"No web3 detected. Falling back to http://127.0.0.1:9545. You should remove this fallback when you deploy live\",);\n    // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)\n    App.web3 = new Web3(new Web3.providers.HttpProvider(\"http://127.0.0.1:9545\"),);\n  }\n\n  App.start();\n});\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791752,
+              "key": "acc2ffae-38d2-4420-a33a-101c9ee32b98",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "acc2ffae-38d2-4420-a33a-101c9ee32b98",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create the Index.js File",
+                "Add a function to create a Star using the values entered by the user"
+              ],
+              "positive_feedback": "Good Job! We now have the front end files created. Let's run this front end of our DAPP in the next video.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791665,
+          "key": "698430c8-66cc-4f13-a37e-301e141d97da",
+          "title": "Running your DAPP version 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "698430c8-66cc-4f13-a37e-301e141d97da",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791666,
+              "key": "4e891f23-8cb2-4744-838f-6e79cc5d09c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Running your DAPP \n---\n\nThe great finale! We are going to run and use our entire DApp.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791667,
+              "key": "1a10f02d-f7fe-4a14-a1a1-3361652ced88",
+              "title": "C4L3 45 Running The Front End SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: The video was recorded using an outdated version, use the code down below and check the instructions to use it in the latest version of openzeppelin-solidity library.",
+              "video": {
+                "youtube_id": "rr9EyKecjl4",
+                "china_cdn_id": "rr9EyKecjl4.mp4"
+              }
+            },
+            {
+              "id": 813746,
+              "key": "0137481d-2c14-4a7f-9b8d-734ebc9e6d4d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0137481d-2c14-4a7f-9b8d-734ebc9e6d4d",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813747,
+              "key": "efb4b767-6a42-4a93-8460-1690f8469adf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\nBefore running your application you need to do the last step and it is to change in the `truffle-config.js` file the network configuration to make sure Metamask is able to connect with your development environment:\n\n```\nnetworks: {\n    // Useful for testing. The `development` name is special - truffle uses it by default\n    // if it's defined here and no other network is specified at the command line.\n    // You should run a client (like ganache-cli, geth or parity) in a separate terminal\n    // tab if you use this network and you must also set the `host`, `port` and `network_id`\n    // options below to some value.\n    //\n    development: {\n      host: \"127.0.0.1\",     // Localhost (default: none)\n      port: 9545,            // Standard Ethereum port (default: none)\n      network_id: \"*\",       // Any network (default: none)\n    },\n\n    ...\n```\n\nTo run your application you will need to:\n- Run `truffle develop` or `sudo truffle develop` commands.\n- Run `compile` command.\n- Run `migrate --reset`\n\nThen\n\n- Open a second terminal window, and make sure you are inside your project directory.\n- Run `cd app` to move inside the app folder.\n- Run ` npm run dev` command.\n\nThis will start our port at 8080. Open http://localhost:8080/ in your browser. Make sure the Metamask extension is installed, and you are logged into it, and also have imported the accounts.\n\nRemember the entire exercise can be downloaded from the [Github Repository](https://github.com/udacity/nd1309-work-code/tree/master/Course_Identity_And_Smart_Contracts/starNotaryv2)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791753,
+              "key": "13d906b3-d5e9-4304-9ca6-2922a03bca54",
+              "title": "Task List",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "13d906b3-d5e9-4304-9ca6-2922a03bca54",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Run the front end on port 8080, by using command npm run dev",
+                "Open the front end link on your browser",
+                "Make sure Metamask is setup properly",
+                "Connect Metamask to the private network running on port 9545",
+                "Using the DAPP's front end, Create a Star"
+              ],
+              "positive_feedback": "Congratulations! You have now successfully created your DAPP version 2.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 791334,
+          "key": "4ea9ecf1-3c8e-48f0-b8cc-2431c4f99212",
+          "title": "Congratulations on Creating DAPP (Version 2)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4ea9ecf1-3c8e-48f0-b8cc-2431c4f99212",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791754,
+              "key": "304d59cd-57ac-4228-a547-64f773be4de6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Congratulations!\n---\nYou have now successfully created Star Notary DAPP version 2.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 791331,
+              "key": "11f576ad-9d00-4976-834e-5876434a06ef",
+              "title": "C4L3 47 Congratulations! HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ermNTdEmxtU",
+                "china_cdn_id": "ermNTdEmxtU.mp4"
+              }
+            },
+            {
+              "id": 813748,
+              "key": "f0cb6c42-3e03-449e-a305-ced7f3f86248",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/December/5c0adddf_blockchain-line/blockchain-line.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f0cb6c42-3e03-449e-a305-ced7f3f86248",
+              "caption": "",
+              "alt": "",
+              "width": 75,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 813749,
+              "key": "d4a2dee8-34c6-4ddd-8fe2-b165e82929e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructor Code\n---\n\nRemember that both version 1 and 2 of the StarNotary DApp can be found in the [Github Repository](https://github.com/udacity/nd1309-work-code/tree/master/Course_Identity_And_Smart_Contracts)",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

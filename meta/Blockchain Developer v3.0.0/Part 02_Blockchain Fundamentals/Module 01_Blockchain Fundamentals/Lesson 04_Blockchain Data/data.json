@@ -1,0 +1,1535 @@
+{
+  "data": {
+    "lesson": {
+      "id": 668127,
+      "key": "970128bc-c405-4a22-8fed-d3f56d5dfac1",
+      "title": "Blockchain Data",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn the relationship between the transaction lifecycle using Bitcoin core focusing on the bounders with embedding data.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/970128bc-c405-4a22-8fed-d3f56d5dfac1/668127/1555417387880/Blockchain+Data+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/970128bc-c405-4a22-8fed-d3f56d5dfac1/668127/1555417383615/Blockchain+Data+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 668237,
+          "key": "82364dd9-6e47-42e8-b115-aec86ebccf2e",
+          "title": "Lesson Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "82364dd9-6e47-42e8-b115-aec86ebccf2e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671155,
+              "key": "4bbd6513-a7c7-4d22-a1a6-820ee870f328",
+              "title": "Lesson Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uDpiatdaKQw",
+                "china_cdn_id": "uDpiatdaKQw.mp4"
+              }
+            },
+            {
+              "id": 671172,
+              "key": "51ccfde0-ac49-411d-8612-04c98d3d16f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Introduction \n\nIn this lesson, you'll use Bitcoin Core to *explore the limitations and best practices* when **embedding data in blockchain transactions**.\n\n### By the End of This Lesson...\nYou will be able to...\n\n* Recognize the data structure of blocks and transactions.\n* Recognize the purpose of Bitcoin Script opcodes that are commonly used in the input and output parts of a transaction process.\n* Explore the limitations and best practices of embedding data in blockchain transactions. \n\nUsing these skill will help you with the next lesson where you will build the components of your own private simple blockchain from scratch!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668238,
+          "key": "9ae4de6d-f1f5-4de8-bc37-ab97fa5e934a",
+          "title": "Blockchain Data Motivation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9ae4de6d-f1f5-4de8-bc37-ab97fa5e934a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 672962,
+              "key": "63bc2688-ee66-4978-bdf3-2f71230931cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Blockchain Data Motivation\n\nPreviously, you learned how to use bitcoin core as a developer tool.\nLet's hear from Brandy why it's important to understand *data *as it relates to blocks and transactions - how to store it and how it is structured.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671156,
+              "key": "6a1759c3-e2d5-4d22-adef-94d76c5e83b2",
+              "title": "Blockchain Data Motivation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "66ASaQxH0LY",
+                "china_cdn_id": "66ASaQxH0LY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 668239,
+          "key": "9a0c1f4d-250c-4de8-ae56-da22c2acd033",
+          "title": "Blockchain Data Models Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9a0c1f4d-250c-4de8-ae56-da22c2acd033",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671157,
+              "key": "e3e804c6-ef41-448c-8e40-e700b1d64a5e",
+              "title": "Blockchain Data Models Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1BfheON7OY4",
+                "china_cdn_id": "1BfheON7OY4.mp4"
+              }
+            },
+            {
+              "id": 671174,
+              "key": "cea6c9a1-4e9d-45a6-b76d-749ad873c7f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Block Data Model Recap\n### Block Header\n* **Previous Block’s Hash** - The hash value for the block that comes directly before a given block in the chain. This is what links blocks in the blockchain together\n* **Time** - The time the block was created is also held in the header\n* **Merkle Root** - The merkle root is a hash that represents every transaction included inside the block. To get the merkle root, pairs of transactions within a block are repeatedly hashed together. Each pair results in a single hash. Then the hash of 2 pairs of transactions are again hashed together, over and over again until you are left with a single hash value. Given that final hash value, known as the merkle root, you can now use the hash to search the original transactions or hash values that created them. This searching allows you to find the original transactions that made up the block when starting from this single hash value.\n* ** Nonce** - A nonce (stands for “number only used once\") is a number used in bitcoin mining. The blockchain miners are solving for the nonce that when added to a hashed block, and those 2 values are rehashed, will solve the mining puzzle. \n\nFor a review of these concepts, watch this video on [Blocks and Block Headers](https://classroom.udacity.com/nanodegrees/nd1309/parts/31b86083-85e4-43ae-b154-6905b461f2c1/modules/0af5bc78-b446-4b60-b9cd-8659536cd59f/lessons/808abc06-4959-499c-9c31-54be1838096f/concepts/2638b316-58fb-48b3-b2a9-5730bfae8c14).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668240,
+          "key": "99e7bacb-e666-4fb9-8924-f663daa9f35f",
+          "title": "Transactions  - Inputs and Outputs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "99e7bacb-e666-4fb9-8924-f663daa9f35f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671158,
+              "key": "83c78a89-64a7-4796-abd2-b672726f869d",
+              "title": "Inputs And Outputs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Lx_tKdZYMJg",
+                "china_cdn_id": "Lx_tKdZYMJg.mp4"
+              }
+            },
+            {
+              "id": 672436,
+              "key": "e99ad27e-d595-4809-9dc4-d773837efb6f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Summary\n\n*Transactions* encode the transfer of value between participants in the system. In more detail, a transaction is a data structure that encodes a transfer of value from a source of funds called an “input” to a destination called an “output”.\n\n*Inputs* in one transaction are just the *unspent outputs* from another transaction. All *inputs* reference back to an *output*.  Unspent Outputs is sometimes short-handed to UTXO. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672438,
+              "key": "8f9b3a1b-7193-416c-a399-41fd82976ecf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b43e084_screen-shot-2018-07-09-at-3.23.51-pm/screen-shot-2018-07-09-at-3.23.51-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8f9b3a1b-7193-416c-a399-41fd82976ecf",
+              "caption": "Inputs in one transaction are just the unspent outputs from another transaction.",
+              "alt": "Inputs in one transaction are just the unspent outputs from another transaction.",
+              "width": 1204,
+              "height": 458,
+              "instructor_notes": null
+            },
+            {
+              "id": 672437,
+              "key": "58a56f41-ceda-4213-b420-7e29a25e3081",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Conceptualize the arrow as a pointer from the inputs referencing the outputs from which they came. This is similar to pointers in a linked list. You’ll find that this is standard arrow notation, inputs pointing back to their outputs. \n\nIn the next section we will see how these components are stored in a Transaction Data Model. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668241,
+          "key": "8901bb04-af1c-4877-a7a3-3d5b08928a91",
+          "title": "Transaction Data Models",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8901bb04-af1c-4877-a7a3-3d5b08928a91",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671159,
+              "key": "1cfa08e2-62dd-4b5c-b2e4-2a38358afb12",
+              "title": "Transaction Data Models",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ukArkoSPbT8",
+                "china_cdn_id": "ukArkoSPbT8.mp4"
+              }
+            },
+            {
+              "id": 671175,
+              "key": "03716a9e-4ab2-493e-beef-eaf6331c98c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**This is the Raw Transaction we explored in the video:**\n\n0100000001f3f6a909f8521adb57d898d2985834e632374e770fd9e2b98656f1bf1fdfd427010000006b48304502203a776322ebf8eb8b58cc6ced4f2574f4c73aa664edce0b0022690f2f6f47c521022100b82353305988cb0ebd443089a173ceec93fe4dbfe98d74419ecc84a6a698e31d012103c5c1bc61f60ce3d6223a63cedbece03b12ef9f0068f2f3c4a7e7f06c523c3664ffffffff0260e31600000000001976a914977ae6e32349b99b72196cb62b5ef37329ed81b488ac063d1000000000001976a914f76bc4190f3d8e2315e5c11c59cfc8be9df747e388ac00000000\n\n**Transaction in the bitcoin blockchain are stored in a double-hashed form:**\n\nSHA256(SHA256(01000…)) = b138360800cdc72248c3ca8dfd06de85913d1aac7f41b4fa54eb1f5a4a379081\n\n**View this transaction in a block explore [here](https://live.blockcypher.com/btc/tx/b138360800cdc72248c3ca8dfd06de85913d1aac7f41b4fa54eb1f5a4a379081/).**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671176,
+              "key": "2de3756e-31e1-4355-b478-727978a31163",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Raw Transaction with each component highlighted:**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671177,
+              "key": "5b6a559d-21e6-4f18-8c7c-d0fa795a6f86",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b3c72aa_transaction-data-model/transaction-data-model.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5b6a559d-21e6-4f18-8c7c-d0fa795a6f86",
+              "caption": "",
+              "alt": "",
+              "width": 2560,
+              "height": 1600,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 668242,
+          "key": "0009a0a0-0fd4-44fe-b530-bce579e6a9f3",
+          "title": "Bitcoin Scripts",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0009a0a0-0fd4-44fe-b530-bce579e6a9f3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671160,
+              "key": "f4c25547-c907-411f-8e43-c9341e34fcca",
+              "title": "Bitcoin Scripts",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ed4Jb_Reb_4",
+                "china_cdn_id": "Ed4Jb_Reb_4.mp4"
+              }
+            },
+            {
+              "id": 671178,
+              "key": "79fddba2-3670-45dd-bc04-8abebae32088",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Demo Transaction Information\n\n**Raw transaction:**\n\n0100000001f3f6a909f8521adb57d898d2985834e632374e770fd9e2b98656f1bf1fdfd427010000006b48304502203a776322ebf8eb8b58cc6ced4f2574f4c73aa664edce0b0022690f2f6f47c521022100b82353305988cb0ebd443089a173ceec93fe4dbfe98d74419ecc84a6a698e31d012103c5c1bc61f60ce3d6223a63cedbece03b12ef9f0068f2f3c4a7e7f06c523c3664ffffffff0260e31600000000001976a914977ae6e32349b99b72196cb62b5ef37329ed81b488ac063d1000000000001976a914f76bc4190f3d8e2315e5c11c59cfc8be9df747e388ac00000000\n\n**Transactions in the bitcoin blockchain are stored in a double-hashed form:**\nSHA256(SHA256(01000…)) = b138360800cdc72248c3ca8dfd06de85913d1aac7f41b4fa54eb1f5a4a379081\n\n**View this transaction in a block explorer [here](https://live.blockcypher.com/btc/tx/b138360800cdc72248c3ca8dfd06de85913d1aac7f41b4fa54eb1f5a4a379081/)**\n\n---\n\n### Here is a breakdown of the Raw Transaction.\n\nYou will see components we’ve discussed before - Version, Input Count, Input Info, Output Count, Output Info, and Locktime. And there are components that are new. If you are interested in a full breakdown of all these components, review the section below. \n\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671179,
+              "key": "f661ced1-4185-49f4-860c-bdd134a014a2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b3c7300_bitcoin-scripts/bitcoin-scripts.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f661ced1-4185-49f4-860c-bdd134a014a2",
+              "caption": "",
+              "alt": "",
+              "width": 2560,
+              "height": 1600,
+              "instructor_notes": null
+            },
+            {
+              "id": 671180,
+              "key": "86a9b6f7-f101-4742-9159-d092a26a6324",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* **Version** - All transactions include information about the Bitcoin Version number so we know which rules this transaction follows.\n\n* **Input Count** - Which is how many inputs were used for this transaction\n\n**Data stored in Input information:**\n* **Previous output hash** - All inputs reference back to an output (UTXO). This points back to the transaction containing the UTXO that will be spent in this input. The hash value of this UTXO is saved in a reverse order here.\n* **Previous output index** - The transaction may have more than one UTXO which are referenced by their index number. The first index is 0.\n* **Unlocking Script Size** - This is the size of the Unlocking Script in bytes. \n* **Unlocking Script** - This is the hash of the Unlocking Script that fulfills the conditions of the UTXO Locking Script. \n* **Sequence Number** - This is a deprecated feature of bitcoin, currently set to `ffffffff` by default. \n\n**Output Count** - which tells us how many outputs were produced from this transaction.\n\n\n**Data stored in Output Information:**\n* **Amount** - The amount of Bitcoin outputted in Satoshis (the smallest bitcoin unit). 10^8 Satoshis = 1 Bitcoin.\n* **Locking Script Size** - This is the size of the Locking Script in bytes. \n* **Locking Script**  - This is the hash of the Locking Script that specifies the conditions that must be met to spend this output. \n\n**Locktime** - The locktime field indicates the earliest time or the earliest block a  transaction can be added to the blockchain.\nIf the locktime is non-zero  and less than 500 million, it is interpreted as a block height and miners have to wait until that block height is reached before attempting to add it to a block. If the locktime is above 500 million, it is read as a UNIX timestamp which means the number of seconds since the date  January 1st 1970.  It is usually 0 which means confirm as soon as possible. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671181,
+              "key": "ce39b578-c5ea-473e-a4d9-ec66bd4debbe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Code Examples\n\n* Example of *scriptPubKey* used bitcoin source code’s [wallet.cpp file](https://github.com/bitcoin/bitcoin/blob/df73c23f5fac031cc9b2ec06a74275db5ea322e3/src/wallet/wallet.cpp#L2452)\n* Example of *scriptSig* in bitcoin source code’s [wallet.cpp file](https://github.com/bitcoin/bitcoin/blob/feda41e0a7c4440d398516850f9cbd4c4f3192dd/src/wallet/wallet.cpp#L1930-L1937)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668243,
+          "key": "d7bced5b-d73e-4697-a453-2eaa84a5673c",
+          "title": "Script Opcodes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d7bced5b-d73e-4697-a453-2eaa84a5673c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671161,
+              "key": "ae95d64f-77fd-409a-bd78-7f8d38493498",
+              "title": "C2L4 3.2 A Script Opcodes V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4hZpoSLuFt8",
+                "china_cdn_id": "4hZpoSLuFt8.mp4"
+              }
+            },
+            {
+              "id": 671163,
+              "key": "4db734cc-7321-4ddb-98d7-fa0d1e6d8e4d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Resources\n[List of Bitcoin opcodes](https://en.bitcoin.it/wiki/Script)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 633485,
+          "key": "e347029d-1861-4d2a-8175-47413060c2fd",
+          "title": "Opcodes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e347029d-1861-4d2a-8175-47413060c2fd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 663098,
+              "key": "2d9eabf9-7bb5-4100-838e-c5362739ce21",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2d9eabf9-7bb5-4100-838e-c5362739ce21",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which Unlocking Script (scriptSig) will satisfy this Locking Script (scriptPubKey)?\n\n**Locking Script:** OP_ADD 2 OP_MUL 1 OP_ADD 11 OP_EQUAL ",
+                "answers": [
+                  {
+                    "id": "a1529536493039",
+                    "text": "3 1",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1529536702495",
+                    "text": "7 0",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1529536709386",
+                    "text": "2 3",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1529536714201",
+                    "text": "5 9",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 663099,
+              "key": "c928043d-df8e-4427-9dc9-5d0f107b0115",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Standard Script Notation\nLet’s discuss standard script notation using this example, \n`<sig><pubKey> OP_CHECKMULTISIG`\n\n* Bracketed values are data to be pushed to the stack.\n * For example, `<sig>`.\n* Non-bracketed words are opcodes.\n * For example, `OP_CHECKMULTISIG`\n* Sometimes you may see the `OP` prefix omitted.\n * For example,\n`<sig><pubKey> OP_CHECKMULTISIG` may be abbreviated to `<sig><pubKey> CHECKMULTISIG`\n\n## Exploring Live Scripts\nUsing an online block explorer, we can see examples of live Unlocking and Locking Scripts.\n\n\n**Step 1:** Checkout this [TXID: 56beef8afe5a4b5b41225211e62c3e7bce5747c4c8dcdd982173e8496687794b](https://blockchain.info/tx/56beef8afe5a4b5b41225211e62c3e7bce5747c4c8dcdd982173e8496687794b) that has 1 input and 2 outputs.\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 663101,
+              "key": "09d3b6aa-a03d-41d2-a3bd-89c8d30a745b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b2ae89d_screen-shot-2018-06-20-at-4.51.15-pm/screen-shot-2018-06-20-at-4.51.15-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/09d3b6aa-a03d-41d2-a3bd-89c8d30a745b",
+              "caption": "Example transaction with 1 input and 2 outputs. ",
+              "alt": "Example transaction with 1 input and 2 outputs. ",
+              "width": 1514,
+              "height": 508,
+              "instructor_notes": null
+            },
+            {
+              "id": 663102,
+              "key": "331322d4-68de-4727-a0d1-4a0440b56395",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 2:** Scroll down to the bottom to see the Unlocking Scripts (scriptSig) of the one input and the two Locking Scripts (scriptPubKey) from the two outputs. \n\nIf you don't see it check **Hide scripts & coinbase** link in the **Inputs and Outputs** section.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 663103,
+              "key": "2ae610f7-119e-4db3-92cb-d07df07ce476",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b2ae908_screen-shot-2018-06-20-at-4.07.56-pm/screen-shot-2018-06-20-at-4.07.56-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2ae610f7-119e-4db3-92cb-d07df07ce476",
+              "caption": "",
+              "alt": "",
+              "width": 2402,
+              "height": 752,
+              "instructor_notes": null
+            },
+            {
+              "id": 663104,
+              "key": "de95c01e-438f-46c5-a473-0cb0370bbab1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 3:  **Focus on the Locking Script of the first Output (output 0):",
+              "instructor_notes": ""
+            },
+            {
+              "id": 663108,
+              "key": "722baae4-d6d2-4912-b0a3-ce821e11ba1f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b2ae9ea_screen-shot-2018-06-20-at-4.57.10-pm/screen-shot-2018-06-20-at-4.57.10-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/722baae4-d6d2-4912-b0a3-ce821e11ba1f",
+              "caption": "",
+              "alt": "",
+              "width": 1406,
+              "height": 210,
+              "instructor_notes": null
+            },
+            {
+              "id": 663106,
+              "key": "c08df30a-3a6c-492e-a8af-a62fd44afcd3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The generic form of this script is:\n```\nOP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 663107,
+              "key": "f1756966-e26b-45ff-bd0d-aae4c450a3e4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Step 4:** Now focus on the  Unlocking Script of the Input:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 663109,
+              "key": "0bc07fdc-50ba-49f3-adc7-167f00844f06",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b2ae9f6_screen-shot-2018-06-20-at-4.57.14-pm/screen-shot-2018-06-20-at-4.57.14-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0bc07fdc-50ba-49f3-adc7-167f00844f06",
+              "caption": "",
+              "alt": "",
+              "width": 1386,
+              "height": 170,
+              "instructor_notes": null
+            },
+            {
+              "id": 663110,
+              "key": "3bd2ffe9-d6d2-42bf-b6d0-e4033c43f330",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The generic form of this script is:\n```java\n<sig> <pubKey>\n```\nWhich is a Standard Unlocking Script for  Standard Transactions to Bitcoin addresses. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 663112,
+              "key": "6c48fe5c-da8e-44e0-8111-02a7dcb13976",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "That wraps it up for your overview to Script Opcodes. In this concept, we:\n* Demoed how to evaluate an example script and you got to practice solving an example\n* Saw some examples of simple Unlocking and Locking Scripts\n* Reviewed standard script notations\n* Explored live scripts using an online block explorer",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668245,
+          "key": "d36838f0-eb18-4fff-8d34-5f572df34dcd",
+          "title": "Attributes of Script",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d36838f0-eb18-4fff-8d34-5f572df34dcd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671162,
+              "key": "4b85ed00-9fee-4c40-a494-8ed672f6141f",
+              "title": "C2L4 3.3 HA Attributes Of Script V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RKx-JbvzMy8",
+                "china_cdn_id": "RKx-JbvzMy8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 633778,
+          "key": "f3bedf30-8e9c-454a-ad87-49396ed0eafe",
+          "title": "Raw Transaction Review",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f3bedf30-8e9c-454a-ad87-49396ed0eafe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633779,
+              "key": "d170588b-824c-4258-9d87-00e64196d3dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We’ve seen transactions stored on the blockchain by their Transaction Hash.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672439,
+              "key": "bc57cfa4-c054-43a0-9f01-63c4fb06c0ae",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b43e1a8_screen-shot-2018-07-09-at-3.28.26-pm/screen-shot-2018-07-09-at-3.28.26-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bc57cfa4-c054-43a0-9f01-63c4fb06c0ae",
+              "caption": "",
+              "alt": "",
+              "width": 1084,
+              "height": 828,
+              "instructor_notes": null
+            },
+            {
+              "id": 633784,
+              "key": "cbdced15-89d1-42b4-a117-2730e06f59d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Transactions in the bitcoin blockchain are stored in a double-hashed form.\n\nThis means the raw transaction was put through SHA256 twice to get the Transaction hash we see on the blockchain. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633785,
+              "key": "57ca50eb-fd39-4498-b2b3-0f5d8bb873ad",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b106c58_screen-shot-2018-05-31-at-2.42.03-pm/screen-shot-2018-05-31-at-2.42.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/57ca50eb-fd39-4498-b2b3-0f5d8bb873ad",
+              "caption": "",
+              "alt": "",
+              "width": 1620,
+              "height": 906,
+              "instructor_notes": null
+            },
+            {
+              "id": 633787,
+              "key": "a0b7b7ac-5fdc-4180-b000-30dbd4d99d0c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "*For example, a transaction with this hash:* b138360800cdc72248c3ca8dfd06de85913d1aac7f41b4fa54eb1f5a4a379081 \n\n*Transaction in the bitcoin blockchain are stored in a double-hashed form:*\nSHA256(SHA256(01000…) = b138360800cdc72248c3ca8dfd06de85913d1aac7f41b4fa54eb1f5a4a379081\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633788,
+              "key": "63a16286-b7cb-42fc-9bac-9886bfe30eab",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b106cdd_screen-shot-2018-05-31-at-2.44.33-pm/screen-shot-2018-05-31-at-2.44.33-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/63a16286-b7cb-42fc-9bac-9886bfe30eab",
+              "caption": "",
+              "alt": "",
+              "width": 1610,
+              "height": 898,
+              "instructor_notes": null
+            },
+            {
+              "id": 633789,
+              "key": "cef0da1a-000c-4d2b-95d1-cd2b33a755c8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Given the raw transaction, we were able to see more details about the Transaction Data model. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633791,
+              "key": "460bbf91-8e71-4552-a650-ebbdad5c21e1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b106d71_screen-shot-2018-05-31-at-2.47.04-pm/screen-shot-2018-05-31-at-2.47.04-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/460bbf91-8e71-4552-a650-ebbdad5c21e1",
+              "caption": "",
+              "alt": "",
+              "width": 1618,
+              "height": 906,
+              "instructor_notes": null
+            },
+            {
+              "id": 633793,
+              "key": "2e5f9b01-c32f-4447-9c9d-00154a88848c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We discussed that inside the Input Information section and Output Information section there’s data about an Unlocking Script and Locking Script, respectively. \n\nWhat we didn’t mention is that there’s a little bit more than that inside each of these sections. Let’s see what else is contained here.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633794,
+              "key": "40c03521-ff9d-4237-a573-f6b71827cfa5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b106daa_screen-shot-2018-05-31-at-2.48.03-pm/screen-shot-2018-05-31-at-2.48.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/40c03521-ff9d-4237-a573-f6b71827cfa5",
+              "caption": "",
+              "alt": "",
+              "width": 1608,
+              "height": 898,
+              "instructor_notes": null
+            },
+            {
+              "id": 633795,
+              "key": "12673c71-4af8-42ef-bdd0-cab55ff0bdc4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The input information section contains these pieces of data:\n* **Previous output hash** - All inputs reference back to an output (UTXO). This points back to the transaction containing the UTXO that will be spent in this input. The hash value of this UTXO is saved in reverse order here.\n* **Previous output index** - A  transaction may have more than one UTXO which are referenced by their index number. The first index is 0.\n* **Unlocking Script Size** - This is the size of the Unlocking Script in bytes. \n* **Unlocking Script** - This is the hash of the Unlocking Script that fulfills the conditions of the UTXO Locking Script. \n* **Sequence Number** - This  is a deprecated feature of bitcoin Currently set to ffffffff by default. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633796,
+              "key": "af325006-c1cb-44c4-a989-06b9b39cad0b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b106e28_screen-shot-2018-05-31-at-2.50.09-pm/screen-shot-2018-05-31-at-2.50.09-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/af325006-c1cb-44c4-a989-06b9b39cad0b",
+              "caption": "",
+              "alt": "",
+              "width": 1612,
+              "height": 902,
+              "instructor_notes": null
+            },
+            {
+              "id": 633801,
+              "key": "cae259d4-7e63-4666-8def-ff62e253e3cd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b106eb7_screen-shot-2018-05-31-at-2.51.47-pm/screen-shot-2018-05-31-at-2.51.47-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cae259d4-7e63-4666-8def-ff62e253e3cd",
+              "caption": "",
+              "alt": "",
+              "width": 1602,
+              "height": 906,
+              "instructor_notes": null
+            },
+            {
+              "id": 633802,
+              "key": "1268115d-9801-4e3b-98fc-d76113f4ef8c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Similarly, here’s the data stored in the Transaction Output Information: \n\n* **Amount** - The amount of Bitcoin outputted in Satoshis (the smallest bitcoin unit). 10^8 Satoshis = 1 Bitcoin.\n* **Locking Script Size** - This is the size of the Locking Script in bytes. \n* **Locking Script**  - This is the hash of the Locking Script that specifies the conditions that must be met to spend this output. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633803,
+              "key": "0a962c11-442b-4692-b2e4-e68c2ed8c585",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b106ef1_screen-shot-2018-05-31-at-2.53.30-pm/screen-shot-2018-05-31-at-2.53.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0a962c11-442b-4692-b2e4-e68c2ed8c585",
+              "caption": "",
+              "alt": "",
+              "width": 1614,
+              "height": 896,
+              "instructor_notes": null
+            },
+            {
+              "id": 633804,
+              "key": "93f12769-382c-495a-9bce-1a50e698fd91",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here is the full breakdown of the raw transaction: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 672440,
+              "key": "c16fc728-756a-4413-b35d-5095cadfa858",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b43e263_screen-shot-2018-07-09-at-3.31.41-pm/screen-shot-2018-07-09-at-3.31.41-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c16fc728-756a-4413-b35d-5095cadfa858",
+              "caption": "Raw transaction breakdown",
+              "alt": "Raw transaction breakdown",
+              "width": 1540,
+              "height": 886,
+              "instructor_notes": null
+            },
+            {
+              "id": 633807,
+              "key": "49624d17-1707-4b89-aa0b-67d3e647b104",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Version** - All transactions include information about the Bitcoin Version number so we know which rules this transaction follows.\n\n**Input Count** - Which is how many inputs were used for this transaction\n\n*Data stored in Input information:*\n\n* **Previous output hash** - All inputs reference back to an output (UTXO). This points back to the transaction containing the UTXO that will be spend in this input. The hash value of this UTXO is saved in a reverse ordered here.\n* **Previous output index** - The transaction may have more than one UTXO which are referenced by their index number. The first index is 0.\n* **Unlocking Script Size** - This is the size of the Unlocking Script in bytes. \n* **Unlocking Script** - This is the hash of the Unlocking Script that fulfills the conditions of the UTXO Locking Script. \n* **Sequence Number** - This  s a deprecated feature of bitcoin Currently set to ffffffff by default. \n\n\n**Output Count** - which tells us how many outputs were produced from this transaction.\n\n*Data stored in Output Information:*\n* **Amount** - The amount of Bitcoin outputted in Satoshis (the smallest bitcoin unit). 10^8 Satoshis = 1 Bitcoin.\n* **Locking Script Size** - This is the size of the Locking Script in bytes. \n* **Locking Script**  - This is the hash of the Locking Script that specifies the conditions that must be met to spend this output. \n\n**Locktime** - The locktime field indicates the earliest time or the earliest block a  transaction can be added to the blockchain.\nIf the locktime is non-zero  and less than 500 million, it is interpreted as a block height and miners have to wait until that block height is reached before attempting to add it to a block. If the locktime is above 500 million, it is read as a unix timestamp which means the number of seconds since the date  January 1st 1970.  It is usually 0 which means confirm as soon as possible. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668247,
+          "key": "d1290f61-67c8-496a-88b9-ced64da72b1d",
+          "title": "Create Raw Transaction Motivation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d1290f61-67c8-496a-88b9-ced64da72b1d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671164,
+              "key": "8737e3ff-0c3a-4f34-93d3-15e05baa7cf5",
+              "title": "Create Raw Transaction Motivation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZWrgUK8OKLY",
+                "china_cdn_id": "ZWrgUK8OKLY.mp4"
+              }
+            },
+            {
+              "id": 671165,
+              "key": "42a7b576-d43f-4f29-a9e3-6d48fffeb27d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Motivation for Creating Transactions\n\nNow that we know the parts of a raw transaction, let’s use the Bitcoin protocol to build our own raw transaction.\n\nAs discussed, you’ve seen the Bitcoin core wallet which allows us to leverage a lot of functionality of the Bitcoin Protocol but it does limit what we can do from the provided GUI.\n\nTo really leverage the full power of the protocol, we need to bypass the GUI and work directly with the protocol.\n\nThis will help you to know what commands to implement when building your own private blockchain.\n\n## Motivation for the Project\n\nKnowing this skill will help you when you’re building a private blockchain that can perform transactions and secure the block with a digital signature\n\nHere are the steps we will take:\n* Step 1 - View all unspent confirmed UTXO in the wallet\n* Step 2 - View Details about a Specific UTXO\n* Step 3 - Create a Raw Transaction\n* Step 4 - Decode the Raw Transaction (to doublecheck it went through correctly)\n* Step 5 - Sign the Raw Transaction \n* Step 6 - Submit the Raw Transaction to the Network\n* Step 7 - Query the TxID of the Transaction we sent\n\nOne thing to notice is that these steps follow the Transaction lifecycle flow we’ve seen before: \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 671167,
+              "key": "da49c328-d4e2-4ee1-9337-9d6c18290dad",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b3c70e4_blockchain-framework/blockchain-framework.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/da49c328-d4e2-4ee1-9337-9d6c18290dad",
+              "caption": "",
+              "alt": "",
+              "width": 1332,
+              "height": 746,
+              "instructor_notes": null
+            },
+            {
+              "id": 671166,
+              "key": "b1074c2c-71d5-45d5-af57-4f2afd15ba48",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the next few sections, I’ll walk you through the steps to create a raw transaction using commands from the debug console. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 784200,
+          "key": "c21bc6f6-f8e9-4cea-8021-118ddd6b23bf",
+          "title": "Setup for Creating a Transaction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c21bc6f6-f8e9-4cea-8021-118ddd6b23bf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 785550,
+              "key": "733110f2-7a3c-4da6-a01c-69350d37d167",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Objectives\n- The objective is to create a raw transaction.\n- Bitcoin transaction inputs come from the outputs of a previous transaction. \n- During a transaction, these funds are transferred from one address to another address. \n- When it comes time to spend a transaction, our wallet scans the blockchain for any spendable UTXO that are tied to our wallet address. \n- For this exercise, to create a raw transaction, we will use the outputs from that transaction as our starting point inputs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785496,
+              "key": "e9f47deb-2286-4dbb-a59f-db360b12770c",
+              "title": "C2L4 SetUp V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1ViDcS_uJ8c",
+                "china_cdn_id": "1ViDcS_uJ8c.mp4"
+              }
+            },
+            {
+              "id": 784201,
+              "key": "b19b6fb4-064a-43f9-90cf-7d2db3fff8f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Environment Setup:**\n* **Start your Bitcoin Core Software in the testnet mode**\n- **Note:** In a previous lesson [here](https://classroom.udacity.com/nanodegrees/nd1309/parts/c27351e7-b0ea-480c-bde9-a936817e4fe4/modules/0af5bc78-b446-4b60-b9cd-8659536cd59f/lessons/8abea3d8-b174-4f57-ad1d-03bc1bf0f68d/concepts/aaa10f87-54f7-4d4e-a142-db354895ad0a), we used our wallet to create a transaction from the GUI. \n\n - If your wallet doesn’t already have available transactions with outputs to spend, checkout the link above to create a transaction so you have outputs to work with. \n- Make sure you have a receiving address, that you are going to send BTCs to. This can be an external address, or you can have more than 1 receiving addresses in your wallet.\n* To create a new receiving address:\n\n - Open the Debug Window in the Menu -> Help -> Debug Window.\n - In the Debug Window open the Console tab.\n - Type in the command line `getnewaddress [label]`. You can also add a label for your address by typing, `getnewaddress test`.\n - This automatically creates a new receiving address in your wallet.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 784173,
+          "key": "3b0241e1-5f04-403f-80f3-5f3498c57c9c",
+          "title": "Create a Transaction: Step 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3b0241e1-5f04-403f-80f3-5f3498c57c9c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 784175,
+              "key": "60c569d6-bc68-4583-b00c-df4ac3221c3a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 1. View UTXO\n\n In the debug console, use the [listunspent](http://chainquery.com/bitcoin-api/listunspent) command to show all the unspent confirmed outputs in our wallet. These can be used as inputs in another transaction. \n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785497,
+              "key": "976fb3f1-0a02-4940-9d42-dce8fe77136c",
+              "title": "C2L4 Step 1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EeeyPTeWe0s",
+                "china_cdn_id": "EeeyPTeWe0s.mp4"
+              }
+            },
+            {
+              "id": 785509,
+              "key": "b1056c9f-9d83-4511-8336-6434fa278944",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Command\nIn the debug console type the listunspent command\n```\nlistunspent\n```\n\n### Result\n```\n[\n {\n \"txid\" : \"e787a27bda32c8b54ee501be46d2cfcd47c1566c8ef6ee339bdb7cd5c82b701c\",\n \"vout\" : 0,\n \"address\" : \"2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy\",\n \"account\" : \"public faucet test\",\n\"redeemScript\": \"0014c794ee65db89222f408dfe1728d214f2496d7a72\"\n \"scriptPubKey\" : \"a91454ad1e8953876c90d3fc15798c687835ab3d3aee87\",\n \"amount\" : 0.05000000,\n \"confirmations\" : 12\n \"spendable\": true,\n \"solvable\": true,\n \"safe\": true\n }\n...\n]\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 784177,
+          "key": "d08d5600-fdba-40e4-9f87-8284c88c041c",
+          "title": "Create a Transaction: Step 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d08d5600-fdba-40e4-9f87-8284c88c041c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 785508,
+              "key": "4e560c92-190f-4280-9df5-c97bd646f9a0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 2. View Details about Specific UTXO\n\nUse the [gettxout command](http://chainquery.com/bitcoin-api/gettxout) to get the details of the unspent output we found.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785498,
+              "key": "fdac6d77-f712-4cbd-a9a7-a68b5509b639",
+              "title": "C2L4 Step 2 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RrObdvpg9LE",
+                "china_cdn_id": "RrObdvpg9LE.mp4"
+              }
+            },
+            {
+              "id": 784178,
+              "key": "57884342-81d6-45d7-ac8e-f306c86bd3e7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Command\n**Command Parameters:**\n```\ngettxout \"txid\" n\n```\n\n**Arguments:**\n1. \"txid\"             (string, required) The transaction id\n2. \"n\"                (numeric, required) vout number\n\n### Execute Command\nTo get the 0th index of the txid e787…\n```\ngettxout e787a27bda32c8b54ee501be46d2cfcd47c1566c8ef6ee339bdb7cd5c82b701c 0\n```\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 784179,
+          "key": "ea1d958a-7ddc-4a17-bec2-5e2626c7bce8",
+          "title": "Create a Transaction: Step 3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ea1d958a-7ddc-4a17-bec2-5e2626c7bce8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 785507,
+              "key": "60c0e850-9596-4878-a3bb-c0c573f2351e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 3. Create Raw Transaction\n\nNow, that we have UTXOs, let's create a transaction. In this step, we are only creating a transaction. We are not yet sending it to the network.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785499,
+              "key": "1be29250-b2a8-4564-b4ad-144a2888340d",
+              "title": "C2L4 Step 3 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eREityQyyEk",
+                "china_cdn_id": "eREityQyyEk.mp4"
+              }
+            },
+            {
+              "id": 784184,
+              "key": "cd5e9684-2317-4eb5-8584-3e6b2514f9bf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Explanation\n\nLet's say we have a UTXO of 0.050 BTC in \"from_address\", and we want to send 0.030 BTC to a receiving address called \"to_address\".\n\nHence we will have 2 transactions here.\n\n- The first transaction will transfer 0.030 BTC to \"to_address\".\n\n- The second transaction will send the balance back to our \"from_address\".\n\nLet's also assume that our transaction fee would cost us 0.0005 BTC. In this case, our balance back to the \"from_address\" would be (0.050 - 0.030) - 0.0005 = 0.0195\n\n*To summarize:*\n\nSum(Inputs) - Sum(Outputs) = Transaction Fee\n\n(0.050 BTC) - (0.030 BTC + 0.0195 BTC) = 0.0005 BTC\n\n\n### Command\n\nWe will use the [createrawtransaction command](http://chainquery.com/bitcoin-api/createrawtransaction):\n\n**Command Parameters:**\n```\ncreaterawtransaction '[{\"txid\":\"TXID\",\"vout\": VOUT}]’’{“to_address”:amount1, “from_address”:amount2}’\n```\n\n### Build Out Command\n**txid:** e787a27bda32c8b54ee501be46d2cfcd47c1566c8ef6ee339bdb7cd5c82b701c\n\n**vout:** 0\n\n**to_address:** 2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y\n\n**from_address:** 2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy\n\n**amount1:** .030 BTC being sent to \"to_address\"\n\n**amount2:** 0.0195 BTC being sent back to the \"from_address\"\n\n### Execute Command\n\n````\ncreaterawtransaction '[{\"txid\": \"e787a27bda32c8b54ee501be46d2cfcd47c1566c8ef6ee339bdb7cd5c82b701c\", \"vout\":0}]' '{\"2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y\":0.030, \"2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy\":0.0195}'\n````",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784186,
+              "key": "fda8d167-9517-4508-9dbc-4d119ef6cf2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Note: As mentioned above, this example has two outputs. The first is to send 0.030 BTC to the receiving address. The second is to send 0.0195 BTC as change back to the original address.\n \n### Result  (hex string) \n```\n02000000011c702bc8d57cdb9b33eef68e6c56c147cdcfd246be01e54eb5c832da7ba287e70000000000ffffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b58730c11d000000000017a91454ad1e8953876c90d3fc15798c687835ab3d3aee8700000000\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 784180,
+          "key": "961fb188-d8fc-4f6a-9feb-24d2bbcb501f",
+          "title": "Create a Transaction: Step 4",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "961fb188-d8fc-4f6a-9feb-24d2bbcb501f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 785506,
+              "key": "90713b38-a1b9-44af-91a1-97ad5094fa70",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 4. Decode Raw Transaction\n\n### Explanation\nThe output of createrawtransaction was a raw hex string. To confirm that everything processed correctly, we can use the by *decoderawtransaction* command.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785500,
+              "key": "11e352fe-89d8-4326-a94e-675282251503",
+              "title": "C2L4 Step 4 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6BpPjQJk0UY",
+                "china_cdn_id": "6BpPjQJk0UY.mp4"
+              }
+            },
+            {
+              "id": 784185,
+              "key": "3dcf1d73-6913-4407-8b30-651a1b554996",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Command\n\n[decoderawtransaction](http://chainquery.com/bitcoin-api/decoderawtransaction)\n\n**Command Parameters:**\n```\ndecoderawtransaction \"hexstring\"\n```\n\n**Arguments:** \n```\n1. \"hexstring\"      (string, required) The transaction hex string\n```\n\n### Execute command\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784202,
+              "key": "2871749d-cdb2-45a5-b723-d2ee6409a9ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\ndecoderawtransaction 02000000011c702bc8d57cdb9b33eef68e6c56c147cdcfd246be01e54eb5c832da7ba287e70000000000ffffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b58730c11d000000000017a91454ad1e8953876c90d3fc15798c687835ab3d3aee8700000000\n```\n\n### Result\n\n```\n{\n  \"txid\": \"655419a854bdb808fb7cc3a68b8aab372e944ca028001ea247cead3ed00472eb\",\n  \"hash\": \"655419a854bdb808fb7cc3a68b8aab372e944ca028001ea247cead3ed00472eb\",\n  \"version\": 2,\n  \"size\": 115,\n  \"vsize\": 115,\n  \"locktime\": 0,\n  \"vin\": [\n    {\n      \"txid\": \"e787a27bda32c8b54ee501be46d2cfcd47c1566c8ef6ee339bdb7cd5c82b701c\",\n      \"vout\": 0,\n      \"scriptSig\": {\n        \"asm\": \"\",\n        \"hex\": \"\"\n      },\n      \"sequence\": 4294967295\n    }\n  ],\n  \"vout\": [\n    {\n      \"value\": 0.03000000,\n      \"n\": 0,\n      \"scriptPubKey\": {\n        \"asm\": \"OP_HASH160 f20fe211102535e3c37bb0e659099387ddc035b5 OP_EQUAL\",\n        \"hex\": \"a914f20fe211102535e3c37bb0e659099387ddc035b587\",\n        \"reqSigs\": 1,\n        \"type\": \"scripthash\",\n        \"addresses\": [\n          \"2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y\"\n        ]\n      }\n    },\n    {\n      \"value\": 0.01950000,\n      \"n\": 1,\n      \"scriptPubKey\": {\n        \"asm\": \"OP_HASH160 54ad1e8953876c90d3fc15798c687835ab3d3aee OP_EQUAL\",\n        \"hex\": \"a91454ad1e8953876c90d3fc15798c687835ab3d3aee87\",\n        \"reqSigs\": 1,\n        \"type\": \"scripthash\",\n        \"addresses\": [\n          \"2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy\"\n        ]\n      }\n    }\n  ]\n}\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784203,
+              "key": "b7742869-a7cc-4afa-91ee-9cd7b84deaa2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "That checks out. Our new transaction used the UTXO from our confirmed transaction and generated 2 outputs - \n0.030 BTC that was sent to the new address and 0.0195 BTC back as change. Any remainder, 0.0005 BTC, is used for the Transaction Fee. \n\nSum(Inputs) - Sum(Outputs) = Transaction Fee\n\n(0.050 BTC) - (0.030 BTC + 0.0195 BTC) = 0.0005 BTC",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 784181,
+          "key": "b7d8b181-3159-4afc-97e4-f9f98513e8f1",
+          "title": "Create a Transaction: Step 5",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b7d8b181-3159-4afc-97e4-f9f98513e8f1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 784187,
+              "key": "ec7db1a6-dba9-40b4-b121-bdb8c75f13b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 5. Sign Raw Transaction\n\n### Explanation\nYou may have noticed that in the output of `decodetransaction`, the scriptSig field is empty:\n\nThis is because we have not signed the transaction yet to prove that we own the address from which the UTXO are being spent.\n\nWe will have to sign our transaction first.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785501,
+              "key": "bd2c00d0-293e-4fe6-91ca-9fd0db88db00",
+              "title": "C2L4 Step 5 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZlJGh2a8K9U",
+                "china_cdn_id": "ZlJGh2a8K9U.mp4"
+              }
+            },
+            {
+              "id": 784188,
+              "key": "3ee3b04e-031b-441d-bcb5-fc083dadfdf7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\n...\n {\n      \"txid\": \"e787a27bda32c8b54ee501be46d2cfcd47c1566c8ef6ee339bdb7cd5c82b701c\",\n      \"vout\": 0,\n      \"scriptSig\": {\n        \"asm\": \"\",\n        \"hex\": \"\"\n      },\n      \"sequence\": 4294967295\n    }\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784189,
+              "key": "13a9213c-ea06-4fb6-939e-43ec2a84f2c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Command\nIn this section, we will use <signrawtransactionwithwallet> command to sign the transaction. \n\n**Command Parameters:**\n```\nsignrawtransactionwithwallet \"hexstring\" \n```\n\n**Arguments:** \n\n1. \"hexstring\"     (string, required) The transaction hex string from the \"createrawtransaction\" step\n\n### Execute Command\n\n**Note:** If your wallet is encrypted, you will be asked to unlock it before you can sign a transaction.\n\n```\nsignrawtransactionwithwallet 02000000011c702bc8d57cdb9b33eef68e6c56c147cdcfd246be01e54eb5c832da7ba287e70000000000ffffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b58760e316000000000017a91454ad1e8953876c90d3fc15798c687835ab3d3aee8700000000 \n```\n**Note:** If you have a version of Bitcoin core that is older than 0.17, you might have to use `signrawtransaction` command.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784190,
+              "key": "9c67424d-c678-4484-82c6-f1bec24d4f5d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Result\n```\n{\n\"hex\": \"020000000001011c702bc8d57cdb9b33eef68e6c56c147cdcfd246be01e54eb5c832da7ba287e70000000017160014c794ee65db89222f408dfe1728d214f2496d7a72ffffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b58730c11d000000000017a91454ad1e8953876c90d3fc15798c687835ab3d3aee8702483045022100dbf89096427b02c27a799a1d42fca9066bb1706d6874e7255a89084d7c39054c02203c792d0590e068d932966a3d5a84a099492d6975d8fe76b0ca191e20d2a76e800121039c508c50597896b7d67efadf03864d3cee14941253fea08a7abc596479036f8000000000\",\n  \"complete\": true\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784191,
+              "key": "b9a5e94d-5b33-4bcf-aefc-3c4c318332f4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We can use `decoderawtransaction` again to view the changes after signing. Use the outputted hex encoded raw hash result from `signrawtransaction`. Notice that the scriptSig field is now filled out. It contains a digital signature that proves we own the wallet address and can spend the UTXO.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784192,
+              "key": "b1397fd0-5ec3-49d8-8d6c-c35f4719ba25",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Execute Command\n\n```\ndecoderawtransaction 020000000001011c702bc8d57cdb9b33eef68e6c56c147cdcfd246be01e54eb5c832da7ba287e70000000017160014c794ee65db89222f408dfe1728d214f2496d7a72ffffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b58730c11d000000000017a91454ad1e8953876c90d3fc15798c687835ab3d3aee8702483045022100dbf89096427b02c27a799a1d42fca9066bb1706d6874e7255a89084d7c39054c02203c792d0590e068d932966a3d5a84a099492d6975d8fe76b0ca191e20d2a76e800121039c508c50597896b7d67efadf03864d3cee14941253fea08a7abc596479036f8000000000 \n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784193,
+              "key": "4e6b8e79-7c65-4e93-95c8-858384bfda3d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Result\n```\n{\n  \"txid\": \"0b6672b1659752a92ae109b4abc936adf7e57a97637a6231d84691bca78466d4\",\n  \"hash\": \"51f05787e966660c2ed9cda5ef9762d336e6d7ae6f169869ee01846117e555a7\",\n  \"version\": 2,\n  \"size\": 248,\n  \"vsize\": 166,\n  \"locktime\": 0,\n  \"vin\": [\n    {\n      \"txid\": \"e787a27bda32c8b54ee501be46d2cfcd47c1566c8ef6ee339bdb7cd5c82b701c\",\n      \"vout\": 0,\n      \"scriptSig\": {\n        \"asm\": \"0014c794ee65db89222f408dfe1728d214f2496d7a72\",\n        \"hex\": \"160014c794ee65db89222f408dfe1728d214f2496d7a72\"\n      },\n      \"txinwitness\": [\n        \"3045022100dbf89096427b02c27a799a1d42fca9066bb1706d6874e7255a89084d7c39054c02203c792d0590e068d932966a3d5a84a099492d6975d8fe76b0ca191e20d2a76e8001\",\n        \"039c508c50597896b7d67efadf03864d3cee14941253fea08a7abc596479036f80\"\n      ],\n      \"sequence\": 4294967295\n    }\n  ],\n  \"vout\": [\n    {\n      \"value\": 0.03000000,\n      \"n\": 0,\n      \"scriptPubKey\": {\n        \"asm\": \"OP_HASH160 f20fe211102535e3c37bb0e659099387ddc035b5 OP_EQUAL\",\n        \"hex\": \"a914f20fe211102535e3c37bb0e659099387ddc035b587\",\n        \"reqSigs\": 1,\n        \"type\": \"scripthash\",\n        \"addresses\": [\n          \"2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y\"\n        ]\n      }\n    },\n    {\n      \"value\": 0.01950000,\n      \"n\": 1,\n      \"scriptPubKey\": {\n        \"asm\": \"OP_HASH160 54ad1e8953876c90d3fc15798c687835ab3d3aee OP_EQUAL\",\n        \"hex\": \"a91454ad1e8953876c90d3fc15798c687835ab3d3aee87\",\n        \"reqSigs\": 1,\n        \"type\": \"scripthash\",\n        \"addresses\": [\n          \"2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy\"\n        ]\n      }\n    }\n  ]\n}\n```\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 784182,
+          "key": "8c1f9a35-64bc-479a-995f-43ef8541dad3",
+          "title": "Create a Transaction: Step 6",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8c1f9a35-64bc-479a-995f-43ef8541dad3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 785505,
+              "key": "3c9e5327-8f09-48a6-8626-76570925cd61",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 6. Send Raw Transaction\n\n### Explanation\nWith our transaction created, let’s send it to the network. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785502,
+              "key": "7edca0f7-1ef5-4d76-b982-517e1cf6d718",
+              "title": "C2L4 Step 6 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nDdghiLUQfg",
+                "china_cdn_id": "nDdghiLUQfg.mp4"
+              }
+            },
+            {
+              "id": 784194,
+              "key": "8b9908b6-a0ad-4ecc-8dc1-04624fa9b0b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Command\nWe will use the [sendrawtransaction](http://chainquery.com/bitcoin-api/sendrawtransaction) command.\n\n**Command Parameters:**\n```\nsendrawtransaction \"hexstring\" ( allowhighfees )\n```\n**Arguments:**\n```\n1. \"hexstring\"    (string, required) The hex string of the raw transaction)\n2. allowhighfees    (boolean, optional, default=false) Allow high fees\n```\n**Result:**\n```\n\"hex\"             (string) The transaction hash in hex\n```\n\n### Execute Command\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784195,
+              "key": "0b3124b6-9ffc-4ac4-a66c-6a35bd1b0320",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\nsendrawtransaction 020000000001011c702bc8d57cdb9b33eef68e6c56c147cdcfd246be01e54eb5c832da7ba287e70000000017160014c794ee65db89222f408dfe1728d214f2496d7a72ffffffff02c0c62d000000000017a914f20fe211102535e3c37bb0e659099387ddc035b58730c11d000000000017a91454ad1e8953876c90d3fc15798c687835ab3d3aee8702483045022100dbf89096427b02c27a799a1d42fca9066bb1706d6874e7255a89084d7c39054c02203c792d0590e068d932966a3d5a84a099492d6975d8fe76b0ca191e20d2a76e800121039c508c50597896b7d67efadf03864d3cee14941253fea08a7abc596479036f8000000000\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784196,
+              "key": "65f14c39-9371-4735-925e-6ac7a8c50e8e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If the submission went through, we are returned the transaction hash (txid) in hex of the raw transaction that was submitted to the network. Looks good!\n\n### Result\n```\nae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346\n```\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 784183,
+          "key": "04fcfe53-f81f-42ed-8dd2-ee423e63d247",
+          "title": "Create a Transaction: Step 7",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "04fcfe53-f81f-42ed-8dd2-ee423e63d247",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 785504,
+              "key": "7ee17793-7130-4c42-a629-5c91d52deab8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Step 7. Query the TxID\n\n### Explanation\nNow our transaction has been sent out to be added to the blockchain.\n\nWe can now look up the transaction that we just sent out.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 785503,
+              "key": "ca3c6295-0a4e-4568-8d3f-65316ff048fc",
+              "title": "C2L4 Step 7 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "j-EGsMCzzBE",
+                "china_cdn_id": "j-EGsMCzzBE.mp4"
+              }
+            },
+            {
+              "id": 784197,
+              "key": "5c5c1a9d-e889-4f69-ba5c-8af25cc0fc9c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Command\nWe will use the [gettransaction](http://chainquery.com/bitcoin-api/gettransaction) command.\n\n**Command Parameters:**\n```\ngettransaction \"txid\"\n```\n**Arguments:**\n```\n1. \"txid\"                  (string, required) The transaction id\n```\n### Execute Command\n\n```\ngettransaction ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346\n```\n\nWe can see that our transaction went through. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784198,
+              "key": "73c9303f-4a54-497b-8017-0c5a0e7c7fe9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Result\n```\n{\n \"amount\" : 0.00000000,\n \"fee\" : -0.00050000,\n \"confirmations\" : 0,\n \"txid\" : \"ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346\",\n \"time\" : 1392666702,\n \"timereceived\" : 1392666702,\n \"details\" : [\n {\n \"account\" : \"\",\n \"address\" : \"2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y\",\n \"category\" : \"send\",\n \"amount\" : -0.03000000,\n \"fee\" : -0.00050000\n },\n {\n \"account\" : \"\",\n \"address\" : \"2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy\",\n \"category\" : \"send\",\n \"amount\" : -0.01950000,\n \"fee\" : -0.00050000\n },\n {\n \"account\" : \"\",\n \"address\" : \"2NFK8YHKT6hPPTDKTPP3c5bx7oPGrYhzj2y\",\n \"category\" : \"receive\",\n \"amount\" : 0.03000000\n },\n {\n \"account\" : \"\",\n \"address\" : \"2Mzxx8wGAmQQyCCrb2vXP4yxaYY9s9nepfy\",\n \"category\" : \"receive\",\n\"amount\" : 0.01950000\n }\n ]\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 784199,
+              "key": "57b57fd4-79f3-40c7-a527-7c83390fca53",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Wrap Up\n\nThat wraps it up for the steps to create a Raw Transaction by leveraging commands from the Bitcoin Protocol.\n\nWe used UTXO from an existing transaction as the inputs, signed our transaction, and then sent it to the network.\n\nNow that you have hands-on experience making a transaction, In the remainder of the course, we will understand the idea of embedding data into a transaction beyond transactional data and whether or not this is an ethical practice. \n\n### Steps and Commands Used In This Exercise\n\n* Step 1 - View all unspent confirmed UTXO in the wallet\n\t* [listunspent](http://chainquery.com/bitcoin-api/listunspent) - Show all the unspent confirmed outputs in our wallet)\n* Step 2 - View Details about a Specific UTXO\n\t* [gettxout](http://chainquery.com/bitcoin-api/gettxout) - Get the details of this unspent output above\n* Step 3 - Create a Raw Transaction\n\t*  [createrawtransaction](http://chainquery.com/bitcoin-api/createrawtransaction) - Create a transaction\n* Step 4 - Decode the Raw Transaction (to double-check it went through correctly)\n\t* [decoderawtransaction](http://chainquery.com/bitcoin-api/decoderawtransaction) - View raw hex string that encodes the transaction details we supplied\n* Step 5 - Sign the Raw Transaction \n\t* [signrawtransactionwithwallet](http://chainquery.com/bitcoin-api/signrawtransactionwithwallet)\n        * signrawtransaction - older versions than 0.17\n* Step 6 - Submit the Raw Transaction to the Network\n\t*  [sendrawtransction](http://chainquery.com/bitcoin-api/sendrawtransaction) - Takes the raw hex string produced by signrawtransaction and  returns a transaction hash (txid) as it submits the transaction on the network. \n* Step 7 - Query the TxID of the Transaction we sent\n\t*  [gettransaction](http://chainquery.com/bitcoin-api/gettransaction) - Query the TxID and view details. Similar to online block explorer \n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668250,
+          "key": "7f9c9806-1b7d-442c-a5ab-3624c5ccd46d",
+          "title": "Embedding Data in Transactions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7f9c9806-1b7d-442c-a5ab-3624c5ccd46d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671168,
+              "key": "704f4fc1-f581-4464-b869-98c2cc515add",
+              "title": "Embedding Data In Transactions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "I-r1mcjrII8",
+                "china_cdn_id": "I-r1mcjrII8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 668251,
+          "key": "8ab92d45-9d48-4111-afb9-34d33c411012",
+          "title": "Embedding Data in Bitcoin Core",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8ab92d45-9d48-4111-afb9-34d33c411012",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671169,
+              "key": "d2cc64cb-3415-4d9f-840b-be7d29b1381b",
+              "title": "Embedding Data In Bitcoin Core",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FLDsIqFjT3w",
+                "china_cdn_id": "FLDsIqFjT3w.mp4"
+              }
+            },
+            {
+              "id": 671182,
+              "key": "a4cdcf0c-333d-4b4c-af5e-9162cb0c1701",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Resources\nCurious what types of non-financial data has been saved in the bitcoin blockchain? \n[Check out this article](http://www.righto.com/2014/02/ascii-bernanke-wikileaks-photographs.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668252,
+          "key": "fe2d4b26-730e-4430-a6f1-588921f817d3",
+          "title": "Ethics of Embedding Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fe2d4b26-730e-4430-a6f1-588921f817d3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671170,
+              "key": "7914d568-538d-4cef-a214-a195cccc170b",
+              "title": "Ethics Of Embedding Data",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "f89XGNgmJ6k",
+                "china_cdn_id": "f89XGNgmJ6k.mp4"
+              }
+            },
+            {
+              "id": 672458,
+              "key": "ca46275d-cd0a-425d-a1a3-e8859340d0e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Ethics of Embedding Data Articles\nRead-up on some of the discussions surrounding this topic. Here are some suggested articles, but there's much more out there. Take the time to research the pros and cons on this topic to help you make better decisions when faced with such issues on your own in the future.  \n\n* [Block size limit controversy wiki](https://en.bitcoin.it/wiki/Block_size_limit_controversy)\n* [The Great Bitcoin Scaling Debate — A Timeline](https://hackernoon.com/the-great-bitcoin-scaling-debate-a-timeline-6108081dbada) \n* [Bitcoin’s “Block size” Debate: Big Blockers v. Decentralists](https://www.lexology.com/library/detail.aspx?g=f32dac47-a7a6-4e5d-af5b-28e4f1d87287)\n*[Understanding the Block Size Debate](https://medium.com/@jcliff/understanding-the-block-size-debate-351bdbaaa38)\n\n### Food for Thought\nAs a bonus, take some time to research and think on these questions: \n- What happens or should happen if people attempt to abuse the blockchain?\n- How do we decide how to manage the type of data allowed to be stored on a blockchain when creating one?\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668253,
+          "key": "db5ea23e-b3c7-4151-897c-04b2f2a5313f",
+          "title": "Lesson Summary and Project Prep Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "db5ea23e-b3c7-4151-897c-04b2f2a5313f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 671171,
+              "key": "13c432b8-5216-4ad1-bd80-5316d40bccb6",
+              "title": "Lesson Summary And Project Prep Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "o2vU7kxjtRM",
+                "china_cdn_id": "o2vU7kxjtRM.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

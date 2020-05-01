@@ -1,0 +1,931 @@
+{
+  "data": {
+    "lesson": {
+      "id": 409892,
+      "key": "5c99d8a0-1f9a-4eac-b610-759cf639d9a5",
+      "title": "Sentiment Analysis",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, Andrew Trask, the author of Grokking Deep Learning, will walk you through using neural networks for sentiment analysis.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/5c99d8a0-1f9a-4eac-b610-759cf639d9a5/409892/1544453078608/Sentiment+Analysis+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/5c99d8a0-1f9a-4eac-b610-759cf639d9a5/409892/1544453070900/Sentiment+Analysis+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 439847,
+          "key": "fa50d407-f477-4b5c-8fe0-0a7fdc63105e",
+          "title": "Introducing Andrew Trask",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fa50d407-f477-4b5c-8fe0-0a7fdc63105e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 439848,
+              "key": "dab01618-e227-407e-a777-e21eacf4f8aa",
+              "title": "Introducing Andrew Trask",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ltO71Bm8b3M",
+                "china_cdn_id": "ltO71Bm8b3M.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262618,
+          "key": "c5670bc6-fbb3-4ac9-a1de-7bc3eb039e73",
+          "title": "Meet Andrew",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c5670bc6-fbb3-4ac9-a1de-7bc3eb039e73",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 263380,
+              "key": "849a2a06-31e0-49e8-b644-873db48fc9d3",
+              "title": "Andrew Trask - Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "### Note\n\nFor a 40% discount on [Andrew's book](https://www.manning.com/books/grokking-deep-learning), use coupon code **traskud17** .",
+              "video": {
+                "youtube_id": "da1I0mea1jQ",
+                "china_cdn_id": "da1I0mea1jQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 439387,
+          "key": "96ddcf3f-3048-447a-9637-2acc38bcd589",
+          "title": "Materials",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "96ddcf3f-3048-447a-9637-2acc38bcd589",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 439388,
+              "key": "dbc7b495-4766-4ded-ac49-cfebc7b05466",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Materials\n\nAs you follow along this lesson, it's extremely important that you open the Jupyter notebook and attempt the exercises. Much of the value in this experience will come from seeing how your solution is different from Andrew's and playing around with the code in your own way. Make this lesson count!\n\n# Workspace\n\nThe best way to open the notebook is to click [here](https://classroom.udacity.com/nanodegrees/nd101/parts/73a7fe8e-4354-4362-939d-a8bf2bae870d/modules/e6a4e4a1-98a9-4afe-a744-7ae6a59c01b8/lessons/5c99d8a0-1f9a-4eac-b610-759cf639d9a5/concepts/3cc08c9f-50e9-4650-a67e-179a3cbb9dcf), which will open it in a new window. We recommend you to work on the notebook in that window, and watch the videos in this one. You can also get to the notebook by clicking the \"Next\" button in the classroom.\n\nIf you want to download the notebooks yourself, you can clone them from [our GitHub repository](https://github.com/udacity/deep-learning). You can either download the repository with `git clone https://github.com/udacity/deep-learning.git`, or download it as an archive file from [this link](https://github.com/udacity/deep-learning/archive/master.zip).\n\nThis lesson uses the following files:\n\n* `Sentiment_Classification_Projects.ipynb` - a notebook you will use to following along and work on lesson mini projects.\n* `Sentiment_Classification_Solutions.ipynb` - a notebook that includes Andrew’s solutions to the lesson projects, which you can use for reference \n* A notebook for the solution for each mini project.\n* `reviews.txt` - a collection of 25 thousand movie reviews\n* `labels.txt` - positive/negative sentiment labels for the associated reviews in reviews.txt \n\n**Note:** the notebooks for these lessons have been updated since the videos were recorded. In most cases that just means your notebook will contain more hints and explanatory text than what you see in the videos, but there may be some minor differences in the code as well. With these changes, you still will be able to follow along with the lessons, and should have an easier time understanding the project material.\n\n# Solutions\n\nIf you need help, feel free to look at the solutions in the same folder.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457658,
+              "key": "1e262bb2-1129-410e-b6c0-bddd93e75a05",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a024f0b_notebook/notebook.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1e262bb2-1129-410e-b6c0-bddd93e75a05",
+              "caption": "",
+              "alt": "",
+              "width": 817,
+              "height": 332,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 457649,
+          "key": "3cc08c9f-50e9-4650-a67e-179a3cbb9dcf",
+          "title": "The Notebooks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3cc08c9f-50e9-4650-a67e-179a3cbb9dcf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 457650,
+              "key": "4ec95282-fee4-4383-940c-3bb2cca150e7",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view95f0dfd4",
+              "pool_id": "jupyter",
+              "view_id": "e6ac0f94-d141-4c53-83dd-31492028e888",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Sentiment_Classification_Projects.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 262621,
+          "key": "59e3cd31-a17f-4685-8d17-ab85b642aa3a",
+          "title": "Framing the Problem",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "59e3cd31-a17f-4685-8d17-ab85b642aa3a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 262854,
+              "key": "83df5815-7bcb-4368-9779-fb88fc1b1eab",
+              "title": "Framing the Problem",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IsTOnkAKaJw",
+                "china_cdn_id": "IsTOnkAKaJw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262867,
+          "key": "03e5b224-5f67-40d1-9f97-19749fc25ea5",
+          "title": "Mini Project 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "03e5b224-5f67-40d1-9f97-19749fc25ea5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262888,
+              "key": "6c1a6885-5641-44eb-9ccc-789312c775ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Instructions\n\nIn this project, you'll test your theory of what features of a review correlate with the label! Here are your specific steps:\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262893,
+              "key": "af5c9182-38b5-444c-b2a9-f6f054882036",
+              "title": "Mini Project 1",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "af5c9182-38b5-444c-b2a9-f6f054882036",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Work in the `Project 1` section of `Sentiment_Classification_Projects.ipynb`.",
+                "Follow the notebook’s instructions to test the correlation between review features and labels."
+              ],
+              "positive_feedback": "Nice work! In the next video, Andrew will explain his solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 262620,
+          "key": "4817e5eb-51e7-457b-8869-294f8548154e",
+          "title": "Mini Project 1 Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4817e5eb-51e7-457b-8869-294f8548154e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262831,
+              "key": "2c726f1b-b2e6-4fa1-bac7-9abed1425cca",
+              "title": "Mini Project 1 Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "### Note\n\nCheck out the solution in the `Project 1` section of `Sentiment_Classification_Solutions.ipynb`!",
+              "video": {
+                "youtube_id": "l4r5l0HvHRI",
+                "china_cdn_id": "l4r5l0HvHRI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262718,
+          "key": "e980a1b0-ae7b-4d94-8313-c93f45f69ebf",
+          "title": "Transforming Text into Numbers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e980a1b0-ae7b-4d94-8313-c93f45f69ebf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 262832,
+              "key": "2039b2e3-8b62-401a-a68d-3707774d366b",
+              "title": "Transforming Text into Numbers",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7rHBU5cbePE",
+                "china_cdn_id": "7rHBU5cbePE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262868,
+          "key": "7efda644-b17f-4391-9bae-4bd10f033d5b",
+          "title": "Mini Project 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7efda644-b17f-4391-9bae-4bd10f033d5b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262897,
+              "key": "c079309b-0b7e-495d-8654-0ebb4fe147e6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Instructions\n\nIn the following mini project, you'll convert the inputs and outputs of the dataset into numbers. Namely, you will convert each review string into a vector, and each label into a `0` or `1`. You’ll need to make a few additions to the notebook, but the main work will be implementing two functions, whose signatures are shown below:\n\n```python\ndef update_input_layer(review):\n    \"\"\" Modify the global layer_0 to represent the vector form of review.\n    The element at a given index of layer_0 should represent \\\n    how many times the given word occurs in the review.\n    Args:\n        review(string) - the string of the review\n    Returns:\n        None\n    \"\"\"\n    global layer_0\n    # clear out previous state, reset the layer to be all 0s\n    layer_0 *= 0\n    ## Your code here\n    pass\n```\n\n```python\ndef get_target_for_label(label):\n    \"\"\"Convert a label to `0` or `1`.\n    Args:\n        label(string) - Either \"POSITIVE\" or \"NEGATIVE\".\n    Returns:\n        `0` or `1`.\n    \"\"\"\n    pass\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262901,
+              "key": "b46eb63d-c4c6-48b0-8b24-61d75727ca27",
+              "title": "Mini Project 2",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b46eb63d-c4c6-48b0-8b24-61d75727ca27",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Work in the `Project 2` section of `Sentiment_Classification_Projects.ipynb`.",
+                "Follow the notebook’s instructions to convert your inputs and outputs to numbers.",
+                "Create a global vocabulary set `vocab`",
+                "Initialize a `global` layer_0 that is a vector of the size of the text vocabulary. All values should be initialized to `0`.",
+                "Implement `update_input_layer`.",
+                "Implement `get_target_label`."
+              ],
+              "positive_feedback": "Nice work! In the next video, Andrew will share his solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 262736,
+          "key": "7e22f6d2-ffe3-4ca9-a167-b8e3f205c820",
+          "title": "Mini Project 2 Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7e22f6d2-ffe3-4ca9-a167-b8e3f205c820",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262833,
+              "key": "41ae0ee7-1cbd-4393-9f15-7386eb15c93a",
+              "title": "Mini Project 2 Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "### Note\n\nCheck out the solution in the `Project 2` section of `Sentiment_Classification_Solutions.ipynb`!",
+              "video": {
+                "youtube_id": "45ihpPaeO8E",
+                "china_cdn_id": "45ihpPaeO8E.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262737,
+          "key": "4400479e-fbbb-4b08-ba46-b9570bb5286c",
+          "title": "Building a Neural Network",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4400479e-fbbb-4b08-ba46-b9570bb5286c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 262834,
+              "key": "1c5017be-4897-4362-bccb-78cdf8d38c00",
+              "title": "Building a Neural Network",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aM2k7RTjjJI",
+                "china_cdn_id": "aM2k7RTjjJI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262869,
+          "key": "2e06049d-41b8-4630-a6ac-81cd2f3ffb12",
+          "title": "Mini Project 3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2e06049d-41b8-4630-a6ac-81cd2f3ffb12",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262905,
+              "key": "f8967813-17b7-4cc4-a290-8ad21caccb44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Instructions\n\nIn this mini project, you'll modify your old neural network for this specific problem. Here are the specific steps you'll be doing:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262906,
+              "key": "99dfee5d-0cf8-48cb-a5a6-3ae78efa8227",
+              "title": "Mini Project 3",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "99dfee5d-0cf8-48cb-a5a6-3ae78efa8227",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Work in the `Project 3` section of `Sentiment_Classification_Projects.ipynb`.",
+                "Follow the notebook’s instructions to create a neural network that predicts sentiment from movie reviews.",
+                "Remove the non linearity in your hidden layer.",
+                "Create training data using the new functions.",
+                "Create a `preprocess_data` function to create vocabulary for our training.",
+                "Modify the `train` function to train over the entire corpus."
+              ],
+              "positive_feedback": "Nice work! In the next video, you'll see Andrew's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 262738,
+          "key": "358846e0-e876-4ced-b382-6a2501f7e43b",
+          "title": "Mini Project 3 Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "358846e0-e876-4ced-b382-6a2501f7e43b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262855,
+              "key": "0a2c1206-870a-4260-a0c9-b463d08125f6",
+              "title": "Mini Project 3 Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "### Note\n\nCheck out the solution in the `Project 3` section of `Sentiment_Classification_Solutions.ipynb`!",
+              "video": {
+                "youtube_id": "imnxzCev4SI",
+                "china_cdn_id": "imnxzCev4SI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262739,
+          "key": "78a80fd6-a745-4c9d-b601-101a839b6da7",
+          "title": "Understanding Neural Noise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "78a80fd6-a745-4c9d-b601-101a839b6da7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 262856,
+              "key": "5d00a690-d9d3-4358-8be6-02788dfa13e6",
+              "title": "Understanding Neural Noise",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ubqhh4Iv7O4",
+                "china_cdn_id": "ubqhh4Iv7O4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262870,
+          "key": "02e72423-c5c9-4997-8264-269e3d14269d",
+          "title": "Mini Project 4",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "02e72423-c5c9-4997-8264-269e3d14269d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262908,
+              "key": "3eb1deac-0769-410f-bc1b-233cf17d952d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Instructions\n\nIn this mini-project, you'll recreate Andrew's work from the previous video to reduce the noise in the neural network. Follow the instructions in the notebook and you should have no problems.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262909,
+              "key": "04670d83-1b4a-4931-9fbb-9ca61c5157a0",
+              "title": "Mini Project 4",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "04670d83-1b4a-4931-9fbb-9ca61c5157a0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Work in the `Project 4` section of `Sentiment_Classification_Projects.ipynb`.",
+                "Follow the notebook's instructions and attempt to recreate Andrew's optimizations from the previous video."
+              ],
+              "positive_feedback": "Nice work! In the next video you'll see Andrew's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 262740,
+          "key": "c5add6ae-7275-4aa9-a98c-385c039d833f",
+          "title": "Understanding Inefficiencies in our Network",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c5add6ae-7275-4aa9-a98c-385c039d833f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262857,
+              "key": "dcc54788-097f-4fe1-a581-7f4b6e6d4d41",
+              "title": "Understanding Inefficiencies in our Network",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4MuS-6ATxCU",
+                "china_cdn_id": "4MuS-6ATxCU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262871,
+          "key": "e9d31ac2-d8b5-450b-a6c6-1ae3c95a5ff0",
+          "title": "Mini Project 5",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e9d31ac2-d8b5-450b-a6c6-1ae3c95a5ff0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262910,
+              "key": "37691e0e-cbbd-4932-b58c-6822373aa86a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Instructions\n\nCongratulations on making it all the way to the fifth project! In this mini project, you'll dramatically improve the performance of your network using some of the simple ideas Andrew mentioned. By the end, you'll see how your network can train far faster than before! Here are the specific steps:\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262911,
+              "key": "2040371f-1278-4025-a856-3f6073c8cfb3",
+              "title": "Mini Project 5",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2040371f-1278-4025-a856-3f6073c8cfb3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Work in the `Project 5` section of `Sentiment_Classification_Projects.ipynb`",
+                "Follow the notebook's instructions to speed up forward and back propagation.",
+                "Update the neural network that you have to stop multiplying by 0s in the hidden layer.",
+                "Update the neural network to stop multiplying weights by 1 in the hidden layer.",
+                "Verify that your neural network has sped up."
+              ],
+              "positive_feedback": "Nice work! In the next video you'll see Andrew's solution.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 262741,
+          "key": "1df626a4-d6b0-4c19-b1f3-9d565ffea032",
+          "title": "Mini Project 5 Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1df626a4-d6b0-4c19-b1f3-9d565ffea032",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262858,
+              "key": "4fbb33d9-370b-4b7b-aeb0-4bf454cffefd",
+              "title": "Mini Project 5 Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "### Note\n\nCheck out the solution in the `Project 5` section of `Sentiment_Classification_Solutions.ipynb`!",
+              "video": {
+                "youtube_id": "Hv86B_jjWTI",
+                "china_cdn_id": "Hv86B_jjWTI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262742,
+          "key": "750a2999-95d8-4e27-8d7e-e2cf07d3bdbd",
+          "title": "Further Noise Reduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "750a2999-95d8-4e27-8d7e-e2cf07d3bdbd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 262859,
+              "key": "71165bf8-383c-4e6f-b234-36009730398a",
+              "title": "Further Noise Reduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Kl3hWxizKVg",
+                "china_cdn_id": "Kl3hWxizKVg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262872,
+          "key": "2fbbdb30-0491-4de4-ab71-1e39036c3c7c",
+          "title": "Mini Project 6",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2fbbdb30-0491-4de4-ab71-1e39036c3c7c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262912,
+              "key": "22c2ad61-1b10-44cb-9019-4bb4772423a7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Instructions\n\nYou're almost there! In this final mini project, you'll further prune your input data to only use words that have significant signaling power. This will help you improve training time and reduce the size of your training set. Here are your specific instructions:\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262913,
+              "key": "be1a5994-03c9-4416-8d96-b25a2a673db8",
+              "title": "Mini Project 6",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "be1a5994-03c9-4416-8d96-b25a2a673db8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Work in the `Project 6` section of `Sentiment_Classification_Projects.ipynb`",
+                "Follow the notebook's instructions to further reduce noise and speed up training.",
+                "Modify `pre_process_data` to take in a `min_count` parameter that specifies the min times a word has appeared.",
+                "Modify `pre_process_data` to take a `polarity` parameter that determines the absolute value that the polarity of a word must cross.",
+                "Test your network and see if the training times improve."
+              ],
+              "positive_feedback": "Congratulations! You finished all the projects in this section. Let's see Andrew's solution and wrap up this lesson.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 262743,
+          "key": "49dbc295-a487-4684-8f4e-66cc6f6bb015",
+          "title": "Mini Project 6 Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "49dbc295-a487-4684-8f4e-66cc6f6bb015",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262860,
+              "key": "a00e0549-6105-4763-add3-a1f1e410a470",
+              "title": "Mini Project 6 Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "### Note\n\nCheck out the solution in the `Project 6` section of `Sentiment_Classification_Solutions.ipynb`!\n\nCorrection: at 1:30, Andrew says the distribution \"centers around one\". He meant to say it centers around zero. ",
+              "video": {
+                "youtube_id": "ji0famK7gOQ",
+                "china_cdn_id": "ji0famK7gOQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262744,
+          "key": "62d972d7-59d9-4fb3-b181-0d89805480b3",
+          "title": "Analysis: What's Going on in the Weights?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "62d972d7-59d9-4fb3-b181-0d89805480b3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 262862,
+              "key": "6b260b6d-9265-47ab-a4aa-5cb93b8300ea",
+              "title": "Analysis: What's Going on in the Weights",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "### Note\n\nFollow along in your `Sentiment_Classification_Projects.ipynb` notebook!",
+              "video": {
+                "youtube_id": "UHsT35pbpcE",
+                "china_cdn_id": "UHsT35pbpcE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 262745,
+          "key": "5547edfa-1a9a-4bd9-9669-595b2b827b8c",
+          "title": "Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5547edfa-1a9a-4bd9-9669-595b2b827b8c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 263382,
+              "key": "0d5558a4-4476-409f-9512-b1f3ec5e1ae9",
+              "title": "Andrew Trask - Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nIF0GLOQglQ",
+                "china_cdn_id": "nIF0GLOQglQ.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

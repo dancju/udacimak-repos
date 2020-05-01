@@ -1,0 +1,404 @@
+{
+  "data": {
+    "lesson": {
+      "id": 502041,
+      "key": "44a921a7-031a-4d18-80f2-b28d80819cf3",
+      "title": "Project: Image Captioning",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Train a CNN-RNN model to predict captions for a given image. Your main task will be to implement an effective RNN decoder for a CNN encoder.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": null,
+      "project": {
+        "key": "4a9861d2-3f26-4fba-af12-862cfba72e7a",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 46080,
+        "semantic_type": "Project",
+        "title": "Image Captioning",
+        "description": "\n## Project Overview\n\nIn this project, you will create a neural network architecture to automatically generate captions from images. \n\nAfter using the Microsoft Common Objects in COntext [(MS COCO) dataset](http://cocodataset.org/#home) to train your network, you will test your network on novel images!\n\n\n## Project Instructions\n\nThe project is structured as a series of Jupyter notebooks that are designed to be completed in sequential order:\n- 0_Dataset.ipynb\n- 1_Preliminaries.ipynb\n- 2_Training.ipynb\n- 3_Inference.ipynb\n\nYou can find these notebooks in the Udacity workspace that appears in the concept titled **Project: Image Captioning**.  This workspace provides a Jupyter notebook server directly in your browser.\n\nYou can read more about workspaces (and how to toggle GPU support) in the following concept (**Introduction to GPU Workspaces**).  This concept will show you how to toggle GPU support in the workspace.  \n\n> **You MUST enable GPU mode for this project.**\n\n---\n\n## Evaluation\n\nYour project will be reviewed by a Udacity reviewer against the CNN project [rubric](https://review.udacity.com/#!/rubrics/1427/view). Review this rubric thoroughly, and self-evaluate your project before submission. All criteria found in the rubric must meet specifications for you to pass.\n\n# Ready to submit your project?\n\nYou may **only submit from the workspace** for this project, [linked here](https://coco.udacity.com/nanodegrees/nd891/locale/en-us/versions/1.0.0/parts/501942/modules/501948/lessons/502041/concepts/624503). Please delete any large files and model checkpoints in the home directory of of your workspace. Then click Submit , a button that appears on the bottom right of the *workspace*, to submit your project.\n\n\n## Project Submission Checklist\n\n**Before submitting your project, please review and confirm the following items.** \n<input type=\"checkbox\"> I am confident all rubric items have been met and my project will pass as submitted. \n<input type=\"checkbox\"> Project builds correctly without errors and runs.\n<input type=\"checkbox\"> All required functionality exists and my project behaves as expected per the project's specifications.\n\n**Once you have checked all these items, you are ready to submit!**\n\n",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "1427",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": {
+          "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2018/April/5acd8627_screen-shot-2018-04-10-at-8.47.32-pm/screen-shot-2018-04-10-at-8.47.32-pm.png",
+          "width": 1731,
+          "height": 900
+        }
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 556353,
+          "key": "7b052a2d-d45a-4101-ba64-bd76f5f11564",
+          "title": "Project Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7b052a2d-d45a-4101-ba64-bd76f5f11564",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 571386,
+              "key": "ba3cc3a2-c95e-4fa7-bd8e-1b1aae57b5fe",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab588e3_image-captioning/image-captioning.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ba3cc3a2-c95e-4fa7-bd8e-1b1aae57b5fe",
+              "caption": "Image Captioning Model",
+              "alt": "Image Captioning Model",
+              "width": 677,
+              "height": 268,
+              "instructor_notes": null
+            },
+            {
+              "id": 556354,
+              "key": "da479700-5a68-47d6-b157-e7f056a5d8dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Overview\n\nIn this project, you will create a neural network architecture to automatically generate captions from images. \n\nAfter using the Microsoft Common Objects in COntext [(MS COCO) dataset](http://cocodataset.org/#home) to train your network, you will test your network on novel images!\n\n## Project Instructions\n\nThe project is structured as a series of Jupyter notebooks that are designed to be completed in sequential order:\n- 0_Dataset.ipynb\n- 1_Preliminaries.ipynb\n- 2_Training.ipynb\n- 3_Inference.ipynb\n\nYou can find these notebooks in the Udacity workspace that appears in the concept titled **Project: Image Captioning**.  This workspace provides a Jupyter notebook server directly in your browser.\n\nYou can read more about workspaces (and how to toggle GPU support) in the following concept (**Introduction to GPU Workspaces**).  This concept will show you how to toggle GPU support in the workspace.  \n\n> **You MUST enable GPU mode for this project and submit your project after you complete the code in the workspace.**\n\n> A completely trained model is expected to take between 5-12 hours to train well on a GPU; it is suggested that you look at early patterns in loss (what happens in the first hour or so of training) as you make changes to your model, so that you only have to spend this large amount of time training your *final* model.\n\nShould you have any questions as you go, please post in the Student Hub!\n\n## Evaluation\n\nYour project will be reviewed by a Udacity reviewer against the CNN project [rubric](https://review.udacity.com/#!/rubrics/1427/view). Review this rubric thoroughly, and self-evaluate your project before submission. As in the first project, **you'll find that only some of the notebooks and files are graded**. All criteria found in the rubric must meet specifications for you to pass.\n\n## Ready to submit your project?\n\nIt is a known issue that the COCO dataset is not well supported for download on Windows, and so you are required to complete the project in the GPU workspace. This will also allow you to bypass setting up an AWS account and downloading the dataset, locally. If you would like to refer to the project code, you may look at [this version (in PyTorch 0.4.0)](https://github.com/udacity/CVND---Image-Captioning-Project) at the linked Github repo. \n\nOnce you've completed your project, you may **only submit from the workspace** for this project, [linked here](https://coco.udacity.com/nanodegrees/nd891/locale/en-us/versions/1.0.0/parts/501942/modules/501948/lessons/502041/concepts/624503). Click Submit, a button that appears on the bottom right of the *workspace*, to submit your project.\n\nFor submitting from the workspace, directly, please make sure that you have deleted any large files and model checkpoints in your notebook directory before submission** or your project file may be too large to download and grade.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 627636,
+              "key": "d17600fa-2caf-4768-9f60-cab83c00d774",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### GPU Workspaces\n\n**Note: To load the COCO data in the workspace, you *must have GPU mode enabled*.**\n\nIn the next section, you'll learn more about these types of workspaces.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 630034,
+          "key": "ae604b86-976e-42ed-85a9-e55208be4aa7",
+          "title": "LSTM Inputs/Outputs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ae604b86-976e-42ed-85a9-e55208be4aa7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630035,
+              "key": "d0bdcbbf-18ee-4a4e-bbd7-f3afaab9bd81",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# LSTM Decoder\n\nIn the project, we pass all our inputs as a sequence to an LSTM. A sequence looks like this: first a feature vector that is extracted from an input image, then a start word, then the next word, the next word, and so on! \n\n### Embedding Dimension\n\nThe LSTM is defined such that, as it sequentially looks at inputs, it expects that each individual input in a sequence is of a **consistent size** and so we *embed* the feature vector and each word so that they are  `embed_size`.\n\n### Sequential Inputs\n\nSo, an LSTM looks at inputs sequentially. In PyTorch, there are two ways to do this. \n\nThe first is pretty intuitive: for all the inputs in a sequence, which in this case would be a feature from an image, a start word, the next word, the next word, and so on (until the end of a sequence/batch), you loop through each input like so:\n```\nfor i in inputs:\n    # Step through the sequence one element at a time.\n    # after each step, hidden contains the hidden state.\n    out, hidden = lstm(i.view(1, 1, -1), hidden)\n```\n\n\nThe second approach, which this project uses, is to **give the LSTM our *entire sequence*** and have it produce a set of outputs and the last hidden state:\n```\n# the first value returned by LSTM is all of the hidden states throughout\n# the sequence. the second is just the most recent hidden state\n\n# Add the extra 2nd dimension\ninputs = torch.cat(inputs).view(len(inputs), 1, -1)\nhidden = (torch.randn(1, 1, 3), torch.randn(1, 1, 3))  # clean out hidden state\nout, hidden = lstm(inputs, hidden)\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 498491,
+          "key": "8b7e602a-4a29-4009-b162-73c6051d4647",
+          "title": "Introduction to GPU Workspaces",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8b7e602a-4a29-4009-b162-73c6051d4647",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "workspace_utils.py",
+                "uri": "https://video.udacity-data.com/topher/2018/May/5b06f6c2_workspace-utils/workspace-utils.py"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 498550,
+              "key": "43033f6d-6756-4208-9782-c3a7a4cd3de0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a501791_jupyter-logo/jupyter-logo.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/43033f6d-6756-4208-9782-c3a7a4cd3de0",
+              "caption": "",
+              "alt": "",
+              "width": 208,
+              "height": 56,
+              "instructor_notes": null
+            },
+            {
+              "id": 498551,
+              "key": "3f8a5696-c478-4920-90e1-81b795aa1d28",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introduction\n---\n\nUdacity Workspaces with GPU support are available for some projects as an alternative to manually configuring your own remote server with GPU support. These workspaces provide a Jupyter notebook server directly in your browser. This lesson will briefly introduce the Workspaces interface.\n\n### Important Notes:\n\n- Workspaces sessions are connections from your browser to a remote server. Each student has a limited number of GPU hours allocated on the servers (the allocation is significantly more than completing the projects is expected to take). There is currently no limit on the number of Workspace hours when GPU mode is disabled.\n- Workspace data stored in the user's home folder is preserved between sessions (and can be reset as needed, e.g., to get project updates).\n- **Only 3 gigabytes of data can be stored in the home folder.**\n- Workspace sessions are preserved if your connection drops or your browser window is closed, simply return to the classroom and re-open the workspace page; however, workspace sessions are automatically terminated after a period of inactivity. This will prevent you from leaving a session connection open and burning through your time allocation. (See the section on active connections below.)\n- The kernel state is preserved as long as the notebook session remains open, but it is _not_ preserved if the session is closed. If you exit the notebook for more than half an hour and the session is closed, you will need to re-run any previously-run cells before continuing.\n\n## Overview\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498555,
+              "key": "4c0b682a-fe2b-4924-8291-66a40fd6b46a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a501a04_workspaces-jupyter/workspaces-jupyter.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4c0b682a-fe2b-4924-8291-66a40fd6b46a",
+              "caption": "The default workspaces interface",
+              "alt": "Workspaces interface",
+              "width": 1227,
+              "height": 589,
+              "instructor_notes": null
+            },
+            {
+              "id": 498556,
+              "key": "672eb443-24f0-4f36-b99d-8b9415e18745",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When the workspace opens, you'll see the normal Jupyter file browser. From this interface you can open a notebook file, start a remote terminal session, enable the GPU, submit your project, or reset the workspace data, and more. Clicking the three bars in the top left corner above the Jupyter logo will toggle hiding the classroom lessons sidebar.\n\n**NOTE: You can always return to the file browser page from anywhere else in the workspace by clicking the Jupyter logo in the top left corner.**\n\n## Opening a notebook\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498557,
+              "key": "cb33298c-6c37-43ec-9861-7de904dff2d6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a501a8d_workspaces-notebook/workspaces-notebook.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cb33298c-6c37-43ec-9861-7de904dff2d6",
+              "caption": "View of the project notebook",
+              "alt": "Project notebook view",
+              "width": 1224,
+              "height": 588,
+              "instructor_notes": null
+            },
+            {
+              "id": 498558,
+              "key": "4aa8e179-7831-4a37-959c-dc26e66140d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Clicking the name of a notebook (*.ipynb) file in the file list will open a standard Jupyter notebook view of the project. The notebook session will remain open as long as you are active, and will be automatically terminated after 30 minutes of inactivity. \n\nYou can exit a notebook by clicking on the Jupyter logo in the top left corner.\n\n**NOTE: Notebooks continue to run in the background unless they are stopped. IF GPU MODE IS ACTIVE, IT WILL REMAIN ACTIVE AFTER CLOSING OR STOPPING A NOTEBOOK. YOU CAN ONLY STOP GPU MODE WITH THE GPU TOGGLE BUTTON. (See next section.)**\n\n## Enabling GPU Mode\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498559,
+              "key": "0e16c570-a956-4fb3-8d74-87a9977c7579",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a501cb6_workspaces-gpu/workspaces-gpu.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0e16c570-a956-4fb3-8d74-87a9977c7579",
+              "caption": "The GPU Toggle Button",
+              "alt": "Enabling GPU mode",
+              "width": 1224,
+              "height": 588,
+              "instructor_notes": null
+            },
+            {
+              "id": 498560,
+              "key": "31587370-cb43-4a3d-b010-336044267f32",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "GPU Workspaces can also be run without time restrictions when the GPU mode is disabled. The \"Enable\"/\"Disable\" button (circled in red in the image) can be used to toggle GPU mode. **NOTE: Toggling GPU support may switch the physical server your session connects to, which can cause data loss UNLESS YOU CLICK THE SAVE BUTTON BEFORE TOGGLING GPU SUPPORT.**\n\n**NOTE THAT THIS WORKSPACE CANNOT BE RUN WITHOUT THE GPU SUPPORT.**\n\n**ALWAYS SAVE YOUR CHANGES BEFORE TOGGLING GPU SUPPORT.**\n\n## Keeping Your Session Active\n---\nWorkspaces automatically disconnect after 30 minutes of user inactivity—which means that workspaces can disconnect during long-running tasks (like training neural networks). We have provided a utility that can keep your workspace sessions active for these tasks. However, keep the following guidelines in mind:\n\n- Do not try to permanently hold the workspace session active when you do not have a process running (e.g., do not try to hold the session open in the background)—the limits are in place to preserve your GPU time allocation; there is no guarantee that you'll receive additional time if you exceed the limit.  \n- Make sure that you save the results of the long running task to disk as soon as the task ends (e.g., checkpoint your model parameters for deep learning networks); otherwise the workspace will disconnect 30 minutes after the active process ends, and the results will be lost.\n\nThe `workspace_utils.py` module (available [here](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/May/5b06f6c2_workspace-utils/workspace-utils.py)) includes an iterator wrapper called `keep_awake` and a context manager called `active_session` that can be used to maintain an active session during long-running processes. The two functions are equivalent, so use whichever fits better in your code.  **NOTE:** The file may be incorrectly downloaded as `workspace-utils.py` (note the dash instead of an underscore in the filename). Make sure to correct the filename before uploading to your workspace; Python cannot import from file names including hyphens.\n\nExample using `keep_awake`:\n```\nfrom workspace_utils import keep_awake\n\nfor i in keep_awake(range(5)):  #anything that happens inside this loop will keep the workspace active\n    # do iteration with lots of work here\n```\n\nExample using `active_session`:\n```\nfrom workspace_utils import active_session\n\nwith active_session():\n    # do long-running work here\n```\n\n## Submitting a Project\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498561,
+              "key": "045515f3-a319-441f-86a9-cd4862f6e751",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a501db1_workspaces-submit/workspaces-submit.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/045515f3-a319-441f-86a9-cd4862f6e751",
+              "caption": "The Submit Project Button",
+              "alt": "UI annotation for project submission button",
+              "width": 1224,
+              "height": 588,
+              "instructor_notes": null
+            },
+            {
+              "id": 498564,
+              "key": "d8cdd4ca-398e-485a-b958-a80c96233d92",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Some workspaces are able to directly submit projects on your behalf (i.e., you do **not** need to manually submit the project in the classroom). To submit your project, simply click the \"Submit Project\" button (circled in red in the above image). \n\nIf you do not see the \"Submit Project\" button, then project submission is not enabled for that workspace. You will need to manually download your project files and submit them in the classroom.\n\n**NOTE: YOU MUST ENSURE THAT YOUR SUBMISSION INCLUDES ALL REQUIRED FILES BEFORE SUBMITTING -- INCLUDING ANY FILE CONVERSIONS (e.g., from ipynb to HTML)**\n\n## Opening a Terminal\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498568,
+              "key": "f529706f-70c5-4ac8-834e-ab69c8a696d0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a501f0b_workspaces-new/workspaces-new.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f529706f-70c5-4ac8-834e-ab69c8a696d0",
+              "caption": "The \"New\" menu button",
+              "alt": "The \"new\" menu",
+              "width": 1224,
+              "height": 589,
+              "instructor_notes": null
+            },
+            {
+              "id": 498570,
+              "key": "81021215-6310-437f-a0f2-2ca64969c112",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Jupyter workspaces support several views, including the file browser and notebook view already covered, as well as shell terminals. To open a terminal shell, click the \"New\" menu button at the top right of the file browser view and select \"Terminal\".\n\n## Terminals\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498571,
+              "key": "0f10c752-1676-4c98-af4f-cb5118a950d6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a50201e_workspaces-terminal/workspaces-terminal.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0f10c752-1676-4c98-af4f-cb5118a950d6",
+              "caption": "Jupyter terminal shell interface",
+              "alt": "Jupter terminal shell interface",
+              "width": 1223,
+              "height": 586,
+              "instructor_notes": null
+            },
+            {
+              "id": 498572,
+              "key": "f9b26824-e4ae-4f4e-94ef-9f42d628e771",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Terminals provide a full Bash shell that you can use to install or update software packages, fetch updates from github repositories, or run any other terminal commands. As with the notebook view, you can return to the file browser view by clicking on the Jupyter logo at the top left corner of the window.\n\n**NOTE: Your data & changes are persistent across workspace sessions. Any changes you make will need to be repeated if you later reset your workspace data.**\n\n## Resetting Data\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498573,
+              "key": "95b31bc6-091a-4d39-b572-40c7e8e37c56",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/January/5a502126_workspaces-menu/workspaces-menu.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/95b31bc6-091a-4d39-b572-40c7e8e37c56",
+              "caption": "The Menu Button",
+              "alt": "Workspaces Menu Button",
+              "width": 1224,
+              "height": 589,
+              "instructor_notes": null
+            },
+            {
+              "id": 498574,
+              "key": "26ea5715-b920-4d32-8b7c-9326c55512a8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The \"Menu\" button in the bottom left corner provides support for resetting your Workspaces. The \"Refresh Workspace\" button will refresh your session, which has no effect on the changes you've made in the workspace.\n\nThe \"Reset Data\" button discards all changes and restores a clean copy of the workspace. Clicking the button will open a dialog that requires you to type \"Reset data\" in a confirmation dialog. **ALL OF YOUR DATA WILL BE LOST.**\n\nResetting should only be required if Udacity makes changes to the project and you can't get them via `git pull`, or if you destroy the contents of the workspace. If you do need to reset your data, you are _strongly_ encouraged to download a copy of your work from the file interface before clicking Reset Data.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 624503,
+          "key": "285a358e-9bef-4d3d-a98c-0483607707cb",
+          "title": "[submit from here] Project: Image Captioning, PyTorch 0.4",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "285a358e-9bef-4d3d-a98c-0483607707cb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 624504,
+              "key": "62f0a99c-02bf-47a8-9944-7ecac3b1224a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view9e76b67e",
+              "pool_id": "jupytergpu",
+              "view_id": "9e76b67e-653c-432c-bb4f-a83e774bed21",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": true,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

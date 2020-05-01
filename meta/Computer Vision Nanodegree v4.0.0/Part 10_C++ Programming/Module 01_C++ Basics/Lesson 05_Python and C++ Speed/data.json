@@ -1,0 +1,303 @@
+{
+  "data": {
+    "lesson": {
+      "id": 385896,
+      "key": "091205b5-3091-4bd9-8046-3186be588eda",
+      "title": "Python and C++ Speed",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, we'll compare the execution times of C++ and Python programs.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/091205b5-3091-4bd9-8046-3186be588eda/385896/1587647979625/Python+and+C%2B%2B+Speed+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/091205b5-3091-4bd9-8046-3186be588eda/385896/1587647976837/Python+and+C%2B%2B+Speed+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 393861,
+          "key": "76c584e7-40ba-4b44-8381-b60b9cac849d",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "76c584e7-40ba-4b44-8381-b60b9cac849d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419851,
+              "key": "098fa1d6-5646-4968-bebf-6162c8f1e492",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JklGKdn3_go",
+                "china_cdn_id": "JklGKdn3_go.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 385897,
+          "key": "ffa4bb97-ff15-4692-b206-bf9beeff27f3",
+          "title": "Executing the Move Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ffa4bb97-ff15-4692-b206-bf9beeff27f3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 385946,
+              "key": "e1ede812-4675-4969-a836-e9be765da618",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Moving in C++ and Python\n\nIn this example, we'll be comparing the execution speed of C++ and Python implementations of the `move` function that Kalman filters use to update their estimate of a car's location as it moves. \n\nThe move function does two things:\n1. It shifts a set of prior beliefs (about the car's location) in whichever direction the car moves.\n2. It adds some uncertainty to the beliefs because our model for car movement is not perfect.\n\nA car is constantly moving, so **this move function needs to be fast to keep up with the state of the car**. \n\n### Execution vs. Development Time \n\nYou'll be comparing the execution time of the *same* move function implemented in Python and in C++. You're also encouraged to explore the code and think about how long it might take for you to program this function in either language; there is often a trade off between speed of execution and speed of development.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 385901,
+          "key": "89614b61-6a3b-4dc6-b581-32ebb56d57a8",
+          "title": "Moving in Python",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "89614b61-6a3b-4dc6-b581-32ebb56d57a8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419857,
+              "key": "fd87834c-c649-40e9-878a-b79f0e4448f7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Python Speed\nRead through the code below to remind yourself of what the move function does. Then press the `TEST RUN` button a few times and get a sense for how long it takes to run this code 1000 times.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 385902,
+              "key": "7f4c219f-2a57-4699-9cfc-4e2de1c5ee93",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "7f4c219f-2a57-4699-9cfc-4e2de1c5ee93",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "Timing the Move function in Python",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5872694649290752",
+                "initial_code_files": [
+                  {
+                    "text": "import time\nfrom helpers import blur\n\n# The 2D move function\ndef move(dy, dx, beliefs, blurring):\n    height = len(beliefs)\n    width = len(beliefs[0])\n    new_G = [[0.0 for i in range(width)] for j in range(height)]\n    for i, row in enumerate(beliefs):\n        for j, cell in enumerate(row):\n            new_i = (i + dy ) % width\n            new_j = (j + dx ) % height\n            new_G[int(new_i)][int(new_j)] = cell\n    return blur(new_G, blurring)\n\n# Initialize a world grid of beliefs\ngrid = [ [0.05, 0.2, 0.2, 0.05, 0.05],\n         [0.05, 0.1, 0.2, 0.05, 0.05] ]\n\n# Record the time it takes to execute the move function\n# Start the timer and record the start time\nstart_time = time.time()\n\n# Time the move function for 1000 iterations\n# move 2 to the right each iteration\n\n### TODO: Change the number of iterations and see how this performs - try 10000x !\n### TODO: Run multiple times and notice the slight change in recorded time\niterations = 1000\n\nfor i in range(0, iterations):\n    move(0, 2, grid, 1.0)\n\n# Record the end time and print the result!\nstop_time = time.time()\n\nmillisec_time = 1000*(stop_time - start_time)\nprint(\"Time to move \" +str(iterations) + \" iterations in milliseconds: \" + str(millisec_time))\n",
+                    "name": "move.py"
+                  },
+                  {
+                    "text": "# Helper functions\n\ndef normalize(grid):\n    \"\"\"\n    Given a grid of unnormalized probabilities, computes the\n    correspond normalized version of that grid. \n    \"\"\"\n    total = 0.0\n    for row in grid:\n        for cell in row:\n            total += cell\n    for i,row in enumerate(grid):\n        for j,cell in enumerate(row):\n            grid[i][j] = float(cell) / total\n    return grid\n\n\ndef blur(grid, blurring):\n    \"\"\"\n    Spreads probability out on a grid using a 3x3 blurring window.\n    The blurring parameter controls how much of a belief spills out\n    into adjacent cells. If blurring is 0 this function will have \n    no effect. \n    \"\"\"\n    height = len(grid)\n    width  = len(grid[0])\n\n    center_prob = 1.0-blurring\n    corner_prob = blurring / 12.0\n    adjacent_prob = blurring / 6.0\n\n    window = [\n            [corner_prob,  adjacent_prob,  corner_prob],\n            [adjacent_prob, center_prob,  adjacent_prob],\n            [corner_prob,  adjacent_prob,  corner_prob]\n        ]\n    new = [[0.0 for i in range(width)] for j in range(height)]\n    for i in range(height):\n        for j in range(width):\n            grid_val = grid[i][j]\n            for dx in range(-1,2):\n                for dy in range(-1,2):\n                    mult = window[dx+1][dy+1]\n                    new_i = (i + dy) % height\n                    new_j = (j + dx) % width\n                    new[new_i][new_j] += mult * grid_val\n    return normalize(new)",
+                    "name": "helpers.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 385910,
+          "key": "25226be9-0ff3-4640-b27b-1923e8164815",
+          "title": "Moving in C++",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "25226be9-0ff3-4640-b27b-1923e8164815",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419858,
+              "key": "aec4b504-809f-4961-96d0-33a53a8b81ef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# C++ Speed\nPress the `TEST RUN` button a few times and get a sense for how long it takes to run this code 1000 times.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 385911,
+              "key": "735f452a-e340-4ff4-86a3-a7d22b78b417",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "735f452a-e340-4ff4-86a3-a7d22b78b417",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5708579888824320",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include \"robot_functions.h\"  // including the header file\n\nusing namespace std;\nusing std::vector;\n\n// Main function\nint main() {\n    \n    /* Defining the initial beliefs grid:\n     [ [0.05f, 0.2f, 0.2f, 0.05f, 0.05f],\n       [0.05f, 0.1f, 0.2f, 0.05f, 0.05f] ]\n       */\n    vector< vector< float > > beliefs_grid; \n    \n    // Constructing the row vectors (from arrays)\n    float a_row1[] = {0.05f, 0.2f, 0.2f, 0.05f, 0.05f};\n    vector<float> vec_row1 (a_row1, a_row1 + sizeof(a_row1) / sizeof(a_row1[0]) );\n    float a_row2[] = {0.05f, 0.1f, 0.2f, 0.05f, 0.05f};\n    vector<float> vec_row2 (a_row2, a_row2 + sizeof(a_row2) / sizeof(a_row2[0]) );\n    // Adding vectors to the beliefs grid\n    beliefs_grid.push_back(vec_row1);\n    beliefs_grid.push_back(vec_row2);\n    \n    /* Timing the move function!\n     Start the timer below:\n     */\n    int start_s=clock();\n\t// Run move 1000 times - move right by 2 each iteration\n\t// TODO: Change the number of iterations and notice the change in time\n\tint iterations = 1000;\n\t\n\tfor(int i = 0; i < iterations; i++){\n\t    move(0, 2, beliefs_grid, 1.0f);\n\t}\n\t// Stop the timer and display the result!\n    int stop_s=clock();\n    \n    cout << \"Time to move \"<<iterations<<\" iterations in milliseconds: \" << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;\n    \n    return 0;   \n}\n",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "// Contains all functions: move AND helper functions\n#include <vector>\n#include <iostream>\n\nusing namespace std;\nusing std::vector;\n\n// Normalize and blur helper functions\nvector< vector<float> > normalize(vector< vector <float> > grid) {\n\tfloat total = 0.0;\n\tint i;\n\tint j;\n\tvector<float> row;\n\tvector<float> newRow;\n\tfloat oldProb;\n\tfor (i = 0; i < grid.size(); i++)\n\t{\n\t\trow = grid[i];\n\t\t// cout << \"row size: \" << row.size(); \n\t\tfor (j=0; j< row.size(); j++)\n\t\t{\n\t\t\toldProb = row[j];\n\t\t\ttotal += oldProb;\n\t\t}\n\t}\n\n\tvector< vector<float> > newGrid;\n\n\tfor (i = 0; i < grid.size(); i++) {\n\t\tvector<float> row = grid[i];\n\t\tnewRow.clear();\n\t\tfor (j=0; j< row.size(); j++) {\n\t\t\tfloat oldProb = row[j];\n\t\t\tfloat newProb = oldProb / total;\n\t\t\tnewRow.push_back(newProb);\n\t\t}\n\t\tnewGrid.push_back(newRow);\n\t}\n\n\treturn newGrid;\n}\n\nvector < vector <float> > blur(vector < vector < float> > grid, float blurring) {\n\n\tvector < vector <float> > window;\n\tvector < vector <float> > newGrid;\n\t// vector < vector <float> > newGrid = vector(height, vector(width, 0.0) );\n\tvector <float> row;\n\tvector <float> newRow;\n\n\tint height;\n\tint width;\n\tfloat center, corner, adjacent;\n\n\t\n\n\theight = grid.size();\n\twidth = grid[0].size();\n\n\tcenter = 1.0 - blurring;\n\tcorner = blurring / 12.0;\n\tadjacent = blurring / 6.0;\n\n\tint i, j;\n\tfloat val;\n\n\tfor (i=0; i<3; i++) {\n\t\trow.clear();\n\t\tfor (j=0; j<3; j++) {\n\t\t\tswitch (i) {\n\t\t\t\tcase 0: \n\t\t\t\tswitch (j) {\n\t\t\t\t\tcase 0: \n\t\t\t\t\tval = corner;\n\t\t\t\t\tbreak;\n\n\t\t\t\t\tcase 1: \n\t\t\t\t\tval = adjacent;\n\t\t\t\t\tbreak;\n\n\t\t\t\t\tcase 2: \n\t\t\t\t\tval = corner;\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t\tbreak; \n\n\t\t\t\tcase 1:\n\t\t\t\tswitch (j) {\n\t\t\t\t\tcase 0: \n\t\t\t\t\tval = adjacent;\n\t\t\t\t\tbreak;\n\n\t\t\t\t\tcase 1: \n\t\t\t\t\tval = center;\n\t\t\t\t\tbreak;\n\t\t\t\t\t\n\t\t\t\t\tcase 2: \n\t\t\t\t\tval = adjacent;\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t\tbreak;\n\n\t\t\t\tcase 2:\n\t\t\t\tswitch(j) {\n\t\t\t\t\tcase 0: \n\t\t\t\t\tval = corner;\n\t\t\t\t\tbreak;\n\n\t\t\t\t\tcase 1: \n\t\t\t\t\tval = adjacent;\n\t\t\t\t\tbreak;\n\t\t\t\t\t\n\t\t\t\t\tcase 2: \n\t\t\t\t\tval = corner;\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\trow.push_back(val);\n\t\t}\n\t\twindow.push_back(row);\n\t}\n\n\n\tvector <int> DX;\n\tvector <int> DY;\n\n\tDX.push_back(-1); DX.push_back(0); DX.push_back(1);\n\tDY.push_back(-1); DY.push_back(0); DY.push_back(1);\n\n\tint dx;\n\tint dy;\n\tint ii;\n\tint jj;\n\tint new_i;\n\tint new_j;\n\tfloat multiplier;\n\tfloat newVal;\n\n\t// initialize new grid to zeros\n\tfor (i=0; i<height; i++) {\n\t\tnewRow.clear();\n\t\tfor (j=0; j<width; j++) {\n\t\t\tnewRow.push_back(0.0);\n\t\t}\n\t\tnewGrid.push_back(newRow);\n\t}\n\n\n\tfor (i=0; i< height; i++ ) {\n\t\tfor (j=0; j<width; j++ ) {\n\t\t\tval = grid[i][j];\n\t\t\tnewVal = val;\n\t\t\tfor (ii=0; ii<3; ii++) {\n\t\t\t\tdy = DY[ii];\n\t\t\t\tfor (jj=0; jj<3; jj++) {\n\t\t\t\t\tdx = DX[jj];\n\t\t\t\t\tnew_i = (i + dy + height) % height;\n\t\t\t\t\tnew_j = (j + dx + width) % width;\n\t\t\t\t\tmultiplier = window[ii][jj];\n\t\t\t\t\tnewGrid[new_i][new_j] += newVal * multiplier;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\treturn normalize(newGrid);\n}\n\n// Move function defined below -- do not change\nvector< vector <float> > move(int dy, int dx, \n\tvector < vector <float> > beliefs,\n\tfloat blurring) \n{\n\tint height, width;\n\theight = beliefs.size();\n\twidth = beliefs[0].size();\n\n\tfloat belief;\n\tvector < vector <float> > newGrid;\n\t\n\t// initialize new grid to zeros\n\tfor (int i=0; i<height; i++) {\n\t    vector <float> newRow;\n\t\tnewRow.clear();\n\t\tfor (int j=0; j<width; j++) {\n\t\t\tnewRow.push_back(0.0);\n\t\t}\n\t\tnewGrid.push_back(newRow);\n\t}\n\n\tint new_i, new_j;\n\tfor (int i=0; i<height; i++) {\n\t\tfor (int j=0; j<width; j++) {\n\t\t\tnew_i = (i + dy + height) % height;\n\t\t\tnew_j = (j + dx + width)  % width;\n\t\t\tbelief = beliefs[i][j];\n\n\t\t\tnewGrid[new_i][new_j] = belief;\n\t\t}\n\t}\n\treturn blur(newGrid, blurring);\n}\n",
+                    "name": "robot_functions.cpp"
+                  },
+                  {
+                    "text": "// This is the header file, which includes function declarations\n#include <vector>\n\n// Declare the move function - its return type and parameters\nstd::vector< std::vector <float> > move(int dy, int dx, \n\tstd::vector < std::vector <float> > beliefs,\n\tfloat blurring);\n\n// Declaring the blur function\nstd::vector < std::vector <float> > blur(std::vector < std::vector < float> > grid, \n    float blurring);",
+                    "name": "robot_functions.h"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 385947,
+          "key": "a65821b6-fad0-4303-a5c5-f86b6433959e",
+          "title": "Comparing Speeds",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a65821b6-fad0-4303-a5c5-f86b6433959e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419859,
+              "key": "afa847c7-3430-4e03-896d-1abcd133c7fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Comparing Speeds\nYou just compared the run time of two functionally equivalent programs. Did you notice a difference?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 385949,
+              "key": "96f2f53f-68d6-4ecd-833c-9a85dea95ce4",
+              "title": "How much faster is C++?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "96f2f53f-68d6-4ecd-833c-9a85dea95ce4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Based on testing the move function, how much faster is C++ for a computer to execute when compared to Python? (Give an approximate answer).",
+                "answers": [
+                  {
+                    "id": "a1504302514477",
+                    "text": "They're about the same",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504302584146",
+                    "text": "C++ is about twice as fast as Python",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504302595215",
+                    "text": "C++ is more than twice as fast as Python",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 385950,
+              "key": "a8c52b4e-dc0e-42fe-9c74-f8e22cc1ebe3",
+              "title": "Speed of development",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a8c52b4e-dc0e-42fe-9c74-f8e22cc1ebe3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you only had a day to write code for a localization prototype, which language would you develop in?",
+                "answers": [
+                  {
+                    "id": "a1504302697451",
+                    "text": "Python",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1504302747301",
+                    "text": "C++",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 419860,
+              "key": "e81f3ed7-39ea-4395-a282-8d07f6e5665a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## But Why?\n\nYou probably noticed that C++ ran significantly faster than Python. In the next course you'll learn more about *why* C++ is able to run so much faster.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "data": {
+    "lesson": {
+      "id": 502035,
+      "key": "b8b47b88-4258-44b8-895a-2b238db5e800",
+      "title": "Project: Facial Keypoint Detection",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Apply your knowledge of image processing and deep learning to create a CNN for facial keypoint (eyes, mouth, nose, etc.) detection.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": null,
+      "project": {
+        "key": "122cdf4b-318a-4f69-b9fb-547c47a2a905",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 20160,
+        "semantic_type": "Project",
+        "title": "Facial Keypoint Detection",
+        "description": "## Project Overview\n\nIn this project, you’ll combine your knowledge of computer vision techniques and deep learning architectures to build a facial keypoint detection system. Facial keypoints include points around the eyes, nose, and mouth on a face and are used in many applications. These applications include: facial tracking, facial pose recognition, facial filters, and emotion recognition. Your completed code should be able to look at any image, detect faces, and predict the locations of facial keypoints on each face.\n\n## Project Instructions\n\nThe project will be broken up into a few main parts in four Python notebooks, **only Notebooks 2 and 3 (and the `models.py` file) will be graded**:\n\n**Notebook 1** : Loading and Visualizing the Facial Keypoint Data\n\n**Notebook 2** : Defining and Training a Convolutional Neural Network (CNN) to Predict Facial Keypoints\n\n**Notebook 3** : Facial Keypoint Detection Using Haar Cascades and your Trained CNN\n\n**Notebook 4** : Fun Filters and Keypoint Uses\n\n\nYou can find these notebooks in the Udacity workspace that appears in the concept titled **Project: Facial Keypoint Detection**.  This workspace provides a Jupyter notebook server directly in your browser. \n\n*Note that this project does not require the use of GPU, so this project does not include instructions for GPU setup.*\n\nYou can also choose to complete this project in your own local repository (and may use GPU, there), and you can find all of the project files in this [GitHub repository](https://github.com/udacity/P1_Facial_Keypoints).  Note that while you are _allowed_ to complete this project on your local computer, you are **strongly** encouraged to complete the project from the workspace.\n\n## Evaluation\n\nYour project will be reviewed by a Udacity reviewer against the Facial Keypoint Detection project [rubric](https://review.udacity.com/#!/rubrics/1426/view). Review this rubric thoroughly, and self-evaluate your project before submission. All criteria found in the rubric must meet specifications for you to pass.\n\n## Zip file submission\n\nIf you are submitting this project from a workspace or as a zip file, make sure your file is not too large. You are _only_ graded on Notebooks 2, 3, and the file `models.py`. Please delete any model checkpoints you have saved in `saved_models/` and any large image data you have saved in the workspace home directory before you submit!\n\n\n## Project Submission Checklist\n\n**Before submitting your project, please review and confirm the following items.** \n<input type=\"checkbox\"> I am confident all rubric items have been met and my project will pass as submitted. \n<input type=\"checkbox\"> Project builds correctly without errors and runs.\n<input type=\"checkbox\"> All required functionality exists and my project behaves as expected per the project's specifications.\n\n**Once you have checked all these items, you are ready to submit!**\n\n\n## Ready to submit your project?\n\nClick on the \"Submit Project\" button and follow the instructions to submit!",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "1426",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": {
+          "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2018/April/5acd7ef9_keypts-im/keypts-im.png",
+          "width": 1200,
+          "height": 900
+        }
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 573456,
+          "key": "8999384f-8219-4ee9-928d-74672c37d5ac",
+          "title": "Project Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8999384f-8219-4ee9-928d-74672c37d5ac",
+            "completed_at": "2020-04-01T23:01:03.185Z",
+            "last_viewed_at": "2020-04-18T05:35:42.966Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 594417,
+              "key": "a42262dc-a24b-4567-9f9b-81099bc37c25",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Overview\n\nIn this project, you’ll combine your knowledge of computer vision techniques and deep learning architectures to build a facial keypoint detection system that takes in any image with faces, and predicts the location of 68 distinguishing keypoints on each face! \n\nFacial keypoints include points around the eyes, nose, and mouth on a face and are used in many applications. These applications include: facial tracking, facial pose recognition, facial filters, and emotion recognition. Your completed code should be able to look at any image, detect faces, and predict the locations of facial keypoints on each face. Some examples of these keypoints are pictured below.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 594420,
+              "key": "9e13f6a9-5e41-406b-8f61-d3c167aaaa37",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5acd7ff3_screen-shot-2018-04-10-at-8.24.14-pm/screen-shot-2018-04-10-at-8.24.14-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9e13f6a9-5e41-406b-8f61-d3c167aaaa37",
+              "caption": "Facial keypoints displayed on two images, each of which contains a single face.",
+              "alt": "",
+              "width": 500,
+              "height": 350,
+              "instructor_notes": null
+            },
+            {
+              "id": 594416,
+              "key": "10f0c95d-0d3e-40ba-8666-259b76d5b2f9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n## Project Instructions\n\nThe project will be broken up into a few main parts in four Python notebooks, **only Notebooks 2 and 3 (and the `models.py` file) will be graded**:\n\n**Notebook 1** : Loading and Visualizing the Facial Keypoint Data\n\n**Notebook 2** : Defining and Training a Convolutional Neural Network (CNN) to Predict Facial Keypoints\n\n**Notebook 3** : Facial Keypoint Detection Using Haar Cascades and your Trained CNN\n\n**Notebook 4** : Fun Filters and Keypoint Uses\n\n\nYou can find these notebooks in the Udacity workspace that appears in the concept titled **Project: Facial Keypoint Detection**.  This workspace provides a Jupyter notebook server directly in your browser. \n\n### Note: This project does not require the use of GPU, so this project does not include instructions for GPU setup.\n<br>\n\nYou can also choose to complete this project in your own local repository (and may use GPU, there), and you can find all of the project files in this [GitHub repository](https://github.com/udacity/P1_Facial_Keypoints).  Note that while you are _allowed_ to complete this project on your local computer, you are **strongly** encouraged to complete the project from the workspace. \n\n*Note: There is a final, 5th notebook that is there to guide you once you are ready to submit your project!*",
+              "instructor_notes": ""
+            },
+            {
+              "id": 594422,
+              "key": "25eff25e-d18c-400e-85a0-4029b11d11ab",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Evaluation\n\nYour project will be reviewed by a Udacity reviewer against the Facial Keypoint Detection project [rubric](https://review.udacity.com/#!/rubrics/1426/view). Review this rubric thoroughly, and self-evaluate your project before submission. All criteria found in the rubric must meet specifications for you to pass.\n\n## Ready to submit your project?\n\n**Zipping project files, manually**\n\nThere are instructions in a 5th, final notebook, for compressing your project and work into a zip file, which you can download and submit. **This is the recommended submission approach.**\n\nOnce you've completed your project, at the end of this lesson you'll see a \"Submit Project\" button; click it and follow the instructions to submit!\n\n---\n\n**If you decide to submit directly from the workspace** please make sure:\n1. You do not have any image files in your Jupyter notebook home directory\n2. You have deleted any large model checkpoints in the home directory\n\nWhen workspaces are submitted, everything in the home directory is compressed and submitted in a zip file. Deleting large files that are not graded, will make sure that your submission will not be too large!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615116,
+              "key": "23408dad-dc4b-4aad-b52a-067d6612db64",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Workspace\n\nNext, you'll load the project workspace and follow detailed instructions there to complete this project! The workspace may take a minute or two to load the facial image/keypoint data.\n\nIf you want to ask questions about this project or share advice, post in the Study Groups or Knowledge.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 627217,
+          "key": "c9eb89f9-e2d9-4969-898a-c738a7721e88",
+          "title": "Workspaces: Best Practices",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c9eb89f9-e2d9-4969-898a-c738a7721e88",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "workspace_utils.py",
+                "uri": "https://video.udacity-data.com/topher/2018/May/5b0dea96_workspace-utils/workspace-utils.py"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 633163,
+              "key": "2fde3940-7495-4098-a424-fb0c58b66ef1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Best Practices\n---\nFollow the best practices outlined below to avoid common issues with Workspaces.\n\n- ### Keep your home folder small\n**Your home folder (including subfolders) must be less than 2GB** or you may lose data when your session terminates. You may use directories outside of the home folder for more space, but only the contents of the home folder are persisted between sessions and submitted with your project.\n<br><br>\n**NOTE:** **Your home folder (including subfolders) must be less than 25 megabytes to submit as a project.** If the site becomes unresponsive when you try to submit your project, it is likely that your home folder is too large. You can check the size of your home folder by opening a terminal and running the command `du -h . | tail -1` You can use `ls` to list the files in your terminal and `rm` to remove unwanted files. (Search for both commands online to find example usage.)\n\n  - ##### What's the \"home folder\"?\n\"Home folder\" refers to the directory where users files are stored (compared to locations where system files are stored, for example). (Ref. Wikipedia: [home directory](https://en.wikipedia.org/wiki/Home_directory)) In Workspaces, the home folder is `/home/workspace`. Any files in this folder or any subfolder are part of your home folder contents, which means they're saved between sessions and transferred automatically when you switch between CPU/GPU mode.\n<br><br>\nThe folder `/tmp` is _not_ in the home folder; files in any folder outside your home folder are **not** persisted between sessions or transferred between CPU/GPU mode. You can create a folder outside the home folder using the command `mkdir` from a terminal. For example you could create a temporary folder to store data using `mkdir -p /data` to create a folder at the root directory. You will need to recreate the folder and recreate any data inside every time you start a new Workspace session.\n\n- ### Keeping your connection alive during long processes\nWorkspaces automatically disconnect when the connection is inactive for about 30 minutes, which includes inactivity while deep learning models are training. You can use the workspace_utils.py module [here](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/May/5b0dea96_workspace-utils/workspace-utils.py) to keep your connection alive during training. The module provides a context manager and an iterator wrapper—see example use below.\n<br><br>\n**NOTE:** The script sometimes raises a connection error if the request is opened too frequently; just restart the jupyter kernel & run the cells again to reset the error.\n<br><br>\n**NOTE:** These scripts will keep your connection alive while the training process is _running_, but the workspace will still disconnect 30 minutes after the last notebook cell finishes. Modify the notebook cells to **save your work** at the end of the last cell or else you'll lose all progress when the workspace terminates.\n\n**Example using context manager:**\n```python\nfrom workspace_utils import active_session\n\nwith active_session():\n    # do long-running work here\n```\n\n**Example using iterator wrapper:**\n```python\nfrom workspace_utils import keep_awake\n\nfor i in keep_awake(range(5)):\n    # do iteration with lots of work here\n\n```\n\n- ### Manage your GPU time\nIt is important to avoid wasting GPU time in Workspace projects that have GPU acceleration enabled. The benefits of GPU acceleration are most useful when evaluating deep learning models—especially during _training_. In most cases, you can build and test your model (including data pre-processing, defining model architecture, etc.) in CPU mode, then activate GPU mode to accelerate training.\n\n- ### Handling \"Out of Memory\" errors\nThis issue isn't specific to Workspaces, but rather it is an apparent issue between Pytorch & Jupyter, where Jupyter reports \"out of memory\" after a cell crashes. Jupyter holds references to active objects as long as the kernel is running—including objects created before an error is raised. This can cause Jupyter to persist large objects in memory long after they are no longer required. The only known solution so far is to reset the kernel and run the notebook cells again.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 620585,
+          "key": "2586806b-ebea-497f-87bc-3eaf637b6d01",
+          "title": "Project: Facial Keypoint Detection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2586806b-ebea-497f-87bc-3eaf637b6d01",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620586,
+              "key": "7b3da5b7-4121-4769-b317-3d25c5bbf703",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa8d052f8",
+              "pool_id": "jupytergpu",
+              "view_id": "a8d052f8-c438-4fdb-ac2e-5c4e69d988b8",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": true,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

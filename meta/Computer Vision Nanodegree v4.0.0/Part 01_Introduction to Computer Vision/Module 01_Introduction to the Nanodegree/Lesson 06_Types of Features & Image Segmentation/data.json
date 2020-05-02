@@ -1,0 +1,588 @@
+{
+  "data": {
+    "lesson": {
+      "id": 593827,
+      "key": "4f54a275-2dae-4a57-b769-8b83aee913c8",
+      "title": "Types of Features & Image Segmentation",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Program a corner detector and learn techniques, like k-means clustering, for segmenting an image into unique parts.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/4f54a275-2dae-4a57-b769-8b83aee913c8/593827/1544453123026/Types+of+Features+%26+Image+Segmentation+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/4f54a275-2dae-4a57-b769-8b83aee913c8/593827/1544453120172/Types+of+Features+%26+Image+Segmentation+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 336272,
+          "key": "f3c5364d-d38f-4630-baa2-3f193762c77a",
+          "title": "Types of Features",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f3c5364d-d38f-4630-baa2-3f193762c77a",
+            "completed_at": "2020-04-01T05:27:33.246Z",
+            "last_viewed_at": "2020-04-02T00:38:20.698Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340327,
+              "key": "d6383eca-18c2-4fc5-ab6a-0edc56c025d6",
+              "title": "Types Of Features",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cJHro29nzgg",
+                "china_cdn_id": "cJHro29nzgg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 336273,
+          "key": "c1aae567-1e4e-4643-9d86-cc57dfdb445e",
+          "title": "Corner Detectors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c1aae567-1e4e-4643-9d86-cc57dfdb445e",
+            "completed_at": "2020-04-02T00:40:05.521Z",
+            "last_viewed_at": "2020-04-02T00:40:04.403Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340329,
+              "key": "2b63c52e-427d-4b35-8c52-a3870c5a5b2e",
+              "title": "Corner Detectors",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jemzDq07MEI",
+                "china_cdn_id": "jemzDq07MEI.mp4"
+              }
+            },
+            {
+              "id": 634699,
+              "key": "e5166a49-5401-4126-b3fb-2637c04591fa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Correction: ** The magnitude should be calculated as the sum of the Gx and Gy components, `rho = sqrt(Gx^2 + Gy^2)`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 818026,
+              "key": "acb2ccb0-25e8-4d34-a294-4809c3d42940",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\nA corner can be located by following these steps:\n- Calculate the gradient for a small window of the image, using sobel-x and sobel-y operators (without applying binary thesholding).\n- Use vector addition to calculate the magnitude and direction of the _total_ gradient from these two values. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 818027,
+              "key": "6bcc5049-39f0-437c-841b-9eb4be919a5b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c5b4a8b_vector-addition/vector-addition.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6bcc5049-39f0-437c-841b-9eb4be919a5b",
+              "caption": "",
+              "alt": "",
+              "width": 143,
+              "height": 172,
+              "instructor_notes": null
+            },
+            {
+              "id": 342268,
+              "key": "13aa6cab-7c6d-4fc8-bcf1-c145fda99f88",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " - Apply this calculation as you slide the window across the image, calculating the gradient of each window. When a big variation in the direction & magnitude of the gradient has been detected - a corner has been found!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 818025,
+              "key": "eaaba18c-14cf-48d5-8f89-5523dc6f81c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Reading\nYou can learn more about Harris Corner Detection in OpenCV, [here](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_features_harris/py_features_harris.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 593193,
+          "key": "9e6a8af9-6945-4620-96f2-37ef73203906",
+          "title": "Notebook: Find the Corners",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9e6a8af9-6945-4620-96f2-37ef73203906",
+            "completed_at": "2020-04-02T01:02:53.860Z",
+            "last_viewed_at": "2020-04-02T01:02:52.960Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 818032,
+              "key": "d4e463c1-b58b-483a-b15c-c7def3466c37",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Try it Yourself!\n\nIn the following notebook, see if you can apply Harris Corner Detection to a variety of images. You'll need to adjust the argument values for each image. \n\nDocumentation for OpenCV Harris Corner Detection can be found [here](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_feature2d/py_features_harris/py_features_harris.html).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613561,
+              "key": "ddfb450a-8ed3-4a33-a48c-16de70052bb7",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view8950e444",
+              "pool_id": "jupyter",
+              "view_id": "8950e444-889f-4fa3-89ee-bb345ab948fd",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Harris Corner Detection.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 341455,
+          "key": "1d5e55fa-878a-448d-9732-194ba9ce9080",
+          "title": "Dilation and Erosion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d5e55fa-878a-448d-9732-194ba9ce9080",
+            "completed_at": "2020-04-02T01:05:36.885Z",
+            "last_viewed_at": "2020-04-02T01:05:35.980Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 341459,
+              "key": "d9614d45-7589-48ab-9fc6-cc558ea5c1b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Dilation and Erosion\n\nDilation and erosion are known as **morphological operations**. They are often performed on binary images, similar to contour detection. Dilation enlarges bright, white areas in an image by adding pixels to the perceived boundaries of objects in that image. Erosion does the opposite: it removes pixels along object boundaries and shrinks the size of objects. \n\nOften these two operations are performed in sequence to enhance important object traits!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 341460,
+              "key": "498ea17a-894d-41b1-b4c7-7df2157d9c32",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Dilation\n\nTo dilate an image in OpenCV, you can use the `dilate` function and three inputs: an original binary image, a kernel that determines the size of the dilation (None will result in a default size), and a number of iterations to perform the dilation (typically = 1). In the below example, we have a 5x5 kernel of ones, which move over an image, like a filter, and turn a pixel white if any of its surrounding pixels are white in a 5x5 window! We’ll use a simple image of the cursive letter “j” as an example.\n\n```python\n# Reads in a binary image\nimage = cv2.imread(‘j.png’, 0) \n\n# Create a 5x5 kernel of ones\nkernel = np.ones((5,5),np.uint8)\n\n# Dilate the image\ndilation = cv2.dilate(image, kernel, iterations = 1)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 341462,
+              "key": "a3bad7c6-8f9b-476e-9ea0-ccc47943a1f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Erosion\n\nTo erode an image, we do the same but with the `erode` function.\n\n```python\n# Erode the image\nerosion = cv2.erode(image, kernel, iterations = 1)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 341461,
+              "key": "4c753dcc-bad8-441f-b353-f02c7b82f317",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/June/5956cf7e_screen-shot-2017-06-30-at-3.22.40-pm/screen-shot-2017-06-30-at-3.22.40-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4c753dcc-bad8-441f-b353-f02c7b82f317",
+              "caption": "The letter \"j\": (left) erosion, (middle) original image, (right) dilation",
+              "alt": null,
+              "width": 1048,
+              "height": 472,
+              "instructor_notes": null
+            },
+            {
+              "id": 341467,
+              "key": "c3f635e0-0eec-4f85-b87f-cc0733f5e6c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Opening\n\nAs mentioned, above, these operations are often _combined_ for desired results! One such combination is called **opening**, which is **erosion followed by dilation**. This is useful in noise reduction in which erosion first gets rid of noise (and shrinks the object) then dilation enlarges the object again, but the noise will have disappeared from the previous erosion!\n\nTo implement this in OpenCV, we use the function `morphologyEx` with our original image, the operation we want to perform, and our kernel passed in.\n\n```python\nopening = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 341527,
+              "key": "37d57fd4-3c9c-48f5-b6f5-81a841367d90",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/June/5956df32_screen-shot-2017-06-30-at-4.30.11-pm/screen-shot-2017-06-30-at-4.30.11-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/37d57fd4-3c9c-48f5-b6f5-81a841367d90",
+              "caption": "Opening",
+              "alt": null,
+              "width": 300,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 341528,
+              "key": "f9854648-4b3d-42b4-841d-d7c33b5fba02",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Closing\n\n**Closing** is the reverse combination of opening; it’s **dilation followed by erosion**, which is useful in _closing_ small holes or dark areas within an object.\n\nClosing is reverse of Opening, Dilation followed by Erosion. It is useful in closing small holes inside the foreground objects, or small black points on the object.\n\n```python\nclosing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)\n\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 341529,
+              "key": "cc94e793-ecd1-4b1f-b5e9-d4c88910bc6a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/June/5956e0b9_screen-shot-2017-06-30-at-4.37.13-pm/screen-shot-2017-06-30-at-4.37.13-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cc94e793-ecd1-4b1f-b5e9-d4c88910bc6a",
+              "caption": "Closing",
+              "alt": null,
+              "width": 300,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 341530,
+              "key": "df512fad-fe90-404c-b6e9-2c8f868ad8d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Many of these operations try to extract better (less noisy) information about the shape of an object or enlarge important features, as in the case of corner detection!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 593829,
+          "key": "55ea4245-d9cb-4dc9-8b4f-8420d4c988d9",
+          "title": "Image Segmentation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "55ea4245-d9cb-4dc9-8b4f-8420d4c988d9",
+            "completed_at": "2020-04-02T15:25:54.572Z",
+            "last_viewed_at": "2020-04-02T15:25:53.779Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613562,
+              "key": "6d0d76ea-7d57-4f7c-a541-6a1d529b1adf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Image Segmentation\n\nNow that we are familiar with a few simple feature types, it may be useful to look at how we can group together different parts of an image by using these features. Grouping or segmenting images into distinct parts is known as image segmentation. \n\nThe simplest case for image segmentation is in background subtraction. In video and other applications, it is often the case that a human has to be isolated from a static or moving background, and so we have to use segmentation methods to distinguish these areas. Image segmentation is also used in a variety of complex recognition tasks, such as in classifying every pixel in an image of the road. \n\nIn the next few videos, we'll look at a couple ways to segment an image: \n\n1. using contours to draw boundaries around different parts of an image, and \n2. clustering image data by some measure of color or texture similarity.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613563,
+              "key": "0088f3ca-eeed-4e4e-ab38-3c3a0a79bf71",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad9254f_screen-shot-2018-04-19-at-4.24.35-pm/screen-shot-2018-04-19-at-4.24.35-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0088f3ca-eeed-4e4e-ab38-3c3a0a79bf71",
+              "caption": "Partially-segmented image of a road; the image separates areas that contain a pedestrian from areas in the image that contain the street or cars.",
+              "alt": "",
+              "width": 1456,
+              "height": 564,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 336246,
+          "key": "0a0397e0-067e-4cad-a4ed-2a1ad7250669",
+          "title": "Image Contours",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0a0397e0-067e-4cad-a4ed-2a1ad7250669",
+            "completed_at": "2020-04-02T15:27:02.030Z",
+            "last_viewed_at": "2020-04-02T15:27:01.349Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340270,
+              "key": "8f498fda-499b-4b88-b713-8915d89041b7",
+              "title": "Image Contours",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Wcbrl7Wr_kU",
+                "china_cdn_id": "Wcbrl7Wr_kU.mp4"
+              }
+            },
+            {
+              "id": 342264,
+              "key": "4fdaa3d0-d6af-48d0-9f42-676d1418d0b3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Contours and Features\n\nExplore the OpenCV [documentation](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_contours/py_table_of_contents_contours/py_table_of_contents_contours.html) to learn all about the information that contour detection provides!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 518592,
+          "key": "7940b6de-4808-4e7a-8a42-9b1b0097a853",
+          "title": "Notebook: Find Contours and Features",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7940b6de-4808-4e7a-8a42-9b1b0097a853",
+            "completed_at": "2020-04-02T15:29:53.958Z",
+            "last_viewed_at": "2020-04-02T15:29:53.280Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613568,
+              "key": "a1978d56-5d06-4837-b7ae-6cec3da26ad1",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewcf2f212d",
+              "pool_id": "jupyter",
+              "view_id": "cf2f212d-53ec-4dd4-816a-a5a457c1e16d",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Contour detection and features.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 651028,
+          "key": "97e5da11-9497-4bbe-aa84-c9460b6863f4",
+          "title": "Solution: Find Contours and Features",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "97e5da11-9497-4bbe-aa84-c9460b6863f4",
+            "completed_at": "2020-04-02T15:33:07.654Z",
+            "last_viewed_at": "2020-04-02T15:33:07.025Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 651029,
+              "key": "08e88c4b-4a57-4053-a481-5b39615f0844",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewcf2f212d",
+              "pool_id": "jupyter",
+              "view_id": "3d54552b-5578-45f6-b888-266fbb2f13f7",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Solution: Contour detection and features.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 336255,
+          "key": "d36af41f-c51e-4ecc-8e77-4571a971bec5",
+          "title": "K-means Clustering",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d36af41f-c51e-4ecc-8e77-4571a971bec5",
+            "completed_at": "2020-04-02T15:35:13.941Z",
+            "last_viewed_at": "2020-04-02T15:35:13.275Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 342250,
+              "key": "9ac9ca61-a097-4aaa-86f7-a606b81adf38",
+              "title": "K-means Clustering",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Cf_LSDCEBzk",
+                "china_cdn_id": "Cf_LSDCEBzk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 336256,
+          "key": "969650db-a707-4230-863e-71a012ce28f4",
+          "title": "K-means Implementation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "969650db-a707-4230-863e-71a012ce28f4",
+            "completed_at": "2020-04-02T15:38:14.363Z",
+            "last_viewed_at": "2020-04-02T15:38:13.650Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340273,
+              "key": "fca2a24e-993f-4ef8-8f3b-35b568f5a2b2",
+              "title": "K-means Implementation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "poKlg-aB4rU",
+                "china_cdn_id": "poKlg-aB4rU.mp4"
+              }
+            },
+            {
+              "id": 342267,
+              "key": "da4829b3-8826-4168-8921-04a30337f5ae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### K-means in OpenCV\n\nK-means clustering and segmentation is documented, [here](http://docs.opencv.org/3.0-beta/doc/py_tutorials/py_ml/py_kmeans/py_kmeans_opencv/py_kmeans_opencv.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 518594,
+          "key": "9ffcf029-d967-4767-892d-1468ccabd34b",
+          "title": "Notebook: K-means Clustering",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9ffcf029-d967-4767-892d-1468ccabd34b",
+            "completed_at": "2020-04-02T15:40:54.002Z",
+            "last_viewed_at": "2020-04-02T15:40:53.354Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613569,
+              "key": "39dc9a71-bb0d-4778-9527-08c3eece8108",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewaf255565",
+              "pool_id": "jupyter",
+              "view_id": "af255565-9dad-4402-a92b-48629446ac1a",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

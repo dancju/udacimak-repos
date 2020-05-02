@@ -1,0 +1,1799 @@
+{
+  "data": {
+    "lesson": {
+      "id": 593877,
+      "key": "68357628-74e3-439a-beb6-12884a1fb5d8",
+      "title": "CNN Layers and Feature Visualization",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Define and train your own convolution neural network for clothing recognition. Use feature visualization techniques to see what a network has learned. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/68357628-74e3-439a-beb6-12884a1fb5d8/593877/1544453387164/CNN+Layers+and+Feature+Visualization+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/68357628-74e3-439a-beb6-12884a1fb5d8/593877/1544453383450/CNN+Layers+and+Feature+Visualization+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 593878,
+          "key": "f39d56d5-5436-4eeb-a61f-5fa0b9ecc79a",
+          "title": "Introduction to CNN Layers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f39d56d5-5436-4eeb-a61f-5fa0b9ecc79a",
+            "completed_at": "2020-04-01T05:28:01.490Z",
+            "last_viewed_at": "2020-04-11T23:21:26.242Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 619700,
+              "key": "688bfd9c-8656-4fda-9c27-a2068440f746",
+              "title": "02 Intro To CNN Layers V1 RENDER V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hT6zBYCuAfw",
+                "china_cdn_id": "hT6zBYCuAfw.mp4"
+              }
+            },
+            {
+              "id": 615363,
+              "key": "87fd065d-5acf-4676-a72c-50975acf66d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### CNN Structure\n\nA classification CNN takes in an input image and outputs a distribution of class scores, from which we can find the most likely class for a given image. As you go through this lesson, you may find it useful to consult [this blog post](https://cezannec.github.io/Convolutional_Neural_Networks/), which describes the image classification pipeline and the layers that make up a CNN.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615364,
+              "key": "72e22985-b943-4e83-bdd2-4d9cf06041a6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adf80db_screen-shot-2018-04-24-at-12.08.02-pm/screen-shot-2018-04-24-at-12.08.02-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/72e22985-b943-4e83-bdd2-4d9cf06041a6",
+              "caption": "A classification CNN structure.",
+              "alt": "",
+              "width": 500,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 615365,
+              "key": "9a4e816b-b7e5-49dd-a1a9-9331484f9edc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### CNN Layers\n\nThe CNN itself is comprised of a number of layers; layers that extract features from input images, reduce the dimensionality of the input, and eventually produce class scores. In this lesson, we'll go over all of these different layers, so that you know how to define and train a complete CNN!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615366,
+              "key": "13313fe5-fb6b-4d4e-bfac-2e609946dc1a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adf8153_screen-shot-2018-04-24-at-12.07.41-pm/screen-shot-2018-04-24-at-12.07.41-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/13313fe5-fb6b-4d4e-bfac-2e609946dc1a",
+              "caption": "Detailed layers that make up a classification CNN.",
+              "alt": "",
+              "width": 1792,
+              "height": 600,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 619704,
+          "key": "f7df24d4-9d8d-407d-86d3-cdfc7e2571f4",
+          "title": "Review: Training a Neural Network",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f7df24d4-9d8d-407d-86d3-cdfc7e2571f4",
+            "completed_at": "2020-04-11T01:19:38.503Z",
+            "last_viewed_at": "2020-04-11T23:21:30.002Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 619705,
+              "key": "609542fb-e00b-406d-ade4-87367d8c68fb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Elective: Review and Learn PyTorch\n\nFor this course, you are expected to know how neural networks train through backpropagation and have an idea of what loss functions you can use to train a CNN for a classification task. If you’d like to review this material, you can look at the **Elective Section, Review: Training a Neural Network** (at the bottom of all the lessons on the main course page) and pay close attention to the videos in that section. \n\nThis review section covers:\n* How neural networks train and update their weights through backpropagation\n* How to construct models in PyTorch\n\nSo, if you'd like a brief overview of neural networks and deep learning *or* if the PyTorch framework is new to you,  make sure to take a look at that section!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 619710,
+              "key": "e92bf56e-bc28-43a1-ae4b-e9fa759b7e82",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ae779ab_pytorch/pytorch.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e92bf56e-bc28-43a1-ae4b-e9fa759b7e82",
+              "caption": "PyTorch icon.",
+              "alt": "",
+              "width": 300,
+              "height": 410,
+              "instructor_notes": null
+            },
+            {
+              "id": 619709,
+              "key": "476bd2df-ca23-4169-993b-e6e356926844",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Why PyTorch?\n\nWe'll be using PyTorch throughout this program. PyTorch is definitely a newer framework, but it's fast and intuitive when compared to Tensorflow variables and sessions. PyTorch is designed to look and act a lot like normal Python code: PyTorch neural nets have their layers and feedforward behavior defined in a class. defining a network in a class means that you can instantiate multiple networks, dynamically change the structure of a model, and these class functions are called during training and testing.\n\nPyTorch is also great for testing different model architectures, which is highly encouraged in this course! PyTorch networks are modular, which makes it easy to change  a single layer in a network or modify the loss function and see the effect on training. If you'd like to see a review of PyTorch vs. TensorFlow, I recommend [this blog post](https://towardsdatascience.com/pytorch-vs-tensorflow-1-month-summary-35d138590f9).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 614940,
+          "key": "5f00df8b-7ba1-4363-b85c-3da0fe2b171b",
+          "title": "Lesson Outline and Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5f00df8b-7ba1-4363-b85c-3da0fe2b171b",
+            "completed_at": "2020-04-11T01:19:44.959Z",
+            "last_viewed_at": "2020-04-11T23:21:31.295Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 617574,
+              "key": "3a60e744-9a32-41e4-99e4-441e07158a23",
+              "title": "03 Data And Lesson Outline RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jPr-5aZA6NE",
+                "china_cdn_id": "jPr-5aZA6NE.mp4"
+              }
+            },
+            {
+              "id": 614941,
+              "key": "22cd7f74-1719-4ce7-94d4-1059cd8da2e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Check out the FashionMNIST dataset, [here](https://github.com/zalandoresearch/fashion-mnist).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615367,
+              "key": "923ebebe-edf2-476c-b38a-56bcd6da5cc9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adf8189_embedding/embedding.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/923ebebe-edf2-476c-b38a-56bcd6da5cc9",
+              "caption": "Animation of FashionMNIST clothing images, grouped by class in 3D space. (Original image [from the dataset repository](https://github.com/zalandoresearch/fashion-mnist) )",
+              "alt": "",
+              "width": 500,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 615498,
+              "key": "502a0bbf-9775-4821-8848-0d23f3d8db81",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Pre-processing\n\nLook at the steps below to see how pre-processing plays a major role in the creation of this dataset.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615499,
+              "key": "277ac98f-91ae-4364-8884-0ace482845ea",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adfc2fe_screen-shot-2018-04-24-at-4.49.51-pm/screen-shot-2018-04-24-at-4.49.51-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/277ac98f-91ae-4364-8884-0ace482845ea",
+              "caption": "Pre-processing steps for FashionMNIST data creation.",
+              "alt": "",
+              "width": 1459,
+              "height": 443,
+              "instructor_notes": null
+            },
+            {
+              "id": 629800,
+              "key": "63f7b9ee-16c1-4027-b924-30882ad6e2d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### A note on Workspaces\n\nAs you go through the exercises in this section, please make sure your workspace is up-to-date. There is a button on the bottom-left of every workspace that will have a small red icon appear when an update is available. You may need to select this button and type `Reset data` to get the latest version of workable code. These updates only happen occasionally, for example, when a new version of PyTorch is released!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 593879,
+          "key": "5b79e8f3-4b88-43c5-8e04-8034ac491fb9",
+          "title": "CNN Architecture, VGG-16",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5b79e8f3-4b88-43c5-8e04-8034ac491fb9",
+            "completed_at": "2020-04-11T01:20:40.594Z",
+            "last_viewed_at": "2020-04-11T23:21:36.900Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 593880,
+              "key": "f292fe8d-9915-46f5-a25e-3de5e26f2ddf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Convolutional Neural Networks (CNN's)\n\nThe type of deep neural network that is most powerful in image processing tasks, such as sorting images into groups, is called a Convolutional Neural Network (CNN). CNN's consist of layers that process visual information. A CNN first takes in an input image and then passes it through these layers. There are a few different types of layers, and we'll start by learning about the most commonly used layers: convolutional, pooling, and fully-connected layers.\n\nFirst, let's take a look at a complete CNN architecture; below is a network called VGG-16, which has been trained to recognize a variety of image classes. It takes in an image as input, and outputs a predicted class for that image. The various layers are labeled and we'll go over each type of layer in this network in the next series of videos.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 593888,
+              "key": "7784a7c5-244d-45a2-9136-39146cf5adc1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ac80056_vgg-16/vgg-16.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7784a7c5-244d-45a2-9136-39146cf5adc1",
+              "caption": "VGG-16 architecture",
+              "alt": "",
+              "width": 1134,
+              "height": 665,
+              "instructor_notes": null
+            },
+            {
+              "id": 593885,
+              "key": "8de09e61-88f0-4cb0-8ccc-08174a97e2a4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Convolutional Layer\n\nThe first layer in this network, that processes the input image directly, is a convolutional layer.\n* A convolutional layer takes in an image as input.\n* A convolutional layer, as its name suggests, is made of a set of convolutional filters (which you've already seen and programmed).\n* Each filter extracts a specific kind of feature, ex. a high-pass filter is often used to detect the edge of an object.\n* The output of a given convolutional layer is a set of **feature maps** (also called activation maps), which are filtered versions of an original input image.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 593886,
+              "key": "88e100f6-22e2-47f6-a804-0baa5099ddda",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Activation Function\n\nYou may also note that the diagram reads \"convolution + ReLu,\" and the **ReLu** stands for Rectified Linear Unit (ReLU) activation function. This activation function is zero when the input x <= 0 and then linear with a slope = 1 when x > 0. ReLu's, and other activation functions, are typically placed after a convolutional layer to slightly transform the output so that it's more efficient to perform backpropagation and effectively train the network. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 617327,
+              "key": "f568090e-37b2-4bf9-bfba-502105a208f4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Introducing Alexis\n\nTo help us learn about the layers that make up a CNN, I'm happy to introduce Alexis Cook. Alexis is an applied mathematician with  M.S. in computer science from Brown University and an M.S. in applied mathematics from the University of Michigan. Next, she'll talk about convolutional and pooling layers.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 617328,
+              "key": "05b4f082-2b3e-461e-ab5a-5509bd46de2f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ae37352_alexis/alexis.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/05b4f082-2b3e-461e-ab5a-5509bd46de2f",
+              "caption": "Alexis Cook",
+              "alt": "",
+              "width": 300,
+              "height": 1600,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 598918,
+          "key": "9f3236b5-db87-487d-948b-a11675d22882",
+          "title": "Convolutional Layers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9f3236b5-db87-487d-948b-a11675d22882",
+            "completed_at": "2020-04-11T01:21:55.192Z",
+            "last_viewed_at": "2020-04-11T23:21:41.548Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598919,
+              "key": "98c12da3-5fb1-4257-8ee6-033641492ef6",
+              "title": "Convolutional Layers (Part 2)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LX-yVob3c28",
+                "china_cdn_id": "LX-yVob3c28.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 598906,
+          "key": "0c50b4b7-7ca2-4332-ba30-e1aa3f1a215c",
+          "title": "Defining Layers in PyTorch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0c50b4b7-7ca2-4332-ba30-e1aa3f1a215c",
+            "completed_at": "2020-04-11T01:41:33.537Z",
+            "last_viewed_at": "2020-04-12T00:15:30.312Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598907,
+              "key": "4c2c358f-05c2-4317-a284-d19527153d64",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Define a Network Architecture\n\nThe various layers that make up any neural network are documented, [here](https://pytorch.org/docs/stable/nn.html). For a convolutional neural network, we'll use a simple series of layers:\n* Convolutional layers\n* Maxpooling layers\n* Fully-connected (linear) layers\n---\n\nTo define a neural network in PyTorch, you'll create and name a new neural network class, define the layers of the network in a function `__init__` and define the feedforward behavior of the network that employs those initialized layers in the function `forward`, which takes in an input image tensor, `x`. The structure of such a class, called `Net` is shown below.\n\nNote: During training, PyTorch will be able to perform backpropagation by keeping track of the network's feedforward behavior and using autograd to calculate the update to the weights in the network.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598908,
+              "key": "2e9ddd3b-0da9-44dc-ae79-92d1ebf93dae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```python\nimport torch.nn as nn\nimport torch.nn.functional as F\n\nclass Net(nn.Module):\n\n    def __init__(self, n_classes):\n        super(Net, self).__init__()\n        \n        # 1 input image channel (grayscale), 32 output channels/feature maps\n        # 5x5 square convolution kernel\n        self.conv1 = nn.Conv2d(1, 32, 5)\n        \n        # maxpool layer\n        # pool with kernel_size=2, stride=2\n        self.pool = nn.MaxPool2d(2, 2)\n        \n        # fully-connected layer\n        # 32*4 input size to account for the downsampled image size after pooling\n        # num_classes outputs (for n_classes of image data)\n        self.fc1 = nn.Linear(32*4, n_classes)\n\n    # define the feedforward behavior\n    def forward(self, x):\n        # one conv/relu + pool layers\n        x = self.pool(F.relu(self.conv1(x)))\n\n        # prep for linear layer by flattening the feature maps into feature vectors\n        x = x.view(x.size(0), -1)\n        # linear layer \n        x = F.relu(self.fc1(x))\n        \n        # final output\n        return x\n\n# instantiate and print your Net\nn_classes = 20 # example number of classes\nnet = Net(n_classes)\nprint(net)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598909,
+              "key": "05c10182-90c6-4cfb-aceb-2699cd036f4b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's go over the details of what is happening in this code.\n\n#### Define the Layers in ` __init__`\nConvolutional and maxpooling layers are defined in `__init__`:\n```\n# 1 input image channel (for grayscale images), 32 output channels/feature maps, 3x3 square convolution kernel\nself.conv1 = nn.Conv2d(1, 32, 3)\n\n# maxpool that uses a square window of kernel_size=2, stride=2\nself.pool = nn.MaxPool2d(2, 2)      \n```\n\n#### Refer to Layers in `forward`\nThen these layers are referred to in the `forward` function like this, in which the conv1 layer has a ReLu activation applied to it before maxpooling is applied:\n```\nx = self.pool(F.relu(self.conv1(x)))\n```\n\nBest practice is to place any layers whose weights will change during the training process in `__init__` and refer to them in the `forward` function; any layers or functions that always behave in the same way, such as a pre-defined activation function, may appear in the `__init__` or in the `forward` function; it is mostly a matter of style and readability.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598839,
+          "key": "20907021-e7fd-4b5f-aa8c-635d18f0e5c5",
+          "title": "Notebook: Visualizing a Convolutional Layer",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "20907021-e7fd-4b5f-aa8c-635d18f0e5c5",
+            "completed_at": "2020-04-11T01:43:07.888Z",
+            "last_viewed_at": "2020-04-12T00:45:04.092Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598840,
+              "key": "7dbc33cd-44dc-4a4f-8141-c643d5dd5e33",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view19c30b10",
+              "pool_id": "jupyter",
+              "view_id": "19c30b10-5e42-45ac-b476-59d84d574cd0",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/conv_layer_visualization.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 593901,
+          "key": "48d32fb3-ea7b-4e2b-a087-13829ebe000d",
+          "title": "Pooling, VGG-16 Architecture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "48d32fb3-ea7b-4e2b-a087-13829ebe000d",
+            "completed_at": "2020-04-11T01:47:38.616Z",
+            "last_viewed_at": "2020-04-11T23:08:55.963Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 593903,
+              "key": "bdf4fdf1-e7f2-405e-a54c-0d7ef5637591",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### VGG-16 Architecture\n\nTake a look at the layers after the initial convolutional layers in the VGG-16 architecture.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 593904,
+              "key": "9cffc171-9204-47a2-ab9f-79ab068a09f1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ac8089a_vgg-16/vgg-16.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9cffc171-9204-47a2-ab9f-79ab068a09f1",
+              "caption": "VGG-16 architecture",
+              "alt": "",
+              "width": 1134,
+              "height": 665,
+              "instructor_notes": null
+            },
+            {
+              "id": 593902,
+              "key": "4224fdbb-e2bb-467d-98d3-c3f4a75bc3f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Pooling Layer\n\nAfter a couple of convolutional layers (+ReLu's), in the VGG-16 network, you'll see a maxpooling layer.\n\n* Pooling layers take in an image (usually a filtered image) and output a reduced version of that image\n* Pooling layers reduce the dimensionality of an input\n* **Maxpooling** layers look at areas in an input image (like the 4x4 pixel area pictured below) and choose to keep the maximum pixel value in that area, in a new, reduced-size area. \n* Maxpooling is the most common type of pooling layer in CNN's, but there are also other types such as average pooling.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 593905,
+              "key": "8f3ab64b-3437-4716-90ce-34a0981da458",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ac808d4_screen-shot-2018-04-06-at-4.54.39-pm/screen-shot-2018-04-06-at-4.54.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8f3ab64b-3437-4716-90ce-34a0981da458",
+              "caption": "Maxpooling with a 2x2 area and stride of 2",
+              "alt": "",
+              "width": 1648,
+              "height": 754,
+              "instructor_notes": null
+            },
+            {
+              "id": 593908,
+              "key": "62a22690-ab56-4528-a082-93dae7fbd98e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Next, let's learn more about how these pooling layers work.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598920,
+          "key": "28443c53-31d9-4e60-8de8-fff1991c69cd",
+          "title": "Pooling Layers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "28443c53-31d9-4e60-8de8-fff1991c69cd",
+            "completed_at": "2020-04-11T01:48:09.982Z",
+            "last_viewed_at": "2020-04-11T01:48:18.814Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598921,
+              "key": "1a43d974-b26c-40c4-8b72-05f6302146d9",
+              "title": "Pooling Layers",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OkkIZNs7Cyc",
+                "china_cdn_id": "OkkIZNs7Cyc.mp4"
+              }
+            },
+            {
+              "id": 614936,
+              "key": "df439429-bfe2-4c5f-a968-ad296587e3dd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\\* We'll link to [PyTorch pooling documentation](http://pytorch.org/docs/stable/nn.html#pooling-layers), since that's what we'll use in this course.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598859,
+          "key": "35d0dddf-ca37-4ba7-bb37-6b540e555e9f",
+          "title": "Notebook: Visualizing a Pooling Layer",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "35d0dddf-ca37-4ba7-bb37-6b540e555e9f",
+            "completed_at": "2020-04-11T01:48:49.025Z",
+            "last_viewed_at": "2020-04-11T16:47:14.777Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598884,
+              "key": "1767970d-79ea-434d-adb0-f52bb247a19e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewf87e6354",
+              "pool_id": "jupyter",
+              "view_id": "f87e6354-5d83-48c4-9c5e-7916e5b2fd91",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/pool_visualization.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 593906,
+          "key": "6f2a7ce7-b5fa-41d3-90e2-490a0d44c4fe",
+          "title": "Fully-Connected Layers, VGG-16",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6f2a7ce7-b5fa-41d3-90e2-490a0d44c4fe",
+            "completed_at": "2020-04-11T01:49:56.023Z",
+            "last_viewed_at": "2020-04-11T23:07:50.952Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 593913,
+              "key": "678d3b9e-0e69-4c47-a0b6-06825cc496eb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### VGG-16 Architecture\n\nTake a look at the layers near the end of this model; the fully-connected layers that come after a series of convolutional and pooling layers. Take note of their flattened shape.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 593915,
+              "key": "322fd3e8-9f80-4a69-9b37-3c73e9947f59",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ac809f2_vgg-16/vgg-16.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/322fd3e8-9f80-4a69-9b37-3c73e9947f59",
+              "caption": "VGG-16 architecture",
+              "alt": "",
+              "width": 1134,
+              "height": 665,
+              "instructor_notes": null
+            },
+            {
+              "id": 593907,
+              "key": "5223b218-ad68-4db8-8723-816f25d6c0b3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Fully-Connected Layer\n\nA fully-connected layer's job is to connect the input it sees to a desired form of output. Typically, this means converting a matrix of image features into a feature vector whose dimensions are 1xC, where C is the number of classes. As an example, say we are sorting images into ten classes, you could give a fully-connected layer a set of [pooled, activated] feature maps as input and tell it to use a combination of these features (multiplying them, adding them, combining them, etc.) to output a 10-item long feature vector. This vector compresses the information from the feature maps into a single feature vector.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 593917,
+              "key": "7b4d28b8-3843-4076-b68f-cc42a4bf341d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Softmax\n\nThe *very* last layer you see in this network is a softmax function. The softmax function, can take any vector of values as input and returns a vector of the same length whose values are all in the range (0, 1) and, together, these values will add up to 1. This function is often seen in classification models that have to turn a feature vector into a probability distribution.\n\nConsider the same example again; a network that groups images into one of 10 classes. The fully-connected layer can turn feature maps into a single feature vector that has dimensions 1x10. Then the softmax function turns that vector into a 10-item long probability distribution in which each number in the resulting vector represents the probability that a given input image falls in class 1, class 2, class 3, ... class 10. This output is sometimes called the **class scores** and from these scores, you can extract the most likely class for the given image!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614923,
+              "key": "e2d649ed-3896-4836-80df-1513fcfb96d6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Overfitting\n\nConvolutional, pooling, and fully-connected layers are all you need to construct a complete CNN, but there are additional layers that you can add to avoid overfitting, too. One of the most common layers to add to prevent overfitting is a [dropout layer](http://pytorch.org/docs/stable/nn.html#dropout-layers).\n\nDropout layers essentially turn off certain nodes in a layer with some probability, p. This ensures that all nodes get an equal chance to try and classify different images during training, and it reduces the likelihood that only a few, heavily-weighted nodes will dominate the process.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 593918,
+              "key": "26efda9c-7c78-4023-a1a1-4a56bff4001c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, you're familiar with all the major components of a complete convolutional neural network, and given some examples of PyTorch code, you should be well equipped to build and train your own CNN's! Next, it'll be up to you to define and train a CNN for clothing recognition!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 593920,
+          "key": "7304b1ce-fe43-4928-8b4a-c723fc473b7e",
+          "title": "Notebook: Visualizing FashionMNIST",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7304b1ce-fe43-4928-8b4a-c723fc473b7e",
+            "completed_at": "2020-04-11T01:52:45.608Z",
+            "last_viewed_at": "2020-04-11T16:46:51.384Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598912,
+              "key": "d9fa30c0-fb5a-4167-92b4-4b09cd79849c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view33b7e72d",
+              "pool_id": "jupyter",
+              "view_id": "33b7e72d-5afa-4d7a-bfa3-88b337399cc3",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Load and Visualize FashionMNIST.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 598905,
+          "key": "8420a7b8-f444-40b6-b49d-c00986c31b8f",
+          "title": "Training in PyTorch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8420a7b8-f444-40b6-b49d-c00986c31b8f",
+            "completed_at": "2020-04-11T01:55:37.377Z",
+            "last_viewed_at": "2020-04-11T16:46:48.846Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598910,
+              "key": "eb989ccb-5341-4549-b7ec-834459d783aa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Training in PyTorch\n\nOnce you've loaded a training dataset, next your job will be to define a CNN and train it to classify that set of images.\n\n### Loss and Optimizer\n\nTo train a model, you'll need to define *how* it trains by selecting a loss function and optimizer. These functions decide how the model updates its parameters as it trains and can affect how quickly the model converges, as well.\n\nLearn more about [loss functions](http://pytorch.org/docs/master/nn.html#loss-functions) and [optimizers](http://pytorch.org/docs/master/optim.html) in the online documentation.\n\nFor a classification problem like this, one typically uses cross entropy loss, which can be defined in code like: `criterion = nn.CrossEntropyLoss()`. PyTorch also includes some standard stochastic optimizers like stochastic gradient descent and Adam. You're encouraged to try different optimizers and see how your model responds to these choices as it trains.\n\n#### Clasisification vs. Regression\n\nThe loss function you should choose depends on the kind of CNN you are trying to create; cross entropy is generally good for classification tasks, but you might choose a different loss function for, say, a regression problem that tried to predict (x,y) locations for the center or edges of clothing items instead of class scores.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598911,
+              "key": "57d0535a-22cf-4237-b3c4-28f087279b59",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Training the Network\n\nTypically, we train any network for a number of epochs or cycles through the training dataset\n\nHere are the steps that a training function performs as it iterates over the training dataset:\n\n1. Prepares all input images and label data for training\n3. Passes the input through the network (forward pass)\n4. Computes the loss (how far is the predicted classes are from the correct labels)\n5. Propagates gradients back into the network’s parameters (backward pass)\n6. Updates the weights (parameter update)\n\nIt repeats this process until the average loss has sufficiently decreased.\n\nAnd in the next notebook, you'll see how to train and test a CNN for clothing classification, in detail.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 627227,
+              "key": "6d0a5951-9cb7-4c84-907d-0e9934bded44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Please also checkout the [linked, exercise repo](https://github.com/udacity/CVND_Exercises/tree/master/1_5_CNN_Layers) for multiple solutions to the following training challenge!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 593922,
+          "key": "ee50b565-ef2d-435a-b9ff-d8bdb3c87ae8",
+          "title": "Notebook: Fashion MNIST Training Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ee50b565-ef2d-435a-b9ff-d8bdb3c87ae8",
+            "completed_at": "2020-04-11T16:43:57.745Z",
+            "last_viewed_at": "2020-04-11T23:10:26.718Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598915,
+              "key": "37bb9277-a310-4a00-bd74-fe02111ba650",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewb064bd58",
+              "pool_id": "jupyter",
+              "view_id": "b064bd58-dd65-4583-987d-04bd061b8538",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Classify FashionMNIST, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 620046,
+          "key": "a70c428c-b6fb-4bb3-9b29-05d1bc420336",
+          "title": "Notebook: FashionMNIST, Solution 1",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a70c428c-b6fb-4bb3-9b29-05d1bc420336",
+            "completed_at": "2020-04-11T23:08:42.066Z",
+            "last_viewed_at": "2020-04-11T23:21:15.877Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620049,
+              "key": "6e523dc5-e8d9-4d0e-9703-5bf5704e9763",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewece661b2",
+              "pool_id": "jupyter",
+              "view_id": "ece661b2-2d3f-48ba-b543-ecb2882e4b33",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Classify FashionMNIST, solution 1.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 620039,
+          "key": "d8216933-94b2-4709-a56a-0228199c936e",
+          "title": "Review: Dropout",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d8216933-94b2-4709-a56a-0228199c936e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620041,
+              "key": "fb27b3c2-b91e-47c3-b2d2-1ef538b79f5c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Dropout and Momentum\n\nThe next solution will show a different (improved) model for clothing classification. It has two main differences when compared to the first solution:\n\n1. It has an additional dropout layer\n2. It includes a momentum term in the optimizer: stochastic gradient descent\n\nSo, why are these improvements?\n\n#### Dropout\n\nDropout randomly turns off perceptrons (nodes) that make up the layers of our network, with some specified probability. It may seem counterintuitive to throw away a connection in our network, but as a network trains, some nodes can dominate others or end up making large mistakes, and dropout gives us a way to balance our network so that every node works equally towards the same goal, and if one makes a mistake, it won't dominate the behavior of our model. You can think of dropout as a technique that makes a network resilient; it makes all the nodes work well as a team by making sure no node is too weak or too strong. In fact it makes me think of the [Chaos Monkey](https://en.wikipedia.org/wiki/Chaos_Monkey) tool that is used to test for system/website failures.\n\nI encourage you to look at the PyTorch dropout documentation, [here](http://pytorch.org/docs/stable/nn.html#dropout-layers), to see how to add these layers to a network.\n\nFor a recap of what dropout does, check out Luis's video below.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620042,
+              "key": "0ff5cec9-b2e4-4ba4-9181-4668eebeb860",
+              "title": "Dropout",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ty6K6YiGdBs",
+                "china_cdn_id": "Ty6K6YiGdBs.mp4"
+              }
+            },
+            {
+              "id": 620043,
+              "key": "756ba17f-46ca-4265-a105-664f513f705f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Momentum\n\nWhen you train a network, you specify an optimizer that aims to reduce the errors that your network makes during training. The errors that it makes should generally reduce over time but there may be some bumps along the way. Gradient descent optimization relies on finding a local minimum for an error, but it has trouble finding the _global minimum_ which is the lowest an error can get. So, we add a momentum term to help us find and then move on from local minimums and find the global minimum!\n\nCheck out the video below for a review of how momentum works, mathematically.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620045,
+              "key": "f2380eda-6e4d-4b0f-b221-0e8795f8251a",
+              "title": "动量",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "r-rYz_PEWC8",
+                "china_cdn_id": "r-rYz_PEWC8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620051,
+          "key": "f07de0f4-9eb9-4228-ba1f-bcd51974b997",
+          "title": "Notebook: FashionMNIST, Solution 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f07de0f4-9eb9-4228-ba1f-bcd51974b997",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620053,
+              "key": "d73c615c-37ee-4dcb-b9f5-e74a5e22596c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view63aab0db",
+              "pool_id": "jupyter",
+              "view_id": "63aab0db-395e-4c6a-9d3a-cfd76e62d6a5",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Classify FashionMNIST, solution 2.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630036,
+          "key": "7d96e20b-694a-45be-a668-40f159fb0e79",
+          "title": "Network Structure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7d96e20b-694a-45be-a668-40f159fb0e79",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630037,
+              "key": "fbe850c7-dcc0-4651-82f2-9c0ce2e8b55c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# How can you decide on a network structure?\n\nAt this point, deciding on a network structure: how many layers to create, when to include dropout layers, and so on, may seem a bit like guessing, but there is a rationale behind defining a good model.\n\nI think a lot of people (myself included) build up an intuition about how to structure a network from existing models. Take AlexNet as an example; linked is a nice, [concise walkthrough of structure and reasoning](https://medium.com/@smallfishbigsea/a-walk-through-of-alexnet-6cbd137a5637).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630039,
+              "key": "0d4fba55-5e31-490f-b0b3-8aa048fcacdc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b05c5fd_alexnet-png/alexnet-png.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0d4fba55-5e31-490f-b0b3-8aa048fcacdc",
+              "caption": "AlexNet structure.",
+              "alt": "",
+              "width": 850,
+              "height": 273,
+              "instructor_notes": null
+            },
+            {
+              "id": 630038,
+              "key": "bfa4403e-22df-4847-90a1-4801308c6b52",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Preventing Overfitting\n\nOften we see [batch norm](https://towardsdatascience.com/batch-normalization-in-neural-networks-1ac91516821c) applied after early layers in the network, say after a set of conv/pool/activation steps since this normalization step is fairly quick and reduces the amount by which hidden weight values shift around. Dropout layers often come near the end of the network; placing them in between fully-connected layers for example can prevent any node in those layers from overly-dominating. \n\n### Convolutional and Pooling Layers\n\nAs far as conv/pool structure, I would again recommend looking at existing architectures, since many people have already done the work of throwing things together and seeing what works. In general, more layers = you can see more complex structures, but you should always consider the size and complexity of your training data (many layers may not be necessary for a simple task).\n\n### As You Learn\n\nWhen you are first learning about CNN's for classification or any other task, you can improve your intuition about model design by approaching a simple task (such as clothing classification) and *quickly* trying out new approaches. You are encouraged to:\n\n1. Change the number of convolutional layers and see what happens\n2. Increase the size of convolutional kernels for larger images\n3. Change loss/optimization functions to see how your model responds (especially change your **hyperparameters** such as learning rate and see what happens -- you will learn more about hyperparameters in the second module of this course)\n4. Add layers to prevent overfitting\n5. Change the batch_size of your data loader to see how larger batch sizes can affect your training\n\nAlways watch how **much** and how **quickly** your model loss decreases, and learn from improvements as well as mistakes! ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 614937,
+          "key": "b6fb8127-756b-4a79-a19a-e3cf25a0549d",
+          "title": "Feature Visualization",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b6fb8127-756b-4a79-a19a-e3cf25a0549d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 617501,
+              "key": "391f9ada-387f-41cc-adab-0e46a1f5682b",
+              "title": "04 Feature Visualization V1 RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xwGa7RFg1EQ",
+                "china_cdn_id": "xwGa7RFg1EQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 593924,
+          "key": "dc4950db-a10d-4550-bbd4-1c1802e9cb79",
+          "title": "Feature Maps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dc4950db-a10d-4550-bbd4-1c1802e9cb79",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 619703,
+              "key": "20467cac-a049-4bc7-a8b6-c0bbc5f33f95",
+              "title": "05 Feature Maps V1RENDER V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oRhsJHHWtu8",
+                "china_cdn_id": "oRhsJHHWtu8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 617425,
+          "key": "dd114446-e39d-49a2-bd8a-83fe001130fa",
+          "title": "First Convolutional Layer",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd114446-e39d-49a2-bd8a-83fe001130fa",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 617573,
+              "key": "c1ce2962-36e8-45cd-8aa5-772142757ed9",
+              "title": "06 First Convolutional Layer T1 V1 RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hIHDMWVSfsM",
+                "china_cdn_id": "hIHDMWVSfsM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 289658,
+          "key": "cbf65dc4-c0b4-44c5-81c6-5997e409cb75",
+          "title": "Visualizing CNNs (Part 2)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cbf65dc4-c0b4-44c5-81c6-5997e409cb75",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 292154,
+              "key": "a9078e00-84d0-4684-9268-69641e8c0e7c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Visualizing CNNs\n\nLet’s look at an example CNN to see how it works in action. \n\nThe CNN we will look at is trained on ImageNet as described in [this paper](hhttps://cs.nyu.edu/~fergus/papers/zeilerECCV2014.pdf) by Zeiler and Fergus. In the images below (from the same paper), we’ll see *what* each layer in this network detects and see *how* each layer detects more and more complex ideas.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 292155,
+              "key": "d02fb51e-3aa3-4bfd-a304-d856020529ae",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58e91f1e_layer-1-grid/layer-1-grid.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d02fb51e-3aa3-4bfd-a304-d856020529ae",
+              "caption": "Example patterns that cause activations in the first layer of the network. These range from simple diagonal lines (top left) to green blobs (bottom middle).",
+              "alt": null,
+              "width": 165,
+              "height": 171,
+              "instructor_notes": null
+            },
+            {
+              "id": 292156,
+              "key": "6e49a260-f4f5-4b72-82dd-5a0bfb5d2e42",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The images above are from Matthew Zeiler and Rob Fergus' [deep visualization toolbox](https://www.youtube.com/watch?v=ghEmQSxT6tw), which lets us visualize what each layer in a CNN focuses on. \n\nEach image in the above grid represents a pattern that causes the neurons in the first layer to activate - in other words, they are patterns that the first layer recognizes. The top left image shows a -45 degree line, while the middle top square shows a +45 degree line. These squares are shown below again for reference.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 292157,
+              "key": "4824ad96-b35c-4784-bad0-74e6054b10c4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58e91f83_diagonal-line-1/diagonal-line-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4824ad96-b35c-4784-bad0-74e6054b10c4",
+              "caption": "As visualized here, the first layer of the CNN can recognize -45 degree lines.",
+              "alt": null,
+              "width": 55,
+              "height": 53,
+              "instructor_notes": null
+            },
+            {
+              "id": 292158,
+              "key": "e1a8fe1e-ec63-41e5-a614-9c144300a774",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58e91f91_diagonal-line-2/diagonal-line-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e1a8fe1e-ec63-41e5-a614-9c144300a774",
+              "caption": "The first layer of the CNN is also able to recognize +45 degree lines, like the one above.",
+              "alt": null,
+              "width": 58,
+              "height": 58,
+              "instructor_notes": null
+            },
+            {
+              "id": 292159,
+              "key": "c87505ca-ede2-4272-8475-97a94a43f484",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's now see some example images that cause such activations. The below grid of images all activated the -45 degree line. Notice how they are all selected despite the fact that they have different colors, gradients, and patterns.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 292160,
+              "key": "dfe07a61-ab59-4f69-b92a-00e6649654f0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58e91fd5_grid-layer-1/grid-layer-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dfe07a61-ab59-4f69-b92a-00e6649654f0",
+              "caption": "Example patches that activate the -45 degree line detector in the first layer.",
+              "alt": null,
+              "width": 146,
+              "height": 143,
+              "instructor_notes": null
+            },
+            {
+              "id": 292161,
+              "key": "af12a05a-0086-418e-afa8-cbfb4cc57e8a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "So, the first layer of our CNN clearly picks out very simple shapes and patterns like lines and blobs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 292162,
+              "key": "ea684e8a-8782-425c-8bc2-0d16a5c2307d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Layer 2",
+              "instructor_notes": ""
+            },
+            {
+              "id": 292163,
+              "key": "43f6b07b-8b20-4219-986e-7e01d4d7e458",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58e92033_screen-shot-2016-11-24-at-12.09.02-pm/screen-shot-2016-11-24-at-12.09.02-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/43f6b07b-8b20-4219-986e-7e01d4d7e458",
+              "caption": "A visualization of the second layer in the CNN. Notice how we are picking up more complex ideas like circles and stripes. The gray grid on the left represents how this layer of the CNN activates (or \"what it sees\") based on the corresponding images from the grid on the right.",
+              "alt": null,
+              "width": 1888,
+              "height": 922,
+              "instructor_notes": null
+            },
+            {
+              "id": 292164,
+              "key": "3d661b3d-9191-40b8-945c-1e9bf9c373e3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The second layer of the CNN  captures complex ideas. \n\nAs you see in the image above, the second layer of the CNN recognizes circles (second row, second column), stripes (first row, second column), and rectangles (bottom right). \n\n**The CNN learns to do this on its own.** There is no special instruction for the CNN to focus on more complex objects in deeper layers. That's just how it normally works out when you feed training data into a CNN.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 292165,
+              "key": "d6d4249d-da31-4293-96e3-8d5953bb06b8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Layer 3",
+              "instructor_notes": ""
+            },
+            {
+              "id": 292166,
+              "key": "97255faf-06d5-493c-a395-d21142a18fea",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58e920b9_screen-shot-2016-11-24-at-12.09.24-pm/screen-shot-2016-11-24-at-12.09.24-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/97255faf-06d5-493c-a395-d21142a18fea",
+              "caption": "A visualization of the third layer in the CNN. The gray grid on the left represents how this layer of the CNN activates (or \"what it sees\") based on the corresponding images from the grid on the right.",
+              "alt": null,
+              "width": 2294,
+              "height": 848,
+              "instructor_notes": null
+            },
+            {
+              "id": 292167,
+              "key": "f957755c-472f-4fd6-afe4-1107631fc097",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The third layer picks out complex combinations of features from the second layer. These include things like grids, and honeycombs (top left), wheels (second row, second column), and even faces (third row, third column).\n\nWe'll skip layer 4, which continues this progression, and jump right to the fifth and final layer of this CNN.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 292168,
+              "key": "239e3388-6221-4cf6-9a53-e503cab9de4f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Layer 5",
+              "instructor_notes": ""
+            },
+            {
+              "id": 292169,
+              "key": "80c7e4f7-d5e5-4733-bfed-b9c6d03c9772",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/April/58e9210c_screen-shot-2016-11-24-at-12.08.11-pm/screen-shot-2016-11-24-at-12.08.11-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/80c7e4f7-d5e5-4733-bfed-b9c6d03c9772",
+              "caption": "A visualization of the fifth and final layer of the CNN. The gray grid on the left represents how this layer of the CNN activates (or \"what it sees\") based on the corresponding images from the grid on the right.",
+              "alt": null,
+              "width": 1198,
+              "height": 1484,
+              "instructor_notes": null
+            },
+            {
+              "id": 292170,
+              "key": "f0d1fa5e-f4e7-43a6-8068-1aaa4bed6c6a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The last layer picks out the highest order ideas that we care about for classification, like dog faces, bird faces, and bicycles. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 614938,
+          "key": "7b916ef9-1ac4-4e76-aa18-0d7ce186a9ad",
+          "title": "Visualizing Activations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7b916ef9-1ac4-4e76-aa18-0d7ce186a9ad",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 617572,
+              "key": "327f3256-826a-4001-b390-7094d6ea350d",
+              "title": "10 Visualizing Activations V1 RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CJLNTOXqt3I",
+                "china_cdn_id": "CJLNTOXqt3I.mp4"
+              }
+            },
+            {
+              "id": 615369,
+              "key": "59bf6ab8-e19e-40de-ad28-334fb52139be",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Take a look at [this example of activation maps](https://experiments.withgoogle.com/ai/what-neural-nets-see) in a network that detects your face!  From the site: \"This experiment lets you turn on your camera to explore what neural nets see, live, using your camera.\"",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 598916,
+          "key": "c6046adf-4584-416a-b2aa-d56755da8351",
+          "title": "Notebook: Feature Viz for FashionMNIST",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c6046adf-4584-416a-b2aa-d56755da8351",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 598917,
+              "key": "8dc2318f-10eb-455b-b3ac-30fcd7b29bed",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view7138f623",
+              "pool_id": "jupyter",
+              "view_id": "7138f623-ceb7-4b0c-b5b4-cf326e8d8dbc",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Feature viz for FashionMNIST.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 615482,
+          "key": "16448c2b-9c6c-4a27-8471-5cb9f90faaa3",
+          "title": "Last Feature Vector and t-SNE",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "16448c2b-9c6c-4a27-8471-5cb9f90faaa3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 615500,
+              "key": "0d6ee21f-ffdc-4ac6-afac-c43885271873",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Last Layer\n\nIn addition to looking at the first layer(s) of a CNN, we can take the opposite approach, and look at the last linear layer in a model. \n\nWe know that the output of a classification CNN, is a fully-connected class score layer, and one layer before that is a **feature vector that represents the content of the input image in some way**. This feature vector is produced after an input image has gone through all the layers in the CNN, and it contains enough distinguishing information to classify the image.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 616609,
+              "key": "348bc279-105b-4aec-b835-836d2a9340a0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adfd056_screen-shot-2018-04-24-at-5.47.43-pm/screen-shot-2018-04-24-at-5.47.43-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/348bc279-105b-4aec-b835-836d2a9340a0",
+              "caption": "An input image going through some conv/pool layers and reaching a fully-connected layer. In between the feature maps and this fully-connected layer is a flattening step that creates a feature vector from the feature maps.",
+              "alt": "",
+              "width": 500,
+              "height": 324,
+              "instructor_notes": null
+            },
+            {
+              "id": 616608,
+              "key": "b9b5a5ff-564b-4c9f-a150-0010a25ba18b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "** Final Feature Vector**\n\nSo, how can we understand what’s going on in this final feature vector? What kind of information has it distilled from an image? \n\nTo visualize what a vector represents about an image, we can compare it to other feature vectors, produced by the same CNN as it sees different input images. We can run a bunch of different images through a CNN and record the last feature vector for each image. This creates a feature space, where we can compare how similar these vectors are to one another.\n\nWe can measure vector-closeness by looking at the **nearest neighbors** in feature space. Nearest neighbors for an image is just an image that is near to it; that matches its pixels values as closely as possible. So, an image of an orange basketball will closely match other orange basketballs or even other orange, round shapes like an orange fruit, as seen below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615504,
+              "key": "f04747eb-9aed-4f39-bec8-57373c0c7de0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adfc7f0_screen-shot-2018-04-24-at-5.08.30-pm/screen-shot-2018-04-24-at-5.08.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f04747eb-9aed-4f39-bec8-57373c0c7de0",
+              "caption": "A basketball (left) and an orange (right) that are nearest neighbors in pixel space; these images have very similar colors and round shapes in the same x-y area.",
+              "alt": "",
+              "width": 400,
+              "height": 468,
+              "instructor_notes": null
+            },
+            {
+              "id": 615501,
+              "key": "9d691b64-d194-467f-8fa4-f8b48299b7b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Nearest neighbors in feature space\n\nIn feature space, the nearest neighbors for a given feature vector are the vectors that most closely match that one; we typically compare these with a metric like MSE or L1 distance. And *these* images may or may not have similar pixels, which the nearest-neighbor pixel images do; instead they have very similar content, which the feature vector has distilled.\n\nIn short, to visualize the last layer in a CNN, we ask: which feature vectors are closest to one another and which images do those correspond to?\n\nAnd you can see an example of nearest neighbors in feature space, below; an image of a basketball that matches with other images of basketballs despite being a different color.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 616603,
+              "key": "ce21f025-56ac-4098-8b66-8fdd59e7b691",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adfc876_screen-shot-2018-04-24-at-5.08.36-pm/screen-shot-2018-04-24-at-5.08.36-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ce21f025-56ac-4098-8b66-8fdd59e7b691",
+              "caption": "Nearest neighbors in feature space should represent the same kind of object.",
+              "alt": "",
+              "width": 400,
+              "height": 936,
+              "instructor_notes": null
+            },
+            {
+              "id": 616604,
+              "key": "ccc23faa-1c1d-4418-a866-8776395e44f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Dimensionality reduction\n\nAnother method for visualizing this last layer in a CNN is to reduce the dimensionality of the final feature vector so that we can display it in 2D or 3D space.\n\nFor example, say we have a CNN that produces a 256-dimension vector (a list of 256 values). In this case, our task would be to reduce this 256-dimension vector into 2 dimensions that can then be plotted on an x-y axis. There are a few techniques that have been developed for compressing data like this.\n\n**Principal Component Analysis**\n\nOne is PCA, principal component analysis, which takes a high dimensional vector and compresses it down to two dimensions. It does this by looking at the feature space and creating two variables (x, y) that are functions of these features; these two variables want to be as different as possible, which means that the produced x and y end up separating the original feature data distribution by as large a margin as possible. \n\n**t-SNE**\n\nAnother really powerful method for visualization is called t-SNE (pronounced, tea-SNEE), which stands for t-distributed stochastic neighbor embeddings. It’s a non-linear dimensionality reduction that, again, aims to separate data in a way that clusters similar data close together and separates differing data.\n\nAs an example, below is a t-SNE reduction done on the MNIST dataset, which is a dataset of thousands of 28x28 images, similar to FashionMNIST, where each image is one of 10 hand-written digits 0-9.\n\nThe 28x28 pixel space of each digit is compressed to 2 dimensions by t-SNE and you can see that this produces ten clusters, one for each type of digits in the dataset!\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 616606,
+              "key": "27ae526b-d07e-4e67-bd79-80fdd604adf6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adfcde8_t-sne-mnist/t-sne-mnist.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/27ae526b-d07e-4e67-bd79-80fdd604adf6",
+              "caption": "t-SNE run on MNIST handwritten digit dataset. 10 clusters for 10 digits. You can see the [generation code on Github](https://github.com/alexisbcook/tsne).",
+              "alt": "",
+              "width": 400,
+              "height": 1146,
+              "instructor_notes": null
+            },
+            {
+              "id": 616613,
+              "key": "c84e28a6-b5eb-478b-bd7c-d6f34f81f708",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### t-SNE and practice with neural networks\n\nIf you are interested in learning more about neural networks, take a look at the **Elective Section: Text Sentiment Analysis**. Though this section is about text classification and not images or visual data, the instructor, Andrew Trask, goes through the creation of a neural network step-by-step, including setting training parameters and changing his model when he sees unexpected loss results.\n\nHe also provides an example of t-SNE visualization for the sentiment of different words, so you can actually see whether certain words are typically negative or positive, which is really interesting!\n\n**This elective section will be especially good practice for the upcoming section Advanced Computer Vision and Deep Learning**, which covers RNN's for analyzing sequences of data (like sequences of text). So, if you don't want to visit this section now, you're encouraged to look at it later on.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 615370,
+          "key": "f92c1def-db47-41f5-8dcc-cc11e0964f86",
+          "title": "Occlusion, Saliency, and Guided Backpropagation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f92c1def-db47-41f5-8dcc-cc11e0964f86",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "Visualizing Conv Nets",
+                "uri": "https://video.udacity-data.com/topher/2018/April/5adf876c_visualizing-conv-nets/visualizing-conv-nets.pdf"
+              },
+              {
+                "name": "Guided Backprop Network Simplicity",
+                "uri": "https://video.udacity-data.com/topher/2018/April/5adf8cd9_guided-backprop-network-simplicity/guided-backprop-network-simplicity.pdf"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 615372,
+              "key": "0d7c4c94-6e0c-48aa-b87d-f48598da04d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Other Feature Visualization Techniques\n\nFeature visualization is an active area of research and before we move on, I'd like like to give you an overview of some of the techniques that you might see in research or try to implement on your own!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615373,
+              "key": "7a246f1a-46e2-4c9c-b002-27a734c6d573",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Occlusion Experiments\n\nOcclusion means to block out or mask part of an image or object. For example, if you are looking at a person but their face is behind a book; this person's face is hidden (occluded). Occlusion can be used in feature visualization by blocking out selective parts of an image and seeing how a network responds. \n\nThe process for an occlusion experiment is as follows:\n1. Mask part of an image before feeding it into a trained CNN, \n2. Draw a heatmap of class scores for each masked image,\n3. Slide the masked area to a different spot and repeat steps 1 and 2.\n\nThe result should be a heatmap that shows the predicted class of an image as a function of which part of an image was occluded. The reasoning is that **if the class score for a partially occluded image is different than the true class, then the occluded area was likely very important**!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615374,
+              "key": "52b52db0-93c5-4d6d-8f1f-ca81da71a54c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adf872b_screen-shot-2018-04-24-at-12.35.07-pm/screen-shot-2018-04-24-at-12.35.07-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/52b52db0-93c5-4d6d-8f1f-ca81da71a54c",
+              "caption": "Occlusion experiment with an image of an elephant.",
+              "alt": "",
+              "width": 500,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 615376,
+              "key": "6994a2aa-463d-434d-b762-0afc48339ea6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Saliency Maps\n\nSalience can be thought of as the importance of something, and for a given image, a saliency map asks: Which pixels are most important in classifying this image?\n\nNot all pixels in an image are needed or relevant for classification. In the image of the elephant above, you don't need all the information in the image about the background and you may not even need all the detail about an elephant's skin texture; only the pixels that distinguish the elephant from any other animal are important.\n\nSaliency maps aim to show these important pictures by computing the gradient of the class score with respect to the image pixels. A gradient is a measure of change, and so, the gradient of the class score with respect to the image pixels is a measure of how much a class score for an image changes if a pixel changes a little bit.\n\n**Measuring change**\n\nA saliency map tells us, for each pixel in an input image, if we change it's value slightly (by *dp*), how the class output will change. If the class scores change a lot, then the pixel that experienced a change, dp, is important in the classification task.\n\nLooking at the saliency map below, you can see that it identifies the most important pixels in classifying an image of a flower. These kinds of maps have even been used to perform image segmentation (imagine the map overlay acting as an image mask)!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615377,
+              "key": "9a7f0c6c-01a0-44c5-828a-1b0fb76a127d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adf89f5_screen-shot-2018-04-24-at-12.47.51-pm/screen-shot-2018-04-24-at-12.47.51-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9a7f0c6c-01a0-44c5-828a-1b0fb76a127d",
+              "caption": "Graph-based saliency map for a flower; the most salient (important) pixels have been identified as the flower-center and petals.",
+              "alt": "",
+              "width": 1522,
+              "height": 468,
+              "instructor_notes": null
+            },
+            {
+              "id": 615378,
+              "key": "8a374097-7290-4e20-9c2c-d09da4d42368",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Guided Backpropagation\n\nSimilar to the process for constructing a saliency map, you can compute the gradients for mid level neurons in a network with respect to the input pixels. Guided backpropagation looks at each pixel in an input image, and asks: if we change it's pixel value slightly, how will the output of a particular neuron or layer in the network change. If the expected output change a lot, then the pixel that experienced a change, is important to that particular layer. \n\nThis is very similar to the backpropagation steps for measuring the error between an input and output and propagating it back through a network. Guided backpropagation tells us exactly which parts of the image patches, that we’ve looked at, activate a specific neuron/layer.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615380,
+              "key": "4f0057e8-0a91-4984-a082-59a877de4af3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adf8c6c_screen-shot-2018-04-24-at-12.58.16-pm/screen-shot-2018-04-24-at-12.58.16-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4f0057e8-0a91-4984-a082-59a877de4af3",
+              "caption": "Examples of guided backpropagation, from [this paper](https://arxiv.org/pdf/1412.6806.pdf).",
+              "alt": "",
+              "width": 600,
+              "height": 950,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 614939,
+          "key": "bd68b772-4b23-4a36-b9c2-95ebf919c7d2",
+          "title": "Summary of Feature Viz",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bd68b772-4b23-4a36-b9c2-95ebf919c7d2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 617571,
+              "key": "2f292af9-6326-4e74-845d-da952f810f98",
+              "title": "20 Summary Of Feature Viz V2 RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "r2LBoEkXskU",
+                "china_cdn_id": "r2LBoEkXskU.mp4"
+              }
+            },
+            {
+              "id": 614946,
+              "key": "86a07bea-34df-4c61-8080-6632247c3ecb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Deep Dream\n\nDeepDream takes in an input image and uses the features in a trained CNN to amplifying the existing, detected features in the input image! The process is as follows:\n\n1. Choose an input image, and choose a convolutional layer in the network whose features you want to amplify (the first layer will amplify simple edges and later layers will amplify more complex features).\n2. Compute the activation maps for the input image at your chosen layer.\n3. Set the gradient of the chosen layer equal to the activations and and use this to compute the gradient image.\n4. Update the input image and repeat!\n\nIn step 3, by setting the gradient in the layer equal to the activation, we’re telling that layer to give more weight to the features in the activation map. So, if a layer detects corners, then the corners in an input image will be amplified, and you can see such corners in the upper-right sky of the mountain image, below. For any layer, changing the gradient to be equal to the activations in that layer will amplify the features in the given image that the layer is responding to the most.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614947,
+              "key": "42b48a1f-a1fc-4482-ab3e-54a1b58b7d71",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adea62f_screen-shot-2018-04-23-at-8.35.17-pm/screen-shot-2018-04-23-at-8.35.17-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/42b48a1f-a1fc-4482-ab3e-54a1b58b7d71",
+              "caption": "DeepDream on an image of a mountain.",
+              "alt": "",
+              "width": 1080,
+              "height": 386,
+              "instructor_notes": null
+            },
+            {
+              "id": 615420,
+              "key": "43c2a531-f8b7-4341-9a93-72df887ca044",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Style Transfer\n\nStyle transfer aims to separate the content of an image from its style. So, how does it do this?\n\n**Isolating content**\n\nWhen Convolutional Neural Networks are trained to recognize objects, further layers in the network extract features that distill information about the content of an image and discard any extraneous information. That is, as we go deeper into a CNN, the input image is transformed into feature maps that increasingly care about the content of the image rather than any detail about the texture and color of pixels (which is something close to style).\n\nYou may hear features, in later layers of a network, referred to as a \"content representation\" of an image.\n\n**Isolating style**\n\nTo isolate the style of an input image, a feature space designed to capture texture information is used. This space essentially looks at the correlations between feature maps in each layer of a network; the correlations give us an idea of texture and color information but leave out information about the arrangement of different objects in an image.\n\n**Combining style and content to create a new image**\n\nStyle transfer takes in two images, and separates the content and style of each of those images. Then, to transfer the style of one image to another, it takes the content of the new image and applies the style of an another image (often a famous artwork).\n\nThe objects and shape arrangement of the new image is preserved, and the colors and textures (style) that make up the image are taken from another image. Below you can see an example of an image of a cat [content] being combined with the a Hokusai image of waves [style]. Effectively, style transfer renders the cat image in the style of the wave artwork.\n\nIf you'd like to try out Style Transfer on your own images, check out the **Elective Section: \"Applications of Computer Vision and Deep Learning.\"**\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614948,
+              "key": "4b583878-9de4-47fc-b7a0-6e53b548ec00",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adea649_screen-shot-2018-04-23-at-8.35.25-pm/screen-shot-2018-04-23-at-8.35.25-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4b583878-9de4-47fc-b7a0-6e53b548ec00",
+              "caption": "Style transfer on an image of a cat and waves.",
+              "alt": "",
+              "width": 300,
+              "height": 500,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 633828,
+          "key": "1322d8e9-0af6-4e8f-8a23-f965c1fb2beb",
+          "title": "Image Classification & Regression Challenges",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1322d8e9-0af6-4e8f-8a23-f965c1fb2beb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633830,
+              "key": "f182c793-84d2-441e-b5d9-42296ffd0fd4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Project\n\nNext, you'll be tasked with completing an end-to-end facial keypoint detection system that learns to locate the eyes, mouth, and edges of a face in an image. This is an interesting regression challenge, and will test your knowledge of CNN architectures!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633832,
+              "key": "a149abb1-08d9-4f45-863a-a73748d9802b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b107a83_screen-shot-2018-05-31-at-3.43.06-pm/screen-shot-2018-05-31-at-3.43.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a149abb1-08d9-4f45-863a-a73748d9802b",
+              "caption": "Facial keypoint detection, example structure.",
+              "alt": "",
+              "width": 400,
+              "height": 532,
+              "instructor_notes": null
+            },
+            {
+              "id": 633831,
+              "key": "57b89c1a-66a7-496b-9230-ccc4f5997bef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Resources and a mini-project (optional)\n\nIf you complete the project, and are looking for another challenge to solve with computer vision and deep learning, check out the **Elective Section: Skin Cancer Detection** in which Sebastian Thrun walks you through his use of CNNs for detecting skin cancer. This is an ongoing filed of research and it is extremely challenging to create a *good* diagnostic model.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

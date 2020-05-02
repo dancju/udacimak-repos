@@ -1,0 +1,721 @@
+{
+  "data": {
+    "lesson": {
+      "id": 619971,
+      "key": "a505d26a-bc50-42e2-8f69-7b9c904b11cc",
+      "title": " Long Short-Term Memory Networks (LSTMs)",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Luis explains Long Short-Term Memory Networks (LSTM), and similar architectures which have the benefits of preserving long term memory.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/a505d26a-bc50-42e2-8f69-7b9c904b11cc/619971/1544453238961/+Long+Short-Term+Memory+Networks+%28LSTMs%29+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/a505d26a-bc50-42e2-8f69-7b9c904b11cc/619971/1544453235614/+Long+Short-Term+Memory+Networks+%28LSTMs%29+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 330587,
+          "key": "5b9218b2-616f-44b2-833e-a79c950e1459",
+          "title": "Intro to LSTM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5b9218b2-616f-44b2-833e-a79c950e1459",
+            "completed_at": "2020-04-01T05:29:06.453Z",
+            "last_viewed_at": "2020-04-01T05:29:13.136Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 330588,
+              "key": "8c2035bd-251f-44a2-8211-244f97e46871",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/June/59406a18_meme/meme.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8c2035bd-251f-44a2-8211-244f97e46871",
+              "caption": "Hi! It's Luis again!",
+              "alt": null,
+              "width": 200,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 330589,
+              "key": "86950a82-7390-47b4-82dd-05ff2d31d4f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Hi! It's Luis again!\n\nNow that you've gone through the **Recurrent Neural Network lesson**, I'll be teaching you what an **LSTM** is. This stands for **Long Short Term Memory Networks**, and are quite useful when our neural network needs to switch between remembering recent things, and things from long time ago. But first, I want to give you some great references to study this further. There are many posts out there about LSTMs, here are a few of my favorites:\n\n- [Chris Olah's LSTM post](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)\n- [Edwin Chen's LSTM post](http://blog.echen.me/2017/05/30/exploring-lstms/)\n* [Andrej Karpathy's lecture](https://www.youtube.com/watch?v=iX5V1WpxxkY) on RNNs and LSTMs from CS231n\n\nSo, let's dig in!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 330174,
+          "key": "099654ea-c20c-458a-9f3b-5d393fa14614",
+          "title": "RNN vs LSTM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "099654ea-c20c-458a-9f3b-5d393fa14614",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331380,
+              "key": "6651e9ba-9069-4688-bdb2-7b1d111e3780",
+              "title": "RNN Vs LSTM",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "70MgF-IwAr8",
+                "china_cdn_id": "70MgF-IwAr8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 330175,
+          "key": "70bbdf4a-5e6f-4ee7-884c-409848196529",
+          "title": "Basics of LSTM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "70bbdf4a-5e6f-4ee7-884c-409848196529",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331382,
+              "key": "2a62182f-6b03-48e8-9c79-08654ee75bca",
+              "title": "LSTM Basics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gjb68a4XsqE",
+                "china_cdn_id": "gjb68a4XsqE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 330176,
+          "key": "7f4778d7-1aba-4f7b-9824-1122a3522059",
+          "title": "Architecture of LSTM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7f4778d7-1aba-4f7b-9824-1122a3522059",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331381,
+              "key": "9cf1d046-1ff9-4dec-9ac9-5e1b09b4cf0f",
+              "title": "LSTM Architecture",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ycwthhdx8ws",
+                "china_cdn_id": "ycwthhdx8ws.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 626151,
+          "key": "fa00fbf9-af86-4d96-8056-87b1b156f7bb",
+          "title": "Notebook: LSTM Structure and Hidden State, PyTorch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fa00fbf9-af86-4d96-8056-87b1b156f7bb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626342,
+              "key": "94c66f43-3eb6-4774-90f1-9ad227c67967",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa72c4d01",
+              "pool_id": "jupyter",
+              "view_id": "a72c4d01-1056-4db5-9982-f2f2079375c6",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/LSTM Structure.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 330177,
+          "key": "afe4e11e-7f3a-4b23-b046-ab4ab90248d8",
+          "title": "The Learn Gate",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "afe4e11e-7f3a-4b23-b046-ab4ab90248d8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463707,
+              "key": "91c6ef10-053d-4879-8bdd-37c2adc479e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 331383,
+              "key": "8094be0c-4ab6-47cd-8f2e-1f5965eed29f",
+              "title": "Learn Gate",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aVHVI7ovbHY",
+                "china_cdn_id": "aVHVI7ovbHY.mp4"
+              }
+            },
+            {
+              "id": 463705,
+              "key": "100350ea-5ea0-4347-b1d5-7aa48a053d51",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The output of the _Learn Gate_ is <span class=\"mathquill\">N_ti_t</span> where:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463706,
+              "key": "c094c2f2-ae08-4387-89c2-c5dfbbb1bcfe",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e2cc3_screen-shot-2017-11-16-at-4.26.22-pm/screen-shot-2017-11-16-at-4.26.22-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c094c2f2-ae08-4387-89c2-c5dfbbb1bcfe",
+              "caption": "_Equation 1_",
+              "alt": "",
+              "width": 300,
+              "height": 130,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 330178,
+          "key": "f87835a3-9e52-4e40-a538-e553d53a0978",
+          "title": "The Forget Gate",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f87835a3-9e52-4e40-a538-e553d53a0978",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331384,
+              "key": "1e8ddd3b-b5da-47cf-a956-66b343d1b39b",
+              "title": "Forget Gate",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iWxpfxLUPSU",
+                "china_cdn_id": "iWxpfxLUPSU.mp4"
+              }
+            },
+            {
+              "id": 463708,
+              "key": "4a878c14-8ab2-4731-be54-13a267389d40",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The output of the _Forget Gate_ is <span class=\"mathquill\">LTM_{t-1}f_t</span> where:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463709,
+              "key": "ca255137-5bc1-40a3-8079-0d13d81459b8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e2d24_screen-shot-2017-11-16-at-4.27.58-pm/screen-shot-2017-11-16-at-4.27.58-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ca255137-5bc1-40a3-8079-0d13d81459b8",
+              "caption": "_Equation 2_",
+              "alt": "",
+              "width": 250,
+              "height": 80,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 330179,
+          "key": "bafc7674-799e-4d94-8ad2-c3a7ccda865f",
+          "title": "The Remember Gate",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bafc7674-799e-4d94-8ad2-c3a7ccda865f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331385,
+              "key": "cc1f9d29-a3ac-4498-bd45-1991fbf589d9",
+              "title": "Remember Gate",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0qlm86HaXuU",
+                "china_cdn_id": "0qlm86HaXuU.mp4"
+              }
+            },
+            {
+              "id": 463710,
+              "key": "e628bfc6-3dd5-4723-aa67-cbf86bf9007d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The output of the _Remember Gate_ is: \n\n<span class=\"mathquill\">LTM_{t-1}f_t+N_ti_t</span>\n\n_Equation 3_ \n\n                                                  \n\n(<span class=\"mathquill\">N_t, i_t </span> and <span class=\"mathquill\">f_t </span> are calculated in _equations 1_ and _2_)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 330180,
+          "key": "0cf688e2-19b3-4e72-848a-49eeb90bd948",
+          "title": "The Use Gate",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0cf688e2-19b3-4e72-848a-49eeb90bd948",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 463714,
+              "key": "c7e509b4-65b0-443a-a369-9cd0281e4fd1",
+              "title": "LSTM 7 Use Gate",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5Ifolm1jTdY",
+                "china_cdn_id": "5Ifolm1jTdY.mp4"
+              }
+            },
+            {
+              "id": 463712,
+              "key": "644d329e-6ffc-4e20-aaff-fda505258361",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "At 00:27 : Luis refers to obtaining New Short Term Memory instead it's **New Long Term Memory**.\n\nThe output of the _Use Gate_ is <span class=\"mathquill\">U_t V_t</span> where:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463713,
+              "key": "feeca9d4-7771-405e-b90b-2c007b0bc731",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e2e00_screen-shot-2017-11-16-at-4.31.41-pm/screen-shot-2017-11-16-at-4.31.41-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/feeca9d4-7771-405e-b90b-2c007b0bc731",
+              "caption": "_Equation 4_",
+              "alt": "",
+              "width": 250,
+              "height": 120,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 330181,
+          "key": "793c6221-30c9-40cc-b9aa-65a51696b1c7",
+          "title": "Putting it All Together",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "793c6221-30c9-40cc-b9aa-65a51696b1c7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331387,
+              "key": "fd806831-c95a-4179-adc9-81123c994523",
+              "title": "Putting It All Together",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IF8FlKW-Zo0",
+                "china_cdn_id": "IF8FlKW-Zo0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 463732,
+          "key": "86380bd6-804c-4558-9f61-607f6e9a346f",
+          "title": "Quiz",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "86380bd6-804c-4558-9f61-607f6e9a346f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 466034,
+              "key": "120ad2a1-73d4-48cd-a068-65e969b7508f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you would like to deepen your knowledge even more, go over the following [tutorial](https://deeplearning4j.org/lstm.html). Focus on the overview titled: **Long Short-Term Memory Units (LSTMs)**.\n\nIf you are feeling confident enough, skip the overview and jump right into our next question:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 463733,
+              "key": "5cc3abe1-8506-4f9f-a2b5-b535cbe043e2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0e42ce_screen-shot-2017-11-16-at-5.54.40-pm/screen-shot-2017-11-16-at-5.54.40-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5cc3abe1-8506-4f9f-a2b5-b535cbe043e2",
+              "caption": "The LSTM cell- taken form the Deep Learning tutorial",
+              "alt": "",
+              "width": 300,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 466035,
+              "key": "3ee2f6bd-7b80-4e98-a0b6-46fb31ea558f",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3ee2f6bd-7b80-4e98-a0b6-46fb31ea558f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "The illustration above is of a LSTM cell. What would be the values of the three gates in\nsituations where the cell retains information for a long period, without accepting a new input or\nproducing an output?",
+                "answers": [
+                  {
+                    "id": "a1512009595660",
+                    "text": "The inputs gate: close to 0; the forget gate: close to 1; the output gate: close to 0",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512009647357",
+                    "text": "The inputs gate: close to 1; the forget gate: close to 1; the output gate: close to 0",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1512009648312",
+                    "text": "The inputs gate: close to 0; the forget gate: close to 0; the output gate: close to 0",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1512009649229",
+                    "text": "The inputs gate: close to 0; the forget gate: close to 1; the output gate: close to 1",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 626346,
+          "key": "6e5c9e60-6d0b-4d5e-9c7e-31c367af3120",
+          "title": "Notebook: LSTM for Part of Speech Tagging",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6e5c9e60-6d0b-4d5e-9c7e-31c367af3120",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626349,
+              "key": "f9652fb5-0b2f-463b-ba72-938efa373d61",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewedcfb047",
+              "pool_id": "jupyter",
+              "view_id": "edcfb047-5c36-462c-932b-b06748f9d636",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/LSTM Training, Part of Speech Tagging.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630213,
+          "key": "3c83d092-b02e-4b31-9376-ce999d4bf233",
+          "title": "Character-Level RNN",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3c83d092-b02e-4b31-9376-ce999d4bf233",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630214,
+              "key": "2bb094cb-3b2c-43da-9421-6f439eb895e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Character-Level RNN\n\nWe will be building and training a basic character-level RNN, specifically an LSTM which reads words as a series of characters and outputs a prediction and “hidden state” at each time step, feeding its previous hidden state into each next step. Next, we'll have our team product lead, Mat, talk about what a character-level RNN can be expected to do.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630215,
+              "key": "ebb11b4f-d345-460b-8048-2b122d0ff0a9",
+              "title": "Character-Wise RNN",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "m_S2hs6-j5w",
+                "china_cdn_id": "m_S2hs6-j5w.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630216,
+          "key": "1d9343e6-79f6-4667-a74a-103bd6bf80b7",
+          "title": "Sequence Batching",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d9343e6-79f6-4667-a74a-103bd6bf80b7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630218,
+              "key": "79198bc3-c9b0-4f83-91eb-8621a7698c31",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Sequences of Data\n\nThe core reason that recurrent neural networks are exciting is that they allow us to operate over sequences of vectors: sequences in the input, the output, or in some cases, both!\n\nMost RNN's expect to see a sequence of data in a fixed batch size, much like we've seen images processed in fixed batch sizes. The batches of data affect how the hidden state of an RNN train, so next you'll learn more about batching data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630217,
+              "key": "24718a96-870a-49f1-a84b-2ae276a18904",
+              "title": "Sequence Batching",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pdSr5F-9qE0",
+                "china_cdn_id": "pdSr5F-9qE0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630219,
+          "key": "5110a070-300a-4029-9bf6-493463689a73",
+          "title": "Notebook: Character-Level LSTM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5110a070-300a-4029-9bf6-493463689a73",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630220,
+              "key": "2ec4cb85-fb73-4e8c-a082-c454be07a41b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewe1bd4412",
+              "pool_id": "jupytergpu",
+              "view_id": "e1bd4412-2df4-466a-b508-661ab2a2df4d",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 330285,
+          "key": "f9f95dcb-bb0e-43d3-841c-9277c54207cb",
+          "title": "Other architectures",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f9f95dcb-bb0e-43d3-841c-9277c54207cb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 331388,
+              "key": "31ab9354-d0a3-492b-8423-3a76b32d86c0",
+              "title": "Other Architectures",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MsxFDuYlTuQ",
+                "china_cdn_id": "MsxFDuYlTuQ.mp4"
+              }
+            },
+            {
+              "id": 463716,
+              "key": "ac307b19-ce90-4aef-826d-26508ecc2922",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Additional information about GRUs can be found in the following links:\n- [Michael Guerzhoy's post](http://www.cs.toronto.edu/~guerzhoy/321/lec/W09/rnn_gated.pdf)\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,565 @@
+{
+  "data": {
+    "lesson": {
+      "id": 502034,
+      "key": "913d992a-a36a-4741-b448-b2221d6fabf0",
+      "title": "Feature Vectors",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to describe objects and images using feature vectors.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/913d992a-a36a-4741-b448-b2221d6fabf0/502034/1544453040542/Feature+Vectors+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/913d992a-a36a-4741-b448-b2221d6fabf0/502034/1544453036650/Feature+Vectors+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 593842,
+          "key": "49603b27-7758-4fd8-8cde-4f69c344bdfc",
+          "title": "Corners and Object Detection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "49603b27-7758-4fd8-8cde-4f69c344bdfc",
+            "completed_at": "2020-04-01T05:27:53.077Z",
+            "last_viewed_at": "2020-04-02T15:41:01.983Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613571,
+              "key": "b008fbd6-a53e-41aa-a19f-54aa359bcc1c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Features alone and together\n\nNow, you've seen examples of shape-based features, like corners, that can be extracted from images, but how can we actually uses the features to detect whole objects?\n\nWell, let's think about an example we've seen of corner detection for an image of a mountain.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613572,
+              "key": "fefea9d4-8a66-4015-9aea-155e260011a3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad92b7d_screen-shot-2018-04-19-at-4.47.30-pm/screen-shot-2018-04-19-at-4.47.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fefea9d4-8a66-4015-9aea-155e260011a3",
+              "caption": "Corner detection on an image of Mt. Rainier",
+              "alt": "",
+              "width": 500,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 613573,
+              "key": "3514aa70-348c-4ccd-9d40-cc05d044461f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Say we want a way to detect this mountain in other images, too. A single corner will not be enough to identify this mountain in any other images, but, we can take a **set of features that define the shape of this mountain, group them together into an array or vector, and then use that set of features to create a mountain detector**!\n\nIn this lesson, you'll learn how to create feature vectors that can then be used to recognize different objects.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 336275,
+          "key": "b69bcf04-4105-4b7e-b255-f94990f33bad",
+          "title": "Feature Vectors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b69bcf04-4105-4b7e-b255-f94990f33bad",
+            "completed_at": "2020-04-02T18:05:16.782Z",
+            "last_viewed_at": "2020-04-02T18:05:15.909Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340331,
+              "key": "aaf52b34-7998-4227-ad46-ee7415a21b14",
+              "title": "Feature Vectors",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-PF1_MITrOw",
+                "china_cdn_id": "-PF1_MITrOw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 614023,
+          "key": "542b0c9f-1ebe-43eb-a5c3-a48a312d2a48",
+          "title": "Real-Time Feature Detection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "542b0c9f-1ebe-43eb-a5c3-a48a312d2a48",
+            "completed_at": "2020-04-02T18:06:29.932Z",
+            "last_viewed_at": "2020-04-02T18:06:29.199Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614876,
+              "key": "7c1d650c-6941-48f9-8b92-76a15aa8909f",
+              "title": "01 Realtime Feature Detection V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zPxylrXf-Gs",
+                "china_cdn_id": "zPxylrXf-Gs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 614024,
+          "key": "d56bdb19-af1b-498c-ba76-a3dc9b2f6394",
+          "title": "Introduction to ORB",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d56bdb19-af1b-498c-ba76-a3dc9b2f6394",
+            "completed_at": "2020-04-02T18:07:15.710Z",
+            "last_viewed_at": "2020-04-02T18:07:15.010Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614877,
+              "key": "89d06b1e-daae-4c8f-9fc8-0a31027e8dec",
+              "title": "02 Introduction To ORB V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WN37zcMhMas",
+                "china_cdn_id": "WN37zcMhMas.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 614025,
+          "key": "cea27135-291e-4500-a95e-b3c69839758f",
+          "title": "FAST",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cea27135-291e-4500-a95e-b3c69839758f",
+            "completed_at": "2020-04-02T18:08:25.440Z",
+            "last_viewed_at": "2020-04-02T18:08:24.681Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614878,
+              "key": "3216a011-c45b-4948-827d-d8c076f364ba",
+              "title": "03 Fast V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DCHAc6fjcVM",
+                "china_cdn_id": "DCHAc6fjcVM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 614830,
+          "key": "e9684862-0c69-494f-814d-e35a4cdaebdc",
+          "title": "Quiz: FAST Keypoints",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e9684862-0c69-494f-814d-e35a4cdaebdc",
+            "completed_at": "2020-04-02T18:10:46.917Z",
+            "last_viewed_at": "2020-04-02T18:10:46.161Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614887,
+              "key": "39f72186-1d15-48ca-8ec6-2d8f49dce408",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade7fed_screen-shot-2018-04-23-at-5.52.20-pm/screen-shot-2018-04-23-at-5.52.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/39f72186-1d15-48ca-8ec6-2d8f49dce408",
+              "caption": "Zoomed in patch around an arch in a building. Original image taken from OpenCV's documentation.",
+              "alt": "",
+              "width": 1068,
+              "height": 560,
+              "instructor_notes": null
+            },
+            {
+              "id": 614888,
+              "key": "ec227f6d-c5f1-45ec-8b14-117f4ade59f0",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ec227f6d-c5f1-45ec-8b14-117f4ade59f0",
+                "completed_at": "2020-04-02T18:11:24.179Z",
+                "last_viewed_at": "2020-04-02T18:11:54.926Z",
+                "unstructured": "{\"selected_id\":\"a1524531218955\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Do you think the pixel, p, above, will be identified as a keypoint by the FAST algorithm?",
+                "answers": [
+                  {
+                    "id": "a1524531218955",
+                    "text": "Yes",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1524531244546",
+                    "text": "No",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524531248451",
+                    "text": "Not enough information to tell",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 614026,
+          "key": "834da354-2e07-4a91-9144-846bbce991c3",
+          "title": "BRIEF",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "834da354-2e07-4a91-9144-846bbce991c3",
+            "completed_at": "2020-04-02T18:12:18.681Z",
+            "last_viewed_at": "2020-04-02T18:12:17.980Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614889,
+              "key": "8ed93670-471f-4708-b84c-4eff3185ec72",
+              "title": "04 Brief V4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EKIPEPpRciw",
+                "china_cdn_id": "EKIPEPpRciw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 614027,
+          "key": "96277336-dcce-4ce8-bd6a-02c39d2f394e",
+          "title": "Scale and Rotation Invariance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "96277336-dcce-4ce8-bd6a-02c39d2f394e",
+            "completed_at": "2020-04-02T21:51:25.511Z",
+            "last_viewed_at": "2020-04-02T21:51:24.549Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614826,
+              "key": "1e11ec5d-d644-4926-87c5-ae97ecdb0991",
+              "title": "05 Scale And RotationInvariance V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2k3T6rfjvx0",
+                "china_cdn_id": "2k3T6rfjvx0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 614907,
+          "key": "c4d27307-2a76-4212-99c1-0991a25ae3a7",
+          "title": "Notebook: Image Pyramids",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c4d27307-2a76-4212-99c1-0991a25ae3a7",
+            "completed_at": "2020-04-02T21:54:22.243Z",
+            "last_viewed_at": "2020-04-02T21:54:21.402Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614909,
+              "key": "6bb88fbc-702f-4097-85e8-be4da46208fd",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view5cc217b1",
+              "pool_id": "jupyter",
+              "view_id": "5cc217b1-1fe0-4395-bd9f-30cd97b24fcb",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Image Pyramids.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 614028,
+          "key": "e51f2cd4-1219-4866-962b-6dea0201c831",
+          "title": "Feature Matching",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e51f2cd4-1219-4866-962b-6dea0201c831",
+            "completed_at": "2020-04-02T21:56:00.331Z",
+            "last_viewed_at": "2020-04-02T21:55:59.500Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614927,
+              "key": "a9c318d8-9d09-4e9b-8144-fe09bba3604a",
+              "title": "07 Feature Matching V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RH05Wnl1-2A",
+                "china_cdn_id": "RH05Wnl1-2A.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 614029,
+          "key": "4a6bc2bf-3ca7-4fcb-9e14-cdffc690e102",
+          "title": "ORB in Video",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4a6bc2bf-3ca7-4fcb-9e14-cdffc690e102",
+            "completed_at": "2020-04-02T21:57:52.541Z",
+            "last_viewed_at": "2020-04-06T20:53:11.037Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614928,
+              "key": "0621428c-12f8-4cf4-baaa-f4c158c85e9b",
+              "title": "08 ORB In Video V2 (1)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Vzs6B1dFQC0",
+                "china_cdn_id": "Vzs6B1dFQC0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 614239,
+          "key": "d092b7aa-0f5f-4ad5-a27d-a08b1b9f8be0",
+          "title": "Notebook: Implementing ORB",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d092b7aa-0f5f-4ad5-a27d-a08b1b9f8be0",
+            "completed_at": "2020-04-06T20:55:26.499Z",
+            "last_viewed_at": "2020-04-06T22:30:22.202Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614247,
+              "key": "0664f350-ca1f-412a-b21f-c1ef12bf461e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view44b7e6a4",
+              "pool_id": "jupyter",
+              "view_id": "44b7e6a4-3a84-4165-8d8a-b4b4edb98864",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/ORB.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 336277,
+          "key": "6db6ced5-7ea3-4214-a388-62c42a1ff026",
+          "title": "HOG",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6db6ced5-7ea3-4214-a388-62c42a1ff026",
+            "completed_at": "2020-04-06T22:44:52.210Z",
+            "last_viewed_at": "2020-04-06T22:44:52.439Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340333,
+              "key": "54acc005-86f9-4c1d-9683-3516dd736bf6",
+              "title": "Histogram of Oriented Gradients",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dqe9zGtxoNM",
+                "china_cdn_id": "dqe9zGtxoNM.mp4"
+              }
+            },
+            {
+              "id": 342269,
+              "key": "fa8b561e-1242-4b55-ac08-ab7e6aa1d942",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Histograms in OpenCV\n\nHistograms are used in a variety of image analysis techniques and in creating feature vectors. Learn more about how to use histograms in OpenCV, [here](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_table_of_contents_histograms/py_table_of_contents_histograms.html)!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 614309,
+          "key": "1b9b5e05-191a-49aa-bd27-49447f3d9ccd",
+          "title": "Notebook: Implementing HOG",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1b9b5e05-191a-49aa-bd27-49447f3d9ccd",
+            "completed_at": "2020-04-06T22:47:15.796Z",
+            "last_viewed_at": "2020-04-06T22:47:15.974Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614330,
+              "key": "bfc31b01-44be-4821-adeb-f4a31ed7e324",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view64cfa0b1",
+              "pool_id": "jupyter",
+              "view_id": "64cfa0b1-b379-4a0a-b33a-e8d77d241fec",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 614914,
+          "key": "3a1c4b9a-23d9-47ed-960a-c2bce9093422",
+          "title": "Learning to Find Features",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3a1c4b9a-23d9-47ed-960a-c2bce9093422",
+            "completed_at": "2020-04-06T22:49:12.211Z",
+            "last_viewed_at": "2020-04-11T23:20:41.704Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614920,
+              "key": "49f6ed92-7090-4fa0-8262-95194aea83ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Learning to Find Features\n\nNow that you've seen a number of feature extraction techniques, you should have a good understanding of how different objects and areas in an image can be identified by their unique shapes and colors.\n\nConvolutional filters and ORB and HOG descriptors all rely on patterns of intensity to identify different shapes (like edges) and eventually whole objects (with feature vectors). You've even seen how k-means clustering can be used to group data without any labels.\n\nNext, we'll see how to define and train a Convolutional Neural Network (CNN) that *learns* to extract important features from images.\n\nGood work so far!",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

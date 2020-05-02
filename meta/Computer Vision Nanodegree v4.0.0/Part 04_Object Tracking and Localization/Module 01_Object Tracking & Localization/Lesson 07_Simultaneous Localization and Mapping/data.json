@@ -1,0 +1,1125 @@
+{
+  "data": {
+    "lesson": {
+      "id": 630740,
+      "key": "717c9878-7193-4d3c-a792-2c0858fcbec8",
+      "title": "Simultaneous Localization and Mapping",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to implement SLAM: simultaneously localize an autonomous vehicle and create a map of landmarks in an environment.\n",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/717c9878-7193-4d3c-a792-2c0858fcbec8/630740/1544452980645/Simultaneous+Localization+and+Mapping+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/717c9878-7193-4d3c-a792-2c0858fcbec8/630740/1544452976549/Simultaneous+Localization+and+Mapping+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 631436,
+          "key": "9170121b-1994-4a1b-8d66-c1edcffb58af",
+          "title": "Introduction to SLAM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9170121b-1994-4a1b-8d66-c1edcffb58af",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631505,
+              "key": "37d58eaa-0257-4c58-8126-660f8b2559d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Simultaneous Localization and Mapping\n\nIn the previous lessons, you learned all about localization methods that aim to locate a robot or car in an environment given sensor readings and motion data, and we would start out knowing close to nothing about the surrounding environment. In practice, in addition to localization, we also want to build up a model of the robot's environment so that we have an idea of objects, and landmarks that surround it *and* so that we can use this map data to ensure that we are on the right path as the robot moves through the world!\n\nIn this lesson, you'll learn how to implement SLAM (Simultaneous Localization and Mapping) for a 2 dimensional world! You’ll combine what you know about robot sensor measurements and movement to create locate a robot *and* create a map of an environment from only sensor and motion data gathered by a robot, over time. SLAM gives you a way to track the location of a robot in the world in real-time and identify the locations of landmarks such as buildings, trees, rocks, and other world features.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631466,
+              "key": "994b4827-63df-4fc8-96cd-cd7b80aa8d12",
+              "title": "02 SLAM V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UVkkDPJshgM",
+                "china_cdn_id": "UVkkDPJshgM.mp4"
+              }
+            },
+            {
+              "id": 631506,
+              "key": "5c3db4f9-2a1c-444c-9a83-ad57c03d7993",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This is an active area of research in the fields of robotics and autonomous systems, so let's get started!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 631437,
+          "key": "9b3ac002-dd60-47ba-a551-ae441917450f",
+          "title": "Quiz: Graph SLAM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9b3ac002-dd60-47ba-a551-ae441917450f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631473,
+              "key": "e2bde7de-0dad-4f84-aebc-d241893f44cb",
+              "title": "03 Graph SLAM  Quiz V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OGBC9HrVqd4",
+                "china_cdn_id": "OGBC9HrVqd4.mp4"
+              }
+            },
+            {
+              "id": 631507,
+              "key": "68a2b109-fb21-4c29-abd4-fcc889b4826a",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "68a2b109-fb21-4c29-abd4-fcc889b4826a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For a series of robot motions and landmark locations, how many constraints will there be for 6 total poses and 8 landmarks?",
+                "answers": [
+                  {
+                    "id": "a1527404907930",
+                    "text": "12",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527404978156",
+                    "text": "14",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527404981966",
+                    "text": "32",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527404987539",
+                    "text": "48",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631467,
+          "key": "1f34591d-8fb4-4c27-b9b4-187a367f56de",
+          "title": "Answer: Graph SLAM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1f34591d-8fb4-4c27-b9b4-187a367f56de",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631508,
+              "key": "63d5465f-99ef-41de-bddd-637c220fb9a7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b0a5a29_screen-shot-2018-05-27-at-12.11.20-am/screen-shot-2018-05-27-at-12.11.20-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/63d5465f-99ef-41de-bddd-637c220fb9a7",
+              "caption": "",
+              "alt": "",
+              "width": 2486,
+              "height": 1388,
+              "instructor_notes": null
+            },
+            {
+              "id": 631509,
+              "key": "adb0d681-6876-4530-9057-5c2550db0cb7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Constraints\n\nFor our 6 poses, we have:\n* 1 initial location constraint\n* 5 additional, relative motion constraints, and finally,\n* 8 relative measurement constraints for the 8 landmark locations\n\nAdding all of these up gives us a total of **14** constraints.\n\nNow, consider the image above, with 4 poses (including the initial location `x0`) and one landmark. We can use this same math and say that there are 5 total constraints for the given image, but in practice there are usually many more measurements and motions!\n\n### Implementing Constraints\n\nYou also may have noticed that not all of these constraints will provide us with meaningful information, such as in our example: we do not have a measurement between the pose `x3` and the landmark location. Next, let's see how we can represent these constraints in a **matrix** and their relationships with values in that matrix and a constraint **vector**.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 631438,
+          "key": "734c13b4-4aeb-446b-8fda-8229254f9f5a",
+          "title": "Quiz: Implementing Constraints",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "734c13b4-4aeb-446b-8fda-8229254f9f5a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631510,
+              "key": "566d2fc2-66e6-4494-92bc-b585c6ac478d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Constraint Matrices\n\nNext, you'll see how to implement relationships between robot poses and landmark locations. These matrices should look familiar from the section of linear algebra, but I also find it helpful to think of the values in these matrices as **weights** kind of like you've seen in convolutional kernels, only these weights imply how much a pose or landmark should be weighted in a set of equations.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631468,
+              "key": "eb62d465-0fa9-4e6a-b9ca-9ba2da57ce32",
+              "title": "04 Implementing Constraints  Quiz V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2V3ZF08TcX8",
+                "china_cdn_id": "2V3ZF08TcX8.mp4"
+              }
+            },
+            {
+              "id": 631511,
+              "key": "207526d3-fc19-429f-8ef4-509d034dd58d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "See below for the quiz.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631512,
+              "key": "500af4ad-6724-4da7-a90b-822f0ac3a7c6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b0a5c92_screen-shot-2018-05-27-at-12.21.26-am/screen-shot-2018-05-27-at-12.21.26-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/500af4ad-6724-4da7-a90b-822f0ac3a7c6",
+              "caption": "",
+              "alt": "",
+              "width": 1494,
+              "height": 868,
+              "instructor_notes": null
+            },
+            {
+              "id": 631513,
+              "key": "fa4a566f-3381-4e2f-942a-3f6167e0e636",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fa4a566f-3381-4e2f-942a-3f6167e0e636",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For the highlighted values in the square above, what will the new weights relating x1 and x2 be after this motion update? They start as:\n ```\n[ 1  0 ]\n[ 0  0 ]\n```\n\nWhich can also be read as:  ```\n[ 1  0 ],  [ 0  0 ] ```",
+                "answers": [
+                  {
+                    "id": "a1527405740443",
+                    "text": " ``` [ 0  1 ], [ -1  1 ] ```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527405841890",
+                    "text": " ``` [ 1  -1 ],  [ 0  0 ] ```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527405896475",
+                    "text": " ``` [ 2  -1 ], [ -1  1 ] ```",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527405957175",
+                    "text": " ``` [ 2  1 ], [ -1  1 ] ```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527405970755",
+                    "text": " ``` [ 2  1 ], [ 0  0 ] ```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527405984401",
+                    "text": " ``` [ 4 1 ], [ 1  1 ] ```",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 631514,
+              "key": "5993262d-7b5a-4558-8fea-9fee9b33bbc9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b0a5e13_screen-shot-2018-05-27-at-12.28.05-am/screen-shot-2018-05-27-at-12.28.05-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5993262d-7b5a-4558-8fea-9fee9b33bbc9",
+              "caption": "",
+              "alt": "",
+              "width": 1504,
+              "height": 870,
+              "instructor_notes": null
+            },
+            {
+              "id": 631515,
+              "key": "68a79150-5853-42ab-b415-14f446d10c7e",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "68a79150-5853-42ab-b415-14f446d10c7e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For the highlighted values in the small rectangle above, what will the new values relating x1 and x2 be after this motion update? They start as:\n ```\n[ 5 ]\n[ 0 ]\n```\n\nWhich can also be read as:  ```\n[ 5 ],  [ 0 ] ```",
+                "answers": [
+                  {
+                    "id": "a1527406107955",
+                    "text": "``` [ 0 ],  [ 5 ] ```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527406167265",
+                    "text": "``` [ 1 ],  [ 4 ] ```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527406173605",
+                    "text": "``` [ 1 ],  [ -4 ] ```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527406184865",
+                    "text": "``` [ 9 ],  [ 5 ] ```",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527406189135",
+                    "text": "``` [ 9 ],  [ -4 ] ```",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631439,
+          "key": "20890061-cf36-40ed-80b2-a5a401217a88",
+          "title": "Answer: Implementing Constraints",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "20890061-cf36-40ed-80b2-a5a401217a88",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631469,
+              "key": "2076c7cb-619b-435b-8cf1-1d25d5f71a90",
+              "title": "05 Implementing Constraints  Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uLmGavXEN64",
+                "china_cdn_id": "uLmGavXEN64.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 631440,
+          "key": "0a8f4c76-c276-42b8-ab9f-8778a4d0ee26",
+          "title": "Quiz: Adding Landmarks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0a8f4c76-c276-42b8-ab9f-8778a4d0ee26",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631470,
+              "key": "a5220568-39c8-4851-9f6f-acebd1c517b1",
+              "title": "06 Adding Landmarks  Quiz V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_JUCLtoh1CE",
+                "china_cdn_id": "_JUCLtoh1CE.mp4"
+              }
+            },
+            {
+              "id": 631516,
+              "key": "d2edfc52-8351-4882-b2de-0f16fbf5d362",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "See below for the quiz.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631517,
+              "key": "1e75bd66-ee22-42a5-8eeb-f4abaa8e07e8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b0a5f6d_screen-shot-2018-05-27-at-12.33.42-am/screen-shot-2018-05-27-at-12.33.42-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1e75bd66-ee22-42a5-8eeb-f4abaa8e07e8",
+              "caption": "",
+              "alt": "",
+              "width": 1430,
+              "height": 844,
+              "instructor_notes": null
+            },
+            {
+              "id": 631518,
+              "key": "620fb3f3-5460-4deb-b498-820de68caeeb",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "620fb3f3-5460-4deb-b498-820de68caeeb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For the two highlighted values in the column vector above, what will there new value be after this landmark relationship is added to these constraint matrices? Right now the values are 9, 0.",
+                "answers": [
+                  {
+                    "id": "a1527406454745",
+                    "text": "9, 0",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527406505674",
+                    "text": "18, 9",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527406513547",
+                    "text": "-5, 9",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527406522601",
+                    "text": "0, 9",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527406536711",
+                    "text": "-5, 4",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631441,
+          "key": "0f914005-7474-4ced-9f81-c1825a663887",
+          "title": "Answer: Adding Landmarks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0f914005-7474-4ced-9f81-c1825a663887",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631471,
+              "key": "58cc093a-117c-4874-8514-4d9a1436c088",
+              "title": "07 Adding Landmarks  Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vDfQNdUSclA",
+                "china_cdn_id": "vDfQNdUSclA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 631442,
+          "key": "f4dd6612-b1f6-4c41-8c5e-f268be665fc1",
+          "title": " Quiz: Matrix Modification",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f4dd6612-b1f6-4c41-8c5e-f268be665fc1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631472,
+              "key": "089aca44-7506-41ab-8264-74b7b1e1db05",
+              "title": "08 Matrix Modification  Quiz V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "e3zpWlM9IRg",
+                "china_cdn_id": "e3zpWlM9IRg.mp4"
+              }
+            },
+            {
+              "id": 632906,
+              "key": "5288d936-b945-44ff-b911-82c15be183e4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b0d83e0_screen-shot-2018-05-29-at-9.45.55-am/screen-shot-2018-05-29-at-9.45.55-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5288d936-b945-44ff-b911-82c15be183e4",
+              "caption": "",
+              "alt": "",
+              "width": 1604,
+              "height": 910,
+              "instructor_notes": null
+            },
+            {
+              "id": 631519,
+              "key": "aea09bd9-afa9-463c-861f-d8349847ffb6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Mark the Relationships\n\nFor this quiz, take out a piece of paper and draw these 4x4 and 4x1 grids. Draw a dot (or other mark) wherever there is a relationship between poses and/or landmarks. If nothing will change about a cell, it will remain 0 and you can leave it blank.\n\nAn example has been started in the image below, note that the initial constraint has been marked for you!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 631443,
+          "key": "238cf99d-5f29-47b6-a9f1-9980330dc6e2",
+          "title": "Answer: Matrix Modification",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "238cf99d-5f29-47b6-a9f1-9980330dc6e2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632920,
+              "key": "214b4350-1347-4fe2-bf59-d344216c5464",
+              "title": "09 Matrix Modification  Solution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ntK0oz35VPQ",
+                "china_cdn_id": "ntK0oz35VPQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 631444,
+          "key": "5fb66f3b-a07a-4ec4-8f78-754367e5a397",
+          "title": "Quiz: Untouched Fields",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5fb66f3b-a07a-4ec4-8f78-754367e5a397",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633443,
+              "key": "4ffcaed4-ff61-4896-8ad0-35b05e611160",
+              "title": "10 Untouched Fields QUIZ RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "V9qbWSqqKwg",
+                "china_cdn_id": "V9qbWSqqKwg.mp4"
+              }
+            },
+            {
+              "id": 632923,
+              "key": "1997cc92-8efb-475d-b421-4cbdc09c8061",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1997cc92-8efb-475d-b421-4cbdc09c8061",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Given the above constraints, after taking all of these measurements into account, how many of the 30 grid cells in the constraint matrices are never changed (and remain 0)? The answer should be a single integer.",
+                "matchers": [
+                  {
+                    "expression": "^\\s*8\\s*"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631445,
+          "key": "15f1d10e-2dff-4b96-bef3-9328df698aea",
+          "title": "Answer: Untouched Fields",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "15f1d10e-2dff-4b96-bef3-9328df698aea",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633444,
+              "key": "81e71468-b37e-4863-a24d-f91cb18106c6",
+              "title": "11 Untouched Fields Solution RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cKFEdCwBGqo",
+                "china_cdn_id": "cKFEdCwBGqo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 631446,
+          "key": "ae291ead-1d92-4b9f-ae22-66f395127192",
+          "title": "Quiz: Omega and Xi",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ae291ead-1d92-4b9f-ae22-66f395127192",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632924,
+              "key": "2d639e49-9bcc-4a60-96a8-7698f85365f8",
+              "title": "12 Omega And Xi QUIZ RENDER V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KqCBoAaa5jQ",
+                "china_cdn_id": "KqCBoAaa5jQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 632907,
+          "key": "6b042a97-9113-4d07-a819-80f6b7459393",
+          "title": "Notebook: Omega and Xi ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6b042a97-9113-4d07-a819-80f6b7459393",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632940,
+              "key": "584c958a-4cc7-4abd-afde-aa25812260e2",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view97b6c494",
+              "pool_id": "jupyter",
+              "view_id": "97b6c494-7f09-4ab9-831e-4e2da0e1bff2",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. Construct Omega and Xi, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 631448,
+          "key": "47240d59-c984-4bfb-9c80-3eb9fda0b2d5",
+          "title": "Quiz: Landmark Position",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "47240d59-c984-4bfb-9c80-3eb9fda0b2d5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632915,
+              "key": "e87244ef-45c2-4207-826d-b32cf6647302",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b0d898f_14-landmarkposition-v3/14-landmarkposition-v3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e87244ef-45c2-4207-826d-b32cf6647302",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 632916,
+              "key": "e12e7e63-face-4734-a100-3afd6a3ac003",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e12e7e63-face-4734-a100-3afd6a3ac003",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Given only the above constraints between poses (x0, x1, x2) and the landmark position. Where do you think the landmark is? (The answer should be a single integer value.)",
+                "matchers": [
+                  {
+                    "expression": "^\\s*7\\s*"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631449,
+          "key": "00095a7f-6594-4d92-88ee-698cae66a93c",
+          "title": "Answer: Landmark Position",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "00095a7f-6594-4d92-88ee-698cae66a93c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632918,
+              "key": "b6a42ed9-848c-4216-95c2-333533fc5f20",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b0d8c0d_screen-shot-2018-05-29-at-10.15.13-am/screen-shot-2018-05-29-at-10.15.13-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b6a42ed9-848c-4216-95c2-333533fc5f20",
+              "caption": "",
+              "alt": "",
+              "width": 1478,
+              "height": 840,
+              "instructor_notes": null
+            },
+            {
+              "id": 632919,
+              "key": "40b482ed-d910-4dcd-984e-acec5ef6fa2f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Landmark Position\n\nThe landmark, L, is at the value 7.\n\nThink about the relationship between x0 and L. x0 is at -3 and sees L a distance of 10 away: `L = -3 + 10`.\n\nAnd if we keep adding poses and sensor measurements this remains consistent. As x0 moves to x1, we get `L = -3 + 5 + 5`\n\nAnd the final loop all the way to x2: `L = -3 + 5 + 3 + 2`",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 632963,
+          "key": "ed91a1eb-af57-4ded-aebe-3b83c3f4790c",
+          "title": "Notebook: Including Sensor Measurements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ed91a1eb-af57-4ded-aebe-3b83c3f4790c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632965,
+              "key": "ef0598a7-fe73-4191-bed2-021b57d776ed",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view97b6c494",
+              "pool_id": "jupyter",
+              "view_id": "bbfa5323-b47d-46ad-8c04-d56200cba7f7",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/3. Include Landmarks, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 631450,
+          "key": "0a3eac81-4b5c-4a9c-b2b2-06c755d4d70b",
+          "title": "Quiz: Introducing Noise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0a3eac81-4b5c-4a9c-b2b2-06c755d4d70b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632941,
+              "key": "e8dcabc0-5393-4fc3-9ece-401879615c44",
+              "title": "15 Introducing Noise QUIZ RENDER V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "E_OI5DinFA0",
+                "china_cdn_id": "E_OI5DinFA0.mp4"
+              }
+            },
+            {
+              "id": 632943,
+              "key": "de5df071-9f0a-41d6-a2f5-13ff1bdfa632",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "de5df071-9f0a-41d6-a2f5-13ff1bdfa632",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For the above scenario, what is the effect on `x0`?",
+                "answers": [
+                  {
+                    "id": "a1527617265870",
+                    "text": "x0 < -3",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527617281199",
+                    "text": "x0 = -3",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527617287696",
+                    "text": "x0 > -3",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 632944,
+              "key": "6aa11b4b-5496-43ce-9f91-f5ec0caf7846",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6aa11b4b-5496-43ce-9f91-f5ec0caf7846",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For the above scenario, what is the effect on `x2`?",
+                "answers": [
+                  {
+                    "id": "a1527617342827",
+                    "text": "x2 < 5",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527617367445",
+                    "text": "x2 = 5",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527617370567",
+                    "text": "x2 > 5",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 631451,
+          "key": "1a71e2b0-6215-435b-aa1c-0a59bdc99789",
+          "title": "Answer: Introducing Noise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1a71e2b0-6215-435b-aa1c-0a59bdc99789",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632945,
+              "key": "84cb9fcd-1fad-414e-aff5-9f44f91f9ff2",
+              "title": "16 Introducing Noise Solution RENDER V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "X5kh82oke5w",
+                "china_cdn_id": "X5kh82oke5w.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 631452,
+          "key": "1566d2a7-21d5-4275-8073-576480b5c683",
+          "title": "Confident Measurements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1566d2a7-21d5-4275-8073-576480b5c683",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633445,
+              "key": "af0f3302-6cf6-47a1-b8f4-7a6af8da6745",
+              "title": "17 Confident Measurements QUIZ RENDER V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WRANOBm89I4",
+                "china_cdn_id": "WRANOBm89I4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 631453,
+          "key": "0c5e59de-5a57-4ab4-8930-1f8e7374e0e0",
+          "title": "Notebook: Confident Measurements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0c5e59de-5a57-4ab4-8930-1f8e7374e0e0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632972,
+              "key": "86210d99-0248-44e0-9c8f-aedb6b62b95e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view97b6c494",
+              "pool_id": "jupyter",
+              "view_id": "33526731-4d4f-41e9-a44f-cd10df13f8d0",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/5. Confident Measurements.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 631454,
+          "key": "3930d00b-8689-477c-9ef1-2cb7b43e74fe",
+          "title": "SLAM Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3930d00b-8689-477c-9ef1-2cb7b43e74fe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 632974,
+              "key": "e781bbcd-298d-4e6b-88ef-0264fd95efac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Implementing SLAM \n\nNow you have all the information you need to complete a 2D version of SLAM. You know how to update constraint matrices and incorporate strength and noise into a model of motion and sensor measurements.\n\nNext, you'll be given the following variable and asked to complete an implementation of SLAM for your final project, Congratulations on getting this far!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 632975,
+              "key": "8ed90ade-17df-4167-a014-8ac5a57cd20e",
+              "title": "18 Implementing SLAM QUIZ RENDER V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ptx33qEaUQQ",
+                "china_cdn_id": "Ptx33qEaUQQ.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

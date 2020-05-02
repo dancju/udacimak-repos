@@ -1,0 +1,244 @@
+{
+  "id": 1426,
+  "project_id": 467,
+  "upload_types": [
+    "zip"
+  ],
+  "file_filter_regex": "\\A(?!(((.*/)?(__MACOSX|\\.git|node_modules|bower_components|jspm_packages|\\.idea|build|.ipynb_checkpoints|\\.Trash-0|logs)(\\Z|/))))((.*\\.(css|docx|gradle|htm|html|java|js|markdown|md|pdf|py|rmd|rst|sql|swift|txt|xml|yaml|yml)\\Z)|((.*/)?(README|Readme|readme|Makefile)\\Z))",
+  "nomination_eligible": false,
+  "stand_out": "- Initialize the weights of your CNN by sampling a normal distribution or by performing Xavier initialization so that a particular input signal does not get too big or too small as the network trains. \n- In Notebook 4, create face filters that add sunglasses, mustaches, or any .png of your choice to a given face in the correct location.\n- Use the keypoints around a person's mouth to estimate the curvature of their mouth and create a smile recognition algorithm .\n- Use OpenCV's k-means clustering algorithm to extract the most common facial poses (left, middle, or right-facing, etc.).\n- Use the locations of keypoints on two faces to swap those faces.\n- Add a rotation transform to our list of transformations and use it to do data augmentation.",
+  "hide_criteria": false,
+  "created_at": "2018-01-11T13:14:42.419Z",
+  "updated_at": "2020-01-30T23:38:59.588Z",
+  "hashtag": "",
+  "max_upload_size_mb": 500,
+  "estimated_sla": null,
+  "project_assistant_enabled": false,
+  "checkmate_enabled": false,
+  "checkmate_metadata": null,
+  "available_for_cert_project": false,
+  "classroom_node_id": 502131,
+  "classroom_project_key": "122cdf4b-318a-4f69-b9fb-547c47a2a905",
+  "language": "en-us",
+  "ndkeys": [
+    "nd891-ent",
+    "nd009-cn-svip",
+    "nd009t-cn-svip",
+    "nd891",
+    "nd891-cn",
+    "nd898-ent-airbus",
+    "nd891-beta"
+  ],
+  "coursekeys": [],
+  "sections": [
+    {
+      "id": 3645,
+      "name": "Files Submitted",
+      "created_at": "2018-04-11T01:36:16.896Z",
+      "updated_at": "2018-04-11T01:36:26.504Z",
+      "deleted_at": null,
+      "position": 0,
+      "rubric_id": 1426,
+      "rubric_items": [
+        {
+          "id": 10690,
+          "section_id": 3645,
+          "passed_description": "The submission includes **models.py** and the following Jupyter notebooks, where all questions have been answered and training and visualization cells have been executed: \n**2. Define the Network Architecture.ipynb**, and \n**3. Facial Keypoint Detection, Complete Pipeline.ipynb**. \nOther files may be included, but are not necessary for grading purposes. Note that all your files will be zipped and uploaded should you submit via the provided workspace.",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T01:36:26.631Z",
+          "updated_at": "2018-04-11T01:45:09.922Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Submission Files",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 3646,
+      "name": "`models.py`",
+      "created_at": "2018-04-11T01:41:16.327Z",
+      "updated_at": "2018-04-11T01:41:40.190Z",
+      "deleted_at": null,
+      "position": 1,
+      "rubric_id": 1426,
+      "rubric_items": [
+        {
+          "id": 10691,
+          "section_id": 3646,
+          "passed_description": "Define a convolutional neural network with at least one convolutional layer, i.e. `self.conv1 = nn.Conv2d(1, 32, 5)`. The network should take in a grayscale, square image.",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T01:41:40.632Z",
+          "updated_at": "2020-04-14T05:39:15.225Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Define a CNN in `models.py`",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 3647,
+      "name": "Notebook 2: Define the Network Architecture",
+      "created_at": "2018-04-11T01:45:26.887Z",
+      "updated_at": "2018-04-11T01:58:21.322Z",
+      "deleted_at": null,
+      "position": 2,
+      "rubric_id": 1426,
+      "rubric_items": [
+        {
+          "id": 10692,
+          "section_id": 3647,
+          "passed_description": "Define a `data_transform` and apply it whenever you instantiate a DataLoader.  The composed transform should include: rescaling/cropping, normalization, and turning input images into torch Tensors. The transform should turn any input image into a normalized, square, grayscale image and then a Tensor for your model to take it as input.\n\nDepending on the complexity of the network you define, and other hyperparameters the model can take some time to train. We encourage you to start with a simple network with only 2 layers. You'll be graded based on the implementation of your models rather than accuracy.",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T01:45:42.004Z",
+          "updated_at": "2020-04-14T05:39:15.232Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Define the `data_transform` for training and test data",
+          "exceedable": false
+        },
+        {
+          "id": 10693,
+          "section_id": 3647,
+          "passed_description": "Select a loss function and optimizer for training the model. The loss and optimization functions should be appropriate for keypoint detection, which is a regression problem.",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T01:47:25.591Z",
+          "updated_at": "2018-04-11T01:51:13.107Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Define the loss and optimization functions",
+          "exceedable": false
+        },
+        {
+          "id": 10694,
+          "section_id": 3647,
+          "passed_description": "Train your CNN after defining its loss and optimization functions. You are encouraged, but not required, to visualize the loss over time/epochs by printing it out occasionally and/or plotting the loss over time. Save your best trained model.",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T01:51:13.235Z",
+          "updated_at": "2018-04-11T01:52:44.537Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 2,
+          "criteria": "Train the CNN",
+          "exceedable": false
+        },
+        {
+          "id": 10695,
+          "section_id": 3647,
+          "passed_description": "After training, all 3 questions about model architecture, choice of loss function, and choice of batch_size and epoch parameters are answered.",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T01:52:44.743Z",
+          "updated_at": "2018-04-11T01:54:02.465Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 3,
+          "criteria": "Answer questions about model architecture",
+          "exceedable": false
+        },
+        {
+          "id": 10696,
+          "section_id": 3647,
+          "passed_description": "Your CNN \"learns\" (updates the weights in its convolutional layers) to recognize features and this criteria requires that you extract at least one convolutional filter from your trained model, apply it to an image, and see what effect this filter has on an image.",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T01:54:08.018Z",
+          "updated_at": "2018-04-11T01:56:04.472Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 4,
+          "criteria": "Visualize one or more learned feature maps",
+          "exceedable": false
+        },
+        {
+          "id": 10697,
+          "section_id": 3647,
+          "passed_description": "After visualizing a feature map, answer: what do you think it detects? This answer should be informed by how a filtered image (from the criteria above) looks.",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T01:56:33.315Z",
+          "updated_at": "2018-04-11T01:57:41.075Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 5,
+          "criteria": "Answer question about feature visualization",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 3648,
+      "name": "Notebook 3: Facial Keypoint Detection",
+      "created_at": "2018-04-11T01:57:50.615Z",
+      "updated_at": "2018-04-11T01:58:21.339Z",
+      "deleted_at": null,
+      "position": 3,
+      "rubric_id": 1426,
+      "rubric_items": [
+        {
+          "id": 10699,
+          "section_id": 3648,
+          "passed_description": "Use a Haar cascade face detector to detect faces in a given image.",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T01:58:21.488Z",
+          "updated_at": "2018-04-11T01:59:43.327Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Detect faces in a given image",
+          "exceedable": false
+        },
+        {
+          "id": 10700,
+          "section_id": 3648,
+          "passed_description": "You should transform any face into a normalized, square, grayscale image and then a Tensor for your model to take in as input (similar to what the `data_transform` did in Notebook 2). ",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T01:59:43.449Z",
+          "updated_at": "2018-04-11T02:02:14.469Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Transform each detected face into an input Tensor",
+          "exceedable": false
+        },
+        {
+          "id": 10701,
+          "section_id": 3648,
+          "passed_description": "After face detection with a Haar cascade and face pre-processing, apply your trained model to each detected face, and display the predicted keypoints for each face in the image.",
+          "exceeded_description": null,
+          "created_at": "2018-04-11T02:02:18.056Z",
+          "updated_at": "2018-04-11T02:11:23.305Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 2,
+          "criteria": "Predict and display the keypoints on each face",
+          "exceedable": false
+        }
+      ]
+    }
+  ],
+  "project": {
+    "id": 467,
+    "name": "Facial Keypoint Detection",
+    "nanodegree_key": "nd891",
+    "is_cert_project": false,
+    "audit_project_id": null,
+    "hashtag": null,
+    "audit_rubric_id": 1144,
+    "entitlement_required": false,
+    "is_career": false,
+    "recruitment_family_id": 1,
+    "awaiting_review_count": 0,
+    "awaiting_review_count_by_language": {},
+    "awaiting_audit_count": 0,
+    "awaiting_quality_audit_count": 0,
+    "awaiting_training_audit_count": 0,
+    "created_at": "2018-03-28T21:07:51.651Z",
+    "updated_at": "2020-05-01T18:18:45.250Z",
+    "price": "9.0",
+    "ungradeable_price": "3.0",
+    "audit_price": "0.0"
+  }
+}

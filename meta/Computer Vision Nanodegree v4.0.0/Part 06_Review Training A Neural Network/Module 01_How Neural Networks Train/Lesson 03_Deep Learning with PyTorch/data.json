@@ -1,0 +1,581 @@
+{
+  "data": {
+    "lesson": {
+      "id": 502796,
+      "key": "e1eeafe1-2ba0-4f3d-97a0-82cbd844fdfc",
+      "title": "Deep Learning with PyTorch",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to use PyTorch for building deep learning models",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/e1eeafe1-2ba0-4f3d-97a0-82cbd844fdfc/502796/1544456222216/Deep+Learning+with+PyTorch+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/e1eeafe1-2ba0-4f3d-97a0-82cbd844fdfc/502796/1544456217438/Deep+Learning+with+PyTorch+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 568715,
+          "key": "1d0be3d3-71ca-4d44-a080-183771ab3957",
+          "title": "Instructor",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d0be3d3-71ca-4d44-a080-183771ab3957",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 568716,
+              "key": "5ac898c9-b84c-4395-a7a2-e27eb92af3fd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab040b8_screen-shot-2018-03-19-at-2.49.57-pm/screen-shot-2018-03-19-at-2.49.57-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5ac898c9-b84c-4395-a7a2-e27eb92af3fd",
+              "caption": "_Mat Leonard_",
+              "alt": "",
+              "width": 300,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 568717,
+              "key": "838b59d4-7c08-4469-9866-cdbcd7fab7ac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's put all the pieces together: Python, NumPy/pandas/Matplotlib, Linear Algebra and Neural Networks, and learn **PyTorch**. PyTorch is an open source library for Python easily used to train neural networks.\n\nPlease say hello to Mat again!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 502797,
+          "key": "4b37bd60-a936-40f7-883c-1f56df8ff315",
+          "title": "Introducing PyTorch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4b37bd60-a936-40f7-883c-1f56df8ff315",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 502798,
+              "key": "ca8fe380-b265-47de-89dd-925a7216e59a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Overview\n\nWelcome! In this lesson, you'll learn how to use PyTorch for building deep learning models. PyTorch was released in early 2017 and has been making a pretty big impact in the deep learning community. It's developed as an open source project by the [Facebook AI Research team](https://research.fb.com/category/facebook-ai-research-fair/), but is being adopted by teams everywhere in industry and academia. In my experience, it's the best framework for learning deep learning and just a delight to work with in general. By the end of this lesson, you'll have trained your own deep learning model that can classify images of cats and dogs. \n\nI'll first give you a basic introduction to PyTorch, where we'll cover **tensors** - the main data structure of PyTorch. I'll show you how to create tensors, how to do simple operations, and how tensors interact with NumPy.\n\nThen you'll learn about a module called **autograd** that PyTorch uses to calculate gradients for training neural networks. Autograd, in my opinion, is amazing. It does all the work of backpropagation for you by calculating the gradients at each operation in the network which you can then use to update the network weights.\n\nNext you'll use PyTorch to build a network and run data forward through it. After that, you'll define a loss and an optimization method to train the neural network on a dataset of handwritten digits. You'll also learn how to test that your network is able to generalize through **validation**.\n\nHowever, you'll find that your network doesn't work too well with more complex images. You'll learn how to use pre-trained networks to improve the performance of your classifier, a technique known as **transfer learning**.\n\nIf you'd like to work through the notebooks on your own machine or otherwise outside the classroom, you can find the code in [this repo](https://github.com/udacity/DL_PyTorch).\n\nSee you in the lesson!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 503730,
+          "key": "cbab7cc5-3456-4e01-8cac-09c1d2a6b750",
+          "title": "PyTorch Tensors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cbab7cc5-3456-4e01-8cac-09c1d2a6b750",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613835,
+              "key": "10b31e86-24cd-48d6-b424-d7a11205d5c0",
+              "title": "Part 1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "n4mbZYIfKb4",
+                "china_cdn_id": "n4mbZYIfKb4.mp4"
+              }
+            },
+            {
+              "id": 527693,
+              "key": "f863ad48-8d15-44e0-a3fc-2f7afc560eac",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view86e13931",
+              "pool_id": "jupyter",
+              "view_id": "86e13931-4abc-41d0-8972-88646f350797",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/DL_PyTorch/Part%201%20-%20Tensors%20in%20PyTorch.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 503734,
+          "key": "b21f290b-6ef8-4679-851b-a38245d477d8",
+          "title": "Defining Networks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b21f290b-6ef8-4679-851b-a38245d477d8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633504,
+              "key": "51c92641-3cd2-4d11-9299-1b854a65eeae",
+              "title": "Py Part 2 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "u50_ZyKqt8g",
+                "china_cdn_id": "u50_ZyKqt8g.mp4"
+              }
+            },
+            {
+              "id": 527786,
+              "key": "b1f3e0f5-5c6e-4eb9-a6d7-1b511322875a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view86e13931",
+              "pool_id": "jupyter",
+              "view_id": "5cbc3832-ed3e-4c1e-9daa-8a6820ed04a0",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/DL_PyTorch/Part%202%20-%20Neural%20Networks%20in%20PyTorch.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 503737,
+          "key": "b714c17e-9eda-4f76-a59e-a05ae8318297",
+          "title": "Training Networks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b714c17e-9eda-4f76-a59e-a05ae8318297",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633501,
+              "key": "6e60d96d-6a6b-45f1-95a3-fb30be9e2aac",
+              "title": "Py Part 3 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "u8hDj5aJK6I",
+                "china_cdn_id": "u8hDj5aJK6I.mp4"
+              }
+            },
+            {
+              "id": 527789,
+              "key": "707b55ce-d1be-4cbc-a2f1-41d26b57cc8b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view86e13931",
+              "pool_id": "jupyter",
+              "view_id": "73223437-8779-4cbb-9f2f-ce09ad26c960",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/DL_PyTorch/Part%203%20-%20Training%20Neural%20Networks.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 527787,
+          "key": "5802a10d-5ab0-46a4-bb49-97d3e10f4873",
+          "title": "Fashion-MNIST Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5802a10d-5ab0-46a4-bb49-97d3e10f4873",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613810,
+              "key": "6ddd5240-28c6-4856-bcff-f22095d5d2a7",
+              "title": "PyTorch - Part 4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AEJV_RKZ7VU",
+                "china_cdn_id": "AEJV_RKZ7VU.mp4"
+              }
+            },
+            {
+              "id": 613638,
+              "key": "f55fd872-2932-487a-b2b8-729bb1421920",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view86e13931",
+              "pool_id": "jupyter",
+              "view_id": "7e1ab9a6-44c9-4de2-87f7-3a03ec6f80b3",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/DL_PyTorch/Part%204%20-%20Fashion-MNIST%20Exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 503741,
+          "key": "43cb782f-2d8c-432e-94ef-cb8068f26042",
+          "title": "Inference & Validation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "43cb782f-2d8c-432e-94ef-cb8068f26042",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633507,
+              "key": "0ebd27e7-0fb5-46ee-aadd-a63e27746336",
+              "title": "Py Part 5 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "coBbbrGZXI0",
+                "china_cdn_id": "coBbbrGZXI0.mp4"
+              }
+            },
+            {
+              "id": 613639,
+              "key": "7d301db0-f8e0-4d15-a15f-6f8c19541489",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view86e13931",
+              "pool_id": "jupyter",
+              "view_id": "0c6fab92-d2cd-4027-b9e1-8fc202d90c1d",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/DL_PyTorch/Part%205%20-%20Inference%20and%20Validation.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 503750,
+          "key": "0b3a6f38-1e83-48b5-a45a-b09aa0cff697",
+          "title": "Saving and Loading Trained Networks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0b3a6f38-1e83-48b5-a45a-b09aa0cff697",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633508,
+              "key": "b35509c1-987a-428c-8fe8-71a8e0b8a60f",
+              "title": "Py Part 6 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HiTih59dCWQ",
+                "china_cdn_id": "HiTih59dCWQ.mp4"
+              }
+            },
+            {
+              "id": 613640,
+              "key": "5851f3fe-13f6-47ed-8d2d-f53f5bdbf16d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view86e13931",
+              "pool_id": "jupyter",
+              "view_id": "6f65f95b-29ce-4868-856e-5efe242158a0",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/DL_PyTorch/Part%206%20-%20Saving%20and%20Loading%20Models.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 503745,
+          "key": "c89c7648-75a5-405a-aec9-23b6a7ad5150",
+          "title": "Loading Data Sets with Torchvision",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c89c7648-75a5-405a-aec9-23b6a7ad5150",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613813,
+              "key": "0efd2e15-5a1f-4307-acda-a134f7da7898",
+              "title": "PyTorch - Part 7",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hFu7GTfRWks",
+                "china_cdn_id": "hFu7GTfRWks.mp4"
+              }
+            },
+            {
+              "id": 613641,
+              "key": "58ebc1c3-af39-4f49-b56b-b88317c991e3",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view86e13931",
+              "pool_id": "jupyter",
+              "view_id": "69e6eec4-07e9-404c-ac77-4a090a01e161",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/DL_PyTorch/Part%207%20-%20Loading%20Image%20Data.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 503747,
+          "key": "a5a19eea-896f-4553-bb7c-fb17b9be70ae",
+          "title": "Transfer Learning",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a5a19eea-896f-4553-bb7c-fb17b9be70ae",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633509,
+              "key": "1da77f64-dc68-4d90-8eae-7d60805b397b",
+              "title": "Py Part 8 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3eqn5sgCOsY",
+                "china_cdn_id": "3eqn5sgCOsY.mp4"
+              }
+            },
+            {
+              "id": 594568,
+              "key": "70df34d5-4694-4de7-8b82-f66d378f03a4",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view9e5839f0",
+              "pool_id": "jupytergpu",
+              "view_id": "9e5839f0-b0e4-49b9-bd43-186610910090",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": {
+                      "id": "mldatasets",
+                      "paths": [
+                        {
+                          "src": "/Cat_Dog_data",
+                          "dest": "/data/"
+                        }
+                      ]
+                    },
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/DL_PyTorch/Part%208%20-%20Transfer%20Learning.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 645677,
+          "key": "3ebe65d4-bd9d-43c1-b100-274c0d5e638e",
+          "title": "Transfer Learning Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3ebe65d4-bd9d-43c1-b100-274c0d5e638e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 645678,
+              "key": "4cce0126-cbd9-441f-845c-5148db747395",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view30828c92",
+              "pool_id": "jupytergpu",
+              "view_id": "8270c313-1b62-4029-9b6c-b5669aa6a6f5",
+              "gpu_capable": true,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Part8-TransferLearningSolution.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

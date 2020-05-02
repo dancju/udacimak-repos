@@ -1,0 +1,1543 @@
+{
+  "data": {
+    "lesson": {
+      "id": 515562,
+      "key": "7d7fb885-e36c-4d48-bf16-635c64f7fd7b",
+      "title": "Convolutional Filters and Edge Detection",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn about frequency in images and implement your own image filters for detecting edges and shapes in an image. Use a computer vision library to perform face detection.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/7d7fb885-e36c-4d48-bf16-635c64f7fd7b/515562/1544453318254/Convolutional+Filters+and+Edge+Detection+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/7d7fb885-e36c-4d48-bf16-635c64f7fd7b/515562/1544453314482/Convolutional+Filters+and+Edge+Detection+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 465684,
+          "key": "fac29dea-25ff-489f-a9e2-123ac9f7ada8",
+          "title": "Filters and Finding Edges",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fac29dea-25ff-489f-a9e2-123ac9f7ada8",
+            "completed_at": "2020-04-01T05:27:23.857Z",
+            "last_viewed_at": "2020-04-01T17:55:06.299Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 488985,
+              "key": "ba198fa3-d9ae-4f48-85bb-148c99a53e7d",
+              "title": "Nd113 C7 36 L Filters And Finding Edges V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "f3H2EtiZLOQ",
+                "china_cdn_id": "f3H2EtiZLOQ.mp4"
+              }
+            },
+            {
+              "id": 486748,
+              "key": "51aeb501-cc19-4c6b-b171-edf74cd049d6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Filters \n\nNow, we’ve seen how to use color to help isolate a desired portion of an image and even help classify an image!\n\nIn addition to taking advantage of color information, we also have knowledge about patterns of grayscale intensity in an image. Intensity is a measure of light and dark similar to brightness, and we can use this knowledge to detect other areas or objects of interest.\nFor example, you can often identify the edges of an object by looking at an abrupt change in intensity, which happens when an image changes from a very dark to light area, or vice versa.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 486749,
+              "key": "8f56c926-34e1-4bcd-b37d-5dec5919d9d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To detect these changes, you’ll be using and creating specific image filters that look at groups of pixels and detect big changes in intensity in an image. These filters produce an output that shows these edges.\n\nSo, let’s take a closer look at these filters and see when they’re useful in processing images and identifying traits of interest.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 518527,
+          "key": "e4af2ce9-3dbe-4c37-b749-0de4f31f6cb7",
+          "title": "Frequency in Images",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e4af2ce9-3dbe-4c37-b749-0de4f31f6cb7",
+            "completed_at": "2020-04-01T17:56:21.712Z",
+            "last_viewed_at": "2020-04-01T17:56:20.989Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613406,
+              "key": "105aea01-f669-473d-a2f9-33172ccde871",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Frequency in images\n\nWe have an intuition of what frequency means when it comes to sound. High-frequency is a high pitched noise, like a bird chirp or violin. And low frequency sounds are low pitch, like a deep voice or a bass drum. For sound, frequency actually refers to how fast a sound wave is oscillating; oscillations are usually measured in cycles/s ([Hz](https://en.wikipedia.org/wiki/Hertz)), and high pitches and made by high-frequency waves. Examples of low and high-frequency sound waves are pictured below. On the y-axis is amplitude, which is a measure of sound pressure that corresponds to the perceived loudness of a sound and on the x-axis is time.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613407,
+              "key": "d50e8978-11b2-433c-9710-d8a6b080c11e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad8ff83_screen-shot-2018-04-19-at-1.43.30-pm/screen-shot-2018-04-19-at-1.43.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d50e8978-11b2-433c-9710-d8a6b080c11e",
+              "caption": "(Top image) a low frequency sound wave (bottom) a high frequency sound wave.",
+              "alt": "",
+              "width": 500,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 613408,
+              "key": "1ebae8ee-dc75-4e04-84de-2b1e74915a0c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### High and low frequency\n\nSimilarly, frequency in images is a **rate of change**. But, what does it means for an image to change? Well, images change in space, and a high frequency image is one where the intensity changes a lot. And the level of brightness changes quickly from one pixel to the next. A low frequency image may be one that is relatively uniform in brightness or changes very slowly. This is easiest to see in an example.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613409,
+              "key": "6df98a2f-d552-4028-a9cd-6e869b81902e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad8ffce_screen-shot-2018-04-19-at-1.44.37-pm/screen-shot-2018-04-19-at-1.44.37-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6df98a2f-d552-4028-a9cd-6e869b81902e",
+              "caption": "High and low frequency image patterns.",
+              "alt": "",
+              "width": 500,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 613410,
+              "key": "486339eb-0586-4d12-b535-08ae26c570be",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Most images have both high-frequency and low-frequency components. In the image above, on the scarf and striped shirt, we have a high-frequency image pattern; this part changes very rapidly from one brightness to another. Higher up in this same image, we see parts of the sky and background that change very gradually, which is considered a smooth, low-frequency pattern.\n\n**High-frequency components also correspond to the edges of objects in images**, which can help us classify those objects.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615120,
+              "key": "814193a4-3a1e-4744-9142-7f777255eec8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Fourier Transform \n\nThe Fourier Transform (FT) is an important image processing tool which is used to decompose an image into its frequency components. The output of an FT represents the image in the frequency domain, while the input image is the spatial domain (x, y) equivalent. In the frequency domain image, each point represents a particular frequency contained in the spatial domain image. So, for images with a lot of high-frequency components (edges, corners, and stripes), there will be a number of points in the frequency domain at high frequency values.\n\nTake a look at how FT's are done with OpenCV, [here](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_transforms/py_fourier_transform/py_fourier_transform.html).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615122,
+              "key": "defb8d43-1f29-4ccb-855a-df72c0b3b723",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adee70e_screen-shot-2018-04-24-at-1.12.46-am/screen-shot-2018-04-24-at-1.12.46-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/defb8d43-1f29-4ccb-855a-df72c0b3b723",
+              "caption": "An image of a soccer player and the corresponding frequency domain image (right). The concentrated points in the center of the frequency domain image mean that this image has a lot of low frequency (smooth background) components.",
+              "alt": "",
+              "width": 500,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 615124,
+              "key": "1834f498-a0b3-42da-aeda-7f2129a51dc0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This decomposition is particularly interesting in the context of bandpass filters, which can isolate a certain range of frequencies and mask an image according to a low and high frequency threshold.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 615405,
+          "key": "734e007b-1950-45e9-92c4-27883cb6894e",
+          "title": "Notebook: Fourier Transforms",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "734e007b-1950-45e9-92c4-27883cb6894e",
+            "completed_at": "2020-04-01T17:58:15.388Z",
+            "last_viewed_at": "2020-04-01T17:58:14.696Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 615407,
+              "key": "fbea0126-45a5-4b40-a6c8-adc5e1b66ee5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewf4a2cece",
+              "pool_id": "jupyter",
+              "view_id": "f4a2cece-f795-47ab-b3cd-c594d46e177e",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Fourier Transform.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 615408,
+          "key": "5dbabc5c-ade1-4151-9d6a-9d2bf1405b61",
+          "title": "Quiz: Fourier Tranform Image",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5dbabc5c-ade1-4151-9d6a-9d2bf1405b61",
+            "completed_at": "2020-04-01T18:03:02.992Z",
+            "last_viewed_at": "2020-04-01T18:03:02.277Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 615415,
+              "key": "49724112-4e76-4cac-b554-46f05ddcaa48",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Fourier Transform Quiz\n\nGiven the following image of diagonal stripes, what do you think it's Fourier transform image will look like?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615409,
+              "key": "08846eae-9f64-4922-b868-83ceb45adf86",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adfad17_diag-stripes/diag-stripes.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/08846eae-9f64-4922-b868-83ceb45adf86",
+              "caption": "Image of left-leaning diagonal stripes of varying widths.",
+              "alt": "",
+              "width": 200,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 615417,
+              "key": "06694449-ee15-4f2e-9daa-09825043cb83",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5adfb098_screen-shot-2018-04-24-at-3.32.28-pm/screen-shot-2018-04-24-at-3.32.28-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/06694449-ee15-4f2e-9daa-09825043cb83",
+              "caption": "",
+              "alt": "",
+              "width": 1450,
+              "height": 800,
+              "instructor_notes": null
+            },
+            {
+              "id": 615416,
+              "key": "4c46d699-e1f2-41c1-8a4a-15e3e8a72f49",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4c46d699-e1f2-41c1-8a4a-15e3e8a72f49",
+                "completed_at": "2020-04-01T18:05:07.456Z",
+                "last_viewed_at": "2020-04-01T18:05:42.225Z",
+                "unstructured": "{\"selected_id\":\"a1524608919325\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "For the input image of diagonal stripes, which of the options A-D, do you think is the most likely Fourier transform?",
+                "answers": [
+                  {
+                    "id": "a1524608838752",
+                    "text": "A",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524608915425",
+                    "text": "B",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524608917807",
+                    "text": "C",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524608919325",
+                    "text": "D",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 339811,
+          "key": "08495a99-5ca0-4030-ba22-b0d73d57deda",
+          "title": "High-pass Filters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "08495a99-5ca0-4030-ba22-b0d73d57deda",
+            "completed_at": "2020-04-01T18:05:58.720Z",
+            "last_viewed_at": "2020-04-01T18:05:58.005Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 791830,
+              "key": "7f6cf441-317d-47cb-b61a-a56aac5e2f46",
+              "title": "High-pass Filters",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OpcFn_H2V-Q",
+                "china_cdn_id": "OpcFn_H2V-Q.mp4"
+              }
+            },
+            {
+              "id": 342241,
+              "key": "59f3a552-766d-427b-ada0-fcba39c523ca",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Edge Handling\n\nKernel convolution relies on centering a pixel and looking at it's surrounding neighbors. So, what do you do if there are no surrounding pixels like on an image corner or edge? Well, there are a number of ways to process the edges, which are listed below. It’s most common to use padding, cropping, or extension. In extension, the border pixels of an image are copied and extended far enough to result in a filtered image of the same size as the original image.\n\n**Extend**\nThe nearest border pixels are conceptually extended as far as necessary to provide values for the convolution. Corner pixels are extended in 90° wedges. Other edge pixels are extended in lines.\n\n**Padding**\nThe image is padded with a border of 0's, black pixels.\n\n**Crop**\nAny pixel in the output image which would require values from beyond the edge is skipped. This method can result in the output image being slightly smaller, with the edges having been cropped.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 805948,
+              "key": "7895cc90-9285-4291-88e4-51734687b9fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 339812,
+          "key": "bd3ed6b2-8ea5-4ac6-8a7c-6e2e875383e8",
+          "title": "Quiz: Kernels",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bd3ed6b2-8ea5-4ac6-8a7c-6e2e875383e8",
+            "completed_at": "2020-04-01T18:09:44.839Z",
+            "last_viewed_at": "2020-04-01T18:09:44.112Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 339988,
+              "key": "ce6b9121-e478-4d84-86b8-360bb2fe2a07",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kernel convolution\n\nNow that you know the basics of high-pass filters, let's see if you can choose the *best* one for a given task.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 339990,
+              "key": "7f08c4b9-1255-4c2d-84f5-d02b9ddae1a0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/June/59514912_screen-shot-2017-06-26-at-10.44.50-am/screen-shot-2017-06-26-at-10.44.50-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7f08c4b9-1255-4c2d-84f5-d02b9ddae1a0",
+              "caption": "Four different kernels",
+              "alt": null,
+              "width": 830,
+              "height": 634,
+              "instructor_notes": null
+            },
+            {
+              "id": 339989,
+              "key": "61b10ac7-7992-44cf-a495-a3cb3fd4d7cd",
+              "title": "Kernel convolution",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "61b10ac7-7992-44cf-a495-a3cb3fd4d7cd",
+                "completed_at": "2020-04-01T18:10:03.490Z",
+                "last_viewed_at": "2020-04-01T18:10:03.490Z",
+                "unstructured": "{\"selected_id\":\"a1498499251200\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Of the four kernels pictured above, which would be best for finding and enhancing **horizontal** edges and lines in an image?",
+                "answers": [
+                  {
+                    "id": "a1498499175566",
+                    "text": "a",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1498499248057",
+                    "text": "b",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1498499249712",
+                    "text": "c",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1498499251200",
+                    "text": "d",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 340234,
+          "key": "15302df7-f871-47a2-b704-cc4237c60253",
+          "title": "Creating a Filter",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "15302df7-f871-47a2-b704-cc4237c60253",
+            "completed_at": "2020-04-01T18:10:11.430Z",
+            "last_viewed_at": "2020-04-01T18:10:10.735Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340235,
+              "key": "23a650db-0d54-4971-a982-067fa5ec7ea2",
+              "title": "Creating a Filter",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VEsdTRBH3D8",
+                "china_cdn_id": "VEsdTRBH3D8.mp4"
+              }
+            },
+            {
+              "id": 342262,
+              "key": "d22ef557-2d9e-48a0-a8a4-021467b2f331",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Using a Custom Kernel\n\nIn the above example, we used OpenCV's `filter2D` function, which is documented [here](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html) and it can be used to filter images in a variety of ways, which you'll be encouraged to play around with in the code quiz that's coming up!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 339815,
+          "key": "6d172b51-9a35-434c-9226-bd3b276c6ff8",
+          "title": "Gradients and Sobel Filters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6d172b51-9a35-434c-9226-bd3b276c6ff8",
+            "completed_at": "2020-04-01T18:13:27.837Z",
+            "last_viewed_at": "2020-04-01T18:13:27.129Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340172,
+              "key": "26806fba-bddb-47ab-b6e6-ce88125d454b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Gradients\n\nGradients are a measure of intensity change in an image, and they generally mark object boundaries and changing area of light and dark. If we think back to treating images as functions, *F(x, y)*, we can think of the gradient as a derivative operation *F **’** (x, y)*. Where the derivative is a measurement of intensity change.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 340173,
+              "key": "6ce71d19-85f4-41ed-a368-91db0c3c7c6d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sobel filters\n\nThe Sobel filter is very commonly used in edge detection and in finding patterns in intensity in an image.  Applying a Sobel filter to an image is a way of **taking (an approximation) of the derivative of the image** in the <span class=\"mathquill\">x</span> or <span class=\"mathquill\">y</span> direction.  The operators for <span class=\"mathquill\">Sobel_x</span> and <span class=\"mathquill\">Sobel_y</span>, respectively, look like this: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 340174,
+              "key": "d0d05c87-9e1c-44c4-bb75-9be58b80e227",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/June/59518439_screen-shot-2017-06-26-at-2.35.11-pm/screen-shot-2017-06-26-at-2.35.11-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d0d05c87-9e1c-44c4-bb75-9be58b80e227",
+              "caption": "Sobel filters",
+              "alt": null,
+              "width": 400,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 340197,
+              "key": "86273837-4815-40de-9c43-4803c65e76e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Next, let's see an example of these two filters applied to an image of the brain.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 340199,
+              "key": "388ad946-a841-4ea4-ac75-33247c7087fe",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/June/595186d6_screen-shot-2017-06-26-at-3.11.58-pm/screen-shot-2017-06-26-at-3.11.58-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/388ad946-a841-4ea4-ac75-33247c7087fe",
+              "caption": "Sobel x and y filters (left and right) applied to an image of a brain",
+              "alt": null,
+              "width": 1144,
+              "height": 650,
+              "instructor_notes": null
+            },
+            {
+              "id": 340177,
+              "key": "547090d2-08b6-41bd-832e-9eaa5c4f3503",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### <span class=\"mathquill\">x</span> vs. <span class=\"mathquill\">y</span>\n\nIn the above images, you can see that the gradients taken in both the <span class=\"mathquill\">x</span> and the <span class=\"mathquill\">y</span> directions detect the edges of the brain and pick up other edges.  Taking the gradient in the <span class=\"mathquill\">x</span> direction emphasizes edges closer to vertical. Alternatively, taking the gradient in the <span class=\"mathquill\">y</span> direction emphasizes edges closer to horizontal.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 340193,
+              "key": "1c4d4a19-c0b3-4f8f-b682-6b02f4da90cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Magnitude\n\nSobel also detects which edges are *strongest*. This is encapsulated by the **magnitude** of the gradient; the greater the magnitude, the stronger the edge is. The magnitude, or absolute value, of the gradient is just the square root of the squares of the individual x and y gradients. For a gradient in both the <span class=\"mathquill\">x</span> **and** <span class=\"mathquill\">y</span> directions, the magnitude is the square root of the sum of the squares.\n\nabs_sobelx<span class=\"mathquill\"> = \\sqrt{(sobel_x)^2}</span>\n\nabs_sobely<span class=\"mathquill\"> = \\sqrt{(sobel_y)^2}</span>\n\nabs_sobelxy<span class=\"mathquill\"> = \\sqrt{(sobel_x)^2+(sobel_y)^2}</span>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 340195,
+              "key": "eebc711a-b11a-45c5-9b6d-fc8af7c81f6e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Direction \n\nIn many cases, it will be useful to look for edges in a particular orientation. For example, we may want to find lines that only angle upwards or point left. By calculating the direction of the image gradient in the x and y directions separately, we can determine the direction of that gradient!\n\nThe direction of the gradient is simply the inverse tangent (arctangent) of the <span class=\"mathquill\">y</span> gradient divided by the <span class=\"mathquill\">x</span> gradient:\n\n<span class=\"mathquill\">tan^{-1}{(sobel_y/sobel_x)}</span>.  ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 465691,
+          "key": "7fa63120-523f-46fb-ab49-b5c8481196a5",
+          "title": "Notebook: Finding Edges",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7fa63120-523f-46fb-ab49-b5c8481196a5",
+            "completed_at": "2020-04-01T18:28:28.685Z",
+            "last_viewed_at": "2020-04-01T18:28:27.957Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486747,
+              "key": "6a6f8d26-b6d5-4e6e-96b3-5b24cda560e5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view12329c65",
+              "pool_id": "jupyter",
+              "view_id": "12329c65-36ea-41d5-bc20-75e58f673ec5",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Finding Edges and Custom Kernels.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 339816,
+          "key": "a042950c-45c2-4486-956b-2db859badee8",
+          "title": "Low-pass Filters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a042950c-45c2-4486-956b-2db859badee8",
+            "completed_at": "2020-04-01T20:09:47.948Z",
+            "last_viewed_at": "2020-04-01T20:09:46.734Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340223,
+              "key": "803435d4-8060-4b35-bb23-82ceb7e8a0df",
+              "title": "Low-pass Filters",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jy5Be9vf2rk",
+                "china_cdn_id": "jy5Be9vf2rk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 340228,
+          "key": "adfa02d1-72f0-48ea-9bd9-ed0fad33c004",
+          "title": "Gaussian Blur",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "adfa02d1-72f0-48ea-9bd9-ed0fad33c004",
+            "completed_at": "2020-04-01T20:12:06.729Z",
+            "last_viewed_at": "2020-04-01T20:12:05.974Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340229,
+              "key": "4eb1f9eb-e6fc-4a39-bf87-8703efe7ddd5",
+              "title": "Gaussian Blur",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1tlPonqIOrU",
+                "china_cdn_id": "1tlPonqIOrU.mp4"
+              }
+            },
+            {
+              "id": 342245,
+              "key": "88ccc5ab-3d0a-4f77-bfdf-62b3a9a8f4aa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Gaussian Blur\n\nRead more about the math behind a Gaussian blur, [here](https://en.wikipedia.org/wiki/Gaussian_blur); this also shows a few more uses for blur in images.\n\nThe OpenCV function `GaussianBlur` is documented on [this page](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_filtering/py_filtering.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 593186,
+          "key": "73481472-3436-4b1b-b298-5ed4debd4550",
+          "title": "Notebook: Gaussian Blur",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "73481472-3436-4b1b-b298-5ed4debd4550",
+            "completed_at": "2020-04-01T21:20:01.789Z",
+            "last_viewed_at": "2020-04-01T21:20:01.003Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613411,
+              "key": "f49a02ba-c87e-43e3-8ea8-b558e9de53ba",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view0b3512f5",
+              "pool_id": "jupyter",
+              "view_id": "0b3512f5-4f50-47cf-ad6e-3acbca523a81",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Gaussian Blur.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 617507,
+          "key": "ac034bcb-0c6b-44a8-9abe-432d23a1a9b3",
+          "title": "Notebook: Fourier Transforms of Filters",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ac034bcb-0c6b-44a8-9abe-432d23a1a9b3",
+            "completed_at": "2020-04-01T21:21:40.091Z",
+            "last_viewed_at": "2020-04-01T21:21:39.315Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 617508,
+              "key": "67053668-edd1-4083-af8b-ad8ee0e9a45d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewc0a486c9",
+              "pool_id": "jupyter",
+              "view_id": "c0a486c9-ed58-4ca2-b7ed-a67ba8be7a8a",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Fourier Transform of Filters.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 633810,
+          "key": "ee871bfb-1818-49f8-ada6-41d5f3824aac",
+          "title": "Convolutional Layer",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ee871bfb-1818-49f8-ada6-41d5f3824aac",
+            "completed_at": "2020-04-01T21:25:00.825Z",
+            "last_viewed_at": "2020-04-01T21:25:00.016Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633811,
+              "key": "6d0fb040-0f9c-4dbf-8fd9-cbc82efdf7ef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# The Importance of Filters\n\nWhat you've just learned about different types of filters will be really important as you progress through this course, especially when you get to Convolutional Neural Networks (CNNs). CNNs are a kind of deep learning model that can learn to do things like image classification and object recognition. They keep track of spatial information and  *learn* to extract features like the edges of objects in something called a **convolutional layer**. Below you'll see an simple CNN structure, made of multiple layers, below, including this \"convolutional layer\".\n ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633812,
+              "key": "609e5b62-edd3-4728-9b56-8cb33e53e251",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b1070e4_screen-shot-2018-05-31-at-2.59.36-pm/screen-shot-2018-05-31-at-2.59.36-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/609e5b62-edd3-4728-9b56-8cb33e53e251",
+              "caption": "Layers in a CNN.",
+              "alt": "",
+              "width": 600,
+              "height": 448,
+              "instructor_notes": null
+            },
+            {
+              "id": 633816,
+              "key": "d0fc31fb-3eb1-4bfe-9a2b-8b7df014b5b3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Convolutional Layer\n\nThe convolutional layer is produced by applying a series of many different image filters, also known as convolutional kernels, to an input image. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633817,
+              "key": "8b953a3d-aa01-4664-bcb9-f2afb2587174",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b10723a_screen-shot-2018-05-31-at-3.06.07-pm/screen-shot-2018-05-31-at-3.06.07-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8b953a3d-aa01-4664-bcb9-f2afb2587174",
+              "caption": "4 kernels = 4 filtered images.",
+              "alt": "",
+              "width": 400,
+              "height": 456,
+              "instructor_notes": null
+            },
+            {
+              "id": 633818,
+              "key": "83e1bd4d-63ed-4341-8d5e-7c818d117056",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the example shown, 4 different filters produce 4 differently filtered output images. When we stack these images, we form a complete convolutional layer with a depth of 4!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633819,
+              "key": "f4faeb38-564c-4405-9625-6a79165884ed",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b10729b_screen-shot-2018-05-31-at-3.07.03-pm/screen-shot-2018-05-31-at-3.07.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f4faeb38-564c-4405-9625-6a79165884ed",
+              "caption": "A convolutional layer.",
+              "alt": "",
+              "width": 400,
+              "height": 454,
+              "instructor_notes": null
+            },
+            {
+              "id": 633821,
+              "key": "273c7149-554e-494f-89d8-af77a1366853",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Learning\n\nIn the code you've been working with, you've been setting the values of filter weights explicitly, but neural networks will actually *learn* the best filter weights as they train on a set of image data. You'll learn all about this type of neural network later in this section, but know that high-pass and low-pass filters are what define the behavior of a network like this, and you know how to code those from scratch!\n\nIn practice, you'll also find that many neural networks learn to detect the edges of images because the edges of object contain valuable information about the shape of an object.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 339818,
+          "key": "8c4af7de-3e2f-4146-85e5-93e5d6d2e5b7",
+          "title": "Canny Edge Detector",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8c4af7de-3e2f-4146-85e5-93e5d6d2e5b7",
+            "completed_at": "2020-04-01T21:45:15.427Z",
+            "last_viewed_at": "2020-04-01T21:45:14.623Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340226,
+              "key": "b2c2e521-43c1-43ae-9577-23e608e0f089",
+              "title": "Canny Edge Detection",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Nm1H2xMMS3I",
+                "china_cdn_id": "Nm1H2xMMS3I.mp4"
+              }
+            },
+            {
+              "id": 342263,
+              "key": "71e4daed-0d10-4236-b671-e7f0ece29706",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Performing Canny Edge Detection\n\nIn this example, we used the OpenCV function `Canny`, which is well-documented, [here](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_canny/py_canny.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 518530,
+          "key": "7779cb92-8025-4ee1-bdb2-1cc69b0bcd8b",
+          "title": "Notebook: Canny Edge Detection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7779cb92-8025-4ee1-bdb2-1cc69b0bcd8b",
+            "completed_at": "2020-04-01T21:48:01.595Z",
+            "last_viewed_at": "2020-04-01T21:48:00.778Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613504,
+              "key": "5f73123c-20ef-448f-aa9a-3bf439bcefdd",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewdb469609",
+              "pool_id": "jupyter",
+              "view_id": "db469609-c0b3-4ca3-b81c-c6e140282479",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Canny Edge Detection.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 593835,
+          "key": "84bbd6f3-d0be-4c23-8440-3c4649b39f9b",
+          "title": "Shape Detection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "84bbd6f3-d0be-4c23-8440-3c4649b39f9b",
+            "completed_at": "2020-04-01T21:50:52.684Z",
+            "last_viewed_at": "2020-04-01T21:50:51.864Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613505,
+              "key": "83b177b7-cdc9-4aee-ab37-bf23689a61dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Edge Detection\n\nNow that you've seen how to define and use image filters for smoothing images and detecting the edges (high-frequency) components of objects in an image, let's move one step further. The next few videos will be all about how we can use what we know about pattern recognition in images to begin identifying unique shapes and then objects. \n\n### Edges to Boundaries and Shapes\n\nWe know how to detect the edges of objects in images, but how can we begin to find unifying boundaries around objects? We'll want to be able to do this to separate and locate multiple objects in a given image. Next, we'll discuss the Hough transform, which transforms image data from the x-y coordinate system into Hough space, where you can easily identify simple boundaries like lines and circles.\n\nThe Hough transform is used in a variety of shape-recognition applications, as seen in the images pictured below. On the left you see how a Hough transform can find the edges of a phone screen and on the right you see how it's applied to an aerial image of farms (green circles in this image).\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613506,
+              "key": "e888116e-1d89-4789-a80c-a0e020e38d42",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad90d4d_screen-shot-2018-04-19-at-2.42.19-pm/screen-shot-2018-04-19-at-2.42.19-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e888116e-1d89-4789-a80c-a0e020e38d42",
+              "caption": "Hough transform applied to phone-edge and circular farm recognition.",
+              "alt": "",
+              "width": 1550,
+              "height": 850,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 336248,
+          "key": "f01b6a28-ff77-408a-90ea-6f7ad93bf41f",
+          "title": "Hough Transform",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f01b6a28-ff77-408a-90ea-6f7ad93bf41f",
+            "completed_at": "2020-04-01T21:52:52.811Z",
+            "last_viewed_at": "2020-04-01T21:52:51.998Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340271,
+              "key": "c7b34f06-eb4e-4d13-95f0-6a24e96d1aa1",
+              "title": "Hough Transform",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RIOzsF1_xuo",
+                "china_cdn_id": "RIOzsF1_xuo.mp4"
+              }
+            },
+            {
+              "id": 651030,
+              "key": "4f2117af-1afc-44b8-bdce-8feb52860abd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "It may be useful to look at [this resource](http://homepages.inf.ed.ac.uk/rbf/HIPR2/hough.htm) for an alternate explanation of the Hough transform.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 336249,
+          "key": "e4aab425-35e2-4473-8a27-e48f36cf91ae",
+          "title": "Quiz: Hough Space",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e4aab425-35e2-4473-8a27-e48f36cf91ae",
+            "completed_at": "2020-04-01T21:55:11.639Z",
+            "last_viewed_at": "2020-04-01T21:55:10.852Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 339777,
+              "key": "b12825c4-ce6e-409c-b092-407bee14c0e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Hough Transform\n\nLet's test your intuition about the Hough transform, and look at this image of a dots in a square pattern. What will this image look like after applying a Hough transform?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 339779,
+              "key": "39987db0-dc3f-4ba0-a01a-21c1b1ed0df2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/June/594db717_screen-shot-2017-06-23-at-5.41.04-pm/screen-shot-2017-06-23-at-5.41.04-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/39987db0-dc3f-4ba0-a01a-21c1b1ed0df2",
+              "caption": "Image space and potential Hough space transforms",
+              "alt": null,
+              "width": 2310,
+              "height": 1091,
+              "instructor_notes": null
+            },
+            {
+              "id": 339778,
+              "key": "7c559fbd-4de3-4378-b397-aeb89b4aa404",
+              "title": "Hough Transform",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7c559fbd-4de3-4378-b397-aeb89b4aa404",
+                "completed_at": "2020-04-01T21:56:09.476Z",
+                "last_viewed_at": "2020-04-01T21:56:09.476Z",
+                "unstructured": "{\"selected_id\":\"a1498265066100\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "What will this image look like in Hough space? Choose the correct plot.",
+                "answers": [
+                  {
+                    "id": "a1498264931678",
+                    "text": "A",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1498265064401",
+                    "text": "B",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1498265066100",
+                    "text": "C",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1498265068490",
+                    "text": "D",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 336250,
+          "key": "6465c849-4227-41c0-b0bb-6c9bca84543c",
+          "title": "Hough Line Detection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6465c849-4227-41c0-b0bb-6c9bca84543c",
+            "completed_at": "2020-04-01T21:56:25.290Z",
+            "last_viewed_at": "2020-04-01T21:56:24.468Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340272,
+              "key": "02151cc2-d40d-4b45-9431-5d4a877d008c",
+              "title": "Hough Line Detection",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "PVIUkQKbrUw",
+                "china_cdn_id": "PVIUkQKbrUw.mp4"
+              }
+            },
+            {
+              "id": 342265,
+              "key": "a662c847-acc0-48e6-9384-0b1fe4bdaefe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Hough in OpenCV\n\nThe code we used - a probabilistic Hough transform - is documented, [here](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613507,
+          "key": "1fbf2469-ea11-46ac-96b0-95e2e01647d3",
+          "title": "Notebook: Hough Detections",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1fbf2469-ea11-46ac-96b0-95e2e01647d3",
+            "completed_at": "2020-04-01T21:59:00.030Z",
+            "last_viewed_at": "2020-04-01T21:59:55.429Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613511,
+              "key": "1af7038d-7da9-44f8-bacd-456a7ec4fe5f",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewf4989db3",
+              "pool_id": "jupyter",
+              "view_id": "f4989db3-0a50-4d8e-a93a-881c5b7c7a18",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 593823,
+          "key": "55930283-c01a-4c75-b2f3-ff18cb290a54",
+          "title": "Object Recognition & Introducing Haar Cascades",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "55930283-c01a-4c75-b2f3-ff18cb290a54",
+            "completed_at": "2020-04-01T21:59:53.443Z",
+            "last_viewed_at": "2020-04-01T22:03:56.293Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613516,
+              "key": "55722790-0be4-42f8-b223-b08ab051a7d9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Feature Extraction and Object Recognition\n\nSo, you've seen how to detect consistent shapes with something like the Hough transform that transforms shapes in x-y coordinate space into intersecting lines in Hough space. You've also gotten experience programming your own image filters to perform edge detection. Filtering images is a feature extraction technique because it filters out unwanted image information and extracts unique and identfiying features like edges or corners. \n\nExtracting features and patterns in image data, using things like image filters, is the basis for many object recognition techniques. In the image below, we see a classification pipeline that is looking at an image of a banana; the image first goes through some filters and processing steps to form a feature that represent that banana, and this is used to help classify it. And we'll learn more about feature types and extraction methods in the next couple lessons.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613521,
+              "key": "bbc0eaf7-d5c7-451e-9732-e034398f1386",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad91654_screen-shot-2018-04-19-at-3.18.06-pm/screen-shot-2018-04-19-at-3.18.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bbc0eaf7-d5c7-451e-9732-e034398f1386",
+              "caption": "Training data (an image of a banana) going through some feature extraction and classification steps.",
+              "alt": "",
+              "width": 500,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 613520,
+              "key": "5375a41a-d453-4499-a0df-b4961b9336b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Haar Cascade and Face Recognition\n\nIn the next video, we'll see how we can use a feature-based classifier to do face recognition. \n\nThe method we'll be looking at is called a **Haar cascade classifier**. It's a machine learning based approach where a cascade function is trained to solve a binary classification problem: face or not-face; it trains on a lot of positive (face) and negative (not-face) images, as seen below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 613541,
+              "key": "40044c5f-dd6e-405e-81c7-93c44ea34297",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ad91b68_haar-2-gif/haar-2-gif.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/40044c5f-dd6e-405e-81c7-93c44ea34297",
+              "caption": "Images of faces and not-faces, going some feature extraction steps.",
+              "alt": "",
+              "width": 480,
+              "height": 270,
+              "instructor_notes": null
+            },
+            {
+              "id": 613519,
+              "key": "4876c4fb-4552-4ab0-814d-12fda98fba61",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "After the classifier sees an image of a face or not-face, it extracts features from it. For this, Haar filters shown in the below image are used. They are just like the image filters you've programmed! A new, filtered image is produced when the input image is convolved with one of these filters at a time.\n\n**Next, let's learn more about this algorithm and implement a face detector in code!**",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 336287,
+          "key": "a8095ab2-ae50-4807-9d5d-8c210fa7db10",
+          "title": "Haar Cascades",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a8095ab2-ae50-4807-9d5d-8c210fa7db10",
+            "completed_at": "2020-04-01T22:23:35.848Z",
+            "last_viewed_at": "2020-04-01T22:23:34.622Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340339,
+              "key": "5412e2c9-4fa7-4617-bc60-da63d432252e",
+              "title": "Haar Cascades",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vALIpxVfKRc",
+                "china_cdn_id": "vALIpxVfKRc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 593195,
+          "key": "ae4cc112-0009-4303-9fcd-e2352d95cffe",
+          "title": "Notebook: Haar Cascade Face Detection",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ae4cc112-0009-4303-9fcd-e2352d95cffe",
+            "completed_at": "2020-04-01T22:25:15.651Z",
+            "last_viewed_at": "2020-04-11T23:20:52.968Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613559,
+              "key": "76698978-b965-4501-9215-c47d1636e4f5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view32b9b951",
+              "pool_id": "jupyter",
+              "view_id": "32b9b951-574e-4ea0-9f44-ce04d7ece62f",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Haar Cascade, Face Detection.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 615069,
+          "key": "f67834ce-6a4f-44dc-8579-55ffb1ff7cab",
+          "title": "Face Recognition and the Dangers of Bias",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f67834ce-6a4f-44dc-8579-55ffb1ff7cab",
+            "completed_at": "2020-04-01T22:29:01.953Z",
+            "last_viewed_at": "2020-04-01T22:29:00.859Z",
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification",
+                "uri": "https://video.udacity-data.com/topher/2018/June/5b2c01ba_gender-shades-paper/gender-shades-paper.pdf"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 615085,
+              "key": "db1d9f9c-7322-4dd6-8995-5732b9bcb40f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Algorithms with Human and Data Bias\n\nMost of the models you've seen and/or programmed, rely on large sets of data to train and learn. When you approach a challenge, it's up to you as a programmer, to define functions and a model for classifying image data. Programmers and data define how classification algorithms like face recognition work.\n\nIt's important to note that both data and humans come with their own biases, with unevenly distributed image types or personal preferences, respectively. And it's important to note that these biases propagate into the creation of algorithms. If we consider face recognition, think about the case in which a model like a Haar Cascade is trained on faces that are mainly white and female; this network will then excel at detecting those kinds of faces but not others. If this model is meant for general face recognition, then the biased data has ended up creating a biased model, and algorithms that do not reflect the diversity of the users it aims to serve is not very useful at all.\n\nThe computer scientist, [Joy Buolamwini](https://www.media.mit.edu/people/joyab/overview/), based out of the MIT Media Lab, has studied bias in decision-making algorithms, and her work has revealed some of the extent of this problem. One study looked at the error rates of facial recognition programs for women by shades of skin color; results pictured below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 615087,
+              "key": "0bb9af14-6221-49ef-9614-bd0792b7f262",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5aded3cb_screen-shot-2018-04-23-at-11.34.35-pm/screen-shot-2018-04-23-at-11.34.35-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0bb9af14-6221-49ef-9614-bd0792b7f262",
+              "caption": "Image of facial recognition error rates, taken from MIT Media Lab's [gender shades website](http://gendershades.org/index.html).",
+              "alt": "",
+              "width": 600,
+              "height": 500,
+              "instructor_notes": null
+            },
+            {
+              "id": 663321,
+              "key": "14035f73-32d8-433f-835a-8eea1406911e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Analyzing Fairness\n\nIdentifying the fairness of a given algorithm is an active area of research. Here is an example of using a GAN (Generative Adversarial Network) to help a classifier detect bias and correct it's predictions: [Implementing a fair classifier in PyTorch.](https://blog.godatadriven.com/fairness-in-pytorch) And another paper that shows how \"fair\" [credit loans affect diff populations](http://bair.berkeley.edu/blog/2018/05/17/delayed-impact/) (with helpful, interactive plots). I think that as computer vision becomes more ubiquitous, this area of research will become more and more important, and it is worth reading about and educating yourself!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 663332,
+              "key": "89c53e97-474e-4eea-8368-4f2514567ad4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/June/5b2c0d52_screen-shot-2018-06-21-at-1.39.47-pm/screen-shot-2018-06-21-at-1.39.47-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/89c53e97-474e-4eea-8368-4f2514567ad4",
+              "caption": "From credit loan paper, Delayed Impact of Fair Machine Learning.",
+              "alt": "",
+              "width": 500,
+              "height": 1347,
+              "instructor_notes": null
+            },
+            {
+              "id": 615092,
+              "key": "8b3bf1ca-6454-4b38-a500-60976872c2bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Working to Eliminate Bias\n\nBiased results are the effect of bias in programmers and in data, and we can work to change this. We must be critical of our own work, critical of what we read, and develop methods for testing such algorithms. As you learn more about AI and deep learning models, you'll learn some methods for visualizing what a neural network has learned, and you're encouraged to look at your data and make sure that it is balanced; data is the foundation for any machine and deep learning model. It's also good practice to test any algorithm for bias; as you develop deep learning models, it's a good idea to test how they respond to a variety of challenges and see if they have any weaknesses.\n\nIf you'd like to learn about eliminating bias in AI, check out this [Harvard Business Review article](https://hbr.org/2018/02/can-we-keep-our-biases-from-creeping-into-ai?utm_campaign=hbr&utm_source=twitter&utm_medium=social). I'd also recommend listening to Joy Buolamwini's [TED talk](https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms) and reading the original Gender Shades paper.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 663323,
+              "key": "f358fb2c-4bfb-4b8a-b352-2ea45587e974",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Further Reading\n\nIf you are really curious about bias in algorithms, there are also some excellent books on ethics in software engineering: \n* Weapons of Math Destruction, Cathy O'Neil \n* Algorithms of Oppression, Safiya Umoja Noble\n* Automating Inequality, Virginia Eubanks\n* Technically Wrong, Sara Wachter-Boettchera",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 593188,
+          "key": "aa15ed88-7226-4340-8d8b-92f464286b7a",
+          "title": "Beyond Edges, Selecting Different Features",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aa15ed88-7226-4340-8d8b-92f464286b7a",
+            "completed_at": "2020-04-01T22:57:15.587Z",
+            "last_viewed_at": "2020-04-11T23:20:48.336Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633825,
+              "key": "3c986500-9462-49f0-a16b-6d19411a290e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Features\n\nFeatures and feature extraction is the basis for many computer vision applications. The idea is that any set of data, such as a set of images, can be represented by a smaller, simpler model made of a combination of visual features: a few colors and shapes. (This is true with one exception: completely random data!)\n\nIf you can find a good model for any set of data, then you can start to find ways to identify patterns in data based on similarities and differences in the features in an image. This is especially important when we get to deep learning models for image classification, which you'll see soon.\n\nBelow is an example of a simple model for rainbow colors. Each of the colors below is actually a combination of a smaller set of color features: red, yellow, and blue. For example, purple = red + blue. And these simple features give us a way to represent a variety of colors and classify them accoring to their red, yellow, and blue components!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633826,
+              "key": "b6788332-b8be-4c7c-a068-f5f29d0f4012",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b1077d4_screen-shot-2018-05-31-at-3.31.32-pm/screen-shot-2018-05-31-at-3.31.32-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b6788332-b8be-4c7c-a068-f5f29d0f4012",
+              "caption": "Color classification model.",
+              "alt": "",
+              "width": 400,
+              "height": 614,
+              "instructor_notes": null
+            },
+            {
+              "id": 593191,
+              "key": "c374e131-12f2-4a6b-b0ff-32e7aad225bb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Types of Features\nWe've described features as measurable pieces of data in an image that help distinguish between different classes of images. \n\nThere are two main types of features: \n1. Color-based and \n2. Shape-based\n\nBoth of these are useful in different cases and they are often powerful together. We know that color is all you need should you want to classify day/night images or implement a green screen. Let's look at another example: say I wanted to classify a stop sign vs. any other traffic sign. Stop signs are *supposed* to stand out in color and shape! A stop sign is an octagon (it has 8 flat sides) and it is very red. It's red color is often enough to distinguish it, but the sign can be obscured by trees or other artifacts and the shape ends up being important, too.\n\nAs a different example, say I want to detect a face and perform facial recognition. I'll first want to detect a face in a given image; this means at least recognizing the boundaries and some features on that face, which are all determined by shape. Specifically, I'll want to identify the edges of the face and the eyes and mouth on that face, so that I can identify the face and recognize it. Color is not very useful in this case, but shape is critical. \n\n### A note on shape\n\nEdges are one of the simplest shapes that you can detect; edges often define the boundaries between objects but they may not provide enough information to find and identify small features on those objects (such as eyes on a face) and in the next videos, we'll look at methods for finding even more complex shapes.\n\nAs you continue learning, keep in mind that selecting the right feature is an important computer vision task.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633823,
+              "key": "6cf59730-0008-4363-9855-b97f01de9231",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Example Application: Lane Finding\n\nYou've already had some practice with this concept, but you can use feature/edge detection and color transforms to very effectively detect lane lines on a road. If you'd like to learn more about this technique, I suggest checking out [this blog post](https://towardsdatascience.com/teaching-cars-to-see-advanced-lane-detection-using-computer-vision-87a01de0424f).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633824,
+              "key": "e338ce9a-6dd8-44f2-8b9c-e2c5b29b03a5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b1075c2_screen-shot-2018-05-31-at-3.21.06-pm/screen-shot-2018-05-31-at-3.21.06-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e338ce9a-6dd8-44f2-8b9c-e2c5b29b03a5",
+              "caption": "Identifying edges and lane markings on a road.",
+              "alt": "",
+              "width": 1146,
+              "height": 308,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

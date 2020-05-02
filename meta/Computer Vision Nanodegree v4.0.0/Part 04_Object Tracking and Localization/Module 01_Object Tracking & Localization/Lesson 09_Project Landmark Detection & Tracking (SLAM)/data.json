@@ -1,0 +1,144 @@
+{
+  "data": {
+    "lesson": {
+      "id": 502145,
+      "key": "986f4d00-e51f-485b-bdd3-c71c04130fca",
+      "title": "Project: Landmark Detection & Tracking (SLAM)",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Implement SLAM, a robust method for tracking an object over time and mapping out its surrounding environment, using elements of probability, motion models, and linear algebra.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": null,
+      "project": {
+        "key": "f232f286-353b-45d9-9fe5-715c7cb0ab34",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Landmark Detection & Tracking (SLAM)",
+        "description": "# Landmark Detection & Robot Tracking (SLAM)\n\n## Project Overview\n\nIn this project, you'll implement SLAM (Simultaneous Localization and Mapping) for a 2 dimensional world! You’ll combine what you know about robot sensor measurements and movement to create a map of an environment from only sensor and motion data gathered by a robot, over time. SLAM gives you a way to track the location of a robot in the world in real-time and identify the locations of landmarks such as buildings, trees, rocks, and other world features. This is an active area of research in the fields of robotics and autonomous systems. \n\n## Project Instructions\n\nThe project will be broken up into three Python notebooks; the first two are for exploration of provided code, and a review of SLAM architectures, **only Notebook 3 and the `robot_class.py` file will be graded**:\n\n__Notebook 1__ : Robot Moving and Sensing\n\n__Notebook 2__ : Omega and Xi, Constraints \n\n__Notebook 3__ : Landmark Detection and Tracking \n\nYou can find these notebooks in the Udacity workspace that appears in the concept titled **Project: Landmark Detection and Tracking**.  This workspace provides a Jupyter notebook server directly in your browser. \n\nYou can also choose to complete this project in your own local repository, and you can find all of the project files in this [GitHub repository](https://github.com/udacity/P3_Implement_SLAM).  Note that while you are _allowed_ to complete this project on your local computer, you are strongly encouraged to complete the project from the workspace.\n\n## Evaluation\n\nYour project will be reviewed by a Udacity reviewer against the  Landmark Detection & Tracking project [rubric](https://review.udacity.com/#!/rubrics/1428/view). Review this rubric thoroughly, and self-evaluate your project before submission. All criteria found in the rubric must meet specifications for you to pass.\n\n## Zip file submission\n\nIf you are submitting this project from a workspace or as a zip file, it is recommended  that you follow the instructions in the final workspace notebook to compress your project files and make sure your submission is not too large. You are _only_ graded on Notebook 3, and the file `robot_class.py`.\n\n## Project Submission Checklist\n\n**Before submitting your project, please review and confirm the following items.** \n<input type=\"checkbox\"> I am confident all rubric items have been met and my project will pass as submitted. \n<input type=\"checkbox\"> Project builds correctly without errors and runs.\n<input type=\"checkbox\"> All required functionality exists and my project behaves as expected per the project's specifications.\n\n**Once you have checked all these items, you are ready to submit!**\n\n## Ready to submit your project?\n\nClick on the \"Submit Project\" button and follow the instructions to submit!\n\n",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "1428",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": {
+          "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2018/May/5afb9fa9_robot-localization-long/robot-localization-long.png",
+          "width": 1654,
+          "height": 800
+        }
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 628219,
+          "key": "537c47ec-e19f-4b75-b7a0-5ac0e0543f29",
+          "title": "Project Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "537c47ec-e19f-4b75-b7a0-5ac0e0543f29",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 628220,
+              "key": "cf31340d-582a-41c3-bf2c-eb20a68673d3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Landmark Detection & Robot Tracking (SLAM)\n\n## Project Overview\n\nIn this project, you'll implement SLAM (Simultaneous Localization and Mapping) for a 2 dimensional world! You’ll combine what you know about robot sensor measurements and movement to create a map of an environment from only sensor and motion data gathered by a robot, over time. SLAM gives you a way to track the location of a robot in the world in real-time and identify the locations of landmarks such as buildings, trees, rocks, and other world features. This is an active area of research in the fields of robotics and autonomous systems. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628223,
+              "key": "f656669e-3984-4aa9-a8a7-903d8dc59f82",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "*Below is an example of a 2D robot world with landmarks (purple x's) and the robot (a red 'o') located and found using only sensor and motion data collected by that robot. This is just one example for a 50x50 grid world; in your work you will likely generate a variety of these maps.*",
+              "instructor_notes": ""
+            },
+            {
+              "id": 628222,
+              "key": "a5aceb17-242a-484e-a842-4224a902eef6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5afc90d5_robot-world/robot-world.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a5aceb17-242a-484e-a842-4224a902eef6",
+              "caption": "Example of SLAM output (estimated final robot pose and landmark locations).",
+              "alt": "",
+              "width": 500,
+              "height": 1094,
+              "instructor_notes": null
+            },
+            {
+              "id": 628221,
+              "key": "ecfd0cf5-4d9a-4390-99b3-b8aadb221ca1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Instructions\n\nThe project will be broken up into three Python notebooks; the first two are for exploration of provided code, and a review of SLAM architectures, **only Notebook 3 and the `robot_class.py` file will be graded**:\n\n__Notebook 1__ : Robot Moving and Sensing\n\n__Notebook 2__ : Omega and Xi, Constraints \n\n__Notebook 3__ : Landmark Detection and Tracking \n\nYou can find these notebooks in the Udacity workspace that appears in the concept titled **Project: Landmark Detection & Tracking**.  This workspace provides a Jupyter notebook server directly in your browser. \n\nYou can also choose to complete this project in your own local repository, and you can find all of the project files in this [GitHub repository](https://github.com/udacity/P3_Implement_SLAM).  Note that while you are _allowed_ to complete this project on your local computer, you are strongly encouraged to complete the project from the workspace.\n\n## Evaluation\n\nYour project will be reviewed by a Udacity reviewer against the  Landmark Detection & Tracking project [rubric](https://review.udacity.com/#!/rubrics/1428/view). Review this rubric thoroughly, and self-evaluate your project before submission. All criteria found in the rubric must meet specifications for you to pass.\n\n## Zip file submission\n\nIf you are submitting this project from a workspace or as a zip file, it is recommended  that you follow the instructions in the final workspace notebook to compress your project files and make sure your submission is not too large. You are _only_ graded on Notebook 3, and the file `robot_class.py`.\n\n## Ready to submit your project?\n\nClick on the \"Submit Project\" button and follow the instructions to submit!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 502147,
+          "key": "658feca8-bae8-41b6-9f66-1f886e07b290",
+          "title": "Project: Landmark Detection & Tracking (SLAM)",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "658feca8-bae8-41b6-9f66-1f886e07b290",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 628226,
+              "key": "f3c8127c-d5cd-4a3c-9c94-6828c1a0a1a8",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewc85499bf",
+              "pool_id": "jupyter",
+              "view_id": "c85499bf-46ad-4ebe-932f-aa1be3d14fa5",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

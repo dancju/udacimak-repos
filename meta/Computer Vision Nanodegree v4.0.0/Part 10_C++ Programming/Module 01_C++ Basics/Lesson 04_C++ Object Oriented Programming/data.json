@@ -1,0 +1,1715 @@
+{
+  "data": {
+    "lesson": {
+      "id": 384264,
+      "key": "4cec0032-ffff-4457-a567-b49ea779dde6",
+      "title": "C++ Object Oriented Programming",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn the syntax of C++ object oriented programming as well as some of the additional OOP features provided by the language.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/4cec0032-ffff-4457-a567-b49ea779dde6/384264/1587647972563/C%2B%2B+Object+Oriented+Programming+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/4cec0032-ffff-4457-a567-b49ea779dde6/384264/1587647970198/C%2B%2B+Object+Oriented+Programming+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 393857,
+          "key": "f7b62f14-b4af-4640-a17c-a84dc3eb037f",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f7b62f14-b4af-4640-a17c-a84dc3eb037f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 418869,
+              "key": "4045fdaf-1cbb-406a-a01b-8549ab85643f",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4xHI5LFX-cQ",
+                "china_cdn_id": "4xHI5LFX-cQ.mp4"
+              }
+            },
+            {
+              "id": 495764,
+              "key": "085e63e5-a24b-4cb3-be4a-bf28c22eac2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Overview\n\nIn this lesson, you are going to learn how to write classes in C++. The lesson assumes a basic knowledge of object oriented programming as taught in the \"Working with Matrices - State and Object Oriented Programming\" lessons from earlier in the nanodegree program.\n\nThe first part of the lesson is organized with a top down approach. We are going to show you a Python class and then compare the same class in C++. Once you get a feel for C++ object oriented syntax, you'll then code your own C++ class step by step.\n\nKeep in mind that the fundamentals of object oriented programming remain the same whether you are using Python or C++. In both Python and C++, you define class variables and class methods; the difference is mostly in the syntax. And there are a few aspects of C++ that Python does not have as you'll find out in this lesson.\n\nContinue on to get started!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 384324,
+          "key": "9caf1e88-6301-4201-b5fa-a10b85e412a0",
+          "title": "Python vs. C++",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9caf1e88-6301-4201-b5fa-a10b85e412a0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 495966,
+              "key": "6c60b841-260e-450a-a240-922389516314",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# How the Lesson is Organized\n\nThis lesson has two parts. In the first part, we show you a complete Python class and its equivalent in C++. You'll get an overview of what C++ classes look like and how to use them.\n\nThen, in the second part, you'll code your own C++ class building up the code piece by piece. By the end of the lesson, you should feel comfortable reading C++ object oriented code and writing a basic class; however, remember that learning a new programming language takes practice. And C++ is  often considered a language that takes [years to master](https://www.quora.com/How-long-does-it-take-to-learn-C++-coding-on-an-average-level).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 403934,
+              "key": "84c4eef4-264d-47ba-8e03-77b8a3b79f81",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Example: Python Class\nLet's go directly to an example. Below is the code for a Python class called 'Gaussian'.\n\nYou learned about Gaussian distributions and saw the Gaussian equation earlier in the nanodegree. This class stores the values for the standard deviation and mean. The class also has methods for calculating the probability density function, the sum of two gaussians, and the product of two gaussians.\n\nThe class contains two class variables called `mu`, which is the average and `sigma2`, which is the variance. \n\nHere is a summary of the three methods contained in the class:\n1. `evaluate`, which represents the probability density function: <span class=\"mathquill\">\\LARGE\\frac{1}{\\sqrt{2\\pi\\sigma^2}}e^{-\\frac{1}{2}\\frac{(x - \\mu)^2}{\\sigma^2}}</span>\n\nIn this formula <span class=\"mathquill\">\\sigma^2</span> is the variance.\n2. `multiply`, which multiplies two independent Gaussian distributions together\n3. `add`, which adds two independent Gaussian distributions together",
+              "instructor_notes": ""
+            },
+            {
+              "id": 495765,
+              "key": "eecc2969-3a62-4a33-8bbc-0fde409b38d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Read through the code so that you understand how the class works.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 384325,
+              "key": "6be383c1-f188-4d81-8d53-4065bc34e55f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Python Code for a Gaussian Class\n\n```python\nclass Gaussian():\n    \n    def __init__(self, mean, variance):\n        self.mu = mean\n        self.sigma2 = variance\n    \n    def evaluate(self, x):\n        coefficient = 1.0 / sqrt(2.0 * pi * self.sigma2)\n        exponential = exp(-0.5 * (x-self.mu) ** 2 / self.sigma2)\n        return coefficient * exponential\n        \n    def multiply(self, other):\n        # calculate new mean\n        denominator = self.sigma2 + other.sigma2\n        numerator = self.mu * other.sigma2 + other.mu * self.sigma2\n        new_mu = numerator / denominator\n        \n        # calculate new variance\n        new_var = 1.0 / ( (1.0 / self.sigma2) + (1.0 / other.sigma2) )\n        \n        # generate new gaussian\n        return Gaussian(new_mu, new_var)\n\n    def add(self, other):\n        new_mu = self.mu + other.mu\n        new_sigma2 = self.sigma2 + other.sigma2\n\n        return Gaussian(new_mu, new_sigma2)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 403941,
+              "key": "28c54bbf-230d-4820-a2ac-453016e41831",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Example: C++ Class",
+              "instructor_notes": ""
+            },
+            {
+              "id": 403935,
+              "key": "20a59a9c-ee56-4869-ac4d-8c599220155e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, you will take a look at an equivalent class in C++. Like in other cases you have already seen, the C++ code is longer and has aspects that the Python version did not have. It takes more time and practice to learn object oriented programming in C++ compared to Python.\n\nFor example, you will notice that in the C++ class, all of its variables and all of its functions need to be declared first before writing the implementation. The class also has a part labeled `private` and another part labeled `public`. Furthermore, the C++ class includes extra functions like `setMu`, `setSigma2`,  `getMu`, and `getSigma2`.\n\nYou are going to learn about all of these differences in this lesson. For now, read through the code and see if you can figure out what the *set* functions and *get* functions do. Then answer the quiz at the bottom of the page.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 384326,
+              "key": "65679a2b-1814-45ca-b28c-fb4546613fbf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\n#include <math.h>\n\nclass Gaussian\n{\n    // private variable declaration\n\tprivate:\n\t\tfloat mu, sigma2;\n\n    // public variable and function declarations\n\tpublic:\n\t\t\n\t\t// constructor functions\n\t\tGaussian ();\n\t\tGaussian (float, float);\n\n\t\t// change value of average and standard deviation \n\t\tvoid setMu(float);\n\t\tvoid setSigma2(float);\n\n\t\t// output value of average and standard deviation\n\t\tfloat getMu();\n\t\tfloat getSigma2();\n\n\t\t// functions to evaluate \n\t\tfloat evaluate (float);\n\t\tGaussian multiply (Gaussian);\n\t\tGaussian add (Gaussian);\n};\n\n// constructor function definitions\nGaussian::Gaussian() {\n\tmu = 0;\n\tsigma2 = 1;\t\n}\n\nGaussian::Gaussian (float average, float sigma) {\n\tmu = average;\n\tsigma2 = sigma;\n}\n\n// set function definitions\nvoid Gaussian::setMu (float average) {\n\tmu = average;\n}\n\nvoid Gaussian::setSigma2 (float sigma) {\n\tsigma2 = sigma;\n}\n\n// get function definitions\nfloat Gaussian::getMu () {\n\treturn mu;\n}\n\nfloat Gaussian::getSigma2() {\n\treturn sigma2;\n}\n\n// evaluate function definition\nfloat Gaussian::evaluate(float x) {\n\tfloat coefficient;\n\tfloat exponential;\n\n\tcoefficient = 1.0 / sqrt (2.0 * M_PI * sigma2);\n\texponential = exp ( pow (-0.5 * (x - mu), 2) / sigma2 );\n\treturn coefficient * exponential;\n}\n\n// multiply function definition\nGaussian Gaussian::multiply(Gaussian other) {\n\tfloat denominator;\n\tfloat numerator;\n\tfloat new_mu;\n\tfloat new_var;\n\n\tdenominator = sigma2 + other.getSigma2();\n\tnumerator = mu * other.getSigma2() + other.getMu() * sigma2;\n\tnew_mu = numerator / denominator;\n\n\tnew_var = 1.0 / ( (1.0 / sigma2) + (1.0 / other.sigma2) );\n\n\treturn Gaussian(new_mu, new_var);\n}\n\n// add function definition\nGaussian Gaussian::add(Gaussian other) {\n\n\tfloat new_mu;\n\tfloat new_sigma2;\n\n\tnew_mu = mu + other.getMu();\n\tnew_sigma2 = sigma2 + other.getSigma2();\n\n\treturn Gaussian(new_mu, new_sigma2);\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 403939,
+              "key": "d4360202-8534-4d61-befd-a02de37d7f4f",
+              "title": "Set Functions",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d4360202-8534-4d61-befd-a02de37d7f4f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What do the set functions do in the C++ Gaussian code?",
+                "answers": [
+                  {
+                    "id": "a1505925997443",
+                    "text": "Sets the probability density function values",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505926014999",
+                    "text": "Allow for changing the values of the mu and sigma2 variables",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505926015582",
+                    "text": "Output the values of the mu and sigma2 variables",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505926016294",
+                    "text": "There's no way to tell",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 425309,
+          "key": "254b9bbe-d0ee-4125-adcf-6f69800159e9",
+          "title": "Why use Object Oriented Programming?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "254b9bbe-d0ee-4125-adcf-6f69800159e9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 425310,
+              "key": "7313c629-1124-4a40-b7bf-ac917568017f",
+              "title": "Why Use Object Oriented Programming",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "G2KzZfNu9Ak",
+                "china_cdn_id": "G2KzZfNu9Ak.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 384265,
+          "key": "7ada7d48-5a71-4445-8a2b-212ee762ddd2",
+          "title": "Using a Class in C++ [Demo]",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7ada7d48-5a71-4445-8a2b-212ee762ddd2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 495757,
+              "key": "f0499cc4-a5ce-4aca-a0e0-9dc28c4b43e0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Using a Class in a Program\n\nLet's start with the big picture. We've written code below with a fully implemented class and a main.cpp file that uses the class.  Even though you might not be familiar with some of the C++ syntax, your knowledge of Python object oriented programming should help you understand what the C++ code is doing.\n\nStudy the code and then run the code as instructed below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 403955,
+              "key": "48a9cc9f-5598-4e77-b35a-cf57cd573772",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Main.cpp and Gaussian.cpp\nAt the bottom of the page, you'll find a main.cpp file and a gaussian.cpp file so that you can see how they work together.\n\nThe gaussian.cpp file contains the class definition including all the variables and functions that the Gaussian class needs. You would make a similar file in Python probably called gaussian.py.\n\nThe main.cpp file uses the class to run some calculations. You'll see one important difference between C++ and Python. In C++, you need to declare your class before you can use the class. Both main.cpp and gaussian.cpp have the same class declaration at the top of their files:\n\n```c++\nclass Gaussian\n{\n\tprivate:\n\t\tfloat mu, sigma2;\n\n\tpublic:\n\t\t\n\t\t// constructor functions\n\t\tGaussian ();\n\t\tGaussian (float, float);\n\n\t\t// change value of average and standard deviation \n\t\tvoid setMu(float);\n\t\tvoid setSigma2(float);\n\n\t\t// output value of average and standard deviation\n\t\tfloat getMu();\n\t\tfloat getSigma2();\n\n\t\t// functions to evaluate \n\t\tfloat evaluate (float);\n\t\tGaussian mul (Gaussian);\n\t\tGaussian add (Gaussian);\n};\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 403957,
+              "key": "88768f8d-2697-48b6-a81a-aaa66fccede2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Below are all of the files that would be used in this code so that you can see the relationship between the main.cpp and gaussian.cpp \n\nYou can't see it on the backend, but this program is first being compiled via the command:\n```\ng++ main.cpp gaussian.cpp\n```\n\nStudy the two files, and then click the \"Test Run\" button to run the code and see the results. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 403958,
+              "key": "b8df190e-293f-43d1-97d2-ed1b2b49c30f",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "b8df190e-293f-43d1-97d2-ed1b2b49c30f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6413199791489024",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n\n// class declaration\nclass Gaussian\n{\n\tprivate:\n\t\tfloat mu, sigma2;\n\n\tpublic:\n\t\t\n\t\t// constructor functions\n\t\tGaussian ();\n\t\tGaussian (float, float);\n\n\t\t// change value of average and standard deviation \n\t\tvoid setMu(float);\n\t\tvoid setSigma2(float);\n\n\t\t// output value of average and standard deviation\n\t\tfloat getMu();\n\t\tfloat getSigma2();\n\n\t\t// functions to evaluate \n\t\tfloat evaluate (float);\n\t\tGaussian mul (Gaussian);\n\t\tGaussian add (Gaussian);\n};\n\nint main ()\n{\n\n\tGaussian mygaussian(30.0,100.0);\n\tGaussian othergaussian(10.0,25.0);\n\t\n\tstd::cout << \"average \" << mygaussian.getMu() << std::endl;\n\tstd::cout << \"evaluation \" << mygaussian.evaluate(15.0) << std::endl;\n\n\tstd::cout << \"mul results variance \" << mygaussian.mul(othergaussian).getSigma2() << std::endl;\n\tstd::cout << \"mul results average \" << mygaussian.mul(othergaussian).getMu() << std::endl;\n\n\tstd::cout << \"add results variance \" << mygaussian.add(othergaussian).getSigma2() << std::endl;\n\tstd::cout << \"add results average \" << mygaussian.add(othergaussian).getMu() << std::endl;\n\n\treturn 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <math.h>       /* sqrt, exp */\n\n// class declaration\nclass Gaussian\n{\n\tprivate:\n\t\tfloat mu, sigma2;\n\n\tpublic:\n\t\t\n\t\t// constructor functions\n\t\tGaussian ();\n\t\tGaussian (float, float);\n\n\t\t// change value of average and standard deviation \n\t\tvoid setMu(float);\n\t\tvoid setSigma2(float);\n\n\t\t// output value of average and standard deviation\n\t\tfloat getMu();\n\t\tfloat getSigma2();\n\n\t\t// functions to evaluate \n\t\tfloat evaluate (float);\n\t\tGaussian mul (Gaussian);\n\t\tGaussian add (Gaussian);\n};\n\n\nGaussian::Gaussian() {\n\tmu = 0;\n\tsigma2 = 1;\t\n}\n\nGaussian::Gaussian (float average, float sigma) {\n\tmu = average;\n\tsigma2 = sigma;\n}\n\nvoid Gaussian::setMu (float average) {\n\tmu = average;\n}\n\nvoid Gaussian::setSigma2 (float sigma) {\n\tsigma2 = sigma;\n}\n\n\nfloat Gaussian::getMu () {\n\treturn mu;\n}\n\nfloat Gaussian::getSigma2() {\n\treturn sigma2;\n}\n\nfloat Gaussian::evaluate(float x) {\n\tfloat coefficient;\n\tfloat exponential;\n\n\tcoefficient = 1.0 / sqrt (2.0 * M_PI * sigma2);\n\texponential = exp ( pow (-0.5 * (x - mu), 2) / sigma2 );\n\treturn coefficient * exponential;\n}\n\nGaussian Gaussian::mul(Gaussian other) {\n\tfloat denominator;\n\tfloat numerator;\n\tfloat new_mu;\n\tfloat new_var;\n\n\tdenominator = sigma2 + other.getSigma2();\n\tnumerator = mu * other.getSigma2() + other.getMu() * sigma2;\n\tnew_mu = numerator / denominator;\n\n\tnew_var = 1.0 / ( (1.0 / sigma2) + (1.0 / other.sigma2) );\n\n\treturn Gaussian(new_mu, new_var);\n}\n\nGaussian Gaussian::add(Gaussian other) {\n\n\tfloat new_mu;\n\tfloat new_sigma2;\n\n\tnew_mu = mu + other.getMu();\n\tnew_sigma2 = sigma2 + other.getSigma2();\n\n\treturn Gaussian(new_mu, new_sigma2);\n}",
+                    "name": "gaussian.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 495971,
+          "key": "d1174e4d-030f-4376-aa9c-e98dd22eaf91",
+          "title": "Explanation of the Main.cpp File",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d1174e4d-030f-4376-aa9c-e98dd22eaf91",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 495972,
+              "key": "39cfaf19-e70b-4aab-9f0a-891290e2e4a7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Explanation of the Main.cpp File\n\nIn the previous section, there were two files. The gaussian.cpp contained the code that defined the Gaussian class. The main.cpp used the Gaussian class.\n\nThe main.cpp file had three parts:\n* a header, which is where the #include statements were\n* a class declaration\n* a main function.\n\n# Header\nYou saw headers in the C++ getting started lessons. In the main.cpp, the header included the iostream library for outputting to the terminal:\n```c++\n#include <iostream>\n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 495974,
+              "key": "772aeff7-4008-4651-bb95-e29b3448a478",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Class Declaration\n\nThen comes the class declaration. The class declaration is very similar to function declarations, which you learned about previously. In fact, as you'll see later in the lesson, you can put the class declaration into a separate .h file just like you did with function declarations.\n\nThe purpose of the class declaration is to give the main function access to the Gaussian class.\n\n```C++\n// class declaration\nclass Gaussian\n{\n\tprivate:\n\t\tfloat mu, sigma2;\n\n\tpublic:\n\t\t\n\t\t// constructor functions\n\t\tGaussian ();\n\t\tGaussian (float, float);\n\n\t\t// change value of average and standard deviation \n\t\tvoid setMu(float);\n\t\tvoid setSigma2(float);\n\n\t\t// output value of average and standard deviation\n\t\tfloat getMu();\n\t\tfloat getSigma2();\n\n\t\t// functions to evaluate \n\t\tfloat evaluate (float);\n\t\tGaussian mul (Gaussian);\n\t\tGaussian add (Gaussian);\n};\n```\n\nNotice that a class declaration looks a lot like the variable declarations and function declarations you've already been using. Declarations tell the program what the variable types will be. The declarations also show  the input and output types for functions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 495975,
+              "key": "ef0e0ccf-b171-4ac8-9165-ee2beaea848c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Main Function\n\nAnd finally comes the main function. The main function instantiates objects of the Gaussian class. So the main function uses the class whereas gaussian.cpp defined the class. You could take the code in gaussian.cpp and put it at the bottom of main.cpp; however, your code files will become quite large and hard to read through.\n\nHere is the code from the main function:\n```c++\nint main ()\n{\n\n\tGaussian mygaussian(30.0,20.0);\n\tGaussian othergaussian(10.0,30.0);\n\t\n\tstd::cout << \"average \" << mygaussian.getMu() << std::endl;\n\tstd::cout << \"evaluation \" << mygaussian.evaluate(15.0) << std::endl;\n\n\tstd::cout << \"mul results sigma \" << mygaussian.mul(othergaussian).getSigma2() << std::endl;\n\tstd::cout << \"mul results average \" << mygaussian.mul(othergaussian).getMu() << std::endl;\n\n\tstd::cout << \"add results sigma \" << mygaussian.add(othergaussian).getSigma2() << std::endl;\n\tstd::cout << \"add results average \" << mygaussian.add(othergaussian).getMu() << std::endl;\n\n\treturn 0;\n}\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 495960,
+          "key": "3ae33890-a83a-4832-b357-bb212b3e9cd9",
+          "title": "Practice Using a Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3ae33890-a83a-4832-b357-bb212b3e9cd9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 495968,
+              "key": "68f57f6a-9752-4ed1-9eb6-58028a2115e6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Practice Using a Class\n\nWe are providing the Gaussian class from the previous demo. Now it's your turn to use the class in a program. Fill in the TODOs in the main.cpp file. You'll find a solution in the solution.cpp tab. If you get stuck, go back to the lesson node titled \"Using a Class in C++ [Demo]\" and study the example.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 495970,
+              "key": "44af790b-939b-459f-bd54-5d3056dc4a95",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "44af790b-939b-459f-bd54-5d3056dc4a95",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "4913087489114112",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n\n// class declaration\nclass Gaussian\n{\n\tprivate:\n\t\tfloat mu, sigma2;\n\n\tpublic:\n\t\t\n\t\t// constructor functions\n\t\tGaussian ();\n\t\tGaussian (float, float);\n\n\t\t// changes value of average and standard deviation \n\t\tvoid setMu(float);\n\t\tvoid setSigma2(float);\n\n\t\t// outputs value of average and standard deviation\n\t\tfloat getMu();\n\t\tfloat getSigma2();\n\n\t\t// class methods\n\t\tfloat evaluate (float);\n\t\tGaussian mul (Gaussian);\n\t\tGaussian add (Gaussian);\n};\n\nint main ()\n{\n /*\nTODO: Instantiate a Gaussian object called gaussianone.The object\nshould have mean = 40.0 and variance (aka sigma2) = 225.0\n*/\n\n/*\nTODO: Instantiate another Gaussian object called gaussiantwo. \nThe object should have mean = 35.6 and variance = 12.25\n*/\n\n/*\nTODO:\nOutput to the terminal the following (hint: use the std namespace with cout or\nuse std::cout):\n- the probability density function value for gaussianone when x = 10.5\n- the probability density function value for gaussianone when x = 55.4\n- the probability density function value for gaussiantwo when x = 35.6\n- the probability density function value for gaussiantwo when x = 29.4\n*/\n\n/*\nTODO:\n- Change the mean value of gaussianone to mean = 45\n- Change the variance of gaussiantwo to variance = 15.4\n- Output the mean of gaussianone to the terminal\n- Output the variance of gaussiantwo to the terminal\n*/\n\n/*\nTODO:\n- Multiply gaussian one and gaussian two. Store the resulting gaussian\nin a variable called gaussianthree\n- Output the mean and variance of gaussianthree to the terminal\n- Add gaussian one and gaussian two. Store the resulting gaussian in a \nvariable called gaussianfour\n- Output the mean and variance of gaussianfour to the terminal\n*/\n    \n    \n    \n    \n    \n    \n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <math.h>       /* sqrt, exp */\n\n// class declaration\nclass Gaussian\n{\n\tprivate:\n\t\tfloat mu, sigma2;\n\n\tpublic:\n\t\t\n\t\t// constructor functions\n\t\tGaussian ();\n\t\tGaussian (float, float);\n\n\t\t// change value of average and standard deviation \n\t\tvoid setMu(float);\n\t\tvoid setSigma2(float);\n\n\t\t// output value of average and standard deviation\n\t\tfloat getMu();\n\t\tfloat getSigma2();\n\n\t\t// functions to evaluate \n\t\tfloat evaluate (float);\n\t\tGaussian mul (Gaussian);\n\t\tGaussian add (Gaussian);\n};\n\n\nGaussian::Gaussian() {\n\tmu = 0;\n\tsigma2 = 1;\t\n}\n\nGaussian::Gaussian (float average, float sigma) {\n\tmu = average;\n\tsigma2 = sigma;\n}\n\nvoid Gaussian::setMu (float average) {\n\tmu = average;\n}\n\nvoid Gaussian::setSigma2 (float sigma) {\n\tsigma2 = sigma;\n}\n\n\nfloat Gaussian::getMu () {\n\treturn mu;\n}\n\nfloat Gaussian::getSigma2() {\n\treturn sigma2;\n}\n\nfloat Gaussian::evaluate(float x) {\n\tfloat coefficient;\n\tfloat exponential;\n\n\tcoefficient = 1.0 / sqrt (2.0 * M_PI * sigma2);\n\texponential = exp ( -0.5 * pow ((x - mu), 2) / sigma2 );\n\treturn coefficient * exponential;\n}\n\nGaussian Gaussian::mul(Gaussian other) {\n\tfloat denominator;\n\tfloat numerator;\n\tfloat new_mu;\n\tfloat new_var;\n\n\tdenominator = sigma2 + other.getSigma2();\n\tnumerator = mu * other.getSigma2() + other.getMu() * sigma2;\n\tnew_mu = numerator / denominator;\n\n\tnew_var = 1.0 / ( (1.0 / sigma2) + (1.0 / other.sigma2) );\n\n\treturn Gaussian(new_mu, new_var);\n}\n\nGaussian Gaussian::add(Gaussian other) {\n\n\tfloat new_mu;\n\tfloat new_sigma2;\n\n\tnew_mu = mu + other.getMu();\n\tnew_sigma2 = sigma2 + other.getSigma2();\n\n\treturn Gaussian(new_mu, new_sigma2);\n}",
+                    "name": "gaussian.cpp"
+                  },
+                  {
+                    "text": "int main ()\n{\n /*\nTODO: Instantiate a Gaussian object called gaussianone.The object\nshould have mean = 40.0 and variance (aka sigma2) = 225.0\n*/\n\nGaussian gaussianone(40.0, 225.0);\n\n/*\nTODO: Instantiate another Gaussian object called gaussiantwo. \nThe object should have mean = 35.6 and variance = 12.25\n*/\nGaussian gaussiantwo(35.6, 12.25);\n\n/*\nTODO:\nOutput to the terminal the following:\n- the probability density function value for gaussianone when x = 10.5\n- the probability density function value for gaussianone when x = 55.4\n- the probability density function value for gaussiantwo when x = 35.6\n- the probability density function value for gaussiantwo when x = 29.4\n*/\n\nstd::cout << gaussianone.evaluate(10.5) << \"\\n\";\nstd::cout << gaussianone.evaluate(55.4) << \"\\n\";\nstd::cout << gaussiantwo.evaluate(35.6) << \"\\n\";\nstd::cout << gaussiantwo.evaluate(29.4) << \"\\n\";\n\n/*\nTODO:\n- Change the mean value of gaussianone to mean = 45\n- Change the variance of gaussiantwo to variance = 15.4\n- Output the mean of gaussianone to the terminal\n- Output the variance of gaussiantwo to the terminal\n*/\n\ngaussianone.setMu(45.0);\ngaussiantwo.setSigma2(15.4);\nstd::cout << gaussianone.getMu() << \"\\n\";\nstd::cout << gaussiantwo.getSigma2() << \"\\n\";\n\n/*\nTODO:\n- Multiply gaussian one and gaussian two. Store the resulting gaussian\nin a variable called gaussianthree\n- Output the mean and variance of gaussianthree to the terminal\n- Add gaussian one and gaussian two. Store the resulting gaussian in a \nvariable called gaussianfour\n- Output the mean and variance of gaussianfour to the terminal\n*/\n    \nGaussian gaussianthree = gaussianone.mul(gaussiantwo);\nstd::cout << gaussianthree.getMu() << \"\\n\";\nstd::cout << gaussianthree.getSigma2() << \"\\n\";\n\nGaussian gaussianfour = gaussianone.add(gaussiantwo);\nstd::cout << gaussianfour.getMu() << \"\\n\";\nstd::cout << gaussianfour.getSigma2() << \"\\n\";\n\n    \n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 495766,
+          "key": "9550dcd1-051c-4543-8581-129a046d2bcd",
+          "title": "Review: Anatomy of a Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9550dcd1-051c-4543-8581-129a046d2bcd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 495767,
+              "key": "a2a6b2b6-9fb1-474c-8321-7c4c4f2ba8d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Anatomy of a Class\n\nIf you look back at the gaussian.cpp class file, you'll notice that there were four distinct sections. The file contained:\n* a header\n* class declarations\n* constructor functions\n* and method definitions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498829,
+              "key": "86badc50-17ab-4fe8-a353-be829ef2e2d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "It might help to think about these four sections as you write your own code. As a review, here is the code from each section of the gaussian.cpp file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498830,
+              "key": "efce6d52-4fb2-4cc4-b29e-c350612ed13f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Header\n\nThe **header** has all of the include statements. \n\n```c++\n#include <math.h>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498831,
+              "key": "7c59f975-f130-4471-a2e4-50637b7c7196",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Class Declaration\n\nThe **class declaration** is a lot like a variable or function declaration. In the class declaration, you let the compiler know what all of the class variables and methods look like in terms of data types, inputs and outputs.\n\n```c++\nclass Gaussian\n{\n    private:\n        float mu, sigma2;\n\n    public:\n\n        // constructor functions\n        Gaussian ();\n        Gaussian (float, float);\n\n        // change value of average and standard deviation \n        void setMu(float);\n        void setSigma2(float);\n\n        // output value of average and standard deviation\n        float getMu();\n        float getSigma2();\n\n        // functions to evaluate \n        float evaluate (float);\n        Gaussian multiply (Gaussian);\n        Gaussian add (Gaussian);\n};\n```\n\n We'll talk about the difference between public and private later in the lesson. In essence, a private function or variable is only reachable within the class code whereas a public function or definition is accessible to objects as well.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498832,
+              "key": "dd3fa2f3-9276-47e0-aa9a-7fc2430c823c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Constructor Functions\n\n**Constructor** functions determine how a new object will be initiated. When you declare a new object, should the object have default values? Or will you provide values every time you instantiate an object?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498834,
+              "key": "d3779012-58fa-41a9-9c12-f3be968a7112",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Python had an equivalent syntax with the ```__init__```. \n```python\ndef __init__(self, variable1, variable2, ..., variablen):\n```\n\nThe first constructor function is for when you instantiate an object without specifying the average and variance.:\n\n```c++\nGaussian::Gaussian() {\n    mu = 0;\n    sigma2 = 1;    \n}\n\n```\n\nThe other constructor function specifies what to do when you do specify the average and variance:\n```c++\nGaussian::Gaussian (float average, float sigma) {\n    mu = average;\n    sigma2 = sigma;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498833,
+              "key": "2bfbb2a2-e874-4508-80ef-8311a4d8c624",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Class Methods\n\nAnd finally, the class methods define all of the functions that your class needs to have.\n\nThe rest of the code contains the definitions for all of the functions, also called methods, that your class has. \n\nThe get and set functions are specifically for getting variable values or changing the value of private variables. Again, we'll go into more detail about private and public later in the lesson.\n\n\n```c++\nvoid Gaussian::setMu (float average) {\n    mu = average;\n}\n\nvoid Gaussian::setSigma2 (float sigma) {\n    sigma2 = sigma;\n}\n\nfloat Gaussian::getMu () {\n    return mu;\n}\n\nfloat Gaussian::getSigma2() {\n    return sigma2;\n}\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 498835,
+              "key": "10e55f57-e5c3-4cbb-90ee-595e65f0ec07",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The rest of the functions (evaluate, multiply, add) are the same functions that were in the Python version of the class.\n\n```c++\nfloat Gaussian::evaluate(float x) {\n    float coefficient;\n    float exponential;\n\n    coefficient = 1.0 / sqrt (2.0 * M_PI * sigma2);\n    exponential = exp ( pow (-0.5 * (x - mu), 2) / sigma2 );\n    return coefficient * exponential;\n}\n\nGaussian Gaussian::multiply(Gaussian other) {\n    float denominator;\n    float numerator;\n    float new_mu;\n    float new_var;\n\n    denominator = sigma2 + other.getSigma2();\n    numerator = mu * other.getSigma2() + other.getMu() * sigma2;\n    new_mu = numerator / denominator;\n\n    new_var = 1.0 / ( (1.0 / sigma2) + (1.0 / other.sigma2) );\n\n    return Gaussian(new_mu, new_var);\n}\n\nGaussian Gaussian::add(Gaussian other) {\n\n    float new_mu;\n    float new_sigma2;\n\n    new_mu = mu + other.getMu();\n    new_sigma2 = sigma2 + other.getSigma2();\n\n    return Gaussian(new_mu, new_sigma2);\n}\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 498827,
+          "key": "5e931c2b-ff36-47b4-9ded-af963c7b5ade",
+          "title": "Other Facets of C++ Classes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5e931c2b-ff36-47b4-9ded-af963c7b5ade",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 498837,
+              "key": "4a30530e-6f1b-4688-b1b2-da7ec14949de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Other Facets of C++ Classes\n\nIf you haven't taken one yet, now might be a good time to take a stretch break. We've still got three more topics to cover before you code your own class:\n* Private versus Public\n* Header Files\n* Inclusion Guards\n\nAs you'll see in the next lesson node, **private** variables and functions are only available within your class code. **Public** functions and variables, on the other hand, are accessible within your class and also by an object of the class.\n\nYou are already familiar with **header files** from the \"C++ Getting Started\" lesson. While header files are not needed to run code, they are very helpful for organizing and reusing code. We'll explain how to use header files when organizing your C++ code.\n\nC++ compilers do not like it when your code declares the same variables, functions or classes more than once. As your code gets longer and more complex, you'll oftentimes include more than one header file at the top of your code. These header files could contain the same class or function declarations, and then your code won't compile. You'll see how to avoid this situation in the \"Inclusion Guards\" lesson node.\n\nContinue on to learn about these three aspects of C++ programming.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 384267,
+          "key": "12a2c3b7-f5f5-4d7a-af64-9d51b3450b79",
+          "title": "Private and Public",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "12a2c3b7-f5f5-4d7a-af64-9d51b3450b79",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 409842,
+              "key": "f9dfbde4-df05-42d8-a7ca-309df5de98d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What do Private, Protected and Public Mean?\n\nIn the Gaussian class declaration, the **mu** and **sigma2** variables were marked as private whereas the rest of the variables and functions were in a section marked public. Here is a reminder of the class declaration:\n```\nclass Gaussian\n{\n    private:\n        float mu, sigma2;\n\n    public:\n\n        // constructor functions\n        Gaussian ();\n        Gaussian (float, float);\n\n        // change value of average and standard deviation \n        void setMu(float);\n        void setSigma2(float);\n\n        // output value of average and standard deviation\n        float getMu();\n        float getSigma2();\n\n        // functions to evaluate \n        float evaluate (float);\n        Gaussian multiply (Gaussian);\n        Gaussian add (Gaussian);\n};\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410537,
+              "key": "6410c331-dc99-478b-adc2-9d648b951697",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Private and Public\nThese keywords **private** and **public** determine which part of your program will have access to the variables and functions. If a variable or function is **private**, then only the class code itself has access to these variables and functions. \n\nOn the other hand, anything marked **public** can be accessed outside the class; for example, when you instantiate an object, your program will be able to use the set and get functions as well as the evaluate, multiply and add functions; however, your program will not be able to access the **mu** and **sigma2** variables directly.\n\n# Protected\nThere is another keyword called **protected**, which wasn't used in the example. Basically, **protected** classes and variables can be accessed by any subclasses. For example, if you wrote a Vehicle class, you might write a Car class, a Van class, and a Truck class that would all inherit from the more general Vehicle class. Any protected variables in the Vehicle class could be accessed in the child classes.\n\n# Example of Public vs. Private\nBelow is another example of the Gaussian class except mu and sigma2 have been made public. Notice how it is no longer necessary to have getMu, getSigma2, setMu and setSigma2 functions because the object has direct access to those variables. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410538,
+              "key": "e86404e7-7cc7-4fa4-b448-e771229f2e02",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "e86404e7-7cc7-4fa4-b448-e771229f2e02",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5420990162141184",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include \"gaussian.h\"\n\nint main ()\n{\n\n\tGaussian mygaussian(30.0,20.0);\n\tGaussian othergaussian(10.0,30.0);\n\t\n\tstd::cout << \"average \" << mygaussian.mu << std::endl;\n\t\n\tstd::cout << \"evaluation \" << mygaussian.evaluate(15.0) << std::endl;\n\n\tstd::cout << \"mul results sigma \" << mygaussian.mul(othergaussian).sigma2 << std::endl;\n\tstd::cout << \"mul results average \" << mygaussian.mul(othergaussian).mu << std::endl;\n\n\tstd::cout << \"add results sigma \" << mygaussian.add(othergaussian).sigma2 << std::endl;\n\tstd::cout << \"add results average \" << mygaussian.add(othergaussian).mu << std::endl;\n\n\tstd::cout << \"average \" << mygaussian.mu << std::endl;\n    mygaussian.mu = 25;\n    std::cout << \"average \" << mygaussian.mu << std::endl;\n     \n\treturn 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <math.h>       /* sqrt, exp */\n#include \"gaussian.h\"\n\nGaussian::Gaussian() {\n\tmu = 0;\n\tsigma2 = 1;\t\n}\n\nGaussian::Gaussian (float average, float sigma) {\n\tmu = average;\n\tsigma2 = sigma;\n}\n\nfloat Gaussian::evaluate(float x) {\n\tfloat coefficient;\n\tfloat exponential;\n\n\tcoefficient = 1.0 / sqrt (2.0 * M_PI * sigma2);\n\texponential = exp ( pow (-0.5 * (x - mu), 2) / sigma2 );\n\treturn coefficient * exponential;\n}\n\nGaussian Gaussian::mul(Gaussian other) {\n\tfloat denominator;\n\tfloat numerator;\n\tfloat new_mu;\n\tfloat new_var;\n\n\tdenominator = sigma2 + other.sigma2;\n\tnumerator = mu * other.sigma2 + other.mu * sigma2;\n\tnew_mu = numerator / denominator;\n\n\tnew_var = 1.0 / ( (1.0 / sigma2) + (1.0 / other.sigma2) );\n\n\treturn Gaussian(new_mu, new_var);\n}\n\nGaussian Gaussian::add(Gaussian other) {\n\n\tfloat new_mu;\n\tfloat new_sigma2;\n\n\tnew_mu = mu + other.mu;\n\tnew_sigma2 = sigma2 + other.sigma2;\n\n\treturn Gaussian(new_mu, new_sigma2);\n}",
+                    "name": "gaussian.cpp"
+                  },
+                  {
+                    "text": "class Gaussian\n{\n\n\tpublic:\n\n\t\tfloat mu, sigma2;\n\t\t\n\t\t// constructor functions\n\t\tGaussian ();\n\t\tGaussian (float, float);\n\n\t\t// functions to evaluate \n\t\tfloat evaluate (float);\n\t\tGaussian mul (Gaussian);\n\t\tGaussian add (Gaussian);\n};",
+                    "name": "gaussian.h"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 409843,
+              "key": "38406a35-67b8-4c00-a747-bb14f34dfd49",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Why Keep Things Private\n\nBy default, C++ makes all class variables and functions private. That means you can actually declare private variables and functions at the top of your class declaration without even labeling them **private**:\n\n```c++\nclass Gaussian\n{\n    float mu, sigma2;\n\n\tpublic:\n\t\t\n\t\t// constructor functions\n\t\tGaussian ();\n\t\tGaussian (float, float);\n\n\t\t// change value of average and standard deviation \n\t\tvoid setMu(float);\n\t\tvoid setSigma2(float);\n\n\t\t// output value of average and standard deviation\n\t\tfloat getMu();\n\t\tfloat getSigma2();\n\n\t\t// functions to evaluate \n\t\tfloat evaluate (float);\n\t\tGaussian mul (Gaussian);\n\t\tGaussian add (Gaussian);\n};\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410547,
+              "key": "f3265b2c-3f75-4f21-a277-d78a04188556",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "C++ thus encourages you to make everything private unless you have a good reason not to do so. For example, by making the mu and sigma2 variables private, you have separated how **mu** and **sigma2** are implemented versus how **mu** and **sigma2** are accessed.\n\nWhat happens if the way your class calculates **mu** and **sigma2** changes? If these variables had been public, then any code that uses your class might break. When **mu** and **sigma2** were public, a program could directly change the value of **mu** and **sigma** with code like:\n```c++\n    mygaussian.mu = 25;\n```\n\nBut when **mu** and **sigma2** were private, a program had to use code like this:\n```c++\nmygaussian.setMu(25)\n```\n\nIf you needed to change something about the implementation of the **mu** variable, you would be much less likely to break existing code in the private case. A program using the Gaussian class does not need to know how **mu** was implemented as long as the program can get the **mu** value and change the value in **mu**.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 384266,
+          "key": "f3b8ae65-f00a-4ff4-b948-6a688234e932",
+          "title": "Header Files",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f3b8ae65-f00a-4ff4-b948-6a688234e932",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 403973,
+              "key": "bfa03849-d56f-4a11-b79d-ac1ea5d2379b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Header Files\n\nIn the previous example, you saw how to separate a class into one file (gaussian.cpp) that was separate from  main.cpp. But both the main program file and the gaussian class file needed the exact same class declaration at the top of the code:\n\n```c++\n// class declaration\nclass Gaussian\n{\n    private:\n        float mu, sigma2;\n\n    public:\n\n        // constructor functions\n        Gaussian ();\n        Gaussian (float, float);\n\n        // change value of average and standard deviation \n        void setMu(float);\n        void setSigma2(float);\n\n        // output value of average and standard deviation\n        float getMu();\n        float getSigma2();\n\n        // functions to evaluate \n        float evaluate (float);\n        Gaussian mul (Gaussian);\n        Gaussian add (Gaussian);\n};\n```\n\nInstead of writing the entire declaration twice, a better option is to put the declaration into a header file. Then you can include the entire declaration with a single line of code:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 403974,
+              "key": "c040ef54-c6b0-4ab6-8b5b-a48148e78859",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "c040ef54-c6b0-4ab6-8b5b-a48148e78859",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6588236888670208",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include \"gaussian.h\"\n\nint main ()\n{\n\n\tGaussian mygaussian(30.0,20.0);\n\tGaussian othergaussian(10.0,30.0);\n\t\n\tstd::cout << \"average \" << mygaussian.getMu() << std::endl;\n\tstd::cout << \"evaluation \" << mygaussian.evaluate(15.0) << std::endl;\n\n\tstd::cout << \"mul results sigma \" << mygaussian.mul(othergaussian).getSigma2() << std::endl;\n\tstd::cout << \"mul results average \" << mygaussian.mul(othergaussian).getMu() << std::endl;\n\n\tstd::cout << \"add results sigma \" << mygaussian.add(othergaussian).getSigma2() << std::endl;\n\tstd::cout << \"add results average \" << mygaussian.add(othergaussian).getMu() << std::endl;\n\n\treturn 0;\n}\n",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <math.h>       /* sqrt, exp */\n#include \"gaussian.h\"\n\nGaussian::Gaussian() {\n\tmu = 0;\n\tsigma2 = 1;\t\n}\n\nGaussian::Gaussian (float average, float sigma) {\n\tmu = average;\n\tsigma2 = sigma;\n}\n\nvoid Gaussian::setMu (float average) {\n\tmu = average;\n}\n\nvoid Gaussian::setSigma2 (float sigma) {\n\tsigma2 = sigma;\n}\n\n\nfloat Gaussian::getMu () {\n\treturn mu;\n}\n\nfloat Gaussian::getSigma2() {\n\treturn sigma2;\n}\n\nfloat Gaussian::evaluate(float x) {\n\tfloat coefficient;\n\tfloat exponential;\n\n\tcoefficient = 1.0 / sqrt (2.0 * M_PI * sigma2);\n\texponential = exp ( pow (-0.5 * (x - mu), 2) / sigma2 );\n\treturn coefficient * exponential;\n}\n\nGaussian Gaussian::mul(Gaussian other) {\n\tfloat denominator;\n\tfloat numerator;\n\tfloat new_mu;\n\tfloat new_var;\n\n\tdenominator = sigma2 + other.getSigma2();\n\tnumerator = mu * other.getSigma2() + other.getMu() * sigma2;\n\tnew_mu = numerator / denominator;\n\n\tnew_var = 1.0 / ( (1.0 / sigma2) + (1.0 / other.sigma2) );\n\n\treturn Gaussian(new_mu, new_var);\n}\n\nGaussian Gaussian::add(Gaussian other) {\n\n\tfloat new_mu;\n\tfloat new_sigma2;\n\n\tnew_mu = mu + other.getMu();\n\tnew_sigma2 = sigma2 + other.getSigma2();\n\n\treturn Gaussian(new_mu, new_sigma2);\n}",
+                    "name": "gaussian.cpp"
+                  },
+                  {
+                    "text": "class Gaussian\n{\n\tprivate:\n\t\tfloat mu, sigma2;\n\n\tpublic:\n\t\t\n\t\t// constructor functions\n\t\tGaussian ();\n\t\tGaussian (float, float);\n\n\t\t// change value of average and standard deviation \n\t\tvoid setMu(float);\n\t\tvoid setSigma2(float);\n\n\t\t// output value of average and standard deviation\n\t\tfloat getMu();\n\t\tfloat getSigma2();\n\n\t\t// functions to evaluate \n\t\tfloat evaluate (float);\n\t\tGaussian mul (Gaussian);\n\t\tGaussian add (Gaussian);\n};",
+                    "name": "gaussian.h"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 384278,
+              "key": "86e7bf5c-5e5b-4cba-9e60-44696b65c633",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What goes in a header file?\n\nYou were introduced to header files in the previous lesson. Header files allowed you to put function declarations in a separate file. Ultimately, using and including header files makes it easier to re-use functions in different parts of your program. Furthermore, if the class declaration changes, you only have to change the declaration in one place.\n\nFor classes, header files serve the exact same purpose. When you use the Gaussian class in main.cpp, you can simply include the header file at the top `include \"gaussian.h\"`. That gives main.cpp access to the Gaussian class.\n\nLikewise, for gaussian.cpp, you can include the header file as well rather than writing out the entire declaration.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410650,
+              "key": "7ab94151-ca2b-41d0-ba90-e6da2a3aec66",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Using Include in Header Files\n\nGenerally, it's recommended to put the minimum number of #include statements needed into a header file. However, because header files essentially get copied into .cpp files, you might inadvertently include the same library or file multiple times.  The consequence is that variables, functions or classes might be declared multiple times as well, and the code will not compile. In the next part of the lesson, you will learn what happens when elements get declared multiple times, and you will also learn how to avoid the multiple declarations.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 403949,
+          "key": "49418195-0901-4de7-90c1-7a2565583451",
+          "title": "Inclusion Guards",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "49418195-0901-4de7-90c1-7a2565583451",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 410159,
+              "key": "ec5a910f-f464-4606-8b40-f190a0aebf87",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What's Wrong with This Code?\n\nTake a look at this main.cpp file and click the \"Test Run\" button. Why doesn't the code compile?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410162,
+              "key": "e47dd155-d0c9-4561-af53-706a799db810",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "e47dd155-d0c9-4561-af53-706a799db810",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5184385782513664",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <string>\n\nusing namespace std;\n\nint main()\n{\n    \n    string color;\n    int doors;\n    \n    color = \"blue\";\n    doors = 4;\n    \n    string color;\n    color = \"red\";\n    \n    cout << \"This \" << color << \" car has \" << doors << \" doors\";\n    \n    return 0;\n    \n}",
+                    "name": "main.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 410175,
+              "key": "ec888a38-dc4c-4427-95d5-01d378fa74db",
+              "title": "Double Declaration",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ec888a38-dc4c-4427-95d5-01d378fa74db",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why didn't the code compile?",
+                "answers": [
+                  {
+                    "id": "a1506443201407",
+                    "text": "The namespace was declared incorrectly.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1506443339204",
+                    "text": "The color variable was declared multiple times.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1506443339770",
+                    "text": "The string variable type does not exist in C++.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1506443340291",
+                    "text": "The value in the color variable was changed from blue to red.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 409839,
+              "key": "bf727c4f-ef2c-45bd-9851-1102eb37e0f0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Declaring variables, functions or classes multiple times\n\nC++ programs will not compile if a variable, function or class gets declared more than once. This might seem easy to avoid when the codebase is small. But imagine what happens when you have a large codebase with many different classes, .cpp files, and personnel working on different parts of the code.\n\nTake a look at this code below. There are two different classes in two separate files. One class represents an engine with a variable storing the size of the engine. The other class represents a car, which has a color variable and a variable representing the number of doors.\n\nBut there's a catch. The car class also uses the engine class in order to store the car's engine properties. That is why the car.h header file includes the engine header file with the line:\n```c++\n#include \"engine.h\"\n```\n\nHowever, the code will not compile in its current state. Think about why it does not compile correctly when you press the \"Test Run\" button. \n\nAs a hint, look at the include statements on the top of main.cpp. Include statements will essentially copy a file into another file. Remember that a program that defines a class more than once will not compile.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410327,
+              "key": "90ce0090-3f33-4046-952c-d58c832b0f1b",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "90ce0090-3f33-4046-952c-d58c832b0f1b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5377000704442368",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <string>\n#include \"engine.h\"\n#include \"car.h\"\n\nusing namespace std;\n\nint main() {\n\n\tEngine enginelarge(\"4L\");\n\tEngine enginesmall(\"2.5L\");\n\n\tCar carone(\"red\", 5);\n\tCar cartwo(\"green\", 4);\n\n\n\tcout << \"Small engine size \"  << enginesmall.getSize() << endl;\n\tcout << \"Large engine size \" << enginelarge.getSize() << endl;\n\tcout << \"Car one doors \" << carone.getDoors() << endl;\n\tcout << \"Car two doors \" << cartwo.getDoors() << endl;\n\n\tcout << \"Car one engine size \" << carone.getEngine() << endl;\n\tcarone.setEngine(enginelarge.getSize());\n\tcout << \"Car one engine size new \" << carone.getEngine() << endl;\n\n\treturn 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <string>\n\nclass Engine\n{\n\tprivate:\n\t\tstd::string enginesize;\n\n\tpublic:\n\n\t\tEngine ();\n\n\t\tEngine (std::string);\n\n\t\tvoid setSize(std::string);\n\n\t\tstd::string getSize();\n\n};",
+                    "name": "engine.h"
+                  },
+                  {
+                    "text": "#include \"engine.h\"\n\nusing namespace std;\n\nEngine::Engine () {\n\tenginesize = \"4L\";\n}\n\nEngine::Engine (string engine) {\n\tenginesize = engine;\n}\n\nvoid Engine::setSize(string newsize) {\n\tenginesize = newsize;\n}\n\nstring Engine::getSize() {\n\treturn enginesize;\n}\n\n",
+                    "name": "engine.cpp"
+                  },
+                  {
+                    "text": "#include <string>\n#include \"engine.h\"\n\nclass Car\n{\n\tprivate:\n\t\tstd::string color;\n\t\tint doors;\n\t\tEngine enginetype;\n\n\tpublic:\n\t\tCar (std::string, int);\n\n\t\tvoid setColor(std::string);\n\t\tvoid setDoors(int);\n\t\tvoid setEngine(std::string);\n\n\t\tstd::string getColor();\n\t\tint getDoors();\n\t\tstd::string getEngine();\n\n};",
+                    "name": "car.h"
+                  },
+                  {
+                    "text": "#include \"car.h\"\n\nusing namespace std;\n\nCar::Car (string newcolor, int newdoors) {\n\tcolor = newcolor;\n\tdoors = newdoors;\n\tenginetype.setSize(\"2.5L\");\n}\n\nstring Car::getColor() {\n\treturn color;\n}\n\nint Car::getDoors() {\n\treturn doors;\n}\n\nstring Car::getEngine() {\n\treturn enginetype.getSize();\n}\n\nvoid Car::setColor(string newcolor) {\n\tcolor = newcolor;\n}\n\nvoid Car::setDoors(int newdoors) {\n\tdoors = newdoors;\n}\n\nvoid Car::setEngine(string newengine) {\n\tenginetype.setSize(newengine);\n}",
+                    "name": "car.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 410341,
+              "key": "3edfa3af-cede-4154-8a59-622b9cbb4715",
+              "title": "Compiling",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3edfa3af-cede-4154-8a59-622b9cbb4715",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why didn't the code compile?",
+                "answers": [
+                  {
+                    "id": "a1506458557526",
+                    "text": "The car class is declared twice in main.cpp",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1506458593721",
+                    "text": "The engine class is declared twice in main.cpp",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1506458594184",
+                    "text": "The car class includes the engine.h header file, which is not allowed.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1506458594704",
+                    "text": "Standard namespace is not being used properly.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 410347,
+              "key": "f2223d6c-aafd-4c35-8755-a89caa15dd48",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The code would not compile because of these statements:\n```\n#include \"engine.h\"\n#include \"car.h\"\n```\n\nThe first include statement will copy the contents of the engine header file into main.cpp. So main.cpp will have the definition of the Engine class.\n\nBut then, main.cpp will copy the contents of \"car.h\" as well. But the \"car.h\" file also includes engine.h:\n```c++\n#include \"engine.h\"\n```\n\nThe \"engine.h\" file ends up being included twice, so the Engine class is declared twice. The Car uses the engine class, and main.cpp also uses the engine class. \n\nThe modularity of .cpp and .h files is a big advantage of C++. But how can you avoid the multiple declarations?\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 409841,
+              "key": "e0ef8e8e-2034-45d2-911a-1ff8ce5b45ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ifndef\n\nThe solution is to use ```# ifndef``` statements, which allow you to implement a technique called inclusion guards.\n\nThe ifndef statement stands for \"if not defined\".  When you wrap your header files with #ifndef statements, the compiler will only include a header file if the file has not yet been defined. In the current main.cpp example, the \"engine.h\" file would be included first. Then the compiler includes \"car.h\". But \"car.h\" will try to include \"engine.h\" again; however, the inclusion guard in the \"engine.h\" file will ensure that \"engine.h\" does not get included again.\n\nHere is what the \"engine.h\" file looks like with an ifndef statement:\n```c++\n#ifndef ENGINE_H\n#define ENGINE_H\n\n#include <string>\n\nclass Engine\n{\n\tprivate:\n\t\tstd::string enginesize;\n\n\tpublic:\n\n\t\tEngine ();\n\n\t\tEngine (std::string);\n\n\t\tvoid setSize(std::string);\n\n\t\tstd::string getSize();\n\n};\n\n#endif /* ENGINE_H */\n```\n\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410363,
+              "key": "4b2c0f4d-33c5-4013-ac6b-0670d457d4fb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n```\n#ifndef FILENAME_H\n#define FILENAME_H\n\nheader code ...\n\n#endif /* FILENAME_H */\n```\n\nUsing all caps with the _H is a naming convention. It is also customary to put a comment after the #endif statement with the filename.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410364,
+              "key": "ce5b6032-c15e-48d0-8001-535f160a5a77",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You would want to wrap all of your header files with #ifndef statements. That way other programs do not have to keep track of what files have already been included when they want to use your code. \n\nHere are the results of including #ifndef statements in the engine and car header files. If you click on \"Test Run\", you will see that the code now compiles.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410365,
+              "key": "c3f744c0-0e15-4850-adfd-1036ead92a6b",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "c3f744c0-0e15-4850-adfd-1036ead92a6b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5678049323515904",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <string>\n#include \"engine.h\"\n#include \"car.h\"\n\nusing namespace std;\n\nint main() {\n\n\tEngine enginelarge(\"4L\");\n\tEngine enginesmall(\"2.5L\");\n\n\tCar carone(\"red\", 5);\n\tCar cartwo(\"green\", 4);\n\n\n\tcout << \"Small engine size \"  << enginesmall.getSize() << endl;\n\tcout << \"Large engine size \" << enginelarge.getSize() << endl;\n\tcout << \"Car one doors \" << carone.getDoors() << endl;\n\tcout << \"Car two doors \" << cartwo.getDoors() << endl;\n\n\tcout << \"Car one engine size \" << carone.getEngine() << endl;\n\tcarone.setEngine(enginelarge.getSize());\n\tcout << \"Car one engine size new \" << carone.getEngine() << endl;\n\n\treturn 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#ifndef ENGINE_H\n#define ENGINE_H\n\n#include <string>\n\nclass Engine\n{\n\tprivate:\n\t\tstd::string enginesize;\n\n\tpublic:\n\n\t\tEngine ();\n\n\t\tEngine (std::string);\n\n\t\tvoid setSize(std::string);\n\n\t\tstd::string getSize();\n\n};\n\n#endif /* ENGINE_H */",
+                    "name": "engine.h"
+                  },
+                  {
+                    "text": "#include \"engine.h\"\n\nusing namespace std;\n\nEngine::Engine () {\n\tenginesize = \"4L\";\n}\n\nEngine::Engine (string engine) {\n\tenginesize = engine;\n}\n\nvoid Engine::setSize(string newsize) {\n\tenginesize = newsize;\n}\n\nstring Engine::getSize() {\n\treturn enginesize;\n}\n\n",
+                    "name": "engine.cpp"
+                  },
+                  {
+                    "text": "#ifndef CAR_H\n#define CAR_H\n\n#include <string>\n#include \"engine.h\"\n\nclass Car\n{\n\tprivate:\n\t\tstd::string color;\n\t\tint doors;\n\t\tEngine enginetype;\n\n\tpublic:\n\t\tCar (std::string, int);\n\n\t\tvoid setColor(std::string);\n\t\tvoid setDoors(int);\n\t\tvoid setEngine(std::string);\n\n\t\tstd::string getColor();\n\t\tint getDoors();\n\t\tstd::string getEngine();\n\n};\n\n#endif  /* CAR_H */",
+                    "name": "car.h"
+                  },
+                  {
+                    "text": "#include \"car.h\"\n\nusing namespace std;\n\nCar::Car (string newcolor, int newdoors) {\n\tcolor = newcolor;\n\tdoors = newdoors;\n\tenginetype.setSize(\"2.5L\");\n}\n\nstring Car::getColor() {\n\treturn color;\n}\n\nint Car::getDoors() {\n\treturn doors;\n}\n\nstring Car::getEngine() {\n\treturn enginetype.getSize();\n}\n\nvoid Car::setColor(string newcolor) {\n\tcolor = newcolor;\n}\n\nvoid Car::setDoors(int newdoors) {\n\tdoors = newdoors;\n}\n\nvoid Car::setEngine(string newengine) {\n\tenginetype.setSize(newengine);\n}",
+                    "name": "car.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 410664,
+              "key": "b25051ce-10f3-42a7-9b51-8f9c1d1edb90",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Namespaces in Header Files\n\nAs an aside, you'll notice that the header files did not use the standard namespace. It's generally recommended to avoid using namespaces in a header file. This can help avoid naming conflicts later as functions and classes are reused in different parts of a code base.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 498765,
+          "key": "d0e911f1-586e-49e5-aaf0-a6d87052014f",
+          "title": "Implement a Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d0e911f1-586e-49e5-aaf0-a6d87052014f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 498862,
+              "key": "5d7b5e4c-5576-4135-bb9f-c8ba620d5d03",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Implement a Class\n\nNow it's time to code your own class. For the remainder of this lesson, you are going to implement a matrix class much like what you did for the Python object oriented programming lesson.\n\nAt this point, we're assuming you are familiar with basic matrix operations. So the main focus of the lesson will be practicing writing C++ code. You are going to build up the class step by step starting with declaring variables and functions, writing functions, using inclusion guards and instantiating an object.\n\nIn the next part of the lesson, you'll be given certain tasks to complete. You'll also find solutions at the bottom of each page.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 409848,
+          "key": "66cd5916-5ecd-4d26-808c-74230e32930f",
+          "title": "Class Variables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "66cd5916-5ecd-4d26-808c-74230e32930f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 410564,
+              "key": "8658aa41-4f54-4469-9428-25e962901136",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Class Variables\n\nYour first task will be to declare the variables in your Matrix class. As a reminder, here is the general syntax for declaring a C++ class:\n\n```C++\nclass Classname\n{\n\tprivate:\n\t\tdeclare private variables;\n\t\tdeclare private functions;\n\n\tpublic:\n\t\tdeclare public variables;\n\t\tdeclare public functions;\n};\n```\n\nThe lines for actually declaring the variables are the same as any other C++ variable declaration:\n```c++\ndatatype variablename;\n```\n\nThe Matrix class has three private variables:\n* grid - a 2D float vector to hold the matrix values\n* rows - the number of rows in the matrix\n* columns - the number of columns in the matrix\n\nThe rows and columns variables should be declared as a size_type. A size_type variable holds the size of a vector. \n\nIf your vector holds integers, the size_type declaration looks like this:\n\n```c++\nstd::vector<int>::size_type variablename;\n```\n\nIf your vector holds floats, then the size_type declaration would look like this:\n```c++\nstd::vector<float>::size_type variablename;\n```\n\nThe value that goes inside the brackets <> is based on whatever the original vector declaration was. A size_type variable is actually an unsigned int. The size_type variable is guaranteed to be able to hold up to the maximum size of a float vector.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410645,
+              "key": "789507b5-b54c-4a8c-a344-c14443105b64",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Fill out the header file below with the variable declarations. This quiz is not graded, but the answer is included below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410574,
+              "key": "aaaee692-6f5d-4cbc-ab45-66b00024f199",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "aaaee692-6f5d-4cbc-ab45-66b00024f199",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "4550073873727488",
+                "initial_code_files": [
+                  {
+                    "text": "#include <vector>\n\n// Header file for the Matrix class\n\n/* \n**  TODO:\n**    Declare the following private variables:\n**      a 2D float vector variable called grid\n**      a vector size_type variable called rows\n**      a vector size_type variable called cols\n*/\n\nclass Matrix \n{\n    \n    \n    \n    \n    \n};",
+                    "name": "matrix.h"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n#include \"matrix.h\"\n\nint main () {\n    \n    // TODO: Nothing to do here\n    \n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "// TODO: Nothing to do here\n",
+                    "name": "matrix.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 410669,
+              "key": "f0b217cc-188c-4210-bfa8-cbf5e1b1cc38",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution\n```c++\n\nclass Matrix \n{\n    \n    \tprivate:\n\n    \t\tstd::vector< std::vector<float> > grid;\n    \t\tstd::vector<float>::size_type rows;\n    \t\tstd::vector<float>::size_type cols;    \n};\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410670,
+              "key": "acf9d9fe-905a-41e0-9999-c65465644125",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the next step, you will declare your class functions and then define your class functions.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 384268,
+          "key": "89bf1dd4-f776-46d0-ab51-091b6c1d710c",
+          "title": "Class Function Declarations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "89bf1dd4-f776-46d0-ab51-091b6c1d710c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 410691,
+              "key": "8806d5ec-8d7a-42b5-83ed-f657be8d9c49",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Class Functions\n\nTo write functions in your Matrix class, you need to declare those functions first. For the Matrix class, you can think of these functions as belonging to three separate categories:\n* constructor functions\n* set and get functions\n* functions for Matrix functionality\n\nDeclaring these functions will be exactly like declaring functions in the previous lesson. The difference is that now you have to decide if a function is private, protected or public. And the function declarations go inside the class declaration.\n\nYou will define your functions in matrix.cpp. But first, let's briefly talk about each type of function. Constructor functions are for initializing objects. Python does this with the ```def __init__``` syntax. The C++ syntax is a bit different, and you will learn about the differences in the next part of the lesson.\n\nSet and get functions are specifically for accessing and assigning values to private variables. Because an object will not have direct access to private variables, the set and get functions give indirect access. Set and get functions have the same syntax as any other C++ function. Using set and get is a convention of object oriented programming rather than a specific C++ syntax.\n\nAnd finally, there are the functions that consist of the matrix functionality such as printing out the matrix, adding matrices together, multiplying matrices, etc. You will implement these functions as part of the exercises.\n\nGo to the next part of the exercise to declare and define the Matrix constructor functions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410730,
+              "key": "bf898c92-fc64-46fd-bfd2-125fbc9ed48a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Set and Get Function Declarations\n\nSet and Get functions allow your objects to gain access to private variables. An object cannot access a private variable directly, so instead, set and get functions are used. You can see how this is done in the Gaussian object from earlier in the lesson. \n\nHere were the declarations for the set and get functions:\n\n```c++\nclass Gaussian\n{\n    private:\n        ...\n\n    public:\n        ...\n\n        void setMu(float);\n        void setSigma2(float);\n\n        float getMu();\n        float getSigma2();\n\n     ....\n};\n```\n\nA set function changes the value of a variable whereas a get function returns the value of a variable. You'll notice that set and get function syntax is the same as any regular function. In fact, set and get are conventions rather than specific to C++. It's traditional to name these functions getVariablename() and setVariablename() although there is no requirement to do so.\n\nYou would declare set and get functions as public so that objects could have access to these functions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410741,
+              "key": "cebe691b-14e4-4e44-9d4e-c0a614dc4c9d",
+              "title": "Set Functions",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cebe691b-14e4-4e44-9d4e-c0a614dc4c9d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why do set functions return a value of void?",
+                "answers": [
+                  {
+                    "id": "a1506548636429",
+                    "text": "A set function only changes the value of a variable.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1506548648352",
+                    "text": "The void return type implies that the function does not return anything.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1506548648952",
+                    "text": "A set function returns an empty variable",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1506548649496",
+                    "text": "A set function returns the value of a variable",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 410737,
+              "key": "765a3045-b518-43d1-a0c9-3d9a5ee48bb0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Functions for Matrix Functionality\n\nThe third set of functions to declare are for the matrix functionality. The syntax is exactly the same as the get and set function syntax as well as any normal C++ function. You need to specify the return datatype, the function name, and the datatype for the input variables.\n\nFor example, the Gaussian class had three functions: evaluate, multiply and add. Here is how these functions were declared in the gaussian.h file:\n```c++\nclass Gaussian\n{\n    ....\n\n    public:\n\n       ...\n\n        // functions to evaluate \n        float evaluate (float);\n        Gaussian multiply (Gaussian);\n        Gaussian add (Gaussian);\n};\n\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 409855,
+              "key": "1cccb6f4-a025-490b-abcb-f80f4b89410c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Declaring Functions in the Matrix Class\n\nNow it's your turn to declare functions in the matrix.h file. Fill out the TODOS in the matrix.h file below. Don't forget that every function in matrix.cpp needs to be declared in matrix.h. \n\nThe answer is underneath the code block.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410744,
+              "key": "877fa09c-148f-4fba-b162-1c8d11373746",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "877fa09c-148f-4fba-b162-1c8d11373746",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6272325291999232",
+                "initial_code_files": [
+                  {
+                    "text": "#include <vector>\n\nclass Matrix \n{\n\n        private:\n\n            std::vector< std::vector<float> > grid;\n            std::vector<float>::size_type rows;\n            std::vector<float>::size_type cols;\n            \n        public:\n        \n        /* \n        ** TODO: Declare  constructor functions\n        ** For the matrix class, you will need two constructor functions.\n        ** 1. An empty constructor function\n        ** 2. A constructor function that accepts a 2-dimensional vector\n        */\n        \n        /*\n        ** TODO: Declare set and get functions for the three private variables.\n        ** You will need 1 set function and 3 get functions.\n        ** The names of these functions should be setGrid, getGrid, getRows, \n        ** and getCols.\n        **\n        ** The setGrid does not return anything and has a 2-D vector input\n        ** getGrid returns a 2-D vector and has no input\n        ** getRows returns a size_type and has no input\n        ** get Cols returns a size_type and has no input\n        */\n        \n        /*\n        ** TODO: Declare the matrix functions. In a following exercise, you\n        ** will program matrix_transpose, matrix_addition and matrix_print\n        ** functions. So you will need to declare these two functions.\n        ** \n        ** matrix_transpose has no input and outputs a 2D vector\n        ** matrix_addition receives a Matrix and outputs a 2D vector\n        ** matrix_print has no inputs and no outputs\n        */\n};\n        \n",
+                    "name": "matrix.h"
+                  },
+                  {
+                    "text": "#include \"matrix.h\"\n\n/* TODO: Define the default constructor. Remember the syntax is\n**      Classname::ClassName() {\n**    \n**          initialize variables\n**    \n**       }\n**\n**\n**      You need to initialize the grid variable to a default value such as\n**      a 4x4 matrix with all zeros.\n**\n**      Then initialize the rows variable, and the cols variable using the\n**      vector size method. For example myvector.size() will give the size of\n**      a vector. For a 2-dimensional vector, myvector.size() would be the\n**      number of rows in a matrix.\n**\n*/\n\n/* TODO: Define a constructor that receives a 2-Dimensional vector\n**       and assigns the vector to the grid variable. \n**       \n**      Remember the syntax is\n**      Classname::ClassName(datatype inputvariablename) {\n**    \n**          classvariable = inputvariablename\n**    \n**       }\n**\n**      Then initialize the rows variable, and the cols variable exactly\n**      as you did for the default constructor.\n**\n*/\n",
+                    "name": "matrix.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n#include \"matrix.h\"\n\nint main () {\n    \n    // TODO: Nothing to do here\n    \n    return 0;\n}",
+                    "name": "main.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 410748,
+              "key": "142586a3-6725-4647-833b-d6d6d168a422",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution\n\n```c++\n\n#include <vector>\n\nclass Matrix \n{\n\n        private:\n\n            std::vector< std::vector<float> > grid;\n            std::vector<float>::size_type rows;\n            std::vector<float>::size_type cols;\n            \n        public:\n            \n            // constructor function declarations\n            Matrix ();\n            Matrix (std::vector< std::vector<float> >);\n        \n            // set and get function declarations\n            void setGrid(std::vector< std::vector<float> >);\n        \n            std::vector< std::vector<float> > getGrid();\n            std::vector<float>::size_type getRows();\n            std::vector<float>::size_type getCols();\n\n            // matrix function declarations\n            std::vector< std::vector<float> > matrix_transpose();\n            std::vector< std::vector<float> > matrix_addition(Matrix);\n            void matrix_print();  \n};\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 409856,
+              "key": "8350410d-303f-4801-94d8-d3e77a594c68",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Defining Functions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410747,
+              "key": "8ba63b79-daf2-4bd7-8ad4-f74f3ab9f5ac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the next section, you will define all of these functions in the matrix.cpp file.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 384272,
+          "key": "ee146133-1f4d-4ad8-b04a-2cb0c0cc210d",
+          "title": "Constructor Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ee146133-1f4d-4ad8-b04a-2cb0c0cc210d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 409860,
+              "key": "78666bb5-fe4d-48e3-be60-1237cebbec65",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Declaring Constructor Functions\n\nBoth Python and C++ have constructor functions. Constructor functions define what happens when you instantiate an object.\n\n####  Python Constructor\nThese are the functions that define what happens when an object is instantiated. In Python, the syntax is:\n\n```python\ndef __init__(self, variable1, variable2, ..., variablen):\n\tself.variable1 = variable1\n\tself.variable2 = variable2\n\tself.variablen = variablen\n```\n\n#### C++ Constructor Declaration\n\nIn C++, you declare a constructor like this:\n```c++\nClassname (datatype variable1, datatype variable2, …, datatype variablen);\n```\n\nYou can also simultaneously declare a default constructor function, which implies the function has no inputs:\n\n```c++\nClassname ();\n```\n\nThis default constructor function is used when  you instantiate an object without providing values for the variables. To be more concrete, you will initialize a Matrix variable with a two-dimensional vector. If you do not provide a two-dimensional vector, you could initialize your Matrix variable with a default vector. This second case is what the empty constructor function is for. \n\nThe Gaussian constructor declarations looked like this:\n```c++\nclass Gaussian\n{\n    private:\n        ...\n\n    public:\n        ...\n        Gaussian ();\n        Gaussian (float, float);\n\n   ....\n};\n```\n\nWhether or not you use a default constructor function will depend on your particular application and use-case. For example, if an object always has the same initial values, then it would make sense to have a default constructor function.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 411198,
+              "key": "57cee103-2da5-43a8-a683-3adc9f22d33f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Defining Constructor Functions\n\nOnce you've declared your constructor functions, you need to actually define them in a .cpp file. \n\nThe constructor function definitions have the following syntax:\n```c++\n// empty constructor function syntax\nClassname::ClassName() {\n\n\tconstructor function definition\n}\n\n// constructor function syntax\nClassname::ClassName(datatype variable1, datatype variable2, …, datatype variablen) {\n\n\tconstructor function definition\n\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 411200,
+              "key": "748730d3-60ab-4157-8b47-42d63d845b2f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can see how this was done for the Gaussian class:\n```c++\nGaussian::Gaussian() {\n\tmu = 0;\n\tsigma2 = 1;\t\n}\n\nGaussian::Gaussian (float average, float sigma) {\n\tmu = average;\n\tsigma2 = sigma;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 411203,
+              "key": "34b18103-cdd5-46af-9b29-e69c93463855",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Note that constructor functions do not return anything. They merely initialize class variables. You might also be wondering how the function definitions can access mu and sigma2 if those were private variables. Remember that private variables can be accessed from within the class code itself but not from outside the class.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 411212,
+              "key": "74c2f690-0d75-4ca0-9d9d-fc8714bf9f4a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Initializing with Default Values\n\nIn both Python and C++, you can use default values in your construction functions. In Python, the syntax is:\n\n```python\ndef __init__(self, variable1 = default1, variable2 = default2, ..., variablen = defaultn):\n\tself.variable1 = variable1\n\tself.variable2 = variable2\n\tself.variablen = variablen\n```\n\nYou can also get this functionality in C++ although the syntax might not be what you'd expect; you actually define default values in the .h file function definition. Here is a trivial example for an addition Class that holds two integers and outputs their sum.\n\nHere is the header file add.h:\n```c++\nclass Add\n{\n\tpublic:\n\t\tint a;\n\t\tint b;\n\t\t\n\t\tAdd(int, int second = 17);\n\n\t\tint addition();\n};\n```\n\nand then here are the definitions in add.cpp:\n```c++\n#include  \"add.h\"\n\nAdd::Add(int first, int second) {\n\n\ta = first;\n\tb = second;\n}\n\nint Add::addition() {\n\treturn a + b;\n}\n```\n\nNotice that the default value was declared in the header file. Now, if you only specify one value when instantiating an add object, variable b will have a default value of 17:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 415745,
+              "key": "436471d2-0b5f-4ca8-a8de-1881c5813e79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```c++\n\n#include <iostream>\n\n#include  \"add.h\"\n\nint main() {\n\n\tAdd adder(5);\n\tstd::cout << adder.addition() << std::endl;\n\treturn 0;\n\n}\n\n```\n\nThe above code outputs 22.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 411632,
+              "key": "cd1ae20b-b2b7-4774-a920-2a5c72d6b579",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Declare and Define Matrix Class Constructors\n\nNow it's your turn. Fill out the TODO sections in the matrix.h and matrix.cpp files. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 411633,
+              "key": "25b6ebd9-4c6c-4fb2-90ad-f7538d1ae98d",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "25b6ebd9-4c6c-4fb2-90ad-f7538d1ae98d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6362671975890944",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n#include \"matrix.h\"\n\nint main () {\n    \n    // TODO: Nothing to do here\n    \n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include \"matrix.h\"\n\n/* TODO: Define the default constructor. Remember the syntax is\n**      Classname::ClassName() {\n**    \n**          initialize variables\n**    \n**       }\n**\n**\n**      You need to initialize the grid variable to a default value such as\n**      a 4x4 matrix with all zeros.\n**\n**      Then initialize the rows variable, and the cols variable using the\n**      vector size method. For example myvector.size() will give the size of\n**      a vector. For a 2-dimensional vector, myvector.size() would be the\n**      number of rows in a matrix.\n**\n*/\n\n/* TODO: Define a constructor that receives a 2-Dimensional vector\n**       and assigns the vector to the grid variable. \n**       \n**      Remember the syntax is\n**      Classname::ClassName(datatype inputvariablename) {\n**    \n**          classvariable = inputvariablename\n**    \n**       }\n**\n**      Then initialize the rows variable, and the cols variable exactly\n**      as you did for the default constructor.\n**\n*/\n",
+                    "name": "matrix.cpp"
+                  },
+                  {
+                    "text": "#include <vector>\n\nclass Matrix \n{\n\n        private:\n\n            std::vector< std::vector<float> > grid;\n            std::vector<float>::size_type rows;\n            std::vector<float>::size_type cols;\n            \n        public:\n        \n        /* \n        ** TODO: Declare  constructor functions\n        ** For the matrix class, you will need two constructor functions.\n        ** 1. An empty constructor function\n        ** 2. A constructor function that accepts a 2-dimensional vector\n        */\n        \n};\n",
+                    "name": "matrix.h"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 412386,
+              "key": "c5dba55b-2422-49dc-b8de-e402b38ca198",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution matrix.h\n\n```c++\n\n#include <vector>\n\nclass Matrix \n{\n\n        private:\n\n            std::vector< std::vector<float> > grid;\n            std::vector<float>::size_type rows;\n            std::vector<float>::size_type cols;\n            \n        public:\n            \n            // constructor function declarations\n            Matrix ();\n            Matrix (std::vector< std::vector<float> >);\n};\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412387,
+              "key": "863db5b4-3988-493d-808f-f9dfaf695fd8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution matrix.cpp",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412388,
+              "key": "073a3c85-1202-446b-bdab-7d7b47e740db",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```c++\n#include \"matrix.h\"\n\nMatrix::Matrix() {\n\tstd::vector <std:: vector <float> > initial_grid (10, std::vector <float>(5, 0.5));\n\tgrid = initial_grid;\n\trows = initial_grid.size();\n\tcols = initial_grid[0].size();\n\n}\n\nMatrix::Matrix(std::vector <std:: vector <float> > initial_grid) {\n\tgrid = initial_grid;\n\trows = initial_grid.size();\n\tcols = initial_grid[0].size();\n}\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 384269,
+          "key": "4861e3f3-39bd-4a10-91d2-e8dd4c2394ed",
+          "title": "Set and Get Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4861e3f3-39bd-4a10-91d2-e8dd4c2394ed",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 412389,
+              "key": "41009863-f00c-44bf-810e-89f390f76a44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Set and Get Function Declarations\n\nSet and Get functions allow your objects to gain access to private variables since objects cannot access private variables directly. You can see how this is done in the Gaussian object from earlier in the lesson. \n\nHere were the declarations for the set and get functions:\n\n```c++\nclass Gaussian\n{\n    private:\n        ...\n\n    public:\n        ...\n\n        void setMu(float);\n        void setSigma2(float);\n\n        float getMu();\n        float getSigma2();\n\n     ....\n};\n```\n\nAnd here were the function definitions:\n\n```c++\nvoid Gaussian::setMu (float average) {\n\tmu = average;\n}\n\nvoid Gaussian::setSigma2 (float sigma) {\n\tsigma2 = sigma;\n}\n\n\nfloat Gaussian::getMu () {\n\treturn mu;\n}\n\nfloat Gaussian::getSigma2() {\n\treturn sigma2;\n}\n```\n\nThe syntax for defining set or get functions is the same as any other class function (besides constructors):\n\n```c++\nreturn datatype Classname::functionname() {\n        code to define the function;\n}\n```\n\nIn fact, get and set functions are a convention rather than a special function with a special syntax. It's traditional to name these functions getVariablename() and setVariablename() although there is no requirement to do so.\n\nYou would declare set and get functions as public so that objects could have access to these functions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 409857,
+              "key": "1bb64765-71a1-40a3-a160-470fcebbad65",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Matrix Class Set and Get Functions\n\nContinue developing your Matrix class code. \n* Use a set function to be able to modify the grid variable. \n* All three private variables (grid, rows, cols) should have get functions.\n\nMake sure to fill out the TODOs in both matrix.cpp and matrix.h",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412396,
+              "key": "d67df5a4-3560-49d7-ae45-c0c1374773be",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "d67df5a4-3560-49d7-ae45-c0c1374773be",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5175687165116416",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n#include \"matrix.h\"\n\nint main () {\n    \n    // TODO: Nothing to do here\n    \n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include \"matrix.h\"\n\nMatrix::Matrix() {\n    std::vector <std:: vector <float> > initial_grid (10, std::vector <float>(5, 0.5));\n    grid = initial_grid;\n    rows = initial_grid.size();\n    cols = initial_grid[0].size();\n\n}\n\nMatrix::Matrix(std::vector <std:: vector <float> > initial_grid) {\n    grid = initial_grid;\n    rows = initial_grid.size();\n    cols = initial_grid[0].size();\n}\n\n/*\n** TODO: Define a function setGrid()\n**   INPUTS: a 2-D vector\n**   OUPUTS: void\n**\n**   This function receives a 2-D vector reprenting a matrix, and then\n**    updates the grid, rows, and cols variables\n**\n*/\n\n/*\n** TODO: Define getGrid(), getRows(), and getCols() functions.\n**    INPUTS: None of these functions have inputs\n**    OUPUTS: Each function should return its respective variable\n**            For example, getRows returns the rows variable\n*/",
+                    "name": "matrix.cpp"
+                  },
+                  {
+                    "text": "#include <vector>\n\nclass Matrix \n{\n\n        private:\n\n            std::vector< std::vector<float> > grid;\n            std::vector<float>::size_type rows;\n            std::vector<float>::size_type cols;\n\n        public:\n\n            // constructor function declarations\n            Matrix ();\n            Matrix (std::vector< std::vector<float> >);\n            \n            \n            \n            /* TODO: Declare the setGrid(), getGrid(), getRows(), \n            **       and getCols() functions. \n            **\n            **  Here are the inputs and outputs of each function:\n            **  setGrid()\n            **  INPUTS: 2D vector\n            **  OUPUTS: void\n            **\n            **  getGrid()\n            **  INPUTS: void\n            **  OUPUTS: 2D vector\n            **\n            **  getRows()\n            **  INPUTS: void\n            **  OUTPUTS: std::vector<float>::size_type\n            **\n            **  getCols()\n            **  INPUTS: void\n            **  OUPUTS: std::vector<float>::size_type\n            */\n};\n",
+                    "name": "matrix.h"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 412397,
+              "key": "7106ed0f-bc7e-4b11-818a-3788f8b78283",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution matrix.h\n\n```c++\n#include <vector>\n\nclass Matrix\n{\n\tprivate:\n\n\t\tstd::vector< std::vector<float> > grid;\n\t\tstd::vector<float>::size_type rows;\n\t\tstd::vector<float>::size_type cols;\n\n\tpublic:\n\n\t\t// constructor functions\n\t\tMatrix ();\n\t\tMatrix (std::vector< std::vector<float> >);\n\n\t\t// set functions\n\t\tvoid setGrid(std::vector< std::vector<float> >);\n\n\t\t// get functions\n\t\tstd::vector< std::vector<float> > getGrid();\n\t\tstd::vector<float>::size_type getRows();\n\t\tstd::vector<float>::size_type getCols();\n};\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412399,
+              "key": "0441cbc4-6585-4cb3-8da9-e6d4183abb20",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution matrix.cpp\n\n```c++\n#include \"matrix.h\"\n\nMatrix::Matrix() {\n    std::vector <std:: vector <float> > initial_grid (10, std::vector <float>(5, 0.5));\n    grid = initial_grid;\n    rows = initial_grid.size();\n    cols = initial_grid[0].size();\n\n}\n\nMatrix::Matrix(std::vector <std:: vector <float> > initial_grid) {\n    grid = initial_grid;\n    rows = initial_grid.size();\n    cols = initial_grid[0].size();\n}\n\n\nvoid Matrix::setGrid(std::vector< std::vector<float> > new_grid) {\n\tgrid = new_grid;\n\trows = new_grid.size();\n\tcols = new_grid[0].size();\n}\n\nstd::vector< std::vector<float> > Matrix::getGrid() {\n\treturn grid;\n}\n\nstd::vector<float>::size_type Matrix::getRows() {\n\treturn rows;\n}\n\nstd::vector<float>::size_type Matrix::getCols() {\n\treturn cols;\n}\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 410788,
+          "key": "e02ceb45-72a8-450e-aef8-391cb3c9e936",
+          "title": "Matrix Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e02ceb45-72a8-450e-aef8-391cb3c9e936",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 412404,
+              "key": "9151cea6-342e-4f20-9fb5-b4e3579e6a0b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Matrix Functions\n\nThe last part of the Matrix class involves implementing the matrix functionality. You are welcome to program as many matrix operations as you'd like: addition, multiplication, transpose, inverse, etc. \n\nWe recommend at least implementing matrix addition and a function called matrix_print that outputs the matrix to the terminal using cout. In the solution given at the end of this page, we've also provided code for a matrix_transpose function.\n\nImplementing these class functions is the same as implementing the get and set functions from the previous part of the lesson; you will need to declare your functions in matrix.h and define your functions in matrix.cpp. The general syntax is the same:\n\n\n#### class function declaration syntax\n\n```c++\noutput_datatype functionname(datatype variable1, \ndatatype variable2, ..., datatype variablen)\n```\n\n#### class function definition syntax\n```c++\noutput_datatype Classname::functionname(datatype variable1, \ndatatype variable2, ..., datatype variablen) {\n\n    code defining the function;\n}\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 413024,
+              "key": "3b9078cd-b6df-43be-909c-6d47347dd1c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Writing the Matrix Functions\n\nIn this exercise, you will declare and define a Matrix class function that adds two matrices together. Here are the inputs and outputs of the matrix addition function:\n\nINPUTS:\n* a matrix, which will be added to the grid variable\n\nOUTPUTS\n* a matrix containing the sum of the grid variable matrix and input matrix\n\nBecause the input to the matrix_addition function is a Matrix, you will need to declare and define your function using the Matrix class as the data type. This might seem a bit confusing, but the Gaussian class presented earlier in the lesson did the same thing with the mul and add functions. You can use those as a guide for writing your matrix_addition functions.\n\nAs a reminder, here are the function declarations for the mul and add functions in gaussian.h:\n```c++\n\t\tGaussian mul (Gaussian);\n\t\tGaussian add (Gaussian);\n```\n\nBoth of these functions receive a Gaussian and output a Gaussian. Here are the function definitions from gaussian.cpp:\n```c++\nGaussian Gaussian::mul(Gaussian other) {\n\tfloat denominator;\n\tfloat numerator;\n\tfloat new_mu;\n\tfloat new_var;\n\n\tdenominator = sigma2 + other.getSigma2();\n\tnumerator = mu * other.getSigma2() + other.getMu() * sigma2;\n\tnew_mu = numerator / denominator;\n\n\tnew_var = 1.0 / ( (1.0 / sigma2) + (1.0 / other.sigma2) );\n\n\treturn Gaussian(new_mu, new_var);\n}\n\nGaussian Gaussian::add(Gaussian other) {\n\n\tfloat new_mu;\n\tfloat new_sigma2;\n\n\tnew_mu = mu + other.getMu();\n\tnew_sigma2 = sigma2 + other.getSigma2();\n\n\treturn Gaussian(new_mu, new_sigma2);\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 413027,
+              "key": "0457a228-6367-4817-820c-113ac3e666bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Although the implementation of the matrix_addition function will be different, the general structure will be the same as the mul and add functions from the Gaussian example.\n\nYou will also write a matrix_print function that outputs a matrix to the terminal using cout. The matrix_print function has no inputs and no outputs.\n\nFill out the TODOS in the matrix.cpp and matrix.h code.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 413037,
+              "key": "43402b71-6da5-4458-9a62-0d1a32248157",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "43402b71-6da5-4458-9a62-0d1a32248157",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "4684940577996800",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n#include \"matrix.h\"\n\nint main () {\n    \n    // TODO: Nothing to do here\n    \n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include \"matrix.h\"\n\nMatrix::Matrix() {\n    std::vector <std:: vector <float> > initial_grid (10, std::vector <float>(5, 0.5));\n    grid = initial_grid;\n    rows = initial_grid.size();\n    cols = initial_grid[0].size();\n\n}\n\nMatrix::Matrix(std::vector <std:: vector <float> > initial_grid) {\n    grid = initial_grid;\n    rows = initial_grid.size();\n    cols = initial_grid[0].size();\n}\n\n\nvoid Matrix::setGrid(std::vector< std::vector<float> > new_grid) {\n    grid = new_grid;\n    rows = new_grid.size();\n    cols = new_grid[0].size();\n}\n\nstd::vector< std::vector<float> > Matrix::getGrid() {\n    return grid;\n}\n\nstd::vector<int>::size_type Matrix::getRows() {\n    return rows;\n}\n\nstd::vector<int>::size_type Matrix::getCols() {\n    return cols;\n}\n\n/* TODO: Define a matrix_addition function\n**   INPUT: a matrix\n**   OUPUT: the sum of the grid variable and the input matrix\n**\n** STEPS:\n**  1. check that the matrix in the grid variable\n**     and the input matrix have the same size\n**\n**     if not, throw an error like\n**         throw std::invalid_argument(\"matrices are not the same size\");\n**\n** 2. add the matrices together and return\n**       the result as a Matrix. You can do this part\n**       with nested for loops. If you use an intermediate\n**       vector to store a row, the vector.clear() \n**       method might be useful.\n**\n*/\n\n/* TODO: Define a matrix_print function\n** This function has no inputs and no outputs\n** The purpose of the function is to display the matrix in\n** the terminal using std::cout. \n**\n**\n** The output should look something like:\n** 4    9   1   10\n** 5    11  6   17\n** 8    4   15  2\n*/",
+                    "name": "matrix.cpp"
+                  },
+                  {
+                    "text": "#include <vector>\n#include <stdexcept> //library for the invalid_argument method\n#include <iostream>\n\nclass Matrix\n{\n    private:\n\n        std::vector< std::vector<float> > grid;\n        std::vector<float>::size_type rows;\n        std::vector<float>::size_type cols;\n\n    public:\n\n        // constructor functions\n        Matrix ();\n        Matrix (std::vector< std::vector<float> >);\n\n        // set functions\n        void setGrid(std::vector< std::vector<float> >);\n\n        // get functions\n        std::vector< std::vector<float> > getGrid();\n        std::vector<float>::size_type getRows();\n        std::vector<float>::size_type getCols();\n\n        /* TODO: Declare the matrix_addition function\n        ** INPUTS: a Matrix\n        ** OUTPUTS: a Matrix\n        **\n        ** TODO: Declare the matrix_print function\n        ** INPUTS: none\n        ** OUTPUTS: none\n        */\n};",
+                    "name": "matrix.h"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 413058,
+              "key": "15b6b81d-4838-4fe0-af27-25813e715262",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution matrix.h\n\n```c++\n#include <vector>\n#include <iostream>\n#include <stdexcept>\n\nclass Matrix\n{\n\tprivate:\n\n\t\tstd::vector< std::vector<float> > grid;\n\t\tstd::vector<float>::size_type rows;\n\t\tstd::vector<float>::size_type cols;\n\n\tpublic:\n\n\t\t// constructor functions\n\t\tMatrix ();\n\t\tMatrix (std::vector< std::vector<float> >);\n\n\t\t// set functions\n\t\tvoid setGrid(std::vector< std::vector<float> >);\n\n\t\t// get functions\n\t\tstd::vector< std::vector<float> > getGrid();\n\t\tstd::vector<float>::size_type getRows();\n\t\tstd::vector<float>::size_type getCols();\n\n\t\t// matrix functions\n\t\tMatrix matrix_transpose();\n\t\tMatrix matrix_addition(Matrix);\n\n\t\t// matrix printing\n\t\tvoid matrix_print();\n\n};\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 413060,
+              "key": "5ad27837-7d23-432f-8157-3dc8de594ca1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution matrix.cpp\n\n```c++\n#include \"matrix.h\"\n\nMatrix::Matrix() {\n\tstd::vector <std:: vector <float> > initial_grid (10, std::vector <float>(5, 0.5));\n\tgrid = initial_grid;\n\trows = initial_grid.size();\n\tcols = initial_grid[0].size();\n\n}\n\nMatrix::Matrix(std::vector <std:: vector <float> > initial_grid) {\n\tgrid = initial_grid;\n\trows = initial_grid.size();\n\tcols = initial_grid[0].size();\n}\n\nvoid Matrix::setGrid(std::vector< std::vector<float> > new_grid) {\n\tgrid = new_grid;\n\trows = new_grid.size();\n\tcols = new_grid[0].size();\n\n}\n\nstd::vector< std::vector<float> > Matrix::getGrid() {\n\treturn grid;\n}\n\nstd::vector<float>::size_type Matrix::getRows() {\n\treturn rows;\n}\n\nstd::vector<float>::size_type Matrix::getCols() {\n\treturn cols;\n}\n\nMatrix Matrix::matrix_transpose() {\n\tstd::vector< std::vector<float> > new_grid;\n\tstd::vector<float> row;\n\n\tfor (int i = 0; i < cols; i++) {\n\t\trow.clear();\n\n\t\tfor (int j = 0; j < rows; j++) {\n\t\t\trow.push_back(grid[j][i]); \n\t\t}\n\t\tnew_grid.push_back(row);\n\t}\n\n\treturn Matrix(new_grid);\n}\n\nMatrix Matrix::matrix_addition(Matrix other) {\n\t\n\tif ((rows != other.getRows()) || (cols != other.getCols())) {\n\t\tthrow std::invalid_argument( \"matrices are not the same size\" );\n\t}\n\n\tstd::vector< std::vector<float> > othergrid = other.getGrid();\n\n\tstd::vector< std::vector<float> > result;\n\t\n\tstd::vector<float> new_row;\n\n\tfor (int i = 0; i < rows; i++) {\n\t\tnew_row.clear();\n\t\tfor (int j = 0; j < cols; j++) {\n\t\t\tnew_row.push_back(grid[i][j] + othergrid[i][j]);\n\t\t}\n\t\tresult.push_back(new_row);\n\t}\n\n\treturn Matrix(result);\n}\n\nvoid Matrix::matrix_print() {\n\n\tstd::cout << std::endl;\n\n\tfor (int i = 0; i < rows; i++)\n\t{\n\t    for (int j = 0; j < cols; j++)\n\t    {\n\t        std::cout << grid[i][j] << \" \";\n\t    }\n\t    std::cout << std::endl;\n\t}\n\tstd::cout << std::endl;\n}\n```\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 412413,
+          "key": "a19477a0-cd0b-410c-9422-f9cadc2665f2",
+          "title": "Use an Inclusion Guard",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a19477a0-cd0b-410c-9422-f9cadc2665f2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 413072,
+              "key": "57c3e31e-3896-4e23-a18b-32ff89d29da1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# ifndef\n\nIn this case, you don't really need an ifndef statement because the code is simple. You have only written one class, so there isn't a way to mistakenly include another class multiple times. However, it's a good habit to write inclusion guards with an ifndef statement.\n\nFor this exercise, use the ifndef syntax to write an inclusion guard in the matrix.h file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 413075,
+              "key": "47589ef0-d9b9-49d0-bc71-3d6bf5190c45",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "47589ef0-d9b9-49d0-bc71-3d6bf5190c45",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5390017643020288",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n#include \"matrix.h\"\n\nint main () {\n    \n    // TODO: Nothing to do here\n    \n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include \"matrix.h\"\n\nMatrix::Matrix() {\n    std::vector <std:: vector <float> > initial_grid (10, std::vector <float>(5, 0.5));\n    grid = initial_grid;\n    rows = initial_grid.size();\n    cols = initial_grid[0].size();\n\n}\n\nMatrix::Matrix(std::vector <std:: vector <float> > initial_grid) {\n    grid = initial_grid;\n    rows = initial_grid.size();\n    cols = initial_grid[0].size();\n}\n\nvoid Matrix::setGrid(std::vector< std::vector<float> > new_grid) {\n    grid = new_grid;\n    rows = new_grid.size();\n    cols = new_grid[0].size();\n\n}\n\nstd::vector< std::vector<float> > Matrix::getGrid() {\n    return grid;\n}\n\nstd::vector<float>::size_type Matrix::getRows() {\n    return rows;\n}\n\nstd::vector<float>::size_type Matrix::getCols() {\n    return cols;\n}\n\nMatrix Matrix::matrix_transpose() {\n    std::vector< std::vector<float> > new_grid;\n    std::vector<float> row;\n\n    for (int i = 0; i < cols; i++) {\n        row.clear();\n\n        for (int j = 0; j < rows; j++) {\n            row.push_back(grid[j][i]); \n        }\n        new_grid.push_back(row);\n    }\n\n    return Matrix(new_grid);\n}\n\nMatrix Matrix::matrix_addition(Matrix other) {\n\n    if ((rows != other.getRows()) || (cols != other.getCols())) {\n        throw std::invalid_argument( \"matrices are not the same size\" );\n    }\n\n    std::vector< std::vector<float> > othergrid = other.getGrid();\n\n    std::vector< std::vector<float> > result;\n\n    std::vector<float> new_row;\n\n    for (int i = 0; i < rows; i++) {\n        new_row.clear();\n        for (int j = 0; j < cols; j++) {\n            new_row.push_back(grid[i][j] + othergrid[i][j]);\n        }\n        result.push_back(new_row);\n    }\n\n    return Matrix(result);\n}\n\nvoid Matrix::matrix_print() {\n\n    std::cout << std::endl;\n\n    for (int i = 0; i < rows; i++)\n    {\n        for (int j = 0; j < cols; j++)\n        {\n            std::cout << grid[i][j] << \" \";\n        }\n        std::cout << std::endl;\n    }\n    std::cout << std::endl;\n}\n",
+                    "name": "matrix.cpp"
+                  },
+                  {
+                    "text": "#include <vector>\n#include <iostream>\n#include <stdexcept>\n\nclass Matrix\n{\n    private:\n\n        std::vector< std::vector<float> > grid;\n        std::vector<float>::size_type rows;\n        std::vector<float>::size_type cols;\n\n    public:\n\n        // constructor functions\n        Matrix ();\n        Matrix (std::vector< std::vector<float> >);\n\n        // set functions\n        void setGrid(std::vector< std::vector<float> >);\n\n        // get functions\n        std::vector< std::vector<float> > getGrid();\n        std::vector<float>::size_type getRows();\n        std::vector<float>::size_type getCols();\n\n        // matrix functions\n        Matrix matrix_transpose();\n        Matrix matrix_addition(Matrix);\n\n        // matrix printing\n        void matrix_print();\n\n};\n",
+                    "name": "matrix.h"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 413104,
+              "key": "d8c26e9d-4be2-4be5-ab1e-7b81e93d55e3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution matrix.h\n\n```c++\n#ifndef MATRIX_H\n#define MATRIX_H\n\n#include <vector>\n#include <iostream>\n#include <stdexcept>\n\nclass Matrix\n{\n    private:\n\n        std::vector< std::vector<float> > grid;\n        std::vector<float>::size_type rows;\n        std::vector<float>::size_type cols;\n\n    public:\n\n        // constructor functions\n        Matrix ();\n        Matrix (std::vector< std::vector<float> >);\n\n        // set functions\n        void setGrid(std::vector< std::vector<float> >);\n\n        // get functions\n        std::vector< std::vector<float> > getGrid();\n        std::vector<float>::size_type getRows();\n        std::vector<float>::size_type getCols();\n\n        // matrix functions\n        Matrix matrix_transpose();\n        Matrix matrix_addition(Matrix);\n\n        // matrix printing\n        void matrix_print();\n\n};\n\n#endif /* MATRIX_H */\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 384270,
+          "key": "7a8b2a6b-b7e5-46bd-ac11-c1458fd290b3",
+          "title": "Instantiate an Object",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7a8b2a6b-b7e5-46bd-ac11-c1458fd290b3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 413111,
+              "key": "977ae8ec-d16e-445c-92c6-6a6cdf5be43e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Instantiate an Object\n\nNow it's time to use your matrix class in a program! The C++ syntax for instantiating an object is like this:\n\n```c++\nClassname objectname(inputs for initializing an object of Classname);\n```\n\nThen you can access any public variables like:\n```c++\nobjectname.variablename\n```\n\nAnd you can access your public functions with:\n```c++\nobjectname.methodname(inputs)\n```\n\nRemember that any private variables or functions will not be available to your program. That was why you wrote the public get and set functions for your private variables.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 413117,
+              "key": "9750fb1e-d853-4802-8a26-0eb73f66dba8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Gaussian.cpp Example\n\nBefore you start using your matrix class, here is a reminder of what the main.cpp looked like for the Gaussian.cpp example:\n```c++\n#include <iostream>\n#include \"gaussian.h\"\n\nint main ()\n{\n\n\tGaussian mygaussian(30.0,20.0);\n\tGaussian othergaussian(10.0,30.0);\n\t\n\tstd::cout << \"average \" << mygaussian.getMu() << std::endl;\n\tstd::cout << \"evaluation \" << mygaussian.evaluate(15.0) << std::endl;\n\n\tstd::cout << \"mul results sigma \" << \n               mygaussian.mul(othergaussian).getSigma2() << std::endl;\n\tstd::cout << \"mul results average \" << \n               mygaussian.mul(othergaussian).getMu() << std::endl;\n\n\tstd::cout << \"add results sigma \" << \n               mygaussian.add(othergaussian).getSigma2() << std::endl;\n\tstd::cout << \"add results average \" << \n               mygaussian.add(othergaussian).getMu() << std::endl;\n\n\treturn 0;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 413112,
+              "key": "c973a1fc-e35e-4f2a-86c0-0a89431889a7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now it's your turn to instantiate a Matrix object. You will find some starter code below with a few TODOs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 413120,
+              "key": "85978848-2a92-443e-b72b-200a8ecf682a",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "85978848-2a92-443e-b72b-200a8ecf682a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6102185497722880",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n#include \"matrix.h\"\n\nint main () {\n    \n    // assign a 7x5 matrix to the variable initial_grid\n    // all values in the matrix are 0.4\n\tstd::vector <std:: vector <float> > \n\t    initial_grid (7, std::vector <float>(5, 0.4));\n\n    // TODO: Use the initial grid variable to instantiate a matrix object\n    // The matrix object should be called matrixa\n    \n    // TODO: Use the matrix_print() method to print out matrixa\n    \n    // TODO: Print out the number of rows in matrixa. You will need\n    // to use the getRows() function and std::cout\n    \n    // TODO: Print out the number of columns in matrixa \n    \n    // TODO: Take the transpose of matrixa and store the results in\n    // a variable called transposea\n\n    // TODO: Print out transposea\n\n    // Now you will use another 7x5 matrix called matrixb to \n    // give the results of the matrix_addition function\n    \n    // 7x5 2-dimensional vector with values 0.2\n\tstd::vector <std:: vector <float> > \n\t    second_grid (7, std::vector <float>(5, 0.2));\n    \n    // TODO: Instantiate an object called matrixb. Use the second_grid\n    // variable as the input to initialize matrixb\n    \n    // TOOD: Add matrixa and matrixb. Store the results in a new matrix\n    // variable called matrixsum\n    \n    // TODO: Print out the matrix contained in the matrixsum variable\n\n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "// Nothing to do here\n\n#include \"matrix.h\"\n\nMatrix::Matrix() {\n    std::vector <std:: vector <float> > initial_grid (10, std::vector <float>(5, 0.5));\n    grid = initial_grid;\n    rows = initial_grid.size();\n    cols = initial_grid[0].size();\n\n}\n\nMatrix::Matrix(std::vector <std:: vector <float> > initial_grid) {\n    grid = initial_grid;\n    rows = initial_grid.size();\n    cols = initial_grid[0].size();\n}\n\nvoid Matrix::setGrid(std::vector< std::vector<float> > new_grid) {\n    grid = new_grid;\n    rows = new_grid.size();\n    cols = new_grid[0].size();\n\n}\n\nstd::vector< std::vector<float> > Matrix::getGrid() {\n    return grid;\n}\n\nstd::vector<float>::size_type Matrix::getRows() {\n    return rows;\n}\n\nstd::vector<float>::size_type Matrix::getCols() {\n    return cols;\n}\n\nMatrix Matrix::matrix_transpose() {\n    std::vector< std::vector<float> > new_grid;\n    std::vector<float> row;\n\n    for (int i = 0; i < cols; i++) {\n        row.clear();\n\n        for (int j = 0; j < rows; j++) {\n            row.push_back(grid[j][i]); \n        }\n        new_grid.push_back(row);\n    }\n\n    return Matrix(new_grid);\n}\n\nMatrix Matrix::matrix_addition(Matrix other) {\n\n    if ((rows != other.getRows()) || (cols != other.getCols())) {\n        throw std::invalid_argument( \"matrices are not the same size\" );\n    }\n\n    std::vector< std::vector<float> > othergrid = other.getGrid();\n\n    std::vector< std::vector<float> > result;\n\n    std::vector<float> new_row;\n\n    for (int i = 0; i < rows; i++) {\n        new_row.clear();\n        for (int j = 0; j < cols; j++) {\n            new_row.push_back(grid[i][j] + othergrid[i][j]);\n        }\n        result.push_back(new_row);\n    }\n\n    return Matrix(result);\n}\n\nvoid Matrix::matrix_print() {\n\n    std::cout << std::endl;\n\n    for (int i = 0; i < rows; i++)\n    {\n        for (int j = 0; j < cols; j++)\n        {\n            std::cout << grid[i][j] << \" \";\n        }\n        std::cout << std::endl;\n    }\n    std::cout << std::endl;\n}\n",
+                    "name": "matrix.cpp"
+                  },
+                  {
+                    "text": "// Nothing to do here\n#ifndef MATRIX_H\n#define MATRIX_H\n\n#include <vector>\n#include <iostream>\n#include <stdexcept>\n\n#include <vector>\n\nclass Matrix\n{\n    private:\n\n        std::vector< std::vector<float> > grid;\n        std::vector<float>::size_type rows;\n        std::vector<float>::size_type cols;\n\n    public:\n\n        // constructor functions\n        Matrix ();\n        Matrix (std::vector< std::vector<float> >);\n\n        // set functions\n        void setGrid(std::vector< std::vector<float> >);\n\n        // get functions\n        std::vector< std::vector<float> > getGrid();\n        std::vector<float>::size_type getRows();\n        std::vector<float>::size_type getCols();\n\n        // matrix functions\n        Matrix matrix_transpose();\n        Matrix matrix_addition(Matrix);\n\n        // matrix printing\n        void matrix_print();\n\n};\n\n#endif /* MATRIX_H */\n",
+                    "name": "matrix.h"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 413169,
+              "key": "047f4e54-1b90-445f-b326-cd72bcdbeea1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution main.cpp\n\n```c++\n#include <iostream>\n#include <vector>\n#include \"matrix.h\"\n\nint main () {\n    \n    // assign a 7x5 matrix to the variable initial_grid\n    // all values in the matrix are 0.4\n\tstd::vector <std:: vector <float> > \n\t    initial_grid (7, std::vector <float>(5, 0.4));\n\n    // TODO: Use the initial grid variable to instantiate a matrix object\n    // The matrix object should be called matrixa\n    Matrix matrixa(initial_grid);\n    \n    // TODO: Use the matrix_print() method to print out matrixa\n    matrixa.matrix_print();\n    \n    // TODO: Print out the number of rows in matrixa. You will need\n    // to use the getRows() function and std::cout\n    std::cout << matrixa.getRows();\n    \n    // TODO: Print out the number of columns in matrixa \n    std::cout << matrixa.getCols();\n\n    // TODO: Take the transpose of matrixa and store the results in\n    // a variable called transposea\n    Matrix transposea = matrixa.matrix_transpose();\n    \n    // TODO: Print out transposea\n    transposea.matrix_print();\n    \n    // Now you will use another 7x5 matrix called matrixb to \n    // give the results of the matrix_addition function\n    \n    // 7x5 2-dimensional vector with values 0.2\n\tstd::vector <std:: vector <float> > \n\t    second_grid (7, std::vector <float>(5, 0.2));\n    \n    // TODO: Instantiate an object called matrixb. Use the second_grid\n    // variable as the input to initialize matrixb\n    Matrix matrixb(second_grid);\n    \n    // TOOD: Add matrixa and matrixb. Store the results in a new matrix\n    // variable called matrixsum\n    Matrix matrixsum(matrixa.matrix_addition(matrixb));\n    \n    // TODO: Print out the matrix contained in the matrixsum variable\n    matrixsum.matrix_print();\n\n    return 0;\n}\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 384274,
+          "key": "1e3d3343-1e9c-4604-aad7-01a60b9c820f",
+          "title": "Running your Program Locally",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1e3d3343-1e9c-4604-aad7-01a60b9c820f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 409871,
+              "key": "5e266e50-a95f-4783-81e8-1b8a43faaa23",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Compiling your Program\n\nIf you haven't gotten C++ running locally on your computer, now's a good time to get that done! \n\nThis is just a quick note about compiling and running the matrix code on your local computer. Put your main.cpp, matrix.cpp and matrix.h into the same directory. On Linux and Mac you can compile your code with a command like:\n\n```c++\ng++ main.cpp matrix.cpp\n```\n\nor whatever the equivalent is for your system or compiler. You need to compile both main.cpp and matrix.cpp for the code to compile. Then you can execute your code with something like\n```\n./a.out\n```\n\nOn Windows, compiling and executing your code will look something like this:\n```\ncl /W4 /EHsc main.cpp matrix.cpp\n\nmain\n```",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

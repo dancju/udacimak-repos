@@ -1,0 +1,205 @@
+{
+  "id": 2546,
+  "project_id": 601,
+  "upload_types": [
+    "repo",
+    "zip"
+  ],
+  "file_filter_regex": "\\A(?!(((.*/)?(__MACOSX|\\.git|node_modules|bower_components|jspm_packages|\\.idea|build|.ipynb_checkpoints|\\.Trash-0|logs)(\\Z|/))))((.*\\.(js|css|py|html|htm|txt|md|markdown|sql|swift|java|gradle|xml|rst|yml|yaml|rmd|pdf|docx)\\Z)|((.*/)?(README|Readme|readme|Makefile)\\Z))",
+  "nomination_eligible": false,
+  "stand_out": "",
+  "hide_criteria": false,
+  "created_at": "2019-04-08T19:39:45.042Z",
+  "updated_at": "2020-01-09T17:08:06.643Z",
+  "hashtag": "",
+  "max_upload_size_mb": 500,
+  "estimated_sla": null,
+  "project_assistant_enabled": false,
+  "checkmate_enabled": false,
+  "checkmate_metadata": null,
+  "available_for_cert_project": false,
+  "classroom_node_id": 842234,
+  "classroom_project_key": "c786a6c6-3392-452d-aef9-c16f3fb7a3f2",
+  "language": "en-us",
+  "ndkeys": [
+    "nd1309",
+    "nd1309-cn",
+    "nd1309-ent",
+    "nd1309-beta"
+  ],
+  "coursekeys": [],
+  "sections": [
+    {
+      "id": 5498,
+      "name": "Complete unfinished block.js implementation",
+      "created_at": "2019-04-10T13:23:17.485Z",
+      "updated_at": "2019-04-10T13:37:54.400Z",
+      "deleted_at": null,
+      "position": 0,
+      "rubric_id": 2546,
+      "rubric_items": [
+        {
+          "id": 15843,
+          "section_id": 5498,
+          "passed_description": "-Return a new promise to allow the method be called asynchronous.\n-Create an auxiliary variable and store the current hash of the block in it (this represent the block object)\n-Recalculate the hash of the entire block (Use SHA256 from crypto-js library)\n-Compare if the auxiliary hash value is different from the calculated one.\n-Resolve true or false depending if it is valid or not.\n",
+          "exceeded_description": null,
+          "created_at": "2019-04-10T13:24:39.543Z",
+          "updated_at": "2019-05-01T13:06:07.210Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Modify the `validate()` function to validate if the block has been tampered or not.\n",
+          "exceedable": false
+        },
+        {
+          "id": 15847,
+          "section_id": 5498,
+          "passed_description": "-Use hex2ascii module to decode the data\n-Because data is a javascript object use JSON.parse(string) to get the Javascript Object\n- Resolve with the data and make sure that you don't need to return the data for the genesis block OR reject with an error.",
+          "exceeded_description": null,
+          "created_at": "2019-04-10T13:37:54.721Z",
+          "updated_at": "2019-04-10T13:38:40.531Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Modify the 'getBData()' function to return the block body (decoding the data)",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5500,
+      "name": "Complete unfinished blockchain.js implementation",
+      "created_at": "2019-04-10T13:30:43.295Z",
+      "updated_at": "2019-04-10T13:39:50.593Z",
+      "deleted_at": null,
+      "position": 2,
+      "rubric_id": 2546,
+      "rubric_items": [
+        {
+          "id": 15845,
+          "section_id": 5500,
+          "passed_description": "- Must return a Promise that will resolve with the block added OR reject if an error happen during the execution.\n- height must be checked to assign the previousBlockHash\n-Assign the timestamp & the correct height\n-Create the block hash and push the block into the chain array. \n Don't for get to update the `this.height`",
+          "exceeded_description": null,
+          "created_at": "2019-04-10T13:31:16.081Z",
+          "updated_at": "2019-05-01T13:07:41.017Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Modify the '_addBlock(block)' function to store a block in the chain",
+          "exceedable": false
+        },
+        {
+          "id": 15848,
+          "section_id": 5500,
+          "passed_description": "- must return a Promise that will resolve with the message to be signed",
+          "exceeded_description": null,
+          "created_at": "2019-04-10T13:39:50.927Z",
+          "updated_at": "2019-04-10T13:45:29.038Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Modify 'requestMessageOwnershipVerification(address)' to allow you to request a message that you will use to sign it with your Bitcoin Wallet (Electrum or Bitcoin Core)",
+          "exceedable": false
+        },
+        {
+          "id": 15849,
+          "section_id": 5500,
+          "passed_description": "- must resolve with the Block added or\nreject with an error.\n- time elapsed between when the message was sent and the current time must be less that 5 minutes\n- must verify the message with wallet address and signature: bitcoinMessage.verify(message, address, signature)\n- must create the block and add it to the chain if verification is valid",
+          "exceeded_description": null,
+          "created_at": "2019-04-10T13:45:29.364Z",
+          "updated_at": "2019-04-10T13:55:46.650Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 2,
+          "criteria": "Modify 'submitStar(address, message, signature, star)' function to register a new Block with the star object\ninto the chain",
+          "exceedable": false
+        },
+        {
+          "id": 15850,
+          "section_id": 5500,
+          "passed_description": "- must return a Promise that will resolve with the Block",
+          "exceeded_description": null,
+          "created_at": "2019-04-10T13:51:53.771Z",
+          "updated_at": "2019-04-10T13:55:46.654Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 3,
+          "criteria": "Modify the 'getBlockHeight(hash)' function to retrieve a Block based on the hash parameter",
+          "exceedable": false
+        },
+        {
+          "id": 15851,
+          "section_id": 5500,
+          "passed_description": "- must return a Promise that will resolve with an array of the owner address' Stars from the chain",
+          "exceeded_description": null,
+          "created_at": "2019-04-10T13:55:46.961Z",
+          "updated_at": "2019-04-10T13:58:13.947Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 4,
+          "criteria": "Modify the 'getStarsByWalletAddress (address)' function to return an array of Stars from an owners collection",
+          "exceedable": false
+        },
+        {
+          "id": 15852,
+          "section_id": 5500,
+          "passed_description": "- must return a Promise that will resolve with the list of errors when validating the chain\n- must validate each block using validateBlock()\n- Each Block should check with the previousBlockHash ",
+          "exceeded_description": null,
+          "created_at": "2019-04-10T13:58:52.443Z",
+          "updated_at": "2019-04-10T14:10:09.390Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 5,
+          "criteria": "Modify the 'validateChain()' function ",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5502,
+      "name": "Test your App functionality",
+      "created_at": "2019-04-10T14:10:25.801Z",
+      "updated_at": "2019-04-10T14:17:37.522Z",
+      "deleted_at": null,
+      "position": 3,
+      "rubric_id": 2546,
+      "rubric_items": [
+        {
+          "id": 15853,
+          "section_id": 5502,
+          "passed_description": "- must use a GET call to request the Genesis block\n- must use a POST call to requestValidation\n- must sign message with your wallet\n- must submit your Star\n- must use GET call to retrieve starts owned by a particular address",
+          "exceeded_description": null,
+          "created_at": "2019-04-10T14:17:37.823Z",
+          "updated_at": "2019-04-10T14:29:42.573Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Use 'POSTMAN' or similar service to test your blockchains endpoints and send screenshots of each call",
+          "exceedable": false
+        }
+      ]
+    }
+  ],
+  "project": {
+    "id": 601,
+    "name": "Create Your Own Private Blockchain",
+    "nanodegree_key": "nd1309",
+    "is_cert_project": false,
+    "audit_project_id": null,
+    "hashtag": null,
+    "audit_rubric_id": null,
+    "entitlement_required": false,
+    "is_career": false,
+    "recruitment_family_id": 10,
+    "awaiting_review_count": 0,
+    "awaiting_review_count_by_language": {},
+    "awaiting_audit_count": 0,
+    "awaiting_quality_audit_count": 0,
+    "awaiting_training_audit_count": 0,
+    "created_at": "2019-04-11T19:40:20.974Z",
+    "updated_at": "2020-05-01T20:11:49.830Z",
+    "price": "8.0",
+    "ungradeable_price": "3.0",
+    "audit_price": null
+  }
+}

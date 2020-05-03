@@ -1,0 +1,179 @@
+{
+  "id": 1428,
+  "project_id": 481,
+  "upload_types": [
+    "repo",
+    "zip"
+  ],
+  "file_filter_regex": "\\A(?!(((.*/)?(__MACOSX|\\.git|node_modules|bower_components|jspm_packages|\\.idea|build|.ipynb_checkpoints|\\.Trash-0|logs)(\\Z|/))))((.*\\.(css|docx|gradle|htm|html|java|js|markdown|md|pdf|py|rmd|rst|sql|swift|txt|xml|yaml|yml)\\Z)|((.*/)?(README|Readme|readme|Makefile)\\Z))",
+  "nomination_eligible": false,
+  "stand_out": "* Create a new version of `slam` in which `omega` only keeps track of the latest robot pose (you do not need all of them to implement `slam` correctly).\n* Add visualization code that creates a more realistic-looking display world\n* Create a non-random maze of landmarks and see how your implementation of `slam` performs\n* Display your robot world at every time step and stack these image frames to create a short video clip and to see how the robot localizes itself and builds up a model of the world over time\n* Take a look at an implementation of slam that uses reinforcement learning and probabilistic motion models, [at this Github link](https://github.com/devendrachaplot/Neural-Localization)",
+  "hide_criteria": false,
+  "created_at": "2018-01-11T13:22:20.913Z",
+  "updated_at": "2020-02-22T18:29:55.909Z",
+  "hashtag": "",
+  "max_upload_size_mb": 500,
+  "estimated_sla": null,
+  "project_assistant_enabled": false,
+  "checkmate_enabled": false,
+  "checkmate_metadata": null,
+  "available_for_cert_project": false,
+  "classroom_node_id": 502146,
+  "classroom_project_key": "f232f286-353b-45d9-9fe5-715c7cb0ab34",
+  "language": "en-us",
+  "ndkeys": [
+    "nd891-ent",
+    "nd891-cn",
+    "nd891",
+    "nd891-beta"
+  ],
+  "coursekeys": [],
+  "sections": [
+    {
+      "id": 3875,
+      "name": "`robot_class.py`: Implementation of `sense`",
+      "created_at": "2018-05-16T02:23:31.069Z",
+      "updated_at": "2018-05-16T02:23:56.911Z",
+      "deleted_at": null,
+      "position": 0,
+      "rubric_id": 1428,
+      "rubric_items": [
+        {
+          "id": 11329,
+          "section_id": 3875,
+          "passed_description": "Implement the `sense` function to complete the robot class found in the `robot_class.py` file. This implementation should account for a given amount of `measurement_noise` and the `measurement_range` of the robot. This function should return a list of values that reflect the measured distance (dx, dy) between the robot's position and any landmarks it sees. One item in the returned list has the format: `[landmark_index, dx, dy]`.",
+          "exceeded_description": null,
+          "created_at": "2018-05-16T02:23:57.035Z",
+          "updated_at": "2018-05-16T02:25:33.730Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Implement the `sense` function for the robot class.",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 3876,
+      "name": "Notebook 3: Implementation of `initialize_constraints`",
+      "created_at": "2018-05-16T02:25:34.231Z",
+      "updated_at": "2018-05-16T02:25:57.127Z",
+      "deleted_at": null,
+      "position": 1,
+      "rubric_id": 1428,
+      "rubric_items": [
+        {
+          "id": 11330,
+          "section_id": 3876,
+          "passed_description": "Initialize the array `omega` and vector `xi` such that any unknown values are `0` the size of these should vary with the given `world_size`, `num_landmarks`, and time step, `N`, parameters.",
+          "exceeded_description": null,
+          "created_at": "2018-05-16T02:25:57.290Z",
+          "updated_at": "2018-05-16T02:29:20.465Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Initialize constraint matrices.",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 3877,
+      "name": "Notebook 3: Implementation of `slam`",
+      "created_at": "2018-05-16T02:29:20.602Z",
+      "updated_at": "2018-05-16T02:29:36.054Z",
+      "deleted_at": null,
+      "position": 2,
+      "rubric_id": 1428,
+      "rubric_items": [
+        {
+          "id": 11331,
+          "section_id": 3877,
+          "passed_description": "The values in the constraint matrices should be affected by sensor measurements *and* these updates should account for uncertainty in sensing.",
+          "exceeded_description": null,
+          "created_at": "2018-05-16T02:29:36.191Z",
+          "updated_at": "2018-05-16T02:31:51.435Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Iterate through the generated `data` and update the constraints as you read in sensor measurement data.",
+          "exceedable": false
+        },
+        {
+          "id": 11332,
+          "section_id": 3877,
+          "passed_description": "The values in the constraint matrices should be affected by motion `(dx, dy)` *and* these updates should account for uncertainty in motion.",
+          "exceeded_description": null,
+          "created_at": "2018-05-16T02:31:51.562Z",
+          "updated_at": "2018-05-16T02:33:12.660Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Update the constraint matrices as you read robot motion data.",
+          "exceedable": false
+        },
+        {
+          "id": 11333,
+          "section_id": 3877,
+          "passed_description": "The values in `mu` will be the x, y positions of the robot over time and the estimated locations of landmarks in the world. `mu` is calculated with the constraint matrices `omega^(-1)*xi`.",
+          "exceeded_description": null,
+          "created_at": "2018-05-16T02:32:27.548Z",
+          "updated_at": "2018-05-16T02:33:12.673Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 2,
+          "criteria": "`slam` returns a list of robot and landmark positions, `mu`.",
+          "exceedable": false
+        },
+        {
+          "id": 11334,
+          "section_id": 3877,
+          "passed_description": "Compare the `slam`-estimated and *true* final pose of the robot; answer why these values might be different.",
+          "exceeded_description": null,
+          "created_at": "2018-05-16T02:33:12.822Z",
+          "updated_at": "2018-05-16T02:34:09.206Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 3,
+          "criteria": "Answer question about the final robot pose.",
+          "exceedable": false
+        },
+        {
+          "id": 11335,
+          "section_id": 3877,
+          "passed_description": "There are two provided test_data cases, test your implementation of slam on them and see if the result matches.",
+          "exceeded_description": null,
+          "created_at": "2018-05-16T02:34:09.330Z",
+          "updated_at": "2018-05-16T02:36:00.100Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 4,
+          "criteria": "`slam` passes all provided tests.",
+          "exceedable": false
+        }
+      ]
+    }
+  ],
+  "project": {
+    "id": 481,
+    "name": "Landmark Detection & Tracking (SLAM)",
+    "nanodegree_key": "nd891",
+    "is_cert_project": false,
+    "audit_project_id": null,
+    "hashtag": null,
+    "audit_rubric_id": 1144,
+    "entitlement_required": null,
+    "is_career": null,
+    "recruitment_family_id": 1,
+    "awaiting_review_count": 0,
+    "awaiting_review_count_by_language": {},
+    "awaiting_audit_count": 0,
+    "awaiting_quality_audit_count": 0,
+    "awaiting_training_audit_count": 0,
+    "created_at": "2018-05-11T03:10:58.770Z",
+    "updated_at": "2020-05-01T21:26:28.644Z",
+    "price": "7.5",
+    "ungradeable_price": "3.0",
+    "audit_price": "0.0"
+  }
+}

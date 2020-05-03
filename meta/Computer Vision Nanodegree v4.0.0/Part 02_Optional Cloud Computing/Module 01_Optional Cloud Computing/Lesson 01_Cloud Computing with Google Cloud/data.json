@@ -1,0 +1,869 @@
+{
+  "data": {
+    "lesson": {
+      "id": 681543,
+      "key": "c24c1bb3-0524-4ad7-870e-56b928eed9f2",
+      "title": "Cloud Computing with Google Cloud",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how to leverage GPUs on Google Cloud for machine learning and scientific computing.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 681544,
+          "key": "ac8b1433-630f-4f2e-8be2-97ef5f37b5d0",
+          "title": "Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ac8b1433-630f-4f2e-8be2-97ef5f37b5d0",
+            "completed_at": "2020-04-06T22:52:04.249Z",
+            "last_viewed_at": "2020-04-06T22:52:04.416Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 681548,
+              "key": "5f7d806c-c3e0-4578-8ddb-89b159877b1f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Why Use GPUs?\n\nTraining and evaluating deep neural networks is a computationally intensive task. For modestly sized problems and datasets it may be possible to train your network on the CPU in your local machine, but it could take anywhere from 15 minutes to several hours depending on the number of epochs, the size of the neural networks, and other factors. A faster alternative is to train on a GPU (Graphics Processing Unit), which is a type of processor that supports greater parallelism.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681556,
+              "key": "97e9e138-526e-4851-9719-015ec9c87046",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b577d9f_screen-shot-2018-07-24-at-12.27.11-pm/screen-shot-2018-07-24-at-12.27.11-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/97e9e138-526e-4851-9719-015ec9c87046",
+              "caption": "An NVIDIA GPU.",
+              "alt": "",
+              "width": 200,
+              "height": 654,
+              "instructor_notes": null
+            },
+            {
+              "id": 681550,
+              "key": "4101d681-d38e-4e6b-8548-c999fe08b395",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Cloud Service Provider\n\nIf you do not already have a computer with a built-in NVIDIA GPU, we suggest you use a cloud service provider. As a student, you have the option to claim either Amazon Web Services (AWS) credits or Google Compute Engine (GCE) credits. In the next few sections, we’ll go over the step you need to take to get a neural network running on the cloud using both AWS and GCE. You can choose whichever service you prefer; you can read about the capabilities of [Google Cloud Platform](https://cloud.google.com/products/machine-learning/) and [Amazon Elastic Compute Cloud](https://aws.amazon.com/ec2/?nc2=h_m1) at the provided links. The credits for each service are separate, so you can try out both!\n\nWe recommend starting with Google Cloud and moving to AWS should you need more time or find that you prefer it's interface.\n\n**Note:** Please skip this section if you are planning to use your own GPU or CPU (or otherwise not planning to use a cloud platform).\n\n**Note:** $200 of Google Compute Engine credits are available to Computer Vision Nanodegree Students. \n\n**Note:** You may not use the services to engage in mining cryptocurrency.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681746,
+              "key": "f2c1ae3c-eebe-4f08-bd71-43bf23f1f143",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n# Outline\n\nIn this lesson, we'll go through the typical steps to setup, use, and shutdown a GPU instance.\n\n1. Setting up an account to redeem cloud credits\n2. Defining and requesting a GPU instance\n3. Launching an Instance\n4. Logging into an Instance\n5. **Shutting Down an Instance**\n\nThis last step is important to ensure that you do not accrue additional charges.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 681564,
+          "key": "6aba48d5-8891-43cd-a3c2-e4d08b866c83",
+          "title": "Login and Redeem Credits",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6aba48d5-8891-43cd-a3c2-e4d08b866c83",
+            "completed_at": "2020-04-06T22:52:05.784Z",
+            "last_viewed_at": "2020-04-09T16:32:01.416Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 681572,
+              "key": "1aaa3772-08ca-4f32-841f-97a2d779040c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Redeeming Credits\n\n1. Create a Gmail account, if you don't already have one. [https://accounts.google.com/signup](https://accounts.google.com/signup). **Skip this step if you already have an account.**\n> It must be an `[at] gmail.com` account not a G Suite or other platform account. \n> It's okay if this is different than your Udacity student email, just make sure you use your gmail account when using any of these cloud services.\n2. Browse to [https://console.cloud.google.com/edu](https://console.cloud.google.com/edu). Ensure that you are logged in with the correct account by clicking the profile image in the top-right corner of the page.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681574,
+              "key": "b15f4200-dca8-4a8a-a082-48def5249806",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b577f18_screen-shot-2018-07-24-at-12.33.22-pm/screen-shot-2018-07-24-at-12.33.22-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b15f4200-dca8-4a8a-a082-48def5249806",
+              "caption": "The redeem page.",
+              "alt": "",
+              "width": 500,
+              "height": 960,
+              "instructor_notes": null
+            },
+            {
+              "id": 681576,
+              "key": "69b255eb-fb43-4aeb-a409-ad6856bbc985",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Coupon Code\n\n**Within the first two weeks of enrolling in this Nanodegree program**, you should have received a coupon code from Udacity. It may take up to two weeks to process your enrollment and send a coupon code. \n\nOnce you receive a code, paste that into the text box and click `Accept and continue`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681577,
+              "key": "6aac49e2-0951-4884-aebe-28e0afcc18b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n### Notes on Using a Gmail Account\n\n* You'll receive a coupon code within the first two weeks of enrolling at your Udacity student email address.\n* To use the Google Cloud Platform, you **must** use a` @gmail.com` address, not a G Suite account that may be associated with your business or educational institution or another account, even if it's your Udacity student email.\n\n* If you already have a gmail account that you use with Google Cloud Platform, you may use it! Clicking `Accept and continue` will create a new Billing Account with credits and access to GPUs.  \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 681761,
+          "key": "428faa7e-34c2-4496-b1a5-7b49005b5816",
+          "title": "Create a Project",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "428faa7e-34c2-4496-b1a5-7b49005b5816",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 681762,
+              "key": "cb7a323d-b453-44be-9b66-33f0287c43f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create a Project\n\nAfter logging in, you'll be taken to the main platform page. You may choose to use the default `My First Project` to continue, but it's recommended that you create a *new* project with a descriptive name! Below, we create an empty project and name it `facial-keypoints-1`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681763,
+              "key": "6f3ceaea-11e1-4930-92bc-4b3cce663ae9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57b2d4_create-proj-1/create-proj-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6f3ceaea-11e1-4930-92bc-4b3cce663ae9",
+              "caption": "Create an empty project.",
+              "alt": "",
+              "width": 500,
+              "height": 1144,
+              "instructor_notes": null
+            },
+            {
+              "id": 681764,
+              "key": "a83df5aa-3630-4720-afb8-9492cc933638",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57b30b_create-project-2/create-project-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a83df5aa-3630-4720-afb8-9492cc933638",
+              "caption": "Naming a project.",
+              "alt": "",
+              "width": 300,
+              "height": 550,
+              "instructor_notes": null
+            },
+            {
+              "id": 681766,
+              "key": "030dfd8e-1282-4fff-ba52-c2f5e83e6031",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Click `create` and a new project with that name will become available in your drop-down list of projects on the main page. Select this project to begin working on it and defining your GPU instance.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681767,
+              "key": "b22fe1be-cbf8-4fc4-9dfd-f30e51904156",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57b3ba_select-proj/select-proj.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b22fe1be-cbf8-4fc4-9dfd-f30e51904156",
+              "caption": "Select the project that you just created.",
+              "alt": "",
+              "width": 500,
+              "height": 1271,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 681585,
+          "key": "61bd4d27-e919-4c77-82fe-6bd1efffeaf5",
+          "title": "Access GPUs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "61bd4d27-e919-4c77-82fe-6bd1efffeaf5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 681586,
+              "key": "5ec5e4f6-8f76-4b32-9c7f-c13f7611774d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Get Access to GPUs\n\nOnce you've signed in to Google Cloud Platform, you can access GPUs. In the *upper-left* corner of the screen, click the menu-bar with three lines. Click `IAM & Admin`, then click `Quotas`. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681770,
+              "key": "23e93403-9054-46d8-985d-249caa3781ac",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d68e337_screenshot-2019-08-30-at-12.07.27-pm/screenshot-2019-08-30-at-12.07.27-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/23e93403-9054-46d8-985d-249caa3781ac",
+              "caption": "Navigate to `Quotas`.",
+              "alt": "",
+              "width": 290,
+              "height": 425,
+              "instructor_notes": null
+            },
+            {
+              "id": 681588,
+              "key": "6d45fea2-e9e7-4f3f-b447-61c1e9ffca1f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If the following notification appears, indicating that the compute engine is getting ready, wait until it disappears. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681591,
+              "key": "7227a996-b380-4028-a5ad-0bc88e93c52f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b578851_screen-shot-2018-07-24-at-1.12.47-pm/screen-shot-2018-07-24-at-1.12.47-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7227a996-b380-4028-a5ad-0bc88e93c52f",
+              "caption": "Compute engine gets ready.",
+              "alt": "",
+              "width": 500,
+              "height": 86,
+              "instructor_notes": null
+            },
+            {
+              "id": 681772,
+              "key": "53086aca-3cb3-4095-9eee-7401bf92ce05",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Set Billing\n\nAfter selecting `Quotas`, you may be prompted to Enable Billing. This is how you will link a project to your specific credits. Click Enable Billing and a pop-up should appear, indicating that your computer vision credits will be linked to this project. An example is shown below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681773,
+              "key": "8fb1bfac-3dca-429a-9424-6abab4ffaf42",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57b756_billing-2/billing-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8fb1bfac-3dca-429a-9424-6abab4ffaf42",
+              "caption": "Enable billing and set account.",
+              "alt": "",
+              "width": 300,
+              "height": 291,
+              "instructor_notes": null
+            },
+            {
+              "id": 681590,
+              "key": "e637ee80-6b6f-4a63-bdc7-8fd8e383d247",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Finally, click the link that brings you to the \"IAM & Admin Quotas\" page. Next, you'll see how to define a quota and select a GPU.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681775,
+              "key": "4fe2008b-50e5-4c23-b3eb-3cd906338fe5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57b804_aim-admin/aim-admin.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4fe2008b-50e5-4c23-b3eb-3cd906338fe5",
+              "caption": "IAM & Admin link.",
+              "alt": "",
+              "width": 400,
+              "height": 743,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 681768,
+          "key": "44c1b714-bb93-4465-b0c6-ff204430adff",
+          "title": "Define a Quota",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "44c1b714-bb93-4465-b0c6-ff204430adff",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 681776,
+              "key": "c27884c5-839e-41d8-9930-5011384443c9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Define a Quota\n\nAfter navigating to the Quotas page, you should see a large list of options. We recommend selecting a specific GPU to start.\n\nFrom the drop-down menus, select:\n* Service = `Compute Engine API`\n* Metric = `NVIDIA K80 GPU`\n* Location = Whichever of these *three* regions is closest to you:  `asia-east1`, `europe-west1`, or `us-west1`\n\nIt may be easiest to first select `None` for all options and then search for the Metric and Location yu want.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681790,
+              "key": "cb937f5b-2e53-4cf2-b313-d7525a0a3eec",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57b93b_select-none/select-none.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cb937f5b-2e53-4cf2-b313-d7525a0a3eec",
+              "caption": "Select None to narrow your search.",
+              "alt": "",
+              "width": 500,
+              "height": 1295,
+              "instructor_notes": null
+            },
+            {
+              "id": 681792,
+              "key": "e9bc70b4-5d09-4ada-8203-8ae45ecbd2ea",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57b951_search-select/search-select.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e9bc70b4-5d09-4ada-8203-8ae45ecbd2ea",
+              "caption": "Search for the GPU you want.",
+              "alt": "",
+              "width": 500,
+              "height": 816,
+              "instructor_notes": null
+            },
+            {
+              "id": 681789,
+              "key": "4af8ede6-c831-4626-b507-4d5dd4a017ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Location\n\nLocation is for data collection and GPU pricing. If you are not sure of your location, it may be helpful to look at [this guide](https://cloud.google.com/about/locations/).\n\n**Remember this location code as you will need to use to later to run a GPU-enabled environment.** We suggest that you write it down on a piece of paper or as a note.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681777,
+              "key": "5d5aaf14-de02-45ea-a435-272d32dad2f7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "---\n## (Optional) Increasing your GPU Usage\n\nIt's okay to leave this instance as is, with a default of 8 GPUs. *If* you want to slightly increase your GPU usage, you may request access to one more by editing your quota.\n\nCheck the box next to your defined quota and click `Edit Quotas` (the `+` at the top of the screen). Enter your email, when prompted, and click `Next`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681803,
+              "key": "0ef73c2a-ec2f-477c-a6d6-2152aca5c0e9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57ba71_screen-shot-2018-07-24-at-4.46.38-pm/screen-shot-2018-07-24-at-4.46.38-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0ef73c2a-ec2f-477c-a6d6-2152aca5c0e9",
+              "caption": "Edit a quota.",
+              "alt": "",
+              "width": 500,
+              "height": 552,
+              "instructor_notes": null
+            },
+            {
+              "id": 681796,
+              "key": "c928181f-ff71-49d3-b1e6-d21d629d6edf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### New Limit\n\nWhen prompted for a `New quota limit`, you may find that you 1. have a default quota, **if this value is equalt to or greater than 1**, you can leave this as is and do not need to request any additional GPUs or 2. have a default of `0` in which case, you may ask for `1` GPU. In the second case, follow these instructions: in the `Request description` text box, write the following text: \n> I request a quota increase for one GPU. I am a student in Udacity's Computer Vision nanodegree.\n\n(You may copy-paste from this page.)\n\n*Note: One GPU should be sufficient for the work in this course.*",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681809,
+              "key": "600119fd-11be-456f-9bd7-e89708f51af9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you submit a request, you may see a pop-up, confirming the request. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681804,
+              "key": "b69fd26b-1878-4fb2-942c-1e6636f703d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Your quota request should be approved within 10 minutes.**\n\nYou will receive notification via your gmail account that you are logged in with. The new quota will be visible on the quotas page. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 681740,
+          "key": "4ce04bb5-3b38-4b78-995b-ddf550e6a5b4",
+          "title": "gcloud Command Line Tool",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4ce04bb5-3b38-4b78-995b-ddf550e6a5b4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 681742,
+              "key": "4da1e721-2189-4a2b-8245-f78c62959ccc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# gcloud\n\nIn order to start the GPU instance first you need to install `gcloud` command line tool. \n\nIt's recommended that you use the [provided, interactive installer](https://cloud.google.com/sdk/docs/downloads-interactive) to install the latest version of Cloud SDK. You may also choose to use a specific version or method, described [here](https://cloud.google.com/sdk/install), if you do not have a standard OS.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681810,
+              "key": "353bfd55-e05a-4649-a5c6-28a103b48895",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Interactive Install\n\nI followed the instructions for [interactive install](https://cloud.google.com/sdk/docs/downloads-interactive) for Mac OSX. First I opened my terminal and ran the download command.\n```bash\ncurl https://sdk.cloud.google.com | bash\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681811,
+              "key": "849a2c8b-1f45-4527-96f4-197a1cd13f48",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57c24d_terminal/terminal.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/849a2c8b-1f45-4527-96f4-197a1cd13f48",
+              "caption": "Mac terminal icon.",
+              "alt": "",
+              "width": 100,
+              "height": 512,
+              "instructor_notes": null
+            },
+            {
+              "id": 681812,
+              "key": "084522be-e8a8-4e8e-b3ce-2346bcde4416",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This command prompted me for an installation directory, which I called `cloud-install`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681813,
+              "key": "3c87cff3-ca73-4ac5-92fc-8adbb5020dd7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57c379_install-1/install-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3c87cff3-ca73-4ac5-92fc-8adbb5020dd7",
+              "caption": "Initial installation commands.",
+              "alt": "",
+              "width": 400,
+              "height": 568,
+              "instructor_notes": null
+            },
+            {
+              "id": 681815,
+              "key": "fd084353-4c4b-4b1c-8df4-0923b721fb5a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "After this step, you should see some text print out, indicating the packages being installed. When prompted to continue, type `Y`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681814,
+              "key": "fdbb95db-5d61-409e-bfde-6888d54461db",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57c391_install-2/install-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fdbb95db-5d61-409e-bfde-6888d54461db",
+              "caption": "Enable install.",
+              "alt": "",
+              "width": 400,
+              "height": 728,
+              "instructor_notes": null
+            },
+            {
+              "id": 681817,
+              "key": "6d2b4c48-f8d6-4258-a55d-1d3902e17835",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "At this point, you may be prompted to enter an `rc` file; you should leave this blank and press enter for the default behavior. You may also be prompted to leave feedback for Google Cloud; this is up to you! \n\nThe next step is to restart your shell for the installation to take effect. Use the command:\n```bash \nexec -l $SHELL\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681816,
+              "key": "8b28b5df-4425-4c7c-a648-b6148e483e41",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57c3d2_new-shell-3/new-shell-3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8b28b5df-4425-4c7c-a648-b6148e483e41",
+              "caption": "Restart your shell.",
+              "alt": "",
+              "width": 400,
+              "height": 731,
+              "instructor_notes": null
+            },
+            {
+              "id": 681818,
+              "key": "a33650a4-02b8-49ca-83b3-a714ec3980a4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "FInally, run gcloud init to initialize the gcloud environment:\n```bash\ngcloud init\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681819,
+              "key": "a812adc3-c692-4c2c-8da0-b13a34eac01e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57c440_gcloud-init-4/gcloud-init-4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a812adc3-c692-4c2c-8da0-b13a34eac01e",
+              "caption": "Initialize gcloud.",
+              "alt": "",
+              "width": 400,
+              "height": 729,
+              "instructor_notes": null
+            },
+            {
+              "id": 681820,
+              "key": "ab7e58dd-40ff-483d-85cf-b00987fe1ac2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This should then ask you to login to your gmail account; this will take you to an authentication page. Once you complete this step, you're almost done!\n\nIf you want, you can set the default project from a list of your defined projects in your terminal. We can also specify the project in gcloud in a moment.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681821,
+              "key": "1a41e24f-96be-40f4-ae01-c5360ecefea8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57c722_screen-shot-2018-07-24-at-5.33.17-pm/screen-shot-2018-07-24-at-5.33.17-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1a41e24f-96be-40f4-ae01-c5360ecefea8",
+              "caption": "Selecting a project via Terminal window.",
+              "alt": "",
+              "width": 300,
+              "height": 159,
+              "instructor_notes": null
+            },
+            {
+              "id": 681822,
+              "key": "8ac8b8d2-08c5-4e94-a14a-92e46907b564",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Use gcloud\n\nNow, if you go back to your GPU project window, you can use gcloud shell by clicking the icon and selecting `start cloud shell`!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681823,
+              "key": "7fffebb6-3aeb-4398-b968-7455fef80435",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57cacc_screen-shot-2018-07-24-at-5.34.49-pm/screen-shot-2018-07-24-at-5.34.49-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7fffebb6-3aeb-4398-b968-7455fef80435",
+              "caption": "gcloud icon.",
+              "alt": "",
+              "width": 500,
+              "height": 546,
+              "instructor_notes": null
+            },
+            {
+              "id": 681824,
+              "key": "3d2f7956-df44-4b39-9680-6ac7555244f9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b57cb3c_screen-shot-2018-07-24-at-5.35.27-pm/screen-shot-2018-07-24-at-5.35.27-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3d2f7956-df44-4b39-9680-6ac7555244f9",
+              "caption": "Shell interface.",
+              "alt": "",
+              "width": 600,
+              "height": 1353,
+              "instructor_notes": null
+            },
+            {
+              "id": 681825,
+              "key": "8ac495e9-7de9-46de-8eb3-66e12f5d6169",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Next, you'll see how to launch an instance via cloud shell.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 681600,
+          "key": "a520ee01-8d8d-4812-924a-5ba10a24fdd7",
+          "title": "Launch an Instance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a520ee01-8d8d-4812-924a-5ba10a24fdd7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 681683,
+              "key": "2dbd3a01-c8da-4aed-a821-b3b459a44009",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Launch an Instance \n\nIn order to start the instance please run the following command to create an instance that supports the latest version of PyTorch. We recommend copy-pasting each line **and** editing the names and zones, as commented below.\n\n**Remember to type in your specific location code that you entered in the previous step. You may need to add a letter to the end for specificity.**\n\n```bash\nexport INSTANCE_NAME=\"my-compute-engine-instance\" # Put any name here!\nexport IMAGE=\"pytorch-latest-cu91-1531880092\"\nexport PROJECT_NAME=\"\" # Put your Google Cloud Project name here!\nexport ZONE=\"us-west1-b\"  # Put zone you requested quota in: asia-east1-a, europe-west1-d or us-west1-b\ngcloud compute instances create $INSTANCE_NAME \\\n        --zone=$ZONE \\\n        --image=$IMAGE \\\n        --project=$PROJECT_NAME \\\n        --image-project=deeplearning-platform-release \\\n        --maintenance-policy=TERMINATE \\\n        --accelerator='type=nvidia-tesla-k80,count=1' \\\n        --metadata='install-nvidia-driver=True' \\\n        --machine-type=n1-standard-2\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681602,
+              "key": "1c714a96-2267-43a2-861d-f05120c472c5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Then you wait! Instance creation will take a few minutes. Keep in mind that instance will NOT be immediately available for accessing via SSH since the NVIDIA Driver is installed during the first boot. Please wait ~2 minutes after the instance is created before SSHing to it.\n\n**Note:** If you try to SSH to the instance before NVIDIA Driver installation is finished, you will see a “Connection refused” error. You just have to wait for this error to resolve itself.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681735,
+              "key": "8cc08d28-696b-4a87-a292-458d0a3a712e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Shutdown\n\nYou will also have to **shutdown** this instance when you are not using it otherwise you risk incurring additional charges. To “stop” (i.e. shutdown) your instances, run one of the following commands:\n```bash\ngcloud compute instances stop $INSTANCE_NAME\n```\n\nOr if you want to delete instance completely:\n```bash\ngcloud compute instances delete $INSTANCE_NAME\n```\n\nDeleting is generally recommended, unless you are shortly pausing your work and will return to it in an hour or so (then, stopping is recommended).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 681603,
+          "key": "fd647380-a6ee-4b02-a2f4-5da8cacc350c",
+          "title": "Login to the Instance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fd647380-a6ee-4b02-a2f4-5da8cacc350c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 681604,
+              "key": "ff0146a2-e065-499d-ad98-848c5b303ff8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Login to the Instance\n\nAfter waiting for a couple minutes for your instance to launch, you can access it! In order to ssh into your instance run the following command in gcloud: \n\n```bash\ngcloud compute ssh --project $PROJECT_NAME --zone $ZONE jupyter@$INSTANCE_NAME -- -L 8080:localhost:8080\n```\n\nOn the instance you now need to install some packages that are required for the course; the following installs a Python wrapper for use of the OpenCV library:\n\n```bash\nsudo pip install opencv-python \nsudo pip3 install opencv-python \n```\n\nFinally, you'll need to clone a Github repository. Run the following command to clone the first project repository that has all the project notebooks and resources:\n\n```bash\ngit clone https://github.com/udacity/P1_Facial_Keypoints\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681826,
+              "key": "9b4859a2-b981-4e38-b99b-4a2a4cd3b5a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Note:** These GPU instances only support JupyterLab as opposed to plain Jupyter notebooks. This just means the interface you're used to in the classroom notebooks will be slightly different (and with a nav bar fornavigating between files)!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681737,
+              "key": "4b3b1152-06a4-4113-a9aa-40ae9512771c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Once you're finished working on a project or just taking a break during training, **don't forget to shutdown your instance.**",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 681605,
+          "key": "c06c35a8-cc09-4332-ad58-a53d1999e18f",
+          "title": "[IMPORTANT] Shutdown your Instance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c06c35a8-cc09-4332-ad58-a53d1999e18f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 681606,
+              "key": "9c188522-527d-45fa-a85f-51f64b55bb54",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# [IMPORTANT] Shutdown your Instance\n\n**Remember to shutdown your instance when not-in-use.**\n\nFrom this point on, Google will charge you for a running an Compute Engine instance. GPU prices are listed on [this page](https://cloud.google.com/gpu/), and you can find details about CPU compute time on the Compute [Engine pricing page](https://cloud.google.com/compute/pricing).\n\nMost importantly, remember to “stop” (i.e. shutdown) your instances when you are not using them. You can do it with the following command:\n```bash\ngcloud compute instances stop $INSTANCE_NAME\n```\n\nOr if you want to delete instance completely:\n```bash\ngcloud compute instances delete $INSTANCE_NAME\n```\n\n#### To delete or not to delete?\n\n* If you are temporarily stopping a project, and plan to return to it very soon (within the hour), it's recommended that you `stop` the instance.\n* If you are stopping for a long period of time (more than a few hours) and/or have completed a project and do not intend on returning, it's recommended that you `delete` the instance.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681973,
+              "key": "4dde9292-fdfb-4627-886b-b04e9d7469ff",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b58c5fd_shut-it-down/shut-it-down.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4dde9292-fdfb-4627-886b-b04e9d7469ff",
+              "caption": "Shut it down gif from the show New Girl.",
+              "alt": "",
+              "width": 220,
+              "height": 330,
+              "instructor_notes": null
+            },
+            {
+              "id": 681652,
+              "key": "8f2bcbee-8f9f-473b-8455-46400bf140fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Pricing\n* Google charges primarily for running instances. There are smaller storage charges that continue to accrue until you “terminate” (i.e. delete) the instance.\n* As of this writing, the cost of a recommended VM plus a k80 GPU is approximately$0.60/hr $200 of credits will give you more than 300 hours of compute which should be more than enough time to complete your final project assuming you stop down the machine when you are not using it.\n* Pricing changes frequently and depends on region. Please see [Compute Engine pricing](https://cloud.google.com/compute/pricing) for the latest information.\n* When you run out of credits on your account, your services will be stopped. In order to continue using Google Cloud Platform, please create a new Billing account and move your projects to it.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 681657,
+              "key": "9f3ba950-1a3b-4128-968e-b06f1471f10d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Updates and Troubleshooting\n\n#### Common Problems\nProblem: ImportError: No module named 'cv2'\nSolution: Install Python wrapper for openCV:\n```bash\nsudo pip3 install opencv-python\nsudo pip install opencv-python\n```\n\nProblem: JavaScript output is disabled in JupyterLab\nSolution: In the notebook change `%matplotlib notebook` to `%matplotlib inline` and re-run the notebook.\n\n#### Updating PyTorch Versions\n\nWe should periodically update the virtual machine image (which controls the available libraries in an environment) in these instructions to the latest PyTorch image. Here's a gcloud command to update the image: \n\n```bash\ngcloud compute images describe-from-family pytorch-latest-cu91 --project=deeplearning-platform-release --format \"value(name)\"\n```\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

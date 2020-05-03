@@ -1,0 +1,786 @@
+{
+  "data": {
+    "lesson": {
+      "id": 468515,
+      "key": "fa8d6490-190e-48a1-b26d-6b5eeae8f2f4",
+      "title": "C++ Vectors",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "To program matrix algebra operations and translate your Python code, you will need to use C++ Vectors. These vectors are similar to Python lists, but the syntax can be somewhat tricky.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 468521,
+          "key": "8dec5aff-172e-44af-aef7-43ff8ca245de",
+          "title": "C++ Vectors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8dec5aff-172e-44af-aef7-43ff8ca245de",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 478327,
+              "key": "488647c4-1366-4a26-b944-cf4568839b68",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Vectors and Matrix Algebra\n\nGreat work! You made it through a bunch of C++ syntax. As you've probably realized, programming in C++ is  arguably harder than programming in Python. C++ was designed for fast execution, and the language gives you a lot of different ways to get the same results. Python was designed for writing code quickly but at the expense of execution speed.\n\nThere is one last piece of syntax you'll need to translate your Python code from earlier in the nanodegree: C++ vectors, which are like Python lists.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468576,
+              "key": "d2146c57-b95a-43bb-b20b-99392b948ecc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# The Vector Library\n\nWhen you were writing Python programs to store and manipulate matrices, you used Python lists. C++ vectors are just like Python lists. In this lesson, you are going to practice using C++ vectors in preparation for translating Python code to C++.\n\nBut hold on! C++ also has something called a list. But this is where things get confusing. However, C++ lists do not work the same way as Python lists.\n\nC++ lists and C++ vectors are both in a family of structures called [sequence containers](http://en.cppreference.com/w/cpp/container). These containers allow you to store values in series and then access those values. C++ has a handful of sequence containers including lists, vectors, and arrays. \n\nDon't get confused! C++ vectors are the closest to Python lists. You can add elements to a C++ vector just like you can in a Python list. You can remove elements as well and also easily access any element in the vector. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468577,
+              "key": "8adabff9-7dc2-4170-b335-94914f868d44",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Declaring C++ Vectors\n\nDeclaring C++ vector variables is like declaring any other type of variable:\n```c++\ntypedefinition variablename;\n```\n\nBut the vector type definition has a funny looking syntax because you also need to declare what kind of values will go inside the vector such as integer, char, float, string, etc. Here are some examples of variable declarations using vectors:\n\n```c++\nstd::vector<char> charactervectorvariable;\nstd::vector<int> integervectorvariable;\nstd::vector<float> floatvectorvariable;\nstd::vector<double> doublevectorvariable:\n```\n\n### Including the Vector Library\nIn an actual program, you would need to include the vector file from the Standard Library:\n```c++\n#include <vector>\n\nint main() {\n      std::vector<float> floatvectorvariable;\n      return 0;\n}\n```\n\nThe above code will declare an empty vector of type float.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468578,
+              "key": "4ee872ac-5329-4390-ab64-d1d5c71474e4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "More generically, you declare a vector with:\n```c++\nstd::vector<datatype> variablename;\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468845,
+              "key": "eb7df1e5-23a3-4328-955f-abecc284d4a4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Practice Declaring Vectors",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468851,
+              "key": "0c36d8ff-1727-4556-b7cb-f29d1faec74d",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "0c36d8ff-1727-4556-b7cb-f29d1faec74d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6704832090603520",
+                "initial_code_files": [
+                  {
+                    "text": "// TODO: import the vector library\n\n// TODO: write a program that declares three integer vectors named:\n//       vector1\n//       vector2\n//       vector3",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <vector>\n\nint main() {\n    \n    std::vector<int> vector1;\n    std::vector<int> vector2;\n    std::vector<int> vector3;\n    \n    return 0;\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 468522,
+          "key": "9bc00e7b-33c2-43e8-898c-ac5911786581",
+          "title": "Namespaces",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9bc00e7b-33c2-43e8-898c-ac5911786581",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468580,
+              "key": "e7c57466-f108-477d-8125-f3dbb9c0e7b1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Namespaces\n\nC++ vector syntax is a little bit hard to read especially because you have to type `std` over and over again: like for example, std::cout or std::string or std::vector.\n\nThankfully, C++ provides a way to avoid writing `std` all the time.\n\nStd is something called a [namespace](http://en.cppreference.com/w/cpp/language/namespace). Without getting too much into the details, namespaces let you organize code into logical groups. In this case, std is the namespace for the Standard Library.\n\nYou can actually declare your namespace at the top of your main.cpp file and then avoid writing \n```c++\nstd::\n```\n\nover and over again. Here is an example:\n\n```c++\n#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> intvectorvariable;\n    int intvariable = 5;\n    cout << intvariable << endl;\n    return 0;\n\n}\n```\n\nNow, the vector declaration, cout and endl no longer needed std::.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468581,
+              "key": "a9ad5024-b898-42fc-88d0-3b845156886f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Benefits of Namespaces\n\nDeclaring the namespace makes the code easier to read and write. The downside is that you have to be careful with how you name your own variables and functions. Previously, you might have written:\n```c++\nstd::cout\n```\n\nwhich lets your program know that you meant the cout function from the standard library.\n\n C++ would have let you actually create a variable or function named cout as well. That's probably not a good idea, but the code won't produce an error. Once you declared the std namespace, your cout variable or function would be in conflict with the standard library cout.\n\nGoing forward from this point, the exercises and code examples will include the `using namespace std;` line of code.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468582,
+              "key": "ae1e3fd0-7d89-4933-9bed-f10e71753108",
+              "title": "Name Spaces",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ae1e3fd0-7d89-4933-9bed-f10e71753108",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Mark all of the statements that are true about name spaces:",
+                "answers": [
+                  {
+                    "id": "a1512435262150",
+                    "text": "Namespaces help group related code together.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512435272714",
+                    "text": "Namespaces can help avoid conflicts between variable names, function names and class names.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512435273296",
+                    "text": "Declaring a namespace in your program's header allows you to avoid writing out the namespace name multiple times in your code. ",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1512435273824",
+                    "text": "If you declare a namespace with the using clause, it's less likely that you'll have a variable or function naming conflict.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 468585,
+              "key": "a800acfe-8e54-425f-9db8-8a0ddbf28445",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can now simplify the vector syntax using namespaces. Let's compare Python list and C++ vector syntax and then practice coding C++ vectors.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468864,
+              "key": "18735d35-3936-4715-aa2e-e8e34856ad5b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Namespace Practice\n\nUse the standard library namespace and change the code so that the code no longer uses \"std::\". ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468863,
+              "key": "e0c3cd1f-2751-4291-919c-cccd9c08d25d",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "e0c3cd1f-2751-4291-919c-cccd9c08d25d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "4531805198352384",
+                "initial_code_files": [
+                  {
+                    "text": "#include <iostream>\n#include <string>\n\n// TODO: Use the standard namespace\n\nint main() {\n    \n    // TODO: change the code so that it no longer uses \"std::\"    \n    \n    std::string fruit = \"apple\";\n    std::string vegetable = \"broccoli\";\n    \n    std::cout << \"My favorite fruit is \" << fruit <<\n      \" and my favorite vegetable is \" << vegetable << \"\\n\";\n    \n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <string>\n\nusing namespace std;\n\nint main() {\n    \n    string fruit = \"apple\";\n    string vegetable = \"broccoli\";\n    \n    cout << \"My favorite fruit is \" << fruit <<\n      \"and my favorite vegetable is \" << vegetable << \"\\n\";\n    \n    return 0;\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 468523,
+          "key": "35bf1cd2-404a-4cad-b7a6-892cdd698b30",
+          "title": "Python Lists vs. C++ Vectors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "35bf1cd2-404a-4cad-b7a6-892cdd698b30",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468586,
+              "key": "90f136c1-e122-412e-a4de-ad2e2a12ff3c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Python and C++ Comparison\n\nLet's get back to vectors! You have already seen how to declare an empty vector. \n\nIn the code below, you can compare Python lists and C++ vector syntax. You'll see that the C++ vector is using a method called push_back, which appends values to the end of a vector. And the line of code \n\n```\nvector<float> myvector (5);\n```\n\ndeclares  vector of size five but without assigning any values. Assigning values to a C++ vector can be a bit tricky; later in this lesson you will see a few different ways to assign values to a vector variable.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468587,
+              "key": "6bd9da32-1e05-48ac-ac4c-2bbbb79bc2e1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a0236d1_vectors/vectors.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6bd9da32-1e05-48ac-ac4c-2bbbb79bc2e1",
+              "caption": "",
+              "alt": "",
+              "width": 1265,
+              "height": 966,
+              "instructor_notes": null
+            },
+            {
+              "id": 468588,
+              "key": "bd0c744b-7caa-467a-86eb-56be96882717",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The Python code is, as you've seen previously, much shorter to write than the C++ code. However, there are other ways for inputting values in a vector, which you will see in the next section.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 468524,
+          "key": "c0f600c9-4244-4dc1-8d35-5c2b433dc5c1",
+          "title": "Initializing Vector Values",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c0f600c9-4244-4dc1-8d35-5c2b433dc5c1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468589,
+              "key": "aa3559f5-2d56-4533-a2f4-b60305c1013d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Initializing Vector Values\n\nIn the previous part of the lesson, you learned to declare a vector first and then assign values:\n```\nvector<float> myvector(5);\n\nmyvector[0] = 5.0;\nmyvector[1] = 3.0;\nmyvector[2] = 2.7;\nmyvector[3] = 8.2;\nmyvector[4] = 7.9;\n```\n\nThere are various other ways for assigning initial values to a vector. Here are two other ways:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468590,
+              "key": "16ff1a04-06b5-4fb3-ab69-a0c01364054e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Declaring and Defining Simultaneously\n\nWhen declaring a vector, you can also assign initial values simultaneously.\n\n```\nstd::vector<int> myvector (10, 6);\n```\n\nThe code will declare a vector with ten elements, and each element will have the value 6.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468592,
+              "key": "a4213593-69df-467e-9e08-09cbfd8b4e42",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Declaring and Defining Simultaneously with Brackets\n\nThere is another way to initialize a vector as well if you are using one of the more recent versions of C++ such as C++11 or C++17; You could also do something like:\n```\nstd::vector<float> myvector = {5.0, 3.0, 2.7, 8.2, 7.9}\n```\n\nThe different versions of C++ (C++98, C++11, C++14, and C++17) will be discussed in the Practical C++ lesson.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468874,
+              "key": "fc1ee78f-5a68-4863-b5be-ff0858936c4a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Practice Declaring and Defining Vectors\n\nIn the space below, follow the TODOs. When you are finished, check out the solution.cpp file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468873,
+              "key": "2128a6a9-8af7-4fac-81da-bc3cbd072bca",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "2128a6a9-8af7-4fac-81da-bc3cbd072bca",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5835498229202944",
+                "initial_code_files": [
+                  {
+                    "text": "// TODO: Include the iostream and vector libraries\n\n// TODO: Use the standard namespace\n\n// TODO: Write a main function\nint main() {}\n// TODO: Inside the main function, do the following:\n/***       \n * 1. declare a float vector with 4 elements \n * 2. fill the float vector with the following values: 4.5, 2.1, 8.54, 9.0\n * \n * 3. declare and define a float vector with one line of code. The float vector\n * should have four elements with the following values: 3.5, 3.5, 3.5, 3.5\n * \n * NOTE: You cannot use the bracket syntax because\n * the classroom compiles your code with C++98. The bracket syntax was introduced \n * in C++11.\n ***/",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <vector>\n\nusing namespace std;\n\nint main() {\n    \n    vector<float> vector1(4);\n    vector1[0] = 4.5;\n    vector1[1] = 2.1;\n    vector1[2] = 8.54;\n    vector1[3] = 9.0;\n\n    vector<float> vector(4, 3.5);\n    \n    return 0;\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 468530,
+          "key": "7afd7aa3-a9a3-4f0d-9755-d30130f591b4",
+          "title": "Vector Methods",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7afd7aa3-a9a3-4f0d-9755-d30130f591b4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468595,
+              "key": "184d32a6-8c92-49d4-b0f8-b9ea90614e88",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Vector Methods\n\nVectors have a handful of useful functions, which you can see [here](http://www.cplusplus.com/reference/vector/vector/). In this part of the lesson, you will go over the ones you will be using in the object oriented programming lesson. \n\n## assign\n\nAssign helps you quickly populate a vector with fixed values. For example this code,\n```c++\nvector<int> intvariable;\nintvariable.assign(10,16);\n```\n\nis going to populate the vector with ten integers all having the value of 16.\n\nThe assign method lets you override your current vector with a new vector.\n\nRemember, you've already seen a similar way to initialize values in a vector:\n\n```c++\nvector<int> intvariable(10,16);\n```\n\nThe difference is that the assign method lets you override your current vector with new values.\n\n## push_back\n\nPushback adds an element to the end of the vector:\n```\nvector<int> intvariable;\nintvariable.push_back(25);\n```\n\n\n\n## size\n\nSize returns the size of the vector.\n\n```c++\nintvariable.size();\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468880,
+              "key": "d4606a4e-b477-429d-a8a3-06ed00781e8b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Practice with Vector Methods\n\nBefore getting practice with these vector methods, move on to the next section to learn about accessing vectors with for loops. In the next section, you'll combine the methods you just learned with for loops.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 468531,
+          "key": "ddaa2a1e-3c9b-48ab-b763-272f8af371c0",
+          "title": "Vectors and For Loops",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ddaa2a1e-3c9b-48ab-b763-272f8af371c0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468596,
+              "key": "ed6f4e2f-1744-4bc9-96f8-65462d9d7cdb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Vectors and For Loops\n\nMuch of the time, you will be using for loops to manipulate vectors. Once you are comfortable using for loops with vectors, you can do things like:\n* populate a vector with values\n* do math with vectors\n\nHere is a program that initializes a vector and then uses a for loop to populate the vector with values. Then another for loop reads out the vector values.\n\n```\n#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nint main() {\n\n\tvector<float> example;\n\n\tfor (int i = 0; i < 5; i++) {\n\t\texample.push_back(i*5.231);\n\t}\n\t\n\tfor (int i = 0; i < example.size(); i++) {\n\t\tcout << example[i] << endl;\n\t}\n\n\treturn 0;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468597,
+              "key": "fc383c08-bb3f-4024-af3e-8b3c5a886ca2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The output looks like this:\n```\n0\n5.231\n10.462\n15.693\n20.924\n\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 469071,
+              "key": "7010da88-5c87-41bc-9235-abc09c4b365e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using i++ Versus ++i\n\nSo far, you've learned to write C++ for loops like the following:\n```\nfor (int i = 0; i < 10; i++) {}\n```\n\nThis syntax matches closely to the Python for loop syntax; however, you can also write a for loop like this:\n```\nfor (int i = 0; i < 10; ++i) {}\n```\n\n**What is the difference and why do both ways work?**\n \nIn practice, both i++ and ++i will give you the same results; these are a shorthand way of writing i = i + 1. The difference between the two is subtle.\n\n```\nint i = 5;\nint x = i++; // x = 5, i = 6 (called postfix)\nint x = ++i; // x = 6, i = 6 (called prefix)\n```\n\nIn both cases, the i variable increases by 1. In the postfix case, i++, int x = i is evaluated first and then i = i + 1 occurs.\n\nIn the prefix case, ++i, i = i + 1 occurs first and then int x = i executes.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 469095,
+              "key": "21742cb1-730d-4d33-813b-ec2190f191d3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Many code guidelines recommend using ++i over i++. In reality neither one is more efficient than the other when using integer variables.\n\nHowever, there is a difference when you write a C++ class that overloads the ++ operator. You saw operational overloading in the Python matrix project; the code overloaded mathematical signs to carry out matrix addition, subtraction, multiplication, etc.\n\nWhen overloading the postfix operator, C++ needs to keep track of two values. In the example, the values would be 5 and 6. For the prefix operator, C++ only needs to keep track of one value: 6. Hence, when overloading the ++ operator, it's generally more efficient to use prefix than the postfix.\n\nOverloading is an advanced C++ topic that isn't covered in depth here. If you'd like to learn more, here are a few resources:\n\n[Stackoverflow](https://stackoverflow.com/questions/3846296/how-to-overload-the-operator-in-two-different-ways-for-postfix-a-and-prefix)\n\n[IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.2.0/com.ibm.zos.v2r2.cbclx01/cplr330.htm)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468883,
+              "key": "0a6fe658-9d5d-4d0a-a781-1cef6dd420f6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Practice with Vector Methods and For Loops",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468882,
+              "key": "fe7c5c74-f833-4451-b7df-77f2685f5c21",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "fe7c5c74-f833-4451-b7df-77f2685f5c21",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5853849819152384",
+                "initial_code_files": [
+                  {
+                    "text": "//TODO: include the iostream and vector libraries\n\n//TODO: Use the standard namespace\n\nint main() {\n    \n    // Part 1: declare and define a vector with values\n    //        {5.0, 5.0, 5.0} and print \n    //         the vector to the terminal using cout\n    // Hint: the syntax vector<datatype> varname(length, value) might help\n\n    // Part 2: Use push back to add the values 3.0, 2.5, 1.4 \n    //      to the back of the vector\n\n    // Part 3: Print out the vector again using cout\n\n    // Part 4: Use the vector assign method to override the current vector. \n    // The overriden vector should have 3 elements with \n    // the values {5.0, 5.0, 5.0}\n\n    // Part 5: Print out the vector\n\n    return 0;\n}",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nint main() {\n    \n    // Part 1: declare and define a vector {5.0, 5.0, 5.0} and print it out\n    vector<float> vectorvar(3, 5.0);\n    \n    for (int i = 0; i < vectorvar.size(); i++) {\n        cout << vectorvar[i] << \" \";\n    }\n    \n    cout << endl;\n    \n    // Part 2: Use push back to add the values 3.0, 2.5, 1.4 to the back of the vector\n    vectorvar.push_back(3.0);\n    vectorvar.push_back(2.5);\n    vectorvar.push_back(1.4);\n    \n    // Part 3: Print out the vector\n    for (int i = 0; i < vectorvar.size(); i++) {\n        cout << vectorvar[i] << \" \";\n    }\n    cout << \"\\n\";\n    \n    // Part 4: Use the assign method so that the current vector has values \n    // {5.0, 5.0, 5.0}\n    vectorvar.assign(3, 5.0);\n    \n    // Part 5: Print out the vector\n    for (int i = 0; i < vectorvar.size(); i++) {\n        cout << vectorvar[i] << \" \";\n    }\n    \n    cout << \"\\n\";\n\n    return 0;\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 468603,
+          "key": "8028079a-7e73-4b96-802a-a6d881857efd",
+          "title": "Math and Vectors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8028079a-7e73-4b96-802a-a6d881857efd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468604,
+              "key": "7958d916-5d20-4c6a-a96c-c4691e89049e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Math and Vectors\n\nAny vector math you did in Python, you can also do in C++ with for loops.\n\n## Example 1\nFor example, you might want to multiply every element in a vector by a constant:\n```c++\n#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nint main() {\n\n\tvector<float> example;\n\n\t// assign 5 floats with value 10\n\texample.assign(5,10.0);\n\t\n\t// print out the vector\n\tfor (int i = 0; i < example.size(); i++) {\n\t\tcout << example[i] << endl;\n\t}\n\n\t// blank line outputted to terminal\n\tcout << endl;\n\n\t//multiply each value in the vector by 20\n\tfor (int i = 0; i < example.size(); i++) {\n\t\texample[i] = 20 * example[i];\n\t}\n\n\t// print out the vector\n\tfor (int i = 0; i < example.size(); i++) {\n\t\tcout << example[i] << endl;\n\t}\n\n\n\treturn 0;\n}\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468605,
+              "key": "242a5271-132f-4be6-abe8-c399643babb0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Which gives the output:\n```\n10\n10\n10\n10\n10\n\n200\n200\n200\n200\n200\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468606,
+              "key": "a607f6ae-5ee8-4f00-9065-1f672306e059",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Example 2\n\nOr you might want to add two vectors together:\n\n```c++\n#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nint main() {\n\n\tvector<int> exampleone (5);\n\tvector<int> exampletwo (5);\n\tvector<int> examplesum (5);\n\n\texampleone[0] = 2;\n\texampleone[1] = 6;\n\texampleone[2] = 25;\n\texampleone[3] = 1;\n\texampleone[4] = 18;\n\n\texampletwo[0] = 3;\n\texampletwo[1] = 19;\n\texampletwo[2] = 8;\n\texampletwo[3] = 12;\n\texampletwo[4] = 191;\n\n\tcout << \"vector one \";\n\n\t// print out the first vector\n\tfor (int i = 0; i < exampleone.size(); i++) {\n\t\tcout << exampleone[i] << \" \";\n\t}\n\n\t// create a new line in the terminal\n\tcout << endl;\n\n\tcout << \"vector two \";\n\n\t// print out the second vector\n\tfor (int i = 0; i < exampletwo.size(); i++) {\n\t\tcout << exampletwo[i] << \" \";\n\t}\n\n\t// create a new line in the terminal\n\tcout << endl;\n\n\tcout << \"vector sum \";\n\n\t//add the vectors together\n\tfor (int i = 0; i < exampleone.size(); i++) {\n\t\texamplesum[i] = exampleone[i] + exampletwo[i];\n\t}\n\n\t// print out the vector\n\tfor (int i = 0; i < examplesum.size(); i++) {\n\t\tcout << examplesum[i] << \" \";\n\t}\n\n\t// create a new line in the terminal\n\tcout << endl;\n\n\treturn 0;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468607,
+              "key": "76936a17-520b-4310-b601-7f4522c43ac6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Which gives output:\n```\nvector one 2 6 25 1 18 \nvector two 3 19 8 12 191 \nvector sum 5 25 33 13 209 \n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468608,
+              "key": "c0b3f463-1372-4f1d-b173-287216af7153",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now it's your turn to write programs with C++ vectors. Move on to the next part of the lesson to get some practice coding vectors.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 468533,
+          "key": "0cd38c6c-d5db-4af0-8f36-6fc17d6089c5",
+          "title": "1D Vector Playground",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0cd38c6c-d5db-4af0-8f36-6fc17d6089c5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468609,
+              "key": "27bf8fcb-0a56-478c-adc9-feb7982ace04",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Playground\n\nNow it's your turn to make some programs with vectors. Here is a playground where you can write your program.\n\n#### Idea 1\nFirst, try writing a program that initializes a vector of size 3. The values for this vector are <span class=\"mathquill\">[5, 10, 27]</span>. Initialize another vector of size 3 with the values <span class=\"mathquill\">[3, 17, 12]</span>. Now subtract the two vectors from each other and output the results.\n\nTo get even more practice, write a function that takes in two vectors and then outputs the difference between the vectors. Assume that the two vectors are the same size; otherwise you would have to check that they are the same size and include some error checking.\n\n#### Idea 2 \n\nInitialize a vector with the values <span class=\"mathquill\">[17, 10, 31, 5, 7]</span>. Initialize another vector with the values <span class=\"mathquill\">[3, 1, 6, 19, 8]</span>. Then, output another vector that contains the product of each element. In other words, the vector should have <span class=\"mathquill\">[17\\times3, \\space10\\times1, \\space 31\\times6, \\space 5\\times19, \\space 7\\times8]</span>.\n\nTo get even more practice, write a function that takes in two vectors and then outputs a new vector that is the result of element by element multiplication. Assume that the two vectors are the same size; otherwise you would have to check that they are the same size and do some error checking.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468611,
+              "key": "4e50099e-c982-4cb6-900b-e3fb6b0601b6",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "4e50099e-c982-4cb6-900b-e3fb6b0601b6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6168253504815104",
+                "initial_code_files": [
+                  {
+                    "text": "//TODO: Use this as a playground to practice with vectors\n\n\n//TODO:\n// Fill out your program's header. The header should contain any necessary\n// include statements and also function declarations\n\n\n//TODO:\n// Write your main program. Remember that all C++ programs need\n// a main function. The most important part of your program goes\n// inside the main function. ",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n\nusing namespace std;\n\n// function declaration\nvector<float> vectorsubtraction(vector<float> vector1, vector<float> vector2);\n\n// program that computes the difference between two vectors\nint main() {\n\n\t// declare and initialize vectors\n\tvector<float> v1(3);\n\tvector<float> v2(3);\n\t\n\tv1[0] = 5.0;\n\tv1[1] = 10.0;\n\tv1[2] = 27.0;\n\t\n\tv2[0] = 2.0;\n\tv2[1] = 17.0;\n\tv2[2] = 12.0;\n\t\n\tvector<float> v3 (v1.size());\n\n\t// calculate the difference between the two vectors\n\tv3 = vectorsubtraction(v1, v2);\n\n\t// print out the results of the vector subtraction\n\tfor (int i = 0; i < v3.size(); i++) {\n\t\tcout << v3[i] << \" \";\n\t}\n\n\tcout << endl;\n\t\n\treturn 0;\n\n}\n\n// define the function - \n// INPUTS: two vectors\n// OUTPUT: the difference between the two vectors\nvector<float> vectorsubtraction(vector<float> vector1, vector<float> vector2) {\n\n\tvector<float> vectordifference (vector1.size());\n\n\tfor (int i = 0; i < vector1.size(); i++) {\n\t\tvectordifference[i] = vector1[i] - vector2[i];\n\t}\n\n\treturn vectordifference;\n\n}",
+                    "name": "solution_one.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n\nusing namespace std;\n\n// function declaration\nvector<float> vectormultiply(vector<float> vector1, vector<float> vector2);\n\n// program that computes the element-wise multiplication of two vectors\nint main() {\n\n\t// declare and initialize vectors\n\tvector<float> v1(5);\n\tvector<float> v2(5);\n\t\n\tv1[0] = 17.0;\n\tv1[1] = 10.0;\n\tv1[2] = 31.0;\n\tv1[3] = 5.0;\n\tv1[4] = 7.0;\n\n\tv2[0] = 3.0;\n\tv2[1] = 1.0;\n\tv2[2] = 6.0;\n\tv2[3] = 19.0;\n\tv2[4] = 8.0;\n\n\tvector<float> v3 (v1.size());\n\n\t// calculate the difference between the two vectors\n\tv3 = vectormultiply(v1, v2);\n\n\t// print out the results of the vector multiplication\n\tfor (int i = 0; i < v3.size(); i++) {\n\t\tcout << v3[i] << \" \";\n\t}\n\n\tcout << endl;\n\t\n\treturn 0;\n\n}\n\n// define the function - \n// INPUTS: two vectors\n// OUTPUT: multiplies elements together into a new vector\nvector<float> vectormultiply(vector<float> vector1, vector<float> vector2) {\n\n\tvector<float> vectorproduct (vector1.size());\n\n\tfor (int i = 0; i < vector1.size(); i++) {\n\t\tvectorproduct[i] = vector1[i] * vector2[i];\n\t}\n\n\treturn vectorproduct;\n\n}",
+                    "name": "solution_two.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 468534,
+          "key": "14ab6aa9-3fd4-4192-9314-68fcb76bb489",
+          "title": "2D Vectors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "14ab6aa9-3fd4-4192-9314-68fcb76bb489",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468613,
+              "key": "4d62141c-de2c-48f0-9d79-a021b1d22217",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Two Dimensional Vectors\n\nNext, you are going to use vectors to store matrices. Much like how Python uses a list of lists to store matrices, for the C++ lessons you will use a vector of vectors. The syntax for declaring two-dimensional vectors is a bit tricky.\n\n Say you're using Python and want to store a 3 by 5 matrix. You could do something like this:\n```\nmatrixexample = [[2, 1, 5], [7, 9, 2], [16, 5, 9], [5, 2, 1], [1, 2, 4]]\n```\n\nIn C++, you are going to create a similar structure by appending vectors to vectors. Here is a comparison of Python and C++ code to see what this looks like:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468615,
+              "key": "0cc423fe-a2aa-4b66-a703-ecc4d3a3c2d4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59ab2bfd_copy-of-template/copy-of-template.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0cc423fe-a2aa-4b66-a703-ecc4d3a3c2d4",
+              "caption": "",
+              "alt": "",
+              "width": 1509,
+              "height": 1093,
+              "instructor_notes": null
+            },
+            {
+              "id": 468616,
+              "key": "092d2bd7-cde7-41f6-acd7-731befd12a7c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Explanation of the Code\n\nFirst, the line\n```c++\nvector < vector <int> > twodvector;\n```\n\ndeclares an empty two dimensional vector named twodvector. A couple of things to notice:\n* like with all variables in C++, you have to declare what type of values will go into the vector. In this case, integers will go into the twodvector variable.\n* Notice the spaces between brackets `< vector <int> >`. Your program probably won't run if the spacing is not done correctly.\n\nThen a one dimensional vector called singlerow is declared. The singlerow vector has the form [2, 2, 2].\n```c++\nvector<int> singlerow (3,2);\n```\n\nThen the singlerow vector is appended to the twodvector five times:\n```c++\n\tfor (int i = 0; i < 5; i++) {\n\t\ttwodvector.push_back(singlerow);\n\t}\n```\n\nYou end up with the same two-dimensional structure just like in the Python code. If you were to run this C++ code, the terminal would print out:\n```\n2 2 2 \n2 2 2 \n2 2 2 \n2 2 2 \n2 2 2 \n``` ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468617,
+              "key": "6066cd71-9c5d-4193-a805-42962a85f97b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Alternative Initialization\n\nHere is another way you could have set up the vector from the previous example:\n```c++\nvector < vector <int> > twodvector (5, vector <int> (3, 2));\n```\nThe syntax is a little bit more complicated. But if you start from the inside of the parenthesis and work your way out, you see that you have already seen all of the functionality.\n\nThe line:\n```c++\nvector <int> (3, 2) \n```\n\nwould set up an integer vector like {2, 2, 2}. So even though you don't see the inner vector, the code is essentially doing something like this:\n```c++\nvector < vector <int> > twodvector (5, {2, 2, 2});\n```\n\nSo then the code copies {2, 2, 2} five times into the twodvector variable: \n```\n{{2, 2, 2},\n{2, 2, 2},\n{2, 2, 2},\n{2, 2, 2},\n{2, 2, 2}}\n```\n\nJust keep in mind that only Python represents vectors or matrices with square brackets []. Newer versions of C++ can use squiggly brackets to represent vectors {}, but older implementations of C++ do not have an equivalent representation.\n\nA line of code like the following would not run in C++:\n```c++\nvector < vector <int> > twodvector (5, [2, 2, 2]);\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 468618,
+          "key": "4b0e9fd1-5020-4bb0-b915-87971c586ec6",
+          "title": "2D Vectors and For Loops",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4b0e9fd1-5020-4bb0-b915-87971c586ec6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468621,
+              "key": "f206fc25-27bc-4573-ae44-8ac7338e7d20",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# 2D Vectors and For Loops\n\nBecause 2D vectors are just vectors inside a vector, a 2D vector has the [same methods](http://www.cplusplus.com/reference/vector/vector/) as a 1D vector.  \n\nThat way the cout code from the example works:\n```c++\nfor (int row = 0; row < twodvector.size(); row++) {\n\t\tfor (int column = 0; column < twodvector[0].size(); column++) {\n\t\t\tcout << twodvector[row][column] << \" \";\n\t\t}\n\t\tcout << endl;\n```\n\nWhen you type `twodvector.size()`, that will give you the size of the outside vector. The outside vector had five elements, which represents the number of rows in the matrix being represented:\n```\n{2 2 2} \n{2 2 2} \n{2 2 2} \n{2 2 2} \n{2 2 2}\n```\n\nWhen you write `twodvector[0].size()`, you are taking the first element of the outside vector, [2 2 2], and asking for the size of that vector, which in this case is three. So essentially the for loop is saying:\n```c++\nfor (int row = 0; row < 5; row++) {\n        for (int column = 0; column < 3; column++) {\n            cout << twodvector[row][column] << \" \";\n        }\n        cout << endl;\n``` \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 468622,
+          "key": "0ad77a92-9574-4bf0-b4c2-b49c0b130fc0",
+          "title": "2D Vector Playground",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0ad77a92-9574-4bf0-b4c2-b49c0b130fc0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 468628,
+              "key": "d573114c-2e5a-419a-9409-87fd66edaef6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Program your Own Matrix Function\n\nPractice coding matrices in C++. In this exercise, write a function that has two integer matrices as inputs and then outputs the sum. Assume that the two input matrices have the same size (e.g. matrix one is 5x3 and matrix two is 5x3).\n\nYou can find an implementation in the solution.cpp tab if you'd like to compare your solution.\n\nYou can use the Test Run button to run your code.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 468629,
+              "key": "12811bd8-ccf8-4a9a-b184-18372c60e759",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "12811bd8-ccf8-4a9a-b184-18372c60e759",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "4939979428593664",
+                "initial_code_files": [
+                  {
+                    "text": "//TODO: Write a function that receives two integer matrices and outputs\n// the sum of the two matrices. Then in your main() function, input a few\n// examples to check your solution. Output the results of your function to \n// cout. You could even write a separate function that prints an arbitrarily \n// sized matric to cout.\n\n",
+                    "name": "main.cpp"
+                  },
+                  {
+                    "text": "#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nvector < vector <int> > matrixsum(vector < vector <int> > matrix1, vector < vector <int> > matrix2);\nvoid matrixprint(vector < vector <int> > inputmatrix);\n\nint main() {\n\n\t// declare two matrices\n\tvector < vector <int> > matrix1 (5, vector <int> (3, 2));\n\tvector < vector <int> > matrix2 (5, vector <int> (3, 26));\n\n\t//declare an empty matrix to hold the result\n\tvector < vector <int> > matrixresult; \n\n\t//calculate the sum of the two matrices\n\tmatrixresult = matrixsum(matrix1, matrix2);\n\n\t// call the matrix print function to print out the results\n\tmatrixprint(matrixresult);\n\n\treturn 0;\n}\n\n//function to add two matrices together\nvector < vector <int> > matrixsum(vector < vector <int> > matrix1, vector < vector <int> > matrix2) {\n\n\t// declare a matrix with the same size as matrix1 and matrix2\n\tvector < vector <int> > matrixsumresult (matrix1.size(), vector <int> (matrix1[0].size(), 0));\n\n\t// iterate through matrix1 and assign the sum of each element to the results matrix\n\tfor (int row = 0; row < matrix1.size(); row++) {\n\t\tfor (int column = 0; column < matrix1[0].size(); column++) {\n\t\t\tmatrixsumresult[row][column] = matrix1[row][column] + matrix2[row][column];\n\t\t}\n\n\t}\n\n\treturn matrixsumresult;\n\n\n}\n\n// function to print an integer matrix\nvoid matrixprint(vector < vector <int> > inputmatrix) {\n\n\tfor (int row = 0; row < inputmatrix.size(); row++) {\n\t\tfor (int column = 0; column < inputmatrix[0].size(); column++) {\n\t\t\tcout << inputmatrix[row][column] << \" \";\n\t\t}\n\t\tcout << endl;\n\n\t}\n}",
+                    "name": "solution.cpp"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 478377,
+          "key": "d7f808a7-3c55-4d1c-87a1-2f4849c69d06",
+          "title": "Next Lesson",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d7f808a7-3c55-4d1c-87a1-2f4849c69d06",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 478383,
+              "key": "093546ee-0304-4fec-95f9-e909bc435d97",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Next Lesson\n\nSo far you've been writing C++ programs in the classroom. In the next section, we're providing practical information including how to get C++ running locally on your computer. \n\nAt the end of the practical C++ lesson, there are a few suggested exercises. The more you practice writing C++ code, the better you'll get!\n\nMove on to the next lesson to get started.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

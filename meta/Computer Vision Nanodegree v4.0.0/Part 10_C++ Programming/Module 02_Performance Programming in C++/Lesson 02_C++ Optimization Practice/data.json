@@ -1,0 +1,1140 @@
+{
+  "data": {
+    "lesson": {
+      "id": 442381,
+      "key": "2d9a9e81-b8d5-46e7-adb5-ab83578d7ce9",
+      "title": "C++ Optimization Practice",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Now you understand how C++ programs execute. It's time to learn specific optimization techniques and put them into practice. This lesson will prepare you for the lesson's code optimization project.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/2d9a9e81-b8d5-46e7-adb5-ab83578d7ce9/442381/1585702854465/C%2B%2B+Optimization+Practice+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/2d9a9e81-b8d5-46e7-adb5-ab83578d7ce9/442381/1585702852182/C%2B%2B+Optimization+Practice+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 457368,
+          "key": "f45210cc-7c67-436d-8de8-4c592b3e1e32",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f45210cc-7c67-436d-8de8-4c592b3e1e32",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 457369,
+              "key": "de7fd661-784b-4d00-b3b7-3178e55007dd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# C++ Optimization Techniques \n\nNow comes the practical part of C++ optimization.  You are going to learn a handful of code optimization strategies and then apply those strategies to increase the speed of a C++ program.\n\nHowever, remember that optimizing a program involves other facets besides the programming language itself. Your program's speed will also depend on your hardware, your compiler and what computer algorithms you choose. The more familiar you become with all of these different facets, the more tools you will have for optimization. Here is a brief summary of why each of these aspects is so important.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457371,
+              "key": "fbf0b2ff-2b4c-4320-b508-377bc08f7c5a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Hardware\nSome hardware might have limitations that slow down your code. For instance, when calculating trigonometric functions, a processor might use a slow software approximation. If instead, you could use [small-angle approximation](https://en.wikipedia.org/wiki/Small-angle_approximation), you might get your code to run faster. \n\nEmbedded hardware might not have much memory or have a 16-bit or 32-bit architecture instead of a 64-bit architecture. Using 64-bit integers on a 16-bit architecture might be possible with your compiler, but it would also probably be inefficient.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457372,
+              "key": "5dd6c43b-282a-44cf-983e-04c1eb8e3190",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Compilers\n\nMany compilers will optimize at least parts of your code for you. For instance, it might be more efficient for the CPU to unroll a for loop to avoid checking the conditional statements:\n```c++\n\n// for loop\nfor (int i = 0; i < 5; i++) {\n     std::cout << i << \"\\n\";\n}\n\n// for loop unrolled\nstd::cout << 0 << \"\\n\";\nstd::cout << 1 << \"\\n\";\nstd::cout << 2 << \"\\n\";\nstd::cout << 3 << \"\\n\";\nstd::cout << 4 << \"\\n\";\n```\n\nThe unrolled version could run faster because unrolling avoids checking if `i < 5` is true. For a more complete list of what your compiler might try to do, read this article [here](https://en.wikipedia.org/wiki/Optimizing_compiler).\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457373,
+              "key": "935de56d-20a3-49e4-8e7c-61da575a655b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Algorithms\n\nSome algorithms are known to be faster than other algorithms. A common case would be sorting algorithms; [quicksort](https://en.wikipedia.org/wiki/Quicksort), for example, is known to be faster than [bubble sort](https://en.wikipedia.org/wiki/Bubble_sort).\n\nHere is another important point to keep in mind; C++ libraries are very convenient, but that doesn't mean they use the fastest algorithms especially for your individual case. Being aware of what is happening under the hood provides more opportunities for improving efficiency. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457375,
+              "key": "11df7097-587c-464c-a9ad-73e7638781b6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## C++\n\nAnd now, let's move on to optimizing C++. You are going to learn a handful of techniques and practice implementing them. Then at the end of the lesson, you'll have the opportunity to optimize a C++ histogram filter.\n\nHere is a preview of the type of things you will be learning: Did you know that every time you call a function, C++ copies the input variables into memory? Take this example:\n\n```c++\n\n#include <iostream>\n\nint addition(int a, int b);\n\nint main() {\n\t\n\tint x, y;\n\tx = 5;\n\ty = 7;\n\n\tstd::cout << addition(x, y) << \"\\n\";\n\n}\n\nint addition(int a, int b) {\n\treturn a + b;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457405,
+              "key": "8ab73499-d09f-4fb7-bb66-0e3b08ccc815",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "C++ puts the x variable into memory and the y variable into memory as expected. \n\nWhen you call the addition function, C++ actually then puts the a variable and the b variable into memory as well; essentially C++ is copying x and y into memory twice even though the x and y values could have been used directly. \n\nFor a 32-bit integer, this might not be an issue; however, once you start working with larger variables such as 2-D vectors, the extra read and writes can slow your programs down.\n\nIn this lesson, you'll learn how to speed up your code in situations like these.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 442382,
+          "key": "226b3432-0935-4758-b500-41a403a14e83",
+          "title": "Software Development and Optimization",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "226b3432-0935-4758-b500-41a403a14e83",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 457409,
+              "key": "5eb97989-d45a-4521-86f4-44a61c88a593",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Software Development\n\nWriting functioning code is arguably your number one goal as a software developer. Depending on your application, code efficiency might be very important as well. \n\nYou could break down the code development process into the following steps:\n* code design\n* implementing the design\n* testing for bugs and fixing the bugs\n* optimization\n\nFor a more detailed explanation of each of these steps (design, implementation, testing), see this [link](https://en.wikibooks.org/wiki/Optimizing_C%2B%2B/Optimization_life_cycle).\n\nAs mentioned previously, there are many facets to code optimization related to hardware, compilers, algorithms and the C++ language itself. In this lesson, you'll focus on the C++ language. What you've just learned about the CPU and RAM will provide the context for why your code is able to run faster.\n\nYou will have the opportunity to learn and implement a few techniques that make C++ run even faster. Each exercise presents a \"slow\" version of the code and a technique for making the code faster. You will then implement the technique to see how much faster the code runs. While these techniques do not encompass all of the ways to optimize C++ code, you'll gain an understanding of how memory, the CPU and coding choices affect how fast your code runs.\n\nAt the end of the lesson, you are going to receive a set of files for a functioning C++ histogram filter. Your job will be to make the histogram filter code run faster using the techniques you've learned in the lesson. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 442383,
+              "key": "f258dac4-5d05-469b-af36-b9da7e0ced99",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How to Optimize: Testing versus Instinct\n\nTo optimize your code, rely on testing and verification rather than instinct! \n\nTest your code to find areas that are inefficient in terms of time, memory or power use. Then, verify that any changes you have made really do make the code more efficient. If you test first, you might even find that your code is already efficient enough for your particular application.\n\nIf you were optimizing a large amount of code, you would want to use something called a profiler. A profiler is a piece of software that measures how long parts of your code are taking to execute or how many resources the code uses. The profiler helps you find congestion points so that you can optimize the least efficient parts of the code first. \n\nBoth Visual Studio and Xcode come with profilers, which you can read about at these links:\n* [Profiling in Visual Studio](https://docs.microsoft.com/en-us/visualstudio/profiling/beginners-guide-to-performance-profiling)\n* [Profiling in Xcode](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/index.html)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 442384,
+              "key": "7e84f92f-7026-4ba8-9a6b-6c49a2b32643",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Testing your Code with Standard Clock\n\nIn the following exercises, we've set up some simple profiling code for you; you'll time how long it takes to run a function using the C++ standard clock. \n\nYou will optimize by:\n* seeing how long it takes to run a function\n* change some aspect of the code\n* run the code again to see if the code runs faster\n\nThe profiling code has already been set up for you, and it looks like this:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 442385,
+              "key": "03684e7e-9f4d-4c41-8620-f4531c14b54c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```c++\n\n#include <ctime>\n\nstd::clock_t start;\ndouble duration;\n\nstart = std::clock();\n\nfunction_name(var1, var2);\n\nduration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;\n\nstd::cout << \"duration milliseconds initialize beliefs \" << 1000 * duration << '\\n';\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 442386,
+              "key": "8a014a0c-f712-4557-8635-be1347d9d380",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The code stores the current standard clock time, then runs a function, and then calculates the elapsed time.\n\nThe standard library clock measures time in terms of **clock ticks**. Clock ticks are like a counter variable that goes up at a constant rate of time. But the length of time varies from system to system; therefore, dividing by the constant CLOCKS_PER_SEC gives the results in terms of seconds. The CLOCKS_PER_SEC variable is defined in the ctime library.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 442387,
+              "key": "fb97bb05-f053-45b6-ad62-8eac0614faef",
+              "title": "Most important for coding",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fb97bb05-f053-45b6-ad62-8eac0614faef",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is usually the most important part of coding a program?",
+                "answers": [
+                  {
+                    "id": "a1509648490462",
+                    "text": "Profiling the code",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1509648503498",
+                    "text": "Optimizing the code",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1509648504057",
+                    "text": "Getting functioning code that works as expected",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1509648504537",
+                    "text": "Getting the code to use fewer resources",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 442388,
+              "key": "a933f2da-b96b-4266-834f-a4510f3ddee8",
+              "title": "Clock Ticks",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a933f2da-b96b-4266-834f-a4510f3ddee8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "True or False: the amount of time that passes between calls to std::clock() is equal to the amount of time that has passed in the world.",
+                "answers": [
+                  {
+                    "id": "a1509648553251",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1509648564215",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 442389,
+          "key": "9b7f7e7b-3933-4703-a1c9-3fffd4eafa66",
+          "title": "Optimization Techniques",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9b7f7e7b-3933-4703-a1c9-3fffd4eafa66",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 457042,
+              "key": "a51c5651-eed7-4a30-9693-7dbd365ec8c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Overview of Techniques in this Lesson\n\nHere is an overview of the techniques you will be learning and using to optimize C++ code. Refer back to this page as you work through the exercises and on the final project. Each of these techniques will be expanded further throughout the lesson.\n\nIf you are wondering why we chose these techniques, it's because you can use all of them to optimize Andy's histogram filter code. This is not a comprehensive list of optimization techniques by any means; rather, practicing these techniques will get you thinking about your code from a new perspective. While your focus up until now has been on code implementation, now you will appreciate the consequences of your coding decisions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457447,
+              "key": "925075ed-c641-4fde-ba67-59a40a8ecce8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Remove Dead Code\n\nWhen you write your code, you might end up with a chunk of code that is no longer used but still part of the program. Watch out for cases like these: remember that every line of code involves some work by the CPU and oftentimes a read or write to memory. Any unnecessary code could slow things down. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457449,
+              "key": "be282b7f-8f92-4f92-acd1-bd2c8e8e8e32",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Avoid Extra if Statements\n\nCode with multiple branching if statements is oftentimes inefficient:\n\n```c++\nint x = 5;\nif (x >= 5) {x = x + 1;}\nif (x < 5) {x = x - 1;}\n```\n\nYou could transform the above code into if else statements, which avoids the CPU checking whether x is less than 5.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457456,
+              "key": "e66c6a77-a2b4-4073-8680-809379e413da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Avoid Nested for Loops\n\nA section of code like this:\n```c++\n\nfor (int i = 0; i < 5; i++) {\n   for (int j = 0; j < 4; j++) {\n         matrix[i][j];   \n   } \n}\n```\n\nshould look somewhat familiar. This is how you have been iterating over the values in a matrix. Sometimes you have no choice but to use a nested for loop; however, depending on the application, you might not need a nested for loop if you think about the problem in a different way. And instead of needing twenty iterations like in the above code, you might only need 9 or fewer iterations.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457470,
+              "key": "45a8749b-e57b-4c61-9502-e8f4ff3af167",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Avoid Creating Extra Variables\n\nYou'll see that Andy sometimes creates extra variables that aren't needed. For example, \n```c++\nfloat x = 2;\nfloat y = 7;\nfloat z = 4;\n\nfloat volume = x * y * z;\n\nfloat volume_reciprocal = 1 / volume;\n```\n\nThe volume variable isn't really necessary. You could calculate the reciprocal directly:\n```c++\n\nvolume_reciprocal = 1 / (x * y * z);\n```\n\nYou might not get much of a performance boost; float variables are relatively efficient in C++. But imagine creating a new variable to hold a larger variable like a 2D vector. All of the extra memory writes will definitely slow things down.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457477,
+              "key": "eddddb77-9165-4f2b-9d5e-86dc055bdebf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reserve Space in Memory for Vectors\n\nYou've been using 2D vectors to represent matrices. C++ vectors have a big benefit in terms of convenience; you can add new elements to the vector as needed. Arrays, on the other hand, have a fixed length that cannot be changed after declaring them.\n\nBut this flexibility comes at a cost; C++ vectors are very inefficient in terms of execution time. In fact, programs that require speedy execution would generally not use C++ vectors and especially not big for loops to iterate through vectors; instead, programs are written to take advantage of [parallel processing](https://en.wikipedia.org/wiki/Parallel_computing) on either the CPU or a GPU (graphics processing unit). \n\nWhen you declare and define a vector, the compiler reserves space in memory plus some extra bytes in case the vector expands. Once the vector's length expands past the reserved memory, the entire vector will get copied over to a different place in RAM with enough available space.\n\nThat is very inefficient! In Andy's histogram filter code, you already know how large your vectors need to be because the robot world has a fixed number of grid spaces. If you reserve space for the vector, then you can avoid all of the extra memory reallocations as you expand the vector's length. The syntax is as simple as coding:\n\n```c++\nstd::vector<int> foo;\nfoo.reserve(15);\n```\n\nNow the foo vector is guaranteed to have enough space for holding fifteen integers.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457490,
+              "key": "5fee1d0c-d599-4d1b-8bce-ef1c562ab101",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Passing Variables by Reference\n\nWhenever you call a function, C++ copies any input variables into memory even if those variables are already in memory. For fundamental data types like int, char, or float, this might not be a problem. \n\nBut with variables that take up a more significant amount of space, such as vectors, the extra copying can slow down your programs. \n\nYou'll learn how to pass variables by reference instead of by value. Passing by reference tells your function to use the variable directly in memory rather than copying the entire variable to memory over again.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457493,
+              "key": "bc1face1-4187-4d24-8e25-da713fc6f7d9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using Static\n\nIn Andy's code, you'll see that he calculates certain vectors and values inside a function, but these values are always the same every time the function is called.\n\nInstead of calculating the variables over and over again, you can declare these variables as static. When the function is called the first time, C++ stores the values in memory and re-uses the values every time the function is called.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 457494,
+              "key": "a9dab0ff-8474-4b1f-b7a4-8aaf1235a780",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Next Part of the Lecture\n\nThe next part of the lessons has a series of exercises that will get you ready for the project. In each exercise, you will receive code that has one of the issues discussed on this page. And then you will change the code to get the program to run faster.\n\nYou'll see that every time you run the code, the timer gives slightly different results; when you run your C++ program, the CPU might be carrying out other tasks that could affect timing. Be sure to execute your code multiple times to convince yourself that your code is (or isn't) running faster.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 457512,
+          "key": "f4f9e9e9-7ed7-4e58-ae05-8108cc53d7ef",
+          "title": "Dead Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f4f9e9e9-7ed7-4e58-ae05-8108cc53d7ef",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 457514,
+              "key": "f0b37a44-889e-4fd1-9413-1c96c56a5506",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What is Dead Code?\n\nDead code is extra code in your program that no longer serves a purpose. Maybe while implementing a solution, you started down a path that did not end up working out. Or you put in extra code for debugging purposes, but this code is not actually part of the solution. The dead code just sits in your program without affecting the implementation.\n\nDead code can slow down a program;  the code will still be executed on the CPU and might include reads and writes to memory although the code is never used. \n\nTwo other issues related to dead code, and sometimes also considered to be dead code, are **redundant code** and **unreachable code**. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458211,
+              "key": "480a3ce7-02bf-459f-b756-64c43243a150",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Redundant Code\n\nRedundant code is just like it sounds; this is code that gets repeated multiple times although isn't necessary. Here's a quick example:\n\n```c++\n// example of redundant code\nint x = 6;\nif (x > 5) {\n   return true;\n}\nelse {\n   return false;\n}\n```\n\nEssentially, saying x > 5 and then returning True is redundant. You could eliminate the if statement by just saying \n```c++\nreturn x > 5;\n```\n\nHere's another example\n```c++\n\tif (x < 5) {\n   \t\tx = x + 1;\n\t}\n\telse if (x >= 5 && x < 10) {\n    \tx = x + 2;\n\t}\n```\n\nThere is no need to check if `x >= 5`; the first if statement has essentially already proven whether x is greater than or less than five.\n\nFinding redundant code, however, might not be so easy. It could be an extra variable declaration or maybe some extra logical statements like in the above example.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458214,
+              "key": "5316a1fc-daf1-4249-ab94-60c5b881fb30",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Unreachable Code\n\nUnreachable code never gets executed. Unreachable code might not have too much of an effect on code speed, but the code still takes up space in memory and can make memory management less efficient.\n\nA simple example would be the following:\n```c++\nunsigned int x;\n\n... \n\nif (x >= 0) {\n   do_something ..\n}\nelse {\n  do_something ..\n}\n```\n\nAn unsigned integer is always zero or positive, so the else statement will never execute. The code inside the else statement is unreachable.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458212,
+              "key": "4513cf04-2438-45d8-b03a-8871ab75440d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When you get to Andy's code at the end of the lesson, just keep an eye out for dead code or redundant code. You might find a couple of spots.\n\nIn the next part of the lesson, you will see a program that adds two matrices together. You'll execute the code to see how fast it runs. But the program contains dead code. So you will remove the dead code to see if the program runs faster.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458215,
+              "key": "41245dd3-763e-49f5-8015-3803ca7063aa",
+              "title": "dead code",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "41245dd3-763e-49f5-8015-3803ca7063aa",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Mark the statement or statements that are TRUE.",
+                "answers": [
+                  {
+                    "id": "a1510117294073",
+                    "text": "Redundant code is always bad.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510117317799",
+                    "text": "Unreachable code is repetitive code that could be eliminated without affecting the program.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510117318332",
+                    "text": "It's generally obvious when your program contains dead code.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510117318820",
+                    "text": "All unreachable code involves if statements.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1510118552536",
+                    "text": "Getting rid of dead code, redundant code or unreachable code increases efficiency.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 457625,
+          "key": "3c039c32-37fe-4df8-8fab-12d2f1f6132f",
+          "title": "Exercise: Remove Dead Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3c039c32-37fe-4df8-8fab-12d2f1f6132f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458615,
+              "key": "41cd4ed7-2b49-45f6-8a68-b6db75a3a28a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view5e487ee4",
+              "pool_id": "webterminal",
+              "view_id": "5e487ee4-b0a5-4392-978e-df4cee249eed",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/DeadCode/instructions.md",
+                      "/home/workspace/DeadCode/matrix_addition.cpp",
+                      "/home/workspace/DeadCode/matrix_addition_improved.cpp"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 457628,
+          "key": "0f497d1f-6c4f-4074-aea8-a9cb2151eb04",
+          "title": "If Statements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0f497d1f-6c4f-4074-aea8-a9cb2151eb04",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458643,
+              "key": "a829d72a-889b-4ff7-951b-f8d1830f3c9f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# If Statements",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458614,
+              "key": "3bf4dc15-5c64-4f98-83bc-759dabc9dd8a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Many compilers will try to optimize if statements for you. So writing something like this:\n```\nint x = 7;\n\nif (x > 0) {\n  return y;\nif (x <= 0) {\n   return z;\n}\n```\n\nmight become\n```c++\nint x = 7;\nif (x > 0) {\n   return y;\nelse {\n   return z;\n}\n```\n\nThe compiler won't literally rewrite your C++ code into optimized C++ code; the compiler does the optimization when outputting assembly language or machine code. But in general, you'll want to avoid too many if branches because each branch's logical expression requires time on the CPU. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458644,
+              "key": "4828d80a-0b5b-4057-96fe-0aeb66b608e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Thinking about how if statements are executed, it's also more efficient to put the most common cases on a higher branch.\n\nHere is a simple example:\n```c++\n    for (int i = 0; i < 1000; i++) {\n        if (i > 0 && i < 5) {\n            cout <<  \"low \\n\";\n        }\n        else if (i >= 990) {\n            cout << \"high \\n\";\n        }\n        else {\n            cout << \"normal \\n\";\n        }\n    }\n```\n\nMost of the time, the above code will print out the word \"normal\". So the code needs to go through all of the if and else branches most of the time as the CPU compares **i** in each branch.\n\nIt would be more efficient to put the \"normal\" case at the top of the branches instead of at the bottom:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458645,
+              "key": "525008a7-43be-439a-b442-ee03a363f8a3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "    for (int i = 0; i < 1000; i++) {\n        if (i >= 5 && i < 990) {\n            cout <<  \"normal \\n\";\n        }\n        else if (i >= 990) {\n            cout << \"high \\n\";\n        }\n        else {\n            cout << \"low \\n\";\n        }\n    }\n\nNow, most of the time, the CPU can skip the else if and else branches.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458646,
+              "key": "f83dd8db-917f-43a4-899f-9a7ee87b1851",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# If Statements on the CPU\n\nThere's one other aspect of if statements that you don't have much control over when using a high level language like C++. The CPU also tries to optimize if statement calculations by running simultaneous calculations. \n\nWhen running a calculation, the CPU can look ahead and start working on another calculation in parallel. In terms of if statements, the CPU will try to predict which branch will be taken next and starts running the calculations inside the predicted branch. When it's time to evaluate the logical expression, the CPU might realize that it made a bad prediction. If the prediction is wrong, the predicted calculation stops and the CPU starts running the correct calculation.\n\nSo be aware that you might not get too much of a time boost when rearranging  or eliminating if statements. Both the compiler and the CPU are already trying to optimize these operations for you.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458647,
+              "key": "962abf79-e5cc-4209-b6f4-db05f1b9f880",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Exercise\n\nMove on to the next section to try out an if statement optimization exercise.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 457629,
+          "key": "92131b29-e46a-4506-8bc4-cdadc2a8dbac",
+          "title": "Exercise: If Statements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "92131b29-e46a-4506-8bc4-cdadc2a8dbac",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458648,
+              "key": "cd76d9a3-7497-423e-90da-dd21a53b3890",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view5e487ee4",
+              "pool_id": "webterminal",
+              "view_id": "7acee7d0-41a4-404d-9f0e-6bd4d9b0dc33",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/IfStatements/instructions.md",
+                      "/home/workspace/IfStatements/main.cpp",
+                      "/home/workspace/IfStatements/solution.cpp"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 457631,
+          "key": "c44c0369-586c-4d53-9b8f-1f93c443e237",
+          "title": "For Loops",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c44c0369-586c-4d53-9b8f-1f93c443e237",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458651,
+              "key": "5cf32087-4565-440d-8953-858887183a98",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# For Loops\n\nThere is nothing wrong with using nested for loops (ie for loops inside of for loops). Sometimes you need them when working with C++ vectors.\n \nHowever, don't use them if you don't need them! There are a few places in Andy's code where he has used nested for loops that were not needed.\n\nIf you are iterating through or initializing an m by n matrix, you might be tempted to always use nested for loops like this:\n```c++\n    for (unsigned int i = 0; i < matrix.size(); i++) {\n        for (unsigned int j = 0; j < matrix[0].size(); j++) {\n            do something...\n        }\n    }\n```\n\nIterating through the entire matrix involves m times n operations. However, depending on what you are trying to do, you might be able to get away with doing something like this:\n\n```c++\n    for (unsigned int i = 0; i < matrix.size(); i++) {\n        do something\n    }\n    \n    for (unsigned int j = 0; j < matrix[0].size(); j++) {\n        do something\n    }\n\n```\n\nThis only requires m + n operations instead of m * n operations. Remember that fewer instructions for the CPU will get your code to execute faster!\n\nTo see a specific example, go to the for loops exercise in the next part of the lesson.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458738,
+              "key": "c67a6cc8-9680-4cea-8bca-6ee3c7e03f98",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Exercise\n\nIn the next section, you'll find an exercise for optimizing a for loop. The code initializes a 2D vector using a for loop inside another for loop, which uses m*n operations. Think about how you could initialize the same 2D vector using only m + n operations (hint: remember that every position in the 2D vector has the same value).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 457633,
+          "key": "e5cfbf5f-b962-463a-9f64-bc48e5118a75",
+          "title": "Exercise: For Loops",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e5cfbf5f-b962-463a-9f64-bc48e5118a75",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458792,
+              "key": "07b5f7f6-09d9-4c6e-8a62-fb64793908e8",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view5e487ee4",
+              "pool_id": "webterminal",
+              "view_id": "b761b0b8-8523-45ac-89a9-2147a45571d4",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/ForLoops/instructions.md",
+                      "/home/workspace/ForLoops/initialize_matrix.cpp",
+                      "/home/workspace/ForLoops/initialize_matrix_improved.cpp"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 457638,
+          "key": "80612f61-ae11-4d9e-9261-d41806e82671",
+          "title": "Intermediate Variables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "80612f61-ae11-4d9e-9261-d41806e82671",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458793,
+              "key": "0391f81a-b8a6-4d2e-b25a-fbdbdd7cf845",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Intermediate Variables\n\nIn Andy's code, you'll notice that he sometimes uses intermediate variables. Intermediate variables could be considered redundant code. \n\nFor example:\n```c++\nfloat x = 5.8;\nfloat y = 7.1;\n\nfloat area = x * y;\nfloat reciprocal_area = 1/(area);\n```\n\nIf you only  needed to calculate the reciprocal, you could have written:\n```c++\nfloat x = 5.8;\nfloat y = 7.1;\nfloat reciprocal_area = 1/(x*y);\n```\n\nFundamental variable types like float, int, and char are relatively efficient. So you probably won't notice much of a different when running these two versions of the code. In fact, your compiler might end up eliminating any inefficiencies between the first version and the second version.\n\nSo why discuss intermediate variables?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458800,
+              "key": "7ecf8672-5882-48a9-a7ce-a05aa1276b55",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Intermediate Matrix Variables\n\nYou'll find a spot in Andy's code where he actually uses a 2D vector as an intermediate variable. It's not as obvious as the above example. But if you find it, you can definitely make the code run faster by eliminating the extra variable. \n\nAs mentioned in the beginning of the lesson, vectors are convenient but not particularly efficient; the compiler allocates a certain amount of memory for a new vector and adds a few more bytes as a buffer. The buffer can hold extra elements that you might push to the back of the vector.\n\nBut when the vector increases beyond its allocated size, the whole entire vector gets copied to another part of RAM. That is super inefficient! \n\nSo if you already have a variable vector that you can update directly, avoid making a copy of the vector!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458805,
+              "key": "4d112481-8ded-4a50-8e72-b9cd0a8abfa9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Exercise\n\nIn the next exercise, you'll get to see just how inefficient it is to create new vectors. The code iterates through a 2-dimensional vector dividing each element by a constant. But instead of iterating the vector directly, the code creates a new, but unnecessary 2-D vector.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 457639,
+          "key": "93c5cd13-eea2-4dcb-8952-ab467ba706b0",
+          "title": "Exercise: Intermediate Variables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "93c5cd13-eea2-4dcb-8952-ab467ba706b0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458812,
+              "key": "3ae46671-6b59-48c2-ab43-70a187faa558",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view5e487ee4",
+              "pool_id": "webterminal",
+              "view_id": "faf3bdf7-fd45-417f-89ba-accc496a5173",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/IntermediateVariables/instructions.md",
+                      "/home/workspace/IntermediateVariables/scalar_multiply.cpp",
+                      "/home/workspace/IntermediateVariables/scalar_multiply_improved.cpp",
+                      "/home/workspace/IntermediateVariables/main.cpp"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 457640,
+          "key": "065328f8-0d2a-45f3-a9e6-e1604cccb2ea",
+          "title": "Vector Storage",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "065328f8-0d2a-45f3-a9e6-e1604cccb2ea",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458826,
+              "key": "9518d781-831b-4c7c-819f-0f409debd6c1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Vector Memory Storage\n\nAs previously mentioned, vectors are not the most efficient variable type in C++. One reason is because you do not need to specify a vector's length when declaring a vector variable. So the compiler will not know ahead of time how much memory to allocate. And once the vector's length goes beyond the initial allocated memory, the entire vector gets copied to a part of RAM with more space.\n\nA vector is more efficient if you specify the vector's length before pushing values. You can do this with the reserve() method, which will guarantee that the vector can hold the number of elements reserved.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458834,
+              "key": "417714f6-1fd0-411d-9816-cf604592db88",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Example\n\nHere is an example of how to use the reserve() method.\n\n```c++\n#include <iostream>\n#include <vector>\n\nusing namespace std;\n\nint main() {\n    vector<int> myvector;\n    int vector_size = 50;\n    myvector.reserve(vector_size);\n    \n    for (int i = 0; i < vector_size; i++) {\n        myvector.push_back(i);\n    }\n    \n    return 0;\n}\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 461255,
+              "key": "74a6c992-9c25-444f-b6bd-8bc82dd57197",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In C++, there are multiple ways to initialize a 2D vector. When optimizing your programs, you'll need to test out different ways to initialize to see which works best in your specific program.\n\nThe fastest way could end up depending on the vector length and vector types.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458830,
+              "key": "f54b97fb-2ede-4bba-8915-cdf858ec84c5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Exercise\n\nIn this next exercise, you're given three different functions in three separate files:\n* reserved.cpp\n* unreserved.cpp\n* initializer.cpp\n\nYour task will be to change the code in reserved.cpp so that the 2D vector variable and the 1D vector variable reserve their sizes before using the push_back method. You'll see if that change helps to make the code run faster.\n\nThe unreserved() function will initialize a 2D vector using a for loop. The initializer() function uses a standard library method for initializing a vector. The code in reserved.cpp is exactly the same as the code in unreserved.cpp. Your job will be to changed reserved.cpp to use the reserve() method.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 457641,
+          "key": "b5d1af9f-f284-4c2e-a888-496395303839",
+          "title": "Exercise: Vector Storage",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b5d1af9f-f284-4c2e-a888-496395303839",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 461262,
+              "key": "0575a589-bd8f-47b9-a394-f2b96eb00a22",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view5e487ee4",
+              "pool_id": "webterminal",
+              "view_id": "2a174c69-9414-44b3-9f7d-84ff599b0dec",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/VectorStorage/instructions.md",
+                      "/home/workspace/VectorStorage/reserved.cpp",
+                      "/home/workspace/VectorStorage/unreserved.cpp",
+                      "/home/workspace/VectorStorage/initializer.cpp",
+                      "/home/workspace/VectorStorage/main.cpp"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "terminalTitle": "BASH",
+                    "actionButtonText": "Preview",
+                    "openTerminalOnStartup": true
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 457642,
+          "key": "99db1ad8-d48b-41a3-ada4-d676588d06f2",
+          "title": "References",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "99db1ad8-d48b-41a3-ada4-d676588d06f2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458835,
+              "key": "7352e837-772b-420a-88d8-a36b4116029e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# References\n\nDid you know that every time you call a function, those input variables get copied into memory? You can prove this to yourself with the following code:\n\n```c++\n\n#include <iostream>\n#include <vector>\n\nusing namespace std;\n\n// function declaration that prints out a matrix's address in memory\nvoid matrix_address(vector< vector<int> > my_matrix);\n\nint main() {\n    \n    // initialize a matrix\n    vector< vector<int> > matrix(5, vector<int>(6,2));\n    \n    // print out the matrix address\n    cout << \"original variable address: \" << &matrix << \"\\n\";\n    \n    // run a function that prints out a matrix address\n    matrix_address(matrix);\n    \n    \n    return 0;\n}\n\n// function to print out a matrix address\nvoid matrix_address(vector< vector<int> > my_matrix) {\n    \n    cout << \"function variable address: \" << &my_matrix << \"\\n\";\n    \n}\n\n```\n\nWhen you run this code, you'll get output that looks something like this:\n\n**original variable address: 0x7fff5fbff650**\n\n**function variable address: 0x7fff5fbff608**\n\n\nSo what is this code doing? The code initializes a 5x6 2D vector in a variable called matrix. Then the code prints out the address in memory where the 2D vector starts. \n\nNext, the code calls a function that prints out the address in memory of the function's input variable. Notice that the addresses are not the same even though the two variables hold the same value.\n\nThis is because C++ is copying the 2D vector into memory again when you call the matrix_address() function.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 461263,
+              "key": "e8552ad2-efc6-489f-82ac-7f53109e2968",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Ampersand Symbol\n\nIn the above code, you might have noticed the ampersand symbol: &. \n\nThis symbol gives you the address of a variable rather than the value of a variable. Do you remember in the previous lesson when you briefly learned about pointers? The ampersand is an easy way to access a variable's address without the danger of you mistakenly messing something up in memory.\n\nAnd you can use the ampersand to help speed up your code!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 461264,
+              "key": "1e847e14-dbdf-4393-bb66-2c4a5d467785",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# How  the Ampersand Can Speed Up Code\n\nC++ has a few fundamental data types like int, char, and float that are relatively fast to work with. So the coding strategy you're about to learn might not make much of a different with fundamental data types; however, with variables that take up a lot of memory such as arrays or vectors, the ampersand can be quite useful.\n\nWhat if the matrix_address function shown above had been defined like this?\n```c++\nvoid matrix_address(vector< vector<int> >&my_matrix);\n```\n\nThe ampersand (&) tells the compiler to pass the input variable by reference. That means inside your function, you'll be working with the original variable instead of a copy. In the case of a 2D vector, you've just saved yourself a lot of reads and writes.\n\nAnd, depending on your application, you might be able to modify the input vector directly instead of creating a new vector inside your function. For example, if you were going to code scalar multiplication on a vector, and you didn't need to keep the original vector, you could modify the original vector directly. You'll see what this means in the exercise.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 458842,
+              "key": "05a31510-e12f-4ee7-bfce-9b6c8dd34c30",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Exercise\n\nIn this exercise, you're going to go back to the matrix addition function presented earlier in the lesson. You'll rewrite a version of the code passing matrices by reference. Let's see if this gets the code to run faster!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 457644,
+          "key": "4bcd064a-f69c-42ae-8293-f7270c1364ad",
+          "title": "Exercise: References",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4bcd064a-f69c-42ae-8293-f7270c1364ad",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 461268,
+              "key": "3681b56a-362f-4cdc-beb0-217ddf454250",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view5e487ee4",
+              "pool_id": "webterminal",
+              "view_id": "1a54ba9d-09f9-4216-b48d-0c8ce9df03ed",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/References/instructions.md",
+                      "/home/workspace/References/main.cpp",
+                      "/home/workspace/References/matrix_addition.cpp",
+                      "/home/workspace/References/matrix_addition_improved.cpp",
+                      "/home/workspace/References/matrix_addition_improved.hpp"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 458585,
+          "key": "50d8dbc3-dd21-4974-af09-0529fdd8d8b3",
+          "title": "Sebastian's Synchronization Story",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "50d8dbc3-dd21-4974-af09-0529fdd8d8b3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458586,
+              "key": "3246a4df-5926-4468-8133-3ae5c06795e2",
+              "title": "Nd113 Story 1 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "lIe2zso8A-w",
+                "china_cdn_id": "lIe2zso8A-w.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 457656,
+          "key": "2ed2ad17-0b73-4e81-a6be-58ac8f77b8df",
+          "title": "Static Keyword",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2ed2ad17-0b73-4e81-a6be-58ac8f77b8df",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 461265,
+              "key": "d1728504-933d-482a-897c-3580cc212fc9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# The Static Keyword\n\nSometimes you'll need to use the same variable over and over again in your functions. If you think back on Andy's Python histogram filter code, the blur() function was an example. \n\nThe blur function contains a handful of blurring factors that are always the same every time the function gets called; however, in Andy's C++ code, which you'll be working with soon,  he recalculates these blurring factors every time the code gets run. \n\nWhat if you could declare and define these variables once no matter how many times your function gets called? You'd be able to eliminate some reads and writes to memory. This is the perfect use case for the C++ static keyword.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 461266,
+              "key": "7990dce3-4a9c-4535-a624-848f9c158de1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#  Example\n\nWhen you declare and define a variable inside a C++ function, the value gets allocated to memory.\n\nFor example,\n\n```c++\nsome_function() {\n   int x = 5;\n}\n```\n\nallocates space in memory for the variable x and then assigns the value five. Then, when the function finishes, the CPU will remove the x variable from RAM. That means every time you run the function, the CPU will allocate and deallocate memory for the x variable. \n\nIf, on the other hand, your code uses the static keyword, the x variable gets allocated to memory the first time the function runs. And the x variable just stays allocated in memory for the duration of the entire program. You've just saved yourself some reads and writes to RAM:\n\n```c++\nsome_function() {\n    static int x = 5;\n}\n```\n\nNotice that you need to declare and define the variable simultaneously. You cannot define a variable with the static keyword without giving the variable a value.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 462551,
+              "key": "2adec247-2030-40f9-b2ff-1540822715bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Global Variables versus Static Variables\n\nStatic variables are actually placed in the same area of RAM as global variables. The difference is that global variables are declared outside of functions and are available anywhere in your program to any file or function. On the other hand, static variables remain in scope. So in the above example, some_function() is the only place that can access the x variable.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 461267,
+              "key": "f34f484e-fa77-45c6-bd09-1b749db2f447",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Exercise\n\nIn this exercise, you'll see how much faster code can run when using the static keyword. You'll also have an opportunity to eliminate some for loops!\n\nThink back on how the blur() function worked in the Python histogram filter lesson. You had a 2D grid representing the robot's world. Each grid space had a probability representing the likelihood that the robot was on that square. After the robot used its sensors and updated its beliefs, a blur function smoothed out the probability values.\n\nIn this exercise, you'll be working with a part of Andy's blur function: more specifically the part that calculates the blur window. You'll eliminate some for loops and also use the static keyword to get the code to run faster.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 457655,
+          "key": "bf5ee2ac-0cf7-45ba-8560-019eee17812d",
+          "title": "Exercise: Static Keyword",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bf5ee2ac-0cf7-45ba-8560-019eee17812d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 461301,
+              "key": "30a9c38e-3049-4f9c-8108-e0352c418a10",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view5e487ee4",
+              "pool_id": "webterminal",
+              "view_id": "24cfcaf7-33f7-4ff9-a6ed-24744606c63d",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/Static/instructions.md",
+                      "/home/workspace/Static/main.cpp",
+                      "/home/workspace/Static/blur_factor.cpp",
+                      "/home/workspace/Static/blur_factor_improved.cpp"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 458581,
+          "key": "095c1a10-838e-4af1-8a0d-bdd992761e16",
+          "title": "Speed Challenge",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "095c1a10-838e-4af1-8a0d-bdd992761e16",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 458582,
+              "key": "7946ed5e-386d-42a4-839a-7aea6c483795",
+              "title": "Nd113 C L2 01 V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "You can use the \"My Classmates\" channel in Student Hub to share your results!",
+              "video": {
+                "youtube_id": "h_P7ceb5ido",
+                "china_cdn_id": "h_P7ceb5ido.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,742 @@
+{
+  "data": {
+    "lesson": {
+      "id": 626440,
+      "key": "4f9e3248-8417-4e3c-9105-1e3cdf312c29",
+      "title": "Optional: Cloud Computing with AWS",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Take advantage of Amazon's GPUs to train your neural network faster. In this lesson, you'll learn how to setup an instance on AWS and train a neural network on a GPU.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 626448,
+          "key": "b0c15933-7f44-4b11-8023-87748c1b860f",
+          "title": "Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b0c15933-7f44-4b11-8023-87748c1b860f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626455,
+              "key": "53aa0ddf-6ad1-4802-a437-4c60c98edaa1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using a GPU\n\nSo far, you've seen a number of CNN's and LSTM's that either train on a small dataset or can train very quickly on a CPU with good results. However, some deep learning applications require analysis of large image datasets or training over many epochs to work well, and in this case, you can use a GPU to greatly speed up the training process. A [GPU (Graphics Processing Unit)](https://en.wikipedia.org/wiki/Graphics_processing_unit) is a type of processor that supports greater parallelism.\n\nIn this course, you will need to use a GPU to train an image captioning system, which includes a complex architecture and large amounts of training data, but, **you will be given a GPU-enabled workspace to do this training**. So, you are not required to create a GPU instance for local use.\n\nIf you do choose to develop locally or work on complex, deep learning side projects of your own, learning how to setup a GPU instance can be very useful, which is what this lesson is all about!\n\n> If you do not already have a computer with a built-in NVIDIA GPU, you can use an [Amazon EC2](https://aws.amazon.com/ec2/) instance. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626450,
+              "key": "3dc93796-4c07-4de1-9508-8fd445a0c87e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5af222c1_screen-shot-2018-05-08-at-3.20.31-pm/screen-shot-2018-05-08-at-3.20.31-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3dc93796-4c07-4de1-9508-8fd445a0c87e",
+              "caption": "Amazon web services logo.",
+              "alt": "",
+              "width": 500,
+              "height": 710,
+              "instructor_notes": null
+            },
+            {
+              "id": 626451,
+              "key": "a4ddc5c0-e99a-4fdd-ba14-b115fe5fc477",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There are many cloud service providers that offer equivalent functionality, but EC2 is a reasonable default that is available to most students. In the next few sections, we'll go over the steps to take to run a neural network on an Amazon server.\n\n> **Note: You may skip this section if you are planning to use your own GPU, GPU in workspaces (which will be made available to you), or CPU, or otherwise **not** planning to use Amazon EC2.**",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 967252,
+          "key": "88eb12c5-56ba-4b81-810a-91583e7eea51",
+          "title": "AWS Setup Instructions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "88eb12c5-56ba-4b81-810a-91583e7eea51",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 967253,
+              "key": "66032e67-b1d4-45a1-9d44-060eff75d494",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create an AWS Account\n1. Open a regular AWS account (if you don't already have one) following the instructions via the [Amazon Web Service Help Center](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 967254,
+              "key": "be622beb-d9de-4760-a882-c01e755701bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. You will need a promo code from us so you can apply it to your account. To request a promo code, you can submit a support ticket [here](https://udacity.zendesk.com/hc/en-us/requests/new?ticket_form_id=110806). \n - Under the **\"Reason for Contact\"** field, choose **\"Other\"**, then choose **\"External Tools\"** in the dropdown. \n - When the **\"External Tools\"** field appears, select **\"AWS\"**. \n - Please note that a regular AWS account will receive a promo code from Udacity with a fixed amount of AWS credits.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 967255,
+              "key": "ddcc4369-b228-413a-8484-08791197f6b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. To apply your promo code, follow below:\n - Click **\"Credits\"** on the left side of the screen and enter the promo-code you received, then hit **\"redeem\"**.\n - Refresh the page and you will be able to view your credits under: Below are all the credits you have redeemed with AWS. Credits will automatically be applied to your bill.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 967256,
+              "key": "a50fd0c5-f930-4b67-bd53-b9bb1a48e55b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/January/5e178405_aws-account/aws-account.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a50fd0c5-f930-4b67-bd53-b9bb1a48e55b",
+              "caption": "",
+              "alt": "",
+              "width": 1699,
+              "height": 815,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 262555,
+          "key": "83a5ef87-6354-403e-96aa-7d5099ba48c6",
+          "title": "Get Access to GPU Instances",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "83a5ef87-6354-403e-96aa-7d5099ba48c6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010808,
+              "key": "f285e52b-f834-4d83-868b-bf17810d6588",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Amazon Web Services (AWS) is an Infrastructure as a Service (IaaS) and Platform as a Service (PaaS) provider. At this point, we may think of a \"cloud\" as a geographically distributed set of data centers that host different Virtual Machines (VMs) from different users. AWS has divided the entire world into several geographical regions. Each region has many availability zones, which in turn, comprises few data centers. Each data center has hundreds of servers, each of which hosts thousands of VMs dynamically.\n\n## A. What is EC2?\nAWS Elastic Compute Cloud (EC2) is a hosted service that allows you to launch __Virtual Machines (or an “instances”)__, including instances with attached GPUs. You can get started by logging into the [AWS Console](https://aws.amazon.com/console/) and search for the *\"EC2\"* service, as shown below. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010809,
+              "key": "ac35fffe-5050-4c68-adab-fc8ffb6fffa1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e8c6857_screenshot-2020-04-07-at-4.08.30-pm/screenshot-2020-04-07-at-4.08.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ac35fffe-5050-4c68-adab-fc8ffb6fffa1",
+              "caption": "AWS Console - Select an AWS Service ",
+              "alt": "",
+              "width": 812,
+              "height": 483,
+              "instructor_notes": null
+            },
+            {
+              "id": 1010810,
+              "key": "e5cd9e5c-10f3-4c15-b981-44d442f47dcf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e8c6874_screenshot-2020-04-07-at-4.41.39-pm/screenshot-2020-04-07-at-4.41.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e5cd9e5c-10f3-4c15-b981-44d442f47dcf",
+              "caption": "AWS Console - EC2 Dashboard",
+              "alt": "",
+              "width": 1438,
+              "height": 723,
+              "instructor_notes": null
+            },
+            {
+              "id": 1010811,
+              "key": "3c1ac6d4-242a-49da-a3ba-0a1a75abf01e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### A.1. Launch an EC2 Instance\nYou can launch an instance in 7 simple steps, as follows:\n1. Choose an Amazon Machine Image (AMI) - An AMI is a template that contains the software configuration (operating system, application server, and applications) required to launch your instance.\n2. Choose an Instance Type -  Instance Type offers varying combinations of CPUs, memory (GB), storage (GB), types of network performance, and availability of IPv6 support. AWS offers a variety of Instance Types, broadly categorized in 5 categories. You can choose an Instance Type that fits our use case. The specific type of GPU instance you should launch for this tutorial is called __“p2.xlarge”__.\n3. Configure Instance Details - Provide the instance count and configuration details, such as, network, subnet, behavior, monitoring, etc. \n4. Add Storage - You can choose to attach either *SSD* or *Standard Magnetic* drive to your instance. \n5. Add Tags - A tag serves as a *label* that you can attach to multiple AWS resources, such as volumes, instances or both. \n6. Configure Security Group - Attach a set of firewall rules to your instance(s) that controls the incoming traffic to your instance(s). \n7. Review - Review your instance launch details before the launch.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010812,
+              "key": "1ec7350b-2ac8-4d28-b171-c1cc036a5db3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### A.2. What is an Amazon Machine Image?\n__Amazon Machine Image__ or __AMI__ is a template for an operating system and basic services (e.g., an application server and specific applications). By running an AMI instance, the AMI will be running \"as a virtual server in the cloud\" (as per [AWS Documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html).\n\nWe will use this [Deep Learning AMI (Amazon Linux)](https://aws.amazon.com/marketplace/pp/B077GF11NF) to define the operating system for your instance and to make use of its pre-installed software. In order to use this AMI, you must change your AWS region to one of the following (and you are encouraged to select the region in the list that is closest to you):\n\n- EU (Ireland)\n- Asia Pacific (Seoul)\n- Asia Pacific (Tokyo)\n- Asia Pacific (Sydney)\n- US East (N. Virginia)\n- US East (Ohio)\n- US West (Oregon)\n\nIf you are unsure, please check the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) to confirm which region may be closest to you. <br>\nAfter changing your AWS region, view your __EC2 Service Limit report__ at [this link](https://console.aws.amazon.com/ec2/v2/home?#Limits), and find your \"Current Limit\" for the p2.xlarge instance type.\n\n### A.3. Instance Type - What is a P2 instance?\nP2 are powerful and scalable parallel processing GPU instances. You can read more about these on [AWS Documentation](https://aws.amazon.com/ec2/instance-types/p2/).  \n\n---\n\n## <font color=\"red\"> B. Shut Down EC2 Instances, if not in use </font>\n>####  <span>Note: <font color=\"red\">We recommend you shut down every resource (e.g., EC2 instances, or any other hosted service) on the AWS cloud immediately after the usage, otherwise you will run out of your free promo credits. </font></span>\n\nEven if you are in the middle of the project and need to step away, __PLEASE SHUT DOWN YOUR EC2 INSTANCE__. You can re-instantiate later.\nWe have provided adequate credits to allow you to complete your projects. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010813,
+              "key": "789e0e2c-a912-4292-a3ac-cf61a50e4a75",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## C. AWS Service Utilization Limits\nYou need to understand the way AWS imposes ***utilization quotas*** (limits) on almost all of its services.\n* AWS provides default quotas, formerly referred to as *limits*, **for each AWS service.**\n* Importantly, **each quota is region-specific.** \n* There are three ways to check your quotas, as mentioned [here](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html), i).  Service Endpoints and Quotas, ii). Service Quotas console, and iii). AWS CLI commands.\n * We recommend you to check the quotas for AWS EC2 at [Service Endpoints and Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) page. \n * Alternatively, for EC2 service, you can visit [Amazon EC2 Service Limits](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html) that describes how to view the current quota (limit) or request an increase in quota.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1008664,
+              "key": "d86463f1-7566-4b49-9e22-a187f6f8baed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### C.1. Increase EC2 Instance Limits\n#### C.1.1. View Your Current Limit\nAfter changing your AWS region, view your [EC2 Service Limit report at this link](https://console.aws.amazon.com/ec2/v2/home?#Limits), and find your \"Current Limit\" for the p2.xlarge instance type. By default, __AWS sets a limit of 0 on the number of p2.xlarge instances a user can run__, which effectively prevents you from launching this instance. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1008665,
+              "key": "024cdbe1-aac9-401c-9d17-8722d230d5f8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7cf754_aws-0-image1/aws-0-image1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/024cdbe1-aac9-401c-9d17-8722d230d5f8",
+              "caption": "",
+              "alt": "",
+              "width": 1960,
+              "height": 404,
+              "instructor_notes": null
+            },
+            {
+              "id": 485910,
+              "key": "34767753-2223-40b3-bac0-eb446a10aa7b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### C.1.2. Submit a Limit Increase Request\nIf your limit of p2.xlarge instances is 0, you'll need to increase the limit before you can launch an instance. \n1. From the EC2 Service Limits page, CLICK TO EDIT  **Calculate vCPU limit** on top.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1008666,
+              "key": "e36023a3-437f-49f9-8321-824949462e26",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7cf7ad_aws-1-image2/aws-1-image2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e36023a3-437f-49f9-8321-824949462e26",
+              "caption": "",
+              "alt": "",
+              "width": 2098,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 1008667,
+              "key": "a6b7623c-a287-4bc6-bdbe-ff26117a0206",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n2. The following screen pops up. In the **Instance type** search for p2.xlarge and the **Instance count** to 1, verify the **New limit** is showing **4 vCPUs** and then click on <span style=\"color:blue;\">**Request limit increase**</span> \n<em>**Note:** <font color=\"red\">You won't be charged for requesting a limit increase. AWS will only charge you once you have launched the instance.</font></em>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1008668,
+              "key": "337ed70f-000f-4470-9545-eea9771f359d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7cf7ee_aws-2-image3/aws-2-image3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/337ed70f-000f-4470-9545-eea9771f359d",
+              "caption": "",
+              "alt": "",
+              "width": 1802,
+              "height": 1126,
+              "instructor_notes": null
+            },
+            {
+              "id": 485915,
+              "key": "98846db9-5595-4e66-835e-8ab1ae5a050b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n3. This will open the following screen. Click on the **Service limit increase** if it is not already selected.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1008669,
+              "key": "353cbbd6-a734-4b62-8967-d986950909d2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7cf816_aws-3-image4/aws-3-image4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/353cbbd6-a734-4b62-8967-d986950909d2",
+              "caption": "",
+              "alt": "",
+              "width": 2170,
+              "height": 1204,
+              "instructor_notes": null
+            },
+            {
+              "id": 1008670,
+              "key": "f1b06ad6-3a9a-40cf-90f4-ccd829c59dbb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. In **Requests** section pick your  \"Primary Instance type\" as \"All P instances\" and \"1\"  for \"New limit value\" <em>**Note:** <font color=\"red\">If you have never launched an instance of any type on AWS, you might receive an email from AWS Support asking you to initialize your account by creating an instance before they approve the limit increase.</font></em>\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1008671,
+              "key": "cf172697-f10a-425b-8457-f4f0c84077b5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e7cf83b_aws-4-image5/aws-4-image5.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cf172697-f10a-425b-8457-f4f0c84077b5",
+              "caption": "",
+              "alt": "",
+              "width": 1770,
+              "height": 1170,
+              "instructor_notes": null
+            },
+            {
+              "id": 1008672,
+              "key": "4cc6a526-bdc4-4391-afb4-fcf0cb68add0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n#### C.1.3. Wait for the Approval\nYou must wait for AWS to approve your Limit Increase Request. AWS typically approves these requests within 48 hours.\n\n>######  <span>IMPORTANT NOTICE: <font color=\"red\"> This is the current AWS UI as of April 6th, 2020. The AWS UI is subject to change on a regular basis. We advise students to refer to AWS documentation for the above process.</font></span>",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 262674,
+          "key": "a20383fd-1e14-4311-824b-3d7981d99dee",
+          "title": "Launch an Instance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a20383fd-1e14-4311-824b-3d7981d99dee",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 262675,
+              "key": "880a391a-b5cd-48fc-94a6-b9e0df400835",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Launch an Instance\nOnce AWS approves your GPU Limit Increase Request, you can start the process of launching your instance.\n\nVisit the [EC2 Management Console](https://console.aws.amazon.com/ec2/v2/home), and click on the “Launch Instance” button.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 485919,
+              "key": "5f3d694f-0396-494a-ac21-5e8a0b8f4ce8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a1adc65_launch-instance/launch-instance.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5f3d694f-0396-494a-ac21-5e8a0b8f4ce8",
+              "caption": "",
+              "alt": "launch instance button",
+              "width": 524,
+              "height": 146,
+              "instructor_notes": null
+            },
+            {
+              "id": 262679,
+              "key": "553fbada-ee4f-4f33-a1ef-5abd4a6c57af",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Next, you must choose an AMI (Amazon Machine Image) which defines the operating system for your instance, as well as any configurations and pre-installed software.\n\nClick on **AWS Marketplace**, and search for **Deep Learning AMI with Source Code (CUDA 8, Ubuntu)**.  Once you find the appropriate AMI, click on the \"Select\" button.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 485924,
+              "key": "8b945af2-5056-49bd-94e2-a36f34e50ee4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a342b76_screen-shot-2017-11-26-at-9.38.24-am/screen-shot-2017-11-26-at-9.38.24-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8b945af2-5056-49bd-94e2-a36f34e50ee4",
+              "caption": "",
+              "alt": "Appropriate AMI, shown in the marketplace",
+              "width": 2288,
+              "height": 678,
+              "instructor_notes": null
+            },
+            {
+              "id": 485922,
+              "key": "2692d046-c2e7-443d-8912-a061d50421ad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This [Amazon Machine Image (AMI)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) contains all the environment files and drivers for you to train on a GPU.  It has [cuDNN](https://developer.nvidia.com/cudnn), and many the other packages required for this course.  Any additional packages required for specific projects will be detailed in the appropriate project instructions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 485925,
+              "key": "035bb95a-775c-4a4c-b7cb-a986690050a7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Select the Instance Type\nYou must next choose an instance type, which is the hardware on which the AMI will run.\n\nFilter the instance list to only show “GPU compute”:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 465160,
+              "key": "55779e71-0f26-424d-ab61-0dffc346962c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/November/5a1c6531_screen-shot-2017-06-13-at-12.58.03-pm/screen-shot-2017-06-13-at-12.58.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/55779e71-0f26-424d-ab61-0dffc346962c",
+              "caption": "",
+              "alt": "",
+              "width": 1092,
+              "height": 706,
+              "instructor_notes": null
+            },
+            {
+              "id": 262685,
+              "key": "a6c9463b-bc9f-4723-a322-5c20600e2d99",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Select the p2.xlarge instance type:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 485926,
+              "key": "fa69dcac-78a6-4581-9d13-771484b8623d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a342c0c_screen-shot-2017-11-26-at-9.55.20-am/screen-shot-2017-11-26-at-9.55.20-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fa69dcac-78a6-4581-9d13-771484b8623d",
+              "caption": "",
+              "alt": "",
+              "width": 2036,
+              "height": 974,
+              "instructor_notes": null
+            },
+            {
+              "id": 485927,
+              "key": "f10d9084-1a27-49b9-b884-b2e859310473",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Finally, click on the \"Review and Launch\" button:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 485928,
+              "key": "fea80153-e9ac-4c53-9d3e-6f306358607c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/May/5910b6b0_review-and-launch/review-and-launch.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fea80153-e9ac-4c53-9d3e-6f306358607c",
+              "caption": "",
+              "alt": "",
+              "width": 576,
+              "height": 51,
+              "instructor_notes": null
+            },
+            {
+              "id": 262691,
+              "key": "8c1432a2-fb78-4b1a-9728-d0d7635ab18a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Configure the Security Group\nRunning and accessing a Jupyter notebook from AWS requires special configurations. \n\nBy default, AWS restricts access to most ports on an EC2 instance. In order to access the Jupyter notebook, you must configure the AWS Security Group to allow access to port 8888.\n\nClick on \"Edit security groups\".",
+              "instructor_notes": ""
+            },
+            {
+              "id": 485930,
+              "key": "d9adc864-a2da-4546-86cf-4f51d8ef8938",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/May/5910b7b6_edit-security-group/edit-security-group.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d9adc864-a2da-4546-86cf-4f51d8ef8938",
+              "caption": "",
+              "alt": "",
+              "width": 1899,
+              "height": 41,
+              "instructor_notes": null
+            },
+            {
+              "id": 485932,
+              "key": "8dcc3350-2999-4536-9ac7-5a14bd3fd141",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "On the \"Configure Security Group\" page:\n\n1. Select \"Create a **new** security group\"\n2. Set the \"Security group name\" (i.e. \"Jupyter\")\n3. Click \"Add Rule\"\n4. Set a \"Custom TCP Rule\"\n  1. Set the \"Port Range\" to \"8888\"\n  2. Select \"Anywhere\" as the \"Source\"\n5. Click \"Review and Launch\" (again)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267141,
+              "key": "1218bfe4-ac18-497e-8b0d-77aacb4af3dd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a73fe0_aws-add-sec-group/aws-add-sec-group.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1218bfe4-ac18-497e-8b0d-77aacb4af3dd",
+              "caption": "",
+              "alt": null,
+              "width": 934,
+              "height": 286,
+              "instructor_notes": null
+            },
+            {
+              "id": 262693,
+              "key": "02f3031c-886f-4b15-be3e-da7f4ba7fa7f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Launch the Instance\n\nClick on the “Launch” button to launch your GPU instance.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 485936,
+              "key": "cbaa9f64-9acf-4eef-8044-333699efc573",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/May/5910b804_launch/launch.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cbaa9f64-9acf-4eef-8044-333699efc573",
+              "caption": "",
+              "alt": "",
+              "width": 238,
+              "height": 48,
+              "instructor_notes": null
+            },
+            {
+              "id": 485934,
+              "key": "26cd373e-4128-4db8-be57-18c7d979f1e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Create an Authentication Key Pair \n\nAWS will ask if you’d like to specify an authentication key pair. You'll need to do so in order to access your instance, so you select “Create a new key pair” and click the \"Download Key Pair\" button. This will download a .pem file, which you'll need to be able to access your instance. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 485938,
+              "key": "3a388666-1330-440c-a118-44c011e761f6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a342d6e_screen-shot-2017-11-26-at-10.30.15-am/screen-shot-2017-11-26-at-10.30.15-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3a388666-1330-440c-a118-44c011e761f6",
+              "caption": "",
+              "alt": "",
+              "width": 1710,
+              "height": 438,
+              "instructor_notes": null
+            },
+            {
+              "id": 485939,
+              "key": "70eb62f0-3dac-4a54-a7b3-3bb4b1dae6f6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Move the .pem file to a secure and easily remembered location on your computer; you'll need to access your instance through the location you select.\n\nAfter the .pem file has been downloaded, click the “Launch Instances” button.\n\nClick the “View Instances” button to go to the EC2 Management Console and watch your instance boot.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 485937,
+              "key": "4acf99c1-6cdd-41ae-9db8-d92496ce8eae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Be Careful!\n\nFrom this point on, AWS will charge you for running this EC2 instance. You can find the details on the [EC2 On-Demand Pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).\n\nMost importantly, remember to “stop” (i.e. shutdown) your instances when you are not using them. Otherwise, your instances might run for a day, week, month, or longer without you remembering, and you’ll wind up with a large bill!\n\nAWS charges primarily for running instances, so most of the charges will cease once you stop the instance. However, there are smaller storage charges that continue to accrue until you “terminate” (i.e. delete) the instance.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 262702,
+              "key": "251c5cd1-9a2c-429d-8e87-751e74a6e608",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2016/December/584634ae_stop/stop.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/251c5cd1-9a2c-429d-8e87-751e74a6e608",
+              "caption": "",
+              "alt": null,
+              "width": 516,
+              "height": 254,
+              "instructor_notes": null
+            },
+            {
+              "id": 262703,
+              "key": "9413b0ae-4c8f-48fb-bcc0-c47824ff3200",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There is no way to limit AWS to only a certain budget and have it auto-shutdown when it hits that threshold. However, you can set [AWS Billing Alarms](http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-alarms.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 676179,
+          "key": "046b50eb-4965-4ee9-a34e-7b03ff785dbd",
+          "title": "Login to an Instance",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "046b50eb-4965-4ee9-a34e-7b03ff785dbd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 676180,
+              "key": "74d470b0-676a-4325-b822-bb3bb8bd1d83",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Login to the Instance\n\nAfter launch, your instance may take a few minutes to initialize. \n\nOnce you see “2/2 checks passed” on the EC2 Management Console, your instance is ready for you to log in.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 676181,
+              "key": "9413d16d-e7de-4e79-b6ca-5319293af9ad",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b4e3db0_screen-shot-2018-07-17-at-12.03.58-pm/screen-shot-2018-07-17-at-12.03.58-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9413d16d-e7de-4e79-b6ca-5319293af9ad",
+              "caption": "Instance Status Check and Public IP",
+              "alt": "",
+              "width": 830,
+              "height": 322,
+              "instructor_notes": null
+            },
+            {
+              "id": 676182,
+              "key": "b13a63ef-5d6f-4786-90ac-0202ac9e47d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Note the \"IPv4 Public IP\" address (in the format of “X.X.X.X”) on the EC2 Dashboard.\n\nFrom a terminal, navigate to the location where you stored your .pem file.  (For example, if you put your .pem file on your Desktop, `cd ~/Desktop/` will move you to the correct directory.)\n\nType `ssh -i YourKeyName.pem ubuntu@X.X.X.X`, where:\n- `X.X.X.X` is the IPv4 Public IP found in AWS, and\n- `YourKeyName.pem` is the name of your .pem file.\n\nNote that if you've used a different AMI or specified a username, `ubuntu` will be replaced with the username, such as `ec2-user` for some Amazon AMI's.  You would then instead enter `ssh -i YourKeyName.pem ec2-user@X.X.X.X`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 676183,
+              "key": "bdfc4f76-357b-4319-9725-29258c26b1fb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Configure Jupyter notebook settings\nIn your instance, in order to create a config file for your Jupyter notebook settings, type: `jupyter notebook --generate-config`.\n\nThen, to change the IP address config setting for notebooks (this is just a fancy one-line command to perform an exact string match replacement; you could do the same thing manually using vi/vim/nano/etc.), type: `sed -ie \"s/#c.NotebookApp.ip = 'localhost'/#c.NotebookApp.ip = '*'/g\" ~/.jupyter/jupyter_notebook_config.py`\n\n### Test the Instance\nMake sure everything is working properly by verifying that the instance can run a Keras notebook.\n\n##### On the EC2 instance\n* Clone a GitHub repository\n * `git clone https://github.com/udacity/P1_Facial_Keypoints.git`\n* Enter the repo directory\n * `cd P1_Facial_Keypoints`\n* Install the requirements\n * `sudo python3 -m pip install -r requirements.txt`\n* Start Jupyter notebook\n * `jupyter notebook --ip=0.0.0.0 --no-browser`\n\n*Note: These are sample instructions for the first project.*\n\n##### From your local machine\n* You will need the token generated by your jupyter notebook to access it.  On your instance terminal, there will be the following line:\n`Copy/paste this URL into your browser when you connect for the first time, to login with a token:`.  Copy everything starting with the `:8888/?token=`.\n* Access the Jupyter notebook index from your web browser by visiting: `X.X.X.X:8888/?token=...` (where X.X.X.X is the IP address of your EC2 instance and everything starting with `:8888/?token=` is what you just copied).\n* Select the notebook you want to open, like the \"0_Dataset.ipynb\" notebook.\n* Run each cell in the notebook.\n\n**NOTE:** Windows users may prefer connecting via the GUI utility PuTTY, by following [these instructions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html?icmpid=docs_ec2_console).\n\n**From this point on, AWS will charge you for a running an EC2 instance.** You can find the details on the [EC2 On-Demand Pricing page](https://aws.amazon.com/ec2/pricing/on-demand/).\n\nMost importantly, remember to “stop” (i.e. shutdown) your instances when you are not using them. Otherwise, your instances might run for a day or a week or a month without you remembering, and you’ll wind up with a large bill!\n\nAWS charges primarily for running instances, so most of the charges will cease once you stop the instance. However, there are smaller storage charges that continue to accrue until you “terminate” (i.e. delete) the instance.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,2060 @@
+{
+  "data": {
+    "lesson": {
+      "id": 620172,
+      "key": "08551158-d67c-4ea7-8a95-ccfaa3871b97",
+      "title": "Robot Localization",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn to implement a Bayesian filter to locate a robot in space and represent uncertainty in robot motion.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/08551158-d67c-4ea7-8a95-ccfaa3871b97/620172/1544453370436/Robot+Localization+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/08551158-d67c-4ea7-8a95-ccfaa3871b97/620172/1544453362305/Robot+Localization+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 620175,
+          "key": "fa99e8ea-c260-4d33-a531-e7c1f044c00b",
+          "title": "Probability Review",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fa99e8ea-c260-4d33-a531-e7c1f044c00b",
+            "completed_at": "2020-04-01T05:30:04.022Z",
+            "last_viewed_at": "2020-04-01T05:30:03.045Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630652,
+              "key": "402cd947-0356-4b74-a871-5e0d68c7c6b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Review Probability\n\nBefore Sebastian teaches you about localizing a robot, in the next couple concepts, we'll review how to represent uncertainty in robot motion and sensors. The next couple sections will include multiple videos and quizzes to check your understanding of probability and probability distributions. These are meant to prepare you for this lesson, so make sure to read this material carefully to become familiar with terminology and mathematical representations of uncertainty!\n\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620709,
+              "key": "1253b8d9-3351-4a5f-b447-f24261b13a79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Probability Review\n\nBefore learning more about uncertainty in robot localization, let's review how to mathematically represent uncertainty using probability!\n\nA classic example of an event with some certainty associated with it is a coin flip. A typical coin has two sides: heads and tails. Without me telling you anything else, what chance do you think a coin like this has of flipping and landing heads up?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620723,
+              "key": "03431d4e-7576-4034-ab3f-bc9aada16550",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5aea91a1_coins/coins.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/03431d4e-7576-4034-ab3f-bc9aada16550",
+              "caption": "Heads and tails of a coin.",
+              "alt": "",
+              "width": 200,
+              "height": 244,
+              "instructor_notes": null
+            },
+            {
+              "id": 620724,
+              "key": "791dc6c6-85c2-4214-86f4-b86a6ff2a617",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "791dc6c6-85c2-4214-86f4-b86a6ff2a617",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you flip a coin with two sides (heads and tails), what is the probability, `P(H)`, that the coin will land heads up? (1= 100%, 0 = 0% chance)",
+                "answers": [
+                  {
+                    "id": "a1525322177865",
+                    "text": "P(H) = 0.3",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525322291440",
+                    "text": "P(H) = 0.5",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1525322295841",
+                    "text": "P(H) = 0.75",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525322307755",
+                    "text": "P(H) = 1.0",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 620725,
+              "key": "b1866a89-a4e8-4314-82e0-c1fafd17fb27",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b1866a89-a4e8-4314-82e0-c1fafd17fb27",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "When you flip a coin and it comes up *heads*, do you think it's more likely that the NEXT flip will come up *tails*? That is, does one flip affect the probability that another flip will be heads or tails?",
+                "answers": [
+                  {
+                    "id": "a1525322805859",
+                    "text": "Yes",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1525322897913",
+                    "text": "No",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 620938,
+              "key": "9e63ee92-588b-44ab-ac95-d4b234725ed3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Formal Definition of Probability\n\nThe probability of an event, X, occurring is `P(X)`. The value of P(X) must fall in a range of 0 to 1.\n\n* `0 <= P(X) <= 1`\n\nAn event, X, can have multiple outcomes which we might call X1, X2, .. and so on; the probabilities for all outcomes of X must add up to one. For example, say there are two possible outcomes, X1 and X2:\n\n* If `P(X1) = 0.2` then `P(X2) = 0.8` because all possible outcomes must sum to 1.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620728,
+              "key": "23ffaa6d-2d42-4dd9-89ea-9f73527ef720",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Terminology",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620726,
+              "key": "ea5f3f43-45b8-44da-8ba8-c7d2cf1975c1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Independent Events\n\nEvents like coin flips are known as **independent events**; this means that the probability of a single flip does not affect the probability of another flip; P(H) will be 0.5 for each fair coin flip. When flipping a coin multiple times, each flip is an independent event because one flip does not affect the probability that another flip will land heads up or tails up.\n\n#### Dependent Events\n\nWhen two events are said to be *dependent*, the probability of one event occurring influences the likelihood of the other event. For example, say you are more likely to go outside if it's sunny weather. If the probability of sunny weather is low on a given day, the probability of you going outside will decrease as well, so the probability of going outside is dependent on the probability of sunny weather.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620727,
+              "key": "85069079-9c0d-41e1-8887-8ff56e2684c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Joint Probability\n\nThe probability that two or more independent events will occur together (in the same time frame) is called a **joint probability**, and it is calculated by multiplying the probabilities of each independent event together. For example, the probability that you will flip a coin and it will lands heads up two times in a row can be calculated as follows:\n\n* The probability of a coin flipping heads up, `P(H) =  0.5`\n* The joint probability of two events (a coin landing heads up) happening in a row, is the probability of the first event times the probability of the second event: `P(H)*P(H) = (0.5)*(0.5) = 0.25`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620710,
+              "key": "95fffc8f-24b4-4f07-8f16-f2209c3ec328",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quantifying Certainty (and Uncertainty)\n\nWhen we talk about being certain that a robot is at a certain location (x, y), moving a certain direction, or sensing a certain environment, we can quantify that certainty using probabilistic quantities. Sensor measurements and movement all have some uncertainty associated with them (ex. a speedometer that reads 50mph may be off by a few mph, depending on whether a car is moving up or down hill).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620741,
+              "key": "cd360a82-15e4-47bc-961e-c809406b7dfe",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5aea99c9_screen-shot-2018-05-02-at-10.10.16-pm/screen-shot-2018-05-02-at-10.10.16-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cd360a82-15e4-47bc-961e-c809406b7dfe",
+              "caption": "",
+              "alt": "",
+              "width": 400,
+              "height": 744,
+              "instructor_notes": null
+            },
+            {
+              "id": 620742,
+              "key": "5f702c4b-81ee-4c29-b761-7017b87dda74",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5f702c4b-81ee-4c29-b761-7017b87dda74",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "At a particular intersection, cars can either:\n\n1. Turn left\n\n2. Go straight\n\n3. Turn right\n\nCars tend to turn left with a probability of 0.4 and go straight with a probability of 0.25.  What is the probability that a car turns right?",
+                "matchers": [
+                  {
+                    "expression": "^\\s*0?\\.350*\\s*"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 620729,
+          "key": "3f19c218-42b7-4193-b9ff-c9a45b146bd7",
+          "title": "Uncertainty and Bayes' Rule",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3f19c218-42b7-4193-b9ff-c9a45b146bd7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620730,
+              "key": "9283550b-7eb8-4c2f-9646-4dd9c013d770",
+              "title": "Reduzindo a incerteza",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zuFMhmKQ--o",
+                "china_cdn_id": "zuFMhmKQ--o.mp4"
+              }
+            },
+            {
+              "id": 620906,
+              "key": "d05640a0-0309-4c55-a598-aaa34353daa8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Bayes' Rule\n\nBayes' Rule is extremely important in robotics and it can be summarized in one sentence: given an initial prediction, if we gather additional data (data that our initial prediction depends on), we can improve that prediction!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620731,
+              "key": "84f9f30c-e3e2-4184-92a3-8c51dca10326",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Initial Scenario",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620732,
+              "key": "86fede7f-7868-4c19-84a6-7ae5013a62a3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5aea9874_screen-shot-2018-05-02-at-10.04.31-pm/screen-shot-2018-05-02-at-10.04.31-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/86fede7f-7868-4c19-84a6-7ae5013a62a3",
+              "caption": "Map of the road and the initial location prediction.",
+              "alt": "",
+              "width": 400,
+              "height": 620,
+              "instructor_notes": null
+            },
+            {
+              "id": 620733,
+              "key": "fca3e051-aee8-4be9-8260-641b6e76dc23",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We know a little bit about the map of the road that a car is on (pictured above). We also have an initial GPS measurement; the GPS signal says the car is at the red dot. However, this GPS measurement is inaccurate up to about 5 meters. So, the vehicle could be located anywhere within a 5m radius circle around the dot.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620734,
+              "key": "1ccef2f6-a153-438d-ac54-b2467a8e725d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Sensors\n\nThen we gather data from the car's sensors. Self-driving cars mainly use three types of sensors to observe the world:\n* **Camera**, which records video,\n* **Lidar**, which is a light-based sensor, and \n* **Radar**, which uses radio waves.\n\nAll of these sensors detect surrounding objects and scenery.\n\nAutonomous cars also have lots of **internal sensors** that measure things like the speed and direction of the car's movement, the orientation of its wheels, and even the internal temperature of the car!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620735,
+              "key": "8eabccf8-aaa1-4fad-a17e-cbc00789021a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Sensor Measurements\n\nSuppose that our sensors detect some details about the terrain and the way our car is moving, specifically:\n* The car could be anywhere within the GPS 5m radius circle,\n* The car is moving upwards on this road,\n* There is a tree to the left of our car, and \n* The car’s wheels are pointing to the right. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620736,
+              "key": "c16ec8c7-c800-4524-a504-7852167c33dd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Knowing only these sensor measurements, examine the map below and answer the following quiz question.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620737,
+              "key": "9c09954c-7c3d-449d-888b-6e2a34d506c9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5aea98f8_screen-shot-2018-05-02-at-10.06.44-pm/screen-shot-2018-05-02-at-10.06.44-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9c09954c-7c3d-449d-888b-6e2a34d506c9",
+              "caption": "Road map with additional sensor data",
+              "alt": "",
+              "width": 600,
+              "height": 1166,
+              "instructor_notes": null
+            },
+            {
+              "id": 620738,
+              "key": "299a9d19-3503-4b59-8835-e5bbb89e3437",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "299a9d19-3503-4b59-8835-e5bbb89e3437",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "After considering the sensor measurements and the initial location prediction, which point on the above map is the best estimate for our car’s location?",
+                "answers": [
+                  {
+                    "id": "a1525324057109",
+                    "text": "A",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1525324063079",
+                    "text": "B",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525324064964",
+                    "text": "C",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525324066639",
+                    "text": "D",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525324068639",
+                    "text": "E",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 630641,
+          "key": "3e078702-25db-4420-a28b-cd353ba4fbce",
+          "title": "Reducing Uncertainty",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3e078702-25db-4420-a28b-cd353ba4fbce",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630650,
+              "key": "6a63ed6b-0d12-4a76-9aca-c224470ab324",
+              "title": "Usando dados do sensor",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vhl-SADfti8",
+                "china_cdn_id": "vhl-SADfti8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620881,
+          "key": "8eae28fd-2776-4a44-89b3-0b64c82aabfb",
+          "title": "Probability Distributions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8eae28fd-2776-4a44-89b3-0b64c82aabfb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620909,
+              "key": "0fadeea1-253f-4ab1-ae60-0c0c29aa16f0",
+              "title": "概率分布入门 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gqPjMDVFvNg",
+                "china_cdn_id": "gqPjMDVFvNg.mp4"
+              }
+            },
+            {
+              "id": 620887,
+              "key": "9b2f0913-c44b-480a-9e8c-d1d45e907f73",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What is a Probability Distribution?\n\nProbability distributions allow you to represent the probability of an event using a mathematical equation. Like any mathematical equation:\n* probability distributions **can be visualized** using a graph especially in 2-dimensional cases.\n* probability distributions **can be worked with using algebra, linear algebra and calculus**.\n\nThese distributions make it *much* easier to understand and summarize the probability of a system whether that system be a coin flip experiment or the location of an autonomous vehicle.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620914,
+              "key": "f94a2106-592f-45a7-a7e4-9b5bc466b0f2",
+              "title": "概率分布入门 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "PglBg4eb_5M",
+                "china_cdn_id": "PglBg4eb_5M.mp4"
+              }
+            },
+            {
+              "id": 620889,
+              "key": "3f52bde2-eb1f-4b9f-834a-16ad71bfe6e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Types of Probability Distributions\n\nProbability distributions are really helpful for understanding the probability of a system.\nLooking at the big pictures, there are two types of probability distributions: \n* discrete probability distributions\n* continuous probability distributions\n\nBefore we get into the details about what discrete and continuous mean, take a look at these two visualizations below. The first image shows a discrete probability distribution and the second a continuous probability distribution. What is similar and what is different about each visualization?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620891,
+              "key": "cb45d403-8f8f-4ba3-90e5-a6f09f08bd36",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5aeb5145_screen-shot-2018-05-03-at-11.13.10-am/screen-shot-2018-05-03-at-11.13.10-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cb45d403-8f8f-4ba3-90e5-a6f09f08bd36",
+              "caption": "Discrete Distribution (left) and Continuous Distribution (right).",
+              "alt": "",
+              "width": 600,
+              "height": 598,
+              "instructor_notes": null
+            },
+            {
+              "id": 620896,
+              "key": "830c95dd-dd48-42b7-9f69-663cdff93bb8",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "830c95dd-dd48-42b7-9f69-663cdff93bb8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Based on the visualizations, which of the following are true about the discrete probability distribution versus the continuous probability distribution?",
+                "answers": [
+                  {
+                    "id": "a1525371252431",
+                    "text": "The x-axis represents the main variable/event of interest for both visualizations.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1525371261401",
+                    "text": "In the discrete visualization, the x-axis variable can only take on certain values such as 1, 2 or 3.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1525371272156",
+                    "text": "In the discrete visualization, the x-axis variable can take on any value such as 3.4 or 0.5.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525371278669",
+                    "text": "In the continuous visualization, the x-axis variable can take on any real number value from -infinity to +infinity.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 620882,
+              "key": "d0a1d7f5-dc70-41fe-b77c-b66e2faa620f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### More terminology\n\n* **Prior** - a prior probability distribution of an uncertain quantity, such as the location of a self-driving car on a road. This is the probability distribution that would express one's beliefs about the car's location **before ** some sensor measurements or other evidence is taken into account.\n* **Posterior** - the probability distribution of an uncertain quantity, **after** some evidence (like sensor measurements) have been taken into account.\n\nAnd you'll learn more about this terminology in the upcoming videos!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 620174,
+          "key": "a24def50-e350-41b0-97cb-db9ad3d4844a",
+          "title": "Localization",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a24def50-e350-41b0-97cb-db9ad3d4844a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620192,
+              "key": "b41d9a4a-fecd-45c0-8355-f317cdfa0817",
+              "title": "03 Localization V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OB6GZxfvESw",
+                "china_cdn_id": "OB6GZxfvESw.mp4"
+              }
+            },
+            {
+              "id": 633777,
+              "key": "01b2a979-7598-475f-a06e-30e82f20882b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise Repository\n\nMost of the code notebooks in this lesson can be run, locally, by downloading the files in [this Github exercise repository](https://github.com/udacity/CVND_Localization_Exercises).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 620176,
+          "key": "5e07ae17-23bf-4352-b5f9-b2b7ec4b53cc",
+          "title": "Total Probability",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5e07ae17-23bf-4352-b5f9-b2b7ec4b53cc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620193,
+              "key": "ed7db214-ba90-496b-bc65-7c8adc3185c0",
+              "title": "05 Total Probability V4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RCEieE2t8U4",
+                "china_cdn_id": "RCEieE2t8U4.mp4"
+              }
+            },
+            {
+              "id": 631263,
+              "key": "bd794b23-4bf3-480b-b457-a9a8b8d24d99",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quizzes and Exercises\n\nIn the next few videos, you'll see a lot of quiz-videos and exercise notebooks. This format is a little different to how you've seen quizzes presented so far. For quiz videos, a quiz will be located *right underneath* that video, to test your intuition of a concept, so **make sure to scroll down** to take a quiz. In some cases, you may find the solution to a given quiz in code or in a later video.\n\nFor notebook exercises, a solution notebook will be provided in case you get stuck or in case you want to check that your answer is correct! You are encouraged to skip quizzes that seem too easy and always try to implement a code solution before looking at solution code.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 620177,
+          "key": "8c19328e-ccf8-4bf9-a2b7-24cb0e1d750d",
+          "title": "Notebook: 1D Robot World",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8c19328e-ccf8-4bf9-a2b7-24cb0e1d750d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631318,
+              "key": "24d0888b-231a-4b8c-8856-4997e0d48f24",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewd855c20b",
+              "pool_id": "jupyter",
+              "view_id": "d855c20b-ee50-4364-98d3-e6bf0efa1466",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. 1D Robot World, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 620178,
+          "key": "e22f533c-6b9e-4f6f-98a7-7e094ea5e0d3",
+          "title": "Probability After Sense",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e22f533c-6b9e-4f6f-98a7-7e094ea5e0d3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620194,
+              "key": "5217353d-f9ea-4967-9d1e-683939188d70",
+              "title": "09 Probability After Sense V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aWQMJQQmNGw",
+                "china_cdn_id": "aWQMJQQmNGw.mp4"
+              }
+            },
+            {
+              "id": 620266,
+              "key": "0a9bc8d4-0aff-40e7-8882-00852e63b3c7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the above scenario, a robot starts out without any information about where it is in a 1D world and has a uniform distribution of location probabilities: `[0.2, 0.2, 0.2, 0.2, 0.2]`. You can assume this is the initial distribution for the quiz questions below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 620267,
+              "key": "5fa9d4f8-eeaa-4dfe-92e6-5b89ccc244dc",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5fa9d4f8-eeaa-4dfe-92e6-5b89ccc244dc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If the robot senses that it is in a red square, and its sensor says that there is a 60% chance that this is indeed a red square, what is the combined probability that a robot is *sensing* red and *in* a red square? \n\nAnother way of asking this is: what is the new probability that the robot is in square x2?",
+                "answers": [
+                  {
+                    "id": "a1525241054231",
+                    "text": "0.0",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525241245202",
+                    "text": "0.04",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525241259829",
+                    "text": "0.1",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525241748161",
+                    "text": "0.12",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1525241750639",
+                    "text": "0.2",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525242440756",
+                    "text": "0.6",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 620277,
+              "key": "24dbf1fa-7fa8-4f74-b085-7a355c767bd4",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "24dbf1fa-7fa8-4f74-b085-7a355c767bd4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If the robot senses that it has reached a red square, but its sensor says that there is still a 20% chance that this is actually a green square (and the sensor reading is incorrect), what is the combined probability that a robot is *sensing* red but *in* a green square?\n\nAnother way of asking this is: what is the probability that our robot sense red but is actually in square x1?",
+                "answers": [
+                  {
+                    "id": "a1525242261406",
+                    "text": "0.0",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525242380995",
+                    "text": "0.04",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1525242415156",
+                    "text": "0.1",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525242417524",
+                    "text": "0.12",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525242420995",
+                    "text": "0.2",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1525242426079",
+                    "text": "0.4",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 620179,
+          "key": "6ae897f3-dfb6-447f-8175-6ee0e674203d",
+          "title": "Notebook: Probability After Sense",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6ae897f3-dfb6-447f-8175-6ee0e674203d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631319,
+              "key": "2d6f9d2c-b32b-4a3a-b0b4-9da11f0fddac",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view03c9a96e",
+              "pool_id": "jupyter",
+              "view_id": "03c9a96e-369a-419e-8030-66ba6ab42fff",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. Probability After Sense, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 620180,
+          "key": "c3de5614-b0eb-485d-a765-b93819abf62b",
+          "title": "Normalize Distribution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c3de5614-b0eb-485d-a765-b93819abf62b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620195,
+              "key": "6653a0be-4baf-44ac-9eb5-1f0aa9e37c6e",
+              "title": "11 Normalize Distribution V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZGvmFn_u56o",
+                "china_cdn_id": "ZGvmFn_u56o.mp4"
+              }
+            },
+            {
+              "id": 631268,
+              "key": "1441b4db-2658-4a67-9dd9-b0f8895b576a",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1441b4db-2658-4a67-9dd9-b0f8895b576a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For a non-normalized distribution `[0.04, 0.12, 0.12, 0.04, 0.04]`, what are the values for the **normalized** distribution?",
+                "answers": [
+                  {
+                    "id": "a1527286789060",
+                    "text": "`[0.04, 0.12, 0.12, 0.04, 0.04]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527286843846",
+                    "text": "`[0.1, 0.4, 0.4, 0.1, 0.1]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527286876397",
+                    "text": "`[0.233, 0.677, 0.677, 0.233, 0.233]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527286893226",
+                    "text": "`[0.111, 0.333, 0.333, 0.111, 0.111]`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527286987222",
+                    "text": "`[0.2, 0.2, 0.2, 0.2, 0.2]`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 620279,
+          "key": "11d1747d-8d8b-413f-8ce0-40ad901ae798",
+          "title": "Sense Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "11d1747d-8d8b-413f-8ce0-40ad901ae798",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620280,
+              "key": "49c348c9-0a93-4904-8d45-9e85ad688a43",
+              "title": "Sense Function - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eIjyrQpDogg",
+                "china_cdn_id": "eIjyrQpDogg.mp4"
+              }
+            },
+            {
+              "id": 631269,
+              "key": "f607357a-6a59-428f-80f1-947d008401c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Next, you'll see an exercise notebook with this starting code in it.**",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 620182,
+          "key": "a9b97652-1dc0-45dc-9bed-10a6591d9237",
+          "title": "Notebook: Sense Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a9b97652-1dc0-45dc-9bed-10a6591d9237",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631321,
+              "key": "a84f2e5b-d439-4981-b424-34600405bee0",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewcc2a33dc",
+              "pool_id": "jupyter",
+              "view_id": "cc2a33dc-7025-49b2-9329-da1cbbce63d9",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. Sense Function, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630849,
+          "key": "50a00828-d646-4c7e-abc2-43f382f91231",
+          "title": "Answer: Sense Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "50a00828-d646-4c7e-abc2-43f382f91231",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630851,
+              "key": "ede81412-4cc8-484a-8255-3d38f837f8a8",
+              "title": "Sense Function Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Y5iFxWRTw1c",
+                "china_cdn_id": "Y5iFxWRTw1c.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620287,
+          "key": "9656d3b2-5c4a-487c-8282-6dc2f7ed6123",
+          "title": "Normalized Sense Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9656d3b2-5c4a-487c-8282-6dc2f7ed6123",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620288,
+              "key": "68992080-2bac-4498-9d19-59798949fa3c",
+              "title": "Normalized Sense Function - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GqWszyHTYas",
+                "china_cdn_id": "GqWszyHTYas.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620181,
+          "key": "e3e1e9f9-05f4-4318-abcd-9da7e6d6abe5",
+          "title": "Notebook: Normalized Sense Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e3e1e9f9-05f4-4318-abcd-9da7e6d6abe5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631324,
+              "key": "4096d032-ea91-4c87-92aa-04a5e3eded1b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view97203b4a",
+              "pool_id": "jupyter",
+              "view_id": "97203b4a-a97b-4bfe-ae3f-a1f5d9e0c20d",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. Normalized Sense Function, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630850,
+          "key": "bb046471-d0e7-42af-9fbf-6a91ce8f058c",
+          "title": "Answer: Normalized Sense Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bb046471-d0e7-42af-9fbf-6a91ce8f058c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630852,
+              "key": "387e1d16-bd3e-4fdc-ba3e-4bc932cdb1f2",
+              "title": "Normalized Sense Function Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UX3W8TUKbJ0",
+                "china_cdn_id": "UX3W8TUKbJ0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620183,
+          "key": "874c2e1f-fbb0-42b5-abe3-482c789353be",
+          "title": "Test Sense Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "874c2e1f-fbb0-42b5-abe3-482c789353be",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620196,
+              "key": "78c9a170-1a0c-4cce-8825-ccf6471f2c5a",
+              "title": "16 Test Sense Function V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gytbuOI9-3g",
+                "china_cdn_id": "gytbuOI9-3g.mp4"
+              }
+            },
+            {
+              "id": 631271,
+              "key": "d94f3160-3330-44d7-a332-3b7d8146f396",
+              "title": "Test Sense Function Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "F8AHaaJVmkw",
+                "china_cdn_id": "F8AHaaJVmkw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630837,
+          "key": "b74b0f65-1d2f-4a6e-933f-dcbc5f67018c",
+          "title": "Multiple Measurements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b74b0f65-1d2f-4a6e-933f-dcbc5f67018c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630840,
+              "key": "ba429d4e-b85a-4e92-a866-6dcfa3fc6dc8",
+              "title": "Multiple Measurements - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gDO4sF8gR9k",
+                "china_cdn_id": "gDO4sF8gR9k.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630838,
+          "key": "452453c7-c74f-47ac-a4ee-79209b0ae4bd",
+          "title": "Notebook: Multiple Measurements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "452453c7-c74f-47ac-a4ee-79209b0ae4bd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631325,
+              "key": "eac43827-69f2-425d-a887-d5c7a3dbdbbd",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view861cd877",
+              "pool_id": "jupyter",
+              "view_id": "861cd877-5a12-48d2-a11d-f08ee4c71dbe",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. Multiple Measurements, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630839,
+          "key": "f3cfe66c-51e1-4f04-88fe-e05963a9bff6",
+          "title": "Answer: Multiple Measurements",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f3cfe66c-51e1-4f04-88fe-e05963a9bff6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630841,
+              "key": "bafa3693-355b-4f6f-b187-b6cddfa88034",
+              "title": "Multiple Measurements Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-3qTapGGa-8",
+                "china_cdn_id": "-3qTapGGa-8.mp4"
+              }
+            },
+            {
+              "id": 631261,
+              "key": "d23ed43e-9e0e-4883-89ff-cbc008122e3d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Note that your answer may be a few decimal points off of Sebastian's answer due to how Python calculates floating point values; the important thing is that your result shows a fairly uniform distribution: `p = [0.2, 0.2, 0.2, 0.2, 0.2]`.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 620185,
+          "key": "6f70cb3a-86bb-413e-8488-18fc14463e8e",
+          "title": "Exact Motion ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6f70cb3a-86bb-413e-8488-18fc14463e8e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620197,
+              "key": "206245e0-4c4e-4295-8b62-541e773ac239",
+              "title": "18 Exact Motion V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mNXm1wjTumY",
+                "china_cdn_id": "mNXm1wjTumY.mp4"
+              }
+            },
+            {
+              "id": 631273,
+              "key": "320e2a4f-df2d-427a-b9b6-e643e420ef8c",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "320e2a4f-df2d-427a-b9b6-e643e420ef8c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For the starting distribution `[1/9,1/3,1/3,1/9,1/9]`, what will the distribution be after one movement to the right?",
+                "answers": [
+                  {
+                    "id": "a1527287900658",
+                    "text": "`[1/9,1/3,1/3,1/9,1/9]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527288102439",
+                    "text": "`[1/5,1/5,1/5,1/5,1/5]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527288130535",
+                    "text": "`[1/9,1/9,1/3,1/3,1/9]`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527288143387",
+                    "text": "`[1/3,1/3,1/9,1/9,1/9]`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 620290,
+          "key": "21592073-b2ac-4cef-acc3-bb00aa19ca69",
+          "title": "Move Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "21592073-b2ac-4cef-acc3-bb00aa19ca69",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620291,
+              "key": "339b4228-ca7d-42cd-8ee6-08741738dc1a",
+              "title": "Move Function - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wfjE0mVADIk",
+                "china_cdn_id": "wfjE0mVADIk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620292,
+          "key": "57db6db6-988d-4b30-a6eb-d73d524f2a31",
+          "title": "Notebook: Move Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "57db6db6-988d-4b30-a6eb-d73d524f2a31",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631326,
+              "key": "8f9ba4f7-2b68-4c63-86ca-e92ef240f7ec",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view82382422",
+              "pool_id": "jupyter",
+              "view_id": "82382422-3e92-4f99-b6f2-49345670a912",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. Move Function, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630847,
+          "key": "e2c06c62-2512-4fc9-98d4-474cdd04afb1",
+          "title": "Answer: Move Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e2c06c62-2512-4fc9-98d4-474cdd04afb1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630848,
+              "key": "c1b5ad96-3bff-40f4-85c6-51baeafe8339",
+              "title": "Move Function Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TnFq6hufsYs",
+                "china_cdn_id": "TnFq6hufsYs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620187,
+          "key": "d6835c94-29be-43be-9502-eea04fd9df96",
+          "title": "Inexact Motion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d6835c94-29be-43be-9502-eea04fd9df96",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620198,
+              "key": "49006887-c1ff-4520-a9a3-0edad34ab64d",
+              "title": "20 Inexact Motion 1 V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hHAwFNsIp1c",
+                "china_cdn_id": "hHAwFNsIp1c.mp4"
+              }
+            },
+            {
+              "id": 631288,
+              "key": "f3eeaf10-07cb-49a6-8a9c-8e4765976670",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f3eeaf10-07cb-49a6-8a9c-8e4765976670",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For an initial distribution of `[0,1,0,0,0]`, and a motion of **U= 2**, what will the resulting distribution look like when uncertainty in motion is accounted for. You can assume that pUndershoot and pOvershoot are 0.1 and pExact is 0.8.",
+                "answers": [
+                  {
+                    "id": "a1527290172776",
+                    "text": "`[0, 0, 1, 0, 0]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527290256408",
+                    "text": "`[0, 0.1, 0.8, 0.1, 0]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527290279297",
+                    "text": "`[0, 0, 0.1, 0.8, 0.1]`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527290312247",
+                    "text": "`[0.05, 0.05, 0.8, 0.05, 0.05]`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 630842,
+          "key": "c491e0f7-ca87-42b7-8a1d-217c1dad155b",
+          "title": "Inexact Move Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c491e0f7-ca87-42b7-8a1d-217c1dad155b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630845,
+              "key": "b3cbcdea-a978-4811-8f63-febb0015ad1f",
+              "title": "Inexact Move Function - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "68Kao9dkIKA",
+                "china_cdn_id": "68Kao9dkIKA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630843,
+          "key": "5ba031e8-ee57-476a-830c-f86d4d60dbe7",
+          "title": "Notebook: Inexact Move Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5ba031e8-ee57-476a-830c-f86d4d60dbe7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631328,
+              "key": "565a47c9-8f79-4bff-862f-f272277a2e8f",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view957e956c",
+              "pool_id": "jupyter",
+              "view_id": "957e956c-6912-4c4d-b6a0-ab76e62d4ddf",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. Inexact Move Function, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 630844,
+          "key": "b8a1041a-c36d-49b7-83ae-367223745c67",
+          "title": "Answer: Inexact Move Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b8a1041a-c36d-49b7-83ae-367223745c67",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630846,
+              "key": "7609fab6-6b9c-43e7-92cd-1d6ee421fd6d",
+              "title": "Inexact Move Function Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QCnPJcNprEU",
+                "china_cdn_id": "QCnPJcNprEU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620189,
+          "key": "6253f5e4-59fe-4189-86c1-36e018f5380a",
+          "title": "Limit Distribution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6253f5e4-59fe-4189-86c1-36e018f5380a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620199,
+              "key": "4f7280c5-bb60-4b45-9abe-14f7168be103",
+              "title": "24 Limit Distribution Quiz V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NJvalJwjz18",
+                "china_cdn_id": "NJvalJwjz18.mp4"
+              }
+            },
+            {
+              "id": 631291,
+              "key": "36dd88b1-e55e-42cd-8982-d6238f2130f3",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "36dd88b1-e55e-42cd-8982-d6238f2130f3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "For a distribution that starts as `[1,0,0,0,0]`, what will this distribution look like after a robot moves infinitely many times (without sensing)? It may help to think about what happens as uncertainty accumulates over 1 motion to the right, then, 2, then 1000, and so on!\n\nIf you don't get this answer right away, that's okay, we'll get more into this in the next couple videos!",
+                "answers": [
+                  {
+                    "id": "a1527290720449",
+                    "text": "`[1,0,0,0,0]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527290816900",
+                    "text": "`[0,0,0,0,0]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527290820125",
+                    "text": "`[0.2,0.2,0.2,0.2,0.2]`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1527290828462",
+                    "text": "`[0,0,0,0,1]`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1527290847232",
+                    "text": "`[0.1,0.1,0.1,0.1,0.6]`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 620293,
+          "key": "02f1fffb-676b-4972-94cf-cf7e81bc7b32",
+          "title": "Move Twice",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "02f1fffb-676b-4972-94cf-cf7e81bc7b32",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630834,
+              "key": "6505b7cf-1330-4050-b324-4d04e301626d",
+              "title": "Move Twice - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sKiumVTdpgY",
+                "china_cdn_id": "sKiumVTdpgY.mp4"
+              }
+            },
+            {
+              "id": 630835,
+              "key": "c76854d9-beda-47fd-8205-69204f0e886e",
+              "title": "Move Twice Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oqlgQa1IdcY",
+                "china_cdn_id": "oqlgQa1IdcY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620294,
+          "key": "dd54abad-53b2-47a9-b042-3801e2aeb68f",
+          "title": "Move 1000",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd54abad-53b2-47a9-b042-3801e2aeb68f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630836,
+              "key": "08e2dc8a-7cc4-45e9-b429-a5cf10452c54",
+              "title": "Move 1000 - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "x2o1g3J-1nw",
+                "china_cdn_id": "x2o1g3J-1nw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620295,
+          "key": "6718910a-e5e6-47cc-b3f6-b269e926d384",
+          "title": "Notebook: Multiple Moves",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6718910a-e5e6-47cc-b3f6-b269e926d384",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631330,
+              "key": "0cc9e692-79ea-4eba-be80-b5aa55dcb72e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewb719eb40",
+              "pool_id": "jupyter",
+              "view_id": "b719eb40-505f-4161-a466-f799830dafbf",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. Multiple Movements, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 620191,
+          "key": "99221014-692e-4c96-8980-4c42ea7a84d9",
+          "title": "Sense and Move",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "99221014-692e-4c96-8980-4c42ea7a84d9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 620200,
+              "key": "9aa31870-6bd6-4f5e-a0cd-885fb499c393",
+              "title": "27 Sense And Move V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "v2dYzm6-YVs",
+                "china_cdn_id": "v2dYzm6-YVs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 631309,
+          "key": "299c4f56-dcb6-46d6-9f11-3774e7397473",
+          "title": "Notebook: Sense and Move Cycle",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "299c4f56-dcb6-46d6-9f11-3774e7397473",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631331,
+              "key": "8adcc636-d075-4fbe-b242-de2dd60ca2fe",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view1222fc8a",
+              "pool_id": "jupyter",
+              "view_id": "1222fc8a-74ea-454e-8738-67448e7a66ab",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. Sense and Move, exercise.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 631307,
+          "key": "25730ee9-a88c-4956-b263-289724f8c540",
+          "title": "Answer: Sense and Move",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "25730ee9-a88c-4956-b263-289724f8c540",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 631308,
+              "key": "2ea7e67f-424f-4413-b824-c461710aedb0",
+              "title": "Sense and Move Solution - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1s2dRczcu1A",
+                "china_cdn_id": "1s2dRczcu1A.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 620296,
+          "key": "a1f22165-09f1-4507-bdfe-991472cbdbfc",
+          "title": "Sense and Move 2",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a1f22165-09f1-4507-bdfe-991472cbdbfc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630661,
+              "key": "dfb61cba-9cba-487c-8da9-6513c1bbf626",
+              "title": "Sense and Move 2 - Artificial Intelligence for Robotics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-wT7h9Gdm_8",
+                "china_cdn_id": "-wT7h9Gdm_8.mp4"
+              }
+            },
+            {
+              "id": 631364,
+              "key": "efaaa88a-27dd-41dc-86ee-d6d77ad3cd4c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The answer video is below!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631361,
+              "key": "dfc86132-2f09-4b1a-99fa-3ace2abea287",
+              "title": "Sense And Move 2 Solution Director'SCut",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7gl2GF-laOQ",
+                "china_cdn_id": "7gl2GF-laOQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 630663,
+          "key": "b8e198f6-0159-4da0-b7eb-75dee96a6b23",
+          "title": "Localization Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b8e198f6-0159-4da0-b7eb-75dee96a6b23",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630669,
+              "key": "e2fd6fb3-a023-44ea-ad6e-ea39935ce720",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Localization\n\nNow, you've learned the foundation of all localization techniques! \nYou know that:, first, a robot starts out with some certainty/uncertainty about its position in a world, which is represented by an initial probability distribution, often called the initial belief or the **prior**. Then it cycles through sensor measurements and movements.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630684,
+              "key": "80ab6639-b7a3-421d-8a52-33d1d67d8e6e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b073c02_sense-move/sense-move.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/80ab6639-b7a3-421d-8a52-33d1d67d8e6e",
+              "caption": "Sense/move cycle.",
+              "alt": "",
+              "width": 500,
+              "height": 692,
+              "instructor_notes": null
+            },
+            {
+              "id": 630670,
+              "key": "6c61e849-887f-4f99-85ca-dd260d5778f9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Sense/Move Cycle\n\n1. When  a robot senses, a **measurement update** happens; this is a simple multiplication that is based off of Bayes' rule, which says that we can update our belief based on measurements! This step was also followed by a **normalization** that made sure the resultant distribution was still vald (and added up to 1).\n2. When it moves, a **motion update** or prediction step occurs; this step is a convolution that shifts the distribution in the direction of motion.\n\nAfter this cycle, we are left with an altered **posterior** distribution!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630685,
+              "key": "b2f27a30-3858-43c4-91fd-b963aee2a812",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b073c5a_prob-dists/prob-dists.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b2f27a30-3858-43c4-91fd-b963aee2a812",
+              "caption": "A move sense cycle in action, with an initial belief at the top.",
+              "alt": "",
+              "width": 600,
+              "height": 762,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 630760,
+          "key": "f01bfb0a-9716-4e80-ba3b-de21eeff875c",
+          "title": "C++ Elective & Implementation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f01bfb0a-9716-4e80-ba3b-de21eeff875c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 630761,
+              "key": "7d96ca74-2ded-4d55-a33f-b95ace93a0e8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Elective: Learn C++\n\nNow that you've seen how to program a histogram (aka Monte Carlo) localization filter, we have provided an elective section: **C++Programming**, which shows you how to translate this code into efficient C++ code.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 630763,
+              "key": "a67d9ab2-99c8-480c-80d4-72428af8c40a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5b0749ec_cplus/cplus.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a67d9ab2-99c8-480c-80d4-72428af8c40a",
+              "caption": "C++ logo.",
+              "alt": "",
+              "width": 200,
+              "height": 1349,
+              "instructor_notes": null
+            },
+            {
+              "id": 630762,
+              "key": "47919f60-df90-4ad9-b03b-1434533da8b9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Why Learn C++ ?\n\nIf you are looking for a job as a computer vision engineer (rather than just a software developer or researcher), you may find that many job posting require that you know image analysis, deep learning techniques, SLAM, **and** have proficiency in C++. This is because C++ is the language of hardware; most machines like robots, mobile phones, NVIDIA hardware, or autonomous vehicles, run on C++. \n\nC++ is closer to machine code and can run much faster on hardware than Python can and this is critical for time-sensitive applications. So, should you want to learn more about C++ programming, check out the Elective section to learn the basics of C++ and implement a histogram filter!\n\n**This elective course is a very good starting point for learning C++, especially if you are more comfortable with Python and want to expand your knowledge of programming languages. So, if you have any extra time, I highly recommend it!**\n\nBelow is a video describing what is taught in this elective section!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 631363,
+              "key": "7ba27e50-4e74-4064-93e9-a92689eff849",
+              "title": "Lesson Overview C++",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "lR3PH3bL-9U",
+                "china_cdn_id": "lR3PH3bL-9U.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

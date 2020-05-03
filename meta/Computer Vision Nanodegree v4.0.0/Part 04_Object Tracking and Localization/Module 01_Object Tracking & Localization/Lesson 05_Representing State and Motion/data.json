@@ -1,0 +1,2166 @@
+{
+  "data": {
+    "lesson": {
+      "id": 626687,
+      "key": "1b064436-e597-48bb-81c0-f4ef5391f444",
+      "title": "Representing State and Motion",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn about representing the state of a car in a vector that can be modified using linear algebra.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/1b064436-e597-48bb-81c0-f4ef5391f444/626687/1544453207011/Representing+State+and+Motion+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/1b064436-e597-48bb-81c0-f4ef5391f444/626687/1544453203080/Representing+State+and+Motion+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 385166,
+          "key": "f7f953db-c273-4fb7-b7e8-3cfa83727d6f",
+          "title": "Localization Steps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f7f953db-c273-4fb7-b7e8-3cfa83727d6f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 430254,
+              "key": "5e6b9ce7-c4b2-4c6a-b910-f177f66b4ca8",
+              "title": "Localization Steps",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4SiMoSTf4rQ",
+                "china_cdn_id": "4SiMoSTf4rQ.mp4"
+              }
+            },
+            {
+              "id": 385974,
+              "key": "d6bc7bf8-7792-4975-868a-348f04a127cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Localization\n\nAll self-driving cars go through the same series of steps to safely navigate through the world.  \nYou’ve been working on the first step: **localization**. Before cars can safely navigate, they first use sensors and other collected data to best estimate where they are in the world.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 385975,
+              "key": "e9f242ed-50ee-4cc8-9234-a519a1ba7fc3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Kalman Filter\n\nLet’s review the steps that a Kalman filter takes to localize a car.\n\n#### 1. Initial Prediction\n\nFirst, we start with an initial prediction of our car’s location and a probability distribution that describes our uncertainty about that prediction. \n\nBelow is a 1D example, we know that our car is on this one lane road, but we don't know its exact location.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 385980,
+              "key": "6c0fbe8e-03c5-43a1-83df-a9e096b5d98b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59a9f384_screen-shot-2017-09-01-at-4.55.27-pm/screen-shot-2017-09-01-at-4.55.27-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6c0fbe8e-03c5-43a1-83df-a9e096b5d98b",
+              "caption": "A one lane one and an initial, uniform probability distribution.",
+              "alt": "",
+              "width": 450,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 385981,
+              "key": "7522d818-3c64-470d-af91-c53c74db2ff8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### 2. Measurement Update\n\nWe then sense the world around the car. This is called the measurement update step, in which we gather more information about the car’s surroundings and refine our location prediction.\n\nSay, we measure that we are about two grid cells in front of the stop sign; our measurement isn't perfect, but we have a much better idea of our car's location.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 385982,
+              "key": "ea1064d3-2df3-4e18-9efc-f0e9cd6514b2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59a9f4a7_screen-shot-2017-09-01-at-4.59.24-pm/screen-shot-2017-09-01-at-4.59.24-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ea1064d3-2df3-4e18-9efc-f0e9cd6514b2",
+              "caption": "Measurement update step.",
+              "alt": "",
+              "width": 460,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 385983,
+              "key": "b54f292e-93ea-4d59-9eb5-4ed6d6fa4b2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### 3. Prediction (or Time Update)\n\nThe next step is moving. Also called the time update or prediction step; we predict where the car will move, based on the knowledge we have about its velocity and current position. And we shift our probability distribution to reflect this movement. \n\nIn the next example, we shift our probability distribution to reflect a one cell movement to the right.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 385984,
+              "key": "c7d4dcdc-4adf-4d11-aa62-33b4ec240f10",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59a9f57b_screen-shot-2017-09-01-at-5.03.57-pm/screen-shot-2017-09-01-at-5.03.57-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c7d4dcdc-4adf-4d11-aa62-33b4ec240f10",
+              "caption": "Prediction step.",
+              "alt": "",
+              "width": 450,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 385985,
+              "key": "8604ce71-5cfd-4518-8acb-328b45022922",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### 4. Repeat\n\nThen, finally, we’ve formed a new estimate for the position of the car! The Kalman Filter simply repeats the sense and move (measurement and prediction) steps to localize the car as it’s moving!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 385990,
+              "key": "6929ac8b-afe9-4974-ba77-9c727b74b98a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59a9fa11_screen-shot-2017-09-01-at-5.23.18-pm/screen-shot-2017-09-01-at-5.23.18-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6929ac8b-afe9-4974-ba77-9c727b74b98a",
+              "caption": "Kalman Filter steps.",
+              "alt": "",
+              "width": 1052,
+              "height": 640,
+              "instructor_notes": null
+            },
+            {
+              "id": 385989,
+              "key": "77814dd1-c0e5-420b-9612-9bcd106db100",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### The Takeaway\n\nThe beauty of Kalman filters is that they combine somewhat inaccurate sensor measurements with somewhat inaccurate predictions of motion to get a filtered location estimate **that is better than any estimates that come from *only* sensor readings or *only* knowledge about movement.**",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 385992,
+          "key": "c86cf20f-9c01-4b23-9b35-c590581878e2",
+          "title": "Intro to State",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c86cf20f-9c01-4b23-9b35-c590581878e2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 418717,
+              "key": "a1914c57-2d74-4a47-b952-d656e5301cee",
+              "title": "Intro To State",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zfilXYrW4Gk",
+                "china_cdn_id": "zfilXYrW4Gk.mp4"
+              }
+            },
+            {
+              "id": 385993,
+              "key": "b2f3f2bc-b2d1-4b42-aa22-10516f022510",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What is State?\n\nWhen you localize a car, you’re interested in only the car’s position and it’s movement.\n\nThis is often called the **state** of the car.\n* The state of any system is a set of values that we care about.\n\nIn the cases we’ve been working with, the state of the car includes the car’s current **position, x, ** and its **velocity, v**.\n\nIn code this looks something like this:\n\n```python\nx = 4\nvel = 1\n\nstate = [x, vel]\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 385994,
+              "key": "472f8356-e614-40fa-8cff-a6d279edc31e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Predicting Future States\n\nThe state gives us most of the information we need to form predictions about a car’s future location. And in this lesson, we’ll see how to represent state and how it changes over time.\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 385995,
+              "key": "14728c3f-49d8-4163-ad12-03858aede5a3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For example, say that our world is a one-lane road, and we know that the current position of our car is at the start of this road, at the 0m mark. We also know the car’s velocity: it’s moving forward at a rate of 50m/s. These values are it’s _initial state_.\n\n```python\nstate = [0, 50]\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386013,
+              "key": "c1bd8259-2418-4fac-bd3e-dce2cc6b43b0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59aa0a10_screen-shot-2017-09-01-at-6.31.45-pm/screen-shot-2017-09-01-at-6.31.45-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c1bd8259-2418-4fac-bd3e-dce2cc6b43b0",
+              "caption": "The estimate of the initial state of the car.",
+              "alt": "",
+              "width": 450,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 385996,
+              "key": "9c9937c4-c71c-4ae7-a2c9-884069f1d34b",
+              "title": "Predict the State",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9c9937c4-c71c-4ae7-a2c9-884069f1d34b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Using our notation for state, what do you think the new state of the car will be after 3 seconds pass?",
+                "answers": [
+                  {
+                    "id": "a1504312549491",
+                    "text": "[0, 50]",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504312569962",
+                    "text": "[50, 50]",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504312592775",
+                    "text": "[150, 50]",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1504312599221",
+                    "text": "[150, 0]",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 385997,
+          "key": "2eed8e52-148e-4fce-a7c6-4bc882b130ce",
+          "title": "Motion Models",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2eed8e52-148e-4fce-a7c6-4bc882b130ce",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 418719,
+              "key": "769aa2cd-23fb-4a70-a742-400a6d41f645",
+              "title": "Motion Models",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qSdbn_PVQnk",
+                "china_cdn_id": "qSdbn_PVQnk.mp4"
+              }
+            },
+            {
+              "id": 386000,
+              "key": "bdea3424-98aa-4a18-9d36-3556440f126a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Predicting State\n\n\nLet’s look at the last example.\n\nThe initial state of the car is at the 0m position,and it's moving forward at a velocity of 50 m/s.\nLet’s assume that our car keeps moving forward at a constant rate. \n\nEvery second it moves 50m.\n\nSo, after three seconds, it will have reached the **150m mark** and its velocity will not have changed (that's what a constant velocity means)!\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386014,
+              "key": "c6accd1a-7cde-4a41-9310-35773dd928fb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59aa0a68_screen-shot-2017-09-01-at-6.33.03-pm/screen-shot-2017-09-01-at-6.33.03-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c6accd1a-7cde-4a41-9310-35773dd928fb",
+              "caption": "Predicted state after 3 seconds have elapsed.",
+              "alt": "",
+              "width": 450,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 386003,
+              "key": "68095ed3-6636-4838-be62-593cf1ec4908",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Its new, predicted state will be at the position 150m, and with the velocity still equal to 50m/s.\n\n```python\npredicted_state = [150, 50]\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386004,
+              "key": "37c7243a-aa33-4141-85bc-1f39d3802b9e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Motion Model\n\nThis is a reasonable prediction, and we made it using:\n1. The initial state of the car and \n2. An assumption that the car is moving at a constant velocity.\n\nThis assumption is based on the physics equation:\n\n`distance_traveled = velocity * time`\n\nThis equation is also referred to as a **motion model**. And there are many ways to model motion!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386005,
+              "key": "b29ec741-be7f-4869-8f4a-7cd3afe445aa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This motion model assumes *constant* velocity.\n\nIn our example, we were moving at a constant velocity of 50m/s for three seconds.\n\nAnd we formed our new position estimate with the distance equation: `150m = 50m/sec*3sec`.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386006,
+              "key": "a81d9a6e-ad52-4feb-b660-f60d825a1b2b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### The Takeaway\n\nIn order to predict where a car will be at a future point in time, you rely on a motion model.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386007,
+              "key": "f529d95f-d852-4cd9-9c9d-e5b625ba35d4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Uncertainty\n\n\nIt’s important to note, that no motion model is perfect; it’s a challenge to account for outside factors like wind or elevation, or even things like tire slippage, and so on. \n\nBut these models are still very important for localization.\n\nNext, you’ll be asked to write a function that uses a motion model to predict a new state!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 386008,
+          "key": "d5ad524d-a10c-4478-bfb3-630169a9e901",
+          "title": "Quiz: Predicting State",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d5ad524d-a10c-4478-bfb3-630169a9e901",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 392061,
+              "key": "cd98d837-b82c-4621-8101-605e24151a2b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Predicting States\n\nIn this quiz, you're asked to write a function that uses a motion model to predict a new state, given some initial parameters!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386010,
+              "key": "7a600846-c435-4dc5-a310-39fab3c1c588",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "7a600846-c435-4dc5-a310-39fab3c1c588",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "Predicting state 1",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5736079390015488",
+                "initial_code_files": [
+                  {
+                    "text": "# The predict_state function should take in a state\n# and a change in time, dt (ex. 3 for 3 seconds)\n# and it should output a new, predicted state\n# based on a constant motion model\n# This function also assumes that all units are in m, m/s, s, etc.\n\ndef predict_state(state, dt):\n    # Assume that state takes the form [x, vel] i.e. [0, 50]\n    \n    ## TODO: Calculate the new position, predicted_x\n    ## TODO: Calculate the new velocity, predicted_vel\n    ## These should be calculated based on the contant motion model:\n    ## distance = x + velocity*time\n    \n    predicted_x = 0\n    predicted_vel = 0\n    \n    # Constructs the predicted state and returns it\n    predicted_state = [predicted_x, predicted_vel]\n    return predicted_state\n\n\n## TODO: Click Test Run!\n\n# A state and function call for testing purposes - do not delete\n# but feel free to change the values for the test variables\ntest_state = [10, 3]\ntest_dt = 5\n\ntest_output = predict_state(test_state, test_dt)\n",
+                    "name": "predict.py"
+                  },
+                  {
+                    "text": "# The predict_state function should take in a state\n# and a change in time, dt (ex. 3 for 3 seconds)\n# and it should output a new, predicted state\n# based on a constant motion model\n# This function also assumes that all units are in m, m/s, s, etc.\n\ndef predict_state(state, dt):\n    # Assume that state takes the form [x, vel] i.e. [0, 50]\n    \n    ## Calculate the new position, predicted_x\n    ## Calculate the new velocity, predicted_vel\n    ## These should be calculated based on the contant motion model:\n    ## distance = x + velocity*time\n    \n    predicted_x = state[0] + state[1] * dt\n    predicted_vel = state[1]\n    \n    # Constructs the predicted state and returns it\n    predicted_state = [predicted_x, predicted_vel]\n    return predicted_state\n\n# A state and function call for testing purposes - do not delete\n# but feel free to change the values for the test variables\ntest_state = [10, 3]\ntest_dt = 5\n\ntest_output = predict_state(test_state, test_dt)",
+                    "name": "solution.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 386011,
+          "key": "27b1cdcd-bda5-494b-abf6-b8d9cbb6c7b1",
+          "title": "A Different Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "27b1cdcd-bda5-494b-abf6-b8d9cbb6c7b1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 418716,
+              "key": "0957d5ba-8412-452e-837a-43e62564b3aa",
+              "title": "A Different Model",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Mh0g-SMpMI4",
+                "china_cdn_id": "Mh0g-SMpMI4.mp4"
+              }
+            },
+            {
+              "id": 386012,
+              "key": "78302ce1-899d-44c8-9624-67744ae376e7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### More Complex Motion\n\nNow, what if I gave you a more complex motion example?\n\nAnd I told you that our car starts at the same point, at the 0m mark, and it’s moving 50m/s forward, but it’s *also* slowing down at a rate of 20m/s^2. This means it’s acceleration = -20m/s^2.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386015,
+              "key": "a23b015c-565b-4bd6-8c95-1f6c93f93327",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59aa0ae5_screen-shot-2017-09-01-at-6.35.20-pm/screen-shot-2017-09-01-at-6.35.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a23b015c-565b-4bd6-8c95-1f6c93f93327",
+              "caption": "Car moving at 50m/s and slowing down over time.",
+              "alt": "",
+              "width": 976,
+              "height": 208,
+              "instructor_notes": null
+            },
+            {
+              "id": 386016,
+              "key": "53cfcc61-3272-4c13-b979-0657c5de5f0d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Acceleration\n\nSo, if the car has a -20 m/s^2 acceleration, this means that:\n* If the car starts at a speed of 50m/s\n* At the next second, it will be going 50-20 or 30m/s and,\n* At the *next* second  it will be going 30-20 or 10m/s.\n\nThis slowing down is also _continuous_, which means it happens gradually over time.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386017,
+              "key": "b57bf154-27e1-4b6b-9adc-3ffe9a40d6b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### New Model, New State\n\nFor the next two quizzes, I want you to keep in mind this question: **Where will the car be after 3 seconds?**\n\n I also want to ask you: \n* What variables do you need to solve this problem? In other words, what values should be included in the state? And...\n* What motion model should we use to solve this problem?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386018,
+              "key": "96a6a6f9-d9c9-4e1e-a829-aeb62d2fa563",
+              "title": "State variables",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "96a6a6f9-d9c9-4e1e-a829-aeb62d2fa563",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What variables do you need to solve the localization question above? In other words, what values should be included in the **state**?",
+                "answers": [
+                  {
+                    "id": "a1504316645692",
+                    "text": "current position",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1504316693940",
+                    "text": "car color",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504316698482",
+                    "text": "velocity",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1504316704923",
+                    "text": "locations of other cars around our car",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504316716821",
+                    "text": "acceleration",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 386021,
+              "key": "049f32d6-6cb8-4694-b81a-2c90cb7982bb",
+              "title": "Motion Model 1",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "049f32d6-6cb8-4694-b81a-2c90cb7982bb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What piece of a motion model fits this scenario?",
+                "answers": [
+                  {
+                    "id": "a1504316843033",
+                    "text": "`distance = velocity*time`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504316873054",
+                    "text": "`change in velocity = acceleration*time`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1504316935470",
+                    "text": "`change in velocity = velocity + acceleration`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504316965361",
+                    "text": "`distance = (velocity + acceleration* time) * time`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504320443480",
+                    "text": "`velocity = velocity - acceleration`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 386027,
+              "key": "fa9eda77-49f7-4f93-ba1c-2232d6897f90",
+              "title": "Predicting state 2",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fa9eda77-49f7-4f93-ba1c-2232d6897f90",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Where do you think the car will be after three seconds have elapsed? And what will it's velocity be?",
+                "answers": [
+                  {
+                    "id": "a1504317379593",
+                    "text": "x = 50m, vel = 10m/s",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504317533842",
+                    "text": "x = 60m, vel = -10m/s",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1504317543359",
+                    "text": "x = 90m, vel = -10m/s",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504317601866",
+                    "text": "x = 100m, vel = 10m/s",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1504317604897",
+                    "text": "x = 120m, vel = 30m/s",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 389920,
+          "key": "e00a0c35-fd9a-4e8e-8e1d-189b5a47f709",
+          "title": "Kinematics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e00a0c35-fd9a-4e8e-8e1d-189b5a47f709",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 389921,
+              "key": "d6117223-19d1-41d7-b2bb-296183c3f1fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Kinematics\n\nKinematics is the study of the motion of objects. Motion models are also referred to as kinematic equations, and these equations give you all the information you need to be able to predict the motion of a car.\n\nLet's derive some of the most common motion models!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 389922,
+              "key": "7ce40f7a-0cd2-4550-be4c-2df04312ab6e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Constant Velocity\n\nThe constant velocity model assumes that a car moves at a constant speed. This is the simplest model for car movement.\n\n**Example**\n\nSay that our car is moving 100m/s, and we want to figure out how much it has moved from one point in time, t1, to another, t2. This is represented by the graph below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 389924,
+              "key": "0622feae-ded8-44ed-925c-541f5e7b68d3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59ac4407_screen-shot-2017-09-03-at-11.03.31-am/screen-shot-2017-09-03-at-11.03.31-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0622feae-ded8-44ed-925c-541f5e7b68d3",
+              "caption": "(Left) Graph of car velocity, (Right) a car going 100m/s on a road",
+              "alt": "",
+              "width": 1020,
+              "height": 432,
+              "instructor_notes": null
+            },
+            {
+              "id": 389925,
+              "key": "aad4d2ba-3809-415c-b583-09b83b37eaa6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Displacement\n\nHow much the car has moved is called the **displacement** and we already know how to calculate this! \n\nWe know, for example, that if the difference between t2 and t1 is one second, then we'll have moved `100m/sec*1sec = 100m`. If the difference between t2 and t1 is two seconds, then we'll have moved `100m/sec*2sec = 200m`. \n\nThe displacement is  always = `100m/sec*(t2-t1)`.\n\n**Motion Model**\n\nGenerally, for constant velocity, the motion model for displacement is:\n```python\ndisplacement = velocity*dt\n```\n\nWhere `dt` is calculus notation for *\"difference in time.\"*",
+              "instructor_notes": ""
+            },
+            {
+              "id": 389997,
+              "key": "517fb2c3-7da6-4dd1-92a9-f287acb1b262",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Area Under the Line\nGoing back to our graph, displacement can also be thought of as the area under the line and within the given time interval.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 389939,
+              "key": "3af8de43-1a2a-4b49-b9b1-364c2ed4991f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59ac4cb8_screen-shot-2017-09-03-at-11.40.37-am/screen-shot-2017-09-03-at-11.40.37-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3af8de43-1a2a-4b49-b9b1-364c2ed4991f",
+              "caption": "The area under the line, A, is equal to the displacement!",
+              "alt": "",
+              "width": 400,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 389998,
+              "key": "44da0649-c130-47fd-a483-d396a978f9a1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "So, in addition to our motion model, we can also say that the displacement is equal to the area under the line!\n\n```python\ndisplacement = A\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 389999,
+              "key": "1f689dc8-99c5-45ac-a5bb-9563e5ed9675",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Constant Acceleration\n\nThe constant acceleration model is a little different; it assumes that our car is constantly accelerating; its velocity is changing at a constant rate. \n\nLet's say our car has a velocity of 100m/s at time t1 and is accelerating at a rate of <span class=\"mathquill\">10m/s^2</span>.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 390000,
+              "key": "1503731a-27b2-4303-b496-12db03729636",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59ac786a_screen-shot-2017-09-03-at-2.47.09-pm/screen-shot-2017-09-03-at-2.47.09-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1503731a-27b2-4303-b496-12db03729636",
+              "caption": "",
+              "alt": "",
+              "width": 958,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 390001,
+              "key": "04910990-3683-44c4-a8d4-20aa01cb06b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Changing Velocity\n\nFor this motion model, we know that the velocity is constantly changing, and increasing +10m/s each second. This can be represented by this kinematic equation (where dv is the change in velocity):\n\n```python\ndv = acceleration*dt\n```\n\nAt any given time, this can also be written as the current velocity is the initial velocity + the change in velocity over some time (dv):\n\n```python\nv = initial_velocity + acceleration*dt\n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 390002,
+              "key": "b95fda4f-f143-4590-851f-c7c3ea37ce3d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Displacement\n\nDisplacement can be calculated by finding the area under the line in between t1 and t2, similar to our constant velocity equation but a slightly different shape.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 390003,
+              "key": "1bdb2f8e-02c4-430a-991c-755fe67fa5ff",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59ac79e6_screen-shot-2017-09-03-at-2.53.30-pm/screen-shot-2017-09-03-at-2.53.30-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1bdb2f8e-02c4-430a-991c-755fe67fa5ff",
+              "caption": "Area under the line, A1 and A2",
+              "alt": "",
+              "width": 400,
+              "height": 280,
+              "instructor_notes": null
+            },
+            {
+              "id": 390004,
+              "key": "e703751f-3b2d-4733-bb6f-5635414d739c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This area can be calculated by breaking this area into two distinct shapes; a simple rectangle, A1, and a triangle, A2.\n\nA1 is the same area as in the constant velocity model.   \n```python\nA1 = initial_velocity*dt\n```\n\nIn other words, `A1 = 100m/s*(t2-t1)`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 390005,
+              "key": "214e25ae-fb70-49ea-bf3b-1b28de53ed17",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A2 is a little trickier to calculate, but remember that the area of a triangle is `0.5*width*height`. \n\nThe width, we know, is our change in time (t2-t1) or `dt`.\n\nAnd the height is the change in velocity over that time! From our earlier equation for velocity, we know that this value, dv, is equal to: `acceleration*(t2-t1)` or `acceleration*dt`\n\nNow that we have the width and height of the triangle, we can calculate A2. Note that`**` is a Python operator for an exponent, so `**2` is equivalent to `^2` in mathematics or squaring a value.\n\n```python\nA2 = 0.5*acceleration*dt**2\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 390006,
+              "key": "d0410a85-12dc-46ed-b2f3-b3a61719a57f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Motion Model\n\nThis means that our total displacement, A1+A2 ,can be represented by the equation:\n\n```python\ndisplacement = initial_velocity*dt + 0.5*acceleration*dt**2\n```\n\nWe also know that our velocity over time changes according to the equation:\n\n```python\ndv = acceleration*dt\n```\n\nAnd these two equations, together, make up our motion model for constant acceleration.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 386023,
+          "key": "d129ef74-31c1-4e19-9162-1c4787bc1dbd",
+          "title": "Quantifying State",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d129ef74-31c1-4e19-9162-1c4787bc1dbd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 418726,
+              "key": "26728c68-b6ba-4e23-be4a-3d0e2af84bc4",
+              "title": "Quantifying State",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9zMbwSqTZAc",
+                "china_cdn_id": "9zMbwSqTZAc.mp4"
+              }
+            },
+            {
+              "id": 386032,
+              "key": "6e9317c2-5066-4b25-8b6f-ebcbc6f0ddf0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Different Motion Models\n\n#### Constant Velocity\n\nIn the first movement example, you saw that if we assumed our car was moving at a constant speed, 50 m/s, we came up with one prediction for it’s new state: at the 150 m mark, with no change in velocity.\n\n```python \n# Constant velocity case\n\n# initial variables\nx = 0\nvelocity = 50\ninitial_state = [x, velocity]\n\n# predicted state (after three seconds)\n# this state has a new value for x, but the same velocity as in the initial state\ndt = 3\nnew_x = x + velocity*dt\npredicted_state = [new_x, velocity]  # predicted_state = [150, 50]\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 389919,
+              "key": "da5a8a14-e2bb-4590-8912-57e7e667273f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For this constant velocity model, we had:\n\n* initial state = `[0, 50]`\n* predicted state (after 3 seconds) = `[150, 50]`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386036,
+              "key": "d8f00481-78be-4720-8827-eff12f9a7703",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Constant Acceleration\n\nBut in the second case, we said that the car was slowing down at a rate of 20 m/s^2 and, after 3 seconds had elapsed,  we ended up with a different estimate for its state. \n\nTo solve this localization problem, we had to use a different motion model and **we had to include a new value in our state: the acceleration of the car**.\n\nThe motion model was for constant acceleration:\n* `distance = velocity*dt + 0.5*acceleration*dt^2` and \n* `velocity = acceleration*dt`\n\nThe state includes acceleration in this model and looks like this: `[x, velocity, acc]`.\n\n```python\n# Constant acceleration, changing velocity\n\n# initial variables\nx = 0\nvelocity = 50\nacc = -20\n\ninitial_state = [x, velocity, acc]\n\n# predicted state after three seconds have elapsed\n# this state has a new value for x, and a new value for velocity (but the acceleration stays the same)\ndt = 3\n\nnew_x = x + velocity*dt + 0.5*acc*dt**2\nnew_vel = velocity + acc*dt\n\npredicted_state = [new_x, new_vel, acc]  # predicted_state = [60, -10, -20]\n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386038,
+              "key": "2519547f-3feb-46f2-9018-67083084c328",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For this constant *acceleration* model, we had:\n\n* initial state = `[0, 50, -20]`\n* predicted state (after 3 seconds) = `[60, -10, -20]`\n\nAs you can see, our state and our state estimates vary based on the motion model we used and how we assumed the car was moving!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386039,
+              "key": "e5f0be70-52e4-4afd-b19a-1cd4135ad5a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### How Many State Variables?\n\nIn fact, how many variables our state requires, depends on what motion model we are using. \n\nFor a constant velocity model, `x` and `velocity` will suffice. \n\nBut for a constant acceleration model, you'll also need our acceleration:`acc`. \n\nBut these are all just models. \n\n### The Takeaway \n\nFor our state, we always choose **the smallest representation** (the smallest number of variables) that will work for our model.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386040,
+              "key": "7ed6978d-0f1b-4ffe-9314-8dd24a86784a",
+              "title": "Reflect",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7ed6978d-0f1b-4ffe-9314-8dd24a86784a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What are some applications or challenges you can think of, in which the *color* of a car would be an important state variable?"
+              },
+              "answer": {
+                "text": "You can imagine, if you are a quality assurance engineer, you have to make sure the color of a car is correct before shipping. Another example would be for marketing; you have to make sure that the color of the car matches the logo of the brand or sports team you are trying to match. In these cases, color is very important and would be a valuable state variable!",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 386041,
+          "key": "0201d8cf-cbe5-4d14-873d-631f11b1aa4e",
+          "title": "Lesson Outline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0201d8cf-cbe5-4d14-873d-631f11b1aa4e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 418721,
+              "key": "d60cc6a3-c9fc-4f24-8b1c-acbe1a3b9c0c",
+              "title": "Lesson Outline",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jh7wLGXrm3E",
+                "china_cdn_id": "jh7wLGXrm3E.mp4"
+              }
+            },
+            {
+              "id": 386042,
+              "key": "002049dd-6561-404d-b887-1c7a02c2da08",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Lesson Outline\n\nThe one unifying theme in this lesson is representing and predicting state, but there are two threads that we’ll use to explore this idea. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386043,
+              "key": "3e983031-96f0-4581-8972-9ab86c350e67",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 1. Object-Oriented Programming\n\nOn the programming side, we’ll use something called Object-Oriented Programming as a way to represent state in code. We’ll use `variables` to represent state values and we’ll create `functions`  to change those values. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 386044,
+              "key": "82836c99-937b-4ae8-a89d-422039ade354",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 2. Linear Algebra\n\nOn the mathematical side we’ll use `vectors` and `matrices` to keep track of state and change it.\n \nWe’ll learn all the necessary math notation and code, as we learn more about predicting the state of a car!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 390008,
+          "key": "540eb882-fbed-4d46-aa44-c6a6ca269d77",
+          "title": "Always Moving",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "540eb882-fbed-4d46-aa44-c6a6ca269d77",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 418722,
+              "key": "8e32274b-c5b0-44a8-b350-ba4190642ccc",
+              "title": "Always Moving",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EQBQlHvxAQA",
+                "china_cdn_id": "EQBQlHvxAQA.mp4"
+              }
+            },
+            {
+              "id": 390009,
+              "key": "b42acd97-89f0-42da-a006-578b71093cab",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Always Moving\n\nSelf-driving cars constantly monitor their state. So, movement and localization have to occur in parallel. \n\nIf we use a Kalman filter for localization, this means that as a car moves, the Kalman filter has to keep coming up with new state estimates. This way, the car *always* has an idea of where it is.\n\n#### Always Predicting State\n\nIn the code below, you are given a `predict_state` function that takes in a current state and a change in time, `dt`, and returns the new state estimate (based on a constant velocity model).\n\nIt will be up to you to use this function repeatedly to find the predicted_state at 5 different points in time: \n\n* the initial state\n* the predicted state after 2 seconds have elapsed\n* the predicted state after 3 *more* seconds have elapsed\n* the predicted state after 1 *more* second has elapsed\n* the predicted state after 4 *more* seconds have elapsed\n\n\nTo first three states have been given to you in code.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 390017,
+              "key": "ca31dad4-4a32-4e4e-b75b-b75db27cbdc1",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "ca31dad4-4a32-4e4e-b75b-b75db27cbdc1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "repetition of state",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5869757160095744",
+                "initial_code_files": [
+                  {
+                    "text": "from functions import predict_state\n\n# predict_state takes in a state and a change in time, dt\n# So, a call might look like: new_state = predict_state(old_state, 2)\n\n# The car starts at position = 0, going 60 m/s\n# The initial state:\ninitial_state = [10, 60]\n\n# After 2 seconds:\nstate_est1 = predict_state(initial_state, 2)\n\n# 3 more seconds after the first estimated state\nstate_est2 = predict_state(state_est1, 3)\n\n## TODO: Use the predict_state function \n## and the above variables to calculate the following states\n## (And change their value from 0 to the correct state)\n\n## Then, click Test Run to see your results!\n\n## 1 more second after the second state estimate\nstate_est3 = 0\n\n## 4 more seconds after the third estimated state\nstate_est4 = 0",
+                    "name": "multiple_predictions.py"
+                  },
+                  {
+                    "text": "#---- predict state function --#\ndef predict_state(state, dt):\n    # Assumes a valid state had been passed in\n    # Assumes a constant velocity model\n    x = state[0]\n    new_x = x+state[1]*dt\n    \n    # Create and return the new, predicted state\n    predicted_state = [new_x, state[1]]\n    return predicted_state",
+                    "name": "functions.py"
+                  },
+                  {
+                    "text": "from functions import predict_state\n\n# predict_state takes in a state and a change in time, dt\n# So, a call might look like: new_state = predict_state(old_state, 2)\n\n# The car starts at position = 0, going 60 m/s\n# The initial state:\ninitial_state = [10, 60]\n\n# After 2 seconds:\nstate_est1 = predict_state(initial_state, 2)\n\n# 3 more seconds after the first estimated state\nstate_est2 = predict_state(state_est1, 3)\n\n## Use the predict_state function \n## and the above variables to calculate the following states\n\n## 1 more second after the second state estimate\nstate_est3 = predict_state(state_est2, 1)\n\n## 4 more seconds after the third estimated state\nstate_est4 = predict_state(state_est3, 4)",
+                    "name": "solution.py"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 390035,
+          "key": "acb9c1d5-bbc9-42ab-b270-b65025a41cba",
+          "title": "Car Object",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "acb9c1d5-bbc9-42ab-b270-b65025a41cba",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 418723,
+              "key": "da721b47-3415-4798-8dc9-881cbe2b0902",
+              "title": "Car Object",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SnfhGZ76h7Y",
+                "china_cdn_id": "SnfhGZ76h7Y.mp4"
+              }
+            },
+            {
+              "id": 410705,
+              "key": "367f1743-c70f-4fff-88f9-d5905897157a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Creating a Car Object\n\nTo create a Car, which was named `carla` in the example. I have to:\n1. Import our car file and define a car's initial state variable, and \n2. Call `car.Car()`; a special function that initializes a Car object, and pass in the initial state variables.\n\nThe state is defined by a position: [y, x] and a velocity, which has vertical and horizontal components: [vy, vx]. And lastly, we had to pass in a world, which is just a 2D array.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410712,
+              "key": "5fdcb3fd-a75a-448e-bed5-3a9bf4a155ce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Imports and Defining initial variables\n\n```python\n# Import statements\nimport numpy\nimport car\n\n# Declare initial variables\n# Create a 2D world of 0's\nheight = 4\nwidth = 6\nworld = np.zeros((height, width))\n\n# Define the initial car state\ninitial_position = [0, 0] # [y, x] (top-left corner)\nvelocity = [0, 1] # [vy, vx] (moving to the right)\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410713,
+              "key": "2a36252a-dc52-4838-9bfa-a6202f93aa1b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Creating and Visualizing a Car!\n\n```python\n# Create a car object with these initial params\ncarla = car.Car(initial_position, velocity, world)\n\n# Display the world\ncarla.display_world()\n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410716,
+              "key": "83eec8f9-af64-49a4-8e1b-d8f9597dc8fa",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59cc1144_screen-shot-2017-09-27-at-1.55.25-pm/screen-shot-2017-09-27-at-1.55.25-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/83eec8f9-af64-49a4-8e1b-d8f9597dc8fa",
+              "caption": "Carla's initial state at position [0,0]",
+              "alt": "",
+              "width": 776,
+              "height": 520,
+              "instructor_notes": null
+            },
+            {
+              "id": 410715,
+              "key": "0d6eea17-0121-4dec-ada7-13f4d2e86846",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Car movement\n\nCarla can also move in the direction of the velocity and turnleft with the functions: `move()` and `turn_left()`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 393327,
+              "key": "1bb7bf09-a93f-4f88-8479-80a7399dd9f1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59b04633_screen-shot-2017-09-06-at-12.01.37-pm/screen-shot-2017-09-06-at-12.01.37-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1bb7bf09-a93f-4f88-8479-80a7399dd9f1",
+              "caption": "Car path after some movement.",
+              "alt": "",
+              "width": 934,
+              "height": 698,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 410642,
+          "key": "19a44722-2151-4938-9955-eaf3159893e2",
+          "title": "Interacting with a Car Object",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "19a44722-2151-4938-9955-eaf3159893e2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 410729,
+              "key": "d5ceac52-881d-46f2-a36c-db3f51fc6f8c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewf72398cb",
+              "pool_id": "jupyter",
+              "view_id": "f72398cb-37bf-4342-9ea9-d738e57cc1a9",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Interacting with a Car Object.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 410673,
+          "key": "564fed33-ba30-4331-9c9c-22b0221bdeca",
+          "title": "Look at the Class Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "564fed33-ba30-4331-9c9c-22b0221bdeca",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 410780,
+              "key": "74ad3315-d4ee-415c-98e1-4ed782d80dea",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Click on `car.py` below to interact with the Car class code.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410784,
+              "key": "8df73f15-45fc-4209-be35-f704750b3e12",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view8ae09dd3",
+              "pool_id": "jupyter",
+              "view_id": "8ae09dd3-cb72-47cc-958e-d51d3f44cbd1",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 410681,
+          "key": "9134e49a-ca0e-4c95-aee7-f1df6026d3c9",
+          "title": "Turn Right",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9134e49a-ca0e-4c95-aee7-f1df6026d3c9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 410786,
+              "key": "81f95fcf-0193-407a-af8a-eb1e3c0274a4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Adding a `turn_right()` function to `car.py`\n\nYour tasks for this car.py file and notebook are:\n*  Add a `turn_right()` function to car.py\n    * There are a few ways to do this. I'd suggest looking at the code in `turn_left()` or even using this function.\n* Don't forget to update the state as necessary, after a turn!\n* Test out your `turn_right()` function in the notebook (.ipynb) by visualizing the car as it moves, and printing out the state of the car to see if it matches what you expect!\n* If you get stuck, you can check out `car_solution.py` for some tips.\n* Run the final cell of the notebook to check whether your solution matches ours as well!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410789,
+              "key": "d0bf2786-c29f-45d8-b8ea-5f679494acb7",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view3a626e9d",
+              "pool_id": "jupyter",
+              "view_id": "3a626e9d-007b-4545-9d79-86faa0bc4c4d",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 410675,
+          "key": "ca6e1089-7cc7-461d-9965-59183d566d80",
+          "title": "Adding Color",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ca6e1089-7cc7-461d-9965-59183d566d80",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 542986,
+              "key": "ec215a33-2ac4-45e9-81d0-ed1e6c8ec152",
+              "title": "Nd113 C2 L3 20 L Adding Color V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iltQBIpbCSw",
+                "china_cdn_id": "iltQBIpbCSw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 410676,
+          "key": "d59b5163-c9c4-4325-b0a6-331efb6ccd00",
+          "title": "Instantiate Multiple Cars",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d59b5163-c9c4-4325-b0a6-331efb6ccd00",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 410791,
+              "key": "1eb9e5bc-b565-4bad-8586-88fc3fb4ca2a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view7bd2a3b5",
+              "pool_id": "jupyter",
+              "view_id": "7bd2a3b5-e226-47d4-988d-ac50709ead5e",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Multiple, Colorful Cars.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 410682,
+          "key": "0d554c44-f8d0-48c7-8fd2-6ac04bac0fc4",
+          "title": "Color Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0d554c44-f8d0-48c7-8fd2-6ac04bac0fc4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 410802,
+              "key": "aacb59bb-883d-4b95-9a35-d883ed6f1074",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Tasks\n\n1. Modify and complete the code in `color.py` by following along with the **TODO**'s\n2. Return to this directory - clicking on the orange Jupyter icon - and run your code in the Color playground notebook!\n\nIf needed, you can check out `color_solution.py` for some tips!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410801,
+              "key": "a9107e9a-cefa-4a42-8ed5-dda5b81c428b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view845fdac7",
+              "pool_id": "jupyter",
+              "view_id": "845fdac7-b935-4e08-8b20-ef65449e9028",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 410684,
+          "key": "1123885c-752d-46e2-b312-d9217b6ac174",
+          "title": "Overloading Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1123885c-752d-46e2-b312-d9217b6ac174",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 412421,
+              "key": "a13ee2db-a1a8-418d-a336-462cb0aac685",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Overloading\n\nNow that we’ve seen how to create a class and talked about some of the fundamental functions and variables that classes contain, let’s look at something new!\n\n#### The double underscore `__X__`\n\nYou’ve seen a couple of examples of functions that have a double underscore, like:\n```python\n __init__\n\n__repr__\n``` \n\nThese are **special functions** that are used by Python in a specific way.\n\nWe typically don't call these functions directly, as we do with ones like `move()` and `turn_left().\n\nInstead, **Python calls them *automatically*** based on our use of keywords and operators.\n\nFor example, `__init__` is called when we create a new object and `__repr__` is called when we tell Python to print the string representation of a specific object!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412425,
+              "key": "68aac972-e243-4148-91a9-703f064b7733",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Another example: `__add__`\n\nAll of these special functions have their names written between double underscores `__`, and there are many of these types of functions! To see the full list of these functions, check out [the Python documentation](https://docs.python.org/3/reference/datamodel.html#special-method-names).\n\nFor example, we can define what happens when we add two car objects together using a `+` symbol by defining the `__add__` function.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412426,
+              "key": "2f696ab8-35d4-4180-82ff-720e74e7c078",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```python\ndef __add__(self, other):\n    # Create an empty list\n    added_state = []\n\n    # Add the states together, element-wise\n    for i in range(self.state):\n        added_value = self.state[i] + other.state[i]\n        added_state.append(added_value)\n\n    return added_state\n```\n    ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412427,
+              "key": "69df253d-d3c7-489d-95ba-f363b4cdf62a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The above version, adds together the state variables! Or.. you may choose to just print out that adding cars is an invalid operation, as below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412428,
+              "key": "14373f67-e028-4d89-a153-5d4ab2c47ca7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```python\ndef __add__(self, other):\n    # Print an error message and return the unchanged, first state\n    print('Adding two cars is an invalid operation!')\n    return self.state\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412429,
+              "key": "8555cb53-67ee-4741-a5f9-b755f9cbeefd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Operator Overloading\n\nWhen we define these functions in our class, this is called **operator overloading**.\n\nAnd, in this case, overloading just means: *giving more than one\nmeaning to* a standard operator like addition.\n\nOperator overloading can be a powerful tool, and you’ll not only see it pop up again and again in classes, but it is useful for writing classes that are intuitive and simple to use. So, keep this in mind as you continue learning, and **let's get some practice with overloading operators!**\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 419844,
+          "key": "aa2c040d-b067-4edc-a291-b83fb8ea968b",
+          "title": "Overloading Color Addition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aa2c040d-b067-4edc-a291-b83fb8ea968b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419849,
+              "key": "abfa1444-189f-4760-911a-cc8f277dd42b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view0c318b4f",
+              "pool_id": "jupyter",
+              "view_id": "0c318b4f-ce80-488c-ad57-b13bfeeee26c",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 410685,
+          "key": "670d7558-3926-43b5-a279-f5d2490114e6",
+          "title": "State Vector",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "670d7558-3926-43b5-a279-f5d2490114e6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 425385,
+              "key": "47705e60-a8c8-41f1-a2f5-df1dcfa89279",
+              "title": "State Vector",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "st26ov_TVwM",
+                "china_cdn_id": "st26ov_TVwM.mp4"
+              }
+            },
+            {
+              "id": 412431,
+              "key": "3183ee15-1213-4357-9db4-185a78abe2bc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### State Vector\n\n\nSo far, you’ve seen that the state of a car contains multiple values which we’ve been putting into a Python list.\n\nHowever, these values are *typically* contained in one data type: a **state vector**.\n\nA vector is similar to a list in Python, in that it contains multiple values, but they are mathematically very different. \n\n\n### What is a Vector?\n\nA vector is a kind of matrix, which for now you can think of as a grid of numbers, and matrices are a math data type, similar to something like an integer or a float.\n\nAnd similar to an integer or a float, we can multiply matrices, scale them, add two of them together and so on!\n\nThis is called **linear algebra**, and linear algebra will come up again and again in self-driving car systems. It’s in everything from:\n* car movement calculations\n* deep learning applications, and\n* image and video analysis\n\nIn this section, we’ll see how state vectors and matrices can be used together to help us efficiently predict a new state, and localize a car.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 410686,
+          "key": "50002fe9-9a15-473d-9372-a7a41e2a7317",
+          "title": "State Transformation Matrix",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "50002fe9-9a15-473d-9372-a7a41e2a7317",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 430259,
+              "key": "20281fd5-9081-4798-ab5e-29d1a75610b6",
+              "title": "State Transformation Matrix",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DRRuQMYo800",
+                "china_cdn_id": "DRRuQMYo800.mp4"
+              }
+            },
+            {
+              "id": 412433,
+              "key": "afedab04-d413-4b45-a2bb-4f431de48515",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### State Vector\n\nA state vector is a **column of values** whose dimensions are 1 in width and M in height. This vector should contain all the values that we are interested in, and for predicting 1D movement, we are interested in the position, x, and the velocity, v.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412434,
+              "key": "5c9b3502-7dfe-4e42-a9de-787fda41d483",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59cd6c97_screen-shot-2017-09-28-at-2.41.26-pm/screen-shot-2017-09-28-at-2.41.26-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5c9b3502-7dfe-4e42-a9de-787fda41d483",
+              "caption": "An example of a 2x1 state vector that contains variables: x and v.",
+              "alt": "",
+              "width": 100,
+              "height": 180,
+              "instructor_notes": null
+            },
+            {
+              "id": 412437,
+              "key": "9c5daebe-a1cf-4e71-93c6-dde50eeccf95",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Efficiently predicting state\n\nWith a state vector, we can predict a new state in just one **matrix multiplication** step.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412438,
+              "key": "7dcca805-14a7-400a-ba4e-654b5acc9547",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Matrix multiplication\n\nMatrix multiplication multiplies two grids of numbers; multiplying the rows in the first matrix, by the columns in the second. One step in this process is pictured, below.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412439,
+              "key": "0ac988b4-a5a2-49e6-a17e-e176159aa85b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59cd6d74_screen-shot-2017-09-28-at-2.45.12-pm/screen-shot-2017-09-28-at-2.45.12-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0ac988b4-a5a2-49e6-a17e-e176159aa85b",
+              "caption": "The start of matrix multiplication for these 2x2 and 2x1 matrices.",
+              "alt": "",
+              "width": 994,
+              "height": 308,
+              "instructor_notes": null
+            },
+            {
+              "id": 412440,
+              "key": "955040ba-33ec-42d9-8683-0c86fa648722",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Summing step\n\nOnce a whole row and column have been multiplied, matrix multiplication sums those values to form a single, new value in a resulting matrix.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412441,
+              "key": "43f52749-8f6f-4bcc-a433-ab5fda0c6464",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59cd6de7_screen-shot-2017-09-28-at-2.47.09-pm/screen-shot-2017-09-28-at-2.47.09-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/43f52749-8f6f-4bcc-a433-ab5fda0c6464",
+              "caption": "Summation step: x + v*dt",
+              "alt": "",
+              "width": 982,
+              "height": 324,
+              "instructor_notes": null
+            },
+            {
+              "id": 412442,
+              "key": "1008a3bd-9ac6-4a71-aa9e-5622954f6612",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Then it moves on to the next row, and this process repeats.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 412443,
+              "key": "5f6edca4-7581-4380-9b9b-4e3ddf8352bd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59cd6e47_screen-shot-2017-09-28-at-2.48.41-pm/screen-shot-2017-09-28-at-2.48.41-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5f6edca4-7581-4380-9b9b-4e3ddf8352bd",
+              "caption": "Completed matrix multiplication!",
+              "alt": "",
+              "width": 978,
+              "height": 286,
+              "instructor_notes": null
+            },
+            {
+              "id": 412444,
+              "key": "a183ecf4-76c0-48dc-ad8b-57643a64c6d5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nYou can see that this creates a new 2x1 vector, with two values in it that may look familiar! These are just our equations for our **constant velocity motion model**. So, matrix multiplication let’s us create a new, predicted state vector in just one multiplication step!\n\nIn fact, this is such a common way to predict a new state, that the 2x2 matrix on the left is often called the **state transformation matrix**.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 410688,
+          "key": "7c9462e6-2222-49bf-b19d-87a4451b2e12",
+          "title": "Matrix Multiplication",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7c9462e6-2222-49bf-b19d-87a4451b2e12",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419862,
+              "key": "df41e097-0e20-4081-b127-0931cae66759",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Matrix Multiplication\n\nNow that you've seen how Matrix multiplication is used in state transformation, let's go through some concrete examples, and test your knowledge!\n\nRemember that multiplying two matrices involves a couple steps:\n\n1. It multiplies each row in the first matrix with the columns in the second, element-wise (that means the number of columns in the first matrix and rows in the second **must be equal**).\n\n2. It sums up those multiplied values to form a new value in a new matrix at a specific location. \n - **ex.** If we multiply the *first row* of the first matrix by the *first column* of the second, this new, summed value belongs in the *first row and first column* of the resulting matrix. \n - **ex.** If we multiply the *second row* of the first matrix by the *first column* of the second, this new, summed value belongs in the *second* row and first column of the resulting matrix.\n\n3. Matrix multiplication takes practice, so take a look at [this page](https://www.mathsisfun.com/algebra/matrix-multiplying.html) for more examples!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 419863,
+              "key": "cb73d924-f72d-4919-b173-880b4f24b406",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/October/59d7efae_screen-shot-2017-10-06-at-2.03.22-pm/screen-shot-2017-10-06-at-2.03.22-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cb73d924-f72d-4919-b173-880b4f24b406",
+              "caption": "State transformation by matrix multiplication.",
+              "alt": "",
+              "width": 1002,
+              "height": 310,
+              "instructor_notes": null
+            },
+            {
+              "id": 419864,
+              "key": "1c344ca1-65f7-45d9-aefc-0089af056a98",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's consider the case where the position of a self-driving car is at: `x = 10` , and velocity,`v = 120`.\n\nWhere would you predict that the car with be in 3 seconds, using matrix multiplication? Well, we'd simply plug in the numbers for x, v, and dt in the transformation equation:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 419867,
+              "key": "87317301-eb09-40ce-aca9-baf06acbaaeb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/October/59d7f140_screen-shot-2017-10-06-at-2.10.13-pm/screen-shot-2017-10-06-at-2.10.13-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/87317301-eb09-40ce-aca9-baf06acbaaeb",
+              "caption": "New, predicted state vector.",
+              "alt": "",
+              "width": 1042,
+              "height": 396,
+              "instructor_notes": null
+            },
+            {
+              "id": 419866,
+              "key": "89b92c81-e4a1-427a-8537-28ffe0d124d7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Predicted State Vector\n\nWe'd get a new, predicted state vector with x = 10+120*3. and a constant velocity.\n\n`x = 370` and `v = 120`\n\nLet's try a few more examples.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 419868,
+              "key": "0bc8fcab-ce3f-4472-8dc0-fac97e21494f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/October/59d7f4b5_screen-shot-2017-10-06-at-2.24.19-pm/screen-shot-2017-10-06-at-2.24.19-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0bc8fcab-ce3f-4472-8dc0-fac97e21494f",
+              "caption": "dt = 1, x = 2, and v = 53",
+              "alt": "",
+              "width": 688,
+              "height": 312,
+              "instructor_notes": null
+            },
+            {
+              "id": 419869,
+              "key": "8b98165e-9d11-41e2-83eb-b703eed79542",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8b98165e-9d11-41e2-83eb-b703eed79542",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the resulting predicted state vector for the values: dt = 1, x = 2, and v = 53? Imagine these lists and column vectors with two values: [x, v].",
+                "answers": [
+                  {
+                    "id": "a1507325157468",
+                    "text": "[2, 53]",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1507325224098",
+                    "text": "[55, 106]",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1507325236293",
+                    "text": "[55, 53]",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1507325246011",
+                    "text": "[4, 53]",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 419870,
+              "key": "30947a34-7d45-4b71-840e-9f9715ad9c17",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "What about for a 2x2 matrix that's **not a state vector**? Take a look at the scenario below and the options for the resulting matrix.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 419879,
+              "key": "94a5549c-67de-45ac-82e0-9faff0765838",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/October/59d7f9fd_screen-shot-2017-10-06-at-2.47.00-pm/screen-shot-2017-10-06-at-2.47.00-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/94a5549c-67de-45ac-82e0-9faff0765838",
+              "caption": "",
+              "alt": "",
+              "width": 1370,
+              "height": 690,
+              "instructor_notes": null
+            },
+            {
+              "id": 419876,
+              "key": "48485758-f40c-42a5-9eb8-f44570d25a4b",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "48485758-f40c-42a5-9eb8-f44570d25a4b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the above 2x2 matrices, A-D, is the correct, resulting matrix?",
+                "answers": [
+                  {
+                    "id": "a1507325748094",
+                    "text": "A",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1507325792483",
+                    "text": "B",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1507325793927",
+                    "text": "C",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1507325796182",
+                    "text": "D",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 412405,
+          "key": "3f1b9379-881f-4f7b-993c-581cd39ef202",
+          "title": "1D State Vector and More Multiplication",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3f1b9379-881f-4f7b-993c-581cd39ef202",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419878,
+              "key": "db9b0a00-bfef-4ba6-8884-f862cc257154",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Matrix Multiplication\n\nLet's walk through that last quiz example, step-by-step.\n* Multiply the first row by the first column and sum.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 419881,
+              "key": "765b20ff-03de-4307-ade7-38f07a2028a7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/October/59d7faa9_screen-shot-2017-10-06-at-2.50.12-pm/screen-shot-2017-10-06-at-2.50.12-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/765b20ff-03de-4307-ade7-38f07a2028a7",
+              "caption": "",
+              "alt": "",
+              "width": 1092,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 419882,
+              "key": "789470b8-8d69-4e66-8b69-b3d2c61db340",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Then, the second row, by the first column.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 419883,
+              "key": "6a727383-d801-46db-8e9d-13537b7d7e75",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/October/59d7fae8_screen-shot-2017-10-06-at-2.51.24-pm/screen-shot-2017-10-06-at-2.51.24-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6a727383-d801-46db-8e9d-13537b7d7e75",
+              "caption": "",
+              "alt": "",
+              "width": 1096,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 419885,
+              "key": "f80a0dbf-06ab-4dfa-9786-ce181529cecc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Then *back* to the first row, this time, multiplied by the second column.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 419886,
+              "key": "0e3b8fd0-a362-4fdb-a6e4-440b2f899238",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/October/59d7fb53_screen-shot-2017-10-06-at-2.53.07-pm/screen-shot-2017-10-06-at-2.53.07-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0e3b8fd0-a362-4fdb-a6e4-440b2f899238",
+              "caption": "",
+              "alt": "",
+              "width": 1078,
+              "height": 316,
+              "instructor_notes": null
+            },
+            {
+              "id": 419887,
+              "key": "2bb7037c-3ff7-4e26-962b-ab2fa0fdcc3b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "And, finally the last step:\n* The last row multiplied by the last column.\n\nTo get our complete, resulting matrix!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 419888,
+              "key": "39fe54d7-615c-4440-a760-88c24e272ba6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/October/59d7fb8b_screen-shot-2017-10-06-at-2.54.11-pm/screen-shot-2017-10-06-at-2.54.11-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/39fe54d7-615c-4440-a760-88c24e272ba6",
+              "caption": "",
+              "alt": "",
+              "width": 1086,
+              "height": 310,
+              "instructor_notes": null
+            },
+            {
+              "id": 419889,
+              "key": "1073eb74-efaa-4702-be9b-52318ebdee8b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Constant velocity\n\nThis kind of multiplication can be really useful, if x and y are not dependent on one another. That is, there is a separate and constant x-velocity and y-velocity component. For real-world, curved and continuous motion, we still use a state vector that is one column, so that we can handle any x-y dependencies. So, you'll often see state vector and transformation matrices that look like the following.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 436244,
+              "key": "08aa1407-8418-4fce-9112-8d32fbc6dd27",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/October/59e7a304_screen-shot-2017-10-18-at-11.52.10-am/screen-shot-2017-10-18-at-11.52.10-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/08aa1407-8418-4fce-9112-8d32fbc6dd27",
+              "caption": "State vector equivalent",
+              "alt": "",
+              "width": 686,
+              "height": 494,
+              "instructor_notes": null
+            },
+            {
+              "id": 419894,
+              "key": "e1395bdf-efbd-4cec-b24c-b468ef131fb8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "These extra spaces in the matrix allow for more detailed motion models and can account for a x and y dependence on one another (just think of the case of circular motion). So, **state vectors are always column vectors**.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 410690,
+          "key": "390da9f9-a4cf-497f-b3ac-cf2cbf132d26",
+          "title": "Modify Predict State",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "390da9f9-a4cf-497f-b3ac-cf2cbf132d26",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419895,
+              "key": "dfe38c35-f82e-473a-b7a2-b09f9fe9a58a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view66c946b3",
+              "pool_id": "jupyter",
+              "view_id": "66c946b3-00c0-4240-a916-6c67e18452e1",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Matrix_Multiplication.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 410692,
+          "key": "96a65383-ebe8-42f2-ae49-d8931327bf80",
+          "title": "Working with Matrices",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "96a65383-ebe8-42f2-ae49-d8931327bf80",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 419861,
+              "key": "b28c9c15-ebee-4be0-8f64-82fd692d2a3f",
+              "title": "Working With Matrices",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nruxu8pr6i8",
+                "china_cdn_id": "nruxu8pr6i8.mp4"
+              }
+            },
+            {
+              "id": 412445,
+              "key": "8902376d-634d-4e3d-bf1c-fec5cbd244cf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### State Transformation and Linear Algebra\n\nNow you’ve seen that we can transform the *state* of a car using matrix multiplication.\n\nThis kind of linear algebra can be used to update multiple state variables in just one line of code! And this becomes really useful when you’re working with big datasets and variables that represent our 3 dimensional world.\n\n\nNext, you’ll see how linear algebra is used to create a *two* dimensional kalman filter.\n\nIn the process, you’ll learn more about matrix operations and notation, and you’ll be one step closer to creating an algorithm that is really used to localize self-driving cars. **Great job getting this far!**\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

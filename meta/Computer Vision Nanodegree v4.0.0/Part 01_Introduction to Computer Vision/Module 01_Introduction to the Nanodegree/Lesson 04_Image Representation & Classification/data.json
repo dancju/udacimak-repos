@@ -1,0 +1,1762 @@
+{
+  "data": {
+    "lesson": {
+      "id": 502033,
+      "key": "c75c735c-c163-41b8-99b4-f0af0e607234",
+      "title": "Image Representation & Classification",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn how images are represented numerically and implement image processing techniques, such as color masking and binary classification.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/c75c735c-c163-41b8-99b4-f0af0e607234/502033/1544453458643/Image+Representation+%26+Classification+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/c75c735c-c163-41b8-99b4-f0af0e607234/502033/1544453451688/Image+Representation+%26+Classification+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 593846,
+          "key": "3925dad1-1234-4288-82e3-58d8f67c94f0",
+          "title": "Intro to Pattern Recognition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3925dad1-1234-4288-82e3-58d8f67c94f0",
+            "completed_at": "2020-04-01T05:07:38.041Z",
+            "last_viewed_at": "2020-04-01T05:08:08.012Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 614808,
+              "key": "9ba25c43-f284-413d-ab41-6495c9b8fd20",
+              "title": "01 Pattern Recognition V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cX5EE1WEqhY",
+                "china_cdn_id": "cX5EE1WEqhY.mp4"
+              }
+            },
+            {
+              "id": 633775,
+              "key": "5c2e84e0-38c4-49ec-9a29-6ab1916cc53f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise Repository\n\nNote that most exercise notebooks can be run locally on your computer, by following the directions in the [Github Exercise Repository](https://github.com/udacity/CVND_Exercises).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633806,
+              "key": "f004321b-3d85-4757-b9e8-6beb4e6075ec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Learning Journey and Pace\n\nThis Image Representation Lesson is meant for people who have just started learning about image analysis. We want this program to be accessible to people who are just starting to learn about computer vision *and* to people who are interested in more advanced deep learning topics and applications like image classification and object tracking. \n* So, **if you find this lesson to be a bit too easy, you are welcome to skip forward to the next lesson: Convolutional Filters and Edge Detection**. \n* On the other hand, if you are just learning about computer vision or even if you want to review some foundational concepts, please proceed! \n\nHappy learning!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 279935,
+          "key": "84aa57b8-4949-4b0d-87b3-d3b4a91e5d28",
+          "title": "Emotional Intelligence",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "84aa57b8-4949-4b0d-87b3-d3b4a91e5d28",
+            "completed_at": "2020-04-01T05:09:04.703Z",
+            "last_viewed_at": "2020-04-01T05:09:03.763Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 291805,
+              "key": "3f4635a1-22e7-4714-b64f-0466d5fed0ce",
+              "title": "05. Emotional Intelligence",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "D_LzJsJH5qk",
+                "china_cdn_id": "D_LzJsJH5qk.mp4"
+              }
+            },
+            {
+              "id": 283685,
+              "key": "94e8eb72-861e-43b8-b97d-81fc332753ca",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Cognitive and Emotional Intelligence\n\n**Cognitive intelligence** is the ability to reason and understand the world based on observations and facts. It's often what is measured on academic tests and what's measured to calculate a person's IQ.\n\n**Emotional intelligence** is the ability to understand and influence human emotion. For example, observing that someone looks sad based on their facial expression, body language, and what you know about them - then acting to comfort them or asking them if they want to talk, etc. For humans, this kind of intelligence allows us to form meaningful connections and build a trustworthy network of friends and family. It's also often thought of as *only* a human quality and is not yet a part of traditional AI systems.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 279985,
+              "key": "b408762f-27c1-4cec-80fb-79241bcd130d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you'd like to learn more about Affectiva and emotion AI, check out [their website](http://www.affectiva.com/).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 279937,
+          "key": "419af5fa-27bd-49ea-9c07-1abaa0670856",
+          "title": "Computer Vision Pipeline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "419af5fa-27bd-49ea-9c07-1abaa0670856",
+            "completed_at": "2020-04-01T05:10:15.016Z",
+            "last_viewed_at": "2020-04-01T05:10:14.083Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 291807,
+              "key": "ca10cbbd-e692-41f1-be45-90d34b8c283d",
+              "title": "08. Computer Vision Pipeline",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "64hFcqhnNow",
+                "china_cdn_id": "64hFcqhnNow.mp4"
+              }
+            },
+            {
+              "id": 283715,
+              "key": "74eaa9fd-8a6e-4d63-9d41-d09abbc49a73",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Computer Vision Pipeline\n\nA computer vision pipeline is a series of steps that most computer vision applications will go through. Many vision applications start off by acquiring images and data, then processing that data, performing some analysis and recognition steps, then finally performing an action. The general pipeline is pictured below!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 283716,
+              "key": "8f9fe646-26be-4452-9501-77b4d4cec58c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58d03bda_screen-shot-2017-03-13-at-12.36.54-pm/screen-shot-2017-03-13-at-12.36.54-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8f9fe646-26be-4452-9501-77b4d4cec58c",
+              "caption": "General computer vision processing pipeline",
+              "alt": null,
+              "width": 2134,
+              "height": 626,
+              "instructor_notes": null
+            },
+            {
+              "id": 814511,
+              "key": "f569a9bd-53fb-4b67-a1e0-2f6f4a529599",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, let's take a look at a specific example of a pipeline applied to facial expression recognition.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614799,
+              "key": "b3c7efd9-72f5-46b7-abd6-3464335d8306",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade67ef_screen-shot-2018-04-23-at-4.10.20-pm/screen-shot-2018-04-23-at-4.10.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b3c7efd9-72f5-46b7-abd6-3464335d8306",
+              "caption": "Facial recognition pipeline.",
+              "alt": "",
+              "width": 1486,
+              "height": 802,
+              "instructor_notes": null
+            },
+            {
+              "id": 614782,
+              "key": "b48f01aa-7b8d-4402-8d94-8e2033aaeed1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Standardizing Data\n\nPre-processing images is all about **standardizing** input images so that you can move further along the pipeline and analyze images in the same way. In machine learning tasks, the pre-processing step is often one of the most important. \n\nFor example, imagine that you've created a simple algorithm to distinguish between stop signs and other traffic lights. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614797,
+              "key": "59351e53-c3bb-469f-b8c0-dc5ce19be6e3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade672f_screen-shot-2018-04-23-at-4.05.20-pm/screen-shot-2018-04-23-at-4.05.20-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/59351e53-c3bb-469f-b8c0-dc5ce19be6e3",
+              "caption": "Images of traffic signs; a stop sign is on top and a hiking sign is on the bottom.",
+              "alt": "",
+              "width": 1268,
+              "height": 556,
+              "instructor_notes": null
+            },
+            {
+              "id": 614798,
+              "key": "02ddf8ed-e771-4b2f-b285-b6710ffd5b10",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If the images are different sizes, or even cropped differently, then this counting tactic will likely fail! So, it's important to pre-process these images so that they are standardized before they move along the pipeline. In the example below, you can see that the images are pre-processed into a standard square size.\n\nThe algorithm counts up the number of red pixels in a given image and if there are enough of them, it classifies an image as a stop sign. In this example, we are just extracting a color feature and skipping over selecting an area of interest (we are looking at the _whole_ image). In practice, you'll often see a classification pipeline that looks like this.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614789,
+              "key": "9b76370b-bd5e-486b-91af-e459d2ba28e1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade6541_stop-sign-classification/stop-sign-classification.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9b76370b-bd5e-486b-91af-e459d2ba28e1",
+              "caption": "",
+              "alt": "",
+              "width": 1292,
+              "height": 658,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 279938,
+          "key": "8672d5b9-9abd-4baf-a55d-8efa3d052a80",
+          "title": "Training a Model",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8672d5b9-9abd-4baf-a55d-8efa3d052a80",
+            "completed_at": "2020-04-01T05:12:40.818Z",
+            "last_viewed_at": "2020-04-01T05:12:39.848Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 291808,
+              "key": "215973d5-e81e-46b5-9461-61932db845fc",
+              "title": "09. Training a Model",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "m4GVfwVkj74",
+                "china_cdn_id": "m4GVfwVkj74.mp4"
+              }
+            },
+            {
+              "id": 283764,
+              "key": "c5008e78-8281-4cc0-b52e-8ffe17fad435",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Training a Neural Network\n\nTo train a computer vision neural network, we typically provide sets of **labelled images**, which we can compare to the **predicted output** label or recognition measurements. The neural network then monitors any errors it makes (by comparing the correct label to the output label) and corrects for them by modifying how it finds and prioritizes patterns and differences among the image data. Eventually, given enough labelled data, the model should be able to characterize any new, unlabeled, image data it sees!\n\nA training flow is pictured below. This is a convolutional neural network that *learns* to recognize and distinguish between images of a smile and a smirk.\n\nThis is a very high-level view of training a neural network, and we'll be diving more into how this works later on in this course. For now, we are explaining this so that you'll be able to jump into coding a computer vision application soon!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 614800,
+              "key": "c93e9449-1234-4a07-8cf8-a553c53b8b32",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ade68dd_screen-shot-2018-04-23-at-4.14.19-pm/screen-shot-2018-04-23-at-4.14.19-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c93e9449-1234-4a07-8cf8-a553c53b8b32",
+              "caption": "Example of a convolutional neural network being trained to distinguish between images of a smile and a smirk.",
+              "alt": "",
+              "width": 1072,
+              "height": 672,
+              "instructor_notes": null
+            },
+            {
+              "id": 283767,
+              "key": "cc7893d2-6c34-426e-ac42-f8eaddef7735",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Gradient descent** is a a mathematical way to minimize error in a neural network. More information on this minimization method can be found [here](https://en.wikipedia.org/wiki/Gradient_descent).\n\n**Convolutional neural networks** are a specific type of neural network that are commonly used in computer vision applications. They learn to recognize patterns among a given set of images. If you want to learn more, refer to [this resource](https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/), and we'll be learning more about these types of networks, and how they work step-by-step, at a different point in this course!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571328,
+          "key": "0f8cec10-5e08-4428-b395-160a458b6a1d",
+          "title": "Separating Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0f8cec10-5e08-4428-b395-160a458b6a1d",
+            "completed_at": "2020-04-01T05:14:56.646Z",
+            "last_viewed_at": "2020-04-01T05:14:55.682Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 571374,
+              "key": "d7a5397c-c5c6-4d2e-ad20-74fa6c4ba7d0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Machine Learning and Neural Networks\n\nWhen we talk about **machine learning** and **neural networks** used in image classification and pattern recognition, we are really talking about a set of algorithms that can _learn_ to recognize patterns in data and sort that data into groups. \n\nThe example we gave earlier was sorting images of facial expressions into two categories: smile or smirk. A neural network might be able to learn to separate these expressions based on their different traits; a neural network can effectively learn how to draw a line that **separates** two kinds of data based on their unique shapes (the different shapes of the eyes and mouth, in the case of a smile and smirk). _Deep_ neural networks are similar, only they can draw multiple and more complex separation lines in the sand. Deep neural networks layer separation layers on top of one another to separate complex data into groups.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571376,
+              "key": "2621104a-4716-4a68-b8f4-5c5b60f92ec8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Separating Data \n\nSay you want to separate two types of image data: images of bikes and of cars. You look at the color of each image and the apparent size of the vehicle in it and plot the data on a graph. Given the following points (pink dots are bikes and blue are cars), how would you choose to separate this data?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571377,
+              "key": "b60b3bd8-a7db-492d-a802-ae0d5a7f2355",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab58682_screen-shot-2018-03-23-at-3.57.38-pm/screen-shot-2018-03-23-at-3.57.38-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b60b3bd8-a7db-492d-a802-ae0d5a7f2355",
+              "caption": "Pink and blue dots representing the size and color of bikes (pink) and cars (blue). The size is on the x-axis and the color on the left axis. Cars tend to be larger than bikes, but both come in a variety of colors.",
+              "alt": "",
+              "width": 400,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 571378,
+              "key": "94704b0f-a5a9-4ba0-a12f-784cb9c3a495",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab586c8_screen-shot-2018-03-23-at-3.59.04-pm/screen-shot-2018-03-23-at-3.59.04-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/94704b0f-a5a9-4ba0-a12f-784cb9c3a495",
+              "caption": "",
+              "alt": "",
+              "width": 1538,
+              "height": 1198,
+              "instructor_notes": null
+            },
+            {
+              "id": 571379,
+              "key": "13dadb30-b368-4bf9-8293-749b1b282874",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "13dadb30-b368-4bf9-8293-749b1b282874",
+                "completed_at": "2020-04-01T05:16:04.300Z",
+                "last_viewed_at": "2020-04-01T05:16:04.300Z",
+                "unstructured": "{\"selected_id\":\"a1521845999058\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Given the above choices, which line would you choose to best separate this data?",
+                "answers": [
+                  {
+                    "id": "a1521845991031",
+                    "text": "A (horizontal line)",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1521845995325",
+                    "text": "B (diagonal line from top-left to bottom-right)",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1521845997069",
+                    "text": "C (vertical line)",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1521845999058",
+                    "text": "D (diagonal line from top-right to bottom-left)",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 571381,
+              "key": "d5907d1b-e8d7-4779-a924-50becbd0eb95",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Layers of Separation\n\nWhat if the data looked like this?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571382,
+              "key": "12ebc4e6-f127-446b-bdf1-5d7eb8ba7a72",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab587ad_screen-shot-2018-03-23-at-4.02.58-pm/screen-shot-2018-03-23-at-4.02.58-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/12ebc4e6-f127-446b-bdf1-5d7eb8ba7a72",
+              "caption": "Pink (bike) and blue (car) dots on a similar size-color graph. This time, the blue dots are collected in the top right quadrant of the graph, indicating that cars come in a more limited color palette.",
+              "alt": "",
+              "width": 400,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 571383,
+              "key": "dc8f3015-30ae-49c9-a4ad-89a156932566",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You could combine two different lines of separation! You could even plot a curved line to separate the blue dots from the pink, and this is what machine learning *learns* to do — to choose the best algorithm to separate any given data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571384,
+              "key": "946fc0ab-16c1-47d3-8987-0490344205bf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab5880d_screen-shot-2018-03-23-at-4.04.35-pm/screen-shot-2018-03-23-at-4.04.35-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/946fc0ab-16c1-47d3-8987-0490344205bf",
+              "caption": "Two, slightly-angled lines, each of which divides the data into two groups.",
+              "alt": "",
+              "width": 1532,
+              "height": 588,
+              "instructor_notes": null
+            },
+            {
+              "id": 571385,
+              "key": "dd3e0082-174f-4212-b9d1-42c3dd8eebff",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab5884a_screen-shot-2018-03-23-at-4.05.32-pm/screen-shot-2018-03-23-at-4.05.32-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dd3e0082-174f-4212-b9d1-42c3dd8eebff",
+              "caption": "Both lines, combined, clearly separate the car and bike data!",
+              "alt": "",
+              "width": 400,
+              "height": 300,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 279939,
+          "key": "49948b27-0173-41ee-91ea-61d27e1768aa",
+          "title": "AffdexMe Demo",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "49948b27-0173-41ee-91ea-61d27e1768aa",
+            "completed_at": "2020-04-01T05:16:31.383Z",
+            "last_viewed_at": "2020-04-01T05:16:30.452Z",
+            "unstructured": null
+          },
+          "resources": {
+            "files": [
+              {
+                "name": "AffdexMe_desktop_demo",
+                "uri": "http://video.udacity-data.com.s3.amazonaws.com/topher/2017/June/5941ce66_affdexme.app/affdexme.app.zip"
+              }
+            ],
+            "google_plus_link": null,
+            "career_resource_center_link": null,
+            "coaching_appointments_link": null,
+            "office_hours_link": null,
+            "aws_provisioning_link": null
+          },
+          "atoms": [
+            {
+              "id": 291810,
+              "key": "8c6cf1d3-f2ff-42f7-a2df-bff67b83a868",
+              "title": "AffdexMe Demo",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dpFtXDqakvY",
+                "china_cdn_id": "dpFtXDqakvY.mp4"
+              }
+            },
+            {
+              "id": 283770,
+              "key": "feb8ed16-326e-40e3-ac8d-a15a489ea87f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**AffdexMe** is currently available for download on multiple platforms. \n\nIf you'd like to try this out yourself, you can find the link to download the demo in the Supporting Materials section below!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 814518,
+              "key": "bacf1acf-b3f0-40ca-b1a4-682221dc6807",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 339797,
+          "key": "a4ad0f7d-031e-4d73-8479-86b47621f6f1",
+          "title": "Image Formation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a4ad0f7d-031e-4d73-8479-86b47621f6f1",
+            "completed_at": "2020-04-01T05:17:43.948Z",
+            "last_viewed_at": "2020-04-01T05:17:42.973Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 339893,
+              "key": "7287c7fc-2dab-4079-b71a-eb9d38c28fb9",
+              "title": "Image Formation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6ZVnQYzfpis",
+                "china_cdn_id": "6ZVnQYzfpis.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 465650,
+          "key": "8f8abbf9-7fdc-4806-964a-da43dfc79c5d",
+          "title": "Images as Grids of Pixels",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8f8abbf9-7fdc-4806-964a-da43dfc79c5d",
+            "completed_at": "2020-04-01T05:19:09.794Z",
+            "last_viewed_at": "2020-04-01T05:19:08.810Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 501867,
+              "key": "f231d217-21d2-4349-acc4-81ad3250c652",
+              "title": "Images as Grids of Pixels",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RVNiaZuv6Ss",
+                "china_cdn_id": "RVNiaZuv6Ss.mp4"
+              }
+            },
+            {
+              "id": 486671,
+              "key": "9e1565ed-ca09-42fa-9c2e-b94a2dd3916b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Images as Numerical Data\n\nEvery pixel in an image is just a numerical value and, we can also change these pixel values. We can multiply every single one by a scalar to change how bright the image is, we can shift each pixel value to the right, and many more operations!\n\n**Treating images as grids of numbers is the basis for many image processing techniques.**\n\nMost color and shape transformations are done just by mathematically operating on an image and changing it pixel-by-pixel.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 814520,
+              "key": "f6d8ab4b-6f27-4264-978f-378453b975f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 465651,
+          "key": "e992419d-7ea9-4d3a-87a1-5e1ee17bd093",
+          "title": "Notebook: Images as Numerical Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e992419d-7ea9-4d3a-87a1-5e1ee17bd093",
+            "completed_at": "2020-04-01T05:22:39.092Z",
+            "last_viewed_at": "2020-04-01T05:22:38.117Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486663,
+              "key": "92b79a8b-a873-4dce-94ba-3c6eff4213da",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view981bfda5",
+              "pool_id": "jupyter",
+              "view_id": "981bfda5-0914-40ff-bd75-92c791b0d5c6",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Images as Numerical Data.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 465653,
+          "key": "a8d476e9-2cbc-4847-8bcc-eeb289140379",
+          "title": "Color Images",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a8d476e9-2cbc-4847-8bcc-eeb289140379",
+            "completed_at": "2020-04-01T05:23:13.608Z",
+            "last_viewed_at": "2020-04-01T05:23:12.637Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 501862,
+              "key": "4310a005-0446-4099-87fa-184fe46d47fb",
+              "title": "Color Images",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-XbXiiGQ9gw",
+                "china_cdn_id": "-XbXiiGQ9gw.mp4"
+              }
+            },
+            {
+              "id": 486672,
+              "key": "feb3fdf3-9521-41fe-b4d7-f940c4716a3b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Color Images\n\nColor images are interpreted as 3D cubes of values with width, height, and depth!\n\nThe depth is the number of colors. Most color images can be represented by combinations of only 3 colors: red, green, and blue values; these are known as RGB images. And for RGB images, the depth is 3!\n\nIt’s helpful to think of the depth as three stacked, 2D color layers. One layer is Red, one Green, and one Blue. Together they create a complete color image.\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 486674,
+              "key": "727b8ee7-70c8-492f-b0b5-b56266e9ac7b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a386e3b_screen-shot-2017-12-18-at-5.41.01-pm/screen-shot-2017-12-18-at-5.41.01-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/727b8ee7-70c8-492f-b0b5-b56266e9ac7b",
+              "caption": "RGB layers of a car image.",
+              "alt": "",
+              "width": 300,
+              "height": 225,
+              "instructor_notes": null
+            },
+            {
+              "id": 486675,
+              "key": "61b567a1-9b59-433e-9212-ee49a91e9ab5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Importance of Color\n\nIn general, when you think of a classification challenge, like identifying lane lines or cars or people, you can decide whether color information and color images are useful by thinking about your own vision.\n\nIf the identification problem is easier in color for us humans, it’s likely easier for an algorithm to see color images too!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 465655,
+          "key": "d157db0a-239a-43d0-8904-97169bc25da8",
+          "title": "Color or Grayscale?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d157db0a-239a-43d0-8904-97169bc25da8",
+            "completed_at": "2020-04-01T05:24:46.465Z",
+            "last_viewed_at": "2020-04-01T05:24:45.520Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486676,
+              "key": "6b4022b9-572d-4441-8b89-0a966b9e4dc1",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6b4022b9-572d-4441-8b89-0a966b9e4dc1",
+                "completed_at": "2020-04-01T05:25:08.134Z",
+                "last_viewed_at": "2020-04-01T05:25:08.134Z",
+                "unstructured": "{\"selected_ids\":[\"a1513647902229\",\"a1513647939019\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "For each recognition task listed, check the box if **color is necessary** or would be extremely helpful in completing the task. Leave a box *un-checked* if grayscale images would be sufficient for the task. (multiple boxes may be checked)",
+                "answers": [
+                  {
+                    "id": "a1513647814998",
+                    "text": "Recognizing all pedestrians in an image.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513647902229",
+                    "text": "Identifying different types of traffic lights (red, yellow, and green).",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513647939019",
+                    "text": "Recognizing a red stop sign.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513648113172",
+                    "text": "Reading a license plate",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 465656,
+          "key": "c1919384-90f8-43c1-9be2-9264c923ada3",
+          "title": "Notebook: Visualizing RGB Channels",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c1919384-90f8-43c1-9be2-9264c923ada3",
+            "completed_at": "2020-04-01T05:25:11.319Z",
+            "last_viewed_at": "2020-04-01T05:25:10.363Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486677,
+              "key": "6147033f-32fc-411b-8b32-41cf6530627d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewfd52212e",
+              "pool_id": "jupyter",
+              "view_id": "fd52212e-84da-40c4-9367-edf9ae84e366",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Visualizing RGB Channels.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 339800,
+          "key": "4e81c57f-2551-4e33-b484-7de38a99e6b5",
+          "title": "Color Thresholds",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4e81c57f-2551-4e33-b484-7de38a99e6b5",
+            "completed_at": "2020-04-01T05:26:02.937Z",
+            "last_viewed_at": "2020-04-01T05:26:01.985Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 339895,
+              "key": "70c896fc-8b63-4584-8678-e9f5b9625824",
+              "title": "Color Thresholds",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "08ZlYZJaiUg",
+                "china_cdn_id": "08ZlYZJaiUg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 339802,
+          "key": "7fb8d524-e962-43bd-b173-ab44c09a56c1",
+          "title": "Coding a Blue Screen",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7fb8d524-e962-43bd-b173-ab44c09a56c1",
+            "completed_at": "2020-04-01T05:26:56.933Z",
+            "last_viewed_at": "2020-04-01T05:26:55.953Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 339916,
+              "key": "1dc1b4ae-562e-4a6a-a4d4-1ebd29fd1ee4",
+              "title": "Coding A Blue Screen",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jeeDryFxodk",
+                "china_cdn_id": "jeeDryFxodk.mp4"
+              }
+            },
+            {
+              "id": 342219,
+              "key": "9fc0dbd4-8405-44be-9772-9f2b5a1249c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### OpenCV\n\n[OpenCV](http://opencv.org/) is a popular computer vision library that has meany built in tools for image analysis and understanding! \n\n*Note:* In the example above and in later examples, I'm using my own Jupyter notebook and sets of images stored on my personal computer. You're encouraged to set up a similar environment and use images of your own to practice! You'll also be given some code quizzes (coming up next), with images provided, to practice these techniques.\n\n#### Why BGR instead of RGB?\n\nOpenCV reads in images in BGR format (instead of RGB) because when OpenCV was first being developed, BGR color format was popular among camera manufacturers and image software providers. The red channel was considered one of the least important color channels, so was listed last, and many bitmaps use BGR format for image storage. However, now the standard has changed and most image software and cameras use RGB format, which is why, in these examples, it's good practice to initially convert BGR images to RGB before analyzing or manipulating them.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 342260,
+              "key": "feacf223-525f-4c00-875d-aa757b532781",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Changing Color Spaces\n\nTo change color spaces, we used OpenCV's `cvtColor` function, whose documentation is [here](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571333,
+          "key": "57df10a8-8ff8-4313-acb8-a2a84a4592ca",
+          "title": "Notebook: Blue Screen",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "57df10a8-8ff8-4313-acb8-a2a84a4592ca",
+            "completed_at": "2020-04-01T15:04:53.487Z",
+            "last_viewed_at": "2020-04-01T17:05:28.531Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572766,
+              "key": "5abe29ed-5866-42d7-8360-8755c63b3fac",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewfb7e7557",
+              "pool_id": "jupyter",
+              "view_id": "fb7e7557-4aab-4d37-9a53-9fd31eef3e78",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Blue Screen.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 572784,
+          "key": "8475cf4b-8446-411d-bea3-5e8da06c62b4",
+          "title": "Notebook: Green Screen",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8475cf4b-8446-411d-bea3-5e8da06c62b4",
+            "completed_at": "2020-04-01T15:08:00.346Z",
+            "last_viewed_at": "2020-04-01T16:11:52.618Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572835,
+              "key": "9989bd24-ec2b-43c7-8d7a-ae756804f53e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view409d0c2d",
+              "pool_id": "jupyter",
+              "view_id": "409d0c2d-2418-4338-83f9-3c386fd98d90",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Green Screen Car.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 339806,
+          "key": "54fbbbe6-4025-4c1c-9e1e-38e1a31c4d9b",
+          "title": "Color Spaces and Transforms",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "54fbbbe6-4025-4c1c-9e1e-38e1a31c4d9b",
+            "completed_at": "2020-04-01T15:17:32.992Z",
+            "last_viewed_at": "2020-04-01T15:17:32.335Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 340039,
+              "key": "dbcd49de-67a0-4dd3-aa4a-c2bb348ec649",
+              "title": "Color Spaces and Transforms",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "B350aJVSsFc",
+                "china_cdn_id": "B350aJVSsFc.mp4"
+              }
+            },
+            {
+              "id": 342223,
+              "key": "49e47e5c-4470-4793-b8cd-8b3f698eee31",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Color Selection\n\nTo select the most accurate color boundaries, it's often useful to use a [color picker](https://www.w3schools.com/colors/colors_picker.asp) and choose the color boundaries that define the region you want to select!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 814530,
+              "key": "3e7e614b-4e7d-45db-9ffe-c25bef5cc189",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 593178,
+          "key": "27f385d8-c489-47f3-955a-d3a2908ddfb0",
+          "title": "Notebook: Color Conversion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "27f385d8-c489-47f3-955a-d3a2908ddfb0",
+            "completed_at": "2020-04-01T16:05:32.357Z",
+            "last_viewed_at": "2020-04-01T16:11:39.174Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613402,
+              "key": "f9f62b11-b8db-478a-90c5-80a50c3ca8ca",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewde20650b",
+              "pool_id": "jupyter",
+              "view_id": "de20650b-b9ba-4431-8c70-ccf9b6353fc6",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/1. HSV Color Space, Balloons.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 593177,
+          "key": "3039b20b-25c7-4fd9-b426-b7cb8238fa79",
+          "title": "Day and Night Classification Challenge",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3039b20b-25c7-4fd9-b426-b7cb8238fa79",
+            "completed_at": "2020-04-01T16:08:03.483Z",
+            "last_viewed_at": "2020-04-01T16:11:35.923Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 593179,
+              "key": "8bd19d9b-79ee-4015-ab91-08efa04c6cf1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Day and Night Classification\n\nNow, you’re on your way to being able to build a more complex computer vision application: an image classifier! You know how to analyze color and brightness in a given image, and that skill alone can help you distinguish between different images.\n\nSo, I’m going to give you a classification challenge: Classify two types of images, taken during either the day or at night (when the sun has set), and I want you to separate these images into two classes: day or night. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 593180,
+              "key": "95bcc915-6252-482b-814e-498461eeaf71",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ac6b51c_screen-shot-2018-04-05-at-4.45.16-pm/screen-shot-2018-04-05-at-4.45.16-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/95bcc915-6252-482b-814e-498461eeaf71",
+              "caption": "Two images of the same scene. One taken during the day (left) and one at night.",
+              "alt": "",
+              "width": 600,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 593182,
+              "key": "ed5a7721-163d-4098-8488-7b706fa88a6b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Visualizing the Data\n\nWe’ll walk through each classification step together, but what do you think would be the first step in creating a classification model for day and night images?\n\n\nBefore you can classify any set of images, you have to look at them! **Visualizing the image data you’re working with is the *first step* in identifying any patterns in image data and being able to make predictions about the data!**\n\nSo, we’ll first load in this image data and learn a bit about the images we’ll be working with.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 465673,
+          "key": "1e4985f8-6826-4639-97ec-6ce925380458",
+          "title": "Notebook: Load and Visualize the Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1e4985f8-6826-4639-97ec-6ce925380458",
+            "completed_at": "2020-04-01T16:09:22.697Z",
+            "last_viewed_at": "2020-04-01T17:04:04.692Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486700,
+              "key": "3c0e4232-6402-4a1c-89d6-a3eb2cc143f5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view12431826",
+              "pool_id": "jupyter",
+              "view_id": "12431826-56b2-4326-b600-39cee8f6825d",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Visualizing the Data.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 465674,
+          "key": "60a64208-26e7-4fa0-a657-95217dafd3a9",
+          "title": "Labeled Data and Accuracy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "60a64208-26e7-4fa0-a657-95217dafd3a9",
+            "completed_at": "2020-04-01T16:18:20.917Z",
+            "last_viewed_at": "2020-04-01T16:18:20.233Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 501857,
+              "key": "026c02cf-83e8-46e3-9d95-15a885480382",
+              "title": "Labeled Data and Accuracy",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FN96OM_JGyM",
+                "china_cdn_id": "FN96OM_JGyM.mp4"
+              }
+            },
+            {
+              "id": 486707,
+              "key": "47a84c89-2541-4c29-8374-e08d6f991ae2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Why do we need labels? \n\n*You* can tell if an image is night or day, but a computer cannot unless we tell it explicitly with a label!\n\nThis becomes especially important when we are testing the accuracy of a classification model.\n\nA classifier takes in an image as input and should output a `predicted_label` that tells us the predicted class of that image. Now, when we load in data, like you’ve seen, we load in what are called the `true_labels` which are the *correct* labels for the image.\n\nTo check the accuracy of a classification model, we compare the predicted and true labels. If the true and predicted labels match, then we’ve classified the image correctly! Sometimes the labels do not match, which means we’ve misclassified an image.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 486708,
+              "key": "ead116a5-3020-4505-b777-1dbbb4974b54",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/December/5a38914e_screen-shot-2017-12-18-at-8.09.57-pm/screen-shot-2017-12-18-at-8.09.57-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ead116a5-3020-4505-b777-1dbbb4974b54",
+              "caption": "A misclassified image example. The true_label is \"day\" and the predicted_label is \"night\".",
+              "alt": "",
+              "width": 500,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 486709,
+              "key": "b63db13a-f156-4b99-9b2c-b8eedd176e52",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Accuracy\n\nAfter looking at many images, the accuracy of a classifier is defined as the number of correctly classified images (for which the predicted_label matches the true label) divided by the total number of images. So, say we tried to classify 100 images total, and we correctly classified 81 of them. We’d have 0.81 or 81% accuracy!\n\nWe can tell a computer to check the accuracy of a classifier only when we have these predicted and true labels to compare. We can also learn from any mistakes the classifier makes, as we’ll see later in this lesson.\n\n### Numerical labels\n\nIt’s good practice to use numerical labels instead of strings or categorical labels. They're easier to track and compare. So, for our day and night, binary class example, instead of \"day\" and \"night\" labels we’ll use the numerical labels: 0 for night and 1 for day.\n\n\nOkay, now you’re familiar with the day and night image data AND you know what a label is and why we use them; you’re ready for the next steps. We’ll be building a classification pipeline from start to end! \n\nLet’s first brainstorm what steps we’ll take to classify these images. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 465675,
+          "key": "e8f87b9f-0728-4172-80b7-f028bda54ba8",
+          "title": "Distinguishing Traits",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e8f87b9f-0728-4172-80b7-f028bda54ba8",
+            "completed_at": "2020-04-01T16:20:34.366Z",
+            "last_viewed_at": "2020-04-01T16:20:33.708Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486710,
+              "key": "1f2d7c35-f787-4c87-a0ea-13bf6d2dc26e",
+              "title": "Reflect",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1f2d7c35-f787-4c87-a0ea-13bf6d2dc26e",
+                "completed_at": "2020-04-01T16:21:51.681Z",
+                "last_viewed_at": "2020-04-01T16:21:51.681Z",
+                "unstructured": "{\"answer\":\"I will consider the 'Value' part of HSV to distinguish between the day and night.\"}"
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "After visualizing the day and night images, what traits do you think distinguish the two classes?"
+              },
+              "answer": {
+                "text": "There are many traits that distinguish a night from a day image. You may have thought about the sky: a day image has a bright and sometimes blue sky, and is generally brighter. Night images also often contain artificial lights, and so they have some small, very bright areas and a mostly dark background. All of these traits and more can help you classify these images!",
+                "video": null
+              }
+            },
+            {
+              "id": 486713,
+              "key": "8f4538c7-d4e8-4416-8838-3ce0383af412",
+              "title": "Acc",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8f4538c7-d4e8-4416-8838-3ce0383af412",
+                "completed_at": "2020-04-01T16:22:47.598Z",
+                "last_viewed_at": "2020-04-01T16:22:47.598Z",
+                "unstructured": "{\"selected_id\":\"a1513657235071\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Say you have 500 day and night test images, and you send all of them through a classifier. What is the accuracy of this classifier if it *misclassifies* 80 images?",
+                "answers": [
+                  {
+                    "id": "a1513657224860",
+                    "text": "72%",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513657232036",
+                    "text": "80%",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1513657235071",
+                    "text": "84%",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1513657238035",
+                    "text": "92%",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 465676,
+          "key": "4dd262cc-bdaf-4478-8bb0-f739c9f01a41",
+          "title": "Features",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4dd262cc-bdaf-4478-8bb0-f739c9f01a41",
+            "completed_at": "2020-04-01T16:22:51.386Z",
+            "last_viewed_at": "2020-04-01T16:22:50.710Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486509,
+              "key": "8271d5b7-d27a-469d-9070-9182336348ff",
+              "title": "Nd113 C7 29 L Features",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HshygbfQylA",
+                "china_cdn_id": "HshygbfQylA.mp4"
+              }
+            },
+            {
+              "id": 486715,
+              "key": "bfbae77b-65df-4719-b04b-80e960cac2ef",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Distinguishing and Measurable Traits\n\nWhen you approach a classification challenge, you may ask yourself: how can I tell these images apart? What traits do these images have that differentiate them, and how can I write code to represent their differences? Adding on to that, how can I ignore irrelevant or overly similar parts of these images?\n\nYou may have thought about a number of distinguishing features: day images are much brighter, generally, than night images. Night images also have these really bright small spots, so the brightness over the whole image varies a lot more than the day images. There is a lot more of a gray/blue color palette in the day images.\n\nThere are lots of measurable traits that distinguish these images, and these measurable traits are referred to as **features**.\n\nA feature a measurable component of an image or object that is, ideally, unique and recognizable under varying conditions - like under varying light or camera angle. And we’ll learn more about features soon.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 486716,
+              "key": "bf0fabb6-e2cf-444e-88d8-a6acabf11534",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Standardizing and Pre-processing\n\nBut we’re getting ahead of ourselves! To extract features from any image, we have to pre-process and standardize them!\n\nNext we’ll take a look at the standardization steps we should take before we can consistently extract features.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 465679,
+          "key": "830f68bc-2de6-400c-84fd-ebab1f0dd4e6",
+          "title": "Standardizing Output",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "830f68bc-2de6-400c-84fd-ebab1f0dd4e6",
+            "completed_at": "2020-04-01T16:23:51.309Z",
+            "last_viewed_at": "2020-04-01T16:23:50.483Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486722,
+              "key": "122adff1-f0a1-4692-8cb1-2afbb446ffe8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Numerical vs. Categorical\n\nLet's learn a little more about labels. After visualizing the image data, you'll have seen that each image has an attached label: \"day\" or \"night,\" and these are known as **categorical values**.\n\nCategorical values are typically text values that represent various traits about an image. A couple examples are:\n\n* An \"animal\" variable with the values: \"cat,\" \"tiger,\" \"hippopotamus,\" and \"dog.\"\n* A \"color\" variable with the values: \"red,\" \"green,\" and \"blue.\"\n\nEach value represents a different category, and most collected data is labeled in this way!\n\nThese labels are descriptive for us, but may be inefficient for a classification task. Many machine learning algorithms do not use categorical data; they require that all output be numerical. Numbers are easily compared and stored in memory, and for this reason, we often have to convert categorical values into **numerical labels**. There are two main approaches that you'll come across:\n\n1. Integer encoding\n2. One hot-encoding\n\n### Integer Encoding\n\nInteger encoding means to assign each category value an integer value. So, day = 1 and night = 0. This is a nice way to separate binary data, and it's what we'll do for our day and night images.\n\n\n### One-hot Encoding\n\nOne-hot encoding is often used when there are more than 2 values to separate. A one-hot label is a 1D list that's the length of the number of classes. Say we are looking at the animal variable with the values: \"cat,\" \"tiger,\" \"hippopotamus,\" and \"dog.\" There are 4 classes in this category and so our one-hot labels will be a list of length four. The list will be all 0's and one 1; the 1 indicates which class a certain image is. \n\nFor example, since we have four classes (cat, tiger, hippopotamus, and dog), we can make a list in that order: [cat value, tiger value, hippopotamus value, dog value]. In general, order does not matter.\n\nIf we have an image and it's one-hot label is `[0, 1, 0, 0]`, what does that indicate?\n\nIn order of [cat value, tiger value, hippopotamus value, dog value], that label indicates that it's an image of a tiger! Let's do one more example, what about the label `[0, 0, 0, 1]`?\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 486724,
+              "key": "24c2240c-e0be-4515-bd3e-2d3f1370efc1",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "24c2240c-e0be-4515-bd3e-2d3f1370efc1",
+                "completed_at": "2020-04-01T16:25:37.917Z",
+                "last_viewed_at": "2020-04-01T16:25:37.917Z",
+                "unstructured": "{\"answer\":\"dog\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "For the order [cat value, tiger value, hippopotamus value, dog value], what does a one-hot label of `[0, 0, 0, 1]` indicate?",
+                "matchers": [
+                  {
+                    "expression": "\\s*[dD]og"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 465677,
+          "key": "3eb9cc0a-7484-45c2-84ab-e821926da2af",
+          "title": "Notebook: Standardizing Day and Night Images",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3eb9cc0a-7484-45c2-84ab-e821926da2af",
+            "completed_at": "2020-04-01T16:25:39.997Z",
+            "last_viewed_at": "2020-04-01T17:04:25.215Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486719,
+              "key": "a60b8fd5-cf50-44c3-856c-ee82c4aac10a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewb3a3692b",
+              "pool_id": "jupyter",
+              "view_id": "b3a3692b-7b3e-4ef4-b12c-ee658832263c",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Standardizing the Data.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 465680,
+          "key": "30bf0602-f388-4a9a-9d44-57be873ca330",
+          "title": "Average Brightness",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30bf0602-f388-4a9a-9d44-57be873ca330",
+            "completed_at": "2020-04-01T16:42:28.064Z",
+            "last_viewed_at": "2020-04-01T17:07:24.196Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 488957,
+              "key": "ccec37fc-82f2-4616-a7e5-9317233dfa95",
+              "title": "Nd113 C7 32 L Average Brightness V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oUlOS670uQg",
+                "china_cdn_id": "oUlOS670uQg.mp4"
+              }
+            },
+            {
+              "id": 486725,
+              "key": "a98ec05a-ffcf-437b-b592-b5d170f1f5a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Average Brightness\n Here were the steps we took to extract the average brightness of an image.\n1. Convert the image to HSV color space (the Value channel is an approximation for brightness)\n2. Sum up all the values of the pixels in the Value channel\n3. Divide that brightness sum by the area of the image, which is just the width times the height.\n\nThis gave us one value: the average brightness or the average Value of that image.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 486726,
+              "key": "a8f2e049-0f9d-4185-9046-b3869338de49",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the next notebook, make sure to look at a variety of day and night images and see if you can think of an average brightness value that will separate the images into their respective classes!\n\nThe next step will be to feed this data into a classifier. A classifier might be as simple as a conditional statement that checks if the average brightness is above some threshold, then this image is labeled as 1 (day) and if not, it’s labeled as 0 (night).\n\nOn your own, you can choose to create more features that help distinguish these images from one another, and we’ll soon learn about testing the accuracy of a model like this.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 488733,
+          "key": "74ad79a9-eed6-4ba9-86ae-c2a1e91a3237",
+          "title": "Notebook: Average Brightness Feature Extraction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "74ad79a9-eed6-4ba9-86ae-c2a1e91a3237",
+            "completed_at": "2020-04-01T16:45:53.546Z",
+            "last_viewed_at": "2020-04-01T17:04:30.950Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 488738,
+              "key": "e1cd68de-5485-40f7-928f-a50a6d59661c",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewe9b18764",
+              "pool_id": "jupyter",
+              "view_id": "e9b18764-afb5-4c3c-8443-907380aeaa0c",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Average Brightness.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 465694,
+          "key": "5d2d8dea-db8e-4810-a1ac-fa8be313126f",
+          "title": "Classification",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d2d8dea-db8e-4810-a1ac-fa8be313126f",
+            "completed_at": "2020-04-01T16:47:35.645Z",
+            "last_viewed_at": "2020-04-01T16:47:34.949Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 488740,
+              "key": "db78b2cd-ac09-4e6f-b33c-71e42c224ba6",
+              "title": "Nd113 C7 45 L Classification V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "<br>\nThis video cuts off a bit early, but all the better for you to test your intuition and jump into coding a threshold of your own creation in the next notebook!",
+              "video": {
+                "youtube_id": "LWD1M2vqXXo",
+                "china_cdn_id": "LWD1M2vqXXo.mp4"
+              }
+            },
+            {
+              "id": 488722,
+              "key": "4dab40c7-2723-42f6-9060-670e3e7ccd79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Classification Task\n\nLet’s now complete our day and night classifier. After we extracted the average brightness value, we want to turn this feature into a `predicted_label` that classifies the image.\nRemember, we want to generate a numerical label, and again, since we have a binary dataset, I’ll create a label that is a 1 if an image is predicted to be day and a 0 for images predicted to be night.\n\nI can create a complete classifier by writing a function that takes in an image, extracts the brightness feature, and then checks if the average brightness is above some threshold X.\n\nIf it is, this classifier returns a 1 (day), and if it’s not, this classifier returns a 0 (night)!\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 488723,
+              "key": "10a9e5a3-363b-4cb8-b021-b6da06f4a5fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Next, you'll take a look at this notebook and get a chance to tweak the threshold parameter. Then, when you're able to generate predicted labels, you can compare them to the true labels, and check the accuracy of our model!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 488725,
+          "key": "b41a992f-3a48-4241-bb7a-1ccb4c897706",
+          "title": "Notebook: Classification",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b41a992f-3a48-4241-bb7a-1ccb4c897706",
+            "completed_at": "2020-04-01T16:48:31.496Z",
+            "last_viewed_at": "2020-04-01T16:48:30.836Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 488745,
+              "key": "c0cd7f64-6a23-4632-8ab4-f93f0c19b831",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view7190d968",
+              "pool_id": "jupyter",
+              "view_id": "7190d968-0229-4199-9d56-6fd9c416f061",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Classification.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 465695,
+          "key": "c4c5ccd7-8737-402a-b2ac-12ce06875458",
+          "title": "Evaluation Metrics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c4c5ccd7-8737-402a-b2ac-12ce06875458",
+            "completed_at": "2020-04-01T16:52:19.335Z",
+            "last_viewed_at": "2020-04-01T16:52:18.638Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 486474,
+              "key": "227b07cb-330d-4275-8563-ee003da32977",
+              "title": "Nd113 C7 46 L Evaluation Metrics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fDN4D1QV674",
+                "china_cdn_id": "fDN4D1QV674.mp4"
+              }
+            },
+            {
+              "id": 488768,
+              "key": "32ff6b54-df6c-439a-b065-19926232f753",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Accuracy\n\nThe accuracy of a classification model is found by comparing predicted and true labels. For any given image, if the `predicted_label` matches the`true_label`, then this is a correctly classified image, if not, it is misclassified.\n\nThe accuracy is given by the number of correctly classified images divided by the total number of images. We’ll test this classification model on new images, this is called a test set of data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 488770,
+              "key": "5eb33d60-2158-4639-afaa-467aa7264336",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Test Data\n\n\nTest data is previously unseen image data. The data you *have* seen, and that you used to help build a classifier is called training data, which we've been referring to. The idea in creating these two sets is to have one set that you can analyze and learn from (training), and one that you can get a sense of how your classifier might work in a real-world, general scenario. You could imagine going through each image in the training set and creating a classifier that can classify all of these training images correctly, but, you actually want to build a classifier that **recognizes general patterns in data**, so that when it is faced with a real-world scenario, it will still work!\n\nSo, we use a new, test set of data to see how a classification model might work in the real-world and to determine the accuracy of the model. \n\n### Misclassified Images\n\nIn this and most classification examples, there are a few misclassified images in the test set. To see how to improve, it’s useful to take a look at these misclassified images; look at what they were mistakenly labeled as and where your model fails. It will be up to you to look at these images and think about how to improve the classification model!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 488764,
+          "key": "ed7bc36f-f7c3-4c28-a2fe-e4f8e9eb85fb",
+          "title": "Notebook: Accuracy and Misclassification",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ed7bc36f-f7c3-4c28-a2fe-e4f8e9eb85fb",
+            "completed_at": "2020-04-01T16:54:52.079Z",
+            "last_viewed_at": "2020-04-01T17:07:31.681Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 488765,
+              "key": "fc6bc99e-5b3b-46ce-b48e-4b345c77f0c6",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view47894fa7",
+              "pool_id": "jupyter",
+              "view_id": "47894fa7-4eda-499a-9ee5-5b4ca68b5188",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Accuracy and Misclassification.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 593197,
+          "key": "a1c93e05-cd80-40a2-b48b-2bd66f6d2f97",
+          "title": "Review and the Computer Vision Pipeline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a1c93e05-cd80-40a2-b48b-2bd66f6d2f97",
+            "completed_at": "2020-04-01T17:02:53.472Z",
+            "last_viewed_at": "2020-04-11T01:10:17.685Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 593867,
+              "key": "c08ec333-4801-4596-8bdd-560f0d54209a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n## Review and the Computer Vision Pipeline\n\nIn this lesson, you’ve really made it through a lot of material, from learning how images are represented to programming an image classifier!\n\nYou approached the classification challenge by completing each step of the **Computer Vision Pipeline** ste-by-step. First by looking at the classification problem, visualizing the image data you were working with, and planning out a complete approach to a solution.\n\nThe steps include **pre-processing** images so that they could be further analyzed in the same way, this included changing color spaces.\nThen we moved on to **feature extraction**, in which you decided on distinguishing traits in each class of image, and tried to isolate those features! You may note that skipped the pipeline step of \"Selecting Areas of Interest,\" and this is because we focused on classifying an image as a whole and did not need break it up into different segments, but we'll see where this step can be useful later in this course.\n\nFinally, you created a complete **classifier** that output a label or a class for a given image, and analyzed your classification model to see its accuracy!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 593868,
+              "key": "09baef93-ea24-4a02-bc4d-a49662058b84",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/April/5ac7e92b_screen-shot-2018-04-06-at-2.39.31-pm/screen-shot-2018-04-06-at-2.39.31-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/09baef93-ea24-4a02-bc4d-a49662058b84",
+              "caption": "Computer Vision Pipeline.",
+              "alt": "",
+              "width": 1586,
+              "height": 486,
+              "instructor_notes": null
+            },
+            {
+              "id": 593869,
+              "key": "c647b8de-7d68-4998-a523-5226e004e253",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, you’re ready to build a more complex classifier, and learn more about feature extraction and deep learning architectures! Good luck and great work!!\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

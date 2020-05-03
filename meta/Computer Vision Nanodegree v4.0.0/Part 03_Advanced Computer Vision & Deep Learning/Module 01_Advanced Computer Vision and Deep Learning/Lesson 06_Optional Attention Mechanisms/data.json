@@ -1,0 +1,936 @@
+{
+  "data": {
+    "lesson": {
+      "id": 521354,
+      "key": "19fb83fb-c9c4-4b54-bba6-30e9f184a925",
+      "title": "Optional: Attention Mechanisms",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Attention is one of the most important recent innovations in deep learning. In this section, you'll learn how attention models work and go over a basic code implementation.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/19fb83fb-c9c4-4b54-bba6-30e9f184a925/521354/1544453177020/Optional%3A+Attention+Mechanisms+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/19fb83fb-c9c4-4b54-bba6-30e9f184a925/521354/1544453173100/Optional%3A+Attention+Mechanisms+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 502180,
+          "key": "22752599-fa1f-4eed-a7ef-844611060e21",
+          "title": "Introduction to Attention",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "22752599-fa1f-4eed-a7ef-844611060e21",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689652,
+              "key": "271ac1a1-7bf7-4639-9ac4-065177b97ef7",
+              "title": "01 Introduction To Attention V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NCn97L5WbCY",
+                "china_cdn_id": "NCn97L5WbCY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 621451,
+          "key": "655ac803-57a1-45a4-9f7c-c3cc357c2e27",
+          "title": "Encoders and Decoders",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "655ac803-57a1-45a4-9f7c-c3cc357c2e27",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 621460,
+              "key": "7972f5e6-de1d-412b-afbb-247326260e2a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Sequence to Sequence Models\n\nBefore we jump into learning about attention models, let's recap what you've learned about sequence to sequence models. We know that RNNs excel at using and generating sequential data, and sequence to sequence models can be used in a variety of applications!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 621462,
+              "key": "f90f8b64-50e8-4a56-a8a5-e61180c66d43",
+              "title": "Applications seq2seq",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tDJBDwriJYQ",
+                "china_cdn_id": "tDJBDwriJYQ.mp4"
+              }
+            },
+            {
+              "id": 621455,
+              "key": "71ffa605-647e-4522-b228-d915536b2d22",
+              "title": "Architecture encoder decoder",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dkHdEAJnV_w",
+                "china_cdn_id": "dkHdEAJnV_w.mp4"
+              }
+            },
+            {
+              "id": 621471,
+              "key": "25d33115-a7bb-4276-9e4a-b7eb1e4b4c15",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Encoders and Decoders\n\nThe encoder and decoder do not have to be RNNs; they can be CNNs too!\n\nIn the example above, an LSTM is used to generate a sequence of words; LSTMs \"remember\" by keeping track of the input words that they see and their own hidden state. \n\nIn computer vision, we can use this kind of encoder-decoder model to generate words or captions for an input image or even to generate an image from a sequence of input words. We'll focus on the first case: generating captions for images, and you'll learn more about caption generation in the next lesson. For now know that we can input an image into a CNN (encoder) and generate a descriptive caption for that image using an LSTM (decoder).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 621528,
+          "key": "fc42f318-69ed-4cca-bafb-491af601767e",
+          "title": "Elective: Text Sentiment Analysis",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fc42f318-69ed-4cca-bafb-491af601767e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 621529,
+              "key": "f63b8b4e-bb85-4dd2-9a0b-714776cc5bce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Elective: Text Sentiment Analysis\n\nIf you would like more practice with analyzing sequences of words with a simple network, now would be a great time to check out the elective section: Text Sentiment Analysis. In this section, Andrew Trask teaches you how to convert words into vectors and then analyze the sentiment of these vectors. He goes through constructing and tuning a model *and* addresses some common errors in text analysis. This section does not contain material that is required to complete this program or the project in this section, but it is interesting and you may find it useful!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 621530,
+              "key": "e00c172e-10ac-40eb-b6ad-4e6cb40388a2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5aeb90fb_screen-shot-2018-05-03-at-3.44.59-pm/screen-shot-2018-05-03-at-3.44.59-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e00c172e-10ac-40eb-b6ad-4e6cb40388a2",
+              "caption": "Check is a text review is a positive or negative review!",
+              "alt": "",
+              "width": 300,
+              "height": 794,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 613229,
+          "key": "876fd2a9-a1c0-4255-bbed-615c9459d295",
+          "title": "Sequence to Sequence Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "876fd2a9-a1c0-4255-bbed-615c9459d295",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689651,
+              "key": "e2a027d1-44fd-466f-a0f8-bcee0a8b594c",
+              "title": "02 Sequence To Sequence Recap V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MRPHIPR0pGE",
+                "china_cdn_id": "MRPHIPR0pGE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613230,
+          "key": "524b5d1b-5416-4ed8-9951-89f654d0ed58",
+          "title": "Encoding -- Attention Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "524b5d1b-5416-4ed8-9951-89f654d0ed58",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689650,
+              "key": "ecb051af-5a34-43aa-8218-d20be2adc78d",
+              "title": "03 Attention Overview Encoding V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IctAnMaVUKc",
+                "china_cdn_id": "IctAnMaVUKc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613231,
+          "key": "4fcbb07c-eabf-4825-ba9d-1685bae88495",
+          "title": "Decoding -- Attention Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4fcbb07c-eabf-4825-ba9d-1685bae88495",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689649,
+              "key": "8577c902-6d01-43ac-92e2-6c180d5d2d7b",
+              "title": "04 Attention Overview Decoding V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DJxiPd585GY",
+                "china_cdn_id": "DJxiPd585GY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613232,
+          "key": "c49cb14c-074a-4429-990e-5150c9e75c53",
+          "title": "Attention Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c49cb14c-074a-4429-990e-5150c9e75c53",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 615189,
+              "key": "eac6b7bd-44a2-468b-8421-9408ae841e88",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "eac6b7bd-44a2-468b-8421-9408ae841e88",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "True or False: A sequence-to-sequence model processes the input sequence all in one step",
+                "answers": [
+                  {
+                    "id": "a1524580035943",
+                    "text": "True - a seq2seq model process its inputs by looking at the entire input sequence all at once",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524580102887",
+                    "text": "False - a seq2seq model works by feeding one element of the input sequence at a time to the encoder",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 615190,
+              "key": "c3898c02-cf1f-4c1b-9e20-d55efec56939",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c3898c02-cf1f-4c1b-9e20-d55efec56939",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following is a limitation of seq2seq models which can be solved using attention methods?",
+                "answers": [
+                  {
+                    "id": "a1524580286020",
+                    "text": "Inability to use word embeddings",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524580331898",
+                    "text": "The fixed size of the context matrix passed from the encoder to the decoder is a bottleneck",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1524580332714",
+                    "text": "Difficulty of encoding long sequences and recalling long-term dependancies",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 615194,
+              "key": "5c89a4b5-db07-4d4d-8217-dca1c3a6ce85",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5c89a4b5-db07-4d4d-8217-dca1c3a6ce85",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How large is the context matrix in an attention seq2seq model?",
+                "answers": [
+                  {
+                    "id": "a1524580807094",
+                    "text": "A fixed size -- a single vector",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524580819430",
+                    "text": "Depends on the length of the input sequence",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 613233,
+          "key": "4fcb7f98-bd74-48a1-a9ef-4de8279b4966",
+          "title": "Attention Encoder",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4fcb7f98-bd74-48a1-a9ef-4de8279b4966",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689648,
+              "key": "631ed0df-c8e7-4a3e-900a-dcd93e126bae",
+              "title": "05 Attention Encoder V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sphe9LDT4rA",
+                "china_cdn_id": "sphe9LDT4rA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613234,
+          "key": "43fb2e4f-de7c-4fc8-a955-1f6245ce5eb6",
+          "title": "Attention Decoder",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "43fb2e4f-de7c-4fc8-a955-1f6245ce5eb6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689647,
+              "key": "e4ed03b0-8c19-41c9-b679-7ddb1120e92d",
+              "title": "06 Attention Decoder V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5mMz6nN9_Ss",
+                "china_cdn_id": "5mMz6nN9_Ss.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613235,
+          "key": "b173aef6-e698-42f6-a32f-dc80449dcd2a",
+          "title": "Attention Encoder & Decoder",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b173aef6-e698-42f6-a32f-dc80449dcd2a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 615195,
+              "key": "fb4b90d3-6e69-4f93-8e5f-b1b59d16be51",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fb4b90d3-6e69-4f93-8e5f-b1b59d16be51",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In machine translation applications, the encoder and decoder are typically",
+                "answers": [
+                  {
+                    "id": "a1524580904147",
+                    "text": "Generative Adversarial Networks (GANs)",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524580929873",
+                    "text": "Recurrent Neural Networks (Typically vanilla RNN, LSTM, or GRU)",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1524580933726",
+                    "text": "Mentats",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 615196,
+              "key": "2d4d46ce-d022-438f-b913-aa6e485e038a",
+              "title": "Word Embeddings",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2d4d46ce-d022-438f-b913-aa6e485e038a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What's a more reasonable embedding size for a real-world application?",
+                "answers": [
+                  {
+                    "id": "a1524581190459",
+                    "text": "4",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524581223248",
+                    "text": "200",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1524581230210",
+                    "text": "6,000",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 615198,
+              "key": "328c3a9e-7aba-4979-8d07-71071d84fac1",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "328c3a9e-7aba-4979-8d07-71071d84fac1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are the steps that require calculating an attention vector in a seq2seq model with attention?",
+                "answers": [
+                  {
+                    "id": "a1524581362650",
+                    "text": "Every time step in the model (both encoder and decoder)",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524581449085",
+                    "text": "Every time step in the encoder only",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524581449963",
+                    "text": "Every time step in the decoder only",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 613236,
+          "key": "ffd9108d-7cfb-4327-a4f2-a250ba8d16db",
+          "title": "Bahdanau and Luong Attention",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ffd9108d-7cfb-4327-a4f2-a250ba8d16db",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689646,
+              "key": "61ce2cea-a60d-48e8-ae95-4df3a38451f6",
+              "title": "07 Additive And Multiplicative Attention V1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2eqIUDjefNg",
+                "china_cdn_id": "2eqIUDjefNg.mp4"
+              }
+            },
+            {
+              "id": 615217,
+              "key": "d4082f94-71f1-45bb-9276-ec7960e8b91f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)\n\n[Effective Approaches to Attention-based Neural Machine Translation](https://arxiv.org/abs/1508.04025)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613237,
+          "key": "f6cd84a3-b982-4078-89b5-c08bcaa20374",
+          "title": "Multiplicative Attention",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f6cd84a3-b982-4078-89b5-c08bcaa20374",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689645,
+              "key": "131d2f0c-be93-456a-b4c0-57b4da650ce6",
+              "title": "08 Multiplicative Attention V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1-OwCgrx1eQ",
+                "china_cdn_id": "1-OwCgrx1eQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613238,
+          "key": "b6d5a4ef-0ba7-435d-86e2-c38ccfba5609",
+          "title": "Additive Attention",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b6d5a4ef-0ba7-435d-86e2-c38ccfba5609",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689644,
+              "key": "0402c46f-4c6f-466d-af8e-f9c058f65e47",
+              "title": "09 Additive Attention V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "93VfVWZ-IvY",
+                "china_cdn_id": "93VfVWZ-IvY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613239,
+          "key": "35edee84-d3f8-41fb-99ed-b5bcb7cabb99",
+          "title": "Additive and Multiplicative Attention",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "35edee84-d3f8-41fb-99ed-b5bcb7cabb99",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 615200,
+              "key": "d545d6ad-675f-4568-9fd8-8eb22916df69",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d545d6ad-675f-4568-9fd8-8eb22916df69",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are valid scoring methods for attention?",
+                "answers": [
+                  {
+                    "id": "a1524581727461",
+                    "text": "Concat/additive",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1524581759564",
+                    "text": "Traveling salesman",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524581760623",
+                    "text": "Dot product",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1524581761572",
+                    "text": "General",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 615206,
+              "key": "0e30ba76-1f09-40a7-bd29-be70435f27c2",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0e30ba76-1f09-40a7-bd29-be70435f27c2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What's the intuition behind using dot product as a scoring method?",
+                "answers": [
+                  {
+                    "id": "a1524581950139",
+                    "text": "The usefulness of the commutative property of multiplication",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1524581974160",
+                    "text": "The dot product of two vectors in word-embedding space is a measure of similarity between them",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 613240,
+          "key": "ee1de10e-27b3-478c-af46-9e92163e497d",
+          "title": "Computer Vision Applications",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ee1de10e-27b3-478c-af46-9e92163e497d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689642,
+              "key": "24618754-e89a-4faf-8fd6-85e49cb3fef0",
+              "title": "10 Computer Vision Applications V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bhWwc4BYTYc",
+                "china_cdn_id": "bhWwc4BYTYc.mp4"
+              }
+            },
+            {
+              "id": 615212,
+              "key": "5fdae1e3-e08e-4bda-b812-d4f7af27d92e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Super interesting computer vision applications using attention:\n\n[Show, Attend and Tell: Neural Image Caption Generation with Visual Attention](https://arxiv.org/pdf/1502.03044.pdf) [pdf]\n\n[Bottom-Up and Top-Down Attention for Image Captioning and Visual Question Answering](https://arxiv.org/pdf/1707.07998.pdf) [pdf]\n\n[Video Paragraph Captioning Using Hierarchical Recurrent Neural Networks](https://www.cv-foundation.org/openaccess/content_cvpr_2016/app/S19-04.pdf) [pdf]\n\n[Every Moment Counts: Dense Detailed Labeling of Actions in Complex Videos](https://arxiv.org/pdf/1507.05738.pdf) [pdf]\n\n[Tips and Tricks for Visual Question Answering: Learnings from the 2017 Challenge](https://arxiv.org/pdf/1708.02711.pdf) [pdf]\n\n[Visual Question Answering: A Survey of Methods and Datasets](https://arxiv.org/pdf/1607.05910.pdf ) [pdf]",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613242,
+          "key": "59deedb9-cbd8-4799-a3dc-fe2eec30336a",
+          "title": "Other Attention Methods",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "59deedb9-cbd8-4799-a3dc-fe2eec30336a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689641,
+              "key": "3e2434a0-8e2b-44ea-835e-144b67ee3c5b",
+              "title": "11 Other Attention Methods V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VmsR9FVpQiM",
+                "china_cdn_id": "VmsR9FVpQiM.mp4"
+              }
+            },
+            {
+              "id": 615218,
+              "key": "47cbfd31-8212-4bdf-a7e4-5a8c99c9326a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Paper: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)\n\nTalk: [Attention is all you need attentional neural network models – Łukasz Kaiser](https://www.youtube.com/watch?v=rBCqOTEfxvg)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 613243,
+          "key": "48b7d2a3-2b9c-46fa-8491-ac070688a758",
+          "title": "The Transformer and Self-Attention",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "48b7d2a3-2b9c-46fa-8491-ac070688a758",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 689640,
+              "key": "2ade71f5-57e0-4e1e-932c-1c2a1826583e",
+              "title": "12 The Transformer And Self Attention V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "F-XN72bQiMQ",
+                "china_cdn_id": "F-XN72bQiMQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 613244,
+          "key": "f3030c2f-2662-4d89-8938-578c7473066f",
+          "title": "Notebook: Attention Basics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f3030c2f-2662-4d89-8938-578c7473066f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 615113,
+              "key": "8f503ed4-611c-473a-b101-06541f08a2b5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view1d690ab4",
+              "pool_id": "jupyter",
+              "view_id": "4afeefcb-fb2e-4f72-8b4a-151bae796790",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Attention%20Basics.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 613245,
+          "key": "0c376427-7dab-4528-8060-5b77ea42752c",
+          "title": "[SOLUTION]: Attention Basics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0c376427-7dab-4528-8060-5b77ea42752c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 613246,
+              "key": "d2ae78f3-8e6e-4c07-adc4-9b128e3f27c3",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view1d690ab4",
+              "pool_id": "jupyter",
+              "view_id": "1d690ab4-4607-4e0e-b3b1-b2194716a9ed",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "ports": [],
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/%5BSOLUTION%5D%20Attention%20Basics.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 621477,
+          "key": "6e17fde3-b6e9-4125-9de3-644ed493e793",
+          "title": "Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6e17fde3-b6e9-4125-9de3-644ed493e793",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 621479,
+              "key": "2e4ff6b4-fd86-4392-b085-0edc4b5d70c6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5aeb81ea_screen-shot-2018-05-03-at-2.40.39-pm/screen-shot-2018-05-03-at-2.40.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2e4ff6b4-fd86-4392-b085-0edc4b5d70c6",
+              "caption": "",
+              "alt": "",
+              "width": 300,
+              "height": 518,
+              "instructor_notes": null
+            },
+            {
+              "id": 621485,
+              "key": "f9578c0a-aeba-4414-93e5-b3520e16211c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Great job completing the deep learning attention section!\n\nYou should have a greater idea about how information is represented in data and how you can programmatically represent _the most important information_ in that data.\n\nAs you move on to the lesson about Image Captioning, please keep in mind the flexibility of an encoder and decoder model. The decoder portion is perhaps the most difficult as you have to decide how to embed image and word vectors into a shape that an LSTM can take as input and learn from. Good luck!",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

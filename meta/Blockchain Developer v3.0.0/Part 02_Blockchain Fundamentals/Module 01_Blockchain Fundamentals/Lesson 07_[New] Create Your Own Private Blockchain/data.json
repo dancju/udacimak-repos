@@ -1,0 +1,402 @@
+{
+  "data": {
+    "lesson": {
+      "id": 842233,
+      "key": "6d3b2863-9508-43a8-8b0e-c83e7b14db61",
+      "title": "[New] Create Your Own Private Blockchain",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Building your own Private Blockchain utilizing Node.js.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": {
+        "key": "c786a6c6-3392-452d-aef9-c16f3fb7a3f2",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Create Your Own Private Blockchain",
+        "description": "Gather your files and submit them via a zipped folder or a GitHub link. You can add all required external links and photos inside a README.md file.\n\nBe sure you make sure you have completed the requirements.\n\n## Project Submission Checklist\n\n**Before submitting your project, please review and confirm the following items.** \n<input type=\"checkbox\"> I am confident all rubric items have been met and my project will pass as submitted. \n<input type=\"checkbox\"> Project builds correctly without errors and runs.\n<input type=\"checkbox\"> All required functionality exists and my project behaves as expected per the project's specifications.\n\n**Once you have checked all these items, you are ready to submit!**\n",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2546",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 842554,
+          "key": "380e00fb-d3d5-4784-a9c1-7d081616ad63",
+          "title": "Project Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "380e00fb-d3d5-4784-a9c1-7d081616ad63",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 842557,
+              "key": "d0556d42-bc02-4920-b134-6d964feb57e0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Introduction\n\nYou are starting your journey as a Blockchain Developer. This project allows you to demonstrate that you are familiarized with the fundamental concepts of a Blockchain platform.\nConcepts like:\n\n    - Block\n    - Blockchain\n    - Wallet\n    - Blockchain Identity\n    - Proof of Existence\n    - Digital Assets\n\nAre some of the most important components in the Blockchain Framework that you will need to describe and also, why not? Implement too.\n\nIn this project you will have a boilerplate code with a REST Api already setup to expose some of the functionalities you will implement in your private blockchain.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842560,
+              "key": "f0dbdad2-0cbe-4203-b33e-6d6892088721",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What problem will you solve implementing this private Blockchain application?\n\nYour employer is trying to make a proof of concept on how a Blockchain application can be implemented in his company.\n\nHe is an astronomy fan and because of that he spends most of his free time searching stars in the sky, that's why he wants to create a test application that allows him and his friends to register stars, and track the ownership of each.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842561,
+              "key": "43544fe1-ee77-485b-8565-2a3c2e993934",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What steps are needed to implement your employers application?\n\n1. The application will create a Genesis Block when we run the application.\n2. The user will request the application to send a message to be signed using a Wallet and in this way verify the ownership over the wallet address. The message format will be: \n\n  `<WALLET_ADRESS>:${new Date().getTime().toString().slice(0,-3)}:starRegistry`;\n\n\n3. Once the user has the message they can use a Wallet (Electrum or Bitcoin Core for example) to sign the message.\n4. The user will try to submit the Star object for that. The submission will consist of: `wallet address`, `message`, `signature` and the `star` object with the star information.\n    The Start information will be formed in this format:\n    ```json\n        \"star\": {\n            \"dec\": \"68° 52' 56.9\",\n            \"ra\": \"16h 29m 1.0s\",\n            \"story\": \"Testing the story 4\"\n\t\t}\n    ```\n5. The application will verify if the time elapsed from the request ownership (the time is contained in the message) and the time when you submit the star is less than 5 minutes.\n6. If everything is okay the star information will be stored in the block and added to the `chain` encoding the Star information.\n7. The application will allow us to retrieve the Star objects belong to an owner (wallet address). This information should be human readable so it shouldn't be encoded.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 842555,
+          "key": "c44b154b-1422-4053-ac54-8c70e2a84e7c",
+          "title": "Project Details",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c44b154b-1422-4053-ac54-8c70e2a84e7c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 842556,
+              "key": "60090e9e-5541-442c-91e3-b6c5fedc582d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Requirements\n---\nYour project will be evaluated using the [Project Rubric](https://review.udacity.com/#!/rubrics/2546/view). \nFor a project to pass, all criteria must *Meet Specifications*. Please thoroughly read through the rubric before beginning to build your project. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842562,
+              "key": "7ecaccf6-13fa-4ae9-a3fb-30dc9f96dc8b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What tools or technologies will you use to create this application?\n\n- This application will be created using Node.js and Javascript programming language. The architecture will use ES6 classes\nbecause it will help us to organize the code and facilitate the maintenance of the code.\n- We suggest you use Visual Studio Code as an IDE  because it will help easily debug your code,\nbut you can choose any code editor you feel comfortable with.\n- Some of the libraries or npm modules you will use are:\n    - \"bitcoinjs-lib\": \"^4.0.3\",\n    - \"bitcoinjs-message\": \"^2.0.0\",\n    - \"body-parser\": \"^1.18.3\",\n    - \"crypto-js\": \"^3.1.9-1\",\n    - \"express\": \"^4.16.4\",\n    - \"hex2ascii\": \"0.0.3\",\n    - \"morgan\": \"^1.9.1\"\n\nRemember if you think you need install any other library you will use `npm install <npm_module_name>`\n\nLibraries purpose:\n\n1. `bitcoinjs-lib` and `bitcoinjs-message` will help us verify wallet address ownership and signatures. **Note**: Make sure to always use Legacy Wallet addresses.\n2. `express` is a node framework used to create The REST Api used in this project\n3. `body-parser` is used as a middleware module for Express and will help us to read the `json` data submitted in a POST request.\n4. `crypto-js` is a module containing some of the most important cryptographic methods and will help us create the block hash.\n5. `hex2ascii` will help us **decode** the data saved in the body of a Block.\n\nRemember all this libraries can be found in the `package.json` file in your project folder.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 842559,
+          "key": "0b7e8ace-6043-467b-aaf3-80163caead55",
+          "title": "Step 1: Review Boilerplate Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0b7e8ace-6043-467b-aaf3-80163caead55",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 842563,
+              "key": "8fc1f150-0e8f-4618-98ea-6e80315115ad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Understanding the boilerplate code\n\nThe Boilerplate code is a simple architecture for a Blockchain application, it includes a REST APIs application to expose your Blockchain application methods to your client applications or users.\n\n1. `app.js` contains the configuration and initialization of the REST Api, the team who provide this boilerplate code suggest do not change this code because it is already tested and works as expected.\n2. `BlockchainController.js` contains the routes of the REST Api. Those are the methods that expose the urls you will need to call when make a request to the application.\n3. `src/` In here we are going to have the main two classes we need to create our Blockchain application, we are going to create a `block.js` file and a `blockchain.js` file that will contain the `Block` and `BlockChain` classes.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842564,
+              "key": "d31c6ab1-40ce-4c7d-ae86-9b3bf53c5d8e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Starting with the boilerplate code:\n\nFirst thing first, we are going to download our [boilerplate code](https://s3.amazonaws.com/video.udacity-data.com/topher/2019/April/5cae1b26_project-1-v2-boilerplate/project-1-v2-boilerplate.zip)\n.\n\nThen we need to install all the libraries and module dependencies, to do that: open a terminal and run the command `npm install`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842565,
+              "key": "8736cd7a-aaa1-4264-862e-330a7da2456e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**( Remember to be able to work on this project you will need to have installed in your computer Node.js and npm )**\n\nAt this point we are ready to run our project for first time, use the command: `node app.js`\n\nYou can check in your terminal the the Express application is listening in the PORT 8000\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 842566,
+          "key": "0dde2069-c023-4e0f-ae46-16f5961703e6",
+          "title": "Step 2: Constructing a Block",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0dde2069-c023-4e0f-ae46-16f5961703e6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 842567,
+              "key": "46cc798c-d89c-4ce9-9ab4-55543017b71d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What do I need to implement to construct my block?\n\n1. `block.js` file. In the `Block` class we are going to implement the method:\n    `validate()`. \n\n     *  The `validate()` method will validate if the block has been tampered or not.\n     *  Been tampered means that someone from outside the application tried to change values in the block data as a consequence the hash of the block should be different.\n     *  Steps:\n         1. Return a new promise to allow the method be called asynchronous.\n         2. Create an auxiliary variable and store the current hash of the block in it (`this` represent the block object) \n         3. Recalculate the hash of the entire block (Use SHA256 from crypto-js library)\n         4. Compare if the auxiliary hash value is different from the calculated one.\n         5. Resolve true or false depending if it is valid or not.\n\n**Note**: to access the class values inside a Promise code you need to create an auxiliary value `let self = this;`\n    \n2. `block.js` file. In the `Block` class we are going to implement the method:\n    `getBData()`.\n\n     *  Auxiliary Method to return the data stored in the body of the block but decoded.\n     *  Steps:\n         1. Use hex2ascii module to decode the data\n         2. Because data is a javascript object use JSON.parse(string) to get the Javascript Object\n         3. Resolve with the data and make sure that you don't need to return the data for the `genesis block` or Reject with an error.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 842568,
+          "key": "39803878-48c0-4a9c-afaa-e4acd53f462c",
+          "title": "Step 3: Constructing your Chain",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "39803878-48c0-4a9c-afaa-e4acd53f462c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 842569,
+              "key": "6a0fbd3b-05e3-4867-8dbe-7bab6ef068d6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What do I need to implement to construct my blockchain class?\n\n1. `blockchain.js` file. In the `Blockchain` class we are going to implement the method:\n    `_addBlock(block)`.\n     \n     * _addBlock(block) will add a block in the chain\n     * The method will return a Promise that will resolve with the block added or reject if an error happen during the execution.\n     * You will need to check for the height to assign the `previousBlockHash`, assign the `timestamp` and the correct `height`...\n     * At the end you need to create the block **hash** and push the block into the chain array. Don't forget to update the `this.height` class variable.\n     * Note: the symbol `_` in the method name indicates in the javascript convention this method is a private method. \n\n2. `blockchain.js` file. In the `Blockchain` class we are going to implement the method:\n    `requestMessageOwnershipVerification(address)`\n\n     * The `requestMessageOwnershipVerification(address)` method will allow you  to request a message that you will use to sign it with your Bitcoin Wallet (Electrum or Bitcoin Core)\n     * This is the first step before submit your Block.\n     * The method return a Promise that will resolve with the message to be signed\n       \n     `<WALLET_ADDRESS>:${new Date().getTime().toString().slice(0,-3)}:starRegistry`;\n\n      You will need to replace <WALLET_ADDRESS> with the wallet address submitted by the requestor and the time in your message will allow you to validate the 5 minutes time window. \n\n3. `blockchain.js` file. In the `Blockchain` class we are going to implement the method:\n    `submitStar(address, message, signature, star)`\n\n     * The submitStar(address, message, signature, star) method will allow users to register a new Block with the star object into the chain. This method will resolve with the Block added or reject with an error.\n     * Algorithm steps:\n        1. Get the time from the message sent as a parameter example: `parseInt(message.split(':')[1])`\n        2. Get the current time: `let currentTime = parseInt(new Date().getTime().toString().slice(0, -3));`\n        3. Check if the time elapsed is less than 5 minutes (compare the time in the message and currentTime)\n        4. Verify the message with wallet address and signature: `bitcoinMessage.verify(message, address, signature)` \n        5. Create the block and add it to the chain\n        6. Resolve with the block added.\n\n4. `blockchain.js` file. In the `Blockchain` class we are going to implement the method:\n    `getBlockByHash(hash)`\n\n     * This method will return a Promise that will resolve with the Block with the hash passed as a parameter.\n     * Search on the chain array for the block that has the hash for example investigate about `filter` in the array object in javascript.\n\n5. `blockchain.js` file. In the `Blockchain` class we are going to implement the method:\n    `getStarsByWalletAddress (address)`\n\n     * This method will return a Promise that will resolve with an array of `Stars` on the chain that belong to the owner with the wallet address passed in as parameter.\n     * This method will always return an array because a person can register more than one Star.\n\n6. `blockchain.js` file. In the `Blockchain` class we are going to implement the method:\n    `validateChain()`\n   \n     * This method will return a Promise that will resolve with the list of errors when validating the chain.\n     * Steps to validate:\n        1. You should validate each block using `validate()` method from each of the blocks in the chain.\n        2. Each Block should check the with the previousBlockHash to make sure the chain isn't broken.\n ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 842570,
+          "key": "2c868c0d-3ce3-4679-98ff-ba4a77ea2c27",
+          "title": "Step 4: Testing Your Applications Functionality",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2c868c0d-3ce3-4679-98ff-ba4a77ea2c27",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 842573,
+              "key": "8adcc6f3-0147-49c6-b3d5-4230847999c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How to test your application functionality?\n\nTo test your application I recommend you to use POSTMAN, this tool will help you to make the requests to the API.\nAlways is useful to debug your code see what is happening in your algorithm, so I will let you this video for you to check on how to do it [Debug Video](https://www.youtube.com/watch?v=6cOsxaNC06c) . Try always to debug your code to understand what you are doing.\n\n1. Run your application using the command `node app.js`\nYou should see in your terminal a message indicating that the server is listening in port 8000:\n> Server Listening for port: 8000\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842850,
+              "key": "3c439b86-0cf6-4625-a442-26bb3aa42069",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. To make sure your application is working fine and it creates the Genesis Block you can use POSTMAN to request the Genesis block:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842575,
+              "key": "61d47709-3c89-47b6-be4c-8ee32249d6a1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/April/5cae12fb_request-genesis/request-genesis.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/61d47709-3c89-47b6-be4c-8ee32249d6a1",
+              "caption": "",
+              "alt": "",
+              "width": 2564,
+              "height": 1602,
+              "instructor_notes": null
+            },
+            {
+              "id": 842577,
+              "key": "579522e0-fb94-4203-82f1-f0aa106a8b21",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. Make your first request of ownership sending your wallet address:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842578,
+              "key": "43cede87-8031-40e3-970e-205cc38604a8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/April/5cae13e1_request-ownership/request-ownership.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/43cede87-8031-40e3-970e-205cc38604a8",
+              "caption": "",
+              "alt": "",
+              "width": 2564,
+              "height": 1602,
+              "instructor_notes": null
+            },
+            {
+              "id": 842579,
+              "key": "57b7701f-59fc-411a-9990-539454fcb307",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. Sign the message with your Wallet:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842580,
+              "key": "c11e0132-847e-4e51-8c84-5bd244a7c31e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/April/5ca365d3_signing-message/signing-message.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c11e0132-847e-4e51-8c84-5bd244a7c31e",
+              "caption": "",
+              "alt": "",
+              "width": 1714,
+              "height": 1248,
+              "instructor_notes": null
+            },
+            {
+              "id": 842581,
+              "key": "eaed87ca-6ae9-479b-9292-25845bc64587",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "5. Submit your Star",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842582,
+              "key": "a88c9edc-318c-419c-adf9-841145fa6f77",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/April/5ca36206_submit-star/submit-star.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a88c9edc-318c-419c-adf9-841145fa6f77",
+              "caption": "",
+              "alt": "",
+              "width": 2564,
+              "height": 1602,
+              "instructor_notes": null
+            },
+            {
+              "id": 842583,
+              "key": "4aa5f419-dee3-4f14-9b6c-f0e95e248e0a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "6. Retrieve Stars owned by me",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842584,
+              "key": "6611e298-42d3-40a3-ab99-958db3bd1a75",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/April/5cae183e_retrieve-stars/retrieve-stars.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6611e298-42d3-40a3-ab99-958db3bd1a75",
+              "caption": "",
+              "alt": "",
+              "width": 2564,
+              "height": 1602,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 951487,
+          "key": "6952baa3-7d89-4d98-ab24-c3d9ec045104",
+          "title": "Project Cheat Sheet",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6952baa3-7d89-4d98-ab24-c3d9ec045104",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 951488,
+              "key": "2d36583f-c393-4d81-a641-e97940b63bb9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9feb02_nd1309-p1-lessons-cheat-sheet/nd1309-p1-lessons-cheat-sheet.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2d36583f-c393-4d81-a641-e97940b63bb9",
+              "caption": "",
+              "alt": "",
+              "width": 550,
+              "height": 440,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

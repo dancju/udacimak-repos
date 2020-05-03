@@ -1,0 +1,1232 @@
+{
+  "data": {
+    "lesson": {
+      "id": 858292,
+      "key": "f5325d47-28ac-4b59-860e-1acf5f3837f7",
+      "title": "Event Processing",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this  lesson you  will learn about event processing using Serverless. We will focus on processing different event types with Lambda functions.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/f5325d47-28ac-4b59-860e-1acf5f3837f7/858292/1581981643927/Event+Processing+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/f5325d47-28ac-4b59-860e-1acf5f3837f7/858292/1581981633607/Event+Processing+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 858281,
+          "key": "f85b7b3e-16f1-4024-87ae-f16f45cd9911",
+          "title": "Events Processing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f85b7b3e-16f1-4024-87ae-f16f45cd9911",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858202,
+              "key": "12dad442-665a-431c-9aa0-ac1af61994ed",
+              "title": "ND9990 L04 A01 Intro- Events Processing With Serverless V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SwldDB7nrto",
+                "china_cdn_id": "SwldDB7nrto.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858290,
+          "key": "8d1ecc6b-6332-4ff4-8f8d-af2c10b956c3",
+          "title": "Uploading Files",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8d1ecc6b-6332-4ff4-8f8d-af2c10b956c3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858215,
+              "key": "7ff7bd22-6fa1-4e99-8191-0973a1cb19e4",
+              "title": "ND9990 L04 A02 Uploading Files With Lambda",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DbKHKJCBnfc",
+                "china_cdn_id": "DbKHKJCBnfc.mp4"
+              }
+            },
+            {
+              "id": 858280,
+              "key": "05dec41d-7aaa-4abc-b9f9-43e6fce53a7c",
+              "title": "ND9990 L04 A03 Presigned URL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fY3ZFWXfkPM",
+                "china_cdn_id": "fY3ZFWXfkPM.mp4"
+              }
+            },
+            {
+              "id": 859679,
+              "key": "f92f7c20-7e69-4ffb-91e6-f2cd66c18404",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Note** that “SignedURL” and “Presigned URL” refer to the same concept.  In Course 2, the instructor (Gabe) refers to “SignedURL”.  Here, Ivan refers to this as “Presigned URL”.\n\n*Presigned URL* is a special URL pointing to an S3 bucket that can be used by anyone to upload/read an object.  It can be used to access an S3 bucket even if it is private.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858204,
+              "key": "0dbb0f93-fc9d-481e-9eca-7d3faed8897e",
+              "title": "ND9990 L04 A04 Generating A Presigned URL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qVlRe-8Zo9A",
+                "china_cdn_id": "qVlRe-8Zo9A.mp4"
+              }
+            },
+            {
+              "id": 1005248,
+              "key": "a36d6f86-e370-4c58-83c4-479f850a7c23",
+              "title": "Generating a Presigned URL",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here is a code snippet that can be used to generate a presigned URL:\n\n```ts\nconst s3 = new AWS.S3({\n   signatureVersion: 'v4' // Use Sigv4 algorithm\n })\n const presignedUrl = s3.getSignedUrl('putObject', { // The URL will allow to perform the PUT operation\n   Bucket: 's3-bucket-name', // Name of an S3 bucket\n   Key: 'object-id', // id of an object this URL allows access to\n   Expires: '300'  // A URL is only valid for 5 minutes\n })\n```\n\nYou can read more [here](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) about the Sigv4 algorithm that is used to sign a URL.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005258,
+          "key": "838f5830-0ecc-475b-8e8e-d27923db63b0",
+          "title": "Cloudformation References",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "838f5830-0ecc-475b-8e8e-d27923db63b0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858211,
+              "key": "abdad98d-8728-4176-85f0-e5b01a20e353",
+              "title": "ND9990 L04 A05 Cloudformation References",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AaG2sliYsUA",
+                "china_cdn_id": "AaG2sliYsUA.mp4"
+              }
+            },
+            {
+              "id": 1005245,
+              "key": "a5ce7a24-d17d-40b8-9490-3f40d7373eb8",
+              "title": "CloudFormation Reference",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[**Ref**](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html) is a function in CloudFormation that allows to get an id of a resource \n\nIn YAML files we can use one of the two forms:\n\n```yaml\nRef: logicalName\n```\n\nShort form:\n\n```yaml\n!Ref logicalName\n```\n\n**Ref** function will return different values depending on what resource type it is used with. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 858282,
+          "key": "00a3f6d5-d900-4a45-ab9b-cb39729e4344",
+          "title": "Demo: presigned URL",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "00a3f6d5-d900-4a45-ab9b-cb39729e4344",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858203,
+              "key": "b87c64de-f063-4419-aa62-f0a400323b1f",
+              "title": "ND9990 L04 A06 Demo - Create An S3 Bucket",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2Tu5jfiHXyI",
+                "china_cdn_id": "2Tu5jfiHXyI.mp4"
+              }
+            },
+            {
+              "id": 858221,
+              "key": "31af5af3-f8f4-44de-b9a4-c2a2a082a42a",
+              "title": "ND9990 L04 A07 Demo - Return A Presigned URL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "G8zI1KEj9AQ",
+                "china_cdn_id": "G8zI1KEj9AQ.mp4"
+              }
+            },
+            {
+              "id": 858212,
+              "key": "65ed723b-f4d8-4fb5-ac82-859978686be3",
+              "title": "ND9990 L04 A08 Demo - Uploading A File",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Xv23jpAiBFE",
+                "china_cdn_id": "Xv23jpAiBFE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858283,
+          "key": "28540d0e-53bd-455f-9614-3fbbb1954ad3",
+          "title": "S3 Events",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "28540d0e-53bd-455f-9614-3fbbb1954ad3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858241,
+              "key": "00f3730e-dfaa-48b2-926e-6950e83593ab",
+              "title": "ND9990 L04 A09 Processing S3 Events",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "z8IivNFNP5U",
+                "china_cdn_id": "z8IivNFNP5U.mp4"
+              }
+            },
+            {
+              "id": 1005246,
+              "key": "0af04643-e7b4-4ada-80a1-0a8c5db74977",
+              "title": "Processing S3 events",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here is a configuration snippet that can be used to subscribe to S3 events:\n\n```yaml\nfunctions:\n  process:\n    handler: file.handler\n    events:\n      - s3: bucket-name\n        event: s3:ObjectCreated:*\n        rules:\n            - prefix: images/\n            - suffix: .png\n```\n\nNotice that we can subscribe to a subset of events generated by an S3 bucket.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858219,
+              "key": "cde97d70-b4c2-41ee-b829-7d855b2438b7",
+              "title": "ND9990 L04 A10 Demo - Process S3 Notifications",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TwZ9e87qPrY",
+                "china_cdn_id": "TwZ9e87qPrY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858285,
+          "key": "848a8b03-204d-479e-a95f-118a31af5c69",
+          "title": "WebSocket: Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "848a8b03-204d-479e-a95f-118a31af5c69",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858214,
+              "key": "c014551c-b786-462f-8df5-ca4f98756d7f",
+              "title": "ND9990 L04 A11 Implement WebSocket Notifications-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Kdi0CPsB6kU",
+                "china_cdn_id": "Kdi0CPsB6kU.mp4"
+              }
+            },
+            {
+              "id": 858223,
+              "key": "9a557b23-b79e-47ce-8618-924a35e11d9f",
+              "title": "ND9990 L04 A12 WebSockets In A Nutshell",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "r9lFMl0JYT0",
+                "china_cdn_id": "r9lFMl0JYT0.mp4"
+              }
+            },
+            {
+              "id": 1005247,
+              "key": "1913ffbf-7d0f-4692-baee-067c0ec6d43a",
+              "title": "WebSocket",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "WebSocket allows to implement bi-directional communication between a web application and a server. It can be especially useful for applications like:\n\n- Messaging Applications\n- Real-time Notifications\n- Real-time Dashboards\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005263,
+          "key": "4814f5bf-2f1b-4e5d-890e-e66503b3d770",
+          "title": "API Gateway: WebSockets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4814f5bf-2f1b-4e5d-890e-e66503b3d770",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858260,
+              "key": "7a3830b7-3f04-48e2-860a-790010378912",
+              "title": "ND9990 L04 A13 API Gateway - WebSocket API",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4U8PfrW4uNI",
+                "china_cdn_id": "4U8PfrW4uNI.mp4"
+              }
+            },
+            {
+              "id": 859682,
+              "key": "f36e12e9-86d3-4be3-882b-b90c4e3ad065",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "WebSocket API provides two URLs: WebSocket URL and Connection URL.\n\n*WebSocket URL:*\n- Clients will use to connect to the API\n- Allows clients to send messages and receive notifications\n\n*Connection URL*\n- Send a message back to a connected client\n- Lambda function will use to send messages\n- Requires a connection id to send a message to a particular client\n\n\n*Connection URL supports the following operations:*\r- POST: to send a message to a client\n- GET: to get the latest connection status\n- DELETE: to disconnect a client from API ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005260,
+          "key": "8dc7f130-d489-4193-8b8d-908799bf528e",
+          "title": "Websockets with Serverless Framework",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8dc7f130-d489-4193-8b8d-908799bf528e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858217,
+              "key": "e27153e3-bfcc-481a-91e0-1c25d1e7cf8c",
+              "title": "ND9990 L04 A14 WebSockets With Serverless Framework",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HgT1DwBszcw",
+                "china_cdn_id": "HgT1DwBszcw.mp4"
+              }
+            },
+            {
+              "id": 1005251,
+              "key": "774ff365-810f-48e1-8fad-2280fc527da2",
+              "title": "WebSocket configuration",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here is an example of how to react to WebSocket events using Serverless Framework:\n\n```yaml\n ConnectHandler:\n    handler: src/websocket/connect.handler\n    events:\n      - websocket:\n          route: $connect\n\n  DisconnectHandler:\n    handler: src/websocket/disconnect.handler\n    events:\n      - websocket:\n          route: $disconnect\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858213,
+              "key": "3d3a7dda-c011-464a-bc00-872091b1f747",
+              "title": "ND9990 L04 A15 Demo - Store A List Of Connections-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CiIE-2vTlo0",
+                "china_cdn_id": "CiIE-2vTlo0.mp4"
+              }
+            },
+            {
+              "id": 858227,
+              "key": "834849da-214a-4b34-b665-cc38af576376",
+              "title": "ND9990 L04 A16 Demo - WebSocket Notifications",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7qybvK6y6k8",
+                "china_cdn_id": "7qybvK6y6k8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858287,
+          "key": "5d9cb82d-5a70-4535-889a-fdd1669b652f",
+          "title": "Full-Text Search",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d9cb82d-5a70-4535-889a-fdd1669b652f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858231,
+              "key": "f276817b-539a-4025-88d0-d8db602738ec",
+              "title": "ND9990 L04 A17 New Feature - Full-Text Search-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sT5oECZWL0A",
+                "china_cdn_id": "sT5oECZWL0A.mp4"
+              }
+            },
+            {
+              "id": 858237,
+              "key": "0f52e1fa-05e6-4637-b6dc-ec46f7e57375",
+              "title": "ND9990 L04 A18 Elasticsearch",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ssIOoCiX0nY",
+                "china_cdn_id": "ssIOoCiX0nY.mp4"
+              }
+            },
+            {
+              "id": 1005249,
+              "key": "c9caa6a9-3de4-4694-8a39-954d83d09dd1",
+              "title": "Elasticsearch",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Elasticsearch\n\nYou can read more about Elasticsearch in the [official documentation](https://www.elastic.co/guide/index.html).\n\nYou can download and run Elasticsearch yourself, or use one of the managed Elasticsearch solutions. AWS provides a managed Elasticsearch service that we will use in this course, but there are other companies like Elastic that provide similar service.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858251,
+              "key": "33a1fc3a-d729-4754-8cfe-16bba0215773",
+              "title": "ND9990 L04 A19 Synchronize DynamoDB And Elasticsearch",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-wxoNWgXQ48",
+                "china_cdn_id": "-wxoNWgXQ48.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858288,
+          "key": "98073c90-7cf8-4cb7-9828-2a5e9cd9deb7",
+          "title": "DynamoDB Stream",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "98073c90-7cf8-4cb7-9828-2a5e9cd9deb7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858220,
+              "key": "a63ee955-7de8-44c7-996f-e879cf4dfa73",
+              "title": "ND9990 L04 A20 Decouple DynamoDB Updates-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bKFei9l2Qb0",
+                "china_cdn_id": "bKFei9l2Qb0.mp4"
+              }
+            },
+            {
+              "id": 858243,
+              "key": "37de7bfe-859d-4777-8666-1dd035d67054",
+              "title": "ND9990 L04 A21 Data Stream",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YqgnX0pYH2g",
+                "china_cdn_id": "YqgnX0pYH2g.mp4"
+              }
+            },
+            {
+              "id": 858236,
+              "key": "9a1a235f-8eca-415a-9a87-f5e40a7f3042",
+              "title": "ND9990 L04 A22 Data Stream Services",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mRjEBAAsawY",
+                "china_cdn_id": "mRjEBAAsawY.mp4"
+              }
+            },
+            {
+              "id": 858659,
+              "key": "8dc7ea19-330f-4da1-9539-faa8ef83b197",
+              "title": "Data stream operations",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8dc7ea19-330f-4da1-9539-faa8ef83b197",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What operations can we perform on a data stream",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Add an element to the end of a stream",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Add an element at the middle of a stream",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Remove an element from a stream",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Read an element from an arbitrary position",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 858262,
+              "key": "b087fa3b-0f66-4405-b4a2-9837cefb5105",
+              "title": "ND9990 L04 A23 Scaling A Data Stream",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cQoJhip9gHE",
+                "china_cdn_id": "cQoJhip9gHE.mp4"
+              }
+            },
+            {
+              "id": 858265,
+              "key": "3ea6de51-e3f3-449e-8bd0-3f27680911b6",
+              "title": "ND9990 L04 A24 Enable A Stream For A Table",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rpxMrvawO-0",
+                "china_cdn_id": "rpxMrvawO-0.mp4"
+              }
+            },
+            {
+              "id": 858661,
+              "key": "1335412f-1343-41c5-b662-316d84226158",
+              "title": "Stream Types",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1335412f-1343-41c5-b662-316d84226158",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What stream type do we need to select in DynamoDB to have access to the previous and new version of an updated item?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "NEW_IMAGES",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "OLD_IMAGES",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "NEW_AND_OLD_IMAGES",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "KEYS_ONLY",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 858258,
+              "key": "922435c7-9450-4b42-96a1-29936558a331",
+              "title": "ND9990 L04 A25 Processing A DynamoDB Stream",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "btmeS5Fdjcg",
+                "china_cdn_id": "btmeS5Fdjcg.mp4"
+              }
+            },
+            {
+              "id": 860572,
+              "key": "c14d3af0-d46d-41c0-b8b8-c6479288a8df",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# DynamoDB JSON\n\nYou can read more about DynamoDB JSON [here](http://bit.ly/dynamo-db-json).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005259,
+          "key": "201dacad-e67a-4328-880b-d620b2a8c9f0",
+          "title": "Decouple DynamoDB",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "201dacad-e67a-4328-880b-d620b2a8c9f0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858236,
+              "key": "9a1a235f-8eca-415a-9a87-f5e40a7f3042",
+              "title": "ND9990 L04 A22 Data Stream Services",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mRjEBAAsawY",
+                "china_cdn_id": "mRjEBAAsawY.mp4"
+              }
+            },
+            {
+              "id": 1005252,
+              "key": "73788af3-2707-41bc-b8a0-eb8b3504f96b",
+              "title": "Data stream services with AWS",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "AWS provides the following services to implement data streaming:\n\n*Kinesis*\n- Separate data stream service\n- Allows to store any streaming data\n- Similar to Kafka (Open Source data streaming platform)\n\n*DynamoDB*\n- Provides a stream of all updates applied to DynamoDB tables\n- Only contains operations performed on DynamoDB tables\n\n*Managed Streaming for Apache Kafka*\n- Managed version of Apache Kafka\n- Allows to store any streaming data",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005264,
+          "key": "bdd90249-a47f-4342-920e-ee3da3b6b9a6",
+          "title": "Scaling a Data Stream",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bdd90249-a47f-4342-920e-ee3da3b6b9a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858262,
+              "key": "b087fa3b-0f66-4405-b4a2-9837cefb5105",
+              "title": "ND9990 L04 A23 Scaling A Data Stream",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cQoJhip9gHE",
+                "china_cdn_id": "cQoJhip9gHE.mp4"
+              }
+            },
+            {
+              "id": 1005253,
+              "key": "5ea1ab7e-1008-4faa-b917-3d143e80d5ad",
+              "title": "Scaling a Data Stream",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A data stream is split into shards, and every shard stores a subset of data. Different shards can spread across multiple hosts, which allows to scale up a data stream.\n\nEvery record that is added to a data stream has key and data, A key of a data record is used to decide what shard it will be written to. All items with the same key will be written to the same shard and will be available in the same order they were added to a stream.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858265,
+              "key": "3ea6de51-e3f3-449e-8bd0-3f27680911b6",
+              "title": "ND9990 L04 A24 Enable A Stream For A Table",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rpxMrvawO-0",
+                "china_cdn_id": "rpxMrvawO-0.mp4"
+              }
+            },
+            {
+              "id": 1005255,
+              "key": "93cb9d69-ee1c-488e-a1f8-748942a4e6c8",
+              "title": "DynamoDB Updates Stream",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# DynamoDB Updates Stream\n\nFor a more detailed overview of DynamoDB Stream, please refer to the following page in the [official documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858661,
+              "key": "1335412f-1343-41c5-b662-316d84226158",
+              "title": "Stream Types",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1335412f-1343-41c5-b662-316d84226158",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What stream type do we need to select in DynamoDB to have access to the previous and new version of an updated item?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "NEW_IMAGES",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "OLD_IMAGES",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "NEW_AND_OLD_IMAGES",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "KEYS_ONLY",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 858258,
+              "key": "922435c7-9450-4b42-96a1-29936558a331",
+              "title": "ND9990 L04 A25 Processing A DynamoDB Stream",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "btmeS5Fdjcg",
+                "china_cdn_id": "btmeS5Fdjcg.mp4"
+              }
+            },
+            {
+              "id": 860572,
+              "key": "c14d3af0-d46d-41c0-b8b8-c6479288a8df",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# DynamoDB JSON\n\nYou can read more about DynamoDB JSON [here](http://bit.ly/dynamo-db-json).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 858286,
+          "key": "8e05a981-64f7-49e4-886b-f69eeda47906",
+          "title": "Elasticsearch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8e05a981-64f7-49e4-886b-f69eeda47906",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858245,
+              "key": "fbde9588-76ca-4882-8108-5e36c1c559b1",
+              "title": "ND9990 L04 A26 Elasticsearch",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "e9rujUrxI3M",
+                "china_cdn_id": "e9rujUrxI3M.mp4"
+              }
+            },
+            {
+              "id": 858257,
+              "key": "eaa1000e-229d-4a38-8eed-27b04f91ac37",
+              "title": "ND9990 L04 A27 Elasticsearch With Node.Js",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mcPPbFkZ9lA",
+                "china_cdn_id": "mcPPbFkZ9lA.mp4"
+              }
+            },
+            {
+              "id": 1005254,
+              "key": "27c95af0-70d9-4fcc-a9bf-fdfec8fa00e0",
+              "title": "Using Elasticsearch with Node.js",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nHere is how to create an Elasticsearch client:\n\n```yaml\nimport * as elasticsearch from 'elasticsearch'\n import * as httpAwsEs from 'http-aws-es'\n\n const esHost = process.env.ES_ENDPOINT\n\n const es = new elasticsearch.Client({\n   hosts: [ esHost ],\n   connectionClass: httpAwsEs\n })\n\n```\n\nHere is how to store a document in Elasticsearch\n\n```yaml\nawait es.index({\n   index: 'images-index',\n   type: 'images',\n   id: 'id', // Document ID\n   body: {  // Document to store\n     title: 'title',\n     imageUrl: 'https://example.com/image.png'\n   }\n })\n\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005262,
+          "key": "bd929b56-9920-4d3b-8691-7a12a1e0dca6",
+          "title": "Enable DynamoDB Stream",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bd929b56-9920-4d3b-8691-7a12a1e0dca6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858276,
+              "key": "b7079ec9-22ac-487f-b41b-bc732cf34aa3",
+              "title": "ND9990 L04 A28 Demo - Enable A DynamoDB Stream",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "f5Wq9n6mtEk",
+                "china_cdn_id": "f5Wq9n6mtEk.mp4"
+              }
+            },
+            {
+              "id": 858266,
+              "key": "e1e8c9ab-6c28-4987-a5fd-f3fb7d493547",
+              "title": "ND9990 L04 A29 Demo - Create An Elasticsearch Cluster",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fXkJ3XPRRMU",
+                "china_cdn_id": "fXkJ3XPRRMU.mp4"
+              }
+            },
+            {
+              "id": 951383,
+              "key": "aecf689f-7446-4251-b069-d5e4ed8588af",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this course, we've left our Kibana open to everyone on the Internet and completely unprotected. It is fine for the course where we want to focus on serverless but unacceptable for a production environment. \n\nAWS provides multiple ways to restrict access to a Kibana dashboard. One option to [restrict access to Kibana](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html)  would be to use [Amazon Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html), a service for authentication, authorization, and user management.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858272,
+              "key": "41c1898b-38d9-4b23-bb57-be627ab77dad",
+              "title": "ND9990 L04 A30 Demo - Full-Text Search",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wGeY16sOWrg",
+                "china_cdn_id": "wGeY16sOWrg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005261,
+          "key": "b65798ce-7957-417d-a8a5-3ed321b199e2",
+          "title": "Error Handling",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b65798ce-7957-417d-a8a5-3ed321b199e2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858271,
+              "key": "22dcb0fb-8721-4927-998c-738f9418ee4b",
+              "title": "ND9990 L04 A31 Error Processing",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Q522YrsxrqI",
+                "china_cdn_id": "Q522YrsxrqI.mp4"
+              }
+            },
+            {
+              "id": 1005256,
+              "key": "101ba813-5abc-4de0-ade8-3a85d5a041de",
+              "title": "Errors Handling",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Errors Handling \n\nYou can read [this article](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-errors) to learn more about handling errors when using AWS Lambda with Kinesis.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 858289,
+          "key": "0fc26f49-b28e-4f9d-8efe-47e493013910",
+          "title": "Simple Notification",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0fc26f49-b28e-4f9d-8efe-47e493013910",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858259,
+              "key": "8eb36d97-2bfd-4e34-8b1d-ab47bb0c2b7a",
+              "title": "ND9990 L04 A32 Multiple S3 Event Handlers",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Y74RwDDZFVo",
+                "china_cdn_id": "Y74RwDDZFVo.mp4"
+              }
+            },
+            {
+              "id": 858246,
+              "key": "4aa66338-7a61-4074-995c-5d0ecb7ec3f9",
+              "title": "ND9990 L04 A33 Simple Notification Service-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "r2M36CNPc-c",
+                "china_cdn_id": "r2M36CNPc-c.mp4"
+              }
+            },
+            {
+              "id": 1005250,
+              "key": "2573a0c4-8621-4f07-ae79-3f519c43a289",
+              "title": "Simple Notification Service",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "*SNS is a service to send messages to other services.*\n\nIt has two main concepts:\n- *Publishers* - publish messages\n- *Subscribers* - consume incoming messages\n\nPublishers and subscribers communicate via topics:\n- A publisher publish a message to a topic\n- A subscriber receives a message if it is subscribed to a topic\n- One topic can have many subscribers\n- Subscribers can use various protocols: Lambda, HTTP, email, SMS, etc.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858660,
+              "key": "86e42600-a203-483e-9535-6b3c8aa4f90f",
+              "title": "Using SNS",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "86e42600-a203-483e-9535-6b3c8aa4f90f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the reason why we are using Simple Notification Service in our application?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "S3 cannot call a Lambda function when a new object is added",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "S3 does not allow to send events to multiple targets",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "SNS allows to implement a pre-processing before an event is delivered to subscribers",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 858229,
+              "key": "a36ad750-8275-40da-9a05-084c6bf286f3",
+              "title": "ND9990 L04 A34 Subscribe To SNS Events",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "G5VquGh51bc",
+                "china_cdn_id": "G5VquGh51bc.mp4"
+              }
+            },
+            {
+              "id": 858235,
+              "key": "10bab1f1-11fb-42bc-a095-119dfe9e4950",
+              "title": "ND9990 L04 A35 Demo - SNS Notifications",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hlXAMO6L2B0",
+                "china_cdn_id": "hlXAMO6L2B0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858291,
+          "key": "672a904d-f60f-44b3-9e4a-9caa7c1171f6",
+          "title": "Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "672a904d-f60f-44b3-9e4a-9caa7c1171f6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858253,
+              "key": "b823dcf5-3623-4301-9e4a-0aefdf74263c",
+              "title": "ND9990 L04 A36 Exercise - Resize File On Upload V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bTa3p4IKTG0",
+                "china_cdn_id": "bTa3p4IKTG0.mp4"
+              }
+            },
+            {
+              "id": 858621,
+              "key": "663d886f-3f72-4d2e-9c21-659ac43d9843",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Implementation\n\nIn this exercise, you will have to implement a Lambda function that processes newly uploaded images, creates a smaller version of the same image, and uploads an image to a different S3 bucket. It is important to upload an image to a different bucket; otherwise, a smaller image will trigger your Lambda function again.\n\n## Add an event sources for the \"ResizeImage\" function\n\nThe function should be connected to the same SNS topic as the `SendUploadNotifications` function:\n\n```yml\nevents:\n  - sns:\n      arn:\n        Fn::Join:\n          - ':'\n          - - arn:aws:sns\n            - Ref: AWS::Region\n            - Ref: AWS::AccountId\n            - ${self:custom.topicName}\n      topicName: ${self:custom.topicName}\n```\n## Import \"S3EventRecord\" type\n\nIt might be handy to import `S3EventRecord` type that represents a single S3 event.\n\nTo do this make sure that the first import in the lambda handler's file looks like this:\n\n```ts\nimport { SNSEvent, SNSHandler, S3EventRecord } from 'aws-lambda'\n```\n\n## Process SNS events in the Lambda function\n\nTo implement the function, you would have to process SNS events. To do this, you can use the following snippet:\n\n```ts\nexport const handler: SNSHandler = async (event: SNSEvent) => {\n  console.log('Processing SNS event ', JSON.stringify(event))\n  for (const snsRecord of event.Records) {\n    const s3EventStr = snsRecord.Sns.Message\n    console.log('Processing S3 event', s3EventStr)\n    const s3Event = JSON.parse(s3EventStr)\n\n    for (const record of s3Event.Records) {\n      // \"record\" is an instance of S3EventRecord\n      await processImage(record) // A function that should resize each image\n    }\n  }\n}\n```\n\nThis snippet should be already familiar to you since we used it in this lesson.\n\n## Get a key of an uploaded image in S3\n\nTo download a newly uploaded image, we first need to get its key. To get it, we need to use the following code:\n\n```ts\nconst key = record.s3.object.key\n```\n\n## Download an image\n\nNow when we have a key of a new S3 object, we can download it. To do this, you can use the following snippet:\n\n```ts\nconst response = await s3\n  .getObject({\n    Bucket: bucketName,\n    Key: key\n  })\n  .promise()\n\nconst body: Buffer = response.Body\n```\n\nNotice that here we need to read from an S3 bucket that contains original images.\n\nThe body of a downloaded object will be of a type `Buffer` which is used to work with an array of bytes. You can read more about this type [here](https://nodejs.org/api/buffer.html).\n\n## Resize an image\n\nNow once we have a body of an image, we can resize it. To do this, we will use the `Jimp` library:\n\n```ts\n// Read an image with the Jimp library\nconst image = await Jimp.read(body)\n\n// Resize an image maintaining the ratio between the image's width and height\nimage.resize(150, Jimp.AUTO)\n\n// Convert an image to a buffer that we can write to a different bucket\nconst convertedBuffer = await image.getBufferAsync(Jimp.AUTO)\n```\n\n## Write an image to a different bucket\n\nOnce we have a resized image, we can write it back to S3. To do this, we can do the following:\n\n```ts\nawait s3\n  .putObject({\n    Bucket: thumbnailBucketName,\n    Key: `${key}.jpeg`,\n    Body: convertedBuffer\n  })\n  .promise()\n```\n\nNotice that in this case we need to write an image to a separate S3 bucket for thumbnail images.\n\n# A note on the image processing library\n\nThe main reason why we use the `Jimp` library in this exercise is because it is implemented in pure JavaScript and does not rely on any native dependencies (libraries compiled to machine code). Native libraries can be used with AWS Lambda, but they are tricker to build (especially if you are using a non-Linux environment). You can read more about building a native binary package for AWS Lambda [here](https://aws.amazon.com/premiumsupport/knowledge-center/lambda-linux-binary-package/).\n\n# Deployment\nBefore you deploy an application, keep in mind that names of S3 buckets should be globally unique across all AWS users. If you don't give your S3 buckets unique names a deployment will fail.\n\nTo ensure that your S3 buckets have unique names add a random string to the end of S3 bucket names in the `serverless.yml` file. Let's say you want to add a random string `ab4fe`. You would need to change the following section like this:\n\n```yml\n  environment:\n    IMAGES_S3_BUCKET: serverless-udagram-images-ab4fe-${self:provider.stage}\n    THUMBNAILS_S3_BUCKET: serverless-udagram-thumbnail-ab4fe-${self:provider.stage}\n```\n\nTo deploy the whole project, you need to run following commands:\n\n```\nnpm install\nserverless deploy -v\n```\n\nMake sure that the `serverless` command is installed and configured to use correct IAM credentials.\n\n# Preparations to test your function\n\nTo test your function you should do the following:\n\n* Create a group\n* Create an image\n* Upload an image\n\nYou might do those steps using the React app provided with this exercise. Alternatively, you can use Postman or any other HTTP client.\n\n## Using React application\n\nYou need to configure and start the application. To configure your application, you need to go to `src/config.ts` file and change `apiEndpoint` to point to the API of your serverless application.\n\nAfter the application is configured you can run the following commands:\n\n```\nnpm install\nnpm run start\n```\n\nThen you need to go to the `localhost:3000` and you can use the application to upload a file.\n\n\n## Using Postman and AWS console\n\n### Create a group\n\nAfter the deployment is finished, you need to create at least one group in the `Groups-dev` table. You can add the following item using the DynamoDB console:\n\n```json\n{\n    \"id\": \"1\",\n    \"name\": \"Dogs\",\n    \"description\": \"Only dog images here!\"\n}\n```\n\n### Create an image\n\nOnce a group is created you should be able to send a `POST` request to the following URL: `https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/groups/1/images`\n\nAs a body of the request, you can provide the following JSON:\n\n```json\n{\n    \"title\": \"New image\"\n}\n```\n\nNotice that you need to replace `{{apiId}}` with an id of a deployed API (returned as the result of the `serverless` command). Also, make sure that a group with id `1` exists or provide an id of an existing group in the URL of a request you send.\n\nIt should return an HTTP reply with a JSON object that contains field `uploadUrl`. This is a presigned URL we can use to upload an image.\n\n### Upload an image\n\nTo upload an image, you need to send a `PUT` request to the URL returned on the previous step. A body of a request should be an image that you want to upload.\n\n# Expected result\n\nOnce an image is uploaded, you should see a resized image in the new S3 bucket. To find the uploaded image, first go to the S3 console and go to the bucket for generated thumbnails:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858689,
+              "key": "e8957277-c1bd-4a11-92ef-681a25e24880",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5cf41901_cloud-dev-c4-lesson4-1-s3-buckets/cloud-dev-c4-lesson4-1-s3-buckets.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e8957277-c1bd-4a11-92ef-681a25e24880",
+              "caption": "",
+              "alt": "",
+              "width": 5412,
+              "height": 1150,
+              "instructor_notes": null
+            },
+            {
+              "id": 858623,
+              "key": "394591e9-95c1-4fb1-82e2-f27f2f5a62ab",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Click on the bucket, and you should see a new file for a generated thumbnail:\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858690,
+              "key": "a522ac70-754e-4c83-9c87-d6e77c8084bb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5cf41903_cloud-dev-c4-lesson4-2-resized-file/cloud-dev-c4-lesson4-2-resized-file.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a522ac70-754e-4c83-9c87-d6e77c8084bb",
+              "caption": "",
+              "alt": "",
+              "width": 5854,
+              "height": 1012,
+              "instructor_notes": null
+            },
+            {
+              "id": 858625,
+              "key": "69f01ad9-0296-4fe3-9f12-d4adba95a845",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Download this file and check the function worked as expected. To do this, click on the checkbox near the file name and click on the `Download` button:\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858691,
+              "key": "4f44121f-f012-4af1-a0d1-b78c806b7356",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5cf41904_cloud-dev-c4-lesson4-3-download-a-file/cloud-dev-c4-lesson4-3-download-a-file.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4f44121f-f012-4af1-a0d1-b78c806b7356",
+              "caption": "",
+              "alt": "",
+              "width": 2606,
+              "height": 1012,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1005257,
+          "key": "e4d2b04d-f146-407d-8c8f-b9caae29485f",
+          "title": "Exercise - Resize File On Upload - Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e4d2b04d-f146-407d-8c8f-b9caae29485f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 859327,
+              "key": "cf5e1eee-df02-46a1-979b-116b683241dd",
+              "title": "ND9990 L04 A37 Exercise - Resize File On Upload - Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mrlXuCwJKbE",
+                "china_cdn_id": "mrlXuCwJKbE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858284,
+          "key": "39307bc7-4e71-4911-8841-1bbcaf3ba94e",
+          "title": "Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "39307bc7-4e71-4911-8841-1bbcaf3ba94e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858252,
+              "key": "87abbd64-e99b-48c1-a680-29688b333428",
+              "title": "ND9990 L04 A38 Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5SO12Vg2PkM",
+                "china_cdn_id": "5SO12Vg2PkM.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

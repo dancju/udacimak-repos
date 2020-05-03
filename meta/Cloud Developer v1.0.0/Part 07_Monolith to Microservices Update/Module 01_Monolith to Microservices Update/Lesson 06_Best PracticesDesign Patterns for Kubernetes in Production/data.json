@@ -1,0 +1,1671 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1013044,
+      "key": "423c3feb-2703-4ca0-9c40-e6dd3aec8b8c",
+      "title": "Best Practices/Design Patterns for Kubernetes in Production",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson we'll learn some of the best practices for running your application in Kubernetes including logging, scale, and security",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/423c3feb-2703-4ca0-9c40-e6dd3aec8b8c/1013044/1586986467268/Kubernetes+for+Production+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/423c3feb-2703-4ca0-9c40-e6dd3aec8b8c/1013044/1586986462093/Kubernetes+for+Production+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1013024,
+          "key": "ab9ac3c0-0516-4b5a-9bcb-0803ff4c146a",
+          "title": "Kubernetes for Production",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ab9ac3c0-0516-4b5a-9bcb-0803ff4c146a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012973,
+              "key": "bcf2b4a4-6196-4dca-835e-8b905a1da804",
+              "title": "Kubernetes for Production Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Securing and Tuning Kubernetes Services for Production",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012950,
+              "key": "a8a391c3-1283-4ff6-9f86-37ea9636f7b0",
+              "title": "ND9990 CDND C03 L05 A01 Kubernetes For Production V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KCErdlnQjmk",
+                "china_cdn_id": "KCErdlnQjmk.mp4"
+              }
+            },
+            {
+              "id": 1012952,
+              "key": "523fcd0d-e1db-4522-af69-a7be263f4bee",
+              "title": "Lesson Outline",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e925df9_cdnd-c3-l5-outline/cdnd-c3-l5-outline.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/523fcd0d-e1db-4522-af69-a7be263f4bee",
+              "caption": "What We Will Cover in The Lesson",
+              "alt": "Our lesson goes over how to tune Kubernetes for production use.",
+              "width": 779,
+              "height": 265,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012978,
+              "key": "45b0dd80-16c2-4099-a78a-8cf2d0335488",
+              "title": "Kubernetes for Production Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Throughout this lesson, we will be going over some patterns and techniques for tuning Kubernetes services for production use.\n\nWe will cover:\n- Configuring a Cluster\n- Thinking About Production\n- Reverse Proxy\n-  Securing Microservices\n- Scaling and Self-Healing\n- Using Logs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013026,
+          "key": "0287c96d-47df-41df-a6cb-bc0c684aa3b1",
+          "title": "Configuring a Cluster",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0287c96d-47df-41df-a6cb-bc0c684aa3b1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012979,
+              "key": "59907162-02fc-456e-afca-115a150e6ef4",
+              "title": "Configuring a Cluster Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Configuring Your Cluster",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012955,
+              "key": "776e6846-d85e-4c09-8c3c-b4e6cf47708a",
+              "title": "ND9990 CDND C03 L05 A02 Configuring A Cluster V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eUgUpZIXToI",
+                "china_cdn_id": "eUgUpZIXToI.mp4"
+              }
+            },
+            {
+              "id": 1012947,
+              "key": "1eaaacb1-77bb-4395-8006-45ae028f7008",
+              "title": "Configuring a Cluster Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Kubernetes has configurations that can be tuned to optimize your deployed application.\n### Cost\n* Configure the resources and replicas for our deployed applications.\n\n### Security\n* Configure who has access to the Kubernetes pods and services.\n* Secure traffic for least-privilege",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012953,
+              "key": "a2b8b23b-0ceb-4405-ad85-d4fd45f828c6",
+              "title": "Configuring a Cluster Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a2b8b23b-0ceb-4405-ad85-d4fd45f828c6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are the benefits of tuning your cluster?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Reduce cost by utilizing cheaper hardware",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Increase performance by restricting access",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Prevent malicious users from accessing your Kubernetes environment",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Reduce development time by utilizing CI/CD",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1013028,
+          "key": "dd3f1030-8806-4091-9b4c-968285d1ed67",
+          "title": "Thinking About Production",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd3f1030-8806-4091-9b4c-968285d1ed67",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012954,
+              "key": "ec28f1f5-a55a-4464-80b0-ef21648753b9",
+              "title": "Thinking About Production  Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Thinking about Production",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012960,
+              "key": "06dc50a0-7427-472a-9e4e-7c2630857aa5",
+              "title": "ND9990 CDND C03 L05 A03 Thinking About Production",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "q4sRK3mNr_E",
+                "china_cdn_id": "q4sRK3mNr_E.mp4"
+              }
+            },
+            {
+              "id": 1012957,
+              "key": "1f8032fb-a68b-4f66-aaea-fdf3bfaa273f",
+              "title": "Thinking About Production  Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Production-ready\nDeployed applications for production-use are different than ones we use for development. We have to make additional considerations as the application is no longer running in our isolated environment.\n\n#### Restrict Access\n* Follow properties of least-privilege to secure our application.\n\n#### Scale\n* Be able to handle the number and size of user requests.\n\n#### Availability\n* Ensure that the application is responsive and able to be used when needed.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012983,
+              "key": "143f17eb-1da7-4394-bb12-4cdcb72cf1d9",
+              "title": "Restrict Access",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e925e62_cdnd-c3-l5-restrict-access/cdnd-c3-l5-restrict-access.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/143f17eb-1da7-4394-bb12-4cdcb72cf1d9",
+              "caption": "Use Least Privileged Access to Secure the Application",
+              "alt": "Use Least Privileged Access",
+              "width": 818,
+              "height": 352,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012970,
+              "key": "6f05c17d-976f-4c25-b1a9-f32a8e0f5443",
+              "title": "Thinking About Production  Quiz 1",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6f05c17d-976f-4c25-b1a9-f32a8e0f5443",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some ways the production environment differs from a development environment",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Volume of user traffic",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Less bugs",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Risk of malicious activity",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "More performant inbound requests",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1012961,
+              "key": "4ccc2c52-dccc-46b8-99c5-edadddb1ad06",
+              "title": "Thinking About Load Testing",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4ccc2c52-dccc-46b8-99c5-edadddb1ad06",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Load testing is a technique where we simulate multiple requests against our service. How can this be useful for helping us understand our code in production?"
+              },
+              "answer": {
+                "text": "Load testing is a common way to simulate a large number of requests to our application. By doing so, we are essentially stress-testing it to preview when it will fail. This helps us set a baseline understanding of the limits of our application.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1013030,
+          "key": "6f7a1fb6-a219-4692-afaf-763f965ac096",
+          "title": "Reverse Proxy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6f7a1fb6-a219-4692-afaf-763f965ac096",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012969,
+              "key": "3634c432-32b6-4b50-bb61-1696bfa4d96c",
+              "title": "Reverse Proxy Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Use a Reverse Proxy to Direct Backend Requests",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012958,
+              "key": "66b2c39d-9659-4df1-ad5a-1cea19f23d39",
+              "title": "ND9990 CDND C03 L05 A04 Part 1 How Reverse Proxies Work",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "F0fLsUYqlvQ",
+                "china_cdn_id": "F0fLsUYqlvQ.mp4"
+              }
+            },
+            {
+              "id": 1012963,
+              "key": "43a10c96-e5b0-401c-be05-ea59948158d4",
+              "title": "Reverse Proxy",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e925e9b_cdnd-c3-l5-reverse-proxy/cdnd-c3-l5-reverse-proxy.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/43a10c96-e5b0-401c-be05-ea59948158d4",
+              "caption": "A reverse proxy proxy is used to route traffic from one endpoint to multiple endpoints",
+              "alt": "A reverse proxy proxy is used to route traffic from one endpoint to multiple endpoints.",
+              "width": 738,
+              "height": 344,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012949,
+              "key": "3f970596-f275-4396-844c-dadceef4df45",
+              "title": "Reverse Proxy Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Reverse Proxy\n* A single interface that forwards requests on behalf of the client and appears to the client as the origin of the responses.\n* Useful for abstracting multiple microservices to appear as a single resource.\n\n### API Gateway\nA form of a reverse proxy that serves as an abstraction of the interface to other services.\n\n### Sample Reverse Proxy\n* Nginx is a web server that can be used as a reverse proxy. Configurations can be specified with an `nginx.conf` file.\n\n* Sample bare-bones `nginx.conf` file:\n```\nevents {\n}\nhttp {\n    server {\n        listen <PORT_NUMBER>;\n        location /<PROXY_PATH>/ {\n            proxy_pass http://<REDIRECT_PATH>/;\n        }\n    }\n}\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012945,
+              "key": "6a9d63fc-944a-4552-8fd3-495f95dae462",
+              "title": "RP screencast header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Setting up the Reverse Proxy",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012996,
+              "key": "1e01c909-aa39-465a-9f66-29132975433f",
+              "title": "ND9990 CDND C03 L05 A04 Part 2 Setting Up The Reverse Proxy",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jsS6y6Eitvs",
+                "china_cdn_id": "jsS6y6Eitvs.mp4"
+              }
+            },
+            {
+              "id": 1012991,
+              "key": "28185247-9cd5-43c0-9f81-f7aef9ec2425",
+              "title": "RP demo code",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here is the code I used in the demo:\n\n***nginx.conf***\n```\nevents {\n}\nhttp {\n    server {\n        listen 8080;\n        location /api/ {\n            proxy_pass http://my-app-2-svc:8080/;\n        }\n    }\n}\n```\n\n***deployment.yaml***\n``` \napiVersion: extensions/v1beta1\nkind: Deployment\nmetadata:\n  labels:\n    service: reverseproxy\n  name: reverseproxy\nspec:\n  replicas: 1\n  template:\n    metadata:\n      labels:\n        service: reverseproxy\n    spec:\n      containers:\n      - image: YOUR_DOCKER_HUB/simple-reverse-proxy\n        name: reverseproxy\n        imagePullPolicy: Always          \n        resources:\n          requests:\n            memory: \"64Mi\"\n            cpu: \"250m\"\n          limits:\n            memory: \"1024Mi\"\n            cpu: \"500m\"       \n        ports:\n        - containerPort: 8080\n      restartPolicy: Always\n```\n\n***service.yaml***\n```\napiVersion: v1\nkind: Service\nmetadata:\n  labels:\n    service: reverseproxy\n  name: reverseproxy-svc\nspec:\n  ports:\n  - name: \"8080\"\n    port: 8080\n    targetPort: 8080\n  selector:\n    service: reverseproxy\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012959,
+              "key": "f6d16e58-9dfe-4bd7-8055-a055d2d99c83",
+              "title": "Deploying RP heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Deploying the Reverse Proxy",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012964,
+              "key": "0097e6c1-765f-4f28-b34d-3c46525f220d",
+              "title": "ND9990 CDND C03 L05 A04 Part 3 Deploying The Reverse Proxy",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-6NZf67RYCI",
+                "china_cdn_id": "-6NZf67RYCI.mp4"
+              }
+            },
+            {
+              "id": 1012948,
+              "key": "dfbc86f4-68d1-44ca-bffd-5a8935ada512",
+              "title": "Deploying RP recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Commands\nThe commands that we use to deploy the reverse proxy are the same as that used to deploy the application. `kubectl` is used as our tool to interface with our cluster and the YAML file specifies the configuration for our reverse proxy.\n* `kubectl apply <REVERSE_PROXY_DEPLOYMENT>.yaml`\n* `kubectl apply <REVERSE_PROXY_SERVICE>.yaml`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012962,
+              "key": "7497e314-006c-4af7-afee-4b48785b652b",
+              "title": "Reverse Proxy New Terms or Vocabulary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms - Reverse Proxy\n\n| Term   | Definition |\n|------------------\t|-------------------|\n| API Gateway  | A single point of entry for groups of microservices. |\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012967,
+              "key": "23285fed-d037-44ab-b807-c14c84c92ed0",
+              "title": "Reverse Proxy Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Reading\nThe following are some additional resources for learning more about API Gateways.\n* [AWS API Gateway](https://aws.amazon.com/api-gateway/)\n* [Microservices with API Gateway](https://www.nginx.com/blog/building-microservices-using-an-api-gateway/)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013031,
+          "key": "4604188f-189d-432c-b6db-8f794cad15c5",
+          "title": "Reverse Proxy Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4604188f-189d-432c-b6db-8f794cad15c5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012995,
+              "key": "e41d4332-a874-4cd6-b652-b132e4ec7898",
+              "title": "Reverse Proxy Easy Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e41d4332-a874-4cd6-b652-b132e4ec7898",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following is a benefit of using a reverse proxy?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Improved performance",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A more complicated interface at the expense of less boilerplate code",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Routes requests to make easier to integrate services",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Reduce costs by removing redundant code.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1012965,
+              "key": "1d8ab007-4b3a-4a0f-a5ed-c55d3affb38c",
+              "title": "Thinking About API Gateway",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1d8ab007-4b3a-4a0f-a5ed-c55d3affb38c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "An API Gateway and library both help us reduce repeated code by allowing us to abstract common logic. An API Gateway sits in front of the code as a reverse proxy whereas a library is imported into our code. What are some differences between how we abstract common logic with an API Gateway versus a library?"
+              },
+              "answer": {
+                "text": "Thanks for your response.",
+                "video": null
+              }
+            },
+            {
+              "id": 1013003,
+              "key": "9b070309-e89b-44c3-89cc-d6112d6daf39",
+              "title": "Quiz solution heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "##  Quiz Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013013,
+              "key": "a9017d88-da90-48dc-9e35-9b413c8b16fa",
+              "title": "ND9990 CDND C03 L05 A05 Reverse Proxy Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Tzs1wkSJZ-M",
+                "china_cdn_id": "Tzs1wkSJZ-M.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1013025,
+          "key": "55fbd067-e120-4489-8530-341215f3e5db",
+          "title": "Exercise: Reverse Proxy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "55fbd067-e120-4489-8530-341215f3e5db",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013000,
+              "key": "beb20534-f0d8-4e61-9a64-770a4e2719f6",
+              "title": "Exercise: Reverse Proxy Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Set up a reverse proxy that redirects inbound traffic to [Simple Express](https://github.com/udacity/nd9990-c3-microservices-exercises/tree/master/lesson-5-kubernetes-for-production/exercises/simple-express).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012946,
+              "key": "d4908fb4-3182-4323-8509-653fa7d39ea1",
+              "title": "Reverse Proxy",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d4908fb4-3182-4323-8509-653fa7d39ea1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Set up a reverse proxy with an Nginx file that routes to Simple Express",
+                "Create a Docker image for the reverse proxy",
+                "Set up Kubernetes service and deployment files for the reverse proxy"
+              ],
+              "positive_feedback": "Great work! You know how to build a reverse proxy and set up Kubernetes services to communicate with one another!",
+              "video_feedback": null,
+              "description": "Create a reverse proxy using Nginx in Docker that routes traffic to Simple Express."
+            }
+          ]
+        },
+        {
+          "id": 1013038,
+          "key": "10c66804-3271-44ff-b8e7-5e4377cc8bc6",
+          "title": "Solution: Reverse Proxy",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "10c66804-3271-44ff-b8e7-5e4377cc8bc6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013015,
+              "key": "46cc95a2-cf02-4552-897a-27816f7628b6",
+              "title": "RP Solution heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## My Solution to the Reverse Proxy Exercise",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012944,
+              "key": "06842e47-e51c-4f3f-a10d-f9e49e5c9596",
+              "title": "ND9990 CDND C03 L05 A06 Part 1 Solution Reverse Proxy V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6iCWyQmEJHc",
+                "china_cdn_id": "6iCWyQmEJHc.mp4"
+              }
+            },
+            {
+              "id": 1013016,
+              "key": "1fccaff6-f316-492a-ae4e-3f15985ef25e",
+              "title": "Solution: Reverse Proxy Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The reverse proxy is a Kubernetes service that has pods deployed as Docker images running Nginx.\n\n### Nginx\nMy `nginx.conf` file looks like the following:\n```\nevents {\n}\nhttp {\n    server {\n        listen 8080;\n        location /api/ {\n            proxy_pass http://my-app-2-svc:8080/;\n        }\n    }\n}\n```\n### Dockerfile\nThe Nginx service listens for requests at port `8080`. Any requests with endpoints prefixed with `/api/` will be redirected to the Kubernetes service `my-app-2-svc`. `my-app-2-svc` is a name that our Kubernetes cluster recognizes internally.\n\nMy `Dockerfile` is very simple and looks like the following:\n```\nFROM nginx:alpine\n \nCOPY nginx.conf /etc/nginx/nginx.conf\n```\nWe take advantage of the base image that is available for Nginx and don’t need to worry about installing its dependencies.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013004,
+              "key": "9b946bcf-008b-4f59-b971-f58dde5d8c52",
+              "title": "Verifying RP Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Verifying Our Reverse Proxy",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012998,
+              "key": "fa4ae933-cca4-42d3-89c7-1c5d5be5651c",
+              "title": "ND9990 CDND C03 L05 A06 Part 2 Verifying Reverse Proxy",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "o0NAqngxspE",
+                "china_cdn_id": "o0NAqngxspE.mp4"
+              }
+            },
+            {
+              "id": 1012966,
+              "key": "77230a67-8800-44a9-b1fb-2139e9af312e",
+              "title": "Verifying RP Recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Internal Communication\nOur Kubernetes cluster is using a `ClusterIP` configuration. This means that the service is only exposed and visible to services inside of the cluster. \n\nOther services can access one another via the name of the service. In our case, it means that instead of having to use the IP address of `my-app-2-svc`, we can simply make requests to `my-app-2-svc`.\n\n### Local Requests\nAs our service is not configured to accept requests outside of the service, we can’t communicate directly to the Kubernetes services. So far, we have been using `kubectl` to interact with the cluster on our behalf.\n\nWhen verifying HTTP requests, we need to make them within the context of our Kubernetes cluster.\n\n### Verifying Through Kubernetes\n* `kubectl exec -it <POD_NAME> bash` of any pod to access the pod directly.\n* `curl reverseproxy-svc:8080/api/health` to mimic an API request to the reverse proxy.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013011,
+              "key": "06c3e354-19ae-4cf1-b12a-a8f6b729f8c0",
+              "title": "Reflection on Reverse Proxy",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "06c3e354-19ae-4cf1-b12a-a8f6b729f8c0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Given a large organization, how may a dedicated team working on an API Gateway (type of reverse proxy) be beneficial from a technical and business perspective?"
+              },
+              "answer": {
+                "text": "An API Gateway can be considered its own business functionality. This will allow another team to work on its features in parallel to the services that it would route to. It would also reduce the responsibilities of individual teams by abstracting common logic that may be non-trivial to design and implement.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1013032,
+          "key": "b6f31926-5c74-4c40-84e4-d3315cabc40e",
+          "title": "Securing Microservices",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b6f31926-5c74-4c40-84e4-d3315cabc40e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012980,
+              "key": "d2ec6071-0434-4ebd-803c-bbf9cd172f5b",
+              "title": "Securing Microservices Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Securing the Microservices",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012956,
+              "key": "a544c866-7dec-4984-9570-41546ffddceb",
+              "title": "ND9990 CDND C03 L05 A07 Securing Microservices",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HH2tTCHyw6U",
+                "china_cdn_id": "HH2tTCHyw6U.mp4"
+              }
+            },
+            {
+              "id": 1012968,
+              "key": "41d488e0-2b30-48a2-a49b-9378c750c445",
+              "title": "Securing Microservices Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This is not an all-inclusive list of things to do for securing your application. It means that while some of these are best-practice, there's no guarantee that these steps will ensure your application is perfectly secure.\n* AWS security groups\nEnables you to restrict the inbound and outbound traffic for AWS resources.\n* Kubernetes Ingress and Egress\nEnables you to restrict the inbound and outbound traffic for Kubernetes resources.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012971,
+              "key": "1513f78b-41a5-450f-a786-b8c9e7937641",
+              "title": "Securing Microservices Heading New Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Key Terms - Securing Microservices\n\n| Term   | Definition |\n|------------------\t|-------------------|\n| Ingress  | Inbound web traffic |\n| Egress  | Outbound web traffic |",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013017,
+              "key": "89760898-d56b-41f2-af0d-1d5194ab6a08",
+              "title": "Securing Microservices Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Reading\nThe following are additional resources for learning more about security practices.\n* [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/migrated_content)\n* [What is Penetration Testing?](https://www.cloudflare.com/learning/security/glossary/what-is-penetration-testing/)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013005,
+          "key": "817ad707-958e-421c-8478-0aee9b9e16cc",
+          "title": "Securing Microservices Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "817ad707-958e-421c-8478-0aee9b9e16cc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013048,
+              "key": "16373632-16ea-4890-bde0-f4f43f7a53cb",
+              "title": "Securing Microservices",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "16373632-16ea-4890-bde0-f4f43f7a53cb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the following terms with their definitions."
+                },
+                "concepts_label": "Definition",
+                "answers_label": "Term",
+                "concepts": [
+                  {
+                    "text": "\nDefines traffic that is allowed into a resource",
+                    "correct_answer": {
+                      "id": "a1586652470791",
+                      "text": "Ingress"
+                    }
+                  },
+                  {
+                    "text": "\nDefines traffic that is allowed out of a resource",
+                    "correct_answer": {
+                      "id": "a1586652505698",
+                      "text": "Egress"
+                    }
+                  },
+                  {
+                    "text": "AWS definition of inbound and outbound traffic",
+                    "correct_answer": {
+                      "id": "a1586652516900",
+                      "text": "Security Groups"
+                    }
+                  },
+                  {
+                    "text": "Defines traffic that is allowed into and out of our Kubernetes environment",
+                    "correct_answer": {
+                      "id": "a1586652526440",
+                      "text": "Kubernetes Ingress Egress"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586652505698",
+                    "text": "Egress"
+                  },
+                  {
+                    "id": "a1586652470791",
+                    "text": "Ingress"
+                  },
+                  {
+                    "id": "a1586652516900",
+                    "text": "Security Groups"
+                  },
+                  {
+                    "id": "a1586652526440",
+                    "text": "Kubernetes Ingress Egress"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1013061,
+              "key": "1f47dae0-9bc8-4fa2-a77c-b8efb376636c",
+              "title": "Securing Microservices Hard Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1f47dae0-9bc8-4fa2-a77c-b8efb376636c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Given a microservice that is only interfaced through a reverse proxy, what is the best option to securing this microservice?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Don’t set any restrictions on ingress traffic.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Set the microservice to allow ingress traffic from the reverse proxy and egress traffic from anywhere.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Set the microservice to only allow ingress traffic from the reverse proxy.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Set the microservice to only allow egress traffic from the reverse proxy.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk5",
+                    "text": "Set the microservice to allow both egress and ingress traffic from the reverse proxy.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1013037,
+          "key": "631b4b4f-d9c7-40f6-9f43-d6f22ff14efb",
+          "title": "Scaling and Self-Healing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "631b4b4f-d9c7-40f6-9f43-d6f22ff14efb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013009,
+              "key": "8695bfd7-5a38-4564-b384-7736585e2d95",
+              "title": "Scaling and Self-healing Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Configuring Scalable and Resilient Applications",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012951,
+              "key": "79e8c02e-b2ac-45fe-b8b7-e870e0c69a4d",
+              "title": "ND9990 CDND C03 L05 A08 Scaling And Self-Healing V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_bgiTEKQ4ag",
+                "china_cdn_id": "_bgiTEKQ4ag.mp4"
+              }
+            },
+            {
+              "id": 1013008,
+              "key": "67fbe528-3077-46e6-8cc2-08ec695d55bc",
+              "title": "Self Healing Recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Self-Healing\nKubernetes deployments can be set up to recover from failure.\n* Health checks - an HTTP endpoint that must return a `200` response for a healthy status. Kubernetes will periodically ping this endpoint.\n* Replicas - Kubernetes will attempt to maintain the number of desired replicas. If a pod is terminated, it will automatically recreate the pod.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012972,
+              "key": "d55dd963-f80f-4bac-b171-26fb1be11307",
+              "title": "Scaling header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Horizontal Scaling with Kubernetes",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013012,
+              "key": "dd05d1b9-ae83-457c-90c6-00b4b7e29059",
+              "title": "ND9990 CDND C03 L05 A08 Part 2 Horizontal Scaling In Kubernetes",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xPRB9eMGEog",
+                "china_cdn_id": "xPRB9eMGEog.mp4"
+              }
+            },
+            {
+              "id": 1013007,
+              "key": "c1895475-841b-4665-9958-e9314066515b",
+              "title": "Scaling and Self-healing Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Horizontal Pod Autoscaler\nA deployment feature that allows additional pods to be created when a CPU usage threshold is reached.\n\n#### Commands\n* Create HPA\n```\nkubectl autoscale deployment <NAME> --cpu-percent=<CPU_PERCENTAGE>                --min=<MIN_REPLICAS>\n--max=<MAX_REPLICAS>\n```\n\n* View HPA\n```\nkubectl get hpa\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013014,
+              "key": "fb94fbae-6a1e-42bb-b67c-28be02e33e8b",
+              "title": "Scaling and Self-healing Heading New Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### New Terms\n| Term \t| Description \t|\n|--------------------\t|-----------------------\t|\n| Horizontal Pod Autoscaler (HPA) \t| A Kubernetes deployment feature that allows additional pods to be created when a CPU usage threshold is reached. \t|\n| Liveness Probe \t| A monitoring activity that occurs at scheduled intervals to ping a health check API endpoint to validate that the application is in a healthy state.\t|\n| Resilience \t| The property of an application to handle and recover from failures. \t|",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013010,
+              "key": "6a933181-5c6c-419f-8e48-8548192ac161",
+              "title": "Scaling and Self-healing Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Reading\nThe following are some additional resources for learning more about how we can make our deployed applications more robust:\n* [Resilient Software Design Presentation](https://conferences.oreilly.com/software-architecture/sa-eu-2017/public/schedule/detail/61746)\n* [Kubernetes Health Check Best Practices](https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-setting-up-health-checks-with-readiness-and-liveness-probes)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013043,
+          "key": "e2553443-18fb-4a2b-b336-00ec4480c3e5",
+          "title": "Scaling and Self-healing Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e2553443-18fb-4a2b-b336-00ec4480c3e5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013006,
+              "key": "8488284c-2c11-42c2-b542-819fa1e4de85",
+              "title": "Scaling and Self-healing Easy Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8488284c-2c11-42c2-b542-819fa1e4de85",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some things that would be useful to check in an application’s health check endpoint?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Database connectivity",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Deployment status",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Traffic",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1013027,
+              "key": "e4c3908b-69c0-4fc2-872a-e0ac3b1cd90d",
+              "title": "Scaling and Self-healing Hard Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e4c3908b-69c0-4fc2-872a-e0ac3b1cd90d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why do we choose to use horizontal scaling over vertical scaling with our microservices?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Horizontal scaling provides us more performance than vertical scaling",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Vertical scaling is not compatible with reverse proxies",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Horizontal scaling is more cost effective",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1013019,
+              "key": "1c118d8e-67b4-4596-b7c1-8f7f0ff6fc00",
+              "title": "Quiz Solution heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013001,
+              "key": "6e9be2af-c91a-4dee-9768-79250fd7870d",
+              "title": "ND9990 CDND C03 L05 A09 Scaling And Self-Healing Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "N4EtAGkB5X0",
+                "china_cdn_id": "N4EtAGkB5X0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1013035,
+          "key": "82dd6254-bb0e-4888-a00c-bfe1d3a46187",
+          "title": "Exercise: Scaling and Self-healing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "82dd6254-bb0e-4888-a00c-bfe1d3a46187",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012974,
+              "key": "e9d685c4-b980-4dd9-a45a-3d4959623b03",
+              "title": "Exercise: Scaling and Self-healing Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Given an existing Kubernetes deployment, set up a Kubernetes Horizontal Pod Autoscaler.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012993,
+              "key": "9726f6a4-3b15-4af7-b957-99de06721644",
+              "title": "Scaling and Self-Healing",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9726f6a4-3b15-4af7-b957-99de06721644",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Set up HPA on a deployment",
+                "Verify the HPA has been configured by printing the available HPA’s"
+              ],
+              "positive_feedback": "Great work! You know a way to set up our Kubernetes to scale to meet demands of increased CPU usage!",
+              "video_feedback": null,
+              "description": "Set up a Kubernetes Horizontal Pod Autoscaler for an existing pod."
+            }
+          ]
+        },
+        {
+          "id": 1013029,
+          "key": "1937c5b1-293e-4b39-81ad-6c8a18fc71cf",
+          "title": "Solution: Scaling and Self-healing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1937c5b1-293e-4b39-81ad-6c8a18fc71cf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012977,
+              "key": "e0af92d1-618a-4d0b-ae74-1624760389d1",
+              "title": "Solution: Scaling and Self-healing Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "##  My Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012986,
+              "key": "f1dbbaeb-ff4d-4ced-aeba-1fd33803242d",
+              "title": "ND9990 CDND C03 L05 A10 Solution Scaling And Self-Healing V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5yv2iRtj55w",
+                "china_cdn_id": "5yv2iRtj55w.mp4"
+              }
+            },
+            {
+              "id": 1012975,
+              "key": "ffc1d274-ddba-4f92-97d7-648b469479fc",
+              "title": "Solution: Scaling and Self-healing Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We can set up a Kubernetes HPA with the following command:\n```\nkubectl autoscale deployment <DEPLOYMENT_NAME> --cpu-percent=<DESIRED_THRESHOLD> --min=<MIN_PODS> --max=<MAX_PODS>\n```\nWe can view the Kubernetes HPA with the following command:\n```\nkubectl get hpa\n```\nNote that for Kubernetes to be able to handle scaling our application, we will need sufficient Node Groups created in EKS.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013040,
+          "key": "e25a3abe-509a-4df1-8fb6-ffb874033bfc",
+          "title": "Using Logs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e25a3abe-509a-4df1-8fb6-ffb874033bfc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013018,
+              "key": "19aa18a3-3bb1-4b2c-b36f-c4f9977f4413",
+              "title": "Using Logs Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Use Logs to Capture Metrics for Debugging\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012981,
+              "key": "18e5a37c-44dc-455e-a3a3-bc6d9d32e85a",
+              "title": "ND9990 CDND C03 L05 A11 Using Logs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_lp_qZeE7a8",
+                "china_cdn_id": "_lp_qZeE7a8.mp4"
+              }
+            },
+            {
+              "id": 1013002,
+              "key": "c07ede94-4511-4d6f-a99d-9d9002fe5589",
+              "title": "Using Logs Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e926041_cdnd-c3-l5-logs/cdnd-c3-l5-logs.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c07ede94-4511-4d6f-a99d-9d9002fe5589",
+              "caption": "Logs are important for helping us troubleshoot microservices",
+              "alt": "Logs are important for helping us troubleshoot microservices.",
+              "width": 493,
+              "height": 285,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012988,
+              "key": "784df85b-b8ea-4cfc-87e7-d04dd9fcdde8",
+              "title": "Using Logs New Terms or Vocabulary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Points  \n\n- Software is rarely free of errors so we need to troubleshoot errors when they occur. \n\n- In production environments we don't have tools like breakpoints that could help us identify bugs \n\n- Logging can get complicated so we need tools to handle logs and make it easy to search them.\n\n- System logs used for debugging are sometimes different from error messages returned by API's.\n\n### Strategies for Logging\n* Use timestamps to know when the activity occurred\n* Set a consistent style of logging to make it easier to parse log output\n* Use process IDs to trace an activity\n* Rotate logs so they don't fill up your storage\n* Include stack traces in your logs\n* Look at the delta in message timestamps to measure execution time\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012999,
+              "key": "af4628eb-cd95-474c-bc10-692d7deec13c",
+              "title": "Using Logs Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Resources\nFor more resources on learning about logs:\n* [Best Practices for Monitoring](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring_best_practices.html)\n* [Netflix Scalable Logging and Tracking](https://netflixtechblog.com/scalable-logging-and-tracking-882bde0ddca2?gi=227c03a261e1)\n* [Designing a Logging Strategy](https://docs.oracle.com/cd/E19424-01/820-4806/fyfcv/index.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013036,
+          "key": "65bc1de9-a463-4906-aa7d-ff3b5c544ebe",
+          "title": "Using Logs Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "65bc1de9-a463-4906-aa7d-ff3b5c544ebe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013049,
+              "key": "7fabafa3-9cb9-40a4-9fdb-4bfdc22fa870",
+              "title": "Logging Strategy",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7fabafa3-9cb9-40a4-9fdb-4bfdc22fa870",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the logging concept with its benefit."
+                },
+                "concepts_label": "Benefit",
+                "answers_label": "Logging Strategy",
+                "concepts": [
+                  {
+                    "text": "\nUnderstand the time an event occurred.",
+                    "correct_answer": {
+                      "id": "a1586652608109",
+                      "text": "Timestamp"
+                    }
+                  },
+                  {
+                    "text": "\nMake it easier to ingest and parse errors",
+                    "correct_answer": {
+                      "id": "a1586652659608",
+                      "text": "Logging Format"
+                    }
+                  },
+                  {
+                    "text": "Prevents running out of disk space.",
+                    "correct_answer": {
+                      "id": "a1586652681165",
+                      "text": "Log Rotation"
+                    }
+                  },
+                  {
+                    "text": "Provides a detailed synopsis on the error.",
+                    "correct_answer": {
+                      "id": "a1586652701607",
+                      "text": "Stack Traces"
+                    }
+                  },
+                  {
+                    "text": "Provides the time it took to execute a request.",
+                    "correct_answer": {
+                      "id": "a1586652801522",
+                      "text": "Log Deltas"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586652701607",
+                    "text": "Stack Traces"
+                  },
+                  {
+                    "id": "a1586652681165",
+                    "text": "Log Rotation"
+                  },
+                  {
+                    "id": "a1586652659608",
+                    "text": "Logging Format"
+                  },
+                  {
+                    "id": "a1586652608109",
+                    "text": "Timestamp"
+                  },
+                  {
+                    "id": "a1586652801522",
+                    "text": "Log Deltas"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1012985,
+              "key": "34b7535d-b745-4aec-a488-d5f69e7bf792",
+              "title": "Thinking About Microservices  Quiz",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "34b7535d-b745-4aec-a488-d5f69e7bf792",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "If we have multiple pods running in Kubernetes and all of our logs are centralized into a single file, what are some difficulties with determining the execution time of an API request?"
+              },
+              "answer": {
+                "text": "Thanks for your response.",
+                "video": null
+              }
+            },
+            {
+              "id": 1013021,
+              "key": "bc06a1db-e097-4e8d-b025-20685032c49c",
+              "title": "Quiz solution heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012987,
+              "key": "0a864c6b-541e-4784-9912-ef43f9f4d725",
+              "title": "ND9990 CDND C03 L05 A12 Using Logs Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cns34hd_5VA",
+                "china_cdn_id": "cns34hd_5VA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1013041,
+          "key": "713dafeb-d5b5-4b27-a7b3-d5e70bc65bbe",
+          "title": "Exercise: Using Logs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "713dafeb-d5b5-4b27-a7b3-d5e70bc65bbe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012976,
+              "key": "494b60f6-b719-401a-aa41-e2f65a8f2cc0",
+              "title": "Using Logs Hard Quiz Solution Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Processing Concurrent Logs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012984,
+              "key": "c72028a1-95e3-4aca-b137-c1a417e5aebd",
+              "title": "Exercise: Using Logs Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To simulate how we may process concurrent logs, an exercise has been prepared [here](https://github.com/udacity/nd9990-c3-microservices-exercises/tree/master/lesson-5-kubernetes-for-production/exercises/debugging-logs).\n\nWe will want to connect to the running container and run a script name `make_requests.sh` to simulate concurrent requests. By connecting to the running container to run the script, we guarantee that the script can be run properly regardless of what operating system we are using locally.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013020,
+              "key": "bba43d42-6ce9-498f-a814-014df210a032",
+              "title": "Using Logs",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bba43d42-6ce9-498f-a814-014df210a032",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Build the Docker image",
+                "Run the Docker image in a container",
+                "Connect to the running Docker container `docker exec -it <CONTAINER_ID> sh`",
+                "Run the script `make_requests.sh`",
+                "Calculate the average time it takes to process requests"
+              ],
+              "positive_feedback": "Great work! You’ve collected logs and parsed them to identify useful metrics.",
+              "video_feedback": null,
+              "description": "Calculate the average time it takes to process a request from the application [Debugging Logs](https://github.com/udacity/nd9990-c3-microservices-exercises/tree/master/lesson-5-kubernetes-for-production/exercises/debugging-logs)."
+            }
+          ]
+        },
+        {
+          "id": 1013042,
+          "key": "ad7d13b4-9131-4258-8e58-b7a0b55ab5cc",
+          "title": "Solution: Using Logs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ad7d13b4-9131-4258-8e58-b7a0b55ab5cc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012982,
+              "key": "04756a01-752f-4cf6-a458-6f06568bd827",
+              "title": "Solution Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## My Solution Part 1",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012997,
+              "key": "15850e1c-7fbc-45de-92e9-261a24f1f549",
+              "title": "ND9990 CDND C03 L05 A12A Using Logs Exercise Solution Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sKv8OozaruE",
+                "china_cdn_id": "sKv8OozaruE.mp4"
+              }
+            },
+            {
+              "id": 1013122,
+              "key": "9a8f531a-bcde-44c3-8c67-d3dbc359dad5",
+              "title": "My Solution Part 2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## My Solution Part 2",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013123,
+              "key": "747f03e1-5462-4d56-b9da-608cee23df7a",
+              "title": "ND9990 CDND C03 L05 A12A Using Logs Exercise Solution Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "o5GWLIqztwY",
+                "china_cdn_id": "o5GWLIqztwY.mp4"
+              }
+            },
+            {
+              "id": 1013022,
+              "key": "5bb719ca-38ac-462e-b155-e261ca07a6a5",
+              "title": "Using Logs Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We want to find the average of the 3 requests that were made. To identify the requests, we rely on the unique identifiers prepended to each message. Dividing the sum by the 3 requests will result in the average.\n\nWhile this is a straightforward simulation, it serves to illustrate how logs can display a lot of similar output that are collected from a system that handles many concurrent requests.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013034,
+          "key": "4a7d0b36-60ce-4837-aaea-0812814c701e",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4a7d0b36-60ce-4837-aaea-0812814c701e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012992,
+              "key": "2e1c9efa-6215-4dfd-8e86-49dd6c7a2f2b",
+              "title": "Lesson Recap Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012990,
+              "key": "e42260fa-790f-45e3-a0b4-a5fba572e848",
+              "title": "ND9990 CDND C03 L05 A13 Lesson Recap Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Fr30MQuxkrw",
+                "china_cdn_id": "Fr30MQuxkrw.mp4"
+              }
+            },
+            {
+              "id": 1013046,
+              "key": "ecb256f5-9041-4df6-8a4f-a47c8631ccc5",
+              "title": "Lesson outline",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e9247f7_cdnd-c3-l4-outline/cdnd-c3-l4-outline.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ecb256f5-9041-4df6-8a4f-a47c8631ccc5",
+              "caption": "What We Covered in this Lesson",
+              "alt": "What We Covered in this Lesson",
+              "width": 960,
+              "height": 540,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012989,
+              "key": "dce9d3af-0264-4b46-b549-735d7904d340",
+              "title": "Lesson Recap Text",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Kubernetes For Production  \n\n* Configuring a Cluster\n* Thinking About Production\n* Reverse Proxy\n* Securing Microservices\n* Scaling and Self-Healing\n* Using Logs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013033,
+          "key": "0ae80e04-cfb6-43d2-8924-aa9e98ec7593",
+          "title": "Glossary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0ae80e04-cfb6-43d2-8924-aa9e98ec7593",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012994,
+              "key": "414a8c28-9408-4d5d-9dbf-ce3efba11b9d",
+              "title": "Glossary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### New Terms in This Lesson  \n<br>\n\n| Term   | Definition |\n|------------------\t|-------------------|\n| Ingress  | inbound web traffic |\n| Egress  | outbound web traffic |\n| API Gateway  | a single point of entry for groups of microservices. |\n| Horizontal Pod Autoscaler (HPA) \t| A Kubernetes deployment feature that allows additional pods to be created when a CPU usage threshold is reached. \t|\n| Liveness Probe \t| A monitoring activity that occurs at scheduled intervals to ping a health check API endpoint to validate that the application is in a healthy state.\t|\n| Resilience \t| The property of an application to handle and recover from failures. \t|",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013039,
+          "key": "e4f147fd-965e-4980-8d8e-77ffe037fd64",
+          "title": "Course Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e4f147fd-965e-4980-8d8e-77ffe037fd64",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013023,
+              "key": "a5b9103a-cabb-46ba-a256-05e623ac6bec",
+              "title": "ND9990 CDND C03 L05 A14 Course Recap V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "T0efgTNMLyw",
+                "china_cdn_id": "T0efgTNMLyw.mp4"
+              }
+            },
+            {
+              "id": 1013047,
+              "key": "971b9f6f-b1e7-4a0e-91ea-3abc65ca2cf5",
+              "title": "Course Overview",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e92630c_cdnd-c3-lo-what-learn/cdnd-c3-lo-what-learn.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/971b9f6f-b1e7-4a0e-91ea-3abc65ca2cf5",
+              "caption": "What We Have Learned in This Course",
+              "alt": "What We Have Learned in This Course",
+              "width": 514,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 1013045,
+              "key": "d73112bc-8664-4061-8e5c-b24544f7bc0a",
+              "title": "Congratulations!",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Congratulations on completing this course!",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

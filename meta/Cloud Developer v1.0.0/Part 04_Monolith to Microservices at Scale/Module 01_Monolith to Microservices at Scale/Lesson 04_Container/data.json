@@ -1,0 +1,828 @@
+{
+  "data": {
+    "lesson": {
+      "id": 861350,
+      "key": "69587ecc-b5bb-4c73-8642-c7a6f5fe8d44",
+      "title": "Container",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you will run each of our services separately in an individual Docker container. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/69587ecc-b5bb-4c73-8642-c7a6f5fe8d44/861350/1562099733298/Container+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/69587ecc-b5bb-4c73-8642-c7a6f5fe8d44/861350/1562099729961/Container+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 861351,
+          "key": "8884d445-d224-4b31-9c1d-67b4e00253db",
+          "title": "Lesson Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8884d445-d224-4b31-9c1d-67b4e00253db",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861362,
+              "key": "d356eee2-96bc-455d-a75e-12d7e17ece41",
+              "title": "ND9990 C03 L03 Lessson Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EddV5P5NAsE",
+                "china_cdn_id": "EddV5P5NAsE.mp4"
+              }
+            },
+            {
+              "id": 971140,
+              "key": "4fce1b3b-6024-44c5-b584-4c62f1154c6f",
+              "title": "Introduction",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introduction\nThe exercises in this lesson are an extension of the exercises you have already done in the previous lessons - **\"Best Practices for Micro-Services Development\"** and **\"Independent Development\"**.  We will use the same \"Udagram\" project, and convert the monolithic architecture into microservices running in separate containers. \n\n### Udagram Image Filtering Microservice\n“Udagram” is a simple cloud application which comprises of the following services for end-user:\n* “user” - allows users to register and log into a web client, \n* “feed” - allows users to post photos, and process photos using image filtering \n* “frontend” - acts as an interface between the user and the backend-services\n\nCorrespondingly, the project is split into following parts:\n1. The RestAPI Feed Backend, a Node-Express feed microservice.\n2. The RestAPI User Backend, a Node-Express user microservice.\n3. The Simple Frontend - A basic Ionic client web application which consumes the RestAPI Backend.\n4. Nginx as a reverse-proxy server, when different backend services are running on the same port, then a reverse proxy server directs client requests to the appropriate backend server and retrieves resources on behalf of the client.  \n\n\n## Lesson Outcomes\nAfter completing this lesson, you will be able to:\n* Explain the fundamentals of Docker, images, and containers\n* Build your images using a Dockerfile\n* Create containers from the images you have built\n* Deploy separate microservices in individual containers\n* Practice a few essential Docker-commands\n* Upload your image to the Docker Hub\n* Configure Nginx as the reverse-proxy server to avoid conflict of ports being used by different microservices\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861352,
+          "key": "e6a69063-adae-44f6-a14b-2c5f8e7fae2e",
+          "title": "Docker Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e6a69063-adae-44f6-a14b-2c5f8e7fae2e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971148,
+              "key": "715a75d5-837f-4263-b0e4-19cc9fcd2c47",
+              "title": "Docker Introduction",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Docker\nDocker is a tool that helps to create **\"images\"**. An **\"image\"** (or **Docker image**) is a portable package that contains the application and its dependencies. An \"image\" can be used to instantiate multiple **\"containers\"**.\n\n## What is a Container?\nOS level virtualization allows us to run **multiple isolated user-space instances** in parallel. A **\"container\"** (or **Docker container**) is the isolated user-space instance that has the application code, the required dependencies, and the necessary runtime environment to run the application. In other words, all the containers running on a host behave like isolated processes in userspace. The image below explains the concept of multiple containers on a host.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971142,
+              "key": "b6144a17-9e32-43ce-acfe-07fa3eda9500",
+              "title": "Multiple containers on a host",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d1249_containers/containers.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b6144a17-9e32-43ce-acfe-07fa3eda9500",
+              "caption": "Multiple containers running on a host (Image courtesy - Docker, Inc., retrieved from https://www.docker.com/resources/what-container)\n",
+              "alt": "Multiple containers running on a host",
+              "width": 596,
+              "height": 429,
+              "instructor_notes": null
+            },
+            {
+              "id": 971141,
+              "key": "db8266a3-0dd6-41e3-b9f8-cda6c4a03705",
+              "title": "Benefit of Containers",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Read more about [What is a Container](https://www.docker.com/resources/what-container).\n\n### Benefit of Containers\n* Docker images make it easier for developers to create, deploy, and run applications on different hardware and platforms, quickly and easily. Docker has become an essential tool in CI/CD pipeline nowadays. \n* Containers share a single kernel and share application libraries. \n* Containers cause a lower system overhead as compared to Virtual Machines.\n* Containers are platform independent.\n* Containers are easy to manage as compared to Virtual Machines (VMs). \n\n\nRefer to the [Docker documentation](https://docs.docker.com/) for more information.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861353,
+              "key": "d5606137-f5d4-49c2-8290-6b124f23479d",
+              "title": "ND9990 C03 L03 Docker Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dXh6CSE1nxc",
+                "china_cdn_id": "dXh6CSE1nxc.mp4"
+              }
+            },
+            {
+              "id": 971143,
+              "key": "7f343835-0716-4011-8c36-53bd989d8c96",
+              "title": "True or False",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7f343835-0716-4011-8c36-53bd989d8c96",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "A Docker container contains the Docker image",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 953196,
+              "key": "eb96f39f-263d-4d6a-b510-d0ca5349711f",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Docker Installation Instructions:\n* [Docker Desktop for Mac (macOS)](https://docs.docker.com/docker-for-mac/install/)\n* [Docker Desktop for Windows 10 64-bit: Pro, Enterprise, or Education](https://docs.docker.com/docker-for-windows/install/)\n* [Docker Toolbox for Windows  10 64-bit Home](https://docs.docker.com/toolbox/toolbox_install_windows/)\t\n\nYou can find installation instructions for other operating systems at:  https://docs.docker.com/install/\n\nOnce you have Docker installed, open a terminal and run:\n\n```bash\ndocker run alpine echo hello world\n```\n\nCongratulations!  You are now running Docker!\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861354,
+          "key": "dbaa6bbd-5eaa-4234-bfd8-a2e505284cb5",
+          "title": "Building your first image",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dbaa6bbd-5eaa-4234-bfd8-a2e505284cb5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971154,
+              "key": "a91dcc93-ba77-4feb-8a6f-08967141e3b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Prerequisite\n### 1. **Node.js** server environment and **Node Package Manager** (npm) \nDownload and install **node.js** from [official website](https://nodejs.org/en/download/). Verify the installation of Node.js using following command in your \"terminal\" / \"cmd\": \n```\nnode -v\n```\nNPM is a utility for JavaScript. It comes along with Node.js installation. For more info about NPM, refer [here](https://www.npmjs.com/get-npm). Verify the installation of NPM and update: \n```\nnpm -v\nnpm update\n```\n### 2. Installing Ionic Cli\nThe Ionic Command Line Interface builds and serves the frontend. Instructions for installing the CLI can be found in the [Ionic Framework Docs](https://ionicframework.com/docs/installation/cli). When we would configure and start the backend services, then the frontend server can be started using following command in the terminal:\n\n```bash\nionic serve\n```\n \n### 3. AWS RDS - PostgreSQL instance, Postbird tool, and an S3 bucket\nYou'll need an AWS account to set up these resources. Create the [PostgreSQL instance on AWS](https://classroom.udacity.com/nanodegrees/nd9990/parts/5d4b2317-8333-47b3-a9ec-ea2cf0a3efbb/modules/ab95831d-3105-400e-9c49-01a9d85e5a65/lessons/a89390c2-0832-4de0-833f-2dcb929a665e/concepts/001c5798-6c84-448e-ad63-9281f0e2fabe) and install the [Postbird tool] (https://github.com/Paxa/postbird) to interact remotely with the database. Additionally, you'll need to [create an S3 filestore bucket in AWS](https://classroom.udacity.com/nanodegrees/nd9990/parts/5d4b2317-8333-47b3-a9ec-ea2cf0a3efbb/modules/ab95831d-3105-400e-9c49-01a9d85e5a65/lessons/a89390c2-0832-4de0-833f-2dcb929a665e/concepts/a04068a9-6267-4c37-9eeb-a413949a48f2)\n\n\n### 4. Clone the project GitHub repository\nCreate a project folder in your local computer and clone the following Git repository - https://github.com/udacity/nd9990-c3-microservices-v1\n\nGo to the directory `/lesson-3-Container/exercises/`, where you would find the following sub-folders for each component of the project, as follows:\n1. udacity-c3-frontend - For Ionic client web application, which consumes the RestAPI Backend\n2. udacity-c3-restapi-feed - For \"feed\" microservice\n3. udacity-c3-restapi-user - For \"user\" microservice\n4. udacity-c3-deployment/docker - For running the Nginx as a reverse-proxy server\nIt will be helpful if you download and install the [Visual Studio Code editor](https://code.visualstudio.com/).\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861361,
+              "key": "544653dd-823d-45b5-81f4-3d36962bf926",
+              "title": "ND9990 C03 L03 Building Your First Image",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rzi8uKuUn5c",
+                "china_cdn_id": "rzi8uKuUn5c.mp4"
+              }
+            },
+            {
+              "id": 971155,
+              "key": "1b0296f6-5b49-48ec-95e7-239bbb3f7732",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Instructions to Create an Image from a Dockerfile\nLet us start with creating a Docker file for \"user\" microservice. So, navigate to the `udacity-c3-restapi-user` directory.\n\n### Step 1. Install project dependencies  \nThis project uses NPM to manage software dependencies. NPM relies on the `package.json` file located in the current directory. \n```bash\nnpm install\n```\n\n\n### Step 2. Create your Dockerfile\nCreate an empty file using the command `touch Dockerfile`. The `Dockerfile` does not have any file extension. Below is the content of `Dockerfile` that the instructor has created for the restapi-user endpoint:\n\n```dockerfile\n# Set the base image\nFROM node:12\n# Create app directory\nWORKDIR /usr/src/app\n# Copy package.json AND package-lock.json\nCOPY package*.json ./\n# Install all dependencies\nRUN npm ci \n# Copy the rest of the code\nCOPY . .\n# Expose the port \nEXPOSE 8080\n# Define the command that should be executed\nCMD [ \"npm\", \"run\", \"dev\" ]\n```\n\n\n### Step 3. Build the Image for the \"user\" service\nThe `docker build` command builds images from a Dockerfile and a “context”. The following is the command example:\n\n```bash\ndocker build -t <your_dockerhub_username_lowercase>/udacity-restapi-user . \n```\nThe above command will create an image. You can see the list of all images using the following command:\n```bash\ndocker images\n```\n---\n\n\n\n\n### Step 4. Build the image for the \"feed\" service\nNavigate to the `udacity-c3-restapi-feed` directory, and follow the Steps 1 to 3 again. The `Dockerfile` for the \"feed\" service would be the same as the one for \"user\" service. You would give a different name for \"feed\" image:\n```bash\ndocker build -t <your_dockerhub_username_lowercase>/udacity-restapi-feed . \n```\n\n**Note:**\nBoth the \"feed\" and \"user\" services are exposed at the same port 8080 (see Dockerfile). Therefore, only one of them can serve as of now. We can have both of them up and running when we configure Nginx reverse-proxy. \n\n### Step 5. Build the image for the \"frontend\" service\nNavigate to the `udacity-c3-frontend` directory, and follow the Steps 1 to 3 again. The `Dockerfile` for the \"frontend\" service would be a different one, as follows:\n\n```dockerfile\n## Build\nFROM beevelop/ionic AS ionic\n# Create the application directory\nWORKDIR /usr/src/app\n# Install the application dependencies\n# We can use wildcard to ensure both package.json AND package-lock.json are considered\n# where available (npm@5+)\nCOPY package*.json ./\nRUN npm ci\n# Bundle app source\nCOPY . .\nRUN ionic build\n\n## Run \nFROM nginx:alpine\n#COPY www /usr/share/nginx/html\nCOPY --from=ionic /usr/src/app/www /usr/share/nginx/html\n```\nYou would give a different name for the \"frontend\" image:\n```bash\ndocker build -t <your_dockerhub_username_lowercase>/udacity-frontend . \n```\n#### Optional Step\nIf you face any errors, please need to update the Angular dependencies. Try to update them before building the image as follows:\n```bash\nsudo npm install -g @angular/cli@latest\nsudo ng update --all --force\ndocker build -t <your_dockerhub_username_lowercase>/udacity-frontend . \n``` \nYour can see the list of generated images by using the following command:\n```\ndocker images\n```\nIf you want to remove any image, use the following commands:\n```\ndocker image rm -f <image_name/ID>\ndocker image prune\n```\n\n## Important Terms\n\n**Dockerfile** \n  - a text file without any extension that contains all the commands to be executed to generate an image.\n\n**FROM** \n  - a `Dockerfile` ***must*** begin with a `FROM` instruction\n  . initializes a new build stage\n  - sets the base image for subsequent instructions\n\n**RUN** \n  - command to create and start containers using the current image\n  - commits the results so that the resulting committed image will be used for the next step in the Dockerfile.\n\n**WORKDIR**\n  - creates (if not exists) and set the working directory for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY` and `ADD` instructions that follow it in the Dockerfile. \n\n\n**COPY**\n  - copies new files or directories from `<src>` and adds them to the filesystem of the container at the path `<dest>` \n\n**EXPOSE**\n  - specify the network ports of the container at runtime\n  - specify the network protocol that the port listens (TCP is the default)\n  - NOTE: `EXPOSE` does not actually publish the port -- it functions more as a documentation tool\n\n**CMD**\n  - provide defaults for an executing container\n  - if the defaults do not include an executable, you must specify an `ENTRYPOINT`\n  - NOTE: there can be only one `CMD` instruction in a `Dockerfile`\n\n\n### Read about more Dockerfile:\n - [Dockerfile reference](https://docs.docker.com/engine/reference/builder/) \n - [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)\n - [Dockerizing a Node.js web app](https://nodejs.org/de/docs/guides/nodejs-docker-webapp/)\n---\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971147,
+              "key": "b35125fe-7e4c-4425-9a9a-93dfe799c9a2",
+              "title": "Select the correct option",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b35125fe-7e4c-4425-9a9a-93dfe799c9a2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the purpose of `npm install` command?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "To install the NPM updates",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "To install the dependencies listed in the `package.json` file",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 971146,
+              "key": "f170da45-84f3-4768-95ec-22af968ab8cd",
+              "title": "Select all that is True",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f170da45-84f3-4768-95ec-22af968ab8cd",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is True about a Dockerfile?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A file without any extension",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A text document that contains a set of commands to construct an image.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "It is used by `docker build` command to execute the set of commands as mentioned in Dockerfile in succession",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 861355,
+          "key": "96e5ca92-4faa-4dcc-a31f-cd216375b8b2",
+          "title": "Create and Run the container",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "96e5ca92-4faa-4dcc-a31f-cd216375b8b2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971144,
+              "key": "23d6069c-c54f-430b-b623-02bd2e282a3d",
+              "title": "Environment var",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Prerequisite - Store the Environment Variables in `.profile` file\nCreate (if not exists) a `.profile` file in `~` or `$HOME` directory that will contain the user-specific variables. Follow the steps below: \n* In the `~` directory, run `echo $PATH`. Copy the output.\n* Create a new `.profile` file using `touch .profile`. \n* Open it up for editing using any editor. Add the copied $PATH variable value, for example:\n```bash\nexport PATH=$PATH:/usr/local/mysql/bin/\n```\n* Add the value for other variables specific for you:\n```bash\nexport POSTGRESS_USERNAME=myusername;\nexport POSTGRESS_PASSWORD=mypassword;\nexport POSTGRESS_DB=postgres;\nexport POSTGRESS_HOST=udagramdemo.abc4def.us-east-2.rds.amazonaws.com;\nexport AWS_REGION=us-east-2;\nexport AWS_PROFILE=default;\nexport AWS_BUCKET=udagramdemo;\nexport JWT_SECRET=helloworld;\n```\n**Change the values of the above mentioned variables as applicable for you**. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861363,
+              "key": "6bf129fc-128f-47da-adc6-4bd14f58351b",
+              "title": "ND9990 C03 L03 Running The Container",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "elybSnBGB_g",
+                "china_cdn_id": "elybSnBGB_g.mp4"
+              }
+            },
+            {
+              "id": 900247,
+              "key": "d0f4667b-f68a-4466-9434-9fd07b327611",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You need to be in your `udacity-c3-restapi-feed` directory before following the instructions below. We will create and run “feed” service on port 8080 in a container.\n\n\n### Step 1. Load the environment variables from `.profile` file\n```bash\nsource ~/.profile\n```\n\n### Step 2. Run your Container (simplified version)\nThe simplified version of the command to run a new container looks like this:\n```bash\ndocker run --publish 8080:8080 --name feed <your_dockerhub_username_lowercase>/udacity-restapi-feed\n```\nThe keywords involved in the above command  are:\n- `<your_dockerhub_username_lowercase>/udacity-restapi-feed` is the docker image \n<br>\n<br>\n- `--publish`  publishes a container’s port(s) to the host\n<br>\n<br>\n\n- `--name` assigns a name to the container\n\n**The simplified version won't run** because it doesn't have access to the environment variables and the AWS credentials that the app needs to access the RDS database and the S3 bucket.\n\n### Step 2. Run your Container (working version)\n\nYou can add the AWS credentials and environment variables in the `docker run` command as follows:\n\n```bash\ndocker run --rm --publish 8080:8080 -v $HOME/.aws:/root/.aws --env POSTGRESS_HOST=$POSTGRESS_HOST --env POSTGRESS_USERNAME=$POSTGRESS_USERNAME --env POSTGRESS_PASSWORD=$POSTGRESS_PASSWORD --env POSTGRESS_DB=$POSTGRESS_DB --env AWS_REGION=$AWS_REGION --env AWS_PROFILE=$AWS_PROFILE --env AWS_BUCKET=$AWS_BUCKET --env JWT_SECRET=$JWT_SECRET --name feed <your_dockerhub_username_lowercase>/udacity-restapi-feed\n```\n\n**Don't forget to replace `<your_dockerhub_username_lowercase>` with your Docker Hub username!!!** The above command will create and run a container with the name as \"feed\".\n\n\n### Step 3. Verify the Running Container\nYou can confirm that the backend is working by accessing the `restapi-feed` endpoint in your browser: http://localhost:8080/api/v0/feed  \n\nOr on the command line:\n\n```bash\ncurl http://localhost:8080/api/v0/feed\n```\n\nUse the following commands if you want to remove any running container:\n```bash\ndocker container ls\ndocker container kill <container_name>\ndocker container prune\n```\n\n### What happens when we issue `docker run` command?\nPreviously, we learned that Docker allows for creating images. Docker images can be instantiated to create multiple (isolated) containers. We can think of a container itself as a process that runs on a host. The host may be local or remote. \n\nWhen we issue the `docker run` command, the container process starts running. The container is isolated because it has its own file system, networking, and a set of processes other than the host.\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971149,
+              "key": "81497284-6edc-438c-aadf-6f9622d746da",
+              "title": "Radio Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "81497284-6edc-438c-aadf-6f9622d746da",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "All the containers running on a single host machine share the same OS kernel; therefore, they are lightweight and utilize the RAM efficiently. ",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "True",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "False",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 971158,
+              "key": "290551a4-7d91-4248-b287-fa6cfe119de0",
+              "title": "Matching Quiz",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "290551a4-7d91-4248-b287-fa6cfe119de0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the statements to the corresponding commands:"
+                },
+                "concepts_label": "Statement",
+                "answers_label": "Command",
+                "concepts": [
+                  {
+                    "text": "Remove unused or dangling images",
+                    "correct_answer": {
+                      "id": "a1582112026940",
+                      "text": "`docker image prune`"
+                    }
+                  },
+                  {
+                    "text": "Run a command in an isolated (new) container",
+                    "correct_answer": {
+                      "id": "a1582112080626",
+                      "text": "`docker run`"
+                    }
+                  },
+                  {
+                    "text": "Build an image from a Dockerfile",
+                    "correct_answer": {
+                      "id": "a1582112099927",
+                      "text": "`docker build`"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1582112080626",
+                    "text": "`docker run`"
+                  },
+                  {
+                    "id": "a1582112099927",
+                    "text": "`docker build`"
+                  },
+                  {
+                    "id": "a1582112026940",
+                    "text": "`docker image prune`"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 861356,
+          "key": "e7c35850-f0c1-4477-ab1b-b52b1232b7f3",
+          "title": "Debugging a container",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e7c35850-f0c1-4477-ab1b-b52b1232b7f3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861364,
+              "key": "49f1180d-5eec-4ba4-894c-127e30982856",
+              "title": "ND9990 C03 L03 Debugging A Container",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "T3DYO9cQeoc",
+                "china_cdn_id": "T3DYO9cQeoc.mp4"
+              }
+            },
+            {
+              "id": 900248,
+              "key": "689275f6-a84f-4352-af3b-ea5594f8e241",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Check The Logs\n\nThe docker logs command shows you the logs of the container\n\n\n```bash\ndocker logs feed\n```\n\n\nYou can  continue to follow the new output from the container using\n\n```bash\ndocker logs feed --follow\n```\n\n\nTo view only the lines at the end of the logs run\n\n\n```bash\ndocker logs feed --tail 3\n```\n\nRead more here:\n- [docker logs](https://docs.docker.com/engine/reference/commandline/logs/)\n\n\n### Debugging Inside The Container\n\nYou can run a command in a running container `exec`.  This command will open a bash terminal inside the container: \n```\ndocker exec -it feed bash\n```\n\nRead more here:\n- [docker exec](https://docs.docker.com/engine/reference/commandline/exec/)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861357,
+          "key": "16785f22-79a8-47c8-ad08-fe514f33be2f",
+          "title": "Important commands in Docker",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "16785f22-79a8-47c8-ad08-fe514f33be2f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861366,
+              "key": "49a92acb-84ef-475e-946d-a32c78af0522",
+              "title": "ND9990 C03 L03 Important Commands In Docker",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GisV9RdLKos",
+                "china_cdn_id": "GisV9RdLKos.mp4"
+              }
+            },
+            {
+              "id": 900249,
+              "key": "2f8ec731-8590-48ca-9100-6bef9b9db824",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Important Commands In Docker\n\n**Containers**\n\n`create `— Create a container from an image. \n\n`start `— Start an existing container. \n\n`run ` —  Create a new container and start it. \n\n`ps `— List running containers. \n\n`inspect `— See lots of info about a container.\n\n`logs `— Print logs. \n\n`stop `— Gracefully stop a running container. \n\n`kill` —Stop the main process in a container abruptly. \n\n`rm`— Delete a stopped container.\n\n**Images**\n\n`build `— Build an image.\n\n`push` — Push an image to a remote registry.\n\n`images` — List images. \n\n`history`  — See intermediate image info.\n\n`inspect`  — See lots of info about an image, including the layers. \n\n`rm`  — Delete an image.\n\nYou can read more about these commands and the other available commands in [docker CLI Reference](https://docs.docker.com/engine/reference/commandline/docker/)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861358,
+          "key": "aa34ce96-5d24-433b-85db-6ffb7505086f",
+          "title": "Image registry",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aa34ce96-5d24-433b-85db-6ffb7505086f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861367,
+              "key": "f4e44cc0-9fbd-49da-9e97-17a2eb1f552b",
+              "title": "ND9990 C03 L03 Image Registry",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3Q5T2hVFhaM",
+                "china_cdn_id": "3Q5T2hVFhaM.mp4"
+              }
+            },
+            {
+              "id": 900250,
+              "key": "b674d09c-d5b2-4010-a6d7-d766896d692b",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Uploading Our Images to an Image Registry\n\nWe have built our first images, and we could share those images through the Docker Hub.\n\nIn order to do this the steps would be:\n\n1. Create an account on the Docker Hub\n\n2. Tag our image accordingly (i.e. `yourdockerhubname/udacity-restapi-feed`) and use the `push` command\n\n\n```bash\ndocker push yourdockerhubname/udacity-restapi-feed\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971160,
+              "key": "ca66dbcc-5bcb-4333-8314-0af41839bb71",
+              "title": "Matching Quiz",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ca66dbcc-5bcb-4333-8314-0af41839bb71",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the command to the corresponding functionality."
+                },
+                "concepts_label": "Command",
+                "answers_label": "Functionality",
+                "concepts": [
+                  {
+                    "text": "`docker exec -it container_id bash`",
+                    "correct_answer": {
+                      "id": "a1582112246490",
+                      "text": "Access a running container by opening a bash terminal inside it"
+                    }
+                  },
+                  {
+                    "text": "`docker build -t <user_repo>/<Image_id>:<tag_name>`",
+                    "correct_answer": {
+                      "id": "a1582112280038",
+                      "text": "Build an image from the Dockerfile"
+                    }
+                  },
+                  {
+                    "text": "`docker commit -m \"Update comment\" container_ID <user_repo>/<Image_id>`",
+                    "correct_answer": {
+                      "id": "a1582112300893",
+                      "text": "Commit the changes done in a Docker image"
+                    }
+                  },
+                  {
+                    "text": "`docker push <user_repo>/<Image_id>`",
+                    "correct_answer": {
+                      "id": "a1582112315464",
+                      "text": "Push the changes that are done in a docker image into the Docker Hub"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1582112280038",
+                    "text": "Build an image from the Dockerfile"
+                  },
+                  {
+                    "id": "a1582112315464",
+                    "text": "Push the changes that are done in a docker image into the Docker Hub"
+                  },
+                  {
+                    "id": "a1582112246490",
+                    "text": "Access a running container by opening a bash terminal inside it"
+                  },
+                  {
+                    "id": "a1582112300893",
+                    "text": "Commit the changes done in a Docker image"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 861359,
+          "key": "bfcbe24c-8f59-4012-a0a5-09ad3e218e7f",
+          "title": "Docker Compose",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bfcbe24c-8f59-4012-a0a5-09ad3e218e7f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971145,
+              "key": "5f433527-e038-461a-bb55-5a04b4e1cde3",
+              "title": "Intro-Nginx",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Docker Compose\nPreviously  we read that when different backend services are running on the same port, then a reverse proxy server directs client requests to the appropriate backend server and retrieves resources on behalf of the client. The reverse-proxy server lies behind the firewall in a private network. The following are  benefits of using a reverse-proxy server:\n* It raises the security level for accessing the services only through the reverse-proxy server (encapsulation of services). \n* It resolves the conflict between services running on the same port number in separate containers by directing the client requests to the appropriate backend server.\nThe diagram below shows how the Nginx serves as a reverse-proxy server.  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971151,
+              "key": "e4056180-ae53-4bca-9fce-59c6bc00a37e",
+              "title": "NginX",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d1f5c_nginx/nginx.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e4056180-ae53-4bca-9fce-59c6bc00a37e",
+              "caption": "Nginx as a reverse-proxy server",
+              "alt": "Nginx as a reverse-proxy server",
+              "width": 776,
+              "height": 387,
+              "instructor_notes": null
+            },
+            {
+              "id": 971162,
+              "key": "fb1b81e7-84b4-45f9-932f-e4c93dbffd72",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this concept, we will learn about the basic configuration of Nginx reverse-proxy server. Here, we have a configuration file (nginx.conf) that will help us to associate the incoming request from Nginx to different servers. Once we have Nginx configured in place, we will use Docker-compose. \n\nDocker Compose allows us to run applications with multiple containers. We'll use a YAML file to configure all of the services we need, then run a single command, to create and start all of the services. Follow the instructions below to use Nginx and Docker Compose.\n\n## Instructions\n### Step 1 - Define each service in a Dockerfile\nWe have already defined a Dockerfile for “feed”, “user”, and “frontend” services. Generate images for the services mentioned above using the `docker build` command, explained in the [previous concept](https://classroom.udacity.com/nanodegrees/nd9990/parts/96fffeca-63e0-4bfc-92a6-a869b5b64b9e/modules/8c55d5a1-ae41-4313-ab37-86b1f35b9ada/lessons/69587ecc-b5bb-4c73-8642-c7a6f5fe8d44/concepts/dbaa6bbd-5eaa-4234-bfd8-a2e505284cb5). \n\n\n### Step 2 - Define Dockerfile and Configuration file for Nginx\nWe mentioned in the beginning that we will use Nginx as the reverse proxy. The reverse proxy would direct the incoming request to the appropriate service, even if multiple services are running on the same port. In our case, the \"feed\" and \"user\" services are running on the same port 8080.\n**We have already provided you the Dockerfile and Configuration file for Nginx.** Go to the `udacity-c3-deployment/docker` directory included in the project path `lesson-3-Container`. \n* Dockerfile - The content of this file is different from the Dockerfile of \"user\", \"feed\", or \"frontend\" services. Below is the content of this Dockerfile:\n```bash\nFROM nginx:alpine \nCOPY nginx.conf /etc/nginx/nginx.conf\n```\nYou need to build an image from the Dockerfile mentioned above using the command \n```bash\ndocker build -t <your_dockerhub_username_lowercase>/reverseproxy . \n```\n\n* nginx.conf - This is a configuration file that contains the directives for request forwarding. In our case, the following is the content of this configuration file:\n\n```bash\nworker_processes 1;  \nevents { worker_connections 1024; }\nerror_log /dev/stdout debug;\n\nhttp {\n  sendfile on;\n\n  upstream user {\n    server backend-user:8080;\n  }\n\n  upstream feed {\n    server backend-feed:8080;\n  }\n   \n  proxy_set_header Host $host;\n  proxy_set_header X-Real-IP $remote_addr;\n  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n  proxy_set_header X-Forwarded-Host $server_name;\n   \n  server {\n    listen 8080;\n    location /api/v0/feed {\n      proxy_pass http://feed;\n    }\n    location /api/v0/users {\n      proxy_pass http://user;\n    }       \n  }\n\n}\n```\n\nLet's watch the demonstration in the video below, before moving to the next set of steps.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861368,
+              "key": "1f778fda-2474-4f2d-9bf1-9adf4d14c205",
+              "title": "ND9990 C03 L03 Docker Compose",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "gAW_XltfJQ4",
+                "china_cdn_id": "gAW_XltfJQ4.mp4"
+              }
+            },
+            {
+              "id": 900251,
+              "key": "4d18f10c-3903-45a2-95dc-0608098acb26",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### Step 3- Define the services in `docker-compose.yaml`\nFirst, you'll need to [install docker] (https://docs.docker.com/install/). Next, create a `docker-compose.yaml` file in the `udacity-c3-deployment/docker` directory. Define all the services of our system and their relationship to each other in the `docker-compose.yaml`, as follows:\n```bash\nversion: \"3\"\nservices:\n reverseproxy:\n   image: your_dockerhub_username_lowercase/reverseproxy\n   ports:\n     - 8080:8080\n   restart: always\n   depends_on:\n    - backend-user\n    - backend-feed   \n backend-user:\n  image: your_dockerhub_username_lowercase/udacity-restapi-user\n  volumes:\n   - $HOME/.aws:/root/.aws\n  environment:\n   POSTGRESS_USERNAME: $POSTGRESS_USERNAME\n   POSTGRESS_PASSWORD: $POSTGRESS_PASSWORD \n   POSTGRESS_DB: $POSTGRESS_DB \n   POSTGRESS_HOST: $POSTGRESS_HOST \n   AWS_REGION: $AWS_REGION \n   AWS_PROFILE: $AWS_PROFILE \n   AWS_BUCKET: $AWS_BUCKET\n   JWT_SECRET: $JWT_SECRET\n   URL: \"http://localhost:8100\"\n backend-feed:\n  image: your_dockerhub_username_lowercase/udacity-restapi-feed\n  volumes:\n   - $HOME/.aws:/root/.aws\n  environment:\n   POSTGRESS_USERNAME: $POSTGRESS_USERNAME\n   POSTGRESS_PASSWORD: $POSTGRESS_PASSWORD \n   POSTGRESS_DB: $POSTGRESS_DB \n   POSTGRESS_HOST: $POSTGRESS_HOST \n   AWS_REGION: $AWS_REGION \n   AWS_PROFILE: $AWS_PROFILE \n   AWS_BUCKET: $AWS_BUCKET\n   JWT_SECRET: $JWT_SECRET\n   URL: \"http://localhost:8100\"\n frontend:\n  image: your_dockerhub_username_lowercase/udacity-frontend\n  ports:\n   - \"8100:80\"\n```\n* **Note that you would need to replace the `your_dockerhub_username_lowercase` with your own docker hub repository.** \n\n* Since the above file uses environment variables, therefore you need to tell the system to use the environment variables from your ` ~/.profile` file using the command `source ~/.profile `.\n\n\n\n### Step 4- Define build information in `docker-compose-build.yaml` file\nCreate the `docker-compose-build.yaml` containing the build information as:\n```bash\nversion: \"3\"\nservices:\n reverseproxy:\n build:\n context: .\n image: your_dockerhub_username_lowercase/reverseproxy \n backend_user:\n build:\n context: ../../udacity-c3-restapi-user\n image: your_dockerhub_username_lowercase/udacity-restapi-user\n backend_feed:\n build:\n context: ../../udacity-c3-restapi-feed \n image: your_dockerhub_username_lowercase/udacity-restapi-feed\n frontend:\n build:\n context: ../../udacity-c3-frontend \n image: your_dockerhub_username_lowercase/udacity-frontend:local\n```\n**Don't forget to replace the `your_dockerhub_username_lowercase` with your own docker hub repository.** \n\n### Step 5 - Docker-compose\nPreviously, we learned to build independent images and run containers using those images. But, now we'll recreate all the images and run containers using docker-compose. Therefore, remove the running containers with the name \"feed\", \"user\", or \"frontend\", if any, using the command:\n```bash\ndocker container ls\ndocker container kill <container_name>\ndocker container prune\n```\n\nBuild the images for each of our defined services, using the command: \n```bash\ndocker-compose -f docker-compose-build.yaml build --parallel\n```\n\nTo start the system, run a container for each of our defined services, in the attached mode: \n```bash\ndocker-compose up\n```  \nAlternatively, you may use detached mode to run containers in the background:\n```bash\ndocker-compose up -d \n```\nTo see the list of running containers, run the command - `docker-compose ps`. You will see a list of container names, states, and ports listed. \n\n### Step 6 - Verify\nGo to the browser and run “http://localhost:8100/” to see our Udagram application up and running with two funcaitonalities: feed and user service. “Feed” service will allow the user to upload images and “user” service will allow a user to log-in or log-out from the system.\n\nIf you wish to stop the containers gracefully, use the below command:\n```bash\ndocker-compose stop\n# To remove (and stop) the container\ndocker-compose down\n```\n\n\n## Recommended read\n* What is a Reverse Proxy Server? - https://www.nginx.com/resources/glossary/reverse-proxy-server/\n* Configuring NGINX Reverse Proxy - https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971164,
+              "key": "f870aead-52a9-4867-a869-21d04afb020f",
+              "title": "Matching Quiz",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f870aead-52a9-4867-a869-21d04afb020f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the given definitions to the corresponding Docker tool:"
+                },
+                "concepts_label": "Definition",
+                "answers_label": "Docker tool",
+                "concepts": [
+                  {
+                    "text": "A cloud-based registry service to store and share images",
+                    "correct_answer": {
+                      "id": "a1582112895345",
+                      "text": "Docker Hub"
+                    }
+                  },
+                  {
+                    "text": "A tool that helps running multi-container Docker applications.",
+                    "correct_answer": {
+                      "id": "a1582112936988",
+                      "text": "Docker Compose"
+                    }
+                  },
+                  {
+                    "text": "A tool that converts a cluster of Docker hosts into a single virtual Docker host.",
+                    "correct_answer": {
+                      "id": "a1582112951396",
+                      "text": "Docker Swarm"
+                    }
+                  },
+                  {
+                    "text": "A collection of cloud-based services for Docker images, host infrastructure, and deployment features to automate the deployment.",
+                    "correct_answer": {
+                      "id": "a1582112971189",
+                      "text": "Docker Cloud"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1582112951396",
+                    "text": "Docker Swarm"
+                  },
+                  {
+                    "id": "a1582112971189",
+                    "text": "Docker Cloud"
+                  },
+                  {
+                    "id": "a1582112936988",
+                    "text": "Docker Compose"
+                  },
+                  {
+                    "id": "a1582112895345",
+                    "text": "Docker Hub"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 861492,
+          "key": "382676c1-f416-4f86-b8f4-338d1188afab",
+          "title": "Exercise: Run the application in docker",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "382676c1-f416-4f86-b8f4-338d1188afab",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861493,
+              "key": "7d3d5d5f-7ba6-4d45-8075-af9cb362a161",
+              "title": "Exercise",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson 3 - Containers - Exercise\nThe exercises in this lesson are an extension of the exercises you have already done in the previous lesson - **\"Independent Development\"**.  We will use the same \"Udagram\" project, and convert the monolithic architecture into microservices running in separate containers. We will use Docker to run our application. First, we start with packing our application and afterward we will create an Nginx proxy. Finally, we will use docker-compose to deploy our complete application.  \n\n### Dependencies\nWe have already described the instructions at `https://github.com/udacity/nd9990-c3-microservices-v1/blob/master/lesson-2-Independent-Development/exercises/README.md` to get the following installed on your system.\n1. Installing Node and NPM \n2. Installing Ionic Cli\n3. AWS RDS - PostgreSQL instance, Postbird tool, and an S3 bucket\n4. Docker Desktop  - [macOS](https://docs.docker.com/docker-for-mac/install/), [Windows 10 64-bit: Pro, Enterprise, or Education](https://docs.docker.com/docker-for-windows/install/), [Windows  10 64-bit Home](https://docs.docker.com/toolbox/toolbox_install_windows/). You can find installation instructions for other operating systems at:  https://docs.docker.com/install/\n\nOnce you have Docker installed, open a terminal and run:\n\n```bash\ndocker run alpine echo hello world\n```\n\n\n### Exercise Instructions\n#### Task 1 - Clone the project GitHub repository (if not already)\nClone the [course repo](https://github.com/udacity/nd9990-c3-microservices-v1) and stay on the `master` branch.  \n```bash\ngit clone https://github.com/udacity/nd9990-c3-microservices-v1\ncd nd9990-c3-microservices-v1/\ngit branch\n```\nNavigate to the `/lesson-3-Container/exercises/` directory, where you would find the following sub-folders for each component of the project, as follows:\n1. udacity-c3-frontend - For Ionic client web application, which consumes the RestAPI Backend\n2. udacity-c3-restapi-feed - For \"feed\" microservice\n3. udacity-c3-restapi-user - For \"user\" microservice\n4. udacity-c3-deployment/docker - For running the Nginx as a reverse-proxy server\nIt will be helpful if you download and install the [Visual Studio Code editor](https://code.visualstudio.com/). Follow the instructions as available in the classroom. \n\n#### Task 2 - Create Docker Images for our application\n* Create a Dockerfile for all the **three** services in the respective directories. The three services are - \"feed\", \"user\", and \"frontend\". \n* Use the Dockerfile to create the corresponding images for all the **three** services.\n\n#### Task 3 - Create Docker Image for Nginx as a reverse proxy\n*   Create a ngnix proxy as Dockerfile\n*   Build the image for reverse proxy\n\n#### Task 4 - Create and Run the containers for all the Images\n*   Use `docker run` to create and run the image as container. Do this for all the services and reverse proxy.\n\n#### Task 5 - Docker compose\n*   Use docker-compose to deploy the completed application \n\nBonus: Use `docker compose` to build our images. \n\n### Solution\nIf you need help, you may refer to the **solution** available at `/lesson-3-Container/solution/`. \n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861494,
+              "key": "51bed7c1-6bcf-49eb-8562-a144d4bd5715",
+              "title": "Run the application in docker",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "51bed7c1-6bcf-49eb-8562-a144d4bd5715",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a Dockerfile for all the services",
+                "Create a nginx proxy as Dockerfile",
+                "Build the images",
+                "Run the images as a container",
+                "Use docker-compose to deploy the completed application"
+              ],
+              "positive_feedback": "Congrats!",
+              "video_feedback": null,
+              "description": "Run the application in docker"
+            }
+          ]
+        },
+        {
+          "id": 861360,
+          "key": "c7d47b8d-0c9d-407a-9eaa-f5c302dc058e",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c7d47b8d-0c9d-407a-9eaa-f5c302dc058e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861369,
+              "key": "b9bf998f-4c76-47e1-9626-467de26a5b57",
+              "title": "ND9990 C03 L03 Lesson Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xq-UWKT2XZs",
+                "china_cdn_id": "xq-UWKT2XZs.mp4"
+              }
+            },
+            {
+              "id": 971153,
+              "key": "86b553b5-f390-4107-b854-ebf9846b2a23",
+              "title": "Conclusion",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Conclusion\nAs this lesson comes to an end, now you must be able to:\n* Explain the fundamentals of Docker, images, and containers\n* Build your images using a Dockerfile\n* Create containers from the images you have built\n* Deploy separate microservices in individual containers\n* Practice a few essential Docker-commands\n* Upload your image to the Docker Hub\n* Configure Nginx as the reverse-proxy server to avoid conflict of ports being used by different microservices\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

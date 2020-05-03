@@ -1,0 +1,258 @@
+{
+  "id": 2574,
+  "project_id": 617,
+  "upload_types": [
+    "repo",
+    "zip"
+  ],
+  "file_filter_regex": "\\A(?!(((.*/)?(__MACOSX|\\.git|node_modules|bower_components|jspm_packages|\\.idea|build|.ipynb_checkpoints|\\.Trash-0|logs)(\\Z|/))))((.*\\.(js|css|py|html|htm|txt|md|markdown|sql|swift|java|gradle|ts|xml|rst|yml|yaml|rmd|pdf|docx)\\Z)|((.*/)?(README|Readme|readme|Makefile)\\Z))",
+  "nomination_eligible": false,
+  "stand_out": "1. Fetch a certificate from Auth0 instead of hard coding it in an authorizer.\r\n2. Implement pagination support to work around a DynamoDB limitation that allows up to 1MB of data using a query method.\r\n3. Add your own domain name to the service.\r\n4. Add an ability to sort TODOs by due date or priority (this will require adding new indexes).  \r\n5. Implement a new endpoint that allows sending full-text search requests to Elasticsearch (this would require copying data from DynamoDB to Elasticsearch as we did in lesson 4).  ",
+  "hide_criteria": false,
+  "created_at": "2019-05-07T15:33:21.957Z",
+  "updated_at": "2020-01-12T10:54:26.297Z",
+  "hashtag": "",
+  "max_upload_size_mb": 500,
+  "estimated_sla": null,
+  "project_assistant_enabled": false,
+  "checkmate_enabled": false,
+  "checkmate_metadata": null,
+  "available_for_cert_project": false,
+  "classroom_node_id": 847044,
+  "classroom_project_key": "04cf61e1-d4f3-4e67-beee-57f3e35f2703",
+  "language": "en-us",
+  "ndkeys": [
+    "nd9990",
+    "nd9990-beta",
+    "nd9990-cn",
+    "nd9990-connect",
+    "nd9990-ent",
+    "nd0911",
+    "nd9990-ent-telenor"
+  ],
+  "coursekeys": [],
+  "sections": [
+    {
+      "id": 5586,
+      "name": "1) Functionality",
+      "created_at": "2019-05-30T23:45:35.732Z",
+      "updated_at": "2019-05-30T23:45:46.676Z",
+      "deleted_at": null,
+      "position": 0,
+      "rubric_id": 2574,
+      "rubric_items": [
+        {
+          "id": 16028,
+          "section_id": 5586,
+          "passed_description": "A user of the web application can use the interface to create, delete and complete a TODO item.",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:45:46.792Z",
+          "updated_at": "2019-08-15T15:30:59.697Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "The application allows users to create, update, delete TODO items",
+          "exceedable": false
+        },
+        {
+          "id": 16029,
+          "section_id": 5586,
+          "passed_description": "A user of the web interface can click on a \"pencil\" button, then select and upload a file. A file should appear in the list of TODO items on the home page.",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:46:02.828Z",
+          "updated_at": "2019-08-15T15:30:59.704Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "The application allows users to upload a file.",
+          "exceedable": false
+        },
+        {
+          "id": 16030,
+          "section_id": 5586,
+          "passed_description": "If you log out from a current user and log in as a different user, the application should not show TODO items created by the first account.",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:48:13.520Z",
+          "updated_at": "2019-08-15T15:30:59.707Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 2,
+          "criteria": "The application only displays TODO items for a logged in user.",
+          "exceedable": false
+        },
+        {
+          "id": 16031,
+          "section_id": 5586,
+          "passed_description": "A user needs to authenticate in order to use an application.",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:48:42.389Z",
+          "updated_at": "2019-08-15T15:30:59.711Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 3,
+          "criteria": "Authentication is implemented and does not allow unauthenticated access.",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5587,
+      "name": "2) Code Base",
+      "created_at": "2019-05-30T23:49:49.124Z",
+      "updated_at": "2019-05-30T23:50:00.405Z",
+      "deleted_at": null,
+      "position": 1,
+      "rubric_id": 2574,
+      "rubric_items": [
+        {
+          "id": 16032,
+          "section_id": 5587,
+          "passed_description": "Code of Lambda functions is split into multiple files/classes. The business logic of an application is separated from code for database access, file storage, and code related to AWS Lambda. ",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:50:00.522Z",
+          "updated_at": "2019-08-15T15:30:59.716Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "The code is split into multiple layers separating business logic from I/O related code.",
+          "exceedable": false
+        },
+        {
+          "id": 16033,
+          "section_id": 5587,
+          "passed_description": "To get results of asynchronous operations, a student is using async/await constructs instead of passing callbacks.",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:50:03.128Z",
+          "updated_at": "2019-08-15T15:30:59.721Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Code is implemented using async/await and Promises without using callbacks.",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5588,
+      "name": "3) Best Practices",
+      "created_at": "2019-05-30T23:52:06.238Z",
+      "updated_at": "2019-05-30T23:52:18.497Z",
+      "deleted_at": null,
+      "position": 2,
+      "rubric_id": 2574,
+      "rubric_items": [
+        {
+          "id": 16034,
+          "section_id": 5588,
+          "passed_description": "All resources needed by an application are defined in the \"serverless.yml\". A developer does not need to create them manually using AWS console.",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:52:18.695Z",
+          "updated_at": "2019-08-15T15:30:59.726Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "All resources in the application are defined in the \"serverless.yml\" file",
+          "exceedable": false
+        },
+        {
+          "id": 16035,
+          "section_id": 5588,
+          "passed_description": "Instead of defining all permissions under **provider/iamRoleStatements**, permissions are defined per function in the **functions** section of the \"serverless.yml\".",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:52:20.152Z",
+          "updated_at": "2019-08-15T15:30:59.732Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Each function has its own set of permissions.",
+          "exceedable": false
+        },
+        {
+          "id": 16036,
+          "section_id": 5588,
+          "passed_description": "Application has at least some of the following:\r\n* Distributed tracing is enabled\r\n* It has a sufficient amount of log statements\r\n* It generates application level metrics",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:52:21.119Z",
+          "updated_at": "2019-08-15T15:30:59.738Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 2,
+          "criteria": "Application has sufficient monitoring.",
+          "exceedable": false
+        },
+        {
+          "id": 16037,
+          "section_id": 5588,
+          "passed_description": "Incoming HTTP requests are validated either in Lambda handlers or using request validation in API Gateway. The latter can be done either using the **serverless-reqvalidator-plugin** or by providing request schemas in function definitions.",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:52:22.090Z",
+          "updated_at": "2019-08-15T15:30:59.744Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 3,
+          "criteria": "HTTP requests are validated",
+          "exceedable": false
+        }
+      ]
+    },
+    {
+      "id": 5589,
+      "name": "4) Architecture",
+      "created_at": "2019-05-30T23:56:33.498Z",
+      "updated_at": "2019-05-30T23:56:42.417Z",
+      "deleted_at": null,
+      "position": 3,
+      "rubric_id": 2574,
+      "rubric_items": [
+        {
+          "id": 16038,
+          "section_id": 5589,
+          "passed_description": "1:M (1 to many) relationship between users and TODO items is modeled using a DynamoDB table that has a composite key with both partition and sort keys. Should be defined similar to this:\r\n```\r\n   KeySchema:\r\n      - AttributeName: partitionKey\r\n        KeyType: HASH\r\n      - AttributeName: sortKey\r\n        KeyType: RANGE\r\n```",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:56:42.613Z",
+          "updated_at": "2019-08-15T15:30:59.749Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 0,
+          "criteria": "Data is stored in a table with a composite key.",
+          "exceedable": false
+        },
+        {
+          "id": 16039,
+          "section_id": 5589,
+          "passed_description": "TODO items are fetched using the \"query()\" method and not \"scan()\" method (which is less efficient on large datasets)",
+          "exceeded_description": "",
+          "created_at": "2019-05-30T23:56:43.519Z",
+          "updated_at": "2019-08-15T15:30:59.754Z",
+          "deleted_at": null,
+          "optional": false,
+          "position": 1,
+          "criteria": "Scan operation is not used to read data from a database.",
+          "exceedable": false
+        }
+      ]
+    }
+  ],
+  "project": {
+    "id": 617,
+    "name": "Serverless Application",
+    "nanodegree_key": "nd9990",
+    "is_cert_project": false,
+    "audit_project_id": null,
+    "hashtag": null,
+    "audit_rubric_id": null,
+    "entitlement_required": false,
+    "is_career": false,
+    "recruitment_family_id": 13,
+    "awaiting_review_count": 0,
+    "awaiting_review_count_by_language": {},
+    "awaiting_audit_count": 0,
+    "awaiting_quality_audit_count": 0,
+    "awaiting_training_audit_count": 0,
+    "created_at": "2019-05-31T18:34:46.422Z",
+    "updated_at": "2020-05-01T08:46:38.445Z",
+    "price": "8.0",
+    "ungradeable_price": "3.0",
+    "audit_price": null
+  }
+}

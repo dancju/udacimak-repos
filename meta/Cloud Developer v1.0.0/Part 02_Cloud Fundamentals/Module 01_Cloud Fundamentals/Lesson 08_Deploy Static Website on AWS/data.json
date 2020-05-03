@@ -1,0 +1,816 @@
+{
+  "data": {
+    "lesson": {
+      "id": 847040,
+      "key": "cc6eb870-02d0-4825-8fae-b552bd531c7c",
+      "title": "Deploy Static Website on AWS",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this project, you will deploy a static website to AWS. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": {
+        "key": "9f6573c3-8286-461c-ac97-7d731ce66426",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 27360,
+        "semantic_type": "Project",
+        "title": "Deploy Static Website on AWS",
+        "description": "The cloud is perfect for hosting static websites that only include HTML, CSS, and JavaScript files that require no server-side processing. In this project, you will deploy a static website to AWS. \n\nFirst, you will create an S3 bucket, configure the bucket for website hosting, and secure it using IAM policies. \n\nNext, you will upload the website files to your bucket and speed up content delivery using AWS’s content distribution network service, CloudFront. \n\nLastly, you will access your website in a browser using the unique S3 endpoint. \n\nYou should take a **screenshot the results of each of your steps**  and submit the screenshots in a zipped folder when you are done. \n\nThe zipped folder should contain a `README.txt` file which includes your website's URL and any other relevant info you'd like to send to the review team. You can see an example submission [here](https://s3.amazonaws.com/video.udacity-data.com/topher/2019/June/5d001416_meetsspecreview-project-review/meetsspecreview-project-review.pdf)\n\nYour project should meet all of the specifications in the  [Project Rubric](https://review.udacity.com/#!/rubrics/2573/view).\n\n## Project Submission Checklist\n\n**Before submitting your project, please review and confirm the following items.** \n<input type=\"checkbox\"> I am confident all rubric items have been met and my project will pass as submitted. \n<input type=\"checkbox\"> My project builds correctly without errors and runs.\n<input type=\"checkbox\"> All required functionality exists and my project behaves as expected per the project's specifications.\n<input type=\"checkbox\"> I have included the required screenshots in my submission folder\n<input type=\"checkbox\"> I have included a `README.txt` file in the submission folder that includes the CloudFront endpoint URL for my project\n\n**Once you have checked all these items, you are ready to submit!**\n",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2573",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 851503,
+          "key": "1bba276e-346a-4f40-b41c-3f1fe485cfb1",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1bba276e-346a-4f40-b41c-3f1fe485cfb1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 857023,
+              "key": "b166f4fa-eab7-49ef-a745-8b748b47ff3c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Cloud Fundamentals Project\nThe cloud is perfect for hosting static websites that only include HTML, CSS, and JavaScript files that require no server-side processing. In this project, you will deploy a static website to AWS. First, you will create a S3 bucket and upload the website files to your bucket. Next, you will configure the bucket for website hosting and secure it using IAM policies. Next, you will speed up content delivery using AWS’ content distribution network service, CloudFront. Lastly, you will access your website in a browser using the unique CloudFront endpoint. \n\n## Prerequisites:\n* AWS Account\n* Student-ready starter code: https://drive.google.com/open?id=15vQ7-utH7wBJzdAX3eDmO9ls35J5_sEQ  \n\n## Topics Covered:\n* S3 bucket creation\n* S3 bucket configuration\n* Website distribution via CloudFront\n* Access website via web browser\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 860748,
+              "key": "6a8f488b-3fad-4f8a-b0bb-42195acddecb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Dependencies\n---\n###### Cloud Services\n* Amazon Web Services S3 - Resource hosting and deployments\n* AWS CloudFront - CDN for SPA\n* AWS EKS - Backend API\n* AWS DynamoDB - Persistent Datastore\n* AWS Cognito - User Authentication\n\n###### Performance Tracking and DevOps Tools:\n* AWS CloudWatch - Performance and Health checks\n* Sentry - Bug Reporting \n    * Alternates:\n    * TBD\n* Google Analytics - Usage Reporting\n    * Alternates:\n    * Mixpanel\n* Travis (CI/CD)\n\n###### Frameworks:\n* Ionic (Javascript) (Frontend)\n* Node.js (Javascript) (Backend)\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 857024,
+          "key": "76221807-91fb-486a-8d12-162d8c8ce9b2",
+          "title": "Create S3 Bucket",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "76221807-91fb-486a-8d12-162d8c8ce9b2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 857035,
+              "key": "4b22d555-9f47-4c58-8785-8d3ae9977354",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create S3 Bucket\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857025,
+              "key": "b1b20c3a-03d6-4b16-859c-8813ad43c36e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "1. Navigate to the “AWS Management Console” page, type “S3” in the “Find Services” box and then select “S3”.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857026,
+              "key": "86ca05f9-643c-4702-be78-571cb73cc9bc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95f0_screen-shot-2019-05-18-at-11.28.07-am/screen-shot-2019-05-18-at-11.28.07-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/86ca05f9-643c-4702-be78-571cb73cc9bc",
+              "caption": "",
+              "alt": "",
+              "width": 1724,
+              "height": 580,
+              "instructor_notes": null
+            },
+            {
+              "id": 857027,
+              "key": "d612ccfa-7aab-491b-9b86-574724a71f2a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. The Amazon S3 dashboard displays. Click “Create bucket”.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857028,
+              "key": "a84e317c-41ec-4b52-8e1f-42a411f7bbbb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95f2_screen-shot-2019-05-18-at-11.29.20-am/screen-shot-2019-05-18-at-11.29.20-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a84e317c-41ec-4b52-8e1f-42a411f7bbbb",
+              "caption": "",
+              "alt": "",
+              "width": 1076,
+              "height": 382,
+              "instructor_notes": null
+            },
+            {
+              "id": 857029,
+              "key": "da7deaa4-f660-4a06-a87b-2a8f8feafd1d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. Enter a “Bucket name” and click “Next”. Note: Bucket names must be globally unique.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857030,
+              "key": "05460872-b995-49a8-a541-1289239ed390",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95f3_screen-shot-2019-05-18-at-11.33.34-am/screen-shot-2019-05-18-at-11.33.34-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/05460872-b995-49a8-a541-1289239ed390",
+              "caption": "",
+              "alt": "",
+              "width": 2202,
+              "height": 1294,
+              "instructor_notes": null
+            },
+            {
+              "id": 857031,
+              "key": "4bbc7211-2812-4503-bea0-13f16132ccf7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. Click “Next” again to skip over “Step 2: Configure Options”.\n5. On “Step 3: Set Permissions”, uncheck “Block all public access”.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857032,
+              "key": "e9acc0bc-9ac1-403b-b949-7ecb4229c418",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95b5_screen-shot-2019-05-18-at-11.53.00-am/screen-shot-2019-05-18-at-11.53.00-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e9acc0bc-9ac1-403b-b949-7ecb4229c418",
+              "caption": "",
+              "alt": "",
+              "width": 2198,
+              "height": 1290,
+              "instructor_notes": null
+            },
+            {
+              "id": 857033,
+              "key": "f81eec99-6873-403c-a167-a81c051b386d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "6. Click “Next” and click “Create bucket”.\n7. Once the bucket is created, click on the name of the bucket to open the bucket to the contents.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857034,
+              "key": "ecb1359f-cbec-412e-b488-def0a19c8aad",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95f9_screen-shot-2019-05-18-at-11.34.33-am/screen-shot-2019-05-18-at-11.34.33-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ecb1359f-cbec-412e-b488-def0a19c8aad",
+              "caption": "",
+              "alt": "",
+              "width": 2654,
+              "height": 1276,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 857036,
+          "key": "652a0980-d320-40f4-bace-a46aa98d4e09",
+          "title": "Upload files to S3 Bucket",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "652a0980-d320-40f4-bace-a46aa98d4e09",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 857037,
+              "key": "932899fa-cf15-49a7-a4cc-69c3e480c9b3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Upload files to S3 Bucket\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857038,
+              "key": "41536c44-cbaf-4288-9150-df69e87c9858",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "1. Once the bucket is open to its contents, click the “Upload” button.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857039,
+              "key": "8aef39ed-a7d6-426a-a16c-b38efa884a39",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95f9_screen-shot-2019-05-18-at-11.34.33-am/screen-shot-2019-05-18-at-11.34.33-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8aef39ed-a7d6-426a-a16c-b38efa884a39",
+              "caption": "",
+              "alt": "",
+              "width": 2654,
+              "height": 1276,
+              "instructor_notes": null
+            },
+            {
+              "id": 857040,
+              "key": "ba03d3d6-3457-4e74-9fcf-8585d0d74993",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Click the “Add Files” button and drag and drop files and folders from your local computer to the S3 bucket and select “Upload”. Note: Upload the downloaded student-ready starter code files.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857041,
+              "key": "4b1fc9bc-fc70-47ee-9582-f86310799726",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95e8_screen-shot-2019-05-18-at-11.37.33-am/screen-shot-2019-05-18-at-11.37.33-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4b1fc9bc-fc70-47ee-9582-f86310799726",
+              "caption": "",
+              "alt": "",
+              "width": 2196,
+              "height": 1286,
+              "instructor_notes": null
+            },
+            {
+              "id": 857042,
+              "key": "a8723ab7-1c01-4594-8d73-fbee69460d01",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95ec_screen-shot-2019-05-18-at-11.40.10-am/screen-shot-2019-05-18-at-11.40.10-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a8723ab7-1c01-4594-8d73-fbee69460d01",
+              "caption": "",
+              "alt": "",
+              "width": 2516,
+              "height": 1314,
+              "instructor_notes": null
+            },
+            {
+              "id": 857043,
+              "key": "c2ef967d-3c76-4844-bf5e-f1232bd4e7a6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95ea_screen-shot-2019-05-18-at-11.39.32-am/screen-shot-2019-05-18-at-11.39.32-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c2ef967d-3c76-4844-bf5e-f1232bd4e7a6",
+              "caption": "",
+              "alt": "",
+              "width": 2202,
+              "height": 1294,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 857044,
+          "key": "d02be24f-aa52-4b38-b129-2623928db8ec",
+          "title": "Secure Bucket via IAM",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d02be24f-aa52-4b38-b129-2623928db8ec",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 857045,
+              "key": "de21f60b-ff15-4eb7-b69f-75744c10ec3b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Secure Bucket via IAM\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857046,
+              "key": "369e8d21-1a83-4716-ae50-5e16afe0b115",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "1. Click on the “Permissions” tab.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857047,
+              "key": "306383c3-0148-455a-99cd-728e14197a1d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95c4_screen-shot-2019-05-18-at-11.45.16-am/screen-shot-2019-05-18-at-11.45.16-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/306383c3-0148-455a-99cd-728e14197a1d",
+              "caption": "",
+              "alt": "",
+              "width": 2084,
+              "height": 858,
+              "instructor_notes": null
+            },
+            {
+              "id": 857048,
+              "key": "135d042c-906b-4f10-abae-39a1c4f2df0b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Click on “Bucket Policy” and enter the bucket policy below replacing “your-website” with the name of your bucket and click “Save”.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857049,
+              "key": "e946ba49-e44e-4c73-9351-6ca7a4bc2ce1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\n{\n  \"Version\":\"2012-10-17\",\n  \"Statement\":[\n    {\n      \"Sid\":\"AddPerm\",\n      \"Effect\":\"Allow\",\n      \"Principal\": \"*\",\n      \"Action\":[\"s3:GetObject\"],\n      \"Resource\":[\"arn:aws:s3:::your-website/*\"]\n    }\n  ]\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857050,
+              "key": "6d4468fd-7cf4-455e-88a8-3685640a896c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95ad_screen-shot-2019-05-18-at-1.04.58-pm/screen-shot-2019-05-18-at-1.04.58-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6d4468fd-7cf4-455e-88a8-3685640a896c",
+              "caption": "",
+              "alt": "",
+              "width": 2630,
+              "height": 1330,
+              "instructor_notes": null
+            },
+            {
+              "id": 857051,
+              "key": "d8600ce1-3449-4f71-bbe0-2bb35342dc0d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You will see warnings about making your bucket public, but this step is required for static website hosting.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857052,
+              "key": "de97f3c0-20cf-496e-b92f-cbe89e876b89",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95b8_screen-shot-2019-05-18-at-12.12.24-pm/screen-shot-2019-05-18-at-12.12.24-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/de97f3c0-20cf-496e-b92f-cbe89e876b89",
+              "caption": "",
+              "alt": "",
+              "width": 2624,
+              "height": 212,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 857053,
+          "key": "a5836973-78dc-4de7-8de3-4305842db3d7",
+          "title": "Configure S3 Bucket",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a5836973-78dc-4de7-8de3-4305842db3d7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 857054,
+              "key": "296dc174-0a5e-4843-b680-cc2475d037cd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Configure S3 Bucket\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857055,
+              "key": "78ceb285-ed70-46d7-8812-076b49cfce67",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "1. Click on the “Properties” tab and then click on “Static website hosting”.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857056,
+              "key": "fb81b7b7-aaea-4c86-b768-96c6d3f718d4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95bb_screen-shot-2019-05-18-at-12.13.32-pm/screen-shot-2019-05-18-at-12.13.32-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fb81b7b7-aaea-4c86-b768-96c6d3f718d4",
+              "caption": "",
+              "alt": "",
+              "width": 2156,
+              "height": 1054,
+              "instructor_notes": null
+            },
+            {
+              "id": 857057,
+              "key": "966b84ee-0d77-44af-b343-972d4253f021",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Click on “Use this bucket to host a website”.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857058,
+              "key": "cbdd52bd-64e6-475d-89bc-e20b555db296",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95bd_screen-shot-2019-05-18-at-12.16.04-pm/screen-shot-2019-05-18-at-12.16.04-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cbdd52bd-64e6-475d-89bc-e20b555db296",
+              "caption": "",
+              "alt": "",
+              "width": 2510,
+              "height": 1126,
+              "instructor_notes": null
+            },
+            {
+              "id": 857059,
+              "key": "58cf9ca0-a8a5-4a7b-9394-53e80060c54d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. For both “Index document” and “Error document”, enter “index.html” and click “Save”.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 857060,
+          "key": "e5301d44-0c4f-4ff6-9790-a0406ff65e9a",
+          "title": "Distribute Website via CloudFront",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e5301d44-0c4f-4ff6-9790-a0406ff65e9a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 857061,
+              "key": "429ae9da-b82f-4733-ad4c-9862c8ea5d0e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Distribute Website via CloudFront\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857062,
+              "key": "7ee18ff9-4982-45ff-87ef-9534a5c0944f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "1. Select “Services” from the top left corner and enter “cloud front” in the “Find a service by name or feature” text box and select “CloudFront”.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857063,
+              "key": "56f38805-f1a1-411c-9f5f-3c8cee55ccab",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95b3_screen-shot-2019-05-18-at-12.22.56-pm/screen-shot-2019-05-18-at-12.22.56-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/56f38805-f1a1-411c-9f5f-3c8cee55ccab",
+              "caption": "",
+              "alt": "",
+              "width": 2376,
+              "height": 396,
+              "instructor_notes": null
+            },
+            {
+              "id": 857064,
+              "key": "a65542c8-000c-4e1b-9960-56a6177dff8c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. From the CloudFront dashboard, click “Create Distribution”.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857065,
+              "key": "b51bfb8c-4d3c-4c86-9f14-e89d2e032a1e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95b1_screen-shot-2019-05-18-at-12.24.43-pm/screen-shot-2019-05-18-at-12.24.43-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b51bfb8c-4d3c-4c86-9f14-e89d2e032a1e",
+              "caption": "",
+              "alt": "",
+              "width": 1396,
+              "height": 386,
+              "instructor_notes": null
+            },
+            {
+              "id": 857066,
+              "key": "4e177631-f61b-4ab0-894a-b148b1840724",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. For “Select a delivery method for your content”, click “Get Started”.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857067,
+              "key": "6e6341f0-eae3-4842-829d-c8b4a836fe19",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95ab_screen-shot-2019-05-18-at-1.08.32-pm/screen-shot-2019-05-18-at-1.08.32-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6e6341f0-eae3-4842-829d-c8b4a836fe19",
+              "caption": "",
+              "alt": "",
+              "width": 2038,
+              "height": 618,
+              "instructor_notes": null
+            },
+            {
+              "id": 857068,
+              "key": "e90ea372-e9fa-4e70-a706-1eb12943dd96",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. Under “Origin Settings”:\n    * Under “Origin Domain Name”, select the S3 bucket that you just created.\n    * Under “Origin Path”, enter “/” to indicate the root level.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857069,
+              "key": "7389483c-7eee-456a-b733-4dd4facf5d15",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95af_screen-shot-2019-05-18-at-1.07.44-pm/screen-shot-2019-05-18-at-1.07.44-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7389483c-7eee-456a-b733-4dd4facf5d15",
+              "caption": "",
+              "alt": "",
+              "width": 1844,
+              "height": 774,
+              "instructor_notes": null
+            },
+            {
+              "id": 857070,
+              "key": "7bb3e293-fd34-4623-b484-92a7e71102c9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "5. Leave the defaults for the rest of the options, scroll down, and click “Create Distribution”.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857071,
+              "key": "c95744d5-b9ed-493a-a72a-6d13bfb02a6b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "***Note:*** It may take up to ***10 minutes*** for the CloudFront Distribution to be created.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857072,
+              "key": "79efd5d3-ae0e-4da6-a473-1f8933c894c9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "6. Once the status of your distribution changes from “In Progress” to “Deployed”, copy the endpoint URL for your CloudFront distribution found in the “Domain Name” column.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857073,
+              "key": "baad61c6-1407-48c2-aece-f5a6c8619ebe",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95a9_screen-shot-2019-05-18-at-12.40.31-pm/screen-shot-2019-05-18-at-12.40.31-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/baad61c6-1407-48c2-aece-f5a6c8619ebe",
+              "caption": "",
+              "alt": "",
+              "width": 2442,
+              "height": 854,
+              "instructor_notes": null
+            },
+            {
+              "id": 857074,
+              "key": "5213ee04-26ba-47d3-8a2b-294aa4cc4022",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this example, the Domain Name value is `d34jyue2fsjani.cloudfront.net`, but ***yours will be different.***\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 857075,
+          "key": "2615ea4c-f87c-4070-bfab-9ee8642c930b",
+          "title": "Access Website in Web Browser",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2615ea4c-f87c-4070-bfab-9ee8642c930b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 857076,
+              "key": "077bc12c-e946-4fb7-a1c2-4ee9e070b39d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Access Website in Web Browser\n---",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857077,
+              "key": "4572ca32-aafe-49d6-b717-f4f8fa4223d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "1. Open a web browser like Google Chrome and paste the copied endpoint URL and append “/index.html” on the end, as shown below.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857078,
+              "key": "895cbe4f-03d8-4fb7-b633-f13dbfeaed2d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95a6_screen-shot-2019-05-18-at-12.44.31-pm/screen-shot-2019-05-18-at-12.44.31-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/895cbe4f-03d8-4fb7-b633-f13dbfeaed2d",
+              "caption": "",
+              "alt": "",
+              "width": 2044,
+              "height": 678,
+              "instructor_notes": null
+            },
+            {
+              "id": 857079,
+              "key": "1cb5c4d9-57de-440a-8b7b-5dae3217add5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. The website displays in your browser.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 857080,
+              "key": "0414b344-9563-40f3-a27a-8acd58157230",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/May/5cee95e4_screen-shot-2019-05-18-at-9.50.42-am/screen-shot-2019-05-18-at-9.50.42-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0414b344-9563-40f3-a27a-8acd58157230",
+              "caption": "",
+              "alt": "",
+              "width": 2852,
+              "height": 1392,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,801 @@
+{
+  "data": {
+    "lesson": {
+      "id": 842866,
+      "key": "9bab122b-1f83-461f-b4dc-f167ab2e9072",
+      "title": "Building and Deploying",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Consume cloud data services (database and filestore) within your server application. Deploy your application using AWS Elastic Beanstalk. \n",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/9bab122b-1f83-461f-b4dc-f167ab2e9072/842866/1556778958634/Building+and+Deploying+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/9bab122b-1f83-461f-b4dc-f167ab2e9072/842866/1556778946668/Building+and+Deploying+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 842867,
+          "key": "df39a3f4-2703-427d-8983-7fc07da8b22e",
+          "title": "Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "df39a3f4-2703-427d-8983-7fc07da8b22e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900151,
+              "key": "a51e8e9e-cdb9-4c4d-93b5-8c597f41770c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Building and Deploying",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845519,
+              "key": "efdc852c-a9ed-4c7c-8b51-fbea508f23b6",
+              "title": "CloudENG C2 L4 N01 Lesson Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MxXturgabQw",
+                "china_cdn_id": "MxXturgabQw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 843317,
+          "key": "c1bdb73b-e33b-4c59-b9c3-85b7dbbfd76f",
+          "title": "Organizing Our Code & Working With Larger Systems",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c1bdb73b-e33b-4c59-b9c3-85b7dbbfd76f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900152,
+              "key": "cf3ad172-257e-4999-a828-b3e2851565dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Organizing Our Code",
+              "instructor_notes": ""
+            },
+            {
+              "id": 844174,
+              "key": "23bd3ea3-02ba-4e07-bff0-b5a6b46ca3f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Designing the Application to be Extensible",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845967,
+              "key": "a614d5c4-e46f-4de8-9811-1c8c4a5c0728",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Features and Modularity\nIn this concept, we dive into splitting our code into logical \"features\". This is a way of describing modular programming where the code which relates to one task is grouped together. In this example, the `/feed` and `/auth` endpoints are our features. All routing, models, business logic, and helper functions for these modules should be separated as much as possible. This way, we have an understanding of where code responsibilities just by looking at the general structure. \n\nOften one feature may depend on another feature - for example, user authentication will be needed within the feed. But these dependencies should be kept loose and consistent with only a few methods being consumed. The goal as the system continues to grow, is to minimize refactoring outside of specific features. As you continue to learn cloud and explore microservices, often entire features might be ported to their own servers infrastructure making this loose coupling even more critical.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843474,
+              "key": "41ced6d3-675f-4504-93fa-f9d4167dd144",
+              "title": "CloudEng C2 L4 N02.1 Organizing Our Code - Designing Application To Be Extensible",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ACxDNf85nOo",
+                "china_cdn_id": "ACxDNf85nOo.mp4"
+              }
+            },
+            {
+              "id": 843465,
+              "key": "2bcae808-2054-4e7e-88d4-5d28f7a34965",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n# Github link to the project RestAPI Server\nIn this lesson, we'll be referencing a stubbed, more complex server which uses Node/Express. The GitHub link to clone and follow along is in the exercises folder of the course repo: [https://github.com/udacity/cloud-developer/tree/master/course-02/exercises/udacity-c2-restapi](https://github.com/udacity/cloud-developer/tree/master/course-02/exercises/udacity-c2-restapi). \n\n### Installing project dependencies\n\nThis project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the root of this repository. After cloning, open your terminal in the repo directory and run:\n```bash\nnpm install\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843466,
+              "key": "a087ef28-b83b-4d02-a65d-6fd9728d9dd1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# RestAPI Source Walkthrough",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900153,
+              "key": "2ae18f71-ab5d-4c71-a55f-60797166fc8b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Cloning and Setup",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843318,
+              "key": "5394fa52-0b72-4768-859c-6aad7a150058",
+              "title": "CloudENG C2 L4 N02.2 Organizing Our Code - RestAPI Source Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oetVXXhUTYo",
+                "china_cdn_id": "oetVXXhUTYo.mp4"
+              }
+            },
+            {
+              "id": 900154,
+              "key": "ba9dade7-f42d-4118-bea0-91a529e7c72b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Code Structure and Organization",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845520,
+              "key": "20173c59-3357-49fb-8618-711f5aa670ab",
+              "title": "CloudENG C2 L4 N02.3 Organizing Our Code - RestAPI Source Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "F2HiJmX2bpU",
+                "china_cdn_id": "F2HiJmX2bpU.mp4"
+              }
+            },
+            {
+              "id": 845968,
+              "key": "b99f0e9e-bbf0-4839-8146-7949638ec51b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "- In the file controllers/v0/feed/routes/feed.router.ts, the root directory `router.get('/',...` is not the server root directory.  The root in this case is based on where the server is entering from, which in this case, is `api/v0/feed/routes`.\n- We’ll keep S3 related code in its own file `aws.ts`, and database connection code in its own file `sequelize.ts`.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843473,
+              "key": "12b9fcec-9360-4409-a9a4-d263b5f3b7cf",
+              "title": "Setting up the RestAPI Project",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "12b9fcec-9360-4409-a9a4-d263b5f3b7cf",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Clone the RestAPI Repo to your local machine",
+                "Run `npm i` within the repo directory to install the project dependencies"
+              ],
+              "positive_feedback": "Great, now we can explore our cloud concepts in a larger codebase!",
+              "video_feedback": null,
+              "description": "Before continuing you should complete these steps:"
+            }
+          ]
+        },
+        {
+          "id": 843322,
+          "key": "8f8ac6ce-566e-4f6c-a91a-b41a238c7c99",
+          "title": "Connecting our RDS Database in Node",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8f8ac6ce-566e-4f6c-a91a-b41a238c7c99",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 843481,
+              "key": "63bbe371-d15c-453d-8e84-190fb7e53e55",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Intro to Object-Relational Maps (ORM)\nWe'll be using an ORM called Sequelize to manage the connection to our database. We'll cover the basics in this concept, but Sequelize is a powerful tool and is extremely well documented at \n[http://docs.sequelizejs.com/](http://docs.sequelizejs.com/)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843475,
+              "key": "4b9f65ca-d571-40d3-8633-d0e4a4cbeaf5",
+              "title": "CloudENG C2 L4 N03.1 Connecting Our RDS - Intro To Object-Relational Maps",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Is0O3msf9BE",
+                "china_cdn_id": "Is0O3msf9BE.mp4"
+              }
+            },
+            {
+              "id": 845969,
+              "key": "376ac8f3-c0ec-4b6b-a668-366288298102",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Models\nA model is the data representation of some group of data. In object-oriented programing terms, a model is an object and is represented by a new class. It should usually represent a noun such as a user, a feed item, an order, etc. We use the `@Table` decorator and extend the base sequelize `Model` class to link our model to our database table. \n\n#### Parameters\nThe model contains instance parameters. These can be other models or primitive fields. We use the `@Column` decorator to link our parameters to the table columns. The bang symbol `!` specifies if the field in the table can be null. Sequelize handles the datatype mappings from TypeScript types to Postgres column datatypes. \n\nRead more at the [Sequelize docs entry on models](http://docs.sequelizejs.com/class/lib/model.js~Model.html).\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845521,
+              "key": "392013af-1fe0-4d3b-8e8e-ebcdc44529ba",
+              "title": "CloudENG C2 L4 N03.2 Connecting Our RDS - Intro To Object-Relational Maps",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4W9f0h_KVUQ",
+                "china_cdn_id": "4W9f0h_KVUQ.mp4"
+              }
+            },
+            {
+              "id": 845970,
+              "key": "8f48f6cc-e513-4d32-9326-a4c828f580a1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "ORMS allow us to easily switch to a different dialect of SQL (e.g. PostgreSQL, MySQL), without having to modify the code that interacts with the database.  If we were to write SQL queries directly, instead of using an ORM, we would have to modify our SQL statements to be compatible with the dialect of the database that we are using.\n\n##### Migrations\n- Migration refers to modifying the database (by adding or removing tables or columns, for instance, or switching to a different dialect of SQL) to a newer version (usually based on new business requirements).\n- Up migration is the process of modifying the database to a newer state.\n- Down migration is the process of reversing an up migration, to a prior state.\n\nRead more at the [Sequelize docs on migrations](http://docs.sequelizejs.com/manual/migrations.html)\n\n> **Note** Migrations is a loaded term. We most commonly refer to migrations when changing database table states (new columns, adding tables, etc). However, it can also refer to migrating infrastructure - for examples Postgres to MySQL. \n\n##### Seeding\nSeeds are default rows of data that will be inserted upon database formation. This may be helpful when provisioning databases frequently for specific applications and having welcome data populated, or when running tests on staging systems to simulate real-world conditions. \n\nRead more at the [Sequelize docs on seeding](http://docs.sequelizejs.com/manual/migrations.html#creating-first-seed)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843482,
+              "key": "4f7ff2e9-5a90-4068-9eee-116e2cc6b7ea",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Using Sequelize in our Node RestAPI Source Code",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845971,
+              "key": "ab741e9a-12f0-4cf9-92cb-e51fb52e72f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The following video uses [PostBird](https://github.com/Paxa/postbird) to run SQL queries. \n \nIn the video, we also go the AWS console to get the RDS endpoint.  To steps are: Go to AWS console, click RDS.  In the new page, in the left-hand menu, click  “Databases”.  In the “connectivity & security” section, under “Endpoint”, copy the endpoint URL.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843323,
+              "key": "59474c53-3759-4049-bc05-e80afb9ea73f",
+              "title": "CloudENG C2 L4 N03.3 Connecting Our RDS - Using Sequelize In Our Node RestAPI Source Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AHUp7GJh5ko",
+                "china_cdn_id": "AHUp7GJh5ko.mp4"
+              }
+            },
+            {
+              "id": 845972,
+              "key": "1e80ec76-eded-407d-8ff8-b31299d8a978",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Decorators\nThe Decorators (also known as Annotations) mentioned in this video are a feature of the sequelize-typescript package which allows us to link database features with our models. We exemplify this using the `@CreatedAt` and `@UpdatedAt`. This will set the option in the Postgres database to automatically set the date when any row is created, or updated and is useful when sorting and filtering our data.\n\n[Read more and view complete details on the model definition in the sequelize-typescript docs](https://www.npmjs.com/package/sequelize-typescript#model-definition)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845522,
+              "key": "502100f0-b53b-470b-8fe2-4e0a78471da9",
+              "title": "CloudENG C2 L4 N03.4 Connecting Our RDS - Using Sequelize In Our Node RestAPI Source Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1FnTTG07Oxk",
+                "china_cdn_id": "1FnTTG07Oxk.mp4"
+              }
+            },
+            {
+              "id": 845973,
+              "key": "4d26e372-f24d-4989-8472-51f561604800",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Enter `npm run dev` in terminal to start the server",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845523,
+              "key": "248da54c-bf9f-47c9-8beb-66a7b0c62e08",
+              "title": "CloudENG C2 L4 N03.5 Connecting Our RDS - Using Sequelize In Our Node RestAPI Source Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XFHB26f_JyY",
+                "china_cdn_id": "XFHB26f_JyY.mp4"
+              }
+            },
+            {
+              "id": 843484,
+              "key": "3f1001ea-5a07-4705-9e7a-073fdfcc5ae8",
+              "title": "Try working with Sequelize yourself!",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3f1001ea-5a07-4705-9e7a-073fdfcc5ae8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Make sure the `src/config/config.ts` variables are set for your AWS RDS Instance provisioned in a previous exercise",
+                "Complete the tasks to practice using Sequelize"
+              ],
+              "positive_feedback": "Task.findOne({ where: {completed: true} }).then( task => {\n  console.log('Great Job');\n})",
+              "video_feedback": null,
+              "description": "We've added a few @TODO flags and tasks described at the end of the last video."
+            },
+            {
+              "id": 843470,
+              "key": "38f955c4-f9c7-4011-afa7-6739e9b2393a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> *tip*: Sequelize dependencies are included in the project's `package.json` file. If you're starting a new project, you will need to install these dependencies using NPM. Sequelize docs has clear instructions for setting it up in a new project: [http://docs.sequelizejs.com/manual/getting-started](http://docs.sequelizejs.com/manual/getting-started).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843468,
+              "key": "b00c5b5d-81e4-404f-bee7-7fdb0902c5be",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### SQL Query to drop any views and tables created in a prior exercise\nYou may have added tables or views of your own and will need to modify this query to include any of these additional resources.\n```sql\nDROP VIEW IF EXISTS joined;\nDROP VIEW IF EXISTS toyotas;\nDROP TABLE IF EXISTS \"public\".\"make\";\nDROP TABLE IF EXISTS \"public\".\"cars\";\n```\n> *Note*: The `DROP` keyword is unforgiving and cannot be undone. It will not ask if you are sure. You should be sure before playing around with the `DROP` keyword, especially in production.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843325,
+              "key": "606a377c-08cf-4804-b734-e016ceca7e2a",
+              "title": "CloudENG C2 L4 N03.6 Connecting Our RDS -ORM Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OJs3eMhKIZc",
+                "china_cdn_id": "OJs3eMhKIZc.mp4"
+              }
+            },
+            {
+              "id": 843479,
+              "key": "80a4ebee-9122-4360-a169-d275f8d82ec4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Associations\nAssociations allow our models to reference other models. For example, consider people and dog relationships.  We might represent this as a person table and dog table.\n\n*person table*\n\n| id | name  |\n|----------|-------|\n| 1        | Sally |\n| 2        | James |\n\n*dog table*\n\n| id | name  |\n|----------|-------|\n| a        | Ruffles |\n| b        | Noodles |\n| c        | Xander |\n\n#### One-To-One Association\n\nIf the person has only one dog, we can use a foreign key column in the person table to reference a single row in the dog table. This is known as a One-To-One association. \n\n*person table (extended)*\n\n| id | name  | dogId |\n|----|-------|-------|\n| 1  | Sally | a     |\n| 2  | James | c     |\n\n#### One-To-Many Association\n\nHowever, a person may have many dogs. In SQL we might represent this using a new separate table known as a Join table. This is essentially a table of two foreign key columns, one for person table and one for dog table. We can then find all dog foreign keys for a given person foreign key to find the relationship.\n\n*person-dog join table*\n\n| personId | dogId |\n|----------|-------|\n| 1        | a     |\n| 1        | b     |\n| 2        | c     |\n\n### Associations In Sequelize\n\nCheck out the Sequelize documentation on associations to understand how to implement this pattern: [http://docs.sequelizejs.com/manual/associations.html](http://docs.sequelizejs.com/manual/associations.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 843328,
+          "key": "c7a84eb4-8c2c-48b4-aa4c-338a0c5432e6",
+          "title": "Connecting our S3 Filestore in Node",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c7a84eb4-8c2c-48b4-aa4c-338a0c5432e6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 843485,
+              "key": "2b080086-3ed4-437e-8753-dbe926417e77",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Connecting our S3 Filestore in Node\n## SignedURL Refresher and Intro to AWS SDK\nWe'll be using the Amazon Web Services (AWS) Javascript Software Development Kit (SDK) to implement the SignedURL pattern within our Node server.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843476,
+              "key": "745caed6-a836-4a58-90b6-3cb6c817a5d0",
+              "title": "CloudENG C2 L4 N04.1  Connecting Our S3 Filestore In Node - SignedURL Refresher",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b89Tlx8rAho",
+                "china_cdn_id": "b89Tlx8rAho.mp4"
+              }
+            },
+            {
+              "id": 843486,
+              "key": "8bc156eb-2820-421e-94fd-945d3d196ead",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> *tip*: AWS SDK dependencies are included in the project's `package.json` file. If you're starting a new project, you will need to install these dependencies using NPM. AWS offers clear instructions for setting it up in a new project: [https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/installing-jssdk.html](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/installing-jssdk.html).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843487,
+              "key": "26f3d3fa-298c-41b7-a4a2-7234512f9e2e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Implementing the AWS S3 SDK in our Node Server",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900155,
+              "key": "00d36413-9e1b-4774-9305-ff97fabb2678",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Understanding the Stubbed Code",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843329,
+              "key": "a4df3104-a902-4f84-b61c-0b390367e59f",
+              "title": "CloudENG C2 L4 N04.2 Connecting Our S3 Filestore In Node - Implementing The AWS S3 SDK",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OeNqid8icYA",
+                "china_cdn_id": "OeNqid8icYA.mp4"
+              }
+            },
+            {
+              "id": 900156,
+              "key": "7b0595e6-8b9f-47f4-995e-d92873183a1e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Unstubbing with AWS SDK",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845524,
+              "key": "39930e49-13d2-418f-92d8-69332988706e",
+              "title": "CloudENG C2 L4 N04.3 Connecting Our S3 Filestore In Node - Implementing The AWS S3 SDK",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WkvBe0D0YlE",
+                "china_cdn_id": "WkvBe0D0YlE.mp4"
+              }
+            },
+            {
+              "id": 900157,
+              "key": "d9e968a0-5ea8-4c9d-9434-da6842e0aba6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using Postman to Test The Image Upload",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845525,
+              "key": "379471d5-06e6-47bd-96cb-5b80ed654f9c",
+              "title": "CloudENG C2 L4 N04.4 Connecting Our S3 Filestore In Node - Implementing The AWS S3 SDK",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "91Xi2-RQzp8",
+                "china_cdn_id": "91Xi2-RQzp8.mp4"
+              }
+            },
+            {
+              "id": 843488,
+              "key": "87559485-5a67-44e3-b5fc-6542c39df051",
+              "title": "Try working with AWS S3 SDK yourself!",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "87559485-5a67-44e3-b5fc-6542c39df051",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Make sure the `src/config/config.ts` variables are set for your AWS S3 bucket and your AWS profile was set from a previous exercise",
+                "Complete the SignedURL code in `src/aws.ts`"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Add S3 capabilities to the server using the skills learned in this concept"
+            }
+          ]
+        },
+        {
+          "id": 843412,
+          "key": "5e27708d-263c-422d-bc56-d4b867691b56",
+          "title": "Handling Secrets with Environment Variables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5e27708d-263c-422d-bc56-d4b867691b56",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900158,
+              "key": "c1da0dee-bc9a-434e-b803-f35625ccd591",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Handling Secrets with Environment Variables",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843413,
+              "key": "ec24b0fe-c694-4274-b3e7-22e8bacd651c",
+              "title": "CloudENG C2 L4 N06  Handling Secrets With Environment Variables",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YvSJGpoNtdE",
+                "china_cdn_id": "YvSJGpoNtdE.mp4"
+              }
+            },
+            {
+              "id": 843659,
+              "key": "01ba0f64-f2c2-4a1b-9aa4-8e7ffab73c11",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Finding your Bash Profile on Mac and Linux\nIn this concept, we referenced a script which executes upon terminal launched. The location of this file may vary depending on your operating system. \n\nUsually, the bash profile is found at `~/.profile`, where `~` is your current logged in user's home directory. Keep in mind the `.` preceding profile means this file will be hidden.\n\n#### Using the bash man page (manual page)\nMost Bash commands in terminal give you instructions on how to use them when you type `man {{command}}` where `{{command}}` is the CLI command. Typing `man bash` into the terminal will give you the man page for bash.\n\nThe _INVOCATION_ section of this man page will give you some hints to where bash looks for profiles when starting.\n\n# Environment Variables for Windows Users\nWindows has the same concept of variable stored at the OS level to use within and across applications. Windows has two types of Environment Variables:\n- __User Environment Variables__ which are accessible only to the currently logged in user\n- __System Environment Variables__ which are available _all_ users on the machine\n\n##### Setting Windows Environment Variables\nEnvironment variables are set on Windows using a GUI (Graphical User Interface). On Windows 10, this can be found by:\n1. From the start menu, right-click the `Computer` icon\n2. Select `Properties`\n3. Select `Advanced System Settings` on the left\n4. In the new window, click `Environment Variables`\n5. Use the `New...` and `Edit...` buttons to set and modify your variables\n\nYou can follow [this handy guide](https://www.computerhope.com/issues/ch000549.htm) for your flavor of Windows.\n\n\n\n\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 845526,
+          "key": "81408b55-db99-4877-9786-6d8cdac42906",
+          "title": "Permissions for Elastic Beanstalk",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "81408b55-db99-4877-9786-6d8cdac42906",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 899722,
+              "key": "595c5925-5a1b-4979-a92a-0c7797aacc24",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Permissions for Elastic Beanstalk",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845527,
+              "key": "47e0b14d-c306-42b5-a249-d83b154fd56f",
+              "title": "CloudENG C2 L4 N05- Permissions For Elastic Beanstalk",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aa1DH7eClIc",
+                "china_cdn_id": "aa1DH7eClIc.mp4"
+              }
+            },
+            {
+              "id": 900159,
+              "key": "8b0eba41-8cc8-48b6-86a2-b894b5bdd33a",
+              "title": "Checkpoint",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8b0eba41-8cc8-48b6-86a2-b894b5bdd33a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Your local code base is working with your running AWS RDS instance",
+                "Your local code base is working with your provisioned AWS S3 bucket",
+                "Your Elastic Beanstalk IAM credentials are set"
+              ],
+              "positive_feedback": "Great!",
+              "video_feedback": null,
+              "description": "Before continuing, make sure:"
+            }
+          ]
+        },
+        {
+          "id": 842870,
+          "key": "c29805e7-67f9-4115-afe8-4663a455a191",
+          "title": "Deploying Our Server to the Cloud",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c29805e7-67f9-4115-afe8-4663a455a191",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 899723,
+              "key": "1077f362-593a-4b4a-9efd-dd014c123fad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Deploying Our Server to the Cloud\n## Basic AWS Architecture ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845759,
+              "key": "70e5fcfc-ca2d-426c-a851-1838efdc79d9",
+              "title": "CloudENG C2 L4 N07.1 OLD Deploying Our Server To The Cloud Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JTp-2V2V5Ps",
+                "china_cdn_id": "JTp-2V2V5Ps.mp4"
+              }
+            },
+            {
+              "id": 899724,
+              "key": "db73f1e5-0af8-420e-8e5b-080b21391da1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Using AWS Elastic Beanstalk\nElastic Beanstalk is a powerful Development Operations tool (Dev Ops) to deploy your code to AWS services and infrastructure with minimal effort. \n\n## EB CLI\nWe'll be using the Command Line Interface to work with Elastic Beanstalk. This will provide us with a set of commands to create new applications and deploy code to these systems. Before continuing, you must install the EB CLI by reading the [AWS Doc Instructions for Install](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) for your platform.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845528,
+              "key": "fdf82c52-cdf3-412c-96d2-ec41b10fbca6",
+              "title": "CloudENG C2 L4 N07.1 NEW DEPLOY OUR SERVER PART 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Sfzgp_4wlhI",
+                "china_cdn_id": "Sfzgp_4wlhI.mp4"
+              }
+            },
+            {
+              "id": 899725,
+              "key": "c7e2d2da-7642-4bf5-8052-452c3330e09d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "After running the `eb init` command and following the guided setup will create a new directory in our project named `.elasticbeanstalk`. Within this configuration file, there is a configuration file named `config.yml`. This is the set of instructions Elastic Beanstalk will follow when provisioning your AWS infrastructure and deploying your code.\n\n### Generating SSH Keypairs\nPublic-Key Cryptography is a method to encrypt and decrypt authentication information for connecting to your resources in the cloud. The keys you generate replace your password, but they should be treated as sensitive data that would grant anyone who holds them access to your running instance. AWS offers a great guide on how to create [Key Pairs for your EC2 Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 899726,
+              "key": "3cb41cde-5ca5-46de-9f1f-a81bca105eb7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating Deployable Build Archives and Deploying\nNow that you have a running Beanstalk instance, we must package our code into a format that is usable by Elastic Beanstalk. We do this by transpiring our typescript into javascript and then zipping the contents into a single file which we can upload. NPM allows us to define simple script commands in the `package.json` file. As described in the video, we've included the `build` command to perform these steps for us. \n\n> ### Note for Windows Users\nUnlike Unix (Linux and Mac), The Windows Environment does not have a native CLI command for `zip`.  Instead, you must install a utility called [UnixUtils](https://sourceforge.net/projects/unxutils/)  to support this functionality. For more information and detailed instructions to install  [UnixUtils](https://sourceforge.net/projects/unxutils/) refer to the prereq section in the [AWS Nodejs Tutorial](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/nodejs-dynamodb-tutorial.html#nodejs-dynamodb-tutorial-prereqs).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845529,
+              "key": "84f714a5-54a8-4e3f-8dac-a29431de2531",
+              "title": "CloudENG C2 L4 N07.2 NEW DEPLOY OUR SERVER PART 2 ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4Tmx2ZUxwMw",
+                "china_cdn_id": "4Tmx2ZUxwMw.mp4"
+              }
+            },
+            {
+              "id": 899727,
+              "key": "c22c0d37-5d17-458b-ba4d-cc3b1414b62d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "After running `npm run build` to transpile and package our code into a zip, we need to configure Elastic Beanstalk to use this build archive. This is accomplished with the following addition to the .easticbeanstalk/config.yml configuration file:\n```yaml\ndeploy:\n\tartifact: ./www/Archive.zip\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 899728,
+              "key": "754926ba-02ae-4336-b8c0-f1dba84ccd64",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Setting Environment Variables in Elastic Beanstalk\nJust like our local code, we'll need to access certain variables from our system within our Node server. We can set these variables through the AWS Console.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845530,
+              "key": "0c4693bb-54aa-4cc5-91e6-8e83c27cf244",
+              "title": "CloudENG C2 L4 N07.3 NEW DEPLOY OUR SERVER PART 3 ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GnFd-a0dAyI",
+                "china_cdn_id": "GnFd-a0dAyI.mp4"
+              }
+            },
+            {
+              "id": 931325,
+              "key": "1bb6a2bc-943d-410c-ba89-965b9350415f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Clarifying Profiles\nWhen we're working locally, we need to specify which AWS profile to use (a refresher on named profiles can be found [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)). When we're deploying to an AWS ElasticBeanstalk instance, the profile will be implicitly set by the instance. We can use the logic control to implicitly not specify these AWS credentials in this deployed state.\n\n```javascript\n# ./src/aws.ts\n//Configure AWS\nif(c.aws_profile !== \"DEPLOYED\") {\n  var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});\n  AWS.config.credentials = credentials;\n}```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845760,
+              "key": "3a2b1250-e22d-49d4-aeda-4e8b737f101b",
+              "title": "CloudENG C2 L4 N07.5 OLD Deploying Our Server To The Cloud Part 7",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bkDZ4xnrDuk",
+                "china_cdn_id": "bkDZ4xnrDuk.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

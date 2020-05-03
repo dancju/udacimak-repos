@@ -1,0 +1,1555 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1011483,
+      "key": "6b12cb5e-a76c-4e9d-a111-b60e1f6c37ab",
+      "title": "Containers Using Docker",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Applications are often deployed in containers.  In this lesson we'll learn why we use containers and how to use Docker to build our applications to be deployed as containers",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/6b12cb5e-a76c-4e9d-a111-b60e1f6c37ab/1011483/1586986153203/Containers+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/6b12cb5e-a76c-4e9d-a111-b60e1f6c37ab/1011483/1586986146335/Containers+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1011465,
+          "key": "aaa2e56c-66c5-4b28-8672-50a8b7d9413a",
+          "title": "Containers Using Docker",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aaa2e56c-66c5-4b28-8672-50a8b7d9413a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011396,
+              "key": "61c52340-bdf7-40d6-ac08-d48b79ffff09",
+              "title": "Containers Using Docker Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Why Use Containers?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011400,
+              "key": "80c613b2-d325-408d-ba4c-e5882e71b75e",
+              "title": "ND9990 CDND C03 L02 A01 Containers Using Docker V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "P-jSL_UCmRY",
+                "china_cdn_id": "P-jSL_UCmRY.mp4"
+              }
+            },
+            {
+              "id": 1011432,
+              "key": "63ecc4a2-802b-4bed-a05a-5b08ac26d06d",
+              "title": "Lesson Outline Graphic",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e8e7f60_cdnd-c3-l2-outline/cdnd-c3-l2-outline.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/63ecc4a2-802b-4bed-a05a-5b08ac26d06d",
+              "caption": "What We Will Cover In This Lesson",
+              "alt": "Course Outline",
+              "width": 758,
+              "height": 289,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011401,
+              "key": "031a7bbd-b55f-41c4-8530-c914ceb7ba97",
+              "title": "Containers Using Docker Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Your Code is Not a Black Box...Yet\n* Applications often require many packages and dependencies to run properly\n* It’s common for an application to work on one computer but not another\n\n### Deployment Headaches\n* Organizations often have different development environments. These often include development and production.\n* Deploying and testing the same code across different environments can be cumbersome\n* In practice, it’s difficult to keep a development and production environment perfectly synchronized with regards to their versions, operating systems, dependencies, etc.\n* It is common for code to work in a development environment and not behave as expected in production\n\n### Let’s Learn About Containers!\n* What containers are\n* When it is helpful to use them\n* How to build a container with Docker\n* How to debug containers\n* How to use container registries\n* How to modify containers",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011475,
+          "key": "4dcbe127-b57f-4e9b-a697-6e96f04724cb",
+          "title": "Introducing Containers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4dcbe127-b57f-4e9b-a697-6e96f04724cb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011403,
+              "key": "979e3571-0473-4482-93f3-e505c523e44a",
+              "title": "Introducing Containers Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Introducing Containers",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011405,
+              "key": "c149b181-8b7e-4611-8081-fcd36064617a",
+              "title": "ND9990 CDND C03 L02 A02 Introducing Containers V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tsC2tq20GgE",
+                "china_cdn_id": "tsC2tq20GgE.mp4"
+              }
+            },
+            {
+              "id": 1011436,
+              "key": "9b2b4d37-3f1a-4a92-8ecd-1e419e5b40bf",
+              "title": "Introducing Containers Heading Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e8e7fb7_cdnd-c3-l2-container/cdnd-c3-l2-container.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9b2b4d37-3f1a-4a92-8ecd-1e419e5b40bf",
+              "caption": "Containers make our application one unit of deployment",
+              "alt": "Containers make our application one unit of deployment",
+              "width": 960,
+              "height": 540,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011402,
+              "key": "e7af9994-c703-4c3c-b2f5-e96c54a0b9b0",
+              "title": "Introducing Containers Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Your Code is Now _Kind of_ a Black Box\n* Containers are self-contained applications with all the dependencies needed to run\n* Containers can be treated as one unit of deployment\n* Rolling back code with containers is simply re-deploying an older snapshot\n\n### Why _Kind of_?\n* Containers make things easier but don’t magically make deployment problems disappear\n* Code may still work in one environment and fail in another, though now we have an understanding of what might have failed\n\n### Containers are Ephemeral\n* Containers should be stateless and are expected to be destroyed.\n\n### Containers Help Manage Dependencies\n* Each container can be running its own versioned software. We resolve the issue where different applications may have different dependencies.\n\n### Simplify Deployment\n* Containers are self-contained so deployment is simply swapping out an existing container with a new one.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011397,
+              "key": "02b41d4e-19b1-49b0-9213-f715fa53122e",
+              "title": "Introducing Containers Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "02b41d4e-19b1-49b0-9213-f715fa53122e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some benefits of using containers? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Ease of reverting bad code",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Improve performance of code",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Reproducibility of application behavior",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011406,
+              "key": "a96d5cd4-5f2d-46d1-aecd-f4f34eb6ed86",
+              "title": "Introducing Containers Quiz 3",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a96d5cd4-5f2d-46d1-aecd-f4f34eb6ed86",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which is NOT an example of ephemeral properties of containers?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A container has an application that stores all of its user information in memory.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A container uses a remote database to store logs on customer behavior.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "When there’s low customer traffic, we can destroy some of the containers to reduce our horizontal scaling.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011491,
+              "key": "b8f96b61-03df-48d9-b249-ae9af830589f",
+              "title": "Container Terms",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b8f96b61-03df-48d9-b249-ae9af830589f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the terms with their definitions"
+                },
+                "concepts_label": "Definition",
+                "answers_label": "Term",
+                "concepts": [
+                  {
+                    "text": "A property where a resource is expected to be terminated",
+                    "correct_answer": {
+                      "id": "a1586399065265",
+                      "text": "Ephemeral"
+                    }
+                  },
+                  {
+                    "text": "Resources that are required in order to properly run an application",
+                    "correct_answer": {
+                      "id": "a1586399100984",
+                      "text": "Dependencies"
+                    }
+                  },
+                  {
+                    "text": "The act of making new software changes available",
+                    "correct_answer": {
+                      "id": "a1586399416890",
+                      "text": "Deployment"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586399065265",
+                    "text": "Ephemeral"
+                  },
+                  {
+                    "id": "a1586399416890",
+                    "text": "Deployment"
+                  },
+                  {
+                    "id": "a1586399100984",
+                    "text": "Dependencies"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011481,
+          "key": "e340bf6c-96a1-42a0-9c5c-e0baace54db8",
+          "title": "Docker",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e340bf6c-96a1-42a0-9c5c-e0baace54db8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011456,
+              "key": "aa6db306-c767-4672-95a4-efd3c4d9d9ce",
+              "title": "Docker Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Containers Using Docker",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011457,
+              "key": "39cabb43-f13d-4368-9e5b-b706fc720caf",
+              "title": "ND9990 CDND C03 L02 A03 Docker V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1XHSHJAuYAk",
+                "china_cdn_id": "1XHSHJAuYAk.mp4"
+              }
+            },
+            {
+              "id": 1011454,
+              "key": "0d68ce39-cb46-49bc-96eb-c5040f705c30",
+              "title": "Docker Commands header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Docker Commands  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011394,
+              "key": "88c5f039-9426-4ae2-9675-fafee5c88ddf",
+              "title": "ND9990 CDND C03 L02 A04 Docker Commands",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "w7suK5WILOw",
+                "china_cdn_id": "w7suK5WILOw.mp4"
+              }
+            },
+            {
+              "id": 1011412,
+              "key": "0c99cc2f-b7fb-4530-928d-f389e1c0bc56",
+              "title": "Docker Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e8e805a_cdnd-c3-l2-dockerfile/cdnd-c3-l2-dockerfile.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0c99cc2f-b7fb-4530-928d-f389e1c0bc56",
+              "caption": "**Application code uses instructions in a _Dockerfile_ to create a _Docker Image_ which is _deployed to Docker Container(s)_.**",
+              "alt": "Application code uses instructions in a _Dockerfile_ to create a _Docker Image_ which is _deployed to Docker Container(s)_.",
+              "width": 594,
+              "height": 310,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011453,
+              "key": "e8f559a9-4b09-4a43-8833-22ccc101ff5a",
+              "title": "Docker Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Overview\nDocker is a platform that helps us manage the process of creating and managing our containers.\n\n### Docker Image\nWhen we have an application that we want to deploy, we can package it into a Docker Image. The image contains all of your code and dependencies.\n\n### Docker Container\nA Docker Container is an ephemeral running instance of a Docker Image.\n\n### Dockerfile\nA Dockerfile defines the steps to create a Docker Image.\n\n#### Sample Dockerfile\n```\n# Use NodeJS base image\nFROM node:13\n\n# Create app directory in Docker\nWORKDIR /usr/src/app\n\n# Install app dependencies by copying\n# package.json and package-lock.json\nCOPY package*.json ./\n\n# Install dependencies in Docker\nRUN npm install\n\n# Copy app from local environment into the Docker image\nCOPY . .\n\n# Set the API’s port number\nEXPOSE 8080\n\n# Define Docker’s behavior when the image is run\nCMD [\"node\", \"server.js\"]\n```\n\n## Basic Commands:\n* `docker build .` will run the Dockerfile to create an image\n* `docker images` will print all the available images\n* `docker run {IMAGE_ID}` will run a container with the image\n* `docker ps` will print all the running containers\n* `docker kill {CONTAINER_ID}` will terminate the container",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011404,
+              "key": "8156ad46-b540-4c3c-923d-839e312935fb",
+              "title": "Docker New Terms or Vocabulary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Key Terms - Docker\n\n| Term \t| Definition \t|\n|-------|-------------\t|\n| Base Image \t| A set of common dependencies built into a Docker image that acts as a starting point to build an application’s Docker images to reduce build times \t|\n| Container \t| Grouped software dependencies and packages that make it easier and more reliable to deploy software \t|\n| Container Registry \t| A centralized place to store container images \t|\n| Docker-compose \t| A tool used to run multiple Docker containers at once; often used to specify dependent relationships between containers \t|\n| Dockerfile \t| A file containing instructions on how to translate an application into an image that can be run in containers \t|\n| Ephemeral \t| Software property where an application is expected to be short-lived \t|\n| Image \t| A snapshot of dependencies and code used by Docker containers to run an application \t|\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011410,
+              "key": "60670df1-8b29-4b63-bbf2-a991944024b4",
+              "title": "Docker Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Optional Research on Docker\nDockerfiles are very open-ended and can become very messy very quickly. The following is an article on some best practices for writing Dockerfiles:\n* [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011466,
+          "key": "63a8310e-30ea-4224-88e6-f483f5948eb9",
+          "title": "Docker Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "63a8310e-30ea-4224-88e6-f483f5948eb9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011495,
+              "key": "091c1512-e13d-424c-a668-0d144be2f1a5",
+              "title": "Docker Terms",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "091c1512-e13d-424c-a668-0d144be2f1a5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the term with its corresponding definition."
+                },
+                "concepts_label": "Description",
+                "answers_label": "Term",
+                "concepts": [
+                  {
+                    "text": "Ephemeral application that is deployed as one unit",
+                    "correct_answer": {
+                      "id": "a1586399596714",
+                      "text": "Docker Container"
+                    }
+                  },
+                  {
+                    "text": "Application and its dependencies grouped with execution instructions",
+                    "correct_answer": {
+                      "id": "a1586399641409",
+                      "text": "Docker Image"
+                    }
+                  },
+                  {
+                    "text": "\nCentralized resource for storing images",
+                    "correct_answer": {
+                      "id": "a1586399647798",
+                      "text": "Container Registry"
+                    }
+                  },
+                  {
+                    "text": "\nInstructions on how to translate application code into an image",
+                    "correct_answer": {
+                      "id": "a1586399659196",
+                      "text": "Dockerfile"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586399596714",
+                    "text": "Docker Container"
+                  },
+                  {
+                    "id": "a1586399641409",
+                    "text": "Docker Image"
+                  },
+                  {
+                    "id": "a1586399659196",
+                    "text": "Dockerfile"
+                  },
+                  {
+                    "id": "a1586399647798",
+                    "text": "Container Registry"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011398,
+              "key": "334e38dd-7ed9-435a-8137-f5cd03fd488f",
+              "title": "Docker Hard Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "334e38dd-7ed9-435a-8137-f5cd03fd488f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are reasons for a Docker container to fail during runtime? (may be more than one answer)",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Out of memory",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Runtime error in application",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Deployment of a new container",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Container registry is not responsive",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011464,
+          "key": "a9ffccc5-f087-40ac-8a54-cc52e5eb0d04",
+          "title": "Exercise: Docker App",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a9ffccc5-f087-40ac-8a54-cc52e5eb0d04",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011409,
+              "key": "240ddd4c-a7f0-467c-9cd2-8ac0368c2e33",
+              "title": "Docker Exercise Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Your First Docker App\nA Docker container is created from a Docker image built off of an application. We will use the [Simple Node](https://github.com/udacity/nd9990-c3-microservices-exercises/tree/master/lesson-2-containers/exercises/simple-node) project that has a basic NodeJS application set up for you.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011407,
+              "key": "edcdf25f-20ca-4438-a1eb-a96277c15c92",
+              "title": "Get Started With Docker",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "edcdf25f-20ca-4438-a1eb-a96277c15c92",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Install Docker",
+                "Clone the [Simple Node](https://github.com/udacity/nd9990-c3-microservices-exercises/tree/master/lesson-2-containers/exercises/simple-node) project with Git",
+                "Run the app locally (stop it once you have verified it)",
+                "Build the Docker image",
+                "Run a Docker container with the image",
+                "Stop the running container"
+              ],
+              "positive_feedback": "Nice work! You built your own Docker image and ran it in a container!",
+              "video_feedback": null,
+              "description": "Given a simple application, run the application locally and as a Docker container."
+            }
+          ]
+        },
+        {
+          "id": 1011467,
+          "key": "7baed127-3947-4c0e-b817-c75a54d8965e",
+          "title": "Solution: Docker App",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7baed127-3947-4c0e-b817-c75a54d8965e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011418,
+              "key": "b1b1911f-7241-4c04-84c1-a48766afb839",
+              "title": "Docker App Solution heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## My Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011413,
+              "key": "6f161ead-f9b9-419e-944c-45e26dd2ac75",
+              "title": "ND9990 CDND C03 L02 A05 Solution Docker App",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Xf7jXk3ryEw",
+                "china_cdn_id": "Xf7jXk3ryEw.mp4"
+              }
+            },
+            {
+              "id": 1011411,
+              "key": "ae34960b-c53c-4dba-b1d0-c8bc55818f96",
+              "title": "Docker Exercise Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We used some very common Docker commands to build our image and run a container. To recap:\n* `docker build .` will run the Dockerfile to create an image\n* `docker images` will print all the available images\n* `docker run {IMAGE_ID}` will run a container with the image\n* `docker ps` will print all the running containers\n* `docker kill {CONTAINER_ID}` will terminate the container",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011414,
+              "key": "370a7f56-fed9-4901-b908-28eb5fc2bdfb",
+              "title": "Reflection on Docker",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "370a7f56-fed9-4901-b908-28eb5fc2bdfb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Reflect",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "We’ve discussed using containers to deploy your own code to optimize the deployment workflow. Why would you choose to download and run third party containers that you didn’t write the code for?"
+              },
+              "answer": {
+                "text": "Similar to how we want our code portable and easy to deploy, a 3rd party wants to ensure that their code can be easily integrated. For example, PostgreSQL can be run through Docker and not worry about installing other dependencies. It also has different versions of images available that you can pick for the best compatibility.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011480,
+          "key": "e12c8ffe-cc6d-4dff-8967-30966a184dd2",
+          "title": "Debug a Container",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e12c8ffe-cc6d-4dff-8967-30966a184dd2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011449,
+              "key": "63d3913b-41ea-4fc8-b8c9-f176993a313e",
+              "title": "Debug a Container Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Debugging Containers",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011395,
+              "key": "623589b3-5d53-431d-817f-7d1e054fbc24",
+              "title": "ND9990 CDND C03 L02 A06 Debug A Container",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KRq-vPlppCI",
+                "china_cdn_id": "KRq-vPlppCI.mp4"
+              }
+            },
+            {
+              "id": 1011416,
+              "key": "95dfa40e-dfc9-489d-ad2b-56def3d1b92a",
+              "title": "Debug a Container Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Development\nTroubleshooting Docker Containers is different as we lose access to some of our development tools.\r\n### Viewing Logs \n\n```bash\ndocker logs\n```\n\n### Attaching to a Container\n\n```bash\ndocker exec -it sh\n```\n\n### View Docker Processes\n\n```bash\ndocker ps\n```\n\n### View Details of Docker Objects\n\n```bash\ndocker inspect\n```   \r\r",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011445,
+              "key": "1e9d4a73-ef85-4ec1-89bd-feeb39a7a42e",
+              "title": "Debug a Container Heading New Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## New Term\n\n| Term \t| Definition \t|\n|-------|-------------\t|\n| System Process \t| A computer program run by the operating system \t|\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011415,
+              "key": "d13a163c-f55f-4ab3-9d4f-653f356a37df",
+              "title": "Debug a Container Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Research\nWe’ve gone over some Docker commands and how to use them to build images and run containers. The following are some documentation on the commands for further understanding of other ways they can be useful.  \n* [docker logs](https://docs.docker.com/engine/reference/commandline/logs/)\n* [docker exec](https://docs.docker.com/engine/reference/commandline/exec/)\n* [docker ps](https://docs.docker.com/engine/reference/commandline/ps/)\n* [docker inspect](https://docs.docker.com/engine/reference/commandline/inspect/)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011477,
+          "key": "6e53e97c-88d3-4acb-ac5d-4b00f106d352",
+          "title": "Debugging Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6e53e97c-88d3-4acb-ac5d-4b00f106d352",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011496,
+              "key": "4409360c-590d-44ac-bcca-228386cdb23d",
+              "title": "Docker Commands",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4409360c-590d-44ac-bcca-228386cdb23d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the following commonly-used Docker commands with their use cases."
+                },
+                "concepts_label": "Use Case",
+                "answers_label": "Docker Command",
+                "concepts": [
+                  {
+                    "text": "Show currently-running Docker containers",
+                    "correct_answer": {
+                      "id": "a1586399750484",
+                      "text": "`docker ps`"
+                    }
+                  },
+                  {
+                    "text": "Connect into the Docker container for troubleshooting",
+                    "correct_answer": {
+                      "id": "a1586399784815",
+                      "text": "`docker exec -it sh`"
+                    }
+                  },
+                  {
+                    "text": "Show more information about a Docker object",
+                    "correct_answer": {
+                      "id": "a1586399793954",
+                      "text": "`docker inspect`"
+                    }
+                  },
+                  {
+                    "text": "View output from an application in the Docker container for troubleshooting",
+                    "correct_answer": {
+                      "id": "a1586399800803",
+                      "text": "`docker logs`"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586399750484",
+                    "text": "`docker ps`"
+                  },
+                  {
+                    "id": "a1586399784815",
+                    "text": "`docker exec -it sh`"
+                  },
+                  {
+                    "id": "a1586399800803",
+                    "text": "`docker logs`"
+                  },
+                  {
+                    "id": "a1586399793954",
+                    "text": "`docker inspect`"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011450,
+              "key": "04b0e3d6-b7f3-40be-9967-8834f6f2bb55",
+              "title": "Debug a Container Hard Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "04b0e3d6-b7f3-40be-9967-8834f6f2bb55",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some reasons why a container may work in a local environment but not run successfully in a deployed environment?\n",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "The programming language is compiled prior to runtime",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Security restrictions",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Not enough system resources",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Credentials are different",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011399,
+              "key": "5b3c5878-9f76-4c41-8115-e2050c0fad35",
+              "title": "Quiz Solution",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz Solution  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011422,
+              "key": "b2d99085-d801-4a13-b55c-182f3a23f4c1",
+              "title": "ND9990 CDND C03 L02 A07 Debugging Quizzes",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kTWcR7lmBZs",
+                "china_cdn_id": "kTWcR7lmBZs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011469,
+          "key": "006e5ebd-3c65-4b3f-b865-6d3f9fa585a3",
+          "title": "Exercise: Debugging",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "006e5ebd-3c65-4b3f-b865-6d3f9fa585a3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011408,
+              "key": "1a5b8d95-6e50-40e6-9ecf-b7bad1cb6344",
+              "title": "Exercise: Debugging Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let’s debug an application in a container. A Docker image has been prepared that has an error during runtime. Using some of the commands we learned earlier, diagnose the cause of the issue.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011417,
+              "key": "46ae8dac-a21b-47d1-bc8f-b8b0a8847603",
+              "title": "ND9990 CDND C03 L02 A08 Exercise Debugging",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "masrt51iUqs",
+                "china_cdn_id": "masrt51iUqs.mp4"
+              }
+            },
+            {
+              "id": 1011452,
+              "key": "9f86bdaf-4dc1-4165-9c78-b90cecaa65c2",
+              "title": "Debugging Instructions Text",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Commands  \n\n`docker pull isjustintime/debug-me:latest`  <br>\rDownloads a container onto your development environment.  <br><br>\r\n`docker run -d isjustintime/debug-me` <br>\rRuns the image in a container as a _background task_ so the container doesn’t prevent us from being able to run other commands in our terminal\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011421,
+              "key": "f246e774-029d-47da-8903-3b17e5fdd17a",
+              "title": "Debug a Container",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f246e774-029d-47da-8903-3b17e5fdd17a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Pull the Docker image named `isjustintime/debug-me`",
+                "Run the Docker image in a container",
+                "Diagnose the bug in the container"
+              ],
+              "positive_feedback": "Nice work! You squashed the bug!  You can see my solution in the next video",
+              "video_feedback": null,
+              "description": "Run the exercise image in a container and debug it."
+            }
+          ]
+        },
+        {
+          "id": 1011474,
+          "key": "77faa927-d0d1-4e28-914f-59c5fed3d3ce",
+          "title": "Solution: Debugging",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "77faa927-d0d1-4e28-914f-59c5fed3d3ce",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011425,
+              "key": "4b1d1924-c34d-4e68-a1ae-0830751b2496",
+              "title": "Solution: Debugging Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## My Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011444,
+              "key": "eea2b983-b621-4dfc-80f5-058b0d762f29",
+              "title": "ND9990 CDND C03 L02 A09 Solution Debugging",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HkPF7I4qZWE",
+                "china_cdn_id": "HkPF7I4qZWE.mp4"
+              }
+            },
+            {
+              "id": 1011424,
+              "key": "061b03ad-4dc7-4448-a668-4090ef314f31",
+              "title": "Solution: Debugging Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "By using some of the commands we learned earlier about debugging Docker, we can see the error message that indicates our bug is a syntax error.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011471,
+          "key": "a580ddf7-8e53-4221-8fe3-a787b06bae92",
+          "title": "Container Registries",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a580ddf7-8e53-4221-8fe3-a787b06bae92",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011428,
+              "key": "861a913c-e34a-480f-ad39-071a1dbb4eda",
+              "title": "Container Registries Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Container Registries",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011430,
+              "key": "85363b12-c8c1-4211-b0b3-ab922fae020f",
+              "title": "ND9990 CDND C03 L02 A10 Container Registries V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IYhNp79_rBk",
+                "china_cdn_id": "IYhNp79_rBk.mp4"
+              }
+            },
+            {
+              "id": 1011437,
+              "key": "7db9385d-bd0d-48ec-b99d-057fe1ebeed2",
+              "title": "Container Registries Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Container Registry\n* A container registry serves as a centralized place for us to store and version our images.\n\n### DockerHub\n* [DockerHub](https://hub.docker.com/) is a popular container registry run by the same organization that created Docker.\r\r### Base Images\r- Base images reduce time that it takes to run redundant operations.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011419,
+              "key": "0102747d-ceea-4cec-99d2-f2a8b52878b3",
+              "title": "Container Registries Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e8e8285_cdnd-c3-l2-container-registry/cdnd-c3-l2-container-registry.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0102747d-ceea-4cec-99d2-f2a8b52878b3",
+              "caption": "**Container registries serve as a centralized source of our Docker images**",
+              "alt": "Container registries serve as a centralized source of our Docker images",
+              "width": 617,
+              "height": 384,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011420,
+              "key": "52978266-0b05-4c05-bcd4-2ae8c00d71b9",
+              "title": "Container Registries Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Reading  \nHere are some more reading materials that you can reference for improving how Docker is used in a production system.\n* [Docker Registry](https://docs.docker.com/registry/)\n* [Best practices for speeding up builds](https://cloud.google.com/cloud-build/docs/speeding-up-builds)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011472,
+          "key": "866e68f2-6f79-463f-9f2c-b2bb361cddda",
+          "title": "Container Registries Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "866e68f2-6f79-463f-9f2c-b2bb361cddda",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011435,
+              "key": "ca72fdb0-36c0-460c-8153-bf573a95a94a",
+              "title": "Container Registries Easy Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ca72fdb0-36c0-460c-8153-bf573a95a94a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is the command to pull a docker image?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "`docker pull`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "`docker push`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "`docker ps`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "`docker images`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011431,
+              "key": "6251b0f3-e33e-427d-8026-4efa5e961161",
+              "title": "Container Registries Hard Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6251b0f3-e33e-427d-8026-4efa5e961161",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why is it important for every Docker image to have a unique ID in a container registry?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Speeds up build time",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Improve security",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Saves storage space",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Easily reference a build",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011423,
+              "key": "19ee5350-1bba-437b-90f1-fb315a6c6412",
+              "title": "Quiz solution heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Quiz Solution  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011459,
+              "key": "9bbdf6df-82e2-496f-ad51-f54247a006d1",
+              "title": "ND9990 CDND C03 L02 A11 Container Registries Quizzes V3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wkfNcJ1kaIE",
+                "china_cdn_id": "wkfNcJ1kaIE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011473,
+          "key": "70d5a395-a8e3-4714-a0da-85c456296c27",
+          "title": "Exercise: Container Registries",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "70d5a395-a8e3-4714-a0da-85c456296c27",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011429,
+              "key": "9fdf0b96-e182-44be-865a-7d6c30854fe9",
+              "title": "Exercise: Container Registries Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[DockerHub](https://hub.docker.com/) is one of the most popular container registries. Container registries are simple in concept and the commands to push to alternative container registries are very similar.\n\nIn order to make sure that our application is used outside of just local development, we’ll work on pushing an image to DockerHub. Using the Docker application from the previous exercise, build an image and push it to DockerHub.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011434,
+              "key": "72776f34-6313-4cec-877b-3c09f9b0aa3f",
+              "title": "Get Started on DockerHub",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "72776f34-6313-4cec-877b-3c09f9b0aa3f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Build a Docker image",
+                "Setup a [DockerHub account](https://hub.docker.com/signup)",
+                "Push a Docker image to DockerHub"
+              ],
+              "positive_feedback": "You should be able to navigate to DockerHub and see the latest image available.",
+              "video_feedback": null,
+              "description": "Using the [Dockerfile](https://github.com/udacity/nd9990-c3-microservices-exercises/blob/master/lesson-2-containers/exercises/simple-node/Dockerfile)  from the previous exercise, build an image and push it to your account on DockerHub."
+            }
+          ]
+        },
+        {
+          "id": 1011482,
+          "key": "98e222e9-9c3b-4c4d-bc2a-cdcd8206ae72",
+          "title": "Solution: Container Registries",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "98e222e9-9c3b-4c4d-bc2a-cdcd8206ae72",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011455,
+              "key": "696bd77a-961f-404b-9008-e61c4f6aa97a",
+              "title": "Solution: Container Registries Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## My Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011451,
+              "key": "535c9c17-0952-4378-b3c6-429e38a991e6",
+              "title": "ND9990 CDND C03 L02 A12A Solution Container Registries",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8RhUnPdgb7A",
+                "china_cdn_id": "8RhUnPdgb7A.mp4"
+              }
+            },
+            {
+              "id": 1011443,
+              "key": "1e42fc47-b055-4dff-8bb3-a13d3d910ca6",
+              "title": "Solution: Container Registries Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We saw how we can create a Docker image and push it to DockerHub so that other people can use our Docker images.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011470,
+          "key": "ead5eea4-9466-4a37-9c3c-9671f541e5f5",
+          "title": "Exercise: Base Images",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ead5eea4-9466-4a37-9c3c-9671f541e5f5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011426,
+              "key": "fa574f72-d98b-40ef-b29f-81572fb4b087",
+              "title": "Base Images",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the build and deploy process, building Docker Images can take up most of the time. One strategy to reduce build times is to utilize a base image. This reduces redundant operations that might stay the same across multiple builds. For example, if you are building a new Docker image with a few lines of new application logic, we may find the build time frustrating.\n\nFor this exercise, we'll take a Dockerfile from a project named [Slow Node](https://github.com/udacity/nd9990-c3-microservices-exercises/tree/master/lesson-2-containers/exercises/slow-node) and refactor it to reduce redundant operations using a base image for faster builds.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011438,
+              "key": "2f99a70c-c148-4755-99d0-58144424ea43",
+              "title": "Using Base Images",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2f99a70c-c148-4755-99d0-58144424ea43",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Build existing Docker Image of [Slow Node](https://github.com/udacity/nd9990-c3-microservices-exercises/tree/master/lesson-2-containers/exercises/slow-node)",
+                "Refactor Dockerfile to use a base image",
+                "Build Docker Image using a base image",
+                "Compare difference in build times"
+              ],
+              "positive_feedback": "Excellent! You’ve used one common technique to reduce Docker build times!",
+              "video_feedback": null,
+              "description": "Refactor a Dockerfile using a base image."
+            }
+          ]
+        },
+        {
+          "id": 1011479,
+          "key": "c148ecb9-330b-4eb6-9ea5-fde0dd787918",
+          "title": "Solution: Base Containers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c148ecb9-330b-4eb6-9ea5-fde0dd787918",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011439,
+              "key": "388eacdc-8469-418d-a7cc-0ba4d31c7d24",
+              "title": "Base Containers Solution heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## My Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011460,
+              "key": "52a8fda9-95c3-4559-9827-9d34ea7f3549",
+              "title": "ND9990 CDND C03 L02 A12B Solution Base Images",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8wsqbWDeDxA",
+                "china_cdn_id": "8wsqbWDeDxA.mp4"
+              }
+            },
+            {
+              "id": 1011427,
+              "key": "79b2411f-9cfd-4335-a87c-12d9fbe8510f",
+              "title": "Base Containers solution recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Solution Recap  \n\n* Our [original Dockerfile](https://github.com/udacity/nd9990-c3-microservices-exercises/blob/master/lesson-2-containers/exercises/slow-node/Dockerfile) contained a lot of code to install NodeJS that takes a long time to run.\n\n* Installing NodeJS is a redundant operation -- it shouldn't need to be reinstalled every time we build an image because we don’t expect to make changes to it.\n\n* By using a base image that has NodeJS installed, we can reduce the amount of time it takes to build an image for NodeJS and our application’s code. We would use a pre-existing image that already has NodeJS and just build on top of it for the application’s code.\n\n### My Strategy  \n\nFirst, create a base image:  \n1. Take the the block of code that installs the NodeJS dependencies and save it as a new Dockerfile (see below) <br><br> \n2. Build the Docker image and name it  `slow-node-base` <br><br> \n3. Create a DockerHub repository for `slow-node-base`  <br><br>\n4. Tag `slow-node-base` and add it to the DockerHub registry \n```bash\ndocker tag slow-node-base <YOUR_DOCKER_HUB>/slow-node-base\ndocker push <YOUR_DOCKER_HUB>/slow-node-base\n```\n<br>\n\nThen, use the base image in our application.\n\n5. Take a new copy of the starter Dockerfile and remove all of the code to install the dependencies, leaving only the custom logic of the application\n\n\n6.  Use the base image we just created by linking it using the `FROM` command:  \n```\nFROM <YOUR_DOCKER_HUB>/slow-node-base:latest\n```\n7. Build the new image.    \n```\ndocker build -t slow-node .\n```\n\nNotice how much more quickly the image is built since we essentially removed the overhead of installing NodeJS!\n\n####  Base Image \n\n```yaml\nFROM buildpack-deps:stretch\n\nRUN groupadd --gid 1000 node \\\n  && useradd --uid 1000 --gid node --shell /bin/bash --create-home node\n\nENV NODE_VERSION 13.12.0\n\nRUN ARCH= && dpkgArch=\"$(dpkg --print-architecture)\" \\\n  && case \"${dpkgArch##*-}\" in \\\n    amd64) ARCH='x64';; \\\n    ppc64el) ARCH='ppc64le';; \\\n    s390x) ARCH='s390x';; \\\n    arm64) ARCH='arm64';; \\\n    armhf) ARCH='armv7l';; \\\n    i386) ARCH='x86';; \\\n    *) echo \"unsupported architecture\"; exit 1 ;; \\\n  esac \\\n  # gpg keys listed at https://github.com/nodejs/node#release-keys\n  && set -ex \\\n  && for key in \\\n    94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \\\n    FD3A5288F042B6850C66B31F09FE44734EB7990E \\\n    71DCFD284A79C3B38668286BC97EC7A07EDE3FC1 \\\n    DD8F2338BAE7501E3DD5AC78C273792F7D83545D \\\n    C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \\\n    B9AE9905FFD7803F25714661B63B535A4C206CA9 \\\n    77984A986EBC2AA786BC0F66B01FBB92821C587A \\\n    8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600 \\\n    4ED778F539E3634C779C87C6D7062848A1AB005C \\\n    A48C2BEE680E841632CD4E44F07496B3EB3C1762 \\\n    B9E2F5981AA6E0CD28160D9FF13993A75599653C \\\n  ; do \\\n    gpg --batch --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys \"$key\" || \\\n    gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys \"$key\" || \\\n    gpg --batch --keyserver hkp://pgp.mit.edu:80 --recv-keys \"$key\" ; \\\n  done \\\n  && curl -fsSLO --compressed \"https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz\" \\\n  && curl -fsSLO --compressed \"https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc\" \\\n  && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \\\n  && grep \" node-v$NODE_VERSION-linux-$ARCH.tar.xz\\$\" SHASUMS256.txt | sha256sum -c - \\\n  && tar -xJf \"node-v$NODE_VERSION-linux-$ARCH.tar.xz\" -C /usr/local --strip-components=1 --no-same-owner \\\n  && rm \"node-v$NODE_VERSION-linux-$ARCH.tar.xz\" SHASUMS256.txt.asc SHASUMS256.txt \\\n  && ln -s /usr/local/bin/node /usr/local/bin/nodejs \\\n  # smoke tests\n  && node --version \\\n  && npm --version\n\nENV YARN_VERSION 1.22.4\n\nRUN set -ex \\\n  && for key in \\\n    6A010C5166006599AA17F08146C2130DFD2497F5 \\\n  ; do \\\n    gpg --batch --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys \"$key\" || \\\n    gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys \"$key\" || \\\n    gpg --batch --keyserver hkp://pgp.mit.edu:80 --recv-keys \"$key\" ; \\\n  done \\\n  && curl -fsSLO --compressed \"https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz\" \\\n  && curl -fsSLO --compressed \"https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz.asc\" \\\n  && gpg --batch --verify yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \\\n  && mkdir -p /opt \\\n  && tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/ \\\n  && ln -s /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn \\\n  && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \\\n  && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \\\n  # smoke test\n  && yarn --version\n\nCMD [ \"node\" ]\n```\n\n\n###  My Code\n\n#### Application Image \n\n```yaml\n# We reduced many lines of code to set up NodeJS by abstracting all of it into a base image\nFROM YOUR_DOCKER_HUB/slow-node-base:latest\n\n# Create app directory\nWORKDIR /usr/src/app\n\n# Install app dependencies by copying\n# package.json and package-lock.json\nCOPY package*.json ./\n\n# Install dependencies\nRUN npm install\n\n# Copy app source\nCOPY . .\n\n# Bind the port that the image will run on\nEXPOSE 8080\n\n# Define the Docker image's behavior at runtime\nCMD [\"node\", \"server.js\"]\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011478,
+          "key": "c4be30c7-3e4f-45ef-a82b-24ea0464655f",
+          "title": "Modifying Containers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c4be30c7-3e4f-45ef-a82b-24ea0464655f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011462,
+              "key": "e4b53b93-981d-41df-98ae-ae8bef23c7fc",
+              "title": "Modifying Containers Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Modifying Containers",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011442,
+              "key": "9a7cd414-e614-4773-8dfc-aa84187753de",
+              "title": "ND9990 CDND C03 L02 A13 Modifying Containers",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-lb-AzbgqwM",
+                "china_cdn_id": "-lb-AzbgqwM.mp4"
+              }
+            },
+            {
+              "id": 1011463,
+              "key": "4a358883-a4a0-489e-a27d-3d3818e3fa28",
+              "title": "Modifying Container recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Docker images should be considered a single unit of deployment. You shouldn't be editing code or making changes to the system at all in a container. If something is broken, you build a new image and deploy that to a new container.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011448,
+              "key": "473c243b-1949-4336-bb80-cf5864140d02",
+              "title": "Modifying Containers Intuition Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "473c243b-1949-4336-bb80-cf5864140d02",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "We can connect to Docker containers using `docker-exec -it sh`and run commands directly in the container. It's useful when troubleshooting locally. In practice, why should we avoid doing this command in production?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "We may run out of memory",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Avoid inadvertently breaking production logic",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "We would accrue server costs for connecting to it",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "It will block a new container from being created while we are inside of it",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011441,
+              "key": "3c4ecb36-bc51-4ce5-b20c-4d8829685cf1",
+              "title": "Modifying Containers Knowledge Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3c4ecb36-bc51-4ce5-b20c-4d8829685cf1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If there was a simple bug in the current running container, how should you fix the bug?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Connect to the container and use a text editing tool to update it",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Destroy the container and create a fresh one with the same image",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Fix the change locally and push it to your container registry",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011447,
+              "key": "d8949854-b037-4986-a159-41978ee1a5d5",
+              "title": "Modifying Containers Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Reading\nFor more information on how to interact with containers:\n* [Attaching to Containers](https://docs.docker.com/engine/reference/commandline/container_attach/)\n* [Debugging Docker](https://www.docker.com/blog/live-debugging-docker/)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011476,
+          "key": "b08d06ca-6768-4676-9a2b-fc33aaae9b29",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b08d06ca-6768-4676-9a2b-fc33aaae9b29",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011433,
+              "key": "aad12584-0f4c-4120-bf65-4c03844335d7",
+              "title": "Lesson Recap Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Conclusion",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011440,
+              "key": "a576daa1-0f95-4d75-8cc1-4ab08c95a679",
+              "title": "ND9990 CDND C03 L02 A14 Lesson Recap V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "abKY0TINwD0",
+                "china_cdn_id": "abKY0TINwD0.mp4"
+              }
+            },
+            {
+              "id": 1011458,
+              "key": "9debdbd5-84b4-4d98-809b-237ffe3caf0e",
+              "title": "Lesson overview",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e8e8366_cdnd-c3-l2-outline/cdnd-c3-l2-outline.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9debdbd5-84b4-4d98-809b-237ffe3caf0e",
+              "caption": "",
+              "alt": "What We Have Learned",
+              "width": 758,
+              "height": 289,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011461,
+              "key": "2a428c1e-4621-46cf-a08f-c4b4ee680f32",
+              "title": "Lesson Recap Text",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What we covered in this lesson:\r* What containers are\r* When it is helpful to use them\n* How to build a container with Docker\r* How to debug containers\n* How to use container registries\n* How to modify containers  \r\n### Next Lesson\nTo focus  _how_ we can build and deploy our code. We’ll review the concept of CI/CD for Continuous Integration and Continuous Deployment and build our own Continuous Integration process.\r\r",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011468,
+          "key": "66daca8a-4c56-4d9c-a275-a50ffa852b1f",
+          "title": "Glossary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "66daca8a-4c56-4d9c-a275-a50ffa852b1f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011446,
+              "key": "24a826d6-0020-4ec5-bab9-05fab843b6d5",
+              "title": "Glossary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### New Terms in This Lesson  \n<br>\n\n| Term \t| Definition \t|  \n|----------------------------------|------|\n| Base Image \t| A set of common dependencies built into a Docker image that acts as a starting point to build an application’s Docker images to reduce build times \t|\n| Container \t| Grouped software dependencies and packages that make it easier and more reliable to deploy software \t|\n| Container Registry \t| A centralized place to store container images \t|\n| Docker-compose \t| A tool used to run multiple Docker containers at once; often used to specify dependent relationships between containers \t|\n| Dockerfile \t| A file containing instructions on how to translate an application into an image that can be run in containers \t|\n| Ephemeral \t| Software property where an application is expected to be short-lived \t|\n| Image \t| A snapshot of dependencies and code used by Docker containers to run an application \t|\n| System Process | A computer program run by the operating system \t|\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

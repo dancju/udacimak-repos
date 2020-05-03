@@ -1,0 +1,1264 @@
+{
+  "data": {
+    "lesson": {
+      "id": 858120,
+      "key": "a80d1cfe-bc1d-484e-9e57-25d4fc8b3fce",
+      "title": "REST API",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, we will cover the development of REST APIL for a group of images, how to store data in DynamoDB and build a web app using React.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/a80d1cfe-bc1d-484e-9e57-25d4fc8b3fce/858120/1561688776870/REST+API+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/a80d1cfe-bc1d-484e-9e57-25d4fc8b3fce/858120/1561688766006/REST+API+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 858113,
+          "key": "18dad28d-d6b1-4ad6-b14f-11c4f5ae4c7a",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "18dad28d-d6b1-4ad6-b14f-11c4f5ae4c7a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858031,
+              "key": "6ab665e4-3a93-4d91-af60-11b508c870b7",
+              "title": "ND9990 L02 A01 Intro To Lesson 2 - What Is In This Lesson",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Xo0UOSE9c7k",
+                "china_cdn_id": "Xo0UOSE9c7k.mp4"
+              }
+            },
+            {
+              "id": 1003498,
+              "key": "3b9df429-ef0e-4cfd-bfde-68d803fcf61f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e5e1bc2_intro/intro.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3b9df429-ef0e-4cfd-bfde-68d803fcf61f",
+              "caption": "",
+              "alt": "",
+              "width": 512,
+              "height": 288,
+              "instructor_notes": null
+            },
+            {
+              "id": 1003468,
+              "key": "91d85222-3353-4f5b-a659-d25e6e63a46e",
+              "title": "Lesson outline",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "What we will cover\n- Develop REST API for group of images.\n- Store data in DynamoDB\n- Build a web application using React framework to use our application.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1003469,
+              "key": "313484de-2e66-4d49-b213-5a6b98334530",
+              "title": "What we will use",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e5e1bdf_what-we-will-use/what-we-will-use.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/313484de-2e66-4d49-b213-5a6b98334530",
+              "caption": "We will use AWS Lambda, API Gateway and DynamoDB",
+              "alt": "We will use AWS Lambda, API Gateway and DynamoDB",
+              "width": 512,
+              "height": 288,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 858114,
+          "key": "b6744129-1c00-40d7-b335-72ed994c62e1",
+          "title": "API Gateway",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b6744129-1c00-40d7-b335-72ed994c62e1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858038,
+              "key": "44f2c099-3993-4a99-9124-543a2076a963",
+              "title": "ND9990 L02 A02 Rest API With Serverless (Slides)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZuTo5RQP-h0",
+                "china_cdn_id": "ZuTo5RQP-h0.mp4"
+              }
+            },
+            {
+              "id": 1003499,
+              "key": "c716b8bf-518e-49f7-b8ce-fc0354898c15",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When implementing REST API with AWS Lambda our functions receive HTTP requests in the form of events. Each event contains information like HTTP method, HTTP body, headers, etc.\n\nA Lambda function should process this event and return a response that will be converted by AWS into an HTTP response.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1003487,
+          "key": "026e74ce-bffc-4418-8416-45c2eb73da27",
+          "title": "Amazon API Gateway",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "026e74ce-bffc-4418-8416-45c2eb73da27",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858041,
+              "key": "22623b12-e4cc-4221-9cb8-865cef6b6b00",
+              "title": "ND9990 L02 A04 Amazon API Gateway (Slides)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rBRI_jngFYg",
+                "china_cdn_id": "rBRI_jngFYg.mp4"
+              }
+            },
+            {
+              "id": 859423,
+              "key": "24caea6f-5d75-4242-a2d2-19ba2834d78f",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**What is API Gateway**\n\n- Entry point for API users\n- Pass requests to other services\n- Process incoming requests",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858033,
+              "key": "1cd9e4bb-3abf-4256-9b9f-a4c9b73c97c4",
+              "title": "ND9990 L02 A03 API Gateway Integrations",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QcSP3zB2SF0",
+                "china_cdn_id": "QcSP3zB2SF0.mp4"
+              }
+            },
+            {
+              "id": 1003471,
+              "key": "118d1dfc-c372-40ff-a5ef-eb51e1c768d8",
+              "title": "API Gateway targets",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**API Gateway targets**\n\nPossible targets for an HTTP request processed by API Gateway:\n\n- Lambda Function - call a Lambda function\n- HTTP Endpoint - call a public HTTP endpoint\n- AWS Service - send a request to an AWS service\n- Mock - return a response without calling a backend\n- VPC Link - access resource in an Amazon Virtual Private Cloud (VPC)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1003490,
+          "key": "8fceeb7e-ce4b-48db-91c5-35c036bcf83a",
+          "title": "API Gateway Configuration",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8fceeb7e-ce4b-48db-91c5-35c036bcf83a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858070,
+              "key": "f65a2356-0120-4f55-b253-08024f90b042",
+              "title": "ND9990 L02 A05 Endpoint Types (Slides)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ukmHvLO86Kc",
+                "china_cdn_id": "ukmHvLO86Kc.mp4"
+              }
+            },
+            {
+              "id": 858654,
+              "key": "7f181d4e-b27b-4709-a7e6-3bd93d40f291",
+              "title": "Endpoint types",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7f181d4e-b27b-4709-a7e6-3bd93d40f291",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What endpoint type in API Gateway directs all requests through a CloudFront distribution?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Edge optimized",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Regional",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Private",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 858037,
+              "key": "9eae1087-a831-46ea-8649-9406d931b844",
+              "title": "ND9990 L02 A06 Lambda Integration Modules (Slides)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "o6r5wU8Lpt4",
+                "china_cdn_id": "o6r5wU8Lpt4.mp4"
+              }
+            },
+            {
+              "id": 1003472,
+              "key": "f5ad88e7-e8d0-4ae1-a178-a6cbd2adc316",
+              "title": "Lambda Integration Modes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Lambda integration modes**\n\n- **Proxy** - passes all request information to a Lambda function. Easier to use.\n- **Non-proxy** - allows to transform incoming request using __Velocity Template Language__",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1003489,
+          "key": "90e2e664-5a11-422e-b888-219dcdd8334e",
+          "title": "API Gateway Stages",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "90e2e664-5a11-422e-b888-219dcdd8334e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858036,
+              "key": "6cbf41a9-9a64-45ab-87a8-cc26a784e482",
+              "title": "ND9990 L02 A07 API Gateway Stages",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dOYkp8fHfoQ",
+                "china_cdn_id": "dOYkp8fHfoQ.mp4"
+              }
+            },
+            {
+              "id": 859424,
+              "key": "c5c0e037-f58f-4b40-ad44-5bfbbfa6ab32",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "API Gateway Stage is a logical reference to a lifecycle state of the REST API implementation.\n\nYou can read more about API Gateway stages in [AWS documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-stages.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1003491,
+          "key": "71aa9a22-7932-4404-b43d-40474a119fb9",
+          "title": "Implement GET-Groups API",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "71aa9a22-7932-4404-b43d-40474a119fb9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858059,
+              "key": "a7194702-d724-4822-b8db-d0091023900a",
+              "title": "ND9990 L02 A08 Demo - Implement GET-Groups API Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eLWN3ZrwwK0",
+                "china_cdn_id": "eLWN3ZrwwK0.mp4"
+              }
+            },
+            {
+              "id": 858053,
+              "key": "f15c7e09-0dd5-4dd8-9b60-8bf4c625e885",
+              "title": "ND9990 L02 A09 Demo - Implement GET-Groups API Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cnfBuJ84pPU",
+                "china_cdn_id": "cnfBuJ84pPU.mp4"
+              }
+            },
+            {
+              "id": 858039,
+              "key": "d07ae6c6-47be-4bb4-adfc-5d3b4399f2da",
+              "title": "ND9990 L02 A10 Demo - Implement GET-Groups API Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vK-LDu-lXvM",
+                "china_cdn_id": "vK-LDu-lXvM.mp4"
+              }
+            },
+            {
+              "id": 951297,
+              "key": "d957a9c1-99f4-4d28-8bc4-ef78bf0ac7b0",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Link to Postman Collection\n\nWhile you are working on the course you can deploy the application, and send a request to it yourself. To do this you can use the following Postman collection:\n\n*  [Course 4 Postman Collection](https://github.com/udacity/cloud-developer/blob/master/course-04/exercises/Udacity%20C4.postman_collection.json)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 858117,
+          "key": "67644daa-1096-4b1d-9ae7-24f62d44be4f",
+          "title": "Web Interface: Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "67644daa-1096-4b1d-9ae7-24f62d44be4f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858054,
+              "key": "cb59b239-c522-4913-a48f-ccacba51c5f2",
+              "title": "ND9990 L02 A11 Web Application",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GLtXFRE4E6g",
+                "china_cdn_id": "GLtXFRE4E6g.mp4"
+              }
+            },
+            {
+              "id": 859425,
+              "key": "fdb3510a-5aa0-4319-b32d-e67824cc42e4",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "<h2>React Documentation</h2>\n\nThis course won't spend too much time on React, but you can learn more about it using the following resources:\n\n* [Official Getting Started Guide](https://reactjs.org/docs/getting-started.html)\n* [Udacity React Nanodegree Program](https://www.udacity.com/course/react-nanodegree--nd019)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1003492,
+          "key": "b9680a36-3724-4b92-a2aa-81209e321fb1",
+          "title": "Using API from a Web Application",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b9680a36-3724-4b92-a2aa-81209e321fb1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858062,
+              "key": "a23ecee8-e86a-42ac-9a0a-9152a432e645",
+              "title": "ND9990 L02 A12 Demo - Use API From A Web Application Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VUoZlc0S3bw",
+                "china_cdn_id": "VUoZlc0S3bw.mp4"
+              }
+            },
+            {
+              "id": 858072,
+              "key": "d74a74e6-38b2-45da-bcec-23f9418536d2",
+              "title": "ND9990 L02 A13 Demo - Use API From A Web Application Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "d5fwrfODoZ0",
+                "china_cdn_id": "d5fwrfODoZ0.mp4"
+              }
+            },
+            {
+              "id": 940355,
+              "key": "b55dc12f-4eaa-49ac-bac0-0f5f9813941f",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can find the code for the application here:  \n\n**[Udacity-C4-Client](https://github.com/udacity/cloud-developer/tree/master/course-04/exercises/c4-client-master)**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858068,
+              "key": "4c916927-9ae0-4a12-9f02-2a908b9a6c5f",
+              "title": "ND9990 L02 A14 Demo - Use API From A Web Application Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FND8p9OFKbA",
+                "china_cdn_id": "FND8p9OFKbA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1003485,
+          "key": "a0815d6f-16d7-4b5a-ae01-8f5c97d7b7a0",
+          "title": "Sending Requests",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a0815d6f-16d7-4b5a-ae01-8f5c97d7b7a0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858056,
+              "key": "c9f5499f-024d-49ca-9264-64a4abc2489d",
+              "title": "ND9990 L02 A15 Why Can T We Make Any Requests- Cross-Origin Request Policy",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LtgoZrsnKQY",
+                "china_cdn_id": "LtgoZrsnKQY.mp4"
+              }
+            },
+            {
+              "id": 1003473,
+              "key": "623a6069-d645-45e8-89cb-1c4462cb01c0",
+              "title": "Same-Origin policy",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Single-Origin request policy is enabled in all browsers by default and is an important security measure. To send requests from a web application to a different domain (e.g. from localhost to API Gateway domain) we need to configure Cross-Origin request policy in our API.\n\nAlternatively, we need to configure our application so that JavaScript would be served from the same domain that is used for our REST API, but this goes beyond the scope of this course.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858044,
+              "key": "1a33ef5b-cc30-4e95-9f35-69e4b533fd5c",
+              "title": "ND9990 L02 A16 Demo - Enable CORS For The GET Method Parts 1, 2, 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Px1LmMXSps8",
+                "china_cdn_id": "Px1LmMXSps8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858119,
+          "key": "3cb7e863-d14b-46ec-9f0f-fbfc13d22380",
+          "title": "DynamoDB: Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3cb7e863-d14b-46ec-9f0f-fbfc13d22380",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858078,
+              "key": "61ac05f2-05db-4898-8897-bef16a480664",
+              "title": "ND9990 L02 A17 Storing Data",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b3-R-c5AOFs",
+                "china_cdn_id": "b3-R-c5AOFs.mp4"
+              }
+            },
+            {
+              "id": 1003474,
+              "key": "7d1dbddf-16d4-4fbc-bd44-cdab9d889226",
+              "title": "AWS Databases Options",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# AWS databases\n\nAWS provides a number of database options and it may be confusing when to use what solution.\n\nYou can find the full list of databases available on AWS [here](https://aws.amazon.com/products/databases/).\n\nYou can also watch this [webinar from AWS](https://www.youtube.com/watch?v=6K0Sds9Y2N0) that can help you to make the right choice.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858073,
+              "key": "1eff777b-42b5-481f-bd0e-18c778bfe5c2",
+              "title": "ND9990 L02 A18 DynamoDB Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zr23jUTYKYw",
+                "china_cdn_id": "zr23jUTYKYw.mp4"
+              }
+            },
+            {
+              "id": 1003479,
+              "key": "e308ad4c-a340-4dea-b693-e715ab473086",
+              "title": "More about DynamoDB",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# More about DynamoDB\n\nDynamoDB is a NoSQL database. If you are not familiar with NoSQL databases, you can read more about it here: [Guide to NoSQL for Software Developers](https://brewing.codes/posts/nosql-guide/)\n\nIf you want to read a more detailed overview of DynamoDB, you can read this two part series: \n\n- [Should you use DynamoDB?](https://brewing.codes/posts/dynamodb-overview/)\n- [Data modeling with DynamoDB](https://brewing.codes/posts/dynamo-data-modeling/)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858655,
+              "key": "b5209ea3-f163-4519-bf61-449325534d89",
+              "title": "DynamoDB concepts",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b5209ea3-f163-4519-bf61-449325534d89",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match names of DynamoDB concepts with their definitions"
+                },
+                "concepts_label": "Concept",
+                "answers_label": "Definition",
+                "concepts": [
+                  {
+                    "text": "Table",
+                    "correct_answer": {
+                      "id": "a1559465082516",
+                      "text": "A collection of stored records"
+                    }
+                  },
+                  {
+                    "text": "Item",
+                    "correct_answer": {
+                      "id": "a1559465118319",
+                      "text": "A single stored record in DynamoDB"
+                    }
+                  },
+                  {
+                    "text": "Attributes",
+                    "correct_answer": {
+                      "id": "a1559465137280",
+                      "text": "Similar to a cell in a table in a relational database"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1559465119367",
+                    "text": "A set of DynamoDB tables"
+                  },
+                  {
+                    "id": "a1559465137280",
+                    "text": "Similar to a cell in a table in a relational database"
+                  },
+                  {
+                    "id": "a1559465118319",
+                    "text": "A single stored record in DynamoDB"
+                  },
+                  {
+                    "id": "a1559465082516",
+                    "text": "A collection of stored records"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1003493,
+          "key": "cf12bc2f-5dea-45d3-9455-d39a5f1824b8",
+          "title": "DynamoDB: Storing Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cf12bc2f-5dea-45d3-9455-d39a5f1824b8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858057,
+              "key": "cb8fd1c3-6e31-4447-a7b8-02fcec861230",
+              "title": "ND9990 L02 A19 Partitions In DynamoDB",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LY3YVae8Gzw",
+                "china_cdn_id": "LY3YVae8Gzw.mp4"
+              }
+            },
+            {
+              "id": 858656,
+              "key": "8329f28d-1947-434d-8d5a-341cbd8e4878",
+              "title": "Selecting a partition",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8329f28d-1947-434d-8d5a-341cbd8e4878",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What part of an item is used to select a partition in DynamoDB",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Key attributes of an item",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "All attributes of an item",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Selecting a partition is a random process",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Id and a timestamp of an item",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 858075,
+              "key": "76dd6169-707e-4950-8f40-216dfa904c28",
+              "title": "ND9990 L02 A20 DynamoDB Capacity Modes",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "p-K7iaTnro0",
+                "china_cdn_id": "p-K7iaTnro0.mp4"
+              }
+            },
+            {
+              "id": 1003478,
+              "key": "1146c954-6f78-4621-8b95-581a6123189a",
+              "title": "DynamoDB Capacity Modes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**DynamoDB Capacity Modes**\n\nDynamoDB has two capacity modes:\n\n- **Provisioned capacity** - we need to define the maximum amount of read/write requests DynamoDB can handle. The higher the limit we set, the more we have to pay per month. Requests are throttled if we go above the specified limit.\n- **On-Demand** - DynamoDB will handle as many requests as we send, and we pay per-request. Can be more expensive comparing to Provisioned capacity, but is better for applications with unpredictable traffic patterns\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858066,
+              "key": "8ed9b532-3909-428b-a60d-40cb3e750327",
+              "title": "ND9990 L02 A21 DynamoDB With Node.Js (Slides)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0rQDScCUUNo",
+                "china_cdn_id": "0rQDScCUUNo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1003496,
+          "key": "35d4c661-39be-4dab-baca-57b96f3d305e",
+          "title": "Connecting API To DynamoDB",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "35d4c661-39be-4dab-baca-57b96f3d305e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1003476,
+              "key": "1f6cfcd5-f57b-4823-ab9b-f9c0c77f7373",
+              "title": "Access DynamoDB",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Sample code to read data from DynamoDB:\n\n```ts\nconst docClient = new AWS.DynamoDB.DocumentClient()\n ...\n const result = await docClient.scan({ // Call parameters\n   TableName: \"Users\",\n   Limit: 20\n }).promise()\n```\n\nDon't forget to call the `promise()` method to use the async/await feature.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858087,
+              "key": "3da1d008-da3b-4834-93da-9d71faef5f94",
+              "title": "ND9990 L02 A22 Connect API To DynamoDB Demo Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "STJYLqWso08",
+                "china_cdn_id": "STJYLqWso08.mp4"
+              }
+            },
+            {
+              "id": 858103,
+              "key": "2080ad88-25f1-4850-b69b-4433c2ff2c0d",
+              "title": "ND9990 L02 A23 Connect API To DynamoDB Demo Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-7Jg1Yk4eGM",
+                "china_cdn_id": "-7Jg1Yk4eGM.mp4"
+              }
+            },
+            {
+              "id": 858067,
+              "key": "c183a157-6300-44b1-a67b-cc4832037ee9",
+              "title": "ND9990 L02 A24 Connect API To DynamoDB Demo Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Dxp-OGSeYvQ",
+                "china_cdn_id": "Dxp-OGSeYvQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1003488,
+          "key": "af9d61b9-e22b-44c1-b867-7ee6d3f8ad9c",
+          "title": "Creating Items with DynamoDB",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "af9d61b9-e22b-44c1-b867-7ee6d3f8ad9c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858094,
+              "key": "889e522c-257f-4a41-a8c1-e8f7dd3ea6a3",
+              "title": "ND9990 L02 A25 Creating Items With DynamoDB",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Mx-RG7D2hjs",
+                "china_cdn_id": "Mx-RG7D2hjs.mp4"
+              }
+            },
+            {
+              "id": 1003466,
+              "key": "08e1fdf1-d9a2-4986-87b3-72e4bd35daf3",
+              "title": "Benefits of using UUIDs",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this course Lambda functions generate random UUIDs and use them as IDs of created items. They do not check if these UUIDs are unique, so you might be wondering, what would happen if two function calls generate the same ID? This is called a collision, and depending on how we configure a request it will either overwrite an existing item or will cause an error.\n\nFortunately the probability of this event is so [low](https://en.wikipedia.org/wiki/Universally_unique_identifier#Collisions) that we can safely ignore it in practice. \nBecause of this UUIDs are [commonly used as IDs](https://en.wikipedia.org/wiki/Universally_unique_identifier#As_database_keys) in databases.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1003483,
+          "key": "37ab0359-7a77-4b81-927a-e69632fdcf87",
+          "title": "POST Method",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "37ab0359-7a77-4b81-927a-e69632fdcf87",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858069,
+              "key": "44e76230-1ddf-4fd7-88a8-8dbcd15cd013",
+              "title": "ND9990 L02 A26 Demo - Add Post Method Part 1 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sGJPqQqFTpA",
+                "china_cdn_id": "sGJPqQqFTpA.mp4"
+              }
+            },
+            {
+              "id": 858079,
+              "key": "972754db-83a9-4f6c-ad4a-d1fe1e5613fa",
+              "title": "ND9990 L02 A27 Demo - Add Post Method Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "36lIobOAHPU",
+                "china_cdn_id": "36lIobOAHPU.mp4"
+              }
+            },
+            {
+              "id": 858077,
+              "key": "a998d31c-6a80-4e00-b383-83512ae834d1",
+              "title": "ND9990 L02 A28 Demo - Add Post Method Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "p7siL3lGPsE",
+                "china_cdn_id": "p7siL3lGPsE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1003484,
+          "key": "b110b41a-a30f-4158-82b8-bff1da935d71",
+          "title": "Routing in React",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b110b41a-a30f-4158-82b8-bff1da935d71",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858086,
+              "key": "b2f4928d-6555-4f0c-b8ed-be2007e588ab",
+              "title": "ND9990 L02 A29 Routing In React V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "M4-yY3Hv8w0",
+                "china_cdn_id": "M4-yY3Hv8w0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1003486,
+          "key": "7a0a1800-f7f6-4edd-9ecd-91536cbeba08",
+          "title": "Creating Group UI",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7a0a1800-f7f6-4edd-9ecd-91536cbeba08",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858080,
+              "key": "acc60281-206b-4aba-884c-58d1f8d2f28e",
+              "title": "ND9990 L02 A30 Demo Create Group UI Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7IV0RzIuwuQ",
+                "china_cdn_id": "7IV0RzIuwuQ.mp4"
+              }
+            },
+            {
+              "id": 858085,
+              "key": "cb95e0d1-9c54-437a-9dfc-1694f9ea2fe8",
+              "title": "ND9990 L02 A31 Demo Create Group UI Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2oTUXjSsA8M",
+                "china_cdn_id": "2oTUXjSsA8M.mp4"
+              }
+            },
+            {
+              "id": 858063,
+              "key": "d2564c81-ec05-479a-9112-b0220b14c0e0",
+              "title": "ND9990 L02 A32 Demo Create Group UI Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ko6j1q3A0xU",
+                "china_cdn_id": "Ko6j1q3A0xU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858116,
+          "key": "cb2b514f-21a0-426a-90df-e3bb2296c637",
+          "title": "Advanced API Gateway",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cb2b514f-21a0-426a-90df-e3bb2296c637",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858101,
+              "key": "6e8967f1-faff-4f35-9724-b87242edc901",
+              "title": "ND9990 L02 A33 Preflight Response (Slides)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "t1w4qiP4NYo",
+                "china_cdn_id": "t1w4qiP4NYo.mp4"
+              }
+            },
+            {
+              "id": 1003475,
+              "key": "9f09e6ed-8dbd-47cd-9553-efa24d50c06d",
+              "title": "Preflight request",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For certain HTTP methods a browser first sends a preflight request before an intended request. It is used to check if a server will process the request that a browser intends to send. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858071,
+              "key": "5bf17dfe-f157-42fd-a666-7a6210bdea32",
+              "title": "ND9990 L02 A34 Process Preflight Response Parts 1, 2, 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sBucACuXJyY",
+                "china_cdn_id": "sBucACuXJyY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1003497,
+          "key": "0fddaa34-3518-4a91-8eb7-5a3fa556c88f",
+          "title": "API Gateway Pricing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0fddaa34-3518-4a91-8eb7-5a3fa556c88f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858111,
+              "key": "d4d0a9ec-511c-4298-98da-5c830023a22f",
+              "title": "ND9990 L02 A35 API Gateway Pricing",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6RXl5bi9jMY",
+                "china_cdn_id": "6RXl5bi9jMY.mp4"
+              }
+            },
+            {
+              "id": 1003482,
+              "key": "9cef33fd-5c3c-49d0-8ad8-28b134fc611c",
+              "title": "API Gateway Pricing",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# API Gateway pricing\n\nYou can find up-to-date API Gateway pricing [here](https://aws.amazon.com/api-gateway/pricing/).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1003495,
+          "key": "914e2da6-a0e4-4b58-93ee-468fd862f568",
+          "title": "API Gateway Limits",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "914e2da6-a0e4-4b58-93ee-468fd862f568",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858064,
+              "key": "ea5c290e-94bc-40bd-9bcd-6dd2bcc45c6c",
+              "title": "ND9990 L02 A36 API Gateway Limits",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sKFPO4CqiFs",
+                "china_cdn_id": "sKFPO4CqiFs.mp4"
+              }
+            },
+            {
+              "id": 1003477,
+              "key": "32c49fd4-c2d1-465d-9cc9-815a35d7a185",
+              "title": "API Gateway Limits",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# API Gateway Limits\n\nYou can find current API Gateway Limits [here](https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 858118,
+          "key": "f9bb5452-a4e5-4489-ae6c-91114e47e5fd",
+          "title": "Pagination Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f9bb5452-a4e5-4489-ae6c-91114e47e5fd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858106,
+              "key": "cb22be4c-16cf-4d66-b376-2e7125f44b82",
+              "title": "ND9990 L02 A36 Implement Pagination",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0MkKV1bLBJw",
+                "china_cdn_id": "0MkKV1bLBJw.mp4"
+              }
+            },
+            {
+              "id": 858105,
+              "key": "8a7f5de8-7506-4d80-afb1-cc8925b9ce6e",
+              "title": "ND9990 L02 A37 Pagination With DynamoDB",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8fqyuNOvpBI",
+                "china_cdn_id": "8fqyuNOvpBI.mp4"
+              }
+            },
+            {
+              "id": 1003481,
+              "key": "55f21b3b-4881-44d4-ba85-48df46dc5fa7",
+              "title": "DynamoDB Results Pagination",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# DynamoDB Pagination\n\nYou can read more about DynamoDB pagination [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858108,
+              "key": "c5eaac2a-0de8-4918-b64e-dda9502ce669",
+              "title": "ND9990 L02 A38 Implement Pagination Demo Solution Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dtyWNzGVgLQ",
+                "china_cdn_id": "dtyWNzGVgLQ.mp4"
+              }
+            },
+            {
+              "id": 858600,
+              "key": "b0d1f6fc-1622-475b-859e-95c24dd44aed",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Starter Code\nYou can download the starter code here:  https://github.com/udacity/cloud-developer/tree/master/course-04/exercises/lesson-2/starter-code\n\n## Implementation\n\nIn this exercise, you will have to write a Lambda function that implements pagination. This means that you will be able to get items from a REST API chunk by chunk instead of getting all values in one reply.\n\nNotice that the value of the `LastEvaluatedKey` in a DynamoDB result is a JSON object. To pass it in another GET request we convert it to a string and then use URI encoding to allow to pass it in a URL:\n\n```ts\nencodeURIComponent(JSON.stringify(lastEvaluatedKey))\n```\n\nTo pass a value coming in a GET request you would need to first decode a string and then parse a JSON string:\n\n```ts\n// Value read from a query parameter\nconst nextKeyStr = ...\n// \"exclusiveStartKey\" can be passed a parameter to a \"scan()\" call\nconst exclusiveStartKey = JSON.parse(decodeURIComponent(nextKeyStr))\n```\n\n\n## How to build the project\n\nFor this exercise, you don't need to create a `.zip` package. Instead, you can just create a new AWS function and copy the code into the editor in AWS Lambda.\n\nYou would also need to set correct IAM permissions for a Lambda function to send metrics to AWS CloudWatch. You can copy an IAM policy from the `iam-policy.json` file in this project.\n\n## Other resources\n\nYou would have to create two other AWS resources:\n\n* A DynamoDB table\n* API Gateway API\n\n### DynamoDB table\n\nTo create a DynamoDB table, you need to create a table with the following parameters:\n\n* Table name: `Groups`\n* Primary partition key: `id (String)`\n* (Optionally) Uncheck the `Use default settings` checkbox, and select `On-demand` in the `Read/write capacity mode` section\n\nIt is **important** that you name your table `Groups` if you want to use the IAM policy provided for this exercise.\n\nYou would have to add a few items to your table to test pagination. Here are some items that you can add to the table:\n\n```json\n{\n    \"id\": \"1\",\n    \"name\": \"Dogs\",\n    \"description\": \"Only dog images here!\"\n}\n\n{\n    \"id\": \"2\",\n    \"name\": \"Nature\",\n    \"description\": \"What can be a better object for photography\"\n}\n\n{\n    \"id\": \"3\",\n    \"name\": \"Cities\",\n    \"description\": \"Creative display of urban settings\"\n}\n\n{\n    \"id\": \"4\",\n    \"name\": \"Computers\",\n    \"description\": \"For the techies among us\"\n}\n```\n\n### API Gateway API\n\nYou can follow the same process that we've used in the lesson to create an API Gateway API. You would need to:\n\n* Create a new API\n* Add a GET method for the `/groups` resource and use a Lambda function that you wrote in this exercise as a target for this method\n* Deploy this new API\n\n## Expected result\n\nIf you send a `GET` request using this URL: `https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/groups?limit=2` you should get a reply like this:\n\n```ts\n{\n    \"items\": [\n      ...\n    ],\n    \"nextKey\": \"%7B%22id%22%3A%221%22%7D\"\n}\n```\n\nNotice that you need to replace `{{apiId}}` with an id of the API that you've deployed.\n\nIf you pass the `nextKey` and use it with another `GET` request using this URL: `https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/groups?limit=2&nextKey=%7B%22id%22%3A%221%22%7D`\n\n```ts\n{\n    \"items\": [\n      ...\n    ],\n    \"nextKey\": null\n}\n```\n\nIf `nextKey` is `null` it means that there are no more items to return.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1003494,
+          "key": "bb0b6ceb-7cc2-46c6-b3af-088ec163ec29",
+          "title": "Pagination: Exercise Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bb0b6ceb-7cc2-46c6-b3af-088ec163ec29",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 966779,
+              "key": "81ce3bfe-0588-4c87-bb0e-4f254e7b8d2d",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## My Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858099,
+              "key": "3965f896-80e1-4cca-87ac-ce51ef6e6b8d",
+              "title": "ND9990 L02 A39 Implement Pagination Demo Solution Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zNErCe5udyg",
+                "china_cdn_id": "zNErCe5udyg.mp4"
+              }
+            },
+            {
+              "id": 858107,
+              "key": "608d1e6a-713d-49d8-8c10-357dd9cd45e2",
+              "title": "ND9990 L02 A40 Implement Pagination Demo Solution Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vojyGavt0CE",
+                "china_cdn_id": "vojyGavt0CE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858115,
+          "key": "d19815f0-e01c-4d7b-916a-b34d11b276dd",
+          "title": "Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d19815f0-e01c-4d7b-916a-b34d11b276dd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858095,
+              "key": "4dc61d59-1861-4b1f-bead-b0ce07f4d3cb",
+              "title": "ND9990 L02 A41 Summary - What We Have Covered",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CH5_HgBeqIE",
+                "china_cdn_id": "CH5_HgBeqIE.mp4"
+              }
+            },
+            {
+              "id": 1003480,
+              "key": "7e635fc8-cfcc-4f0b-97a1-6f6b041480d5",
+              "title": "Summary and what's next",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What we covered in this lesson\n- Built a serverless REST API\n- How to use API Gateway\n- Basics of DynamoDB\n- Additional topics: CORS/React  \n\n\n## What is next? \n- Automate our deployment\n- Use “Serverless” framework\n- Continue developing our API\n\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

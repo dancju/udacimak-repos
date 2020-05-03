@@ -1,0 +1,70 @@
+{
+  "data": {
+    "lesson": {
+      "id": 847043,
+      "key": "ebb8bbbd-fd1d-4ca5-a4f9-30f2bc139acd",
+      "title": "Serverless Application",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this project, you will create a simple TODO application using AWS Lambda and Serverless framework.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": {
+        "key": "04cf61e1-d4f3-4e67-beee-57f3e35f2703",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Serverless Application",
+        "description": "\n\nOnce you have finished developing your application, please set `apiId` and Auth0 parameters in the `config.ts` file in the `client` folder. A reviewer would start the React development server to run the frontend that should be configured to interact with your serverless application.\n\n**IMPORTANT**\n\n*Please leave your application running until a submission is reviewed. If implemented correctly it will cost almost nothing when your application is idle.*\n\n\n\nMake sure you review the **[Project Rubric](https://review.udacity.com/#!/rubrics/2574/view)** before submitting your project.",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2574",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 858462,
+          "key": "cdbc47e8-814e-4752-aa7b-55777a6055fd",
+          "title": "Project Instructions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cdbc47e8-814e-4752-aa7b-55777a6055fd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 967624,
+              "key": "f490dcbb-3ae1-4c2c-a802-36ba512c8b9a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Starter Code\n\nYou can find the starter code for the project here: https://github.com/udacity/cloud-developer/tree/master/course-04/project/c4-final-project-starter-code",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858463,
+              "key": "3e6295f7-1bcd-40e4-8070-2dc2294c35f3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Serverless  TODO Application\n\nIn this project, you will create a simple TODO application using AWS Lambda and Serverless framework. Search for all comments starting with the `TODO:` in the code to find the placeholders that you need to implement.\n\n### Functionality of the application\n\nThis application will allow creating/removing/updating/fetching TODO items. Each TODO item can optionally have an attachment image. Each user only has access to TODO items that he/she has created.\n\n### TODO items\n\nThe application should store TODO items, and each TODO item contains the following fields:\n\n* `todoId` (string) - a unique id for an item\n* `createdAt` (string) - date and time when an item was created\n* `name` (string) - name of a TODO item (e.g. \"Change a light bulb\")\n* `dueDate` (string) - date and time by which an item should be completed\n* `done` (boolean) - true if an item was completed, false otherwise\n* `attachmentUrl` (string) (optional) - a URL pointing to an image attached to a TODO item\n\nYou might also store an id of a user who created a TODO item.\n\n###  Functions to be implemented\n\nTo implement this project, you need to implement the following functions and configure them in the `serverless.yml` file:\n\n* `Auth` - this function should implement a custom authorizer for API Gateway that should be added to all other functions.\n\n* `GetTodos` - should return all TODOs for a current user. A user id can be extracted from a JWT token that is sent by the frontend\n\nIt should return data that looks like this:\n\n```json\n{\n  \"items\": [\n    {\n      \"todoId\": \"123\",\n      \"createdAt\": \"2019-07-27T20:01:45.424Z\",\n      \"name\": \"Buy milk\",\n      \"dueDate\": \"2019-07-29T20:01:45.424Z\",\n      \"done\": false,\n      \"attachmentUrl\": \"http://example.com/image.png\"\n    },\n    {\n      \"todoId\": \"456\",\n      \"createdAt\": \"2019-07-27T20:01:45.424Z\",\n      \"name\": \"Send a letter\",\n      \"dueDate\": \"2019-07-29T20:01:45.424Z\",\n      \"done\": true,\n      \"attachmentUrl\": \"http://example.com/image.png\"\n    },\n  ]\n}\n```\n\n* `CreateTodo` - should create a new TODO for a current user. A shape of data send by a client application to this function can be found in the `CreateTodoRequest.ts` file\n\nIt receives a new TODO item to be created in JSON format that looks like this:\n\n```json\n{\n  \"createdAt\": \"2019-07-27T20:01:45.424Z\",\n  \"name\": \"Buy milk\",\n  \"dueDate\": \"2019-07-29T20:01:45.424Z\",\n  \"done\": false,\n  \"attachmentUrl\": \"http://example.com/image.png\"\n}\n```\n\nIt should return a new TODO item that looks like this:\n\n```json\n{\n  \"item\": {\n    \"todoId\": \"123\",\n    \"createdAt\": \"2019-07-27T20:01:45.424Z\",\n    \"name\": \"Buy milk\",\n    \"dueDate\": \"2019-07-29T20:01:45.424Z\",\n    \"done\": false,\n    \"attachmentUrl\": \"http://example.com/image.png\"\n  }\n}\n```\n\n* `UpdateTodo` - should update a TODO item created by a current user. A shape of data send by a client application to this function can be found in the `UpdateTodoRequest.ts` file\n\nIt receives an object that contains three fields that can be updated in a TODO item:\n\n```json\n{\n  \"name\": \"Buy bread\",\n  \"dueDate\": \"2019-07-29T20:01:45.424Z\",\n  \"done\": true\n}\n```\n\nThe id of an item that should be updated is passed as a URL parameter.\n\nIt should return an empty body.\n\n* `DeleteTodo` - should delete a TODO item created by a current user. Expects an id of a TODO item to remove.\n\nIt should return an empty body.\n\n* `GenerateUploadUrl` - returns a pre-signed URL that can be used to upload an attachment file for a TODO item.\n\nIt should return a JSON object that looks like this:\n\n```json\n{\n  \"uploadUrl\": \"https://s3-bucket-name.s3.eu-west-2.amazonaws.com/image.png\"\n}\n```\n\nAll functions are already connected to appropriate events from API Gateway.\n\nAn id of a user can be extracted from a JWT token passed by a client.\n\nYou also need to add any necessary resources to the `resources` section of the `serverless.yml` file such as DynamoDB table and S3 bucket.\n\n### Frontend\n\nThe `client` folder contains a web application that can use the API that should be developed in the project.\n\nThis frontend should work with your serverless application once it is developed, you don't need to make any changes to the code. The only file that you need to edit is the `config.ts` file in the `client` folder. This file configures your client application just as it was done in the course and contains an API endpoint and Auth0 configuration:\n\n```ts\nconst apiId = '...' API Gateway id\nexport const apiEndpoint = `https://${apiId}.execute-api.us-east-1.amazonaws.com/dev`\n\nexport const authConfig = {\n  domain: '...',    // Domain from Auth0\n  clientId: '...',  // Client id from an Auth0 application\n  callbackUrl: 'http://localhost:3000/callback'\n}\n```\n\n### Authentication\n\nTo implement authentication in your application, you would have to create an Auth0 application and copy \"domain\" and \"client id\" to the `config.ts` file in the `client` folder. We recommend using asymmetrically encrypted JWT tokens.\n\n---\n\n## Best practices\n\nTo complete this exercise, please follow the best practices from the 6th lesson of this course.\n\n### Logging\n\nThe starter code comes with a configured [Winston](https://github.com/winstonjs/winston) logger that creates [JSON formatted](https://stackify.com/what-is-structured-logging-and-why-developers-need-it/) log statements. You can use it to write log messages like this:\n\n```ts\nimport { createLogger } from '../../utils/logger'\nconst logger = createLogger('auth')\n\n// You can provide additional information with every log statement\n// This information can then be used to search for log statements in a log storage system\nlogger.info('User was authorized', {\n  // Additional information stored with a log statement\n  key: 'value'\n})\n```\n\n---\n\n\n## Suggestions\n\nTo store TODO items, you might want to use a DynamoDB table with local secondary index(es). A create a local secondary index you need to create a DynamoDB resource like this:\n\n```yml\n\nTodosTable:\n  Type: AWS::DynamoDB::Table\n  Properties:\n    AttributeDefinitions:\n      - AttributeName: partitionKey\n        AttributeType: S\n      - AttributeName: sortKey\n        AttributeType: S\n      - AttributeName: indexKey\n        AttributeType: S\n    KeySchema:\n      - AttributeName: partitionKey\n        KeyType: HASH\n      - AttributeName: sortKey\n        KeyType: RANGE\n    BillingMode: PAY_PER_REQUEST\n    TableName: ${self:provider.environment.TODOS_TABLE}\n    LocalSecondaryIndexes:\n      - IndexName: ${self:provider.environment.INDEX_NAME}\n        KeySchema:\n          - AttributeName: partitionKey\n            KeyType: HASH\n          - AttributeName: indexKey\n            KeyType: RANGE\n        Projection:\n          ProjectionType: ALL # What attributes will be copied to an index\n\n```\n\nTo query an index you need to use the `query()` method like:\n\n```ts\nawait this.dynamoDBClient\n  .query({\n    TableName: 'table-name',\n    IndexName: 'index-name',\n    KeyConditionExpression: 'paritionKey = :paritionKey',\n    ExpressionAttributeValues: {\n      ':paritionKey': partitionKeyValue\n    }\n  })\n  .promise()\n```\n\n---\n\n## How to run the application\n\n###  Backend\n\nTo deploy an application run the following commands:\n\n```\ncd backend\nnpm install\nsls deploy -v\n```\n\n### Frontend\n\nTo run a client application first edit the `client/src/config.ts` file to set correct parameters. And then run the following commands:\n\n```\ncd client\nnpm install\nnpm run start\n```\n\nThis should start a development server with the React application that will interact with the serverless TODO application.\n\n\n---\n\n## Grading the submission\n\nOnce you have finished developing your application, please set `apiId` and Auth0 parameters in the `config.ts` file in the `client` folder. A reviewer would start the React development server to run the frontend that should be configured to interact with your serverless application.\n\n**IMPORTANT**\n\n*Please leave your application running until a submission is reviewed. If implemented correctly it will cost almost nothing when your application is idle.*\n\n\nMake sure you review the **[Project Rubric](https://review.udacity.com/#!/rubrics/2574/view)** before submitting your project.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

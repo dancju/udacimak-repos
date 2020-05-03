@@ -1,0 +1,925 @@
+{
+  "data": {
+    "lesson": {
+      "id": 858363,
+      "key": "742ea2a0-0573-4332-99c6-e716e22b60d7",
+      "title": "Authentication",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, we cover authentication and authorization using Serverless. We will cover Authentication, OAuth, Auth0 protocols.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/742ea2a0-0573-4332-99c6-e716e22b60d7/858363/1581981736210/Authentication+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/742ea2a0-0573-4332-99c6-e716e22b60d7/858363/1581981728285/Authentication+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 858350,
+          "key": "a8f23751-a445-476d-8c48-efaa8b89c40c",
+          "title": "Authentication Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a8f23751-a445-476d-8c48-efaa8b89c40c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858294,
+              "key": "3bf47fa1-059c-4959-9573-a8d4aba796f8",
+              "title": "ND9990 L05 A01 Intro- Implementing Authentication",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TlEssHAodzQ",
+                "china_cdn_id": "TlEssHAodzQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858356,
+          "key": "cbbc644d-358f-441a-903a-e0ef5edfba29",
+          "title": "Authentication with API Gateway",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cbbc644d-358f-441a-903a-e0ef5edfba29",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858327,
+              "key": "d537a745-e1c3-42b7-b1c5-d574fe5fb0ec",
+              "title": "ND9990 L05 A02 Implementing Authentication With API Gateway-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0aZfGOpIELY",
+                "china_cdn_id": "0aZfGOpIELY.mp4"
+              }
+            },
+            {
+              "id": 970223,
+              "key": "80db8da0-d82a-4ea2-afdb-c9611c831e22",
+              "title": "Cognito Federated Identity",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A bit more context regarding the previous video.\n\nThe way Cognito Federated Identity works, it allows to obtain temporary, limited-privilege AWS credentials that can be used to access other AWS services.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858296,
+              "key": "d1cad7f2-b249-4864-8c47-fadd001a1a08",
+              "title": "ND9990 L05 A03 Custom Authorizer V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5rAva7wrVhc",
+                "china_cdn_id": "5rAva7wrVhc.mp4"
+              }
+            },
+            {
+              "id": 858662,
+              "key": "94608d14-e676-454a-a602-4c30b62d1ece",
+              "title": "Authentication options",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "94608d14-e676-454a-a602-4c30b62d1ece",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match these authentication options with their short description"
+                },
+                "concepts_label": "Authentication type",
+                "answers_label": "Description",
+                "concepts": [
+                  {
+                    "text": "IAM authentication",
+                    "correct_answer": {
+                      "id": "a1559474414340",
+                      "text": "Sign a request to API Gateway with IAM credentials"
+                    }
+                  },
+                  {
+                    "text": "Cognito Authentication",
+                    "correct_answer": {
+                      "id": "a1559474651937",
+                      "text": "API Gateway checks if a token passed with a request was issued byAmazon Cognito service"
+                    }
+                  },
+                  {
+                    "text": "Cognito Federated Identity",
+                    "correct_answer": {
+                      "id": "a1559474652637",
+                      "text": "Get temporary IAM credentials when providing a valid token from an identity provider"
+                    }
+                  },
+                  {
+                    "text": "Custom Authorizer",
+                    "correct_answer": {
+                      "id": "a1559474653210",
+                      "text": "Implement a Lambda function that verifies a token provided with a request"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1559474735221",
+                    "text": "Send IAM credentials in a header of a request"
+                  },
+                  {
+                    "id": "a1559474653210",
+                    "text": "Implement a Lambda function that verifies a token provided with a request"
+                  },
+                  {
+                    "id": "a1559474414340",
+                    "text": "Sign a request to API Gateway with IAM credentials"
+                  },
+                  {
+                    "id": "a1559474651937",
+                    "text": "API Gateway checks if a token passed with a request was issued byAmazon Cognito service"
+                  },
+                  {
+                    "id": "a1559474652637",
+                    "text": "Get temporary IAM credentials when providing a valid token from an identity provider"
+                  },
+                  {
+                    "id": "a1559474744114",
+                    "text": "Sign a request to API Gateway with a Cognito token"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005288,
+          "key": "a6a439cb-7ffb-43c3-94c8-ec5c6ad361f3",
+          "title": "Implementing A Custom Authorizer",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a6a439cb-7ffb-43c3-94c8-ec5c6ad361f3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858342,
+              "key": "3c2f33f4-578c-4434-96fa-242774c556b5",
+              "title": "ND9990 L05 A04 Implementing A Custom Authorizer V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "culKZ9Zgg6k",
+                "china_cdn_id": "culKZ9Zgg6k.mp4"
+              }
+            },
+            {
+              "id": 1005282,
+              "key": "0557da97-aa2e-4aa0-8186-80ac99a37ede",
+              "title": "Implementing Custom Authorizer",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A custom authorizer is a Lambda function that is executed before processing a request. Custom authorizer returns an IAM policy that defines what Lambda functions can be called by a sender of a request.\n\nNotice, that the result of a custom authorizer call is cached. A good practice is to provide access to all functions an owner of a token can \n\nHere is an example of a custom authorizer:\n\n```ts\nexports.handler = async (event) => {\n   // Contains a token\n   const token = event.authorizationToken\n\n   // Check a token here\n\n  return {\n     principalId: 'user-id', // Unique user id\n     policyDocument: {\n       Version: '2012-10-17',\n       Statement: [\n         {\n           Action: 'execute-api:Invoke',\n           Effect: 'Allow',\n           Resource: '*'\n         }\n       ]\n     }\n   }\n\n }\n\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858298,
+              "key": "eac3c28b-bd00-43f5-8a54-20124a78b685",
+              "title": "ND9990 L05 A05 CORS And Authentication V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sUEitjP55gA",
+                "china_cdn_id": "sUEitjP55gA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858357,
+          "key": "2a38fbc3-c368-416c-a797-122b405a247f",
+          "title": "Demo:Mock Authentication",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2a38fbc3-c368-416c-a797-122b405a247f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858338,
+              "key": "69d7b092-2630-48ba-a5e5-643e90fca139",
+              "title": "ND9990 L05 A06 Demo - Implement Mock Authentication Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aUwirkjmQTk",
+                "china_cdn_id": "aUwirkjmQTk.mp4"
+              }
+            },
+            {
+              "id": 858303,
+              "key": "e428e264-c8f0-464d-9f11-258cceb767c8",
+              "title": "ND9990 L05 A07 Demo - Implement Mock Authentication Part 2 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_yIGWUIAKCw",
+                "china_cdn_id": "_yIGWUIAKCw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858353,
+          "key": "ed55e23d-449d-463d-82de-ca807491cabb",
+          "title": "Implementing Authentication",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ed55e23d-449d-463d-82de-ca807491cabb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858326,
+              "key": "74f98f50-450a-4ab3-bb9a-2ca7c0e763f0",
+              "title": "ND9990 L05 A08 Implementing Authenitcaion",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6XfUT8iYXDE",
+                "china_cdn_id": "6XfUT8iYXDE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005289,
+          "key": "d0ada4a8-bf0b-4bf3-a711-841f83d98625",
+          "title": "OAuth and OpenID",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d0ada4a8-bf0b-4bf3-a711-841f83d98625",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858319,
+              "key": "e087b6c3-fc53-4a7f-9ce4-3339ba347de5",
+              "title": "ND9990 L05 A09 OAuth 2.0 And OpenID V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "m-bIb4pF7rQ",
+                "china_cdn_id": "m-bIb4pF7rQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005286,
+          "key": "42d5b5aa-1557-4c2b-b298-d064ac4e4732",
+          "title": "OAuth Flow",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "42d5b5aa-1557-4c2b-b298-d064ac4e4732",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858317,
+              "key": "d5406d6b-f2d2-4e70-9a35-0a0edc7a36bf",
+              "title": "ND9990 L05 A10 OAuth Flow",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TwVEKvTlEz4",
+                "china_cdn_id": "TwVEKvTlEz4.mp4"
+              }
+            },
+            {
+              "id": 858322,
+              "key": "fb5178ef-286f-4ec8-98db-7e6bc770fdcd",
+              "title": "ND9990 L05 A11 Auth0 Flow",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HFR9s-cUpVM",
+                "china_cdn_id": "HFR9s-cUpVM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005290,
+          "key": "90da357f-9f55-4ce8-a23e-937202e2beb3",
+          "title": "Verifying JWT Token",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "90da357f-9f55-4ce8-a23e-937202e2beb3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858318,
+              "key": "e35d5e34-b30c-4004-a2bc-2c12062ae101",
+              "title": "ND9990 L05 A12 Verifying Auth0 Token",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "PLdvf6yPWgs",
+                "china_cdn_id": "PLdvf6yPWgs.mp4"
+              }
+            },
+            {
+              "id": 1005283,
+              "key": "b0de23a5-bcbc-44d9-9235-037bd057b4ac",
+              "title": "Verifying Auth0 token",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "OAuth allows to use one of the two algorithms that it can use to sign a JWT token:\n\n**Symmetric (HS256)**\n- The same key for signing a token (by Auth0) and verifying a token (by our application)\n- We need to store this key and make it available to our application\n- If this key leakes, an attacker can sign fraudulent JWT tokens. \n\n**Asymmetric (RS256)**\n- Different keys are used for signing and verifying a token\n- Auth0 is responsible for storing a token\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858348,
+              "key": "1ecbeaa1-5263-4f1c-a3ae-575dc137b292",
+              "title": "ND9990 L05 A13 Verifying JWT Tokens With Node.Js",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VDshyeFN1PM",
+                "china_cdn_id": "VDshyeFN1PM.mp4"
+              }
+            },
+            {
+              "id": 1005284,
+              "key": "6c27d63c-37a7-4a64-94c4-fca077728668",
+              "title": "Verifying JWT tokens with Node.js",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here is a code snippet that can be used to verify a JWT token with Node.js:\n\n```ts\nimport { verify } from 'jsonwebtoken'\n\n const jwtToken = '...'\n const secret = '...'\n\n verify(jwt, secret)\n // If an exception is not thrown a JWT is valid\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 858361,
+          "key": "2bf94d91-136f-466a-a320-85cb9499aa46",
+          "title": "Handling Auth0 JWT Token",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2bf94d91-136f-466a-a320-85cb9499aa46",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 970224,
+              "key": "b31423b3-0778-46f7-a362-5068d5533a26",
+              "title": "Create Auth0",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "r_r4J5xIW9I",
+                "china_cdn_id": "r_r4J5xIW9I.mp4"
+              }
+            },
+            {
+              "id": 970225,
+              "key": "82d26bcc-912d-437b-a312-8316468baef7",
+              "title": "Server-side cookie",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The video mentions a concept of a **server-side cookie**, and suggests using it to store a JWT token.\n\nA [server-side cookie](https://stackoverflow.com/a/6924921/1112503) is a type of cookie that is set by an HTTP server, but its value will not be available to JavaScript code running in a browser. A value of a server-side cookie is only available to a browser, and it  will automatically send with requests as a normal cookie. Since a cookie is not available to JavaScript code running in a browser it cannot be accessed by any malicious code. If a JWT token is stored in a server-side cookie it can be used for authentication in a more secure fashion.\n\nNotice that in this course and in many other examples online JWT tokens are stored in a local storage. While this is a simpler option that is sufficient for demos it is not secure and [is discouraged](https://auth0.com/docs/tokens/guides/store-tokens#don-t-store-tokens-in-local-storage).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858343,
+              "key": "99c349f5-d177-48a2-8a2e-fd6e1bab3ff1",
+              "title": "ND9990 L05 A14 Storing JWT Tokens",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wOXLg8gdNyY",
+                "china_cdn_id": "wOXLg8gdNyY.mp4"
+              }
+            },
+            {
+              "id": 858304,
+              "key": "c499b3fa-d61b-445c-9428-24e4702cd309",
+              "title": "ND9990 L05 A15 Demo - Integration With React Application Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kEztgPPtx9A",
+                "china_cdn_id": "kEztgPPtx9A.mp4"
+              }
+            },
+            {
+              "id": 858325,
+              "key": "b17c1a98-3ff4-46a1-8a83-592563d61089",
+              "title": "ND9990 L05 A16 Demo - Validating JWT Tokens Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QJjc2c2ooXQ",
+                "china_cdn_id": "QJjc2c2ooXQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858362,
+          "key": "060f4139-95f4-4080-84a3-9a323531a16f",
+          "title": "Storing Secrets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "060f4139-95f4-4080-84a3-9a323531a16f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858355,
+              "key": "0be20a4d-a656-44f8-8389-f11d9b9e20dd",
+              "title": "ND9990 L05 A17 Storing Secrets",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xDEwhNbtN88",
+                "china_cdn_id": "xDEwhNbtN88.mp4"
+              }
+            },
+            {
+              "id": 858334,
+              "key": "4728fb1b-e3a3-4957-950e-6ca5f5af8c59",
+              "title": "ND9990 L05 A18 AWS Secrets Manager",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Qa5dp2TMDcQ",
+                "china_cdn_id": "Qa5dp2TMDcQ.mp4"
+              }
+            },
+            {
+              "id": 1005285,
+              "key": "45fb3cb7-29a4-4d95-9958-300fee9e8590",
+              "title": "Storing secrets with AWS",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We can use one of the few services to store credentials when running our applications on AWS:\n\n- [SSM Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html)\n- [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html)\n- Run a custom service like [HashiCorp Vault](https://www.vaultproject.io/)\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858328,
+              "key": "9007ba0f-bbac-4735-827b-9fa655baad9d",
+              "title": "ND9990 L05 A19 Demo - Read Secrets From AWS Secrets Manager Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_UkKkrBArU4",
+                "china_cdn_id": "_UkKkrBArU4.mp4"
+              }
+            },
+            {
+              "id": 858663,
+              "key": "18036fbf-6ec5-4724-bb65-ac8ba545266a",
+              "title": "Secrets storage",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "18036fbf-6ec5-4724-bb65-ac8ba545266a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some good options to store secrets used by AWS Lambda functions?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "SSM Parameter Store",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "AWS Secrets Manager",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Environment variables in AWS Lambda",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Hardcode in Lambda functions' source code",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 858358,
+          "key": "6de7ca3c-b019-48d4-88f6-a0a73ab463b9",
+          "title": "Lambda Middleware",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6de7ca3c-b019-48d4-88f6-a0a73ab463b9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858329,
+              "key": "1bf0553c-a552-45e9-921b-31a5dac1dc6a",
+              "title": "ND9990 L05 A20 Lambda Middleware",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8oTBgqVAFqM",
+                "china_cdn_id": "8oTBgqVAFqM.mp4"
+              }
+            },
+            {
+              "id": 899036,
+              "key": "e9e2660b-c975-4b49-85e9-4174c3bf6d41",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can find more information about Middy library and all available middleware [here](https://github.com/middyjs/middy)\n\nHere is an example for how to use `cors` Middy middleware in Lambda:\n\n```ts\nimport * as middy from 'middy'\nimport { cors } from 'middy/middlewares'\n\nexport const handler = middy(\n  async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {\n     ...\n  }\n)\n\nhandler\n  .use(cors())\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858301,
+              "key": "ba63be99-6ba3-4a0f-8d2f-9ed32ba355d7",
+              "title": "ND9990 L05 A21 Reading Secrets With Middy",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qwDmLjuAjJg",
+                "china_cdn_id": "qwDmLjuAjJg.mp4"
+              }
+            },
+            {
+              "id": 858337,
+              "key": "140f994d-5493-4415-8b81-ea38a0906c00",
+              "title": "ND9990 L05 A22 Demo - Use Middy To Return CORS Headers Part 1-3 V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "weXZPvAnh7g",
+                "china_cdn_id": "weXZPvAnh7g.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858360,
+          "key": "801aafcf-a707-4679-b018-203709593dc4",
+          "title": "Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "801aafcf-a707-4679-b018-203709593dc4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858306,
+              "key": "ad602121-6ce1-4dac-a98a-c99410fd289c",
+              "title": "ND9990 L05 A23 Exercise Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "X3dOWexor3g",
+                "china_cdn_id": "X3dOWexor3g.mp4"
+              }
+            },
+            {
+              "id": 858627,
+              "key": "0d58aee9-1782-4f1f-9335-0e0d9c2bda18",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Implementation\n\nIn this exercise, you will have to implement three new features in the image sharing application:\n\n* A custom authorizer that verifies JWT tokens signed using RS256 (asymmetric) algorithm\n* A function that extracts a user id from a JWT token\n* Update the `CreateGroup` function and store ID of a user with each new group object stored in DynamoDB\n\nHere are the steps that you need to follow to implement this application.\n\n## Create a new Auth0 app\n\nGo to the [Auth0 website](https://auth0.com) and log in.\n\nThen go to the `Applications` section and create a new application:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858630,
+              "key": "bad34518-581d-4c16-827d-393a225b62d0",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Provide a name for your application and select \"Single Page Web Applications\" type. Then click \"Create\".",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858694,
+              "key": "93ec7ed9-2a08-4de8-b432-211fd831bbd0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5cf41906_cloud-dev-c4-lesson5-2-application-type/cloud-dev-c4-lesson5-2-application-type.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/93ec7ed9-2a08-4de8-b432-211fd831bbd0",
+              "caption": "",
+              "alt": "",
+              "width": 1594,
+              "height": 1304,
+              "instructor_notes": null
+            },
+            {
+              "id": 858632,
+              "key": "061d4d42-c440-4c51-9f16-0ceec577dd4d",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Then configure \"Allowed Callback URLs\" and \"Allowed Web Origins\" as we did in this lesson:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858695,
+              "key": "b89ec84f-7361-46c5-8445-866e341fef90",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5cf41906_cloud-dev-c4-lesson5-3-allowed-callback-urls/cloud-dev-c4-lesson5-3-allowed-callback-urls.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b89ec84f-7361-46c5-8445-866e341fef90",
+              "caption": "",
+              "alt": "",
+              "width": 1214,
+              "height": 454,
+              "instructor_notes": null
+            },
+            {
+              "id": 858638,
+              "key": "7806d89c-fd36-4faf-a84a-0fa488eafae3",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Copy a certificate that can be used to validate a JWT token\n\nWe need to get a certificate that can be used to verify a JWT token. We can programmatically fetch it from Auth0 when we validate a token, but to keep the exercise more straightforward we will just copy it for now and store as a string in a function's source code.\n\nTo do this open the \"Advanced settings\" section at the bottom of the page:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858696,
+              "key": "72436efb-c2aa-4e90-8bf8-2093d1a7f281",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5cf41908_cloud-dev-c4-lesson5-5-advanced-settings/cloud-dev-c4-lesson5-5-advanced-settings.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/72436efb-c2aa-4e90-8bf8-2093d1a7f281",
+              "caption": "",
+              "alt": "",
+              "width": 1818,
+              "height": 1000,
+              "instructor_notes": null
+            },
+            {
+              "id": 858642,
+              "key": "c8ec4680-3729-42b9-b491-2806338204f0",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "And copy the certificate from the \"Certificates\" section:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858697,
+              "key": "ccbc3039-78c3-4f35-8816-cda981605e59",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5cf41909_cloud-dev-c4-lesson5-6-certificate/cloud-dev-c4-lesson5-6-certificate.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ccbc3039-78c3-4f35-8816-cda981605e59",
+              "caption": "",
+              "alt": "",
+              "width": 1818,
+              "height": 1430,
+              "instructor_notes": null
+            },
+            {
+              "id": 858644,
+              "key": "219834aa-3bb9-4823-8031-f85b539b6702",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the final project of this course, we will fetch it programmatically.\n\n## Implement a custom authorizer\n\nThe custom authorizer this demo will be almost the same as the authorizer implemented previously in this lesson. The main difference is how to call the `verify` function to verify a token. You need to do this in the following way:\n\n```ts\nverify(\n    token,           // Token from an HTTP header to validate\n    cert,            // A certificate copied from Auth0 website\n    { algorithms: ['RS256'] } // We need to specify that we use the RS256 algorithm\n) as JwtToken\n```\n\nNotice that now we don't need to store a secret, so we don't need to use AWS Secrets Manager. We also don't need to use `middy` middleware to fetch a secret.\n\n## Implement \"getUserId\" function\n\nNow to the second part of the exercise!\n\nFirst, we need to extract a user's ID from a JWT token. To do this, you need to implement the `getUserId` function in the `src/auth/utils.ts` file. For this, you would have to use another function called `decode` from the `jsonwebtoken` library. It does not validate a JWT token, but just parses it and returns its payload\n\n```ts\nconst decodedJwt = decode(jwtToken) as JwtToken\n```\n\nTo get an ID of a user from a JWT token, we need to use the `sub` field on the decoded token:\n\n```ts\ndecodedJwt.sub\n```\n\n## Store a user ID in a DynamoDB table\n\nNow if we want to store an ID of a user when we create a new item, we can use `getUserId` function.\n\nFirst, we need to get a JWT token in an event handler. To do this, add the following code in a handler in the `createGroup.ts` file:\n\n```ts\nconst authorization = event.headers.Authorization\nconst split = authorization.split(' ')\nconst jwtToken = split[1]\n```\n\nNow to store a user ID we need to extract it from a JWT token using the `getUserId` function:\n\n```ts\nconst userId = getUserId(jwtToken)\n```\n\nAnd store it to the DynamoDB table:\n\n```ts\nconst newItem = {\n  id: itemId,\n  // A new line to add\n  userId: userId, // Can be abbreviated to just \"userId,\"\n  ...parsedBody\n}\n```\n\n## Configure a web application\n\nNow the last step is to configure our web application to use the new Auth0 application that we've created. To do this, you need to change the `src/config.ts` file in the web application. You need to provide the following values:\n\n```ts\nexport const authConfig = {\n  domain: '...',    // Name of the Auth0 domain\n  clientId: '...',  // Client id of a new application\n  callbackUrl: 'http://localhost:3000/callback'\n}\n```\n\nYou can copy those values from the configuration page for your Auth0 application:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858698,
+              "key": "7aedfeaa-77fa-4eaa-a098-fe5e2b83b279",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5cf4190a_cloud-dev-c4-lesson5-7-domain-and-client-id/cloud-dev-c4-lesson5-7-domain-and-client-id.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7aedfeaa-77fa-4eaa-a098-fe5e2b83b279",
+              "caption": "",
+              "alt": "",
+              "width": 1764,
+              "height": 882,
+              "instructor_notes": null
+            },
+            {
+              "id": 858648,
+              "key": "2eb09f9d-d94c-4e8d-b327-a4ab0fb075f6",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You also need to configure `apiEndpoint` to point to the API of your serverless application.\n\n## Preparations to test your function\n\nTo test your function, you should do the following:\n\n* Deploy the serverless application\n* Start the web application\n\n### Deploying the serverless application\n\nJust as in the previous lesson, you need to ensure that S3 buckets have unique names. To ensure that your S3 buckets have unique names add a random string to the end of S3 bucket names in the `serverless.yml` file. Let's say you want to add a random string `ab4fe`. You would need to change the following section like this:\n\n```yml\n  environment:\n    IMAGES_S3_BUCKET: serverless-udagram-images-ab4fe-${self:provider.stage}\n    THUMBNAILS_S3_BUCKET: serverless-udagram-thumbnail-ab4fe-${self:provider.stage}\n```\n\nTo deploy the whole project, you need to run the following commands:\n\n```\nnpm install\nserverless deploy -v\n```\n\nMake sure that the `serverless` command is installed and configured to use correct IAM credentials.\n\n## Start the web application\n\nTo start the web application, you need to run the following commands:\n\n```\nnpm install\nnpm run start\n```\n\n# Testing the result application\n\nTo test the result application, go to the `localhost:3000`. Click the \"Log in\" button to log in using the new Auth0 application that you have created.\n\nNow you can create a new group with any name you like.\n\n## Expected result\n\nOnce a group is created, you should be able to see it in the `Groups-dev` DynamoDB table, but now it should contain an attribute containing a user's id:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 858699,
+              "key": "2b1b7c3c-aa6f-4a0b-ad19-b4bdc6fcc5b9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5cf4190c_cloud-dev-c4-lesson5-8-user-id/cloud-dev-c4-lesson5-8-user-id.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2b1b7c3c-aa6f-4a0b-ad19-b4bdc6fcc5b9",
+              "caption": "",
+              "alt": "",
+              "width": 3240,
+              "height": 1068,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1005287,
+          "key": "c83467f5-3a98-46ba-802a-fc79f14a3698",
+          "title": "Exercise: Solution",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c83467f5-3a98-46ba-802a-fc79f14a3698",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861226,
+              "key": "acd553c8-58f1-4597-9da9-db2a2fb6a0c4",
+              "title": "ND9990 L05 A24 Exercise Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b9YLlVGHAtw",
+                "china_cdn_id": "b9YLlVGHAtw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 858359,
+          "key": "4348107f-f4e9-4b5c-8708-9c9868499f96",
+          "title": "Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4348107f-f4e9-4b5c-8708-9c9868499f96",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 858314,
+              "key": "4579756e-1ba0-4c7f-83f6-5edb92aa1d49",
+              "title": "ND9990 L05 A25 Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6Gyg19ZfIvc",
+                "china_cdn_id": "6Gyg19ZfIvc.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

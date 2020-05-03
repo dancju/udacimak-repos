@@ -1,0 +1,393 @@
+{
+  "data": {
+    "lesson": {
+      "id": 861435,
+      "key": "6cf74ec5-0ee8-41cb-82b2-720f4cd39f16",
+      "title": "Service Registration, Discovery  & Scaling",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you will learn to use ConfigMaps and Secret objects in Kubernetes deployment. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/6cf74ec5-0ee8-41cb-82b2-720f4cd39f16/861435/1562099712673/Service+Registration%2C+Discovery%E2%80%8A+%26+Scaling+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/6cf74ec5-0ee8-41cb-82b2-720f4cd39f16/861435/1562099709097/Service+Registration%2C+Discovery%E2%80%8A+%26+Scaling+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 861436,
+          "key": "3bbfc722-9f55-4401-a6ac-1e81653878c0",
+          "title": "Lesson Intro ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3bbfc722-9f55-4401-a6ac-1e81653878c0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861449,
+              "key": "6ed3fd41-bd61-42ab-895f-0c32e3c3025c",
+              "title": "ND9990 C03 L05 Lessson Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CkJ5vrCd0i4",
+                "china_cdn_id": "CkJ5vrCd0i4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 861437,
+          "key": "be0521dd-a889-44e1-b471-10642eeea2f6",
+          "title": "ConfigMaps & Secrets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "be0521dd-a889-44e1-b471-10642eeea2f6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861445,
+              "key": "0ed4f611-3343-45af-96d0-16af7398bc43",
+              "title": "ND9990 C03 L05 ConfigMaps   Secrets",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "blv00USXeMk",
+                "china_cdn_id": "blv00USXeMk.mp4"
+              }
+            },
+            {
+              "id": 900258,
+              "key": "37d26a13-9de1-416d-b0e7-d897d2d813ec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Configuration\n\nKubernetes has an integrated pattern for decoupling configuration from application or container.\n\nThis pattern makes use of two Kubernetes components: **ConfigMaps** and **Secrets**.\n\n\n### ConfigMap\n\n\n\n*   Externalized data stored within kubernetes.\n*   Can be referenced through several different means:\n    *   environment variable\n    *   a command line argument (via env var)\n    *   injected as a file into a volume mount\n*   Can be created from a manifest, literals, directories, or files directly.\n\n***example***:\n```bash\napiVersion: v1\nkind: ConfigMap\ndata:\n  AWS_BUCKET: udagram-scheele-dev\n  AWS_PROFILE: default\n  AWS_REGION: us-east-2\n  JWT_SECRET: hello\n  POSTGRESS_DB: udagramscheeledev\n  POSTGRESS_HOST: udagram-scheele-dev. xaytk2sgtsw.us-east-2.rds.amazonaws.com\n  URL: http://localhost:8100  \nmetadata:\n  name: env-config\n```\n\n### Secret\n\n*   Functionally identical to a ConfigMap.\n*   Stored as **base64 encoded content**.\n*   Encrypted at rest within etcd (**if configured!**).\n*   Ideal for username/passwords, certificates or other sensitive information that should not be stored in a container.\n*   Can be created from a manifest, literals, directories, or from files directly.\n\n***example***:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971196,
+              "key": "3fc8e84f-54f1-4102-8049-171853c8054d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d2ce4_secret/secret.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3fc8e84f-54f1-4102-8049-171853c8054d",
+              "caption": "An example Secret",
+              "alt": "",
+              "width": 717,
+              "height": 292,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 861438,
+          "key": "1f187e4b-c034-425e-8591-fe697c96f0c9",
+          "title": "Configuration of the Application",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1f187e4b-c034-425e-8591-fe697c96f0c9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861446,
+              "key": "edf17c20-1f72-426b-a9c1-29a4da2a78d6",
+              "title": "ND9990 C03 L05 Configuration Of The Application",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "K1DTVlXrAY0",
+                "china_cdn_id": "K1DTVlXrAY0.mp4"
+              }
+            },
+            {
+              "id": 970713,
+              "key": "2cd404e0-c56e-4033-ba83-eff64de501e1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Secrets and ConfigMaps both follow key-value pair styles to store information. Both the files have `.yaml` extension. **The main difference is that the Secrets store the values in the base64 encoded format.** Secret allows us to store confidential information, such as passwords, OAuth tokens, and SSH keys. A pod can use a Secret in either of the following two ways:\n* as files in a volume mounted on its containers\n* kubelet uses secrets while pulling images for the pod\n\nSo, let us learn to encode and decode given String(s) into base64 encoding format.\n\n## How to generate base64 encoding Secrets?\nIn the above video, the instructor has shown the following two Secret files using `kubectl get secrets`: \n* aws-secret.yaml\n* env-secret.yaml\nWe can generate these files using either of the following two methods.\n\n### Encoding\nThere are two ways:\n##### Method 1 - Converting each String manually\nUse the below command for each String that you wish to convert to base64 encoding:\n```bash\necho -n <String to convert> | base64\n```\nWrite a file (say secret.yaml) having the following content:\n```bash\napiVersion: v1\nkind: Secret\nmetadata:\n  name: aws-secret\ntype: Opaque\ndata:\n  AWS_USERNAME: dWRhY2l0eQ==\n  AWS_PASSWORD: SyFBXEBkJHpNc3g=\n```\nNow create the Secret (`.yaml`) using:\n```\nkubectl apply -f ./secret.yaml\n```\nThe output is similar to:\n```\nsecret \"aws-secret\" created\n```\n\n\n##### Method 2 - Using `kubectl create secret`\nA base64 encoded values for Secrets can be generated by using `kubectl create secret` command. Following is the syntax:\n```bash\nkubectl create secret generic <name of the secret file> [--from-literal=<key>=<value in single quotes>] \n# Example to create aws-secret.yaml\nkubectl create secret generic aws-secret --from-literal=AWS_USERNAME='udacity' --from-literal=AWS_PASSWORD='K!A\\@d$zMsx'\n\n# If you wish to read from a file, follow the below commands\necho -n 'udacity' > ./AWS_USERNAME\necho -n 'K!A\\@d$zMsx' > ./AWS_PASSWORD\nkubectl create secret generic aws-secret --from-file=./AWS_USERNAME --from-file=./AWS_PASSWORD \n```\nA successful command would output as:\n```\nsecret/aws-secret created\n```\nNow, you can see the list of Secrets using `kubectl get secrets`. In case you wish to delete the Secret, you may use `kubectl delete secret <secret_name>`. We can view the content by running the following command:\n```\nkubectl get secret aws-secret -o yaml\n# or\nkubectl describe secrets/aws-secret\n```\nIt will show the output in the form of key-value:\nIMAGE OUTPUT\nInterestingly, the commands `kubectl get` and `kubectl describe` would not show the decoded values.  \n### Decoding\nWe can individually decode each String by using:\n```bash\necho -n <String to decode> | base64 --decode\n```\nYou may edit a Secret file using:\n```bash\nkubectl edit secrets <name of the secret>\n# Example\nkubectl edit secrets aws-secret\n```\n\n### Recommended Read\n* [Learn how to create Secrets - Official Documentation](https://kubernetes.io/docs/concepts/configuration/secret/)\n* See [Secrets design document](https://git.k8s.io/community/contributors/design-proposals/auth/secrets.md) for more information.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861439,
+          "key": "149dd52e-ea81-4cfd-8869-39d2af10db1a",
+          "title": "Overview about Service Registration and Discovery ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "149dd52e-ea81-4cfd-8869-39d2af10db1a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861450,
+              "key": "e0f3ea3f-8ef3-4ca4-a218-f1540836fab5",
+              "title": "ND9990 C03 L05 Overview About Service Registration And Discovery ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mTQQXCZBVyI",
+                "china_cdn_id": "mTQQXCZBVyI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 861440,
+          "key": "f7979c68-d87c-437a-8d67-ebe04fdf5bdb",
+          "title": "Service Types",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f7979c68-d87c-437a-8d67-ebe04fdf5bdb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861447,
+              "key": "bb78e732-e44e-4a7a-8c0e-a9e396f8a04c",
+              "title": "ND9990 C03 L05 Service Types",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "y-ReTCXtGOI",
+                "china_cdn_id": "y-ReTCXtGOI.mp4"
+              }
+            },
+            {
+              "id": 900259,
+              "key": "9631545d-b53c-4cfd-aa29-7a214bf40cac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Services\n\n\n\n*   Unified method of accessing the exposed workloads of Pods. \n*   Durable resource (unlike Pods) \n    *   static cluster-unique IP\n    *   static namespaced DNS name\n\n\n```\n<service name>.<namespace>.svc.cluster.local\n```\n\n\n\n*   Target Pods using **equality based selectors.**\n*   Uses **kube-proxy** to provide simple load-balancing.\n*   **kube-proxy **acts as a daemon that creates **local entries** in the host’s iptables for every service. \n\n\n### Services Types\n\nThere are 4 major service types:\n\n\n\n*   ClusterIP (default)\n*   NodePort\n*   LoadBalancer\n*   ExternalName",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861441,
+          "key": "6a039d93-79fc-495e-95d8-dea5fb7bee7f",
+          "title": "Creation of Service",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6a039d93-79fc-495e-95d8-dea5fb7bee7f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861448,
+              "key": "1c24b0b7-8f37-41e6-8ec0-cb7eedcffc67",
+              "title": "ND9990 C03 L05 Creation Of Service",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "99oZnJMvUEU",
+                "china_cdn_id": "99oZnJMvUEU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 861442,
+          "key": "a5de0bab-da8a-499c-a5e6-632103baf38e",
+          "title": "Connection service with a Deployment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a5de0bab-da8a-499c-a5e6-632103baf38e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861451,
+              "key": "8e21cc48-85ea-42a6-bd08-cb87782c0113",
+              "title": "ND9990 C03 L05 Connection Service With A Deployment",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kOrF27minaA",
+                "china_cdn_id": "kOrF27minaA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 861443,
+          "key": "daabd396-edff-4e22-bafd-c437ac0399ae",
+          "title": "Scaling the Application ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "daabd396-edff-4e22-bafd-c437ac0399ae",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861452,
+              "key": "b34c445c-329a-4edd-9af3-1dab60b923d9",
+              "title": "ND9990 C03 L05 Scaling The Application",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yhEav5R-GHo",
+                "china_cdn_id": "yhEav5R-GHo.mp4"
+              }
+            },
+            {
+              "id": 900260,
+              "key": "99a7bea5-7b66-4243-9107-de9fa9166773",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n### Scaling a Deployment\n\nYou can scale a Deployment\n\n\n```bash\n$ kubectl scale deployment/user --replicas=10\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861498,
+          "key": "9388fce4-691c-42aa-99a1-0a80e90dfa48",
+          "title": "Exercise: Extend Your Application",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9388fce4-691c-42aa-99a1-0a80e90dfa48",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861499,
+              "key": "5519183b-99e4-4d35-be0d-d8798fadd0ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson 5 - Service Registration, Discovery  & Scaling\nThe exercises in this lesson are an extension of the exercises you have already done in the previous lesson - **\"Kubernetes\"**. We will use the same \"Udagram\" project from the previous lesson. \n\n### Start \nClone the following Git repository - https://github.com/udacity/nd9990-c3-microservices-v1 and stay on the `master` branch. Navigate to the */lesson-5-Service-Registration/exercises* directory.\n\n### Dependencies\nThere are no additional dependencies required for this lesson, other than the ones already installed in [lesson 4](https://github.com/udacity/nd9990-c3-microservices-v1/blob/master/lesson-4-Kubernetes/README.md).\n\n### Exercises\nTo get the application running we need to extend the Kubernetes manifest with Configmaps, Secrets, and Services. Please execute the following tasks:\n1. Create configmaps and secrets for your application\n2. Create Kubernetes service for the deployments\n3. Expose the application locally (check kubectl port-forward)\n4. Scale your application\n\nBonus: Expose your Kubernetes service with an external load balancer\n\n### Solution \nIf you need help, you may refer to the **solution** available at */lesson-5-Service-Registration/solution/* directory\n ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861500,
+              "key": "3fd39b9c-5dd0-4348-ba10-7841ab3ab8c9",
+              "title": "Extend your application for kubernetes",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3fd39b9c-5dd0-4348-ba10-7841ab3ab8c9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create configmaps and secrets for your application",
+                "Create a kubernetes service for the deployments",
+                "Expose the application locally (check kubectl port-forward)",
+                "Scale your application"
+              ],
+              "positive_feedback": "Amazing Job!",
+              "video_feedback": null,
+              "description": "Extend your application for kubernetes"
+            }
+          ]
+        },
+        {
+          "id": 861444,
+          "key": "1960a0b8-1bd4-40e3-8146-1182f637aee1",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1960a0b8-1bd4-40e3-8146-1182f637aee1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861453,
+              "key": "a3438651-eb8e-4985-9e09-2aaa93b09a20",
+              "title": "ND9990 C03 L05 Lesson Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mlXnFr0OXgY",
+                "china_cdn_id": "mlXnFr0OXgY.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

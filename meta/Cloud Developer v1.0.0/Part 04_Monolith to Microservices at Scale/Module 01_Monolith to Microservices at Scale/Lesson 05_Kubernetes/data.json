@@ -1,0 +1,677 @@
+{
+  "data": {
+    "lesson": {
+      "id": 861373,
+      "key": "e03717be-332d-4a2e-8576-69f7aae7726e",
+      "title": "Kubernetes",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you will run your application in a Kubernetes cluster. You will also learn about managing your containers on a large scale. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/e03717be-332d-4a2e-8576-69f7aae7726e/861373/1562099666130/Service+Replication+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/e03717be-332d-4a2e-8576-69f7aae7726e/861373/1562099663599/Service+Replication+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 861421,
+          "key": "f7a8f2ab-6954-49f6-b08d-42c2c979c578",
+          "title": "Lesson Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f7a8f2ab-6954-49f6-b08d-42c2c979c578",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971169,
+              "key": "f4dade9f-6175-4eab-a0cd-5d835b956da7",
+              "title": "Intro",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Before we dive into the Kubernetes, let us understand a relevant term - **Container Orchestration**.\n\n## Container Orchestration\nContainer Orchestration is a logical process of grouping multiple containers into a single virtual entity. This logical grouping helps manage a group of containers that have a similar set of configuration requirements. There are multiple Container Orchestration tools available in the market, such as **Kubernetes,** Docker Swarm, Amazon ECS, Mesos, and Nomad. In this lesson, we’ll learn more about Kubernetes.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861430,
+              "key": "783d3520-aef7-4ef3-88f3-81c83074d82f",
+              "title": "ND9990 C03 L04 Lessson Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZrLF3neFPDQ",
+                "china_cdn_id": "ZrLF3neFPDQ.mp4"
+              }
+            },
+            {
+              "id": 971189,
+              "key": "34f5a6e2-585e-4c70-9bd3-ae3f64cee7d9",
+              "title": "LO",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Outcomes\nAfter completing this lesson, you will be able to:\n* Explain the fundamentals of Kubernetes (k8s)\n* Explain the Kubernetes cluster architecture\n* Create a k8s cluster using core components - Nodes, Pods, ReplicaSets, and Deployments for your Udagram application\n* Deploy your Udagram application on the k8s cluster\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861422,
+          "key": "f685035f-0086-437b-a234-b49a07a85187",
+          "title": "Intro into Kubernetes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f685035f-0086-437b-a234-b49a07a85187",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971167,
+              "key": "7117cf86-813c-4fec-b6c0-35e2c4c96ab5",
+              "title": "Intro - k8s",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is Kubernetes?\nKubernetes (K8s) is an Apache 2.0-licensed open source *Container Orchestration* tool for effectively managing containerized applications. Remember, we read in the previous concept that a *Container Orchestration* tool groups containers of an application into multiple logical entities for easy management and discovery.\n\nKubernetes can automate the deployments, maintaining a logical group of containers, and helps to scale the application services. Google started it, but many other companies like Docker, Red Hat, and VMware contributed to it. In 2016, Google transferred the IP rights to [Cloud Native Computing Foundation](https://cncf.io/)\n\nVisit the homepage of [Kubernetes](https://kubernetes.io/) and [What is Kubernetes](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/) page for a good overview.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861431,
+              "key": "d8243f1c-0b9f-4270-8fbe-e555eb608dcd",
+              "title": "ND9990 C03 L04 Intro Into Kubernetes",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mZ-rI0hQbTQ",
+                "china_cdn_id": "mZ-rI0hQbTQ.mp4"
+              }
+            },
+            {
+              "id": 900252,
+              "key": "6676bc68-ca53-491d-8f7b-6314e634c402",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n### Why do we need Kubernetes?\nLet us have a contrast comparison of application deployment methodologies to understand the need for Kubernetes. The figure below compares the Traditional, Virtualized, and Container-based deployments.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971188,
+              "key": "7584c122-c571-422e-b028-be325b8db7d4",
+              "title": "DeploymentModels",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e5de12d_google-docs-drawing-images-6/google-docs-drawing-images-6.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7584c122-c571-422e-b028-be325b8db7d4",
+              "caption": "Comparison of three different types of Deployment Methodologies (Image courtesy -  Kubernetes, retrieved from https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)",
+              "alt": " Three different types of Deployment Methodologies",
+              "width": 1104,
+              "height": 517,
+              "instructor_notes": null
+            },
+            {
+              "id": 971175,
+              "key": "8afc736b-93f9-47df-a56d-a42cde06fd11",
+              "title": "Need for k8s",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The above image shows the containerized applications have the advantage of being lightweight and more comfortable to manage, as compared to  Virtual Machine (VM) based deployment. We have already learned the advantages of using Containers in the previous lesson. **Kubernetes can help in managing containerized application** in the following ways: \n* **Manage Containers** - Self-healing such as auto-restart of a backup/replica container in case of a failure, automate the rollouts and rollbacks, configuration management of containers\n* **Autoscale Workloads and Load balancing** - Distributing a load of network traffic to suitable container/node\n* **Optimal Resource Utilization** - Each container has its own resource (CPU and memory) requirements. Kubernetes fits a container to the most suitable Node so that the resources of the Node are utilized effectively. \n* **Service Discovery** - Provide native methods for service discovery\n* **Storage orchestration** - Automatically mounting the volumes to containers\n* **Others** - Fire off jobs and scheduled cronjobs, quickly integrate and support 3rd party apps, and manage Stateless and Stateful applications\n\n### How does Kubernetes work?\nA Kubernetes deployment follows the “Master-Worker” model. We need to understand the key components before we look into the architecture diagram.\n* **Node** - A physical or virtual machine that runs multiple containers belonging to an application.\n* **Cluster** - A set of Master and Worker Nodes. When we deploy Kubernetes, we get a cluster, which each cluster has a minimum of one worker node. A master node is capable of managing multiple worker nodes.\n* **Master Node** - A node that decides the pod scheduling, and pod replication. The main components of a master node are - “kube-api-server”, “kube-scheduler”, “kube-controller”.\n* **Worker Node** - A node on which pods are scheduled and run. \n* **Pod** - A group of tightly coupled containers with shared storage, network, and a specification for how to run the containers. All the containers in a Pod are co-located and co-scheduled. **The worker node(s) hosts the pods.** \n\nThe diagram below shows a Kubernetes cluster with all the components mentioned above.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971170,
+              "key": "96adee8e-2939-4676-83c4-877c0a2cc030",
+              "title": "k8s cluster",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d2574_ok-cluster/ok-cluster.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/96adee8e-2939-4676-83c4-877c0a2cc030",
+              "caption": "The architecture of a Kubernetes cluster (Image courtesy - Kubernetes, retrieved from https://kubernetes.io/docs/concepts/overview/components/)",
+              "alt": "Kubernetes cluster",
+              "width": 960,
+              "height": 633,
+              "instructor_notes": null
+            },
+            {
+              "id": 971173,
+              "key": "e21adc1f-614b-402b-8a9a-86dee28e97cd",
+              "title": "k8s cluster",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the above diagram, the following elements are involved:\n* **kubelet** - a “node agent” using which the worker node communicates with the master node. The kubelet runs on each Node. \n* **kube-proxy** - a “node agent” using which the worker node communicates with the external world. The kube-proxy also runs on each Node.\n* **kube-apiserver** - the frontend API that exposes the Kubernetes control plane.\n* **etcd ** - a *key-value* store to stores the cluster state\n* **kube-scheduler** - a component that schedules the pods for running on the most suitable Node.\n* **kube-controller-manager** - a component that bundles and runs controller processes. These processes concern the nodes, replication, endpoints, and access management. \n\n### Recommended Read\nWe encourage you to read the following links from the official website and follow the hands-on exercise in this lesson:\n* [Kubernetes Components](https://kubernetes.io/docs/concepts/overview/components/)\n* [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/), which includes cluster creation, application deployment, scaling up, update and debug the containerized application.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861423,
+          "key": "fac375ff-8a1c-461f-8e7c-6c9a844358ac",
+          "title": "Creation of a Kubernetes cluster",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fac375ff-8a1c-461f-8e7c-6c9a844358ac",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971193,
+              "key": "ed7bc11b-6738-4330-8c84-bf32e1cc8751",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To begin with, we need to see various tools available for us to create a k8s cluster.\n## Tools for deploying the Kubernetes cluster\nThere are different ways to deploy a Kubernetes cluster depending upon the OS of the host machine or the size of the cluster. We can also use hosted (cloud-based) Kubernetes services available from all major cloud-service providers.  The following are the most popular tools to deploy the Kubernetes cluster on a machine - \n\n* **Minikube** - A lightweight tool that creates a VM on your local machine and deploys a single Kubernetes cluster containing only one node. Minikube is available for Linux, macOS, and Windows. Refer here for [Installing Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/). Note - Hyper-V must be enabled before installing Minikube on the Windows system. There is a very good interactive tutorial from Kubernetes to [deploy a local development cluster using Minikube](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/)\n\n* **KubeOne** - A command-line utility for installing, managing, and upgrading Kubernetes clusters. KubeOne runs only on Linux and Mac OS. Here are the instructions for [Installing KubeOne on Linux or macOS](https://github.com/kubermatic/kubeone)\n\n* **kubectl** - A command-line utility that allows us to run commands against multiple Kubernetes clusters. You can follow these [installation and setup instructions](https://kubernetes.io/docs/tasks/tools/install-kubectl). \n*kubectl*  is available for Linux, macOS, and Windows. \n\n* **Other tools** - [Kubernetes Operations (kops)](https://github.com/kubernetes/kops), [Amazon EKS](https://aws.amazon.com/eks/) and [CLI](https://github.com/weaveworks/eksctl), [Kube-aws](https://github.com/kubernetes-incubator/kube-aws), and many more. \n\n**If you choose to install KubeOne on AWS EC2 instance / Linux /macOS machine, watch the demo in the video below.** \n\n### Install Kubernetes on AWS EC2 instance / Linux /macOS machine using KubeOne\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861432,
+              "key": "a5284bab-85bf-4013-8d05-e80678dc18a5",
+              "title": "ND9990 C03 L04 Creation Of A Kubernetes Cluster",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FmhYyzCuj_Q",
+                "china_cdn_id": "FmhYyzCuj_Q.mp4"
+              }
+            },
+            {
+              "id": 980803,
+              "key": "4ac9ad94-424b-4013-82f3-ee7cf49b424f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To follow the above video, first, you need to install KubeOne in your AWS EC2 instance. Then, follow the below steps:\n* **Setup Credentials** - Create IAM account and store the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables in your AWS EC2 instance\n* **Create Infrastructure** - Associate the required compute resources to create the Kubernetes cluster\n* **Install Kubernetes**\nUpon successful installation, run `kubectl get nodes` command. You will see three control plane nodes and two worker nodes. You can refer a detailed tutorial to [Install Kubernetes on AWS Cluster using KubeOne](https://github.com/kubermatic/kubeone/blob/master/docs/quickstart-aws.md) available at KubeOne documentation.\n\n>***Disclaimer - We recommend you shut down every resource (e.g., EC2, RDS, EKS, or any other hosted service) on the AWS cloud immediately after the usage. These services are free, only up to a specific threshold.***\n\n\n\n### Recommended Tool for macOS and Windows\nWe recommend to install and use **kubectl**. It uses a configuration file (kubeconfig) located at `~/.kube/config` that contains the details about multiple clusters with whom to interact. First, you need to install Docker Desktop on your computer. The “Docker Desktop” for macOS and Windows has a feature to be enabled to use Kubernetes kubectl utility. Second, follow the steps as shown in below snapshots to enable Kubernetes:\n1. Open the Docker Desktop preferences / settings in you computer:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971168,
+              "key": "bebe08b2-3842-4955-9a55-139e1c4aab2a",
+              "title": "kubectl-Windows1",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d2734_ok-installkubernetes-1/ok-installkubernetes-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bebe08b2-3842-4955-9a55-139e1c4aab2a",
+              "caption": "Docker Desktop preferences / settings",
+              "alt": "Docker Desktop preferences / settings",
+              "width": 560,
+              "height": 461,
+              "instructor_notes": null
+            },
+            {
+              "id": 971171,
+              "key": "d159f1b3-e170-46d2-95c1-f61a941fd369",
+              "title": "kubectl-Windows2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Enable the Kubernetes in the Docker Desktop preferences / settings:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971177,
+              "key": "9ed84c1a-e54c-4e85-b95d-3f18e7be5b79",
+              "title": "kubectl-Windows2",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d2767_ok-installkubernetes-2/ok-installkubernetes-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9ed84c1a-e54c-4e85-b95d-3f18e7be5b79",
+              "caption": "Kubernetes in Docker Desktop preferences / settings",
+              "alt": "Kubernetes in Docker Desktop preferences / settings",
+              "width": 720,
+              "height": 350,
+              "instructor_notes": null
+            },
+            {
+              "id": 971194,
+              "key": "0c6126c3-849a-4aad-801d-cf7a1b4c5c74",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nIt will download the “kubectl” for your computer.\n\n*Note for **Windows users** * \n* Before installing Docker Desktop - [Enable Hyper-V of the underlying machine](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)\n* After installing *kubectl* - Set the “path” environment variable to point to the *kubectl* folder. \n\n\n### Recommended Tool for Linux\nWe recommend to use **KubeOne** for Linux users. Refer to the above video demo for installing KubeOne on Linux. The video uses these instructions for [Installing KubeOne on Linux](https://github.com/kubermatic/kubeone)\n\n### Verify the Installation\nOnce you have installed any one of the above-mentioned tools on your machine, you may use the following command in the terminal/cmd prompt:\n\n| Command | Description |\n| ------------- | -----|\n| `kubectl` | To display category-wise list all the commands and corresponding description |\n\nThe below image shows the output of `kubectl` command:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971172,
+              "key": "89957ed8-6a1d-47ba-9899-a8b146c87e9d",
+              "title": "kubectl command",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d2840_deployment-command-1/deployment-command-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/89957ed8-6a1d-47ba-9899-a8b146c87e9d",
+              "caption": "Output of `kubectl` command",
+              "alt": "Output of `kubectl` command",
+              "width": 960,
+              "height": 688,
+              "instructor_notes": null
+            },
+            {
+              "id": 971195,
+              "key": "4489c866-8e6c-4313-b19f-823f2c958e62",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nOther essential commands are:\n\n| Command | Description |\n| ------------- | -----|\n| `kubectl version` | To display the version of installed Kubernetes client and server |\n| `kubectl version --client` | To display the version of installed Kubernetes cluster |\n| `kubectl config current-context` | To display the configuration file name for the current context |\n| `kubectl get nodes` | To display the list of nodes along with their status, role, age, and version |\n| `kubectl get pods` | To display the list of containers in current namespace |\n| `kubectl get pods --all-namespaces` | To display all pods in all namespaces |\n| `kubectl cluster-info` | To display the cluster state. It returns a URL |\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861424,
+          "key": "1fba225c-b8e8-4b2a-a90e-5b36a6f87cc6",
+          "title": "What Are Pods?",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1fba225c-b8e8-4b2a-a90e-5b36a6f87cc6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971183,
+              "key": "716e7ecd-9d6d-4cac-abde-5764d232329d",
+              "title": "pod-intro",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is a Pod?\nA pod is a \"logical-grouping\" of tightly coupled containers (one or more) that have shared storage, a network, and a standard specification. **The worker node(s) hosts one or more pods at a time.** The image below shows a pod having two containers running in a host.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971179,
+              "key": "552d6212-594c-4857-a10c-06898dfda6ff",
+              "title": "pod-image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d2926_ok-pod/ok-pod.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/552d6212-594c-4857-a10c-06898dfda6ff",
+              "caption": "A pod having two containers running in host.",
+              "alt": "A pod having two containers running in host.",
+              "width": 434,
+              "height": 549,
+              "instructor_notes": null
+            },
+            {
+              "id": 971181,
+              "key": "a58c5208-20c0-4318-8534-be0c8c402048",
+              "title": "pod-intro-2",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The *set of containers within a pod* have the following essential characteristics:\n* share the same namespace (IP address and ports), storage, and network. \n* can communicate within the set using `localhost`\n* behaves like a single entity. \n* will always run on a single host node (**co-located**) until the service that they run is terminated. Then, it frees up the resources of the node.\n* will always be scheduled together to run on a host node as a single entity (**co-scheduled**). If a container is shut down/added/removed, then the pod has to \"restart\". Here, the \"pod restart\" means to restart the environment the containers run in. \n* uses Docker as the container runtime\n* run a single instance of the containerized application. Multiple instances of the application (horizontal-scaling) can be created by running multiple pods, one for each application instance. \n\nA **Controller** helps to manage multiple pods each running an individual instance of the application.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861428,
+              "key": "439e26d4-1b22-4781-8f32-d1a4d88cda63",
+              "title": "ND9990 C03 L04 What Are Pods",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6nX5zjXP93s",
+                "china_cdn_id": "6nX5zjXP93s.mp4"
+              }
+            },
+            {
+              "id": 900264,
+              "key": "3c5580dc-6a17-4d6f-8697-2f21136a1591",
+              "title": "What is a pod",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3c5580dc-6a17-4d6f-8697-2f21136a1591",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is a pod used in kubernetes?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A Pod is a logical group of one or more containers",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "A pod of whales",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "A pea pod",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 900255,
+              "key": "b78db0e1-151e-42a2-ada7-2e14ebc5f164",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n\n## The Role of Controller\nAssume there are multiple pods, each running an individual instance of the application. Such a set of identical pods is called **ReplicaSet**. The ReplicaSet (of pods) ensures the high-availability of the services hosted inside them. ReplicaSets are created and managed by Controller.\n\nThe Controller specifies the necessary attributes and state of Pods and ReplicaSets in a `.yaml` configuration file, which is called **Deployment**. This configuration file provides declarative updates to manage Pods and ReplicaSets. The Controller can manage the situations, such as when the host (worker-node) fails, or the pod scheduling is interrupted, using the \"Deployment\" configuration file. In such cases, the Controller automatically replaces the pod by scheduling an identical replacement on a different node.\n\n---\n\n## Pod Templates\nThe Controller uses another `.yaml` configuration file called \"Pod Template\". It contains the pod specifications such as name, count of replicas, containers to run, port, and many other details. A sample Pod Template for our project path `udacity-c3-deployment/k8s/pod-example/pod.yaml` is shown below:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971176,
+              "key": "a9273f66-e64b-4af1-9ac0-3c66605a4d5d",
+              "title": "pod.yaml",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d2999_ok-podexample/ok-podexample.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a9273f66-e64b-4af1-9ac0-3c66605a4d5d",
+              "caption": "pod.yaml",
+              "alt": "pod.yaml",
+              "width": 822,
+              "height": 584,
+              "instructor_notes": null
+            },
+            {
+              "id": 971180,
+              "key": "706b762b-e4a2-45de-b3b9-3ce78d3d3066",
+              "title": "more to read",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Once a pod or ReplicaSet is created by using the configuration file, they will not be affected if we change some parts of the configuration file later. If needed, the running pods have to be updated manually or re-deployed using the updated file. \n\n### Recommended Read\n* Read the official [Kubernetes Documentation - Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod/) for more insights.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861426,
+          "key": "75a8cc7a-2da7-4b5c-b97f-b07570c6fdfb",
+          "title": "Converting a pod into a Deployment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "75a8cc7a-2da7-4b5c-b97f-b07570c6fdfb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971187,
+              "key": "3b0affa9-d1fa-485c-af85-7fc3a5476a76",
+              "title": "Deployment-Intro",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Deployments\nIn the previous concept, we learned that the Controller specifies the necessary attributes and state of Pods and ReplicaSets in a `.yaml` configuration file, which is called **Deployment**. This configuration file provides declarative updates to create and manage Pods / ReplicaSets. We define a Deployment to:\n* create new Pods or ReplicaSets\n* delete the existing Deployments, thereby releasing the compute resources occupied by them\n\nA Deployment contains the details about the containers that would comprise the Pods / ReplicaSets. The figure below shows a sample deployment file in which “kind”, “replicas”, “image”, and “labels” fields are highlighted. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971178,
+              "key": "2d79f867-ac54-4803-aae1-21b383eac12b",
+              "title": "Deployment-example",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d2a39_ok-deploymentexample/ok-deploymentexample.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2d79f867-ac54-4803-aae1-21b383eac12b",
+              "caption": "A sample Deployment file",
+              "alt": "A sample Deployment file",
+              "width": 809,
+              "height": 663,
+              "instructor_notes": null
+            },
+            {
+              "id": 971191,
+              "key": "f9e15559-2348-4050-b612-6a1af7e51194",
+              "title": "convert",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Converting a pod into a deployment",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861433,
+              "key": "e60ee9ef-c5f5-4e45-87ae-e857beeeca8f",
+              "title": "ND9990 C03 L04 Converting A Pod Into A Deployment",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "anuAfJlwIho",
+                "china_cdn_id": "anuAfJlwIho.mp4"
+              }
+            },
+            {
+              "id": 900257,
+              "key": "8251513b-5af1-4e54-8451-4bc45fc6d2e3",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nHere is the code used in the video:\n```\napiVersion: extensions/v1beta1\nkind: Deployment\nmetadata:\n  labels:\n    service: reverseproxy\n  name: reverseproxy\nspec:\n  replicas: 2\n  template:\n    metadata:\n      labels:\n        service: reverseproxy\n    spec:\n      containers:\n      - image: scheele/reverseproxy\n        name: reverseproxy\n        imagePullPolicy: Always          \n        resources:\n          requests:\n            memory: \"64Mi\"\n            cpu: \"250m\"\n          limits:\n            memory: \"1024Mi\"\n            cpu: \"500m\"       \n        ports:\n        - containerPort: 8080\n      restartPolicy: Always\n```\n\nDeploy it!\n\n```\nkubectl apply -f reverseproxy-deployment.yaml\n```\n\nSee the running deployments:\n```\nkubectl get deployment\n```\n\nSee the replica sets:\n```\nget rs\n```\n\nSee the pods:\n\n```\nget pod\n```\n\nUpdate the `reverseproxy`:\n\n```\napiVersion: extensions/v1beta1\nkind: Deployment\nmetadata:\n  labels:\n    service: reverseproxy\n    version: v2\n  name: reverseproxy\nspec:\n  replicas: 2\n  template:\n    metadata:\n      labels:\n        service: reverseproxy\n        version: v2\n    spec:\n      containers:\n      - image: scheele/reverseproxy\n        name: reverseproxy\n        imagePullPolicy: Always          \n        resources:\n          requests:\n            memory: \"64Mi\"\n            cpu: \"250m\"\n          limits:\n            memory: \"1024Mi\"\n            cpu: \"500m\"       \n        ports:\n        - containerPort: 8080\n      restartPolicy: Always\n```\n\nRedeploy it!\n```\nkubectl apply -f reverseproxy-deployment.yaml\n```\n\nSee the updated replica set:\n```\nget rs\n```\n\nand the updated pods\n```\nget pod\n```\n\n### Recommended Read\n* [More about Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861425,
+          "key": "27a963ad-f6b3-472d-b0ae-aeb79d3dfb8f",
+          "title": "Deployment of an microservice application as pod",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "27a963ad-f6b3-472d-b0ae-aeb79d3dfb8f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 971184,
+              "key": "211e77a3-24db-4273-bb20-6cbb3343700a",
+              "title": "Udagram deploy1",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Deployment Configuration Files\nTo follow the video below, you will need to have the following configuration files in your project directory:\n* udacity-c3-deployment/k8s/reverseproxy-deployment.yaml\n* udacity-c3-deployment/k8s/frontend-deployment.yaml\n* udacity-c3-deployment/k8s/backend-user-deployment.yaml\n* udacity-c3-deployment/k8s/backend-feed-deployment.yaml\n* udacity-c3-deployment/k8s/pod-example/pod.yaml\n\nWe encourage you to write the content of all above configuration files. However, **the content of all the above-mentioned files is also available in the** `lesson-4-Kubernetes/solution/udacity-c3-deployment/k8s/` **directory.**\n\n## Let’s Deploy our Udagram Microservices\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861429,
+              "key": "86829509-968c-42dd-8094-e3dd94d4d0ea",
+              "title": "ND9990 C03 L04 Deployment Of An Microservice Application As Pod",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yjnBxj2cwp8",
+                "china_cdn_id": "yjnBxj2cwp8.mp4"
+              }
+            },
+            {
+              "id": 900256,
+              "key": "1a02cdf2-4e6f-4790-a21a-b5fcaf357efd",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nThe content of Pod-Template `udacity-c3-deployment/k8s/pod-example/pod.yaml` file shown in the above-video is: \n\n```\napiVersion: v1\nkind: Pod\nmetadata:\n  name: pod-example\nspec:\n  containers:\n  - image: scheele/reverseproxy\n    name: reverseproxy\n    imagePullPolicy: Always          \n    resources:\n      requests:\n        memory: \"64Mi\"\n        cpu: \"250m\"\n      limits:\n        memory: \"1024Mi\"\n        cpu: \"500m\"       \n    ports:\n    - containerPort: 8080\n  restartPolicy: Always\n```\n\n### Deploy the Pods and ReplicaSets\nYou need to deploy all four files concerning our project using the commands below. Note that the relative path may vary on your machine. Presently, we are in `lesson-4-Kubernetes/exercise/udacity-c3-deployment/k8s/` directory.\n```bash\nkubectl apply -f backend-feed-deployment.yaml \n\nkubectl apply -f backend-user-deployment.yaml \n\nkubectl apply -f frontend-deployment.yaml \n\nkubectl apply -f reverseproxy-deployment.yaml\n\nkubectl apply -f pod-example/pod.yaml\n\n```\n\n\n\n\n### Check the Status of Pods\nYou can see the list and status of all the deployed pods using:\n\n``` \nkubectl get pod -o wide\n```\nThe image below explains the output of the above-mentioned command:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 971182,
+              "key": "a40a1b0b-6a62-457c-b1cd-18ca3bb4578c",
+              "title": "list of pods",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e4d2ace_ok-deployment-command-2/ok-deployment-command-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a40a1b0b-6a62-457c-b1cd-18ca3bb4578c",
+              "caption": "The detailed list of pods",
+              "alt": "The detailed list of pods",
+              "width": 1404,
+              "height": 367,
+              "instructor_notes": null
+            },
+            {
+              "id": 971186,
+              "key": "125e55a6-8237-4d4f-91b9-993d5e2230a1",
+              "title": "Labels",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Labels\nLabels are \"tags\" in the form of key/value pairs that are associated with Kubernetes objects (Deployments/Pods). Multiple objects may belong to a single Label. Labeling helps to identify all the objects (and resources) associated with a particular Label value (say \"Production\" or \"Testing\"). Applying a Label does not have any impact on the behavior of the underlying object. They are helpful in better organizing the objects (and resources).\n\n### Recommended Read\nThink about a containerized application having a huge number of containers to manage on the cloud or running locally. To deal with such a scenario, you may like to read about **hosted Kubernetes services**. Following are the few tools by different cloud-service providers:\n* [AWS Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)\n* [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/en-in/services/kubernetes-service/)\n* [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine)\n\nAdditionally, you may go through [An Interactive Tutorial to Deploy a Node.js application packaged in a Docker container](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/) \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861495,
+          "key": "785cab6f-9824-496e-b46c-a0b5d6310063",
+          "title": "Exercise: Start a Kubernetes Cluster",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "785cab6f-9824-496e-b46c-a0b5d6310063",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861496,
+              "key": "d66a6ec0-cabe-442c-85bb-59e0974283cd",
+              "title": "Untitled",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n\n\n## Lesson 4 - Kubernetes - Exercise\nThe exercises in this lesson are an extension of the exercises you have already done in the previous lesson - **\"Containers\"**.  We will use the same \"Udagram\" project, learn to manage the microservices running in separate containers using the Kubernetes cluster. \n### Dependencies\nIn addition to dependencies installed in Lesson 3 - Containers, you need to have anyone tool (KubeOne, MiniKube, or kubectl with Docker Desktop) to create the Kubernetes cluster.\n\n### Exercise Instructions\nFollow the below instructions:\n#### Instruction 1 - Clone the GitHub repo (if not already)\nClone the following Git repository - https://github.com/udacity/nd990-c3-microservices-v1\n\nTo start with, go to the */lesson-4-Kubernetes/exercise/* directory. You would find the following sub-directories for each component of the project, as follows:\n1. *udacity-c3-frontend* - For Ionic client web application, which consumes the RestAPI Backend\n2. *udacity-c3-restapi-feed* - For \"feed\" microservice\n3. *udacity-c3-restapi-user* - For \"user\" microservice\n4. *udacity-c3-deployment/docker* - For running the Nginx as a reverse-proxy server\n\n\n#### Instruction 2 - Create configuration files (`.yaml`) \nCreate a sub-directory with the name `k8s` (acronym for Kubernetes) at the path *lesson-4-Kubernetes/exercise/udacity-c3-deployment/*. Create the following configuration files:\n>* udacity-c3-deployment/k8s/reverseproxy-deployment.yaml\n>* udacity-c3-deployment/k8s/frontend-deployment.yaml\n>* udacity-c3-deployment/k8s/backend-user-deployment.yaml\n>* udacity-c3-deployment/k8s/backend-feed-deployment.yaml\n>* udacity-c3-deployment/k8s/pod-example/pod.yaml\n\n\n#### Instruction 3 - Create Docker Images\nCreate Docker images for all the services of your Udagram application.\n\n#### Instruction 4 - Deploy Kubernetes Cluster\n##### Task 1 - Set up a cluster\nFirst, set up a Kubernetes cluster with KubeOne/MiniKube/kubectl. Refer - \n[Creation of Kubernetes Cluster](https://classroom.udacity.com/nanodegrees/nd9990/parts/96fffeca-63e0-4bfc-92a6-a869b5b64b9e/modules/8c55d5a1-ae41-4313-ab37-86b1f35b9ada/lessons/e03717be-332d-4a2e-8576-69f7aae7726e/concepts/fac375ff-8a1c-461f-8e7c-6c9a844358ac)\n\n##### Task 2 - Configure the Pod\nSecond, configure the pod and convert our pods into deployments. Use Kubernetes for the deployment. \n* Create a pod each for the feed, user, and frontend service\n* Convert the pod into a deployment\n\n##### Task 3 - Deploy the application in a Cluster\n* Deploy your Udagram microservices application in a Kubernetes Cluster \n\n\n### Solution \nIf you need help, you may refer to the **solution** available at */lesson-4-Kubernetes/solution/* directory\n\n**Remark for Windows users:** \nIf you can’t run it locally, the easiest way to run this setup is to set up an AWS EC2 instance with Linux AMI and follow the instructions mentioned above. Afterward, you can use the EC2 instance to set up the k8s cluster. Follow this instruction, how to create and connect to an EC2 instance: https://docs.aws.amazon.com/quickstarts/latest/vmlaunch/welcome.html\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861497,
+              "key": "4861af11-18ed-42b6-b6b8-90e57ea94d68",
+              "title": "Start a kubernetes cluster & create a deployment",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4861af11-18ed-42b6-b6b8-90e57ea94d68",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create your first kubernetes cluster on AWS with kubeone",
+                "Create a pod for the feed service",
+                "Convert the pod into a deployment",
+                "Write deployment for 'images'"
+              ],
+              "positive_feedback": "Fantastic Work!",
+              "video_feedback": null,
+              "description": "Start a kubernetes cluster & create a deployment"
+            }
+          ]
+        },
+        {
+          "id": 861427,
+          "key": "24274a0f-11b8-45a0-9aae-f07942e3438e",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "24274a0f-11b8-45a0-9aae-f07942e3438e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861434,
+              "key": "f10d3aaf-7904-4690-8d98-792ba57a400b",
+              "title": "ND9990 C03 L04 Lesson Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "A6kzUbFqSf4",
+                "china_cdn_id": "A6kzUbFqSf4.mp4"
+              }
+            },
+            {
+              "id": 971185,
+              "key": "24e0d473-d3e3-4853-992e-8be097c40c3d",
+              "title": "Conclusion",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Conclusion\nAs this lesson comes to an end, now you must be able to:\n* Explain the fundamentals of Kubernetes (k8s)\n* Explain the Kubernetes cluster architecture\n* Create a k8s cluster using core components - Nodes, Pods, ReplicaSets, and Deployments for your Udagram application\n* Deploy your Udagram application on the k8s cluster\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

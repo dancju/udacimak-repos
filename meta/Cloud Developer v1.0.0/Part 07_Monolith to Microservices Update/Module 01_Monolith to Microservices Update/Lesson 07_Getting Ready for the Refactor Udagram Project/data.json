@@ -1,0 +1,436 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1015984,
+      "key": "ed9208c5-5476-4fc8-8327-c7ff64b2fac0",
+      "title": "Getting Ready for the Refactor Udagram Project",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson we'll set up the AWS services we need for the Refactor Udagram app to Microservices Project and get some tips for a successful project.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1013089,
+          "key": "342e5e42-795e-4411-ab96-8c7b560fe724",
+          "title": "Project Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "342e5e42-795e-4411-ab96-8c7b560fe724",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013070,
+              "key": "15a092e5-b09d-4e24-97db-dadb41365d16",
+              "title": "Project Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Let's Get Started!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013082,
+              "key": "e171a036-c0d9-40ca-95c4-7586353d46f1",
+              "title": "ND9990 CDND C03 L06 A01 Refactor Udagram",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Kp26mqqRMSY",
+                "china_cdn_id": "Kp26mqqRMSY.mp4"
+              }
+            },
+            {
+              "id": 1013069,
+              "key": "c6a73ab9-a43e-4edc-ae0a-197ca8ffd1a7",
+              "title": "Refactor Udagram Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e928a92_cdnd-l6-monolith-to-microservice/cdnd-l6-monolith-to-microservice.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c6a73ab9-a43e-4edc-ae0a-197ca8ffd1a7",
+              "caption": "We will practice our understanding of microservices by taking apart a monolith application.",
+              "alt": "We will practice our understanding of microservices by taking apart a monolith application.",
+              "width": 839,
+              "height": 375,
+              "instructor_notes": null
+            },
+            {
+              "id": 1013066,
+              "key": "a3b21bf4-d316-4f14-bc81-beae259acfd8",
+              "title": "Refactor Udagram Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Preparing to Start the Project\n\n\nThis project uses AWS services including an S3 bucket and an RDS instance.  You may have already have these services running from an earlier project, but in case you don't we'll review the set up in the next few sections: \n\n-  Setting up an AWS S3 bucket\n-  Setting up an AWS RDS instance\n-  Using Environment Variables\n\nAnd then we'll go through the detailed instructions for the project.\n\n**Good Luck!**\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013084,
+          "key": "6522136e-d28c-43c7-8f9e-e5f113d38224",
+          "title": "Setting Up AWS S3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6522136e-d28c-43c7-8f9e-e5f113d38224",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013067,
+              "key": "6eab2d4f-5573-4f9b-b0ec-e8fc6bbb6c7b",
+              "title": "AWS S3 Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "##  Setting Up The Bucket",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013065,
+              "key": "a7a59bee-f13c-462a-a13d-d7796f4d7ea4",
+              "title": "ND9990 CDND C03 L06 A02 Part 1 Setting Up The Bucket",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jqKJtOhxcik",
+                "china_cdn_id": "jqKJtOhxcik.mp4"
+              }
+            },
+            {
+              "id": 1013101,
+              "key": "99bd341f-edec-476a-9bbf-3693fef434aa",
+              "title": "S3 Overview",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Overview\nAWS S3 is a powerful tool used for block storage. We can imagine it as a high-performance file-system that is used for programmatic access.\n\n#### Object Storage\nStore objects similar to how we may use cloud storage to upload our photos. However, S3 is optimized for programmatic access.\n\n#### API and Tools\nS3 has a mature set of API, libraries, and tools for easy integration.\n\n#### Scale and Data Management\nNatively designed to handle large volumes of requests.\r\r\r### Instructions\n1. Create an S3 bucket with a unique name. A conventional format is `<NAME>-<ACCOUNT_ID>-<ENVIRONMENT>`\n2. It’s recommended to set up the S3 bucket to block all public access",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013093,
+              "key": "152a33fa-91fc-483b-990b-ee2a18291131",
+              "title": "Adding Bucket Policy heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Adding a Bucket Policy",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013095,
+              "key": "9c8295a8-2c45-4d8d-bdfd-4d4edd440122",
+              "title": "ND9990 CDND C03 L06 A02 Part 2 Adding Permissions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cSk1_nv0ETk",
+                "china_cdn_id": "cSk1_nv0ETk.mp4"
+              }
+            },
+            {
+              "id": 1013096,
+              "key": "06576faf-2864-46a0-95b6-8374ab66978d",
+              "title": "Adding Bucket Policy Recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Depending on how our access to AWS is set up, we may find that we need to set up a bucket policy for our IAM role. This provisions the permissions necessary to access the S3 bucket. A symptom of a problematic configuration is receiving an `Access Denied Error` from AWS when trying to query the bucket.\n\nTo resolve this, we will need to set up an IAM policy to provision access to the S3 bucket:\n```\n{\n  “Version”: “2012-10-17”,\n  “Statement”: [\n    “Sid”: “S3AccessPolicy”,\n    “Action”: [\n      “s3:DeleteObject”,\n      “s3:GetObject”,\n      “s3:ListBucket”,\n      “s3:PutObject”\n    ],\n    “Effect”: “Allow”,\n    “Resource”: “arn:aws:s3:::<NAME_OF_BUCKET>”\n  ]\n}\n```\nThis will be added to the IAM role policy that is used to access the S3 bucket.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013094,
+              "key": "0a8ab168-7d55-4463-88a9-5ffc6978157b",
+              "title": "CORS Configuration",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## CORS Configuration",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013092,
+              "key": "78cf41fc-d7d8-49c1-b8c4-cff2d75ec062",
+              "title": "ND9990 CDND C03 L06 A02 Part 3 CORS Configuration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0tefRTJMucY",
+                "china_cdn_id": "0tefRTJMucY.mp4"
+              }
+            },
+            {
+              "id": 1013071,
+              "key": "b72de2ef-e5fc-4e62-9a92-75b92fb94af5",
+              "title": "CORS Configuration",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In order for us to run our application locally against the S3 bucket, we will need to set up the CORS configuration. A symptom of a problematic configuration is receiving a `CORS Error` or having an S3 request hang indefinitely when trying to query the bucket.\n\nTo resolve this, we will need to set up our CORS configuration for the S3 bucket:\n```\n<?xml version=”1.0” encoding=”UTF-8”?>\n<CORSConfiguration xmlns=”http://s3.amazonaws.com/doc/2006-03-01/”>\n<CORSRule>\n  <AllowedOrigin>*</AllowedOrigin>\n  <AllowedMethod>PUT</AllowedMethod>\n  <AllowedMethod>POST</AllowedMethod>\n  <AllowedMethod>DELETE</AllowedMethod>\n  <AllowedHeader>*</AllowedHeader>\n</CORSRule>\n</CORSConfiguration>\n```\nIt’s recommended that once you’re done developing locally and have the application running in AWS, you should trim down on the permissions to restrict access.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013088,
+          "key": "90858c95-46ff-48db-99fb-2cac08dcf569",
+          "title": "Setting Up AWS RDS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "90858c95-46ff-48db-99fb-2cac08dcf569",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013083,
+              "key": "ba01cda2-6394-41c1-a743-d187ec492f14",
+              "title": "AWS RDS Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Getting Started With RDS",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013075,
+              "key": "22936443-d276-4444-8372-ca9c8616a400",
+              "title": "ND9990 CDND C03 L06 A03 Part 1 Setting Up The Database",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "H2m-HozYAzQ",
+                "china_cdn_id": "H2m-HozYAzQ.mp4"
+              }
+            },
+            {
+              "id": 1013100,
+              "key": "260f90b6-7693-4209-8e7f-e329cfc110e7",
+              "title": "Setting up RDS recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Overview\nAWS RDS is used for hosting relational databases. It helps handle the overhead of managing multiple nodes in a database cluster.\n\n#### Relational Database\nMany offerings are available including MySQL, PostgreSQL, and AWS Aurora.\n\n#### Scale\nBy helping manage the configurations for vertical and horizontal scaling, we can configure RDS to handle increased demand.\n\n#### Tools\nIntegrates well with other AWS offerings such as exporting backups into S3.\n\n### Instructions\n1. Create a Postgres database with RDS (recommended to use Free Tier)\n2. Set a username and password for the database on creation",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013097,
+              "key": "3f970821-8f4d-40d0-957b-3e24ce6791a5",
+              "title": "Security Group Rules heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Security Group Rules and Access",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013105,
+              "key": "58194937-a1c3-44bb-b497-e9b213712a49",
+              "title": "ND9990 CDND C03 L06 A03 Part 2 Security Group Rules And Access",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1qlV5Ixhqjs",
+                "china_cdn_id": "1qlV5Ixhqjs.mp4"
+              }
+            },
+            {
+              "id": 1013068,
+              "key": "7c9fd50a-e275-4fb0-a9ae-8ecf83bf127b",
+              "title": "Security Group Rules recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In order for our local application to connect to RDS, we need to allow outbound access. This enables us to develop locally prior to deployment.\n\nTo do so, we need to configure a security group that will allow inbound access. \n* For development purposes, we can create a new `CIDR/IP - Inbound` rule for `0.0.0.0/0` that allows all inbound requests.\n\nOnce we’re done with development, we can tie up the permissions to be less loose so that only applications in a deployed environment can access it.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1013090,
+          "key": "ee3b7414-902a-4752-b287-5b20ce29a41a",
+          "title": "Using AWS Environment Variables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ee3b7414-902a-4752-b287-5b20ce29a41a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013076,
+              "key": "96019b52-4958-42c2-86b6-bf19d90dc319",
+              "title": "AWS Environment Variables Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Setting Up Environment Variables In the Project",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013077,
+              "key": "c30ae02f-3bd4-47b9-8eee-698e59d65bc3",
+              "title": "ND9990 CDND C03 L06 A05 Part 1 Project Intro And Environment Variables V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Fw1jTSrSaOc",
+                "china_cdn_id": "Fw1jTSrSaOc.mp4"
+              }
+            },
+            {
+              "id": 1013086,
+              "key": "83deb7d6-374e-4138-84fb-e2bbd90a85f7",
+              "title": "AWS Environment Variables Text",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Environment variables are dynamic values stored in the running process.\n* They are often used to store configuration values. One popular usage involves storing values that may change across environments such as database credentials.\n\n### Commands\n* `export VARIABLE_NAME=VALUE` to set a variable\n* `echo $VARIABLE_NAME` as an easy way to validate if a variable is set",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013103,
+              "key": "0675ec79-bf45-4fcf-8c59-79cec82ad689",
+              "title": "Application Code heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Understanding the Application Code",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013104,
+              "key": "990d7e7b-5f72-45aa-9499-3425f750787e",
+              "title": "ND9990 CDND C03 L06 A05 Part 2 Application Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "o90m7gx0wG8",
+                "china_cdn_id": "o90m7gx0wG8.mp4"
+              }
+            },
+            {
+              "id": 1013102,
+              "key": "b78ba91a-b0c2-477e-bd95-cc7c5401eef3",
+              "title": "Application Code recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Application Code Review\n* `README.md` provides information on how to get started and is a useful reference\n* Application logic is implemented as projects in `udagram-api` and `udagram-frontend`\n* `udagram-api.postman_collection.json` can be optionally used to validate API functionality in Postman\n* `set_env.sh` is included to help you easily set environment variables that are used in the project. **Do not commit changes to this file with your credentials**.\n\n### Setting up the Application Code\nIt’s recommended to set up the project in the following order:\n1. Set up AWS resources\nConfigure S3, RDS, and fill in the values needed for `set_env.sh`\n2. Set up `udagram-api`\nInstall dependencies and run the application. We can validate functionality by navigating to `localhost:8080/api/v0/feed`\n3. Set up `udagram-frontend`\nInstall dependencies and run the application with `ionic`. The frontend application should load on `localhost:8100`\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013099,
+              "key": "9651605d-181e-40b6-9ac0-99373bdfef02",
+              "title": "Running the Project heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Running the Project",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013106,
+              "key": "237a4122-deb3-4ac6-86d9-d93a6e303557",
+              "title": "ND9990 CDND C03 L06 A05 Part 3 Running The Project",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QegyELlQ4n8",
+                "china_cdn_id": "QegyELlQ4n8.mp4"
+              }
+            },
+            {
+              "id": 1013098,
+              "key": "445b687a-d02a-4ecd-8719-b9a09ffa4df4",
+              "title": "Running the Project recap",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Using the Project Recap\n* Create a user account by clicking `Register` on the top right. This will create a database entry.\n* Create a new post by clicking `Create a New Post` on the top left. This will create a database entry and upload a photo to S3.\n* The feed shows posts listed in the database and retrieves images from S3.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1015985,
+          "key": "95ca9024-14af-4818-8dc2-f167b78c2316",
+          "title": "Tips for a Successful Project",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "95ca9024-14af-4818-8dc2-f167b78c2316",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1015986,
+              "key": "e34ee60a-0cc3-4154-b8ce-4d885c5d78ce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Refactor Monolith to Microservices\n\n### Introduction\nNow that we have learned about monolith applications and microservices, let's do it ourselves! For our project, we will be taking an existing monolith application and deploy it as microservices in Kubernetes.\n\n* Refactor the monolith application to microservices\n* Set up each microservice to be run in its own Docker container\n* Set up a CI/CD pipeline to deploy the containers to Kubernetes\n\nKeep in mind that **we don’t want to make any feature changes to the frontend or backend code**. If a user visits the frontend web application, it should look the same regardless of whether the application is structured as a monolith or microservice.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1015987,
+              "key": "62242a92-4111-4e4e-83be-5410de18a084",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Setup Instructions\n\n1. Set up a `set_env.sh` file to handle your environment variables. <br>\n**Do not store your credentials in git.**\n2. Launch the `udagram-api` with `npm install` and `npm run dev`\n3. Launch the `udagram-frontend` with `npm install`, `ionic build`, and `ionic serve`\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1015988,
+              "key": "229717af-5ebd-46f6-b88d-139dfbadb173",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Tasks\n### 1. Refactor the API\nThe API code currently contains logic for both `/users` and `/feed` endpoints. Let's decompose the API code so that we can have two separate projects that can be run independent of one another. \n\n\n#### Tips\n* Using Git is recommended so you can revert any unwanted changes in your code!\n* You may find yourself copying a lot of duplicate code into the separate projects -- this is expected! For now, focus on breaking apart the monolith and we can focus on cleaning up the application code afterwards.\n\n\n### 2. Containerize the Code\nStart with creating Dockerfiles for the frontend and backend applications. Each project should have its own Dockerfile.\n\nAfterwards, rather than having to independently run each Docker image, let's set up a `docker-compose.yml` file. This way, we can define a multi-container application that can be built and run with a single command. In the end, you should be able to load the API and web application by simply running:\n```bash\ndocker-compose up --build\n```\n\n### 3. Build CICD Pipeline\nAfter setting up your GitHub account to integrate with Travis CI, set up a GitHub repository with a `.travis.yml` file for a build pipeline to be generated.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1015989,
+              "key": "741ff0b2-f863-426f-b939-2353672213c7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 4. Deploy to Kubernetes\nDeploy the Docker containers for the API applications and web application as their own pods in AWS EKS.\n\nWe should be able to see the pods deployed successfully via the command against your EKS cluster:\n```bash\nkubectl get pods\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1015990,
+              "key": "18c5ceba-77a4-4921-ba6e-58debdeddafd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Suggestions to Make Your Project Stand Out (Optional)   \n\nTry one or more of these to take your project to the next level.\n\n\n\n### Reduce Duplicate Code\nWhen we decomposed our API code into two separate applications, we likely had a lot of duplicate code. Optionally, you could reduce the duplicate code by abstracting them into a common library.\n\n### Secure the API\nThe API is only meant to be consumed by the frontend web application. Let's set up ingress rules so that only web requests from our web application can make successful API requests.\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

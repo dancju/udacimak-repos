@@ -1,0 +1,903 @@
+{
+  "data": {
+    "lesson": {
+      "id": 842795,
+      "key": "036295a2-747b-444d-913b-096c8233fcf8",
+      "title": "Develop",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Implement a process so you write quality code, working alone or on teams. Unit and integration testing, a better way to git, and how to use packaged dependencies.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/036295a2-747b-444d-913b-096c8233fcf8/842795/1556778999699/Develop+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/036295a2-747b-444d-913b-096c8233fcf8/842795/1556778991136/Develop+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 842796,
+          "key": "2acfc8d5-d885-462f-ba4b-7caf9ef49c9c",
+          "title": "Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2acfc8d5-d885-462f-ba4b-7caf9ef49c9c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 845504,
+              "key": "616d28b1-30c8-4595-bf0a-c15c21023ce1",
+              "title": "CloudEng C2 L2 N01 Lesson Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CySON8WPq-Q",
+                "china_cdn_id": "CySON8WPq-Q.mp4"
+              }
+            },
+            {
+              "id": 843094,
+              "key": "a89e591a-bdad-40db-813a-1b0f8911e4df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Getting Setup\n### Installing Node and NPM\nThis project depends on Nodejs and Node Package Manager (NPM). Before continuing, you must download and install Node (NPM is included) from [https://nodejs.com/en/download](https://nodejs.org/en/download/).\n\n### Installing Ionic Cli\nThe Ionic Command Line Interface is required to serve and build the frontend. Instructions for installing the CLI can be found in the [Ionic Framework Docs](https://ionicframework.com/docs/installation/cli).\n\n#### Installing Python3\nPython is a powerful programming language used for anything from quick scripts through data science. We'll use Python for the final project and it is required for some development tools like the AWS CLI. Instructions to download and install Python for your OS can be found here: [https://www.python.org/downloads/](https://www.python.org/downloads/)\n\n### Amazon Web Services (AWS)\n#### Account Setup\nWe'll be provisioning cloud resources throughout the next few lessons. You'll need an AWS account to set up these resources. We'll be taking advantage of the free tier offerings so there should be no costs to set up the resources we'll be using. Create a new account here:\n[https://portal.aws.amazon.com/billing/signup#/](https://portal.aws.amazon.com/billing/signup#/)\n\n#### AWS CLI\nWe'll interface with AWS using the Command Line Interface (CLI). Instructions to download and install the AWS CLI for your OS can be found here:\nhttps://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html\n\n### Installing useful tools\n#### [Postbird](https://github.com/paxa/postbird)\nPostbird is a useful client GUI (graphical user interface) to interact with our provisioned Postgres database. We can establish a remote connection and complete actions like viewing data and changing the schema (tables, columns, ect).\n\n#### [Postman](https://www.getpostman.com/downloads/)\nPostman is a useful tool to issue and save requests. Postman can create GET, PUT, POST, etc. requests complete with bodies. It can also be used to test endpoints automatically. We've included a [collection in the starter code repository](https://github.com/udacity/cloud-developer/blob/master/course-02/exercises/udacity-c2-restapi/udacity-c2-restapi.postman_collection.json) (`./udacity-c2-restapi.postman_collection.json `) which contains example requests.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843095,
+              "key": "05704808-f968-45f1-879f-ec8d0b5add49",
+              "title": "Are all required frameworks and tools installed?",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "05704808-f968-45f1-879f-ec8d0b5add49",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Node and NPM are installed. Open terminal and enter `node -v` to see the version number.",
+                "Ionic CLI is installed. Open terminal and enter `ionic --version` to see the version number.",
+                "Python3 and PIP are installed. Open terminal and enter `python3 --version` to see the version number.",
+                "AWS Account is set up.",
+                "AWS CLI is installed. Open terminal and enter `aws --version` to see the version number.",
+                "Postbird is installed.",
+                "Postman is installed."
+              ],
+              "positive_feedback": "Great. Setting up your system sometimes can take some time. Now we'll get to the fun parts :)",
+              "video_feedback": null,
+              "description": "Before continuing, make sure you're ready to proceed."
+            }
+          ]
+        },
+        {
+          "id": 842801,
+          "key": "c80983e4-cdf2-48a7-a779-edea6005d705",
+          "title": "How to design an API",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c80983e4-cdf2-48a7-a779-edea6005d705",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900116,
+              "key": "518af857-d983-45b6-b76b-7d9e9323495a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# How to design an API",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900117,
+              "key": "4df3a653-6525-4981-aa19-502f51171331",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is a Server?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842802,
+              "key": "c69c95dc-1afb-4ad8-a155-e9bc555b3074",
+              "title": "CloudEng C2 L2 N03 How To Design An API Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rYXqdS84iIs",
+                "china_cdn_id": "rYXqdS84iIs.mp4"
+              }
+            },
+            {
+              "id": 900118,
+              "key": "cc9a8fdd-d693-4f88-bc00-a8156e91cc3e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What is an Application Program Interface (API)?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845508,
+              "key": "0718f62c-cad6-4a79-b54f-5f629af6ff7f",
+              "title": "CloudEng C2 L2 N03 How To Design An API Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ha_Cd0-nwqA",
+                "china_cdn_id": "Ha_Cd0-nwqA.mp4"
+              }
+            },
+            {
+              "id": 900120,
+              "key": "87b9c7e7-d525-4610-95af-26d03e5c91e7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Use this information to answer the following questions:\n\n|id|flower|\n|---|-------|\n| 1 | daisy |\n| 2 | rose   |\n| 3 | lily |\n\nA restful API is provided to interface with this table.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900119,
+              "key": "7d906620-9b94-4537-8957-73b15c4e0b93",
+              "title": "Using RESTful APIs",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7d906620-9b94-4537-8957-73b15c4e0b93",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What would be the response of the following request:\n`GET  /flowers/2`",
+                "answers": [
+                  {
+                    "id": "a1563027057763",
+                    "text": "returned response `rose`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1563027252593",
+                    "text": "returned response of the first 2 records `daisy, rose`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1563027268881",
+                    "text": "delete record `rose` from the table",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1563027303674",
+                    "text": "HTTP response code `404`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 900121,
+              "key": "187b07fa-32b8-4be5-972c-f3bb56f83efb",
+              "title": "Using RESTful APIs",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "187b07fa-32b8-4be5-972c-f3bb56f83efb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What would be the response of the following request:\n`GET  /flowers/5`",
+                "answers": [
+                  {
+                    "id": "a1563027631158",
+                    "text": "returned response `rose`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1563027659471",
+                    "text": "returned response of the first 2 records `daisy, rose`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1563027665034",
+                    "text": "delete record `rose` from the table",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1563027670746",
+                    "text": "HTTP response code `404`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 900123,
+              "key": "3c73edb0-2752-4098-92ea-35bbb6204db1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Other Best Practices",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845509,
+              "key": "0328619a-53b9-4909-a96e-074e9e38a4ae",
+              "title": "CloudEng C2 L2 N03 How To Design An API Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_VmzZaglDhE",
+                "china_cdn_id": "_VmzZaglDhE.mp4"
+              }
+            },
+            {
+              "id": 900122,
+              "key": "ea23c761-e6b6-4a56-945a-e78fd04c32d0",
+              "title": "Using RESTful APIs",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ea23c761-e6b6-4a56-945a-e78fd04c32d0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What would be the response of the following request:\n`GET  /flowers?limit=2`",
+                "answers": [
+                  {
+                    "id": "a1563027708169",
+                    "text": "returned response `rose`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1563027722946",
+                    "text": "returned response of the first 2 records `daisy, rose`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1563027729679",
+                    "text": "delete record `rose` from the table",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1563027733992",
+                    "text": "HTTP response code `404`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 842805,
+              "key": "7d01a443-a2b4-457d-bba1-5ee65c2dc255",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Consumable APIs\nConsumable APIs: APIs that are accessible to those outside of the organization, for example, a consumable API allows programmers to search Tweets or Yelp reviews.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 842804,
+          "key": "6066e9d4-a771-400c-be09-0dacfd87fbd8",
+          "title": "Standing up a Cloud Capable Server Locally using Node",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6066e9d4-a771-400c-be09-0dacfd87fbd8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 842807,
+              "key": "2327122f-3212-449f-9a4e-826a81bcba38",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Standing up a Cloud Capable Server\n#### Introduction to Node\n[Node (aka NodeJs)](https://nodejs.org/en/) is a powerful framework to build network applications using JavaScript (in our case using TypeScript) outside of browsers. It has an asynchronous concurrent model which releases the developer from many concerns involving threading and dead-locking. Node is used as our server framework along with [Express](https://expressjs.com/insert link) to handle web http requests and responses.\n\n#### Introduction to TypeScript\n[Typescript](https://github.com/Microsoft/TypeScript) is a flavor of JavaScript that forces hard typing on variables and methods. This prevents implementation errors like passing a string instead of a number. It compiles to pure JavaScript.\n\n#### Github link to basic server\nIn this lesson, we'll be referencing a prewritten, simple server which uses Node/Express. The github link to clone and follow along is: [https://github.com/grutt/udacity-c2-basic-server](https://github.com/grutt/udacity-c2-basic-server).  Alternatively, you can clone the repo for the entire nanodegree [cloud-developer](https://github.com/udacity/cloud-developer) and find the files for this course in the path [https://github.com/udacity/cloud-developer/tree/master/course-02/exercises](https://github.com/udacity/cloud-developer/tree/master/course-02/exercises)\n\n##### Installing project dependencies\n\nThis project uses NPM to manage software dependencies. NPM Relies on the package.json file located in the root of this repository. After cloning, open your terminal in the repo directory and run:\n```bash\nnpm install\n```\n>_tip_: **npm i** is shorthand for **npm install**\n\n\n#### Installing Postman\nWe'll be using a tool called Postman to make requests to our development server. Download and install [Postman](https://www.getpostman.com/downloads/)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900111,
+              "key": "8180a04d-184c-4306-877d-8d71ef958ab5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Clone Our Server Repository",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842806,
+              "key": "bb0b6724-7d33-47f0-949b-3650838f0ac2",
+              "title": "CloudEng C2 L2 N02 Standing Up A Cloud Capable Server Locally Using Node Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Lb5xjDfnnBA",
+                "china_cdn_id": "Lb5xjDfnnBA.mp4"
+              }
+            },
+            {
+              "id": 900112,
+              "key": "4b3e92cc-c7a0-4f83-816c-e5b385e16433",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Understanding Our Server Code",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845505,
+              "key": "934c154e-58f6-4ae4-84fa-8e6f18338c27",
+              "title": "CloudEng C2 L2 N02 Standing Up A Cloud Capable Server Locally Using Node Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Myus7ZDTG7Y",
+                "china_cdn_id": "Myus7ZDTG7Y.mp4"
+              }
+            },
+            {
+              "id": 900113,
+              "key": "e3caeb1a-ef70-4dc7-895b-cf373795e062",
+              "title": "Where is our Express Application Server Instantiated?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e3caeb1a-ef70-4dc7-895b-cf373795e062",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which line of code instantiates our Express Application Server?",
+                "answers": [
+                  {
+                    "id": "a1563026338803",
+                    "text": "`dev` script in `package.json`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1563026385222",
+                    "text": "`const app = express();` in `server.ts`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1563026404599",
+                    "text": "`app.get(\"/\", ...)` in `server.ts`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 900114,
+              "key": "b22c3a3b-5442-453f-b1eb-80fc5881c112",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Running Our Server and Making Requests",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845506,
+              "key": "8203c059-208e-418c-bc6d-febd36fe8a7f",
+              "title": "CloudEng C2 L2 N02 Standing Up A Cloud Capable Server Locally Using Node Part 3 (NEW)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kCv19vb0k_M",
+                "china_cdn_id": "kCv19vb0k_M.mp4"
+              }
+            },
+            {
+              "id": 900115,
+              "key": "43ba1854-dc6b-4e35-9f6b-65a2f21f2719",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## More Complicated POST Requests",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845507,
+              "key": "797dd129-c585-4449-b997-035f482a3d4c",
+              "title": "CloudEng C2 L2 N02 Standing Up A Cloud Capable Server Locally Using Node Part 4 (NEW)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EEb1EFVQxms",
+                "china_cdn_id": "EEb1EFVQxms.mp4"
+              }
+            },
+            {
+              "id": 842809,
+              "key": "de923d40-7f04-46bc-970a-b5e0a9da1293",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Code Exercise\n\nRead the comments in the `server.ts` file that prompt you to create some requests on your own.  You can follow along in the solution video by viewing the solutions in `server.solution.ts`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842811,
+              "key": "bc72c7f0-1616-4d3c-8c9c-8fa6217be21d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Code walkthrough of Solution\n\nNote that after writing the code, save the file `server.ts`.  Then start the server by going to the command line, within the directory `udacity-c2-basic-server`, and typing `npm run dev`.  When you get to testing the endpoints using Postman, the server needs to be running in order for the requests to have a response.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842810,
+              "key": "fe7f58a9-3d20-4ca6-adaf-881ab8281b7b",
+              "title": "CloudEng C2 L2 N02 Standing Up A Cloud Capable Server Locally Using Node Part 5",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rRSFvfHJT6A",
+                "china_cdn_id": "rRSFvfHJT6A.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 842815,
+          "key": "801ba1e5-e483-4ac2-9e33-8d5d8fb9dcb7",
+          "title": "Verification Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "801ba1e5-e483-4ac2-9e33-8d5d8fb9dcb7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900128,
+              "key": "d164d862-0cc0-4fc3-92e2-395f9eb77d75",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Verification Testing",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842817,
+              "key": "21dc90d6-7ac3-4cbd-85b3-3491e1aa54ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The following video will cover units tests and integration tests.\n\n#### Unit Tests\nEnsure our atomic functions and methods perform their tasks correctly or fail appropriately. We'll be playing with [Mocha and Chai](https://mochajs.org/) as our unit testing framework. We'll be covering the basics so checkout the docs!\n\n#### Integration Tests\nIntegration Tests ensure every endpoint in our software package perform their tasks correctly, fails appropriately, and communicates with other systems in a predictable manner (so they integrate properly). We'll be playing with [Postman](https://www.getpostman.com) as our integration testing framework. We'll be covering the basics so checkout the docs!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842816,
+              "key": "2f513e86-01b0-4507-ade9-0a47312db3a9",
+              "title": "CloudEng C2 L2 N04 Verification Testing Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "njB2Xgme6Aw",
+                "china_cdn_id": "njB2Xgme6Aw.mp4"
+              }
+            },
+            {
+              "id": 900124,
+              "key": "a3caec33-9c46-413f-a27d-d2ab194ee717",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Defining Unit Tests with Mocha and Chai",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845510,
+              "key": "6ff9d51e-a7a2-4c64-bf81-21d2c89da7fb",
+              "title": "CloudEng C2 L2 N04 Verification Testing Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "njyFOMi0bW4",
+                "china_cdn_id": "njyFOMi0bW4.mp4"
+              }
+            },
+            {
+              "id": 900125,
+              "key": "de15607d-7ab9-44d5-9b69-d6fbcd8ceff7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Running Mocha and Chai Tests\nThe command `npm test` is used to run all files that match the pattern `*.tests.ts` and is defined in `package.json`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845511,
+              "key": "286a8549-1a95-409f-97c3-3a8152455769",
+              "title": "CloudEng C2 L2 N04 Verification Testing Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "poHAmXF-egw",
+                "china_cdn_id": "poHAmXF-egw.mp4"
+              }
+            },
+            {
+              "id": 900126,
+              "key": "6668bc42-cd83-4a63-85da-2918af76f734",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using Postman to Define Integration Tests",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845512,
+              "key": "7858f292-f722-40ba-aa12-4428900fbaf9",
+              "title": "CloudEng C2 L2 N04 Verification Testing Part 4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yWgBb_dpChs",
+                "china_cdn_id": "yWgBb_dpChs.mp4"
+              }
+            },
+            {
+              "id": 843102,
+              "key": "ff98f8ec-d247-4395-972e-1744e1b0b2af",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Choosing a Postman Environment\nWe've included a postman configuration file in the example repo. `*.postman_collection.js`. This can be imported into your local Postman.\n\nWhen Gabe is showing how to run all integration tests at once in Postman, and says \"we can choose our environment\", he is selecting the \"udacity-c2-basic-server\" folder.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900129,
+              "key": "b5c3721e-14e1-4a40-871c-1209503946e0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Try It Yourself",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900130,
+              "key": "e7950b10-c512-4618-a953-11a3f24740c6",
+              "title": "Try It Yourself",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e7950b10-c512-4618-a953-11a3f24740c6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Define Unit Tests using Mocha and Chai",
+                "Define Integration Tests Using Postman"
+              ],
+              "positive_feedback": "Great!",
+              "video_feedback": null,
+              "description": "Implement Tests Within Our Server Repo"
+            }
+          ]
+        },
+        {
+          "id": 842822,
+          "key": "60470fd6-0071-42f3-befe-586eaba1ec1d",
+          "title": "Using Git Effectively for the Cloud",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "60470fd6-0071-42f3-befe-586eaba1ec1d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900127,
+              "key": "5c510e72-3d1f-4eca-a757-296efdb68cfd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Using Git Effectively for the Cloud",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842823,
+              "key": "4d880f9c-d784-4fab-a11f-50e71b06686e",
+              "title": "CloudEng C2 L2 N05 Using Git Effectively For The Cloud Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iLGldKwcwqw",
+                "china_cdn_id": "iLGldKwcwqw.mp4"
+              }
+            },
+            {
+              "id": 842824,
+              "key": "664693a2-e4b8-4932-881c-7127cbf68119",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### PR = Pull Request\n\nIn the video, the acronym \"PR\" stands for \"pull request\".\n\n#### Fork the branch\nNote, to follow along with Gabe’s walkthrough, please fork the repository.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900131,
+              "key": "60c102f4-cdc2-4f24-b8d7-380f069e385f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Configuring GitHub to Follow Our Process",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845513,
+              "key": "44445f14-a8f6-4bb7-8d3d-4254ebc168bf",
+              "title": "CloudEng C2 L2 N05 Using Git Effectively For The Cloud Part 2 (Missing Git Tutorial)",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fudKoIuOetc",
+                "china_cdn_id": "fudKoIuOetc.mp4"
+              }
+            },
+            {
+              "id": 900132,
+              "key": "adcd0027-b792-4142-8c23-1e2158590935",
+              "title": "Why Bother with Advanced GitHub",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "adcd0027-b792-4142-8c23-1e2158590935",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some of the benefits of using a more advanced Git Process?",
+                "answers": [
+                  {
+                    "id": "a1563028174628",
+                    "text": "Better security through code review",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1563028204571",
+                    "text": "Smaller code package size",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1563028205096",
+                    "text": "Less confusion among developers on a team",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1563028205727",
+                    "text": "Fewer meetings among developers, executives, and designers",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1563028227600",
+                    "text": "Clear points to perform verification tests",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1563028251665",
+                    "text": "Better security through limited access",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 842825,
+          "key": "53f3196b-6a2b-429f-ad39-58bdafb2538c",
+          "title": "Using Packages",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "53f3196b-6a2b-429f-ad39-58bdafb2538c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900133,
+              "key": "c22a52ac-9bfa-486b-9ab6-504ce9705b49",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Using Packages\n*Packages* are libraries of code that are written by other developers and made available through open-source licenses for the development community to use freely.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842826,
+              "key": "b4cb8f28-5ec3-4804-885f-1735df4c4f32",
+              "title": "CloudEng C2 L2 N06 Using Packages",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "A03RTNt-7kY",
+                "china_cdn_id": "A03RTNt-7kY.mp4"
+              }
+            },
+            {
+              "id": 843107,
+              "key": "f0aea518-cf91-46c4-83d8-628c48a6da60",
+              "title": "Should you use the Serializer Package?",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f0aea518-cf91-46c4-83d8-628c48a6da60",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Sort some of the concepts we covered into Pros for why the library is a good idea and Cons for why we may want to find an alternative."
+                },
+                "concepts_label": "Pros",
+                "answers_label": "Cons",
+                "concepts": [
+                  {
+                    "text": "Last Publish 8 Years ago.",
+                    "correct_answer": {
+                      "id": "a1555429506923",
+                      "text": "Cons"
+                    }
+                  },
+                  {
+                    "text": "License isn't specified.",
+                    "correct_answer": {
+                      "id": "a1555429667875",
+                      "text": "Cons"
+                    }
+                  },
+                  {
+                    "text": "Documentation is clear and concise. ",
+                    "correct_answer": {
+                      "id": "a1555429685128",
+                      "text": "Pros"
+                    }
+                  },
+                  {
+                    "text": "No code coverage (unit or integration test) badge.",
+                    "correct_answer": {
+                      "id": "a1555429714149",
+                      "text": "Cons"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1555429667875",
+                    "text": "Cons"
+                  },
+                  {
+                    "id": "a1555429685128",
+                    "text": "Pros"
+                  },
+                  {
+                    "id": "a1555429506923",
+                    "text": "Cons"
+                  },
+                  {
+                    "id": "a1555429714149",
+                    "text": "Cons"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 842827,
+          "key": "e566a2db-d194-4d7b-82cf-a74297e7d098",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e566a2db-d194-4d7b-82cf-a74297e7d098",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900134,
+              "key": "470c82d8-e867-41f6-9c4f-65889b69e989",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Develop - Recap",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842828,
+              "key": "bffdad66-f3e8-4ee9-8de0-22d32c95cd28",
+              "title": "CloudEng C2 L2 N07 Lesson Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "glqooounvrA",
+                "china_cdn_id": "glqooounvrA.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

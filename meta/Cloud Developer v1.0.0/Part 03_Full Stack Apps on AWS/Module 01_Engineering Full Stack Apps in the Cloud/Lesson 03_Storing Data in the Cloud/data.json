@@ -1,0 +1,1010 @@
+{
+  "data": {
+    "lesson": {
+      "id": 842858,
+      "key": "a89390c2-0832-4de0-833f-2dcb929a665e",
+      "title": "Storing Data in the Cloud",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Set up and start using a cloud-based relational database for storing user data using AWS RDS. Implement a filestore for media like images using AWS S3.\n",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/a89390c2-0832-4de0-833f-2dcb929a665e/842858/1587047372252/Storing+Data+in+the+Cloud+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/a89390c2-0832-4de0-833f-2dcb929a665e/842858/1587047367091/Storing+Data+in+the+Cloud+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 842859,
+          "key": "5bcc7d3c-b5ff-4609-a672-9899f8e52e83",
+          "title": "Understanding Persistence",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5bcc7d3c-b5ff-4609-a672-9899f8e52e83",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900135,
+              "key": "910f0fd6-4629-4c0d-9a9a-ba5b5656dd39",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Understanding Persistence",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900137,
+              "key": "17a21bcc-935d-424c-b559-fb257af18952",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Difficulties of Persistent Data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842895,
+              "key": "aebd31f2-9a68-4009-898b-995620aafa3a",
+              "title": "CloudEng C2 L3 N01  Understanding Persistence",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FudZpoYYJBI",
+                "china_cdn_id": "FudZpoYYJBI.mp4"
+              }
+            },
+            {
+              "id": 844053,
+              "key": "b057b632-ce4b-48dd-9725-13f753d9cce5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**RAM (Random Access Memory)**: Data can be accessed quickly, but is erased once the server restarts.  It may be okay to use RAM when prototyping, and later replace it with a database.\n\n**Hard Drive Disk**: Data remains after server restarts, but is specific to that server (not shared across servers).\n\n**Race Condition**: When an application’s behavior is dependent on other uncontrollable events.  This is an issue with storing data on disks or RAM of multiple servers.\n\n**Relational Database**: can store at scale, improve search runtime, and maintain relationships between data fields. We recommend using a database for storing data.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 842860,
+          "key": "8e0c1530-39ca-4aff-b0a5-f329da49dec2",
+          "title": "Database Basics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8e0c1530-39ca-4aff-b0a5-f329da49dec2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900136,
+              "key": "b6c28085-4e97-4d2c-a096-d467a1b5b20c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Database Basics",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900138,
+              "key": "8811a428-ed99-453d-be5b-60e2e539429e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Indexing Our Data for Better Recall",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842896,
+              "key": "8b7afdc8-9097-4c02-8080-717b64aee7a7",
+              "title": "CloudEng C2 L3 N02  Database Basics Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "u1waVHPqR-Q",
+                "china_cdn_id": "u1waVHPqR-Q.mp4"
+              }
+            },
+            {
+              "id": 900139,
+              "key": "40936f9a-f980-4da6-b4a8-c410cd4b5169",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## NoSQL - Simple Key:Value Stores",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845514,
+              "key": "dbe542ee-385c-414e-ab46-1a8450383cbd",
+              "title": "CloudEng C2 L3 N02  Database Basics Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aGvQpNG-Zus",
+                "china_cdn_id": "aGvQpNG-Zus.mp4"
+              }
+            },
+            {
+              "id": 900140,
+              "key": "0adb1648-a151-4e9b-8457-ec14d63a5b6f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Relational Databases - Structured and Queryable Datastores ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845515,
+              "key": "8d375559-7fbb-43ef-8c72-7570e93dc329",
+              "title": "CloudEng C2 L3 N02  Database Basics Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WFk2Ng5fHig",
+                "china_cdn_id": "WFk2Ng5fHig.mp4"
+              }
+            },
+            {
+              "id": 844054,
+              "key": "3054ed93-9bca-4528-bc35-276c922b5c03",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**B-Tree**: a generalization of a binary search tree, which stores sorted data, but can have more than 2 child nodes.\n\n**Bloom Filters**: a data structure that is useful for determining if an item is probably in a data set, or definitely not in the data set.  Bloom filters don’t actually store the data themselves.\n\n**primary key and foreign key**: The primary consists of one or more column in a table that are unique to each record (each row).  A foreign key in a table contains the primary key of another table.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843138,
+              "key": "b46fce84-d7f7-4585-8173-44429d96439f",
+              "title": "SQL vs NoSQL",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b46fce84-d7f7-4585-8173-44429d96439f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Sort the characteristics into the correct database type"
+                },
+                "concepts_label": "Characteristic",
+                "answers_label": "Database Type",
+                "concepts": [
+                  {
+                    "text": "Models are heavily normalized (data isn't repeated)",
+                    "correct_answer": {
+                      "id": "a1555434044194",
+                      "text": "SQL"
+                    }
+                  },
+                  {
+                    "text": "Information is stored in tables",
+                    "correct_answer": {
+                      "id": "a1555434136691",
+                      "text": "SQL"
+                    }
+                  },
+                  {
+                    "text": "Data is flexible and fields can be added or removed at runtime",
+                    "correct_answer": {
+                      "id": "a1555434149471",
+                      "text": "NoSQL"
+                    }
+                  },
+                  {
+                    "text": "Easily Scaled Out",
+                    "correct_answer": {
+                      "id": "a1555434178844",
+                      "text": "NoSQL"
+                    }
+                  },
+                  {
+                    "text": "Easily Scaled Up",
+                    "correct_answer": {
+                      "id": "a1555434187271",
+                      "text": "SQL"
+                    }
+                  },
+                  {
+                    "text": "DynamoDB, MongoDB, Cassandra",
+                    "correct_answer": {
+                      "id": "a1555434192293",
+                      "text": "NoSQL"
+                    }
+                  },
+                  {
+                    "text": "AWS RDS, MySQL, PostgresSQL",
+                    "correct_answer": {
+                      "id": "a1555434225668",
+                      "text": "SQL"
+                    }
+                  },
+                  {
+                    "text": "Models must be defined upfront",
+                    "correct_answer": {
+                      "id": "a1555434235329",
+                      "text": "SQL"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1555434178844",
+                    "text": "NoSQL"
+                  },
+                  {
+                    "id": "a1555434149471",
+                    "text": "NoSQL"
+                  },
+                  {
+                    "id": "a1555434136691",
+                    "text": "SQL"
+                  },
+                  {
+                    "id": "a1555434187271",
+                    "text": "SQL"
+                  },
+                  {
+                    "id": "a1555434225668",
+                    "text": "SQL"
+                  },
+                  {
+                    "id": "a1555434235329",
+                    "text": "SQL"
+                  },
+                  {
+                    "id": "a1555434192293",
+                    "text": "NoSQL"
+                  },
+                  {
+                    "id": "a1555434044194",
+                    "text": "SQL"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 842861,
+          "key": "001c5798-6c84-448e-ad63-9281f0e2fabe",
+          "title": "Provisioning a Cloud Database",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "001c5798-6c84-448e-ad63-9281f0e2fabe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 843110,
+              "key": "a2237e5f-2725-4ea0-bea9-4c82577db30e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Follow Along!\nWe'll be using this provisioned cloud resource within our project!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900141,
+              "key": "95cafd91-d4a6-469e-a487-abbd28b8ce38",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Configuring Amazon Web Services' Relational Database Service",
+              "instructor_notes": ""
+            },
+            {
+              "id": 842897,
+              "key": "2ebc8540-aa17-4c3e-ae5a-4fca3996a37a",
+              "title": "CloudEng C2 L3 N03 Provisioning A Cloud Database Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2ydzbZjoB-Q",
+                "china_cdn_id": "2ydzbZjoB-Q.mp4"
+              }
+            },
+            {
+              "id": 900142,
+              "key": "321cde67-f18b-49fe-b987-b8b13fed3a1b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> _NOTE_: Gabe misspoke and mentioned **Postman** which we are using for HTTP querying when he meant **Postbird** which is used to interface directly with the Postgres database.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845518,
+              "key": "9615ac8b-fbec-46ff-b9f7-0cd8c63503fa",
+              "title": "CloudEng C2 L3 N03 Provisioning A Cloud Database Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JEh35M7LGbo",
+                "china_cdn_id": "JEh35M7LGbo.mp4"
+              }
+            },
+            {
+              "id": 942930,
+              "key": "03aa8796-e6ea-4008-803e-0040c8634860",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Allowing Public Traffic to RDS",
+              "instructor_notes": ""
+            },
+            {
+              "id": 942931,
+              "key": "9f42e721-da10-4f2f-a314-25e4edd3921b",
+              "title": "CloudENG C2 L4 N07.4 NEW DEPLOY OUR SERVER PART 4 ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4PnjHumSNA0",
+                "china_cdn_id": "4PnjHumSNA0.mp4"
+              }
+            },
+            {
+              "id": 843112,
+              "key": "69552228-8153-4b80-8c5a-d82e9630eb88",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Interfacing with our Database using Postbird",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900143,
+              "key": "44461098-e5e1-4a8a-9af0-84a926d27154",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Installing Postbird\nDownload and install Postbird by following the following README instructions:\nhttps://github.com/Paxa/postbird",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900144,
+              "key": "1f60dc17-8a60-4b68-9354-88c8a8a786bf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Connecting to RDS with Postbird",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843033,
+              "key": "ca1e5135-334c-4855-bf9f-e9faa6cfb84f",
+              "title": "CloudEng C2 L3 N03 Provisioning A Cloud Database -Database Using Postbird Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SFoI65eGENk",
+                "china_cdn_id": "SFoI65eGENk.mp4"
+              }
+            },
+            {
+              "id": 900145,
+              "key": "82b538c2-7b57-4155-b6c7-1f98952ed62e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating Tables in RDS with Postbird",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845516,
+              "key": "e26c8eff-592a-4efa-b6a3-67cc69b8335b",
+              "title": "CloudEng C2 L3 N03 Provisioning A Cloud Database - Database Using Postbird Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9vus2aEFzNs",
+                "china_cdn_id": "9vus2aEFzNs.mp4"
+              }
+            },
+            {
+              "id": 900146,
+              "key": "20eca148-b49e-4eb3-80e6-e3621b5e1e06",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Making SQL Commands with Postbird",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845517,
+              "key": "41fd8119-3651-4cfe-a56e-fea66153be8d",
+              "title": "CloudEng C2 L3 N03 Provisioning A Cloud Database - Database Using Postbird Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WFPW_dSq48w",
+                "china_cdn_id": "WFPW_dSq48w.mp4"
+              }
+            },
+            {
+              "id": 843139,
+              "key": "b1590e9b-be84-4004-b38d-7f848b1c2c32",
+              "title": "Setting Up Our Cloud Database",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b1590e9b-be84-4004-b38d-7f848b1c2c32",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a new RDS using the AWS Console and copy the endpoint",
+                "Issue some basic Queries to the new RDS endpoint using Postbird"
+              ],
+              "positive_feedback": "Great, we'll be using this resource as we continue learning!",
+              "video_feedback": null,
+              "description": "Before continuing, follow along to provision an RDS on AWS"
+            },
+            {
+              "id": 900147,
+              "key": "e2ef32cf-d3ef-4f1d-a99a-d5d0cc83af8c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## SQL Walkthrough",
+              "instructor_notes": ""
+            },
+            {
+              "id": 860221,
+              "key": "d0868b83-3697-44ca-91dd-4b72098cfed2",
+              "title": "CloudEng C2 L3 N05 Creating An S3 Filestore Bucket Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5PZIuHBC7wY",
+                "china_cdn_id": "5PZIuHBC7wY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 842862,
+          "key": "b8c6e1f2-8ae7-4dae-8ae7-921640c91cc8",
+          "title": "Filestore Basics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b8c6e1f2-8ae7-4dae-8ae7-921640c91cc8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 843114,
+              "key": "5e5dafc6-c060-4661-9311-797b354e4487",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Filestore Basics\n## Benefits of Cloud Filestores",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843035,
+              "key": "32c64924-88b9-4b6c-a9ba-f688fe942176",
+              "title": "CloudEng C2 L3 N04 Filestore Basics Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Gs0adcq6WF4",
+                "china_cdn_id": "Gs0adcq6WF4.mp4"
+              }
+            },
+            {
+              "id": 900148,
+              "key": "9a4e196b-ea66-4e3e-9050-bfe7d2393d36",
+              "title": "Where to Store Different Types of Data",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9a4e196b-ea66-4e3e-9050-bfe7d2393d36",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the different forms of data with the most logical persistent storage method"
+                },
+                "concepts_label": "Form of Data",
+                "answers_label": "Storage Method",
+                "concepts": [
+                  {
+                    "text": "Images",
+                    "correct_answer": {
+                      "id": "a1563029319272",
+                      "text": "Filestore"
+                    }
+                  },
+                  {
+                    "text": "Username and user information",
+                    "correct_answer": {
+                      "id": "a1563029406712",
+                      "text": "Database"
+                    }
+                  },
+                  {
+                    "text": "Document",
+                    "correct_answer": {
+                      "id": "a1563029407516",
+                      "text": "Filestore"
+                    }
+                  },
+                  {
+                    "text": "Address book and business types",
+                    "correct_answer": {
+                      "id": "a1563029408201",
+                      "text": "Database"
+                    }
+                  },
+                  {
+                    "text": "Video",
+                    "correct_answer": {
+                      "id": "a1563029437463",
+                      "text": "Filestore"
+                    }
+                  },
+                  {
+                    "text": "Video metadata including title, keywords, artist",
+                    "correct_answer": {
+                      "id": "a1563029441116",
+                      "text": "Database"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1563029406712",
+                    "text": "Database"
+                  },
+                  {
+                    "id": "a1563029437463",
+                    "text": "Filestore"
+                  },
+                  {
+                    "id": "a1563029441116",
+                    "text": "Database"
+                  },
+                  {
+                    "id": "a1563029319272",
+                    "text": "Filestore"
+                  },
+                  {
+                    "id": "a1563029407516",
+                    "text": "Filestore"
+                  },
+                  {
+                    "id": "a1563029408201",
+                    "text": "Database"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 843034,
+              "key": "b5e41767-1ecd-4339-87ef-939df8c2810c",
+              "title": "CloudEng C2 L3 N04 Filestore Basics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FOkDh5p6Pok",
+                "china_cdn_id": "FOkDh5p6Pok.mp4"
+              }
+            },
+            {
+              "id": 844056,
+              "key": "1e96a64d-8271-4739-b17f-a2648eb77853",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* File stores allow for archiving data.  In AWS, the file store is called S3, and the archive resource is called “glacier”.\n* Content Delivery Network (CDN): are a network of proxy servers that are placed closer to end users to deliver data and compute.  CDNs reduce latency for end users.\n* SignedURLs allow clients to send and receive data by directly communicating with the file store.  This saves the server from using its bandwidth to serve as the intermediary that transmits data to and from the client.  This is faster for clients as well.\n* Buckets: a simple directory-like system in which to store data.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 842863,
+          "key": "a04068a9-6267-4c37-9eeb-a413949a48f2",
+          "title": "Creating an S3 Filestore Bucket",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a04068a9-6267-4c37-9eeb-a413949a48f2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900149,
+              "key": "0adf1aca-26b2-4cfe-a92c-893dff560f2b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Creating an S3 Filestore Bucket in AWS",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843036,
+              "key": "62ce116d-1061-43ae-8435-ab17e303334b",
+              "title": "CloudEng C2 L3 N05 Creating An S3 Filestore Bucket Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_8C3CiW3nFQ",
+                "china_cdn_id": "_8C3CiW3nFQ.mp4"
+              }
+            },
+            {
+              "id": 942929,
+              "key": "2232e326-c31d-4be0-a3ba-a59606d00721",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### The AWS Public Access UI has been Updated\nAmazon Web Services may update their site's design from time to time. We've included a graphic of the new UI with the same level of public access (block all). What's important is the concept that you want to ensure your bucket's access is limited.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 942928,
+              "key": "88107aa7-0724-4570-97ec-5604edfaa567",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d8bdaeb_screen-shot-2019-09-25-at-5.23.32-pm/screen-shot-2019-09-25-at-5.23.32-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/88107aa7-0724-4570-97ec-5604edfaa567",
+              "caption": "",
+              "alt": "",
+              "width": 1100,
+              "height": 800,
+              "instructor_notes": null
+            },
+            {
+              "id": 844057,
+              "key": "c4a54f00-bde0-4181-890b-ff7ed34ca6c7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Notes\n\n* Create “dev” resources:  Use the “dev” set of infrastructure (set of servers, filestores, databases) for development, and a separate set of infrastructure for production.\n* AES 256: Advanced Encryption Standard with a 256-bit key.  This is a popular encryption standard.\n* CORS: Cross Origin Resource Sharing: defines how a client can interact with a resource, and what the client can and cannot do with that resource.  Setting the CORS policy of our S3 bucket allows our client to communicate with the S3 bucket using the SignedURL pattern.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843141,
+              "key": "92d177c0-b94f-4b29-9528-8b0a3e61925c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Bucket CORS Policy\nYou'll need this policy to create a bucket where we can use the SignedURL pattern.\n\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<CORSConfiguration xmlns=\"http://s3.amazonaws.com/doc/2006-03-01/\">\n<CORSRule>\n    <AllowedOrigin>*</AllowedOrigin>\n    <AllowedMethod>POST</AllowedMethod>\n    <AllowedMethod>GET</AllowedMethod>\n    <AllowedMethod>PUT</AllowedMethod>\n    <AllowedMethod>DELETE</AllowedMethod>\n    <AllowedMethod>HEAD</AllowedMethod>\n    <AllowedHeader>*</AllowedHeader>\n</CORSRule>\n</CORSConfiguration>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843142,
+              "key": "09edf5ff-9a56-4071-8252-e1ac52842ea2",
+              "title": "Creating an S3 Bucket on AWS",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "09edf5ff-9a56-4071-8252-e1ac52842ea2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a new bucket",
+                "Ensure the CORS policy is pasted into the bucket configuration"
+              ],
+              "positive_feedback": "Great, we'll be using this bucket as we build our systems",
+              "video_feedback": null,
+              "description": "Before continuing, follow along to provision an S3 bucket on AWS"
+            }
+          ]
+        },
+        {
+          "id": 842864,
+          "key": "ed9397f3-2552-40d3-b431-8ac28bc877c0",
+          "title": "Understanding Secrets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ed9397f3-2552-40d3-b431-8ac28bc877c0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 843120,
+              "key": "13dbeedd-2849-4e38-8f49-34b085534899",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Understanding Secrets\n## What are permissions?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843038,
+              "key": "9a26b51c-5a48-4d8e-b57d-3749f1b135c6",
+              "title": "CloudEng C2 L3 N06 Understanding Secrets-What Are Permissions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LqzoFH72Owk",
+                "china_cdn_id": "LqzoFH72Owk.mp4"
+              }
+            },
+            {
+              "id": 844058,
+              "key": "7771ae54-4d25-46d8-a65c-5015a9064852",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* HIPPA: HIPAA (Health Insurance Portability and Accountability Act) is a law in the U.S that requires data privacy and security for medical information.\n* Use environment variables to store your username and password, to avoid hard-coding username and password information in your code.\n* Avoid committing your passwords to git.  Use .gitignore to define files that you do not want to commit to git.\n* IAM user role: an IAM role can give a user a set of permissions to access one or more services.\n* IAM service role: an IAM role gives a service a set of permissions to access one or more services.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843121,
+              "key": "1f02de85-0505-4054-aa7c-8b47ce8b355a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# User IAM Profiles on AWS",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843039,
+              "key": "3bb76b87-e05d-487c-9894-ba4cbd31139e",
+              "title": "CloudEng C2 L3 N06 Understanding Secrets- User IAM Profiles On AWS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Aj5-83l6HMA",
+                "china_cdn_id": "Aj5-83l6HMA.mp4"
+              }
+            },
+            {
+              "id": 844059,
+              "key": "76c49c46-5012-4bcf-8eb2-5a257543ad05",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* It’s beneficial to create a role that contains a policy group (a set of permissions), rather than to assign individual permissions to a specific user.  Imagine if a user leaves the company and a new hire takes their place.  Instead of re-assigning all the permissions needed for their job, we can assign the existing IAM role to that new employee.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843124,
+              "key": "206b9bd8-b4a2-498f-8178-7e10a11d0494",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Creating User Profiles Using the AWS Console",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843040,
+              "key": "e50d3b31-0298-45ed-9821-5bad9167f7dc",
+              "title": "CloudEng C2 L3 N06 Understanding Secrets-Creating User Profiles Using The AWS Console",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DJ0wYhp_-cc",
+                "china_cdn_id": "DJ0wYhp_-cc.mp4"
+              }
+            },
+            {
+              "id": 951336,
+              "key": "5dc4d3cb-1bb6-4525-9859-8a5bfa3027c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### New Features in AWS - Batch Operations\nShortly after recording this segment, AWS released new ways of managing large-scale batch operations on Amazon S3 Objects. These are operations that can move, transform, or utilize the information within many file objects in your S3 bucket. You can read more about batch operations in the [AWS S3 Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops.html) \n\nWhen creating a service profile and selecting all S3 actions, there will be a new field in the resources section to limit which jobs can be invoked on the bucket (graphic below). Your options are to:\n- select any so that this bucket has the right to call any job\n- create a job and reference it by its ARN\n- limiting the Policy actions (not selecting actions pertaining to jobs (i.e. CreateJob, DecribeJob, ListJobs).\n\nAWS is a constantly evolving tool and you'll always be learning the latest features that make it such a powerful system.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 951335,
+              "key": "95b44763-d17c-4679-8e5d-301017df9375",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9e08ea_screen-shot-2019-10-09-at-12.14.49-pm/screen-shot-2019-10-09-at-12.14.49-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/95b44763-d17c-4679-8e5d-301017df9375",
+              "caption": "AWS S3 IAM Policy - New Resources Job Requirement",
+              "alt": "AWS S3 IAM Policy - New Resources Job Requirement",
+              "width": 849,
+              "height": 268,
+              "instructor_notes": null
+            },
+            {
+              "id": 844060,
+              "key": "9ba10f9d-995b-4c8e-8de5-312f2b6d5858",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> TIP: Don’t use your root username for daily tasks, to limit security risks.  Consider using a separate user role for doing development and for working on the production infrastructure.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843123,
+              "key": "dfffe614-39ce-40aa-b1ac-a773fa843cfe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Installing AWS User IAM Profiles Locally",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843041,
+              "key": "be0c5031-3377-4be2-8e29-7abbc35ce0e1",
+              "title": "CloudEng C2 L3 N06 Understanding Secrets-Installing AWS User IAM Profiles Locally",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "p-VTF2rewsk",
+                "china_cdn_id": "p-VTF2rewsk.mp4"
+              }
+            },
+            {
+              "id": 845966,
+              "key": "f5bb8789-8bed-48eb-b970-f7f4b335d47b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Clarification on AWS Configuration Files\nIn this video, we installed our Amazon Web Services credentials using the `aws configure` terminal command. This creates two new files on your local computer to save credentials and configurations. \n\nEach of these files can contain settings for multiple \"profiles\" which are defined by using hard brackets containing the profile name preceding the variables (i.e. `[profile1]`). For example, if you're working on two or three systems, you will need installed credentials for each. You can modify these files in your text editor of choice to add and edit profiles and select the appropriate profile at runtime of your application. Additional information on these files can be found in the [AWS Docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html). \n\nBelow are some sample file contents with multiple profiles:\n\n\n*~/.aws/credentials*\n```bash\n[default]\naws_access_key_id=########################\naws_secret_access_key=########################\n\n[profile1]\naws_access_key_id=########################\naws_secret_access_key=########################\n\n[profile2]\naws_access_key_id=########################\naws_secret_access_key=########################\n```\n\n*~/.aws/config*\n\n```bash\n[default]\nregion=us-east-1\n\n[profile1]\nregion=us-west-2\n\n[profile2]\nregion=us-east-2\n```\n\n\n> **Mac and Linux Users** these files are located in a hidden .aws directory in your home directory: `~/.aws/`\n\n> **Windows Users** these files are located in C:\\Users\\ USERNAME \\.aws\\config ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843125,
+              "key": "a787e0ca-5c6a-4be6-a9b6-bcac2c04c656",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Creating IAM Service Roles",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843042,
+              "key": "da37c268-48fc-4472-84fa-6eddcbe6a867",
+              "title": "CloudEng C2 L3 N06 Understanding Secrets-Creating IAM Service Roles",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rG0FQg9jzGY",
+                "china_cdn_id": "rG0FQg9jzGY.mp4"
+              }
+            },
+            {
+              "id": 843127,
+              "key": "f1d565a8-a7ea-4650-abb9-44ac72326187",
+              "title": "Setting up IAM",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f1d565a8-a7ea-4650-abb9-44ac72326187",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a new IAM User with limited S3 access to our bucket",
+                "Install the IAM user credentials locally",
+                "Create a new IAM Service Role with limited S3 access to our bucket"
+              ],
+              "positive_feedback": "Great! Now you securely can access our cloud resources!",
+              "video_feedback": null,
+              "description": "Before continuing, make sure you have your AWS user and service role set up!"
+            }
+          ]
+        },
+        {
+          "id": 842865,
+          "key": "dd084c32-86ed-42b4-a4be-afd0d24bc9cd",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd084c32-86ed-42b4-a4be-afd0d24bc9cd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900150,
+              "key": "c354e796-0e29-40a4-a96a-6b08a7dd4e2c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Storing Data Recap",
+              "instructor_notes": ""
+            },
+            {
+              "id": 843043,
+              "key": "aac9d713-88bc-4849-bf43-6f28c526ae34",
+              "title": "CloudEng C2 L3 N07 Lesson Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YC9a9LkJmbQ",
+                "china_cdn_id": "YC9a9LkJmbQ.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

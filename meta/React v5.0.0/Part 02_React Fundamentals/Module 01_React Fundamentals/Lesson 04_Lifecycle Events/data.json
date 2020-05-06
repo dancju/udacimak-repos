@@ -1,0 +1,402 @@
+{
+  "data": {
+    "lesson": {
+      "id": 668167,
+      "key": "a34ba863-12fd-4c7b-8062-a9881ebdb763",
+      "title": "Lifecycle Events",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You'll learn where to fetch remote data in a React application. You'll also learn about the different lifecycle hooks and how to use them.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/a34ba863-12fd-4c7b-8062-a9881ebdb763/668167/1544026816988/Lifecycle+Events+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/a34ba863-12fd-4c7b-8062-a9881ebdb763/668167/1544026814555/Lifecycle+Events+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 573055,
+          "key": "f8a81754-f6cd-4ddf-bb1c-05c9a75d62ee",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f8a81754-f6cd-4ddf-bb1c-05c9a75d62ee",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 770531,
+              "key": "aa27a459-a033-4b61-a7d3-3b7b36f40573",
+              "title": "L4 23 Conceptualize The Lifecycle Of A Component1 V2 V4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mKcaVQEv38Q",
+                "china_cdn_id": "mKcaVQEv38Q.mp4"
+              }
+            },
+            {
+              "id": 573053,
+              "key": "d28ee32a-26f9-4d0f-9856-c7cd09678fe0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## `render()` Is For Rendering, Only!\n\nI just mentioned this in the video, but I want to stress it again - **data should not be fetched in the `render` method**! A component's `render()` method should _only_ be used to render that component; it should not make any HTTP requests, fetch data that's used to display the content, or alter the DOM. The `render()` method also shouldn't call any other functions that do any of these things, either. \n\nSo if `render()` is only used for displaying content, we put the code that _should_ handle things like Ajax requests in what React calls **lifecycle events**.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573054,
+              "key": "568dde30-8d40-4d69-8dba-4bfcf5d65acb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lifecycle Events\n\nLifecycle events are specially named methods in a component. These methods are automatically bound to the component instance, and React will call these methods naturally at certain times during the life of a component. There are a number of different lifecycle events, but here are the most commonly used ones.\n\n* `componentDidMount()`\n \n    > invoked immediately _after_ the component is _inserted_ into the DOM\n \n* `componentWillUnmount()`\n \n    > invoked immediately _before_ a component is _removed_ from the DOM\n \n* `getDerivedStateFromProps()`\n \n    > invoked after a component is instantiated as well as when it receives brand new props\n\nTo use one of these, you'd just create a method in your component with the name and React will call it. It's an easy way to hook into different parts of the lifecycle of React components.\n\nThe lifecycle event that we'll be looking at (and will be using a lot in our app!) is the `componentDidMount()` lifecycle event.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 718924,
+              "key": "66fc4007-306b-435b-998e-a1e047765dfb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You'll sometimes see `shouldComponentUpdate()` in React apps as well. It returns `true` by default. This means that whenever a component's state (or its parent's state) is updated, the component re-renders. \n\nThe [React documentation](https://reactjs.org/docs/react-component.html#shouldcomponentupdate) provides the following guidance for using this lifecycle event:\n\n>* The default behavior is to re-render on every state change, and in the vast majority of cases you should rely on the default behavior.\n>* Do not rely on it to “prevent” a rendering, as this can lead to bugs. \n>* Consider using the built-in `PureComponent` instead of writing `shouldComponentUpdate()` by hand. \n>* We do not recommend doing deep equality checks or using `JSON.stringify()` in `shouldComponentUpdate()`. It is very inefficient and will harm performance.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573070,
+          "key": "976a00e7-de35-4ccb-a792-a8e66cfbde88",
+          "title": "componentDidMount Lifecycle Event",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "976a00e7-de35-4ccb-a792-a8e66cfbde88",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578057,
+              "key": "79fffc08-08c1-40f1-ab67-c743cf71c2dc",
+              "title": "Use ComponentDidMount",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vS81IukLbvg",
+                "china_cdn_id": "vS81IukLbvg.mp4"
+              }
+            },
+            {
+              "id": 573057,
+              "key": "a3cb393c-77e7-4d86-a931-741ee45dd478",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How `componentDidMount()` Works\n \nIf you remember from the previous section, `componentDidMount()` is the lifecycle hook that is run right after the component is added to the DOM and should be used if you're fetching remote data or doing an Ajax request. Here's what the React docs have to say about it:\n \n> `componentDidMount()` is invoked immediately after a component is mounted. Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request. Setting state in this method will trigger a re-rendering.\n \nLet's take a look at an example User component:\n \n```js\nimport React, { Component } from 'react';\nimport fetchUser from '../utils/UserAPI';\n\nclass User extends Component {\n constructor(props) {\n   super(props);\n\n   this.state = {\n     name: '',\n     age: ''\n   };\n }\n\n componentDidMount() {\n   fetchUser().then((user) => this.setState({\n     name: user.name,\n     age: user.age\n   }));\n }\n\n render() {\n   return (\n     <div>\n       <p>Name: {this.state.name}</p>\n       <p>Age: {this.state.age}</p>\n     </div>\n   );\n   }\n}\n\nexport default User;\n\n```\n \nYou'll notice that this component has a `componentDidMount()` lifecycle event. This component seems pretty straightforward, but let's walk through the order of how it works:\n \n1. The `render()` method is called which updates the page with a `<div>` that has one paragraph for the name and one paragraph for the age. What's important to realize is that `this.state.name` and `this.state.age` are empty strings (at first), so the name and age _don't actually display_\n* Once the component has been mounted, the `componentDidMount()` lifecycle event occurs\n - The `fetchUser` request from the `UserAPI` is run which sends a request to the user database\n - When the data is returned, `setState()` is called and updates the `name` and `age` properties\n* Since the state has changed, `render()` gets called again. This re-renders the page, but now `this.state.name` and `this.state.age` have values\n \nLet's use `componentDidMount()` to fetch real users from a server in our Contacts app!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573058,
+              "key": "c0ed0082-4de8-4ea5-830e-23309b5cd649",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️ Required API File ⚠️ \n>\n> At the beginning of the program, we gave you the option to clone our starter project or to start from scratch using [create-react-app](https://github.com/facebookincubator/create-react-app). If you used create-react-app to build your project, then you'll need [the ContactsAPI file](https://github.com/udacity/reactnd-contacts-complete/blob/master/src/utils/ContactsAPI.js) for the following video.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573532,
+              "key": "0b90bcd9-56e2-4e5c-ae95-fb22464d2ca8",
+              "title": "Use API To Fetch Remote Contacts",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "P34OXhOl_vk",
+                "china_cdn_id": "P34OXhOl_vk.mp4"
+              }
+            },
+            {
+              "id": 573060,
+              "key": "01afc18c-f6d8-404b-a0b0-fcea3a21cfe9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/30cd6500005c77fd61163eb896e26a90ee1f5c3f)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573061,
+              "key": "4ade5ed8-93f2-4ed5-84c3-d5883c9d5e0d",
+              "title": "Where are Ajax requests made?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4ade5ed8-93f2-4ed5-84c3-d5883c9d5e0d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In which lifecycle method should you make Ajax/API requests?",
+                "answers": [
+                  {
+                    "id": "a1522196886222",
+                    "text": "componentDidMount",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522196887750",
+                    "text": "componentWillUnmount",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522196888310",
+                    "text": "render",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522196888724",
+                    "text": "shouldComponentUpdate",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573062,
+              "key": "279b4ba7-fda1-4150-b34d-dd1cf0b644c3",
+              "title": "Requests in `render()`?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "279b4ba7-fda1-4150-b34d-dd1cf0b644c3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Why shouldn't you make Ajax requests in the render method? Select all that apply:",
+                "answers": [
+                  {
+                    "id": "a1522196918657",
+                    "text": "`render()` method shouldn't be concerned with much more than just returning UI",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522196919783",
+                    "text": "`render()` doesn't support normal JavaScript",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522196920271",
+                    "text": "You don't have complete control over when the `render()` method will be invoked",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522196920671",
+                    "text": "You can't invoke functions inside of the `render()` method",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573063,
+              "key": "155d66ad-e28e-4ee7-8692-38f5c051e984",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "155d66ad-e28e-4ee7-8692-38f5c051e984",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have set `this.state.contacts` to an empty array in `App.js`",
+                "I have imported the `ContactsAPI.js` file in `App.js`",
+                "I have added the `componentDidMount` lifecycle event to `App.js`"
+              ],
+              "positive_feedback": "Awesome work! Using `componentDidMount` is actually pretty easy, isn't it?",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 573064,
+              "key": "77664959-8d6d-43bc-acd8-5afb363e466d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Remove Contacts\n\nWith what we have so far, we're fetching all users from the Contacts API and adding them to `this.state.contacts`. Pretty good so far. What's missing, though, is the removing feature. Currently, when we remove a contact, it gets removed from `this.state.contacts`, but it still exists in the backend database. \n\nLet's use the Contacts API's `remove()` method to update the backend.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573535,
+              "key": "07bb9e2c-e0e3-4885-bcde-76b83d668827",
+              "title": "Remove Contacts",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hVQR6shyMAE",
+                "china_cdn_id": "hVQR6shyMAE.mp4"
+              }
+            },
+            {
+              "id": 573066,
+              "key": "14665cde-8063-4655-bf30-a70aa9cbea60",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/c85cb59d936eb78c7aef7136d2a617eb5fbbd6ad)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573067,
+              "key": "1bac0573-5a67-46b2-85db-2c4656769e0e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## Lost All Your Contacts?\n\n> Now that we're syncing our contacts back to the server, any delete commands will remove all of them. Since we aren't able to add new ones yet, you'll be kinda stuck if you delete all of them.\n\n> To get the default list of contacts back, just restart your _backend_ server. That's the backend server, _not_ the Contacts app, itself.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573068,
+              "key": "59ab3c75-4a5c-4816-be7f-4030d794735b",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "59ab3c75-4a5c-4816-be7f-4030d794735b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "My code makes a call to the Contacts API's `.remove()` method from inside `removeContact()` in `App.js`"
+              ],
+              "positive_feedback": "Great work following along here!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 573069,
+              "key": "3e92b6ba-de0a-45cf-8008-8e19f0273a16",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## `componentDidMount()` Recap\n\n`componentDidMount()` is one of a number of lifecycle events that React offers. `componentDidMount()` gets called after the component is \"mounted\" (which means after it is rendered). If you need to dynamically fetch data or run an Ajax request, you should do it in `componentDidMount()`.\n\n### Further Research\n\n* [`componentDidMount()`](https://facebook.github.io/react/docs/react-component.html#componentdidmount) from the React Docs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573074,
+          "key": "99997308-de29-4709-be62-3b7c38b780c3",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "99997308-de29-4709-be62-3b7c38b780c3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 573071,
+              "key": "72473c70-e75c-4e10-b212-f0b28b0e44bf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To recap, lifecycle events are special methods that React provides that allow us to hook into different points in a component's life to run some code. Now, there are a number of different lifecycle events. They will run at different points, but we can break them down into three distinct categories:\n \n### Adding to the DOM\nThe following lifecycle events will be called in order when a component is being added to the DOM:\n\n1. `constructor()`\n* `getDerivedStateFromProps()`\n* `render()`\n* `componentDidMount()`\n \n>⚠️componentWillMount() has been deprecated. ⚠️\n>\n>As of React 16.3, `componentWillMount()` has been replaced with `UNSAFE_componentWillMount()`. Only `UNSAFE_componentWillMount()` will work starting with React 17.0. `UNSAFE_componentWillMount()` is now considered to be a legacy method and should not be used in new code.\n\n\n### Re-rendering\nThe following lifecycle events will be called in order when a component is re-rendered to the DOM:\n\n1. `getDerivedStateFromProps()`\n* `shouldComponentUpdate()`\n* `render()`\n* `getSnapshotBeforeUpdate()`[(specific use cases)](https://reactjs.org/docs/react-component.html#getsnapshotbeforeupdate)\n* `componentDidUpdate()`\n\n> ⚠️`componentWillReceiveProps()` and `componentWillUpdate()` have been deprecated. ⚠️\n>\n> As of React 16.3, they have been replaced with `UNSAFE_componentWillUpdate()` and `UNSAFE_componentWillReceiveProps()`. Only `UNSAFE_componentWillUpdate()` and `UNSAFE_componentWillReceiveProps()` will work starting with React 17.0. `UNSAFE_componentWillUpdate()` and `UNSAFE_componentWillReceiveProps()` are now considered to be  legacy methods and should not be used in new code.\n\n### Removing from the DOM\nThis lifecycle event is called when a component is being removed from the DOM:\n* `componentWillUnmount()`\n \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573073,
+              "key": "87ad8a30-df6b-4e5a-8090-f90b110258a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Research\n\n* [`componentDidMount()`](https://facebook.github.io/react/docs/react-component.html#componentdidmount) from the React Docs\n* [`componentWillUnmount()`](https://facebook.github.io/react/docs/react-component.html#componentwillunmount) from the React Docs\n* [Component Lifecycles](https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle) from the React Docs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633282,
+              "key": "9e98f8b6-ebbc-4f76-a306-5ab3e2e0804b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Lesson Challenge\n\nAnswer the following questions and share your answers with your classmates. \n\n1) Describe what the code in the `App.js` file in the workspace below will render on the screen and explain why.\n\n2) Describe a React anti-pattern that's used in the code. \n\n3) Modify the Normal3 Component in order to keep it from re-rendering.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 633478,
+              "key": "5588820a-eddc-45b7-9cc2-c0abcdf418b3",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view9177cacc",
+              "pool_id": "webterminal",
+              "view_id": "9177cacc-e0a1-49f8-80b7-a0919b048a52",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/src/App.js"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,779 @@
+{
+  "data": {
+    "lesson": {
+      "id": 571914,
+      "key": "4f61ed64-9ea0-4965-984b-fe645b42a88b",
+      "title": "react-redux",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You’ll learn to leverage the react-redux bindings in order to leverage the benefits of a UI library like React and a state management library like Redux.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/4f61ed64-9ea0-4965-984b-fe645b42a88b/571914/1544039985096/react-redux+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/4f61ed64-9ea0-4965-984b-fe645b42a88b/571914/1544039977749/react-redux+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 578126,
+          "key": "f29963cd-72fa-44a5-b85f-1732cface85d",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f29963cd-72fa-44a5-b85f-1732cface85d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578127,
+              "key": "326de461-1d6a-4f34-ae38-cecc3a457623",
+              "title": "react-redux Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0ioxfKg5yM8",
+                "china_cdn_id": "0ioxfKg5yM8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 571887,
+          "key": "fe3d02b7-1bc6-495f-8f4c-c9fa83336bbe",
+          "title": "Connect & Provider",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fe3d02b7-1bc6-495f-8f4c-c9fa83336bbe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572468,
+              "key": "0e9c9c26-1348-45f5-bbd2-f53ae93d1a93",
+              "title": "Downsides Of React And Redux",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6Kfj_tRMJsI",
+                "china_cdn_id": "6Kfj_tRMJsI.mp4"
+              }
+            },
+            {
+              "id": 571866,
+              "key": "1e83d069-16d8-4036-8d32-d116ad3758f0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Getting the Store to Each Component\n\nThe first thing we want to do is improve how each component gets access to the store. If it's tough for a component to access the store, whether it's to get the state, listen to the state, or update the state, nothing else we do will matter. Right now we’re just passing the store down as a prop. It works fine enough in our small app, but what if we had a larger app with more layers to it? Passing the store down ten components deep wouldn't scale very well. One of the main points of having a store is to avoid passing props down through a bunch of components. \n\nOne reason React (talking about _React_ for a moment, not _Redux_) is so popular is because it's very efficient. It's efficient in keeping state localized to a component, it's efficient in keeping UI confined to a component, and it's efficient in knowing when something has changed and re-rendering just that component. So the second thing we need need to figure out is how to re-render components only if the data they depend on (from the store) changes. Right now, we're solving this by calling `getState` at the root of our application and then passing the data down. Again, this won't scale well as our app grows.\n\nIf we can find a nice abstraction for getting the store to any component that needs it and only re-rendering components when the exact data they need change, we'll improve every aspect of our current codebase.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572713,
+              "key": "74b0eed5-f6b0-4fe7-9850-1ccd6f04ab0a",
+              "title": "What Is Context",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4jT0ws2UECE",
+                "china_cdn_id": "4jT0ws2UECE.mp4"
+              }
+            },
+            {
+              "id": 572715,
+              "key": "c0dc18e9-6ffe-404d-a878-1661b0733afe",
+              "title": "Context In Action",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6rVT0OVLt80",
+                "china_cdn_id": "6rVT0OVLt80.mp4"
+              }
+            },
+            {
+              "id": 571869,
+              "key": "2a7d262e-3d32-410d-8f43-539afc67af00",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Context\n\nBefore we add the `Context` API into our app, let's make sure we're on the same page as to how it all works.\n\nRecall that in one of the previous screencasts, passing data from one component to another component was a bit cumbersome. We had to pass data from component to component: \n\n```js\nimport React from 'react';\nimport { render } from 'react-dom';\n\nfunction Parent ({ name }) {\n  return (\n    <div>\n      <h1>Parent</h1>\n      <Child name={name}/>\n    </div>\n  );\n}\n\nfunction Child ({ name }) {\n  return (\n    <div>\n      <h1>Child</h1>\n      <Grandchild name={name}/>\n    </div>\n  );\n}\n\nfunction Grandchild ({ name }) {\n  return (\n    <div>\n      <h1>Grandchild</h1>\n      <h3>Name: {name}</h3>\n    </div>\n  );\n}\n\nclass App extends React.Component {\n  render() {\n    const name = 'Tyler';\n\n    return (\n      <Parent />\n    );\n  }\n}\n\nrender(<App />, document.getElementById('root'));\n```\n\nThe `App` component renders `Parent`, which renders `Child`, which renders `Grandchild`. However, what's important to notice here is that the `Grandchild` component wants to render `name` -- but the data for `name` lives inside the `App` component.\n\nBecause `Grandchild` is so deeply nested, we have to pass the `name` prop one-by-one from `App` through all the components until it reaches `Grandchild`. What's more: we must do this even if any of the components along the way (`Parent` and `Child`) aren't even concerned with the `name` data! \n\nThis process of \"threading props\" to send data to a child component can be tiresome, and perhaps even error-prone. Luckily, we can avoid it with React's `Context` API. To begin, we'll use React's `createContext()` function to return an object with a `Provider` as well as a `Consumer`.\n\n```js\nconst Context = React.createContext();\n```\n\nLet's now check out how `Context.Provider` and `Context.Consumer` make these interactions between components possible!\n\n## Context.Provider\n\nThe `Provider` component is used in the upper level of the component tree; that is, the component from which the data to be passed is held. In our case, this was the `App` component. We passed the `name` data as the value of `Provider`'s `value` prop:\n\n```js\nclass App extends React.Component {\n  render() {\n  const name = 'Tyler';\n\n  return (\n    <Context.Provider value={name}>\n      <Parent />\n    </Context.Provider>\n    );\n  }\n}\n```\n\nNote that the `Provider` component simply wraps around the entire component to be rendered!\n\n## Context.Consumer\n\nOn the receiving end (i.e., a component \"under\" the `Provider` in the component hierarchy), we use the `Consumer` component. In our example, we passed `Consumer` a function as a child. This function accepts a value and returns some JSX:\n\n```js\nfunction Grandchild ({ name }) {\n  return (\n    <Context.Consumer>\n      {(name) => (\n      <div>\n      <h1>Grandchild</h1>\n      <h3>Name: {name}</h3>\n      </div>\n      )}\n    </Context.Consumer>\n  );\n}\n```\n\nAs a result, we were able to render the `Grandchild` component with the correct `name` data without ever having to pass that data down the entire component thread! That's a lot less code than the previous way we had to do it. So React's `Context` API provides a terse, approachable way to easily communicate information from one component to another.\n\nNow, let's go ahead and utilize `Context` in our todos app.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 728987,
+              "key": "b6bb4d96-035e-4204-b9c3-d0d09d0183cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": ">[Context provides a way to pass data through the component tree without having to pass props down manually at every level.](https://reactjs.org/docs/context.html#reactcreatecontext)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 578113,
+              "key": "7c6b6644-863c-4cdc-93f6-9b5f6f64c223",
+              "title": "Utilizing Context",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tlTJJ_v8ph0",
+                "china_cdn_id": "tlTJJ_v8ph0.mp4"
+              }
+            },
+            {
+              "id": 571871,
+              "key": "0221b0f5-5b26-4a64-a1c9-d68d35469d88",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the previous video, I said both \"Connected component\" as well as \"Container Component\". These are different names that really mean the same thing - a component that is connected to the store. This is in contrast to a component that is _just_ responsible for rendering UI content. We call these \"Presentation Components\". There are other names for a \"Presentational Component\", too.\n\nThe point of these names are to help explain what the purpose of the component is for:\n\n* A connected component is connected to the Redux store and is responsible for getting data from the store.\n* A presentational component should not access the store. It should receive any information it needs as props and then just render a UI.\n\nDan Abramov (the creator of Redux!) wrote a post about this very thing. Check it out if to get his take on these concepts: [Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571872,
+              "key": "87533b5b-9d62-4c58-9d2d-9a53258740b1",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "87533b5b-9d62-4c58-9d2d-9a53258740b1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I tried converting the Goals Component to use Context.",
+                "I tried converting the Todos Component to use Context."
+              ],
+              "positive_feedback": "Awesome work!",
+              "video_feedback": null,
+              "description": "Why don't you try converting some of the components to using Context?"
+            },
+            {
+              "id": 572724,
+              "key": "8c58c6c5-0bc1-49ca-9c19-39da6bda7da7",
+              "title": "Converting Todos And Goals To Context",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-2WMssK63uw",
+                "china_cdn_id": "-2WMssK63uw.mp4"
+              }
+            },
+            {
+              "id": 571874,
+              "key": "e7e73a70-b02d-481c-9852-b4d9f9677da4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/4b4dda508153d27136d060081a4b9d07c7ee78cf)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571875,
+              "key": "dd305713-a3d3-49fa-bec8-044ba0f15b4d",
+              "title": "Quiz: Provider",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "dd305713-a3d3-49fa-bec8-044ba0f15b4d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Please check all statements that are true:",
+                "answers": [
+                  {
+                    "id": "a1522108257170",
+                    "text": "`connect` function connects components to the store.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522108273678",
+                    "text": "`Provider` provides the store globally to all subcomponents",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522108274313",
+                    "text": "`Provider` provides action creators to the store",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522108274933",
+                    "text": "`Provider` is a React component that wraps the application",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 572732,
+              "key": "c985ea4b-e9b6-438e-a5ca-096f17b1d1fe",
+              "title": "Connecting Components Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "msQfOYS_8Dc",
+                "china_cdn_id": "msQfOYS_8Dc.mp4"
+              }
+            },
+            {
+              "id": 572735,
+              "key": "4d505b99-6fe5-4233-b518-9f4e96e8c367",
+              "title": "Connecting Components Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "heKC7Li9AGk",
+                "china_cdn_id": "heKC7Li9AGk.mp4"
+              }
+            },
+            {
+              "id": 571879,
+              "key": "757b457d-5f41-40c4-89ca-a1974512175d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/a759364886753f1baf9cba1d2a7f21378740f3b7)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571880,
+              "key": "15ca8fa3-bfc9-417d-a75d-8211a6ba0c1c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We just built out the `Provider`, `Context`, and `connect()` function. This function is so common that it has been developed into a library called [react-redux](https://github.com/reactjs/react-redux) that's officially supported by React.\n\nWe'll be adding the react-redux library in the following video:\n\n```html\n<script src=\"https://unpkg.com/react-redux@5.0.6/dist/react-redux.min.js\"></script>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572739,
+              "key": "a0cf8873-5c30-4658-ba19-dc45fcf36b98",
+              "title": "Using react-redux",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ByzhOPoOZaU",
+                "china_cdn_id": "ByzhOPoOZaU.mp4"
+              }
+            },
+            {
+              "id": 571882,
+              "key": "7e515cd9-d73a-4aab-ac42-9606c9d1ffcf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/e6ab31c60bcac704f05b21627594328e56478efd)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571883,
+              "key": "631f305b-b51a-4e61-a35e-a6d070c2bfcf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# The `react-redux` Bindings\n\nLet's take a moment to recap the changes we've made to our app in this Lesson, because we've updated quite a bit!\n\nPreviously, we leveraged the standard `redux` library to build our app. This allowed us to create a Redux `store` with the `createStore()` function, giving us an API to listen (`subscribe()`), get updates (`getState()`), and make updates (`dispatch()`) to state. We then created our own `Provider` component to efficiently pass the store to components that needed it, as well as our own `connect()` function so that our components can access \"slices\" of state as `props`.\n\nWe can build a fully-functional React and Redux app without `Provider` or `connect()`, but since they greatly simplify how React components interact with the Redux store, the creators of `redux` have included them in the `react-redux` package!\n\n## `Provider`\n\nWith `react-redux`, rather than creating and using our own `Provider` which looks like this:\n\n```js\nconst Context = React.createContext()\t\n\nclass Provider extends React.Component {\t\n  render () {\t\n  return (\t\n    <Context.Provider value={this.props.store}>\t\n      {this.props.children}\t\n    </Context.Provider>\t\n    );\n  }\t\n}\n\nReactDOM.render(\n  <Provider store={store}>\n  <ConnectedApp />\n  </Provider>,\n  document.getElementById('app')\n);\n```\n\n...we can simply use the `Provider` component defined by the `react-redux` package! This allows us to wrap our entire app with `Provider`, effectively passing the store to even the most deeply nested components.\n\n```js\nReactDOM.render(\n <ReactRedux.Provider store={store}>\n <ConnectedApp />\n </ReactRedux.Provider>,\n document.getElementById('app')\n);\n```\n\n## `connect()`\n\nSimilarly, we can also leverage `react-redux`'s `connect()` function right out of the box. `connect()` is a higher-order function that takes in two arguments (as well as a few [optional arguments](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options)) and _returns a function_. Check out its signature below:\n\n```js\nconst buildConnectedComponent = connect(mapStateToProps, mapDispatchToProps);\n```\n\nWhat's vital to understand is that `buildConnectedComponent` is a function. `buildConnectedComponent` will take a regular (presentational) React component and return a new, \"connected\" component. \n\n```js\nconst ConnectedComponent = buildConnectedComponent(MyComponent);\n```\n\n`ConnectedComponent` renders `MyComponent`, passing it the `props` as defined by `mapStateToProps` and `mapDispatchToPros`.\n\nWe can avoid having the intermediary `buildConnectedComponent` variable and just call the functions back-to-back:\n\n```js\nconst ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(MyComponent)\n```\n\nNotice the double set of parentheses!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571884,
+              "key": "8661ae0a-c712-4a90-bb53-f170d62076b8",
+              "title": "Quiz: connect() I",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8661ae0a-c712-4a90-bb53-f170d62076b8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "`connect()` connects which two items?",
+                "answers": [
+                  {
+                    "id": "a1522108669394",
+                    "text": "Action",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522108679574",
+                    "text": "Action creator",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522108680208",
+                    "text": "Store",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522108680837",
+                    "text": "Reducer",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522108681575",
+                    "text": "API util",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522108682264",
+                    "text": "Component",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 571885,
+              "key": "c03e5d5a-a7a1-4c08-8dc4-8da4a6cfd5df",
+              "title": "Quiz: connect() II",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c03e5d5a-a7a1-4c08-8dc4-8da4a6cfd5df",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Assume that `MyComponent` is a simple React component. How can `MyComponent` access state?",
+                "answers": [
+                  {
+                    "id": "a1522108734408",
+                    "text": "The entire store is passed in to `connect()`, which is curried along with MyComponent",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522108764825",
+                    "text": "The only way is to pass the store down from parent to child component until it reaches MyComponent",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522108765412",
+                    "text": "A container component connects the store to MyComponent, giving MyComponent slices of state accessible via props. (`const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(MyComponent);`).",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522108778712",
+                    "text": "MyComponent can access state via `this.state`, since all state should always be stored in the component itself in Redux apps",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 571886,
+              "key": "092ef95b-7a94-408c-ba54-ab5f3aa05c95",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Summary\n\nReact often leverages Redux for more predictable state management via the `react-redux` bindings. These bindings give us an API that simplifies the most common interactions between React and Redux.\n\n`Provider` makes it possible for Redux to pass data from the store to any React components that need it. It uses React’s [context](https://facebook.github.io/react/docs/context.html) feature to make this work.\n\n`connect()` connects a React component to the Redux store. The `mapStateToProps()` function allows us to specify which state from the store you want passed to your React component, while the `mapDispatchToProps()` function allows us to bind dispatch to action creators before they ever hit the component.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571911,
+          "key": "1b7bd9d7-d415-4983-a6e2-73f38e3cab23",
+          "title": "Folder Structure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1b7bd9d7-d415-4983-a6e2-73f38e3cab23",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572469,
+              "key": "49d11682-225b-4565-acf8-35826a4f756a",
+              "title": "React & Redux L6 57  Folder Structure V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4Ud2n_ceUZc",
+                "china_cdn_id": "4Ud2n_ceUZc.mp4"
+              }
+            },
+            {
+              "id": 571889,
+              "key": "863b831e-b1b1-4077-bdce-650ce16bb41f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Right now, all of our app's code is located in a single file. This isn't a very realistic way to build an app, though. Hopefully it hasn't been too frustrating scrolling up and down and up and down to find the right place to add your code! 😉\n\nTo fix this, we're going to use Create React App to scaffold out a React app for us. If, for some reason, you don't have Create React App installed on your machine, you can install it by running the following in your Terminal:\n\n```bash\nnpm install -g create-react-app\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572748,
+              "key": "47db5eda-1363-4c78-a253-4190a46b6b39",
+              "title": "L606 Create React App V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QzBtsjxouyw",
+                "china_cdn_id": "QzBtsjxouyw.mp4"
+              }
+            },
+            {
+              "id": 571891,
+              "key": "ca8c57bd-69e4-4d72-a296-48202831d676",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/5c9b7e4b84d005de1139620f4d795bc5eacd95ca)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571892,
+              "key": "e186fca9-4fef-4aa9-b304-4c4dc91b6930",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e186fca9-4fef-4aa9-b304-4c4dc91b6930",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I've used Create React App to scaffold out a React application.",
+                "I've installed the `goals-todos-api` package.",
+                "I've installed the `redux` package.",
+                "I've installed the `react-redux` package.",
+                "I've installed the `redux-thunk` package."
+              ],
+              "positive_feedback": "Fantastic! Let's proceed.",
+              "video_feedback": null,
+              "description": "We just installed a bunch of stuff! To verify you have everything you need to continue, make sure to check off each of the following:"
+            },
+            {
+              "id": 572760,
+              "key": "b8cfaa73-afd4-45a9-8344-514ae5945745",
+              "title": "L607 Actions V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JnBpKGOqqwc",
+                "china_cdn_id": "JnBpKGOqqwc.mp4"
+              }
+            },
+            {
+              "id": 571894,
+              "key": "3364ca62-3f21-4958-8389-68a63359d2e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/371d896c07230ffb1b056233e605f8079c4e32f9)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571895,
+              "key": "53ee9229-ccc5-472d-92c1-6947441bcef4",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "53ee9229-ccc5-472d-92c1-6947441bcef4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I've moved all of the Todos actions over.",
+                "I've moved all of the Goals actions over.",
+                "I've moved all of the shared actions content over.",
+                "The necessary functions and constants are being exported."
+              ],
+              "positive_feedback": "Thanks!",
+              "video_feedback": null,
+              "description": "Following along? Great! Make sure to check off each of the following:"
+            },
+            {
+              "id": 572762,
+              "key": "41319842-900e-4b7f-908a-8b380ce79049",
+              "title": "L608 Reducers V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "N-44Rn9B8QY",
+                "china_cdn_id": "N-44Rn9B8QY.mp4"
+              }
+            },
+            {
+              "id": 571897,
+              "key": "5451dfc3-023e-4373-9f7e-78de4db71280",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/4a89382786d9516a41415965a9172b9853d8998f)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571898,
+              "key": "987a6478-0373-4590-b8ed-5019b14312ef",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "987a6478-0373-4590-b8ed-5019b14312ef",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I've moved the Todos reducer over.",
+                "I've moved the Goals reducer over.",
+                "I've moved the Loading reducer over.",
+                "I've combined all reducers in `reducers/index.js`."
+              ],
+              "positive_feedback": "Thanks for following along!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 572763,
+              "key": "044faf09-8834-408b-8298-badf858fd773",
+              "title": "L609 Middleware V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sgRSJuKLB8g",
+                "china_cdn_id": "sgRSJuKLB8g.mp4"
+              }
+            },
+            {
+              "id": 571900,
+              "key": "e067f782-1a96-4b63-a6d8-baf82a67fc4d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/6da37ad5d09edc5d06c00250d03b578ea4bdbcb7)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571901,
+              "key": "6da2126a-1b95-489c-9ccf-46ffbf33fd7c",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6da2126a-1b95-489c-9ccf-46ffbf33fd7c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I've moved the Checker middleware over.",
+                "I've moved the Logger middleware over.",
+                "I've passed `thunk`, `checker`, and `logger` to `applyMiddleware` in `middleware/index.js`."
+              ],
+              "positive_feedback": "Thanks!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 572764,
+              "key": "f2f29a0e-2178-4805-89e3-36a3bf708ecf",
+              "title": "L610 Components V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "zu_OuldiJw4",
+                "china_cdn_id": "zu_OuldiJw4.mp4"
+              }
+            },
+            {
+              "id": 571903,
+              "key": "702aefc1-a941-4646-8f32-e171726bb29d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/7a540c1ba3f6c0a3e0a249b76584c5c215a99604)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571904,
+              "key": "929c362a-1c29-4af3-9c0e-43a6cfe5ae8d",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "929c362a-1c29-4af3-9c0e-43a6cfe5ae8d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I've moved the List component over.",
+                "I've moved the Todos component over.",
+                "I've moved the Goals component over.",
+                "Each component imports the necessary packages.",
+                "I've updated the App component."
+              ],
+              "positive_feedback": "Thanks!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 572765,
+              "key": "d584b871-ac05-4fe2-a065-73c72409c09d",
+              "title": "L611 The Store V2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hC6WWIXVlSo",
+                "china_cdn_id": "hC6WWIXVlSo.mp4"
+              }
+            },
+            {
+              "id": 571906,
+              "key": "694f84b9-fc29-4b7a-8124-649612fd838b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/1177c07de724399ba9f8b1573c4c9711caa23daa)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 578117,
+              "key": "470b2731-8820-466e-8afe-ab53e67938ec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## \"Rails-style\" Organization\n\nTo recap, we've organized the individual elements of our app with a \"Rails-style\" approach. That is, assets are grouped by \"type\" or \"capability\": any action will be found in the _Actions_ folder, any reducer will be found in _Reducers_, and so on. In fact, the “real world” example from [Redux on GitHub](https://github.com/reactjs/redux/tree/master/examples/real-world) structures the app this very way. Under this directory structure, if we wanted to import all actions into a component, we can get them all in a single import!\n\n```text\nFrontend\n   - Components\n      - component1.js\n      - component2.js\n      - component3.js\n   - Actions\n      - action1.js\n      - action2.js\n   - Reducers\n      - reducer1.js\n   - Util\n   - Store\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571908,
+              "key": "ee390d03-3aee-49bb-862c-8ac4f67cb202",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ee390d03-3aee-49bb-862c-8ac4f67cb202",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I've moved the store over.",
+                "I've provided the store to the app."
+              ],
+              "positive_feedback": "Fantastic!",
+              "video_feedback": null,
+              "description": "Almost there! How are things looking?"
+            },
+            {
+              "id": 571909,
+              "key": "2d4e01d4-9828-4b3c-9ea0-46dcf9004268",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Other Patterns\n\nAlong with the \"Rails style\" of organizing your folder structure, you may find other approaches that developers use to build their directory more to your liking. An alternative way to structure the same application, then, is by feature:\n\n```text\n├── dashboard\n│ ├── actions.js\n│ ├── index.js\n│ └── reducer.js\n└── nav\n ├── actions.js\n ├── index.js\n └── reducer.js\n```\n\nThis form of organization groups assets by their common feature or “concept.” That is, all assets related to a navigation component are all together in a single, modular folder. It’s a great way to visually express what the application is all about. However, if the app contains several hundred components, it can become more difficult to navigate through.\n\nWhat's more: you might even see that some developers prefer a [\"duck\" style](https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be) approach, where Redux and state management files are completely separated from files that render UI.\n\nUltimately, the choice is yours. Whichever way you choose to organize your directory structure, just be sure that it’s something that makes sense for your app, and it’s something you’re comfortable with!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571910,
+              "key": "786b7f2f-674a-4be6-8a36-5fba244e2121",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Summary\n\nThis section didn't accomplish anything with React or Redux. All we did here was improve the structure and organization of our app by moving each portion of the app to a specific folder structure. \n\nTo say it one more time, there's no \"right\" way to build out the folder structure for you app. However, doing it this way is handy because we're using the structure provided by Create React App. Using this structure, it's easy to convert a plain React application over to one that includes Redux. Another benefit is that other React developers will already be comfortable with this file/folder organization.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571913,
+          "key": "92392d35-cb29-4786-934e-50b6b8e5731f",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "92392d35-cb29-4786-934e-50b6b8e5731f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572470,
+              "key": "0adeac96-6348-436e-a5a5-f780358b3284",
+              "title": "React & Redux L6 32  Lesson Summary V4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "J6x_Z-dH1sI",
+                "china_cdn_id": "J6x_Z-dH1sI.mp4"
+              }
+            },
+            {
+              "id": 637979,
+              "key": "e9f25dda-ae4b-4908-84f3-6ed4f95e0363",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Lesson Challenge\n\nRead these articles: [Organizing State](https://redux.js.org/faq/organizing-state), [Normalizing State Shape](https://redux.js.org/recipes/structuring-reducers/normalizing-state-shape), [Redux for state management in large web apps](https://blog.mapbox.com/redux-for-state-management-in-large-web-apps-c7f3fab3ce9b) and [Five Tips for Working with Redux in Large Applications](https://techblog.appnexus.com/five-tips-for-working-with-redux-in-large-applications-89452af4fdcb). Answer the following questions and share your answers with your classmates:\n\n1) How should state be organized in Redux applications?\n\n2) Where is the concept of data immutability applicable in React?\n\n3) What does state normalization mean?",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

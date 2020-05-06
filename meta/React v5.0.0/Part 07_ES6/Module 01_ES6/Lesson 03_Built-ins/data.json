@@ -1,0 +1,1235 @@
+{
+  "data": {
+    "lesson": {
+      "id": 196651,
+      "key": "1b997dce-e2ce-4246-b5ae-d39ca175f887",
+      "title": "Built-ins",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "The JavaScript environment provides you with a number of features by default. In this lesson, we'll take a look at Sets, Maps, Proxies, Generators, how iteration works, and more!",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/1b997dce-e2ce-4246-b5ae-d39ca175f887/196651/1545067607330/Built-ins+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/1b997dce-e2ce-4246-b5ae-d39ca175f887/196651/1545067604132/Built-ins+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 213354,
+          "key": "6efc26e1-d752-42a1-9184-04f73b6b4088",
+          "title": "New Built-ins",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6efc26e1-d752-42a1-9184-04f73b6b4088",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 218171,
+              "key": "94bcc833-83c8-48f5-ae10-6174a204fca9",
+              "title": "New Built-ins",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qfTkmFoLyfw",
+                "china_cdn_id": "qfTkmFoLyfw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 213350,
+          "key": "1e3f0012-b247-4325-a5e7-c10651481f20",
+          "title": "Symbols Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1e3f0012-b247-4325-a5e7-c10651481f20",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 232938,
+              "key": "c4fc6ef2-d4fd-4049-af72-3001ae15fdd7",
+              "title": "Symbols Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kbVmzEQ4Hr0",
+                "china_cdn_id": "kbVmzEQ4Hr0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 196721,
+          "key": "100b565f-0e61-42e9-a2f4-332aa2f1a1b6",
+          "title": "Symbols",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "100b565f-0e61-42e9-a2f4-332aa2f1a1b6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256101,
+              "key": "85abe3e7-7937-4522-aaf1-46ec095b3ec9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Symbols\n\nA **symbol** is a unique and immutable data type that is often used to identify object properties.\n\nTo create a symbol, you write `Symbol()` with an optional string as its **description**.\n\n```js\nconst sym1 = Symbol('apple');\nconsole.log(sym1);\n```\n> `Symbol(apple)`\n\nThis will create a unique symbol and store it in `sym1`. The description `\"apple\"` is just a way to describe the symbol, but it can’t be used to access the symbol itself.\n\nAnd just to show you how this works, if you compare two symbols with the same description… \n\n```js\nconst sym2 = Symbol('banana');\nconst sym3 = Symbol('banana');\nconsole.log(sym2 === sym3);\n```\n> `false`\n\n…then the result is `false` because the description is _only_ used to describe the symbol. It’s not used as part of the symbol itself—each time a new symbol is created, regardless of the description.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256102,
+              "key": "add1fba9-dbc4-49f4-89bc-4d5c8b53769a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Still, this can be hard to wrap your head around, so let’s use the example from the previous video to see how symbols can be useful. Here’s the code to represent the bowl from the example.\n\n```js\nconst bowl = {\n  'apple': { color: 'red', weight: 136.078 },\n  'banana': { color: 'yellow', weight: 183.15 },\n  'orange': { color: 'orange', weight: 170.097 }\n};\n```\n\nThe bowl contains fruit which are objects that are properties of the bowl. But, we run into a problem when the second banana gets added.\n\n```js\nconst bowl = {\n  'apple': { color: 'red', weight: 136.078 },\n  'banana': { color: 'yellow', weight: 183.151 },\n  'orange': { color: 'orange', weight: 170.097 },\n  'banana': { color: 'yellow', weight: 176.845 }\n};\nconsole.log(bowl);\n```\n> `Object {apple: Object, banana: Object, orange: Object}`\n\nInstead of adding another banana to the bowl, our previous banana is overwritten by the new banana being added to the bowl. To fix this problem, we can use symbols.\n\n```js\nconst bowl = {\n  [Symbol('apple')]: { color: 'red', weight: 136.078 },\n  [Symbol('banana')]: { color: 'yellow', weight: 183.15 },\n  [Symbol('orange')]: { color: 'orange', weight: 170.097 },\n  [Symbol('banana')]: { color: 'yellow', weight: 176.845 }\n};\nconsole.log(bowl);\n```\n> `Object {Symbol(apple): Object, Symbol(banana): Object, Symbol(orange): Object, Symbol(banana): Object}`\n\nBy changing the bowl’s properties to use symbols, each property is a unique Symbol and the first banana doesn’t get overwritten by the second banana.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 196722,
+          "key": "966cea8f-5583-4d46-80ef-ed4c829c63c7",
+          "title": "Iteration & Iterable Protocols",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "966cea8f-5583-4d46-80ef-ed4c829c63c7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256103,
+              "key": "9c22771b-3a5c-42e7-9bb6-3cf1a4cb2196",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Before you move on, let’s spend some time looking at two new protocols in ES6:\n\n* the **iterable** protocol\n* the **iterator** protocol\n\nThese protocols aren’t built-ins, but they will help you understand the new concept of iteration in ES6, as well as show you a use case for symbols.\n\n# The Iterable Protocol\n\nThe **iterable protocol** is used for defining and customizing the iteration behavior of objects. What that really means is you now have the _flexibility_ in ES6 to specify a way for iterating through values in an object. For some objects, they already come built-in with this behavior. For example, strings and arrays are examples of built-in iterables.\n\n```js\nconst digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];\nfor (const digit of digits) {\n  console.log(digit);\n}\n```\n> 0 <br>\n> 1 <br>\n> 2 <br>\n> 3 <br>\n> 4 <br>\n> 5 <br>\n> 6 <br>\n> 7 <br>\n> 8 <br>\n> 9 <br>\n\nIf you recall from earlier lesson 1, any object that is iterable can use the new `for...of` loop. Later in this lesson, you’ll also learn about Sets and Maps which are other examples of built-in iterables.\n\n## How it Works\n\nIn order for an object to be iterable, it must implement the **iterable interface**. If you come from a language like Java or C, then you’re probably familiar with interfaces, but for those of you who aren’t, that basically means that in order for an object to be iterable it must contain a default iterator method. This method will define how the object should be iterated.\n\nThe **iterator method**, which is available via the constant `[Symbol.iterator]`, is a zero arguments function that returns an iterator object. An iterator object is an object that conforms to the iterator protocol.\n\n# The Iterator Protocol\n\nThe **iterator protocol** is used to define a standard way that an object produces a sequence of values. What that really means is you now have a process for defining how an object will iterate. This is done through implementing the `.next()` method.\n\n## How it Works\n\nAn object becomes an iterator when it implements the `.next()` method. The `.next()` method is a zero arguments function that returns an object with two properties:\n\n1. `value` : the data representing the next value in the sequence of values within the object\n2. `done` : a boolean representing if the iterator is _done_ going through the sequence of values\n  * If done is _true_, then the iterator has reached the end of its sequence of values.\n  * If done is _false_, then the iterator is able to produce another value in its sequence of values.\n\nHere’s the example from earlier, but instead we are using the array’s default iterator to step through the each value in the array.\n\n```js\nconst digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];\nconst arrayIterator = digits[Symbol.iterator]();\n\nconsole.log(arrayIterator.next());\nconsole.log(arrayIterator.next());\nconsole.log(arrayIterator.next());\n```\n> ```js\nObject {value: 0, done: false}\nObject {value: 1, done: false}\nObject {value: 2, done: false}\n```\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 196723,
+          "key": "2f7b76c6-d4a1-4168-98e4-662a17c3dd53",
+          "title": "Sets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2f7b76c6-d4a1-4168-98e4-662a17c3dd53",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256104,
+              "key": "58ba210b-0f56-4f3b-ad1b-ae03b1ffc86b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# A Set in Mathematics\n\nIf you think back to mathematics, a set is a collection of distinct items. For example, `{2, 4, 5, 6}` is a set because each number is unique and appears only once. However, `{1, 1, 2, 4}` is _not_ a set because it _contains duplicate entries_ (the 1 is in there more than once!).\n\nIn JavaScript, we can already represent something similar to a mathematical set using an array.\n\n```js\nconst nums = [2, 4, 5, 6];\n```\n\nHowever, arrays _do not enforce items to be unique_. If we try to add another `2` to `nums`, JavaScript won't complain and will add it without any issue.\n\n```js\nnums.push(2);\nconsole.log(nums);\n```\n> `[2, 4, 5, 6, 2]`\n\n…and now `nums` is no longer a set in the mathematical sense.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256105,
+              "key": "f7ced6ec-92a5-44ee-982a-1364c7c823f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Sets\n\nIn ES6, there’s a new built-in object that behaves like a mathematical set and works similarly to an array. This new object is conveniently called a \"Set\". The biggest differences between a set and an array are:\n\n* Sets are not indexed-based - you do not refer to items in a set based on their position in the set\n* items in a Set can’t be accessed individually\n\nBasically, a Set is an object that lets you store unique items. You can add items to a Set, remove items from a Set, and loop over a Set. These items can be either primitive values or objects.\n\n## How to Create a Set\n\nThere’s a couple of different ways to create a Set. The first way, is pretty straightforward:\n\n```js\nconst games = new Set();\nconsole.log(games);\n```\n> `Set {}`\n\nThis creates an empty Set `games` with no items.\n\nIf you want to create a Set from a list of values, you use an array:\n\n```js\nconst games = new Set(['Super Mario Bros.', 'Banjo-Kazooie', 'Mario Kart', 'Super Mario Bros.']);\nconsole.log(games);\n```\n> `Set {'Super Mario Bros.', 'Banjo-Kazooie', 'Mario Kart'}`\n\nNotice the example above automatically removes the duplicate entry `\"Super Mario Bros.\"` when the Set is created. Pretty neat!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256106,
+              "key": "b473de9c-52e1-4098-afc2-7e7fdfb4cde8",
+              "title": "Unique Sets",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b473de9c-52e1-4098-afc2-7e7fdfb4cde8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Select the collections below that represent a Set in JavaScript.",
+                "answers": [
+                  {
+                    "id": "a1484355919814",
+                    "text": "`{1, 'Basketball', true, false, '1'}`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1484355942292",
+                    "text": "`{}`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1484355950153",
+                    "text": "`{1, 1, 1, 1}`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1484355956904",
+                    "text": "`{false, '0', 0, 'Soccer', 3.14, 25, 0}`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1484355964353",
+                    "text": "`{'Gymnastics', 'Swimming', 2}`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 256107,
+          "key": "0396aaa7-ccc8-49b5-93ad-725c2f61f889",
+          "title": "Modifying Sets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0396aaa7-ccc8-49b5-93ad-725c2f61f889",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256108,
+              "key": "b9764f7f-22a7-4ad3-a8d5-6024eda50cc0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Modifying Sets\n\nAfter you’ve created a Set, you’ll probably want to add and delete items from the Set. So how do you that? You use the appropriately named, `.add()` and `.delete()` methods:\n\n```js\nconst games = new Set(['Super Mario Bros.', 'Banjo-Kazooie', 'Mario Kart', 'Super Mario Bros.']);\n\ngames.add('Banjo-Tooie');\ngames.add('Age of Empires');\ngames.delete('Super Mario Bros.');\n\nconsole.log(games);\n```\n> `Set {'Banjo-Kazooie', 'Mario Kart', 'Banjo-Tooie', 'Age of Empires'}`\n\nOn the other hand, if you want to delete all the items from a Set, you can use the `.clear()` method.\n\n```js\ngames.clear()\nconsole.log(games);\n```\n> `Set {}`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256110,
+              "key": "d432d46b-8238-424a-ba4f-d18dfacda17d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> **TIP**: If you attempt to `.add()` a duplicate item to a Set, you won’t receive an error, but the item will not be added to the Set. Also, if you try to `.delete()` an item that is not in a Set, you won’t receive an error, and the Set will remain unchanged. \n\n> `.add()` returns the `Set` if an item is successfully added. On the other hand, `.delete()` returns a Boolean (`true` or `false`) depending on successful deletion.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 256111,
+          "key": "50d51cb3-016f-432d-9de0-9f3b9b32f006",
+          "title": "Working with Sets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "50d51cb3-016f-432d-9de0-9f3b9b32f006",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256112,
+              "key": "8e1e3910-21b4-47fc-82f5-790d30b48478",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Working With Sets\n\n### Checking The Length\nOnce you’ve constructed your Set, there are a couple of different properties and methods you can use to work with Sets.\n\nUse the `.size` property to return the number of items in a Set:\n\n```js\nconst months = new Set(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);\nconsole.log(months.size);\n```\n> `12`\n\nRemember, Sets can’t be accessed by their index like an array, so you use the `.size` property instead of `.length` property to get the size of the Set.\n\n### Checking If An Item Exists\nUse the `.has()` method to check if an item exists in a Set. If the item is in the Set, then `.has()` will return `true`. If the item doesn’t exist in the Set, then `.has()` will return `false`.\n\n```js\nconsole.log(months.has('September'));\n```\n> `true`\n\n### Retrieving All Values\nFinally, use the `.values()` method to return the values in a Set. The return value of the `.values()` method is a `SetIterator` object.\n\n```js\nconsole.log(months.values());\n```\n> `SetIterator {'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'}`\n\nMore on the `SetIterator` object in a second!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256113,
+              "key": "c6c67475-5e42-4ea7-98c5-b8626e786872",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> **TIP**: The `.keys()` method will behave the exact same way as the `.values()` method by returning the values of a Set within a new Iterator Object. The `.keys()` method is an alias for the `.values()` method for similarity with maps. You’ll see the `.keys()` method later in this lesson during the Maps section.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 256114,
+          "key": "32a8b076-b891-4993-9e47-648b9f7485c0",
+          "title": "Sets & Iterators",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "32a8b076-b891-4993-9e47-648b9f7485c0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256115,
+              "key": "3ff30bf8-0e91-4463-ade7-fa0849a5d8dd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The last step to working with Sets is looping over them.\n\nIf you remember back to our discussion on the new _iterable_ and _iterator protocols_ in ES6, then you’ll recall that Sets are built-in iterables. This means two things in terms of looping:\n\n1. You can use the Set’s default iterator to step through each item in a Set, one by one.\n2. You can use the new `for...of` loop to loop through each item in a Set.\n\n## Using the SetIterator\n\nBecause the `.values()` method returns a new iterator object (called `SetIterator`), you can store that iterator object in a variable and loop through each item in the Set using `.next()`.\n\n```js\nconst iterator = months.values();\niterator.next();\n```\n> `Object {value: 'January', done: false}`\n\nAnd if you run `.next()` again?\n\n```js\niterator.next();\n```\n> `Object {value: 'February', done: false}`\n\nAnd so on until `done` equals `true` which marks the end of the Set.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 301406,
+              "key": "3bd264cf-5967-461a-b394-186371840ca6",
+              "title": "Sets and iterators animation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Hd205fgC7qo",
+                "china_cdn_id": "Hd205fgC7qo.mp4"
+              }
+            },
+            {
+              "id": 256118,
+              "key": "0b40a6b3-46a6-4ce4-8ccf-9c78e8f7378b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using a `for...of` Loop\n\nAn easier method to loop through the items in a Set is the `for...of` loop.\n\n```js\nconst colors = new Set(['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'brown', 'black']);\nfor (const color of colors) {\n  console.log(color);\n}\n```\n> red <br>\n> orange <br>\n> yellow <br>\n> green <br>\n> blue <br>\n> violet <br>\n> brown <br>\n> black\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261435,
+          "key": "98ba5617-7451-4f82-847a-cf407c35150c",
+          "title": "Quiz: Using Sets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "98ba5617-7451-4f82-847a-cf407c35150c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299591,
+              "key": "47e86266-5d89-43a2-aa19-dc62ea906430",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Directions:\n\nCreate a variable with the name `myFavoriteFlavors` and give it the value of an empty `Set` object. Then use the `.add()` method to add the following strings to it:\n\n* \"chocolate chip\"\n* \"cookies and cream\"\n* \"strawberry\"\n* \"vanilla\"\n\nThen use the `.delete()` method to remove \"strawberry\" from the set.\n\n## Your Code:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 293728,
+              "key": "0630be03-0b91-4024-b9b8-3c3a6bde89ce",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "0630be03-0b91-4024-b9b8-3c3a6bde89ce",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "4901671546257408",
+                "initial_code_files": [
+                  {
+                    "text": "/*\n * Programming Quiz: Using Sets (3-1)\n *\n * Create a Set object and store it in a variable named `myFavoriteFlavors`. Add the following strings to the set:\n *     - chocolate chip\n *     - cookies and cream\n *     - strawberry\n *     - vanilla\n *\n * Then use the `.delete()` method to remove \"strawberry\" from the set.\n */\n",
+                    "name": "StudentMain.js"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 196724,
+          "key": "5c3fd7d7-66b4-4a9c-b61d-33dd85b8cc0e",
+          "title": "WeakSets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5c3fd7d7-66b4-4a9c-b61d-33dd85b8cc0e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256119,
+              "key": "04f4319d-9fda-448e-9d2c-0d67b49e7535",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What is a WeakSet?\n\nA WeakSet is just like a normal Set with a few key differences:\n\n1. a WeakSet can only contain objects\n2. a WeakSet is not iterable which means it can’t be looped over\n3. a WeakSet does not have a `.clear()` method\n\nYou can create a WeakSet just like you would a normal Set, except that you use the `WeakSet` constructor.\n\n```js\nlet student1 = { name: 'James', age: 26, gender: 'male' };\nlet student2 = { name: 'Julia', age: 27, gender: 'female' };\nlet student3 = { name: 'Richard', age: 31, gender: 'male' };\n\nconst roster = new WeakSet([student1, student2, student3]);\nconsole.log(roster);\n```\n> `WeakSet {Object {name: 'Julia', age: 27, gender: 'female'}, Object {name: 'Richard', age: 31, gender: 'male'}, Object {name: 'James', age: 26, gender: 'male'}}`\n\n…but if you try to add something other than an object, you’ll get an error!\n\n```js\nroster.add('Amanda');\n```\n> `Uncaught TypeError: Invalid value used in weak set(…)`\n\nThis is expected behavior because WeakSets can only contain objects. But why should it only contain objects? Why would you even use a WeakSet if normal Sets can contain objects and other types of data? Well, the answer to that question has more to do with why WeakSets do not have a `.clear()` method...",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256120,
+              "key": "d9047af6-b408-426a-932c-457b0bf26ad7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Garbage Collection\n\nIn JavaScript, memory is allocated when new values are created and is \"automatically\" freed up when those values are no longer needed. This process of freeing up memory after it is no longer needed is what is known as **garbage collection**.\n\nWeakSets take advantage of this by exclusively working with objects. If you set an object to `null`, then you’re essentially deleting the object. And when JavaScript’s garbage collector runs, the memory that object previously occupied will be freed up to be used later in your program.\n\n```js\nstudent3 = null;\nconsole.log(roster);\n```\n> `WeakSet {Object {name: 'Julia', age: 27, gender: 'female'}, Object {name: 'James', age: 26, gender: 'male'}}`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 598904,
+              "key": "b5f618f3-7571-495f-8d36-8d3afa8a46e3",
+              "title": "Weak-Sets",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yAOA1otYfBM",
+                "china_cdn_id": "yAOA1otYfBM.mp4"
+              }
+            },
+            {
+              "id": 256122,
+              "key": "60f214e0-a466-41d0-930b-c3e322bc3717",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "What makes this so useful is you don’t have to worry about deleting references to deleted objects in your WeakSets, JavaScript does it for you! When an object is deleted, the object will also be deleted from the WeakSet when garbage collection runs. This makes WeakSets useful in situations where you want an efficient, lightweight solution for creating groups of objects.\n\nThe point in time when garbage collection happens depends on a lot of different factors. Check out [MDN’s documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management#Garbage_collection) to learn more about the algorithms used to handle garbage collection in JavaScript.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261442,
+          "key": "17d90bf6-2ce7-45df-8f61-2a50da1b0123",
+          "title": "Quiz: Working With WeakSets",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "17d90bf6-2ce7-45df-8f61-2a50da1b0123",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 299606,
+              "key": "911639c9-eb7c-4cb9-b3d5-7feb6c659e79",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Directions:\n\nCreate the following variables:\n\n* `uniqueFlavors` and give it the value of an empty `WeakSet` object\n* `flavor1`, and set it to the object `{ flavor: 'chocolate' }`\n* `flavor2`, and set it to an object with a property of `flavor` and a value of your choice\n\nUse the `.add()` method to add the objects `flavor1` and `flavor2` to `uniqueFlavors`.\n\nUse the `.add()` method to add the `flavor1` object to the `uniqueFlavors` set, again.\n\n## Your Code:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299611,
+              "key": "6f12039b-d0ca-4df5-abfc-7d27b0151f4b",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "6f12039b-d0ca-4df5-abfc-7d27b0151f4b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6432334028079104",
+                "initial_code_files": [
+                  {
+                    "text": "/*\n * Programming Quiz: Using Sets (3-2)\n *\n * Create the following variables:\n *     - uniqueFlavors and set it to a new WeakSet object\n *     - flavor1 and set it equal to `{ flavor: 'chocolate' }`\n *     - flavor2 and set it equal to an object with property 'flavor' and value of your choice!\n *\n * Use the `.add()` method to add the objects `flavor1` and `flavor2` to `uniqueFlavors`\n * Use the `.add()` method to add the `flavor1` object (again!) to the `uniqueFlavors` set\n */\n",
+                    "name": "StudentMain.js"
+                  }
+                ]
+              },
+              "answer": null
+            }
+          ]
+        },
+        {
+          "id": 213349,
+          "key": "f8afc5fb-d3e1-416f-87dc-9745d6fc09d1",
+          "title": "Maps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f8afc5fb-d3e1-416f-87dc-9745d6fc09d1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 232939,
+              "key": "b3f6b78c-4fd3-4544-8873-816ab11d1809",
+              "title": "From Sets to Maps",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "H5DJPfcN2P4",
+                "china_cdn_id": "H5DJPfcN2P4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 196725,
+          "key": "a9340848-55d9-490a-8ebd-72da5b111578",
+          "title": "Creating & Modifying Maps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a9340848-55d9-490a-8ebd-72da5b111578",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256123,
+              "key": "f4a417af-c319-4597-b9d9-c398b2ab98cf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Maps\n\nIf Sets are similar to Arrays, then Maps are similar to Objects because Maps store key-value pairs similar to how objects contain named properties with values. \n\nEssentially, a Map is an object that lets you store key-value pairs where both the keys and the values can be objects, primitive values, or a combination of the two.\n\n## How to Create a Map\n\nTo create a Map, simply type:\n\n```js\nconst employees = new Map();\nconsole.log(employees);\n```\n> `Map {}`\n\nThis creates an empty Map `employee` with no key-value pairs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256126,
+              "key": "666b348b-f195-4235-b7d5-ab838fc1e67c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Modifying Maps\n\nUnlike Sets, you can’t create Maps from a list of values; instead, you add key-values by using the Map’s `.set()` method. \n\n```js\nconst employees = new Map();\n\nemployees.set('james.parkes@udacity.com', { \n    firstName: 'James',\n    lastName: 'Parkes',\n    role: 'Content Developer' \n});\nemployees.set('julia@udacity.com', {\n    firstName: 'Julia',\n    lastName: 'Van Cleve',\n    role: 'Content Developer'\n});\nemployees.set('richard@udacity.com', {\n    firstName: 'Richard',\n    lastName: 'Kalehoff',\n    role: 'Content Developer'\n});\n\nconsole.log(employees);\n```\n> `Map {'james.parkes@udacity.com' => Object {...}, 'julia@udacity.com' => Object {...}, 'richard@udacity.com' => Object {...}}`\n\nThe `.set()` method takes two arguments. The first argument is the key, which is used to reference the second argument, the value.\n\nTo remove key-value pairs, simply use the `.delete()` method.\n\n```js\nemployees.delete('julia@udacity.com');\nemployees.delete('richard@udacity.com');\nconsole.log(employees);\n```\n> `Map {'james.parkes@udacity.com' => Object {firstName: 'James', lastName: 'Parkes', role: 'Course Developer'}}`\n\nAgain, similar to Sets, you can use the `.clear()` method to remove all key-value pairs from the Map.\n\n```js\nemployees.clear()\nconsole.log(employees);\n```\n> `Map {}`\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256127,
+              "key": "6d1c85b1-0012-4642-8d4b-49a982dc6bff",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> **TIP**: If you `.set()` a key-value pair to a Map that already uses the same key, you won’t receive an error, but the key-value pair will overwrite what currently exists in the Map. Also, if you try to `.delete()` a key-value that is not in a Map, you won’t receive an error, and the Map will remain unchanged.\n\n>The `.delete()` method returns `true` if a key-value pair is successfully deleted from the `Map` object, and `false` if unsuccessful. The return value of `.set()` is the `Map` object itself if successful.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 256130,
+          "key": "e5bcc668-11da-4ec0-84ef-d9f51e19f2b4",
+          "title": "Working with Maps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e5bcc668-11da-4ec0-84ef-d9f51e19f2b4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256131,
+              "key": "8fff6f20-e040-463a-9d0b-c0814072f94e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Working with Maps\n\nAfter you’ve built your Map, you can use the `.has()` method to check if a key-value pair exists in your Map by passing it a key.\n\n```js\nconst members = new Map();\n\nmembers.set('Evelyn', 75.68);\nmembers.set('Liam', 20.16);\nmembers.set('Sophia', 0);\nmembers.set('Marcus', 10.25);\n\nconsole.log(members.has('Xavier'));\nconsole.log(members.has('Marcus'));\n```\n> `false`<br>\n> `true`\n\nAnd you can also retrieve values from a Map, by passing a key to the `.get()` method.\n\n```js\nconsole.log(members.get('Evelyn'));\n```\n> `75.68`",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 256132,
+          "key": "e221c233-0e17-4b16-8aba-c42212c33250",
+          "title": "Looping Through Maps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e221c233-0e17-4b16-8aba-c42212c33250",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256133,
+              "key": "e976b1b6-4715-4f6e-a880-c1b450544a8b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Looping Through Maps\nYou’ve created a Map, added some key-value pairs, and now you want to loop through your Map. Thankfully, you’ve got three different options to choose from:\n\n1. Step through each key or value using the Map’s default iterator\n2. Loop through each key-value pair using the new `for...of` loop\n3. Loop through each key-value pair using the Map’s `.forEach()` method\n\n## 1. Using the MapIterator\n\nUsing both the `.keys()` and `.values()` methods on a Map will return a new iterator object called `MapIterator`. You can store that iterator object in a new variable and use `.next()` to loop through each key or value. Depending on which method you use, will determine if your iterator has access to the Map’s keys or the Map’s values.\n\n```js\nlet iteratorObjForKeys = members.keys();\niteratorObjForKeys.next();\n```\n> `Object {value: 'Evelyn', done: false}`\n\nUse `.next()` to the get the next key value.\n\n```js\niteratorObjForKeys.next();\n```\n> `Object {value: 'Liam', done: false}`\n\nAnd so on.\n\n```js\niteratorObjForKeys.next();\n```\n> `Object {value: 'Sophia', done: false}`\n\nOn the flipside, use the `.values()` method to access the Map’s values, and then repeat the same process.\n\n```js\nlet iteratorObjForValues = members.values();\niteratorObjForValues.next();\n```\n> `Object {value: 75.68, done: false}`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256134,
+              "key": "dca659d0-f686-4f6c-ad9c-8749d880a8d5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## 2. Using a for...of Loop\n\nYour second option for looping through a Map is with a `for...of` loop.\n\n```js\nfor (const member of members) {\n  console.log(member);\n}\n```\n> ```\n ['Evelyn', 75.68]\n ['Liam', 20.16]\n ['Sophia', 0]\n ['Marcus', 10.25]\n```\n\nHowever, when you use a `for...of` loop with a Map, you don’t exactly get back a key or a value. Instead, the key-value pair is split up into an array where the first element is the key and the second element is the value. If only there were a way to fix this?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261451,
+              "key": "ac6347f1-4a78-4f1a-8f4c-00e657c67521",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "ac6347f1-4a78-4f1a-8f4c-00e657c67521",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6350730081468416",
+                "initial_code_files": [
+                  {
+                    "text": "/*\n * Using array destructuring, fix the following code to print the keys and values of the `members` Map to the console.\n */\n\nconst members = new Map();\n\nmembers.set('Evelyn', 75.68);\nmembers.set('Liam', 20.16);\nmembers.set('Sophia', 0);\nmembers.set('Marcus', 10.25);\n\nfor (const member of members) {\n    // console.log(key, value);\n}\n",
+                    "name": "StudentMain.js"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 261450,
+              "key": "b18db3a8-86ce-4408-9aaf-39ce44fa864a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## 3. Using a forEach Loop\n\nYour last option for looping through a Map is with the `.forEach()` method.\n\n```js\nmembers.forEach((value, key) => console.log(key, value));\n```\n> ```\n 'Evelyn' 75.68\n 'Liam' 20.16\n 'Sophia' 0\n 'Marcus' 10.25\n```\n\nNotice how with the help of an arrow function, the `forEach` loop reads fairly straightforward. For each `value` and `key` in `members`, log the `value` and `key` to the console.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 196726,
+          "key": "ae0439c3-436c-4c2f-ba69-8bfc7f947a6c",
+          "title": "WeakMaps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ae0439c3-436c-4c2f-ba69-8bfc7f947a6c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256137,
+              "key": "f61c5595-2770-49a1-b9dc-3bdbf90b883d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> **TIP**: If you’ve gone through the WeakSets section, then this section should be somewhat of a review. WeakMaps exhibit the same behavior as a WeakSets, except WeakMaps work with key-values pairs instead of individual items.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256139,
+              "key": "1b60cad4-fcb7-4fdc-a883-9230477ab2c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# What is a WeakMap?\n\nA WeakMap is just like a normal Map with a few key differences:\n\n1. a WeakMap can only contain objects as keys,\n2. a WeakMap is not iterable which means it can’t be looped and\n3. a WeakMap does not have a `.clear()` method.\n\nYou can create a WeakMap just like you would a normal Map, except that you use the `WeakMap` constructor.\n\n```js\nconst book1 = { title: 'Pride and Prejudice', author: 'Jane Austen' };\nconst book2 = { title: 'The Catcher in the Rye', author: 'J.D. Salinger' };\nconst book3 = { title: 'Gulliver’s Travels', author: 'Jonathan Swift' };\n\nconst library = new WeakMap();\nlibrary.set(book1, true);\nlibrary.set(book2, false);\nlibrary.set(book3, true);\n\nconsole.log(library);\n```\n> `WeakMap {Object {title: 'Pride and Prejudice', author: 'Jane Austen'} => true, Object {title: 'The Catcher in the Rye', author: 'J.D. Salinger'} => false, Object {title: 'Gulliver’s Travels', author: 'Jonathan Swift'} => true}`\n\n…but if you try to add something other than an object as a key, you’ll get an error!\n\n```js\nlibrary.set('The Grapes of Wrath', false);\n```\n> `Uncaught TypeError: Invalid value used as weak map key(…)`\n\nThis is expected behavior because WeakMap can only contain objects as keys. Again, similar to WeakSets, WeakMaps leverage garbage collection for easier use and maintainability.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256140,
+              "key": "67d295c9-31b2-409b-aaab-4f9ab8c6fba1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Garbage Collection\n\nIn JavaScript, memory is allocated when new values are created and is \"automatically\" freed up when those values are no longer needed. This process of freeing up memory after it is no longer needed is what is known as *garbage collection*.\n\nWeakMaps take advantage of this by exclusively working with objects as keys. If you set an object to `null`, then you’re essentially deleting the object. And when JavaScript’s garbage collector runs, the memory that object previously occupied will be freed up to be used later in your program.\n\n```js\nbook1 = null;\nconsole.log(library);\n```\n> `WeakMap {Object {title: 'The Catcher in the Rye', author: 'J.D. Salinger'} => false, Object {title: 'Gulliver’s Travels', author: 'Jonathan Swift'} => true}`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 301398,
+              "key": "147acdd2-2fb0-4ffc-8b06-7ad35c5609c2",
+              "title": "WeakMaps Animation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sUE_JjiF_q4",
+                "china_cdn_id": "sUE_JjiF_q4.mp4"
+              }
+            },
+            {
+              "id": 256146,
+              "key": "6774b4fd-8305-40ef-b5cc-63cf9e60ab4b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "_**Erratum**: In the previous video animation, `const` is use to declare the `book1` variable. `book1` is then reassigned to `null` -- however, this wouldn't be possible because the variable identifier cannot be reassigned (i.e., you'll see `Uncaught TypeError: Assignment to constant variable.`). Instead, we recommend using `let` rather than `const` to declare `book1`, which allows for reassignment._\n\nWhat makes this so useful is you don’t have to worry about deleting keys that are referencing deleted objects in your WeakMaps, JavaScript does it for you! When an object is deleted, the object key will also be deleted from the WeakMap when garbage collection runs. This makes WeakMaps useful in situations where you want an efficient, lightweight solution for creating groupings of objects with metadata.\n\nThe point in time when garbage collection happens is dependent on a lot of different factors. Check out [MDN’s documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management#Garbage_collection) to learn more about the algorithms used to handle garbage collection in JavaScript.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 213352,
+          "key": "c445893d-48a1-422c-9201-f69b4cda71d8",
+          "title": "Promises Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c445893d-48a1-422c-9201-f69b4cda71d8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 232940,
+              "key": "98c39f5d-7e0c-43a1-90ed-e0dc4b3287fe",
+              "title": "Promises Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8L1a-_c8mCg",
+                "china_cdn_id": "8L1a-_c8mCg.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 196727,
+          "key": "efb32aa3-9b21-4f1e-acf1-162d0498472b",
+          "title": "Promises",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "efb32aa3-9b21-4f1e-acf1-162d0498472b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256147,
+              "key": "d5c3f1b5-2e0a-44f5-888d-03e4d0b14cc1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Promises\nA JavaScript Promise is created with the new [Promise constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) - `new Promise()`. A promise will let you start some work that will be done **asynchronously** and let you get back to your regular work. When you create the promise, you must give it the code that will be run asynchronously. You provide this code as the argument of the constructor function:\n\n```js\nnew Promise(function () {\n    window.setTimeout(function createSundae(flavor = 'chocolate') {\n        const sundae = {};\n        // request ice cream\n        // get cone\n        // warm up ice cream scoop\n        // scoop generous portion into cone!\n    }, Math.random() * 2000);\n});\n```\n\nThis code creates a promise that will start in a few seconds after I make the request. Then there are a number of steps that need to be made in the `createSundae` function. \n\n## Indicated a Successful Request or a Failed Request\n\nBut once that's all done, how does JavaScript notify us that it's finished and ready for us to pick back up? It does that by passing two functions into our initial function. Typically we call these `resolve` and `reject`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256148,
+              "key": "6ad64ae8-4bdc-40fe-91e9-513df3823a15",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The function gets passed to the function we provide the Promise constructor - typically the word \"resolve\" is used to indicate that this function should be called when the request completes successfully. Notice the `resolve` on the first line:\n\n```js\nnew Promise(function (resolve, reject) {\n    window.setTimeout(function createSundae(flavor = 'chocolate') {\n        const sundae = {};\n        // request ice cream\n        // get cone\n        // warm up ice cream scoop\n        // scoop generous portion into cone!\n        resolve(sundae);\n    }, Math.random() * 2000);\n});\n```\n\nNow when the sundae has been successfully created, it calls the `resolve` method and passes it the data we want to return - in this case the data that's being returned is the completed sundae. So the `resolve` method is used to indicate that the request is complete and that it completed *successfully*. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256149,
+              "key": "4cd01a23-da42-4937-9ab6-dd6a621fc2c3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If there is a problem with the request and it couldn't be completed, then we could use the second function that's passed to the function. Typically, this function is stored in an identifier called \"reject\" to indicate that this function should be used if the request fails for some reason. Check out the `reject` on the first line:\n\n```js\nnew Promise(function (resolve, reject) {\n    window.setTimeout(function createSundae(flavor = 'chocolate') {\n        const sundae = {};\n        // request ice cream\n        // get cone\n        // warm up ice cream scoop\n        // scoop generous portion into cone!\n        if ( /* iceCreamConeIsEmpty(flavor) */ ) {\n            reject(`Sorry, we're out of that flavor :-(`);\n        }\n        resolve(sundae);\n    }, Math.random() * 2000);\n});\n```\n\nSo the `reject` method is used when the request *could not be completed*. Notice that even though the request fails, we can still return data - in this case we're just returning text that says we don't have the desired ice cream flavor.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256150,
+              "key": "2f74361b-0a7d-4fc0-9b8d-4581d4db8d22",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A Promise constructor takes a function that will run and then, after some amount of time, will either complete successfully (using the `resolve` method) or unsuccessfully (using the `reject` method). When the outcome has been finalized (the request has either completed successfully or unsuccessfully), the promise is now *fulfilled* and will notify us so we can decide what to do with the response.\n\n## Promises Return Immediately\nThe first thing to understand is that a Promise will immediately return an object.\n\n```js\nconst myPromiseObj = new Promise(function (resolve, reject) {\n    // sundae creation code\n});\n```\n\nThat object has a `.then()` method on it that we can use to have it notify us if the request we made in the promise was either successful or failed. The `.then()` method takes two functions:\n\n1. the function to run if the request completed successfully\n* the function to run if the request failed to complete\n\n```js\nmySundae.then(function(sundae) {\n    console.log(`Time to eat my delicious ${sundae}`);\n}, function(msg) {\n    console.log(msg);\n    self.goCry(); // not a real method\n});\n```\n\nAs you can see, the first function that's passed to `.then()` will be called and passed the data that the Promise's `resolve` function used. In this case, the function would receive the `sundae` object. The second function will be called and passed the data that the Promise's `reject` function was called with. In this case, the function receives the error message \"Sorry, we're out of that flavor :-(\" that the `reject` function was called with in the Promise code above. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 213359,
+          "key": "70ec68a8-7d13-4ec7-8b98-303d7bbc78a8",
+          "title": "More Promises",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "70ec68a8-7d13-4ec7-8b98-303d7bbc78a8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 232941,
+              "key": "a4c106d8-657c-4b1c-9862-c000f852d1de",
+              "title": "More Promises",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8CxDIR2tH9A",
+                "china_cdn_id": "8CxDIR2tH9A.mp4"
+              }
+            },
+            {
+              "id": 327896,
+              "key": "8fd703f1-21c0-477e-84d5-ffcbc6ef3ab6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Check out our [Promises course](https://www.udacity.com/course/javascript-promises--ud898) where we'll take a deep dive into:\n\n* JavaScript Promises\n* how to handle returned data and errors\n* build an app called Exoplanet Explorer that uses JavaScript Promises to fetch remote data asynchronously",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 213351,
+          "key": "8e7ad09f-5f31-4a62-b6ee-9fed8b177474",
+          "title": "Proxies Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8e7ad09f-5f31-4a62-b6ee-9fed8b177474",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 232942,
+              "key": "8d305bd8-295f-4ea4-a036-8e7407c682ea",
+              "title": "Proxies Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "lYXhxgt6suk",
+                "china_cdn_id": "lYXhxgt6suk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 196728,
+          "key": "2bae49bd-919f-4051-a066-cb89a9a21b6f",
+          "title": "Proxies",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2bae49bd-919f-4051-a066-cb89a9a21b6f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 256151,
+              "key": "b2b2acef-fa60-4d0f-8257-1985ee50eeeb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To create a proxy object, we use the Proxy constructor - `new Proxy();`. The proxy constructor takes two items:\n* the object that it will be the proxy for\n* an object containing the list of methods it will handle for the proxied object\n\nThe second object is called the **handler**.\n\n## A Pass Through Proxy\nThe simplest way to create a proxy is to provide an object and then an empty handler object.\n\n```js\nvar richard = {status: 'looking for work'};\nvar agent = new Proxy(richard, {});\n\nagent.status; // returns 'looking for work'\n```\n\nThe above doesn't actually do anything special with the proxy - it just passes the request directly to the source object! If we want the proxy object to actually intercept the request, that's what the handler object is for!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256152,
+              "key": "0e443618-1eb3-4001-ab76-5cf0d1f2fa5d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The key to making Proxies useful is the handler object that's passed as the second object to the Proxy constructor. The handler object is made up of a methods that will be used for property access. Let's look at the `get`:\n\n## Get Trap\nThe `get` trap is used to \"intercept\" calls to properties:\n\n```js\nconst richard = {status: 'looking for work'};\nconst handler = {\n    get(target, propName) {\n        console.log(target); // the `richard` object, not `handler` and not `agent`\n        console.log(propName); // the name of the property the proxy (`agent` in this case) is checking\n    }\n};\nconst agent = new Proxy(richard, handler);\nagent.status; // logs out the richard object (not the agent object!) and the name of the property being accessed (`status`)\n```\n\nIn the code above, the `handler` object has a `get` method (called a \"trap\" since it's being used in a Proxy). When the code `agent.status;` is run on the last line, because the `get` trap exists, it \"intercepts\" the call to get the `status` property and runs the `get` trap function. This will log out the target object of the proxy (the `richard` object) and then logs out the name of the property being requested (the `status` property). _And that's all it does!_ It doesn't actually log out the property! This is important - *if a trap is used, you need to make sure you provide all the functionality for that specific trap*.\n\n### Accessing the Target object from inside the proxy\nIf we wanted to actually provide the real result, we would need to return the property on the target object:\n\n```js\nconst richard = {status: 'looking for work'};\nconst handler = {\n    get(target, propName) {\n        console.log(target);\n        console.log(propName);\n        return target[propName];\n    }\n};\nconst agent = new Proxy(richard, handler);\nagent.status; // (1)logs the richard object, (2)logs the property being accessed, (3)returns the text in richard.status\n```\n\nNotice we added the `return target[propName];` as the last line of the `get` trap. This will access the property on the target object and will return it. \n\n### Having the proxy return info, directly\nAlternatively, we could use the proxy to provide direct feedback:\n\n```js\nconst richard = {status: 'looking for work'};\nconst handler = {\n    get(target, propName) {\n        return `He's following many leads, so you should offer a contract as soon as possible!`;\n    }\n};\nconst agent = new Proxy(richard, handler);\nagent.status; // returns the text `He's following many leads, so you should offer a contract as soon as possible!`\n```\n\nWith this code, the Proxy doesn't even check the target object, it just directly responds to the calling code.\n\nSo the `get` trap will take over whenever any property on the proxy is accessed. If we want to intercept calls to _change_ properties, then the `set` trap needs to be used!\n\nThe `set` trap is used for intercepting code that will _change a property_. The `set` trap receives:\nthe object it proxies\nthe property that is being set\nthe new value for the proxy\n\n```js\nconst richard = {status: 'looking for work'};\nconst handler = {\n    set(target, propName, value) {\n        if (propName === 'payRate') { // if the pay is being set, take 15% as commission\n            value = value * 0.85;\n        }\n        target[propName] = value;\n    }\n};\nconst agent = new Proxy(richard, handler);\nagent.payRate = 1000; // set the actor's pay to $1,000\nagent.payRate; // $850 the actor's actual pay\n```\n\nIn the code above, notice that the `set` trap checks to see if the `payRate` property is being set. If it is, then the proxy (the agent) takes 15 percent off the top for her own commission! Then, when the actor's pay is set to one thousand dollars, since the `payRate` property was used, the code took 15% off the top and set the actual `payRate` property to `850`;",
+              "instructor_notes": ""
+            },
+            {
+              "id": 256153,
+              "key": "654e96d2-936a-4841-aff4-3853eba6c093",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Other Traps\nSo we've looked at the `get` and `set` traps (which are probably the ones you'll use most often), but there are actually a total of 13 different traps that can be used in a handler!\n\n1. [the get trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/get) - lets the proxy handle calls to property access\n2. [the set trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/set) - lets the proxy handle setting the property to a new value\n3. [the apply trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/apply) - lets the proxy handle being invoked (the object being proxied is a function)\n4. [the has trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/has) - lets the proxy handle the using `in` operator\n5. [the deleteProperty trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/deleteProperty) - lets the proxy handle if a property is deleted\n6. [the ownKeys trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/ownKeys) - lets the proxy handle when all keys are requested\n7. [the construct trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/construct) - lets the proxy handle when the proxy is used with the `new` keyword as a constructor\n8. [the defineProperty trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/defineProperty) - lets the proxy handle when defineProperty is used to create a new property on the object\n9. [the getOwnPropertyDescriptor trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/getOwnPropertyDescriptor) - lets the proxy handle getting the property's descriptors\n10. [the preventExtenions trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/preventExtensions) - lets the proxy handle calls to `Object.preventExtensions()` on the proxy object\n11. [the isExtensible trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/isExtensible) - lets the proxy handle calls to `Object.isExtensible` on the proxy object\n12. [the getPrototypeOf trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/getPrototypeOf) - lets the proxy handle calls to `Object.getPrototypeOf` on the proxy object\n13. [the setPrototypeOf trap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/setPrototypeOf) - lets the proxy handle calls to `Object.setPrototypeOf` on the proxy object\n\nAs you can see, there are a lot of traps that let the proxy manage how it handles calls back and forth to the proxied object.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 257554,
+          "key": "cea200b2-165e-463b-b223-92efcbe91288",
+          "title": "Proxies vs. ES5 Getter/Setter",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cea200b2-165e-463b-b223-92efcbe91288",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 257555,
+              "key": "078597d6-6197-4694-b7ec-19243eb07fbb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nInitially, it can be a bit unclear as to why proxies are all that beneficial when there are already getter and setter methods provided in ES5. With ES5's getter and setter methods, you need to know _before hand_ the properties that are going to be get/set:\n\n```js\nvar obj = {\n    _age: 5,\n    _height: 4,\n    get age() {\n        console.log(`getting the \"age\" property`);\n        console.log(this._age);\n    },\n    get height() {\n        console.log(`getting the \"height\" property`);\n        console.log(this._height);\n    }\n};\n```\n\nWith the code above, notice that we have to set `get age()` and `get height()` when initializing the object. So when we call the code below, we'll get the following results:\n\n```js\nobj.age; // logs 'getting the \"age\" property' & 5\nobj.height; // logs 'getting the \"height\" property' & 4\n```\n\nBut look what happens when we now _add a new property_ to the object:\n\n```js\nobj.weight = 120; // set a new property on the object\nobj.weight; // logs just 120\n```\n\nNotice that a `getting the \"weight\" property` message wasn't displayed like the `age` and `height` properties produced.\n\nWith ES6 Proxies, we *do not need to know the properties beforehand*:\n\n```js\nconst proxyObj = new Proxy({age: 5, height: 4}, {\n    get(targetObj, property) {\n        console.log(`getting the ${property} property`);\n        console.log(targetObj[property]);\n    }\n});\n\nproxyObj.age; // logs 'getting the age property' & 5\nproxyObj.height; // logs 'getting the height property' & 4\n```\n\nAll well and good, just like the ES5 code, but look what happens when we add a new property:\n\n```js\nproxyObj.weight = 120; // set a new property on the object\nproxyObj.weight; // logs 'getting the weight property' & 120\n```\n\nSee that?!? A `weight` property was added to the proxy object, and when it was later retrieved, it displayed a log message!\n\nSo some functionality of proxy objects may seem similar to existing ES5 getter/setter methods. But with proxies, you do not need to initialize the object with getters/setters for each property when the object is initialized.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 257556,
+          "key": "678533c6-6787-4261-a5e7-c2361a2bc1e2",
+          "title": "Proxies Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "678533c6-6787-4261-a5e7-c2361a2bc1e2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 257559,
+              "key": "2926bd68-1111-464a-ba9d-637513c92622",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A proxy object sits between a real object and the calling code. The calling code interacts with the proxy instead of the real object. To create a proxy:\n\n* use the `new Proxy()` constructor\n  * pass the object being proxied as the first item\n  * the second object is a handler object\n* the handler object is made up of 1 of 13 different \"traps\"\n* a trap is a function that will intercept calls to properties let you run code\n* if a trap is not defined, the default behavior is sent to the target object\n\nProxies are a powerful new way to create and manage the interactions between objects.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 196729,
+          "key": "87001b69-93ed-4934-b221-bf6008ea49e0",
+          "title": "Generators",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "87001b69-93ed-4934-b221-bf6008ea49e0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 257560,
+              "key": "00f81cb0-ef2c-4bcf-a36e-0d9d53dceb08",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Whenever a function is invoked, the JavaScript engine starts at the top of the function and runs every line of code until it gets to the bottom. There's no way to stop the execution of the function in the middle and pick up again at some later point. This **\"run-to-completion\"** is the way it's always been:\n\n```js\nfunction getEmployee() {\n    console.log('the function has started');\n\n    const names = ['Amanda', 'Diego', 'Farrin', 'James', 'Kagure', 'Kavita', 'Orit', 'Richard'];\n\n    for (const name of names) {\n        console.log(name);\n    }\n\n    console.log('the function has ended');\n}\n\ngetEmployee();\n```\n\nRunning the code above produces the following output on the console:\n\n```text\nthe function has started\nAmanda\nDiego\nFarrin\nJames\nKagure\nKavita\nOrit\nRichard\nthe function has ended\n```\n\nBut what if you want to print out the first 3 employee names then stop for a bit, then, at some later point, you want to continue where you left off and print out more employee names. With a regular function, you can't do this since there's no way to \"pause\" a function in the middle of its execution.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257561,
+              "key": "741dd448-79bb-4b33-8da3-f65db13a4a65",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Pausable Functions\n\n\nIf we _do_ want to be able to pause a function mid-execution, then we'll need a new type of function available to us in ES6 - generator functions! Let's look at one:\n\n```js\nfunction* getEmployee() {\n    console.log('the function has started');\n\n    const names = ['Amanda', 'Diego', 'Farrin', 'James', 'Kagure', 'Kavita', 'Orit', 'Richard'];\n\n    for (const name of names) {\n        console.log( name );\n    }\n\n    console.log('the function has ended');\n}\n```\n\nNotice the asterisk (i.e. `*`) right after the `function` keyword? That asterisk indicates that this function is actually a generator!\n\nNow check out what happens when we try running this function:\n\n```js\ngetEmployee();\n\n// this is the response I get in Chrome:\ngetEmployee {[[GeneratorStatus]]: \"suspended\", [[GeneratorReceiver]]: Window}\n```\n\n...umm, what? Where's the \"the function has started\" text from the top of the function? And why didn't we get any names printed to the console? Those are good questions, but first, a quiz.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257563,
+              "key": "4705434e-afb0-4f88-964d-6c85a76fbf2f",
+              "title": "Generators Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4705434e-afb0-4f88-964d-6c85a76fbf2f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are valid generators? Pay attention to the placement of the asterisk.\n\nIf you're not sure, try running them in your browser's console.",
+                "answers": [
+                  {
+                    "id": "a1484681360925",
+                    "text": "`function* names() { /* ... */ }`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1484681489259",
+                    "text": "`function * names() { /* ... */ }`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1484681497507",
+                    "text": "`function *names() { /* ... */ }`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 257565,
+          "key": "4ff98c20-fd97-4d86-ab2d-9d9ee659658c",
+          "title": "Generators & Iterators",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4ff98c20-fd97-4d86-ab2d-9d9ee659658c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 283059,
+              "key": "9f5b133b-83e9-4c1a-a6c8-9472703045df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Generators & Iterators",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257566,
+              "key": "134be4e2-e390-4931-b153-6c6b6e97e156",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> **WARNING:** We looked at iteration in a previous section, so if you're rusty on it, better check it out again because they're resurfacing here with generators!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257567,
+              "key": "f276503a-a07e-4233-8b54-645494003a3c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When a generator is invoked, it doesn't actually run any of the code inside the function. Instead, it creates and returns an iterator. This iterator can then be used to execute the actual generator's inner code.\n\n```js\nconst generatorIterator = getEmployee();\ngeneratorIterator.next();\n```\n**Produces the code we expect:**\n\n```text\nthe function has started\nAmanda\nDiego\nFarrin\nJames\nKagure\nKavita\nOrit\nRichard\nthe function has ended\n```\n\nNow if you tried the code out for yourself, the first time the iterator's `.next()` method was called it ran all of the code inside the generator. Did you notice anything? The code never paused! So how do we get this magical, pausing functionality?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257569,
+              "key": "b89513a3-1513-4129-bcf2-b12edd75676e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Yield Keyword\n\nThe `yield` keyword is new and was introduced with ES6. It can only be used inside generator functions. `yield` is what causes the generator to pause. Let's add `yield` to our generator and give it a try:\n\n```js\nfunction* getEmployee() {\n    console.log('the function has started');\n\n    const names = ['Amanda', 'Diego', 'Farrin', 'James', 'Kagure', 'Kavita', 'Orit', 'Richard'];\n\n    for (const name of names) {\n        console.log(name);\n        yield;\n    }\n\n    console.log('the function has ended');\n}\n```\n\nNotice that there's now a `yield` inside the `for...of` loop. If we invoke the generator (which produces an iterator) and then call `.next()`, we'll get the following output:\n\n```js\nconst generatorIterator = getEmployee();\ngeneratorIterator.next();\n```\n\n**Logs the following to the console:**\n```text\nthe function has started\nAmanda\n```\n\nIt's paused! But to really be sure, let's check out the next iteration:\n\n```js\ngeneratorIterator.next();\n```\n\n**Logs the following to the console:**\n```text\nDiego\n```\n\nSo it remembered exactly where we left off! It took the next item in the array (Diego), logged it, and then hit the `yield` again, so it paused again.\n\nNow pausing is all well and good, but what if we could send data from the generator back to the \"outside\" world? We can do this with `yield`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257570,
+              "key": "d4e271f0-07a6-47db-b5f8-3e583b939ccc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Yielding Data to the \"Outside\" World\n\n\nInstead of logging the names to the console and then pausing, let's have the code \"return\" the name and then pause.\n\n\n```js\nfunction* getEmployee() {\n    console.log('the function has started');\n\n    const names = ['Amanda', 'Diego', 'Farrin', 'James', 'Kagure', 'Kavita', 'Orit', 'Richard'];\n\n    for (const name of names) {\n        yield name;\n    }\n\n    console.log('the function has ended');\n}\n```\n\nNotice that now instead of `console.log(name);` that it's been switched to `yield name;`. With this change, when the generator is run, it will \"yield\" the name back out to the function _and then pause its execution_. Let's see this in action:\n\n```js\nconst generatorIterator = getEmployee();\nlet result = generatorIterator.next();\nresult.value // is \"Amanda\"\n\ngeneratorIterator.next().value // is \"Diego\"\ngeneratorIterator.next().value // is \"Farrin\"\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 257572,
+              "key": "ad064c5c-a57d-4ae0-a90d-1e979784f70b",
+              "title": "Yield Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ad064c5c-a57d-4ae0-a90d-1e979784f70b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How many times will the iterator's `.next()` method need to be called to fully complete/\"use up\" the `udacity` generator function below:\n\n```js\nfunction* udacity() {\n    yield 'Richard';\n    yield 'James'\n}\n```",
+                "answers": [
+                  {
+                    "id": "a1484682161376",
+                    "text": "0 times",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1484682236438",
+                    "text": "1 time",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1484682239702",
+                    "text": "2 times",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1484682243203",
+                    "text": "3 times",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 257573,
+          "key": "2e54a053-1e9e-4b3f-b236-98270e6d628d",
+          "title": "Sending Data into/out of a Generator",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2e54a053-1e9e-4b3f-b236-98270e6d628d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 257575,
+              "key": "bdc453b3-4c9f-4764-80c7-51479b6b6078",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nSo we can get data out of a generator by using the yield keyword. We can also send data back _into_ the generator, too. We do this using the `.next()` method:\n\n```js\nfunction* displayResponse() {\n    const response = yield;\n    console.log(`Your response is \"${response}\"!`);\n}\n\nconst iterator = displayResponse();\n\niterator.next(); // starts running the generator function\niterator.next('Hello Udacity Student'); // send data into the generator\n// the line above logs to the console: Your response is \"Hello Udacity Student\"!\n```\n\nCalling `.next()` with data (i.e. `.next('Richard')`) will send data into the generator function where it last left off. It will \"replace\" the yield keyword with the data that you provided.\n\nSo the `yield` keyword is used to pause a generator _and_ used to send data outside of the generator, and then the `.next()` method is used to pass data _into_ the generator. Here's an example that makes use of both of these to cycle through a list of names one at a time:\n\n```js\nfunction* getEmployee() {\n    const names = ['Amanda', 'Diego', 'Farrin', 'James', 'Kagure', 'Kavita', 'Orit', 'Richard'];\n    const facts = [];\n\n    for (const name of names) {\n        // yield *out* each name AND store the returned data into the facts array\n        facts.push(yield name); \n    }\n\n    return facts;\n}\n\nconst generatorIterator = getEmployee();\n\n// get the first name out of the generator\nlet name = generatorIterator.next().value;\n \n// pass data in *and* get the next name\nname = generatorIterator.next(`${name} is cool!`).value; \n\n// pass data in *and* get the next name\nname = generatorIterator.next(`${name} is awesome!`).value; \n\n// pass data in *and* get the next name\nname = generatorIterator.next(`${name} is stupendous!`).value; \n\n// you get the idea\nname = generatorIterator.next(`${name} is rad!`).value; \nname = generatorIterator.next(`${name} is impressive!`).value;\nname = generatorIterator.next(`${name} is stunning!`).value;\nname = generatorIterator.next(`${name} is awe-inspiring!`).value;\n\n// pass the last data in, generator ends and returns the array\nconst positions = generatorIterator.next(`${name} is magnificent!`).value; \n\n// displays each name with description on its own line\npositions.join('\\n'); \n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 299613,
+              "key": "f856b968-e773-4a7f-a652-9d8ed8950cc6",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f856b968-e773-4a7f-a652-9d8ed8950cc6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What will happen if the following code is run?\n\n```js\nfunction* createSundae() {\n    const toppings = [];\n    \n    toppings.push(yield);\n    toppings.push(yield);\n    toppings.push(yield);\n    \n    return toppings;\n}\n\nvar it = createSundae();\nit.next('hot fudge');\nit.next('sprinkles');\nit.next('whipped cream');\nit.next();\n```",
+                "answers": [
+                  {
+                    "id": "a1492837873048",
+                    "text": "The `toppings` array will have `undefined` as its last item",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1492837959516",
+                    "text": "An error will occur",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1492838057271",
+                    "text": "The generator will be paused, waiting for it's last call to `.next()`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 257576,
+              "key": "12144750-edfa-4370-a7e9-b8f941211444",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Generators are a powerful new kind of function that is able to pause its execution while also maintaining its own state. Generators are great for iterating over a list of items one at a time so you can handle each item on its own before moving on to the next one. You can also use generators to handle nested callbacks. For example, let's say that an app needs to get a list of all repositories _and_ the number of times they've been starred. Well, before you can get the number of stars for each repository, you'd need to get the user's information. Then after retrieving the user's profile the code can then take that information to find all of the repositories. \n\nGenerators will also be used heavily in upcoming additions to the JavaScript language. One upcoming feature that will make use of them is [async functions](https://github.com/tc39/ecmascript-asyncawait).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 196715,
+          "key": "390df346-c727-4a85-9048-e4787fb0b751",
+          "title": "Lesson 3 Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "390df346-c727-4a85-9048-e4787fb0b751",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 232944,
+              "key": "a5a6d73b-ee41-4f51-80c0-348823a6bd85",
+              "title": "Lesson 3 Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xE4impdnz3c",
+                "china_cdn_id": "xE4impdnz3c.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

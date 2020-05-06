@@ -1,0 +1,585 @@
+{
+  "data": {
+    "lesson": {
+      "id": 668165,
+      "key": "d9c76679-7ae8-4c79-afdb-cb9951d3dfb8",
+      "title": "Rendering UI with React",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You'll learn how React creates and renders elements. You'll also convert manual element creation to JSX, use create-react-app to scaffold projects, and get a brief intro to Components.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/d9c76679-7ae8-4c79-afdb-cb9951d3dfb8/668165/1544026689359/Rendering+UI+with+React+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/d9c76679-7ae8-4c79-afdb-cb9951d3dfb8/668165/1544026683637/Rendering+UI+with+React+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 573014,
+          "key": "310d58d7-ff24-4df5-97bb-41f340613359",
+          "title": "Rendering UI Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "310d58d7-ff24-4df5-97bb-41f340613359",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578051,
+              "key": "f74bf890-d772-4f80-a8c9-e7baec84c910",
+              "title": "Rendering UI - Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "k549w2hPXpI",
+                "china_cdn_id": "k549w2hPXpI.mp4"
+              }
+            },
+            {
+              "id": 573013,
+              "key": "ecf28a5f-70d1-4520-a4fc-8ea356633723",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "React uses JavaScript objects to create React elements. We'll use these React elements to describe what we want the page to look like, and React will be in charge of generating the DOM nodes to achieve the result.\n\nRecall from the previous lesson the difference between imperative and declarative code. The React code that we write is declarative because we aren't telling React _what_ to do; instead, we're writing React elements that describe what the page should look like, and React does all of the implementation work to get it done.\n\nEnough theory, let's get to it and create some elements!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573033,
+          "key": "a1576abb-fc61-4b66-8d5e-264265d57d2a",
+          "title": "Creating Elements and JSX",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a1576abb-fc61-4b66-8d5e-264265d57d2a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 573015,
+              "key": "fa560fd8-ae9b-49ee-ac90-3b97cc0c8e80",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Watch First\n \nWe'll be looking at using React's `.createElement()` method in the next couple of videos. For starters, here is its signature:\n\n```js\nReact.createElement( /* type */, /* props */, /* content */ );\n```\n\nWe'll take a deep dive into what all that entails in just a bit! We'll start things out with a project that's already set up. For now, don't worry about creating a project or coding along. There will be plenty of hands-on work for you to do soon enough! We'll start building our in-class project, Contacts App, in the next section. If you would like to code along for the next few videos, you can use this [React Sandbox](https://codesandbox.io/s/new).\n \n> ## 💡 Trying Out React Code 💡\n\n> React is an extension of JavaScript (i.e., a JavaScript _library_), but it isn't built into your browser. You wouldn't be able to test out React code samples in your browser console the way you would if you were learning JavaScript. In just a bit, we'll see how to install and use a React environment! ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 578074,
+              "key": "bbb8cb47-c3b7-496a-aa48-b2c0a8ee7740",
+              "title": "Creating Elements With CreateElement",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "v7Ui5W6NqUk",
+                "china_cdn_id": "v7Ui5W6NqUk.mp4"
+              }
+            },
+            {
+              "id": 573017,
+              "key": "e7cc2371-49b9-402b-aa7d-de635df154a2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Rendering Elements onto the DOM\n\nIn the previous video, we used ReactDOM's `render()` method to render our element onto a particular area of a page. In particular, we rendered the `element` onto a DOM node called `root`. But where did this `root` come from?\n\nApps built with React typically have a single `root` DOM node. For example, an HTML file may contain a `<div>` with the following:\n\n```html\n<div id=\"root\"></div>\n```\n\nBy passing this DOM node into `getElementById()`, React will end up controlling the entirety of its contents. Another way to think about this is that this particular `<div>` will serve as a \"hook\" for our React app; this is the area where React will take over and render our UI!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573018,
+              "key": "c8705e70-0d9b-4153-a5fc-1189c87120f1",
+              "title": "A DOM Element?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c8705e70-0d9b-4153-a5fc-1189c87120f1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What will `myBio` hold when the following code is run?\n\n```js\nimport React from 'react';\n\nconst myBio = React.createElement('div', null, 'My name is Tyler, and I love porcupines.');\n```",
+                "answers": [
+                  {
+                    "id": "a1522189407678",
+                    "text": "a reference to a DOM node",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522189413500",
+                    "text": "a DOM node itself",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522189414004",
+                    "text": "a JavaScript object",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522189414492",
+                    "text": "a JavaScript class",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 578075,
+              "key": "0741b2ac-52dd-45b6-acc2-4c132658db2e",
+              "title": "Passing Attributes In CreateElement",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "joSbGNA_0hY",
+                "china_cdn_id": "joSbGNA_0hY.mp4"
+              }
+            },
+            {
+              "id": 573020,
+              "key": "15bf1765-e659-4cf6-94c7-339a6f2558f3",
+              "title": "Allowed Attributes",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "15bf1765-e659-4cf6-94c7-339a6f2558f3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "React allows a lot of HTML attributes to be passed along to the React element. Look through [all supported HTML attributes](https://facebook.github.io/react/docs/dom-elements.html#all-supported-html-attributes) in the React docs and select which of the following attributes are allowed: ",
+                "answers": [
+                  {
+                    "id": "a1522189557511",
+                    "text": "poster",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522189562549",
+                    "text": "id",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522189563071",
+                    "text": "marginWidth",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522189563477",
+                    "text": "for",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573021,
+              "key": "e65d81ee-1247-4988-80d2-7eb383ae812e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "I just used React's `.createElement()` method to construct a \"React element\". The `.createElement()` method has the following signature:\n \n```js\nReact.createElement( /* type */, /* props */, /* content */ ); \n```\n \nLet's break down what each item can be:\n \n* `type` – either a string or a React Component\n\n This can be a string of any existing HTML element (e.g. `'p'`, `'span'`, or `'header'`) or you could pass a React _component_ (we'll be creating components with JSX, in just a moment).\n\n\n* `props` – either `null` or an object\n\n This is an object of HTML attributes and custom data about the element.\n \n\n* `content` – `null`, a string, a React Element, or a React Component\n\n Anything that you pass here will be the content of the rendered element. This can include plain text, JavaScript code, other React elements, etc.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573493,
+              "key": "2b297ca0-c49c-4cf3-b5b2-fbf072f778f4",
+              "title": "Nesting ReactCreateElement Calls",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "j_FHK4jEXJ8",
+                "china_cdn_id": "j_FHK4jEXJ8.mp4"
+              }
+            },
+            {
+              "id": 573494,
+              "key": "6d1bd6a1-0ab1-4fc2-865d-b5825278fe1b",
+              "title": "Nesting With An Array",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "B7NJ68esH9w",
+                "china_cdn_id": "B7NJ68esH9w.mp4"
+              }
+            },
+            {
+              "id": 573024,
+              "key": "3f402f24-a223-4584-8845-a34677653256",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## `.createElement()` Returns *One* Root Element\n\nRecall that `React.createElement();` creates a single React element of a particular type. We'd normally pass in a tag such as a `<div>` or a `<span>` to represent that type, but the content argument can be _another_ React element!\n\nConsider the following example:\n\n```js\nconst element = React.createElement('div', null,\n React.createElement('strong', null, 'Hello world!')\n);\n```\n\nHere, \"Hello world!\" will be wrapped in a `<div>` when this React element renders as HTML. While we can indeed nest React elements, remember the overall call just returns a single element.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 578052,
+              "key": "f3a6b641-5723-4a08-87b2-294d57123f38",
+              "title": "Nesting & JSX",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MLd3g65K2wQ",
+                "china_cdn_id": "MLd3g65K2wQ.mp4"
+              }
+            },
+            {
+              "id": 573495,
+              "key": "517453b6-6e3d-4c8f-ba4f-b52085992b5f",
+              "title": "ReactCreateElement To JSX",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MDfyG5SDdEo",
+                "china_cdn_id": "MDfyG5SDdEo.mp4"
+              }
+            },
+            {
+              "id": 573027,
+              "key": "f8649fd9-2874-4869-8df7-22f7f50a8c78",
+              "title": "convert nested createElement calls to JSX",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f8649fd9-2874-4869-8df7-22f7f50a8c78",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Consider the following example in JSX:\n\n```js\nconst greeting = (\n <div className='greeting'>\n <h2>Hello world!</h2>\n </div>\n);\n```\n\nIf we want to output the same HTML, what goes into `1`, `2`, and `3` when calling `createElement()`?\n\n```js\nconst greeting = React.createElement(\n __1__,\n { className: 'greeting' },\n React.createElement(\n __2__,\n {},\n __3__\n )\n);\n```",
+                "answers": [
+                  {
+                    "id": "a1522190521654",
+                    "text": "`'h2'`, `'div'`, `'Hello world!'`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522190529055",
+                    "text": "`div`, `h2`, `Hello world!`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522190529645",
+                    "text": "`'div'`, `'h2'`, `'Hello world!'`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522190530894",
+                    "text": "`Hello world!`, `div`, `h2`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573028,
+              "key": "33d59086-0028-435b-8f9c-cfeac55b5a06",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## JSX Returns *One* Main Element, Too\n\nWhen writing JSX, keep in mind that it must only return a single element. This element may have any number of descendants, but there _must_ be a single root element wrapping your overall JSX (typically a `<div>` or a `<span>`). Check out the following example:\n\n```js\nconst message = (\n <div>\n <h1>All About JSX:</h1>\n <ul>\n <li>JSX</li>\n <li>is</li>\n <li>awesome!</li>\n </ul>\n </div>\n);\n```\n\nSee how there's only one `<div>` element in the code above and that all other JSX is nested inside it? This is how you have to write it if you want multiple elements. To be completely clear, the following is incorrect and will cause an error:\n\n```js\nconst message = (\n <h1>All About JSX:</h1>\n <ul>\n <li>JSX</li>\n <li>is</li>\n <li>awesome!</li>\n </ul>\n);\n```\n\nIn this example, we have two sibling elements that are both at the root level (i.e. `<h1>` and `<ul>`) . This won't work and will give the error:\n\n> Syntax error: Adjacent JSX elements must be wrapped in an enclosing tag\n\nSince we know that JSX is really just a syntax extension for `.createElement()`, this makes sense; `.createElement()` takes in only one tag name (as a string) as its first argument.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573029,
+              "key": "c2131f0d-e4a7-4cf0-bd7e-f962c3f6f222",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Intro to Components\n\nSo far we've seen how `.createElement()` and JSX can help us produce some HTML. Typically, though, we'll use one of React's key features, Components, to construct our UI. Components refer to _reusable_ pieces of code ultimately responsible for returning HTML to be rendered onto the page. More often than not, you'll see React components written with JSX.\n\nSince React's main focus is to streamline building our app's UI, there is only one method that is absolutely required in any React component class: `render()`.\n\nLet's go ahead and build our first component class!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573496,
+              "key": "829083f4-531a-4d9c-8836-28bbc85b9496",
+              "title": "Create A Component",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "II-fxVwAjeE",
+                "china_cdn_id": "II-fxVwAjeE.mp4"
+              }
+            },
+            {
+              "id": 573031,
+              "key": "d52a800f-41de-4282-8904-cea13cd81e2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡 Declaring Components in React 💡\n>\n> In the previous video, we defined the `ContactList` component like so:\n>\n> ```js\nclass ContactList extends React.Component {\n// ...\n}\n```\n>\n> In other words, we are defining a component that's really just a JavaScript class that inherits from `React.Component`.\n>\n> In real-world use (and throughout this course), you may also see declarations like:\n>\n> ```js\nclass ContactList extends Component {\n// ...\n}\n```\n>\n> Both ways are functionally the same, but be sure your module imports match accordingly! That is, if you choose to declare components like the example directly above, your import from `React` will now look like:\n>\n> ```js\nimport React, { Component } from 'react';\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573032,
+              "key": "d7cfa082-a31e-44d6-ba9b-fecb12741059",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Creating Elements Recap\n\nIn the end, remember that React is only concerned with the View layer of our app. This is what the user sees and interacts with. As such, we can use `.createElement()` to render HTML onto a document. More often than not, however, you'll use a syntax extension to describe what your UI should look like. This syntax extension is known as JSX, and just looks similar to plain HTML written right into a JavaScript file. The JSX gets transpiled to React's `.createElement()` method that outputs HTML to be rendered in the browser.\n\nA great mindset to have when building React apps is to [think in `components`](https://facebook.github.io/react/docs/thinking-in-react.html). Components represent the modularity and reusability of React. You can think of your component classes as factories that produce instances of components. These component classes should follow the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) and just \"do one thing\". If it manages too many different tasks, it may be a good idea to decompose your component into smaller subcomponents.\n\nFurther Research:\n* [Rendering Elements](https://facebook.github.io/react/docs/rendering-elements.html) from the React docs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573043,
+          "key": "94ec6998-1e08-4076-afb2-61f33f0eee36",
+          "title": "Create React App",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "94ec6998-1e08-4076-afb2-61f33f0eee36",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578053,
+              "key": "e1a73482-60bc-4bb8-93b4-d2515be203fc",
+              "title": "Create React App",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "x1fp0wLBI5w",
+                "china_cdn_id": "x1fp0wLBI5w.mp4"
+              }
+            },
+            {
+              "id": 630044,
+              "key": "57f6013a-6b1e-4704-aaba-0dd755bedf70",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡Before Installing `create-react-app`💡\n\n> *If you already have Node.js on your machine, it's a good idea to reinstall it to make sure you have the latest version. Keep in mind that Node.js now comes with `npm` by default.*\n\n> **MacOS**\n> 1. Install [Homebrew](https://brew.sh/) by running `/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"\n` in the terminal. \n> * Check that it was installed by running `brew --version`. You should see the version number that was installed.\n> * Run `brew install node`.\n> * Run `node --version`.\n> * Check that `npm` was installed as well by running `npm --version`.\n> * Run `brew install yarn`.\n> * Run `npm --version`.\n> * Run `yarn install && yarn --version`\n\n> **Windows**\n> 1. Please download the [Node.js Installer](https://nodejs.org/en/download/), go through the installation process, and restart your computer once you're done.\n> * Please follow the [`yarn` installation instructions](https://yarnpkg.com/lang/en/docs/install).\n> * Run  `yarn --version` to make sure `yarn` has been successfully installed.\n\n> **Linux**\n> 1. Please follow [these instructions](https://www.ostechnix.com/install-node-js-linux\n) to install [Node.js](https://nodejs.org/en/download/).\n> * Run `sudo apt-get install -y build-essential`.\n> * Please follow the [`yarn` installation instructions](https://yarnpkg.com/lang/en/docs/install).\n> * Run  `yarn --version` to make sure `yarn` has been successfully installed.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573035,
+              "key": "0dfa824b-9b18-4c63-afe9-47005f919534",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Scaffolding Your React App\n\nJSX is awesome, but it does need to be transpiled into regular JavaScript before reaching the browser. We typically use a transpiler like [Babel](https://github.com/babel/babel) to accomplish this for us. We can run Babel through a build tool, like [Webpack](https://github.com/webpack/webpack) which helps bundle all of our assets (JavaScript files, CSS, images, etc.) for web projects.\n\nTo streamline these initial configurations, we can use Facebook's Create React App package to manage all the setup for us! This tool is incredibly helpful to get started in building a React app, as it sets up everything we need with _zero configuration_! Install Create React App (through the command-line with [npm](https://www.npmjs.com/get-npm)), and then we can walk through what makes it so great.\n \n```bash\nnpm install -g create-react-app\n```\n\nIf you're seeing errors when trying to install a package globally, feel free to check out [this article](https://docs.npmjs.com/getting-started/fixing-npm-permissions) in the npm documentation. Note that to find out where global packages are installed, you can run `npm list -g` in your console (more information [here](https://stackoverflow.com/questions/5926672/where-does-npm-install-packages)).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 578076,
+              "key": "558fdee7-7a2d-4408-924e-6620e934182f",
+              "title": "Installing & Using Create React App",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3igA5dQ7aPA",
+                "china_cdn_id": "3igA5dQ7aPA.mp4"
+              }
+            },
+            {
+              "id": 573037,
+              "key": "91ea13a4-610d-4074-9563-5e68ab11d9cf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/9cbf12adbbeed5353ffe8c8d53ffef756ebc03a4)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573038,
+              "key": "7ad2f5c6-7f58-4ecf-8dda-fd163b3a4fd3",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7ad2f5c6-7f58-4ecf-8dda-fd163b3a4fd3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have installed [`create-react-app`](https://github.com/facebookincubator/create-react-app).",
+                "I have used `create-react-app` to create the `contacts` project."
+              ],
+              "positive_feedback": "You are now ready to go!",
+              "video_feedback": null,
+              "description": "Let's make sure we're both on the same page."
+            },
+            {
+              "id": 573039,
+              "key": "cbe767a3-7fa8-4532-a2b4-72883ae4f849",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## The Yarn Package Manager\n \n> Both in the following video and in the output of `create-react-app`, we're told to use `yarn start` to start the development server. If you haven't heard about it yet, [Yarn](https://yarnpkg.com) is a package manager that's similar to NPM. Yarn was created from the ground up by Facebook to improve on some key aspects that are slow or lacking in NPM. \n \n> If you don't want to install Yarn, you don't have to! What's great about it is that almost every use of `yarn` can be swapped with `npm` and everything will work just fine! So if the command is `yarn start`, you can use `npm start` to run the same command.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573498,
+              "key": "6819ba6d-98bc-447c-9857-7c34e8450c09",
+              "title": "Inspect Contacts Project",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Qpv2eBSsT1I",
+                "china_cdn_id": "Qpv2eBSsT1I.mp4"
+              }
+            },
+            {
+              "id": 573041,
+              "key": "f7a12423-d25d-4174-8b59-ef50456e1358",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> The observant student might've noticed that my `index.js` file does not include the line `registerServiceWorker();` that's showing in your project. The call to the Service Worker was added in the version of Create React App right after I recorded this video. Since we're not using Service Workers in this project, it won't affect anything. If you want to remove it, though. Feel free!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573042,
+              "key": "dec9656d-39ab-46ae-adca-fb90b6f8d0b1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## `create-react-app` Recap\n \nFacebook's `create-react-app` is a command-line tool that scaffolds a React application. Using this, there is no need to install or configure module bundlers like Webpack, or transpilers like Babel. These come preconfigured (and hidden) with `create-react-app`, so you can jump right into building your app!\n \nCheck out these links for more info about `create-react-app`:\n\n* [create-react-app](https://github.com/facebookincubator/create-react-app) on GitHub\n* [create-react-app Release Post](https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html) from the React blog\n* [Updates to create-react-app](https://facebook.github.io/react/blog/2017/05/18/whats-new-in-create-react-app.html) from the React blog",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573048,
+          "key": "f13b93b7-674a-489b-a432-d038519ec636",
+          "title": "Composing with Components",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f13b93b7-674a-489b-a432-d038519ec636",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578054,
+              "key": "f8ef87cf-09fd-4063-a537-734036c9b641",
+              "title": "Composing With Components",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eKqhHxSVx-w",
+                "china_cdn_id": "eKqhHxSVx-w.mp4"
+              }
+            },
+            {
+              "id": 573499,
+              "key": "560df17e-4f95-4a42-89ef-d6a82a7420d6",
+              "title": "Composing In React",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "edJunNTNX3A",
+                "china_cdn_id": "edJunNTNX3A.mp4"
+              }
+            },
+            {
+              "id": 573046,
+              "key": "b4b7708c-a4ed-4272-83f8-f9ea6c2e4311",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/f1fbeff5533d82e33b075573fff684a99a82b845)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573047,
+              "key": "402d8e3d-bf19-4c97-9765-cb472ef63665",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Favor Composition Over Inheritance\n \nYou might have heard before that it’s better to “favor composition over inheritance”. This is a principle that I believe is difficult to learn today. Many of the most popular programming languages make extensive use of inheritance, and it has carried over into popular UI frameworks like the Android and iOS SDKs.\n \nIn contrast, React uses composition to build user interfaces. Yes, we extend React.Component, but we never extend it more than once. Instead of extending base components to add more UI or behavior, we compose elements in different ways using nesting and props. You ultimately want your UI components to be independent, focused, and _reusable_.\n \nSo if you’ve never understood what it means to “favor composition over inheritance” you’ll definitely learn using React!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668196,
+          "key": "70d4c8ea-7bf3-4f75-a938-9205826752ec",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "70d4c8ea-7bf3-4f75-a938-9205826752ec",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 668198,
+              "key": "cc4302bf-7d99-49d7-b42f-e21f469b25db",
+              "title": "Rendering UI with React - Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tIAov3kyXp0",
+                "china_cdn_id": "tIAov3kyXp0.mp4"
+              }
+            },
+            {
+              "id": 668197,
+              "key": "c7baa1be-b865-4623-a9ac-16bf54497c88",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Lesson Challenge\n\nAnswer the following questions and share your answers with your Study Group.\n\n1) What is a component? How do components relate to props?\n\n2) How do we know whether something should be a component in React?\n\n*Take a look at [Components and Props](https://reactjs.org/docs/components-and-props.html) if you need a hint.*\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

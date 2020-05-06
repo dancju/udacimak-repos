@@ -1,0 +1,353 @@
+{
+  "data": {
+    "lesson": {
+      "id": 682094,
+      "key": "7bd027fa-fab0-483e-a798-e14cd1ff7dd9",
+      "title": "Readable",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Using your new skills, build an anonymous content and comment application with Redux. Leverage the power of Redux to update the state of your application in a single place. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/7bd027fa-fab0-483e-a798-e14cd1ff7dd9/682094/1544474173150/Readable+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/7bd027fa-fab0-483e-a798-e14cd1ff7dd9/682094/1544474170781/Readable+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "fd291cf9-5cf9-4d02-a0b8-f82e1c55c9ed",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 0,
+        "semantic_type": "Project",
+        "title": "Readable",
+        "description": "## Submission Instructions\n\nBefore submitting, please verify that your project:\n* meets specification according to the project [rubric](https://review.udacity.com/#!/rubrics/1017/view).\n* adheres to our [HTML](http://udacity.github.io/frontend-nanodegree-styleguide/index.html), [CSS](http://udacity.github.io/frontend-nanodegree-styleguide/css.html), [JavaScript](http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html), and [Git](https://udacity.github.io/git-styleguide/) style guidelines.\n\nIf you choose to develop your project in your Workspace, you can submit directly from your Workspace. When you're ready to submit, just click the \"Submit Project\" button.\n\nIf you choose to develop on your local machine, you will need to:\n\n1. Push your project to GitHub, making sure to push the master branch.\n* On the project submission page choose the option \"Submit with GitHub\"\n* Select the repository for this project (you may need to connect your GitHub account first).",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "1017",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 331531,
+          "key": "701c627c-d73a-4b31-bd58-024ada7669e2",
+          "title": "Project Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "701c627c-d73a-4b31-bd58-024ada7669e2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 528016,
+              "key": "3448f671-1a7f-40ea-8c66-db844c25f4af",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Overview\n\nThis optional project is not required for graduation, but it will help you practice and further solidify your React & Redux skills. It's a challenging project, but we know you're up for the challenge! \n\nFor this project, you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.\n\n## Why this project?\n\nThis content and comment structure is common across a large number of websites and applications, from news sites to blogs to aggregators like Hacker News and Reddit. By building this project, you will gain an understanding of how Redux can function in a standard type of application.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 528017,
+              "key": "a2c90d60-ce87-4825-a2c4-d7766817f173",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Specification\n\nYou will start with a [local backend development server](https://github.com/udacity/reactnd-project-readable-starter). The server is built in Node, but it is very simple. You won't need to edit the server code; instead, your code will talk to the server using documented API endpoints. You can use the server's endpoints to manage storing, reading, updating, and deleting data for your application. \n\nUsing this server, you will build a React/Redux front end for the application. The specification provided below is the minimum required for this project. You may extend your project however you like, however, as long as the minimum specification is met.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 528018,
+              "key": "5398abb7-e6a4-423b-806c-732f5cd14a00",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Data\n\nThere are three types of objects stored on the server:\n* Categories\n* Posts\n* Comments\n\n### Categories\n\nThe server supports a small, fixed number of categories that users can put posts into. Categories are simple objects containing a name and a URL path (usually the same string). The server does not have methods for creating/modifying/deleting these categories. If you wish to add to the categories for your app, simply add your desired object to the Array in `categories.js` in the provided server.\n\n### Posts\n\nPosts are the building blocks of your application. Posts include:\n\n| Attribute | Type | Description |\n|-----------------|------------------|-------------------|\n| id                  | String | Unique identifier |\n| timestamp | Integer | Time created - default data tracks this in [Unix time](https://en.wikipedia.org/wiki/Unix_time). You can use `Date.now()` to get this number|\n| title              | String | Post title |\n| body            | String | Post body |\n| author        | String | Post author |\n| category     | String | Should be one of the categories provided by the server\n| voteScore   | Integer | Net votes the post has received (default: 1) \n| deleted       | Boolean | Flag if post has been 'deleted' (inaccessible by the front end), (default: false)\n\n### Comments\n\nComments are attached to parent posts. They include: \n\n| Attribute | Type | Description |\n|-----------------|------------------|-------------------|\n| id | String | Unique identifier |\n| parentId | String | id of the parent post\n| timestamp | Integer | Time created - default data tracks this in [Unix time](https://en.wikipedia.org/wiki/Unix_time). You can use `Date.now()` to get this number|\n| body            | String | Comment body |\n| author        | String | Comment author |\n| voteScore   | Integer | Net votes the comment has received (default: 1) \n| deleted       | Boolean | Flag if comment has been 'deleted' (inaccessible by the front end), (default: false)\n| parentDeleted | Boolean | Flag for when the the parent post was deleted, but the comment itself was not.\n\n> This application is anonymous, with _no_ authentication or authorization. There are no user objects, and comments and posts accept any username/name for creation and editing.\n>\n> The server is _very_ light weight. It performs _zero_ data validation to enforce the above data types. Make sure you are using the correct types when sending requests to the server.\n\n## Views\n\nYour application should have, at a minimum, four views:\n\n* Default (Root)\n  - should list all available categories, which should link to a category view for that category\n  - should list all of the posts\n  - should have a control for changing the sort method for the list, including at minimum, order by voteScore and order by timestamp \n  - should have a control for adding a new post\n* Category View\n  - identical to the default view, but filtered to only include posts with the selected category\n* Post Detail View\n  - should show the details of a post, including: Title, Body, Author, timestamp (in user readable format), and vote score\n  - should list all of the comments for that post\n  - should have controls to edit or delete the post\n  - should have a control to add a new comment. \n  - implement comment form however you want (inline, modal, etc.)\n  - comments should also have controls for editing or deleting\n* Create/Edit View\n  - should have a form to create new post or edit existing posts\n  - when editing, existing data should be populated in the form\n\n> **Post/Comment UI** \n>\n> Posts and comments, in all views where they are displayed, should display their current score and should have controls to increment or decrement the `voteScore` for the object. \n> Posts should display the number of comments associated with the post.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 682097,
+          "key": "1596bb98-3eda-494d-9cbb-d8068d632ae5",
+          "title": "Project Development Guidelines",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1596bb98-3eda-494d-9cbb-d8068d632ae5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 682098,
+              "key": "2d2e2761-715d-4e22-bd84-fcdcbfff4b0d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Getting Started\n\nWe have built a [local backend development server](https://github.com/udacity/reactnd-project-readable-starter) that your frontend will communicate with. The server is built in Node, but it is very simple. _You will not need to edit the server code_; instead, your frontend code will talk to the server using documented API endpoints. You can use the server's endpoints to manage storing, reading, updating, and deleting data for your application. We're providing you the backend server, but the frontend portion of the project you'll be developing from scratch, yourself!\n\nYou have a few options to start developing this project:\n\n* using your preconfigured Workspace\n* working locally on your own computer\n\nYour Workspace is a development environment integrated into the Udacity Classroom and comes preconfigured with the Readable project's backend server and a pre-scaffolded frontend using Create React App. You can both develop your entire in your Workspace as well as submit your project to be reviewed. For more information about your Workspace, check out the Project Workspace Info page.\n\nIf you'd like to work locally on your own computer:\n\n1. Download or fork and clone the [starter server repository](https://github.com/udacity/reactnd-project-readable-starter)\n* Install the requirements from the included `package.json` file: `npm install`\n* Start the server with `node server`\n* You can find the API documentation for the server in the [README](https://github.com/udacity/reactnd-project-readable-starter/blob/master/README.md), or by sending a `GET` request to the server root while it's running.\n* In a separate folder, develop your Readable app. You can use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap your application, or you can install and configure React, Webpack and Babel on your own. Remember to install `redux` and `react-redux` as well.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682099,
+              "key": "8cd7e162-1592-4d8b-9c79-5526c53964a8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Specific Requirements\n\n**Use React to build your application UI.** Remember that composition is key. It’s rarely a mistake to break a component into smaller pieces. Look for opportunities to reuse your components. We recommend using `create-react-app` to bootstrap your project, but it is not required for this project. \n\nWhile the focus (and specification) of this project is based on functionality, rather than styling, please ensure that your app is presentable and easy to navigate.\n\n**Use Redux to manage your application state.** This includes all user actions and responses from the API server. You may use component state to handle form input fields and controlled components. Otherwise, the rest of the state for your application should be controlled by your reducers.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682100,
+              "key": "f5136cb8-f907-49b9-aebc-e02151b89ec7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# How will this project be evaluated?\n\nYour project will be evaluated by a Udacity Code Reviewer according to the [rubric](https://review.udacity.com/#!/rubrics/1017/view). Please be sure to review it thoroughly before you submit your project. \n\nThe project rubric is your source of truth while building this project. Save it to your browser bookmarks so you can access it easily!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 682101,
+              "key": "1ec32c48-6bca-4986-9d57-ff419ad352f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Submission Instructions\n\nBefore submitting, please verify that your project:\n* meets specification according to the project [rubric](https://review.udacity.com/#!/rubrics/1017/view).\n* adheres to our [HTML](http://udacity.github.io/frontend-nanodegree-styleguide/index.html), [CSS](http://udacity.github.io/frontend-nanodegree-styleguide/css.html), [JavaScript](http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html), and [Git](https://udacity.github.io/git-styleguide/) style guidelines.\n\nIf you choose to develop your project in your Workspace, you can submit directly from your Workspace. When you're ready to submit, just click the \"Submit Project\" button.\n\nIf you choose to develop on your local machine, you will need to:\n\n1. Push your project to GitHub, making sure to push the master branch.\n* On the project submission page choose the option \"Submit with GitHub\"\n* Select the repository for this project (you may need to connect your GitHub account first).\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 384281,
+          "key": "98eba1b8-3ed8-45a4-be71-ae2bc3c7e38a",
+          "title": "Project Workspace Info",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "98eba1b8-3ed8-45a4-be71-ae2bc3c7e38a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394045,
+              "key": "76655e53-64a5-4fa0-be5e-bcc2a8b2fd17",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Your Workspace\n\nA Workspace is a development environment integrated into the Udacity Classroom. Your Workspace is backed by a Linux virtual machine (Ubuntu). You have access to a terminal, so you have complete control over installing packages and modifying content.\n\nBelow is what your Workspace will look like:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394047,
+              "key": "a94935dd-ebd5-4eb5-85ce-3bec4866b735",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59b2e515_nd019-c1-workspace-myreads-project/nd019-c1-workspace-myreads-project.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a94935dd-ebd5-4eb5-85ce-3bec4866b735",
+              "caption": "_Here's your Workspace! We'll go over the important bits in a second._",
+              "alt": "",
+              "width": 1402,
+              "height": 927,
+              "instructor_notes": null
+            },
+            {
+              "id": 394048,
+              "key": "9fa0b9e0-1968-43f3-b709-b5b6b0fd60ac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The following video will walk through:\n\n* navigating the file explorer\n* opening, editing, and closing files\n* working with a terminal\n* previewing your content\n* submitting your project\n* resetting the project\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 395091,
+              "key": "72acb89d-79af-45a0-af77-8b2a9e3d4751",
+              "title": "Workspace-Readable-Walkthru.Mp4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FrNGPMAMXWI",
+                "china_cdn_id": "FrNGPMAMXWI.mp4"
+              }
+            },
+            {
+              "id": 394050,
+              "key": "09f1b62d-5235-4055-8180-b6936f365807",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Preservation Information\n\nThe first time you open your Workspace, a new virtual machine is created just for you. Any files that you modify in `/home/workspace` or any new files you add in `/home/workspace` are automatically backed up and saved. The next time you come back to the Workspace, any previous changes will be preserved.\n\nIf you don't interact with the Workspace for 30 minutes, the Workspace will be suspended. The Workspace becomes idle by any of the following:\n\n* not interacting with the browser tab of the Workspace\n* closing the browser tab with the Workspace\n* if your laptop goes to sleep\n* etc\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394051,
+              "key": "00ca7024-c5af-4419-947c-8b93e5435e7c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59b2e561_nd019-c1-workspace-idle/nd019-c1-workspace-idle.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/00ca7024-c5af-4419-947c-8b93e5435e7c",
+              "caption": "_This Workspace has been suspended and is now idle._",
+              "alt": "",
+              "width": 1298,
+              "height": 938,
+              "instructor_notes": null
+            },
+            {
+              "id": 394053,
+              "key": "4cdfa6ab-39fd-40a0-b9ef-5717e309dc84",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Restoring Your Workspace\n\nIf your Workspace has been suspended after a period of inactivity, just click the \"Wake Up Workspace\" button to restore it. Remember that none of your data is lost. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394054,
+              "key": "f2231f19-2a40-4906-85ec-61832dcebbf2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Development\n\nThink of your Workspace as a normal computer:\n\n* Open up the files you need to edit (saving is done automatically).\n* Open terminal windows as necessary.\n  - The terminal should start at `/home/workspace`, so make sure to `cd` to the correct directory as necessary.\n* Start the project\n    - Install and start the API server\n        + `cd api-server`\n        + `npm install`\n        + `node server`\n    - In another terminal window, install and start the pre-scaffolded Create React App project\n        + `cd frontend`\n        + `npm install`\n        + `npm start`\n\nIn the project's `README` file, you'll notice that the URL to the API server is stored in the environment variable `REACT_APP_BACKEND`. In order to let other people run your application, you can simply do this: \n\n```js\nconst url = 'http://localhost:3001' || `${process.env.REACT_APP_BACKEND}`;```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394055,
+              "key": "810bafc6-9767-44f9-a102-7ed529c125b6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/September/59b2eef4_nd019-c1-workspace-project-url/nd019-c1-workspace-project-url.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/810bafc6-9767-44f9-a102-7ed529c125b6",
+              "caption": "_To view your project, click the Open Preview Tab._",
+              "alt": "",
+              "width": 471,
+              "height": 255,
+              "instructor_notes": null
+            },
+            {
+              "id": 394056,
+              "key": "43dc3d79-db15-48d6-a34a-2bf87ea67737",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* To view your project, click the \"Open Preview Tab\" button located in the lower left of the screen.\n  - Running `npm start` causes Create React App to display a URL of `http://localhost:3000/`. Because your Workspace is running in a virtual machine, typing `http://localhost:3000/` into your browser will not access the local host of the VM, so make sure to use the \"Open Preview Tab\" button.\n* To submit your project, click the \"Submit Project\" button located in the lower right side of the screen.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394058,
+              "key": "b252cb69-f34a-4226-a848-12f46e419d97",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Development Choice\n\nWe've created this Workspace for you so you can enjoy an integrated learning experience by staying in the classroom, working on your project, and submitting directly from here!\n\nYou always have the option to develop your project locally, if you choose. To develop locally on your computer, clone the git repository for the [Readable project](https://github.com/udacity/reactnd-project-readable-starter) directly to your computer's file system (AKA your local machine).\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 395094,
+              "key": "82b521c2-7568-4160-8e6e-d3962b3e1c0c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Unable to Access Your Workspace?\n\nIf you are unable to access your Workspace in the Classroom it could be because you have \"3rd Party Cookies\" disabled in your browser. Workspaces need to set a \"3rd party cookie\" to enable access.\n\nCheck out this [Workspace troubleshooting FAQ](https://udacity.zendesk.com/hc/en-us/articles/115004653246) for information on how to enable 3rd party cookies for your browser.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 394025,
+          "key": "61441535-1113-4142-9fa3-ac52bf3455ef",
+          "title": "Readable Project Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "61441535-1113-4142-9fa3-ac52bf3455ef",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394033,
+              "key": "4f477004-a816-4922-9046-2b086dcbdb13",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view8cafcea3",
+              "pool_id": "webterminal",
+              "view_id": "8cafcea3-ef13-47ec-ad6b-d65cb7554564",
+              "gpu_capable": null,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [
+                      3001
+                    ],
+                    "userCode": "export REACT_APP_BACKEND=https://$WORKSPACEID-3001.$WORKSPACEDOMAIN",
+                    "openFiles": [
+                      "/home/workspace/README.md"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": true,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,1753 @@
+{
+  "data": {
+    "lesson": {
+      "id": 668166,
+      "key": "b5a32325-2ae9-4921-82a9-3fe689ccfc05",
+      "title": "State Management",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You'll learn how to pass data into a component, how to create Functional Components, when and how to use PropTypes, and how to create controlled components.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/b5a32325-2ae9-4921-82a9-3fe689ccfc05/668166/1544026742552/State+Management+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/b5a32325-2ae9-4921-82a9-3fe689ccfc05/668166/1544026737992/State+Management+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 573227,
+          "key": "5a6564f7-fa9b-43a4-8192-d95ad0504ea4",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5a6564f7-fa9b-43a4-8192-d95ad0504ea4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578077,
+              "key": "9b4d7f2c-156c-43b9-b95d-255a7f265f90",
+              "title": "State Management Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XBLRVoSqzVs",
+                "china_cdn_id": "XBLRVoSqzVs.mp4"
+              }
+            },
+            {
+              "id": 573500,
+              "key": "eedc8098-cef1-410c-b44d-51ebd2ff7441",
+              "title": "App Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DIaUp9kzG_0",
+                "china_cdn_id": "DIaUp9kzG_0.mp4"
+              }
+            },
+            {
+              "id": 573221,
+              "key": "33e4cd1a-a1f8-415f-b75d-779e1441f277",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Get Project Files\n\nCreate React App will generate a number of default files and starter code that we need to get rid of. There will be two sets of changes you need to make, delete the starter content and add files that we're providing you.\n\nBut, we've already done this for you! Please clone [this repo](https://github.com/udacity/reactnd-contacts-app) and `checkout` the `starter-files-added` branch to have it all done for you.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573222,
+              "key": "1e27f338-7a4a-46df-b3ed-a5586639a3e4",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1e27f338-7a4a-46df-b3ed-a5586639a3e4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I've cloned the [reactnd-contacts-app](https://github.com/udacity/reactnd-contacts-app) repo",
+                "I've checked out the `starter-files-added` branch"
+              ],
+              "positive_feedback": "Good work!",
+              "video_feedback": null,
+              "description": "Make sure to do each of the following:"
+            },
+            {
+              "id": 573225,
+              "key": "f71eab1f-5bf6-41c5-bcb9-f3f4830d041b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Backend Server\n \nThe Contacts app project that we're building is a front-end project. However, we'll eventually be storing the contacts on a backend server. Since we're only really focusing on the front-end for this course, we've gone ahead and built this server for you so you can focus on just the React parts of this program.\n \nThe server is just a simple Node/Express app. The repo for the project is at https://github.com/udacity/reactnd-contacts-server2. All you need to do is:\n* clone the project with `git clone https://github.com/udacity/reactnd-contacts-server2.git`\n* install the project dependencies with `npm install`\n* start the server with `node server.js`\n \nOnce you've started the server, you can forget about it. The Contacts project we're working on will interact with this server, but we won't ever modify any of the server code.\n\n> ## 💡 Running Two Servers💡\n\n> At this point, you should be running two different servers on your local machine: \n\n>* Front-end development server: Accessible on **port 3000** (with `npm start` or `yarn start`)\n* Back-end server: Accessible on **port 5001** (with `node server.js`)\n\n>Please be sure that both are running before moving on in this Lesson.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573226,
+              "key": "13598c72-5111-4f49-8a16-a5e9625eeb78",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "13598c72-5111-4f49-8a16-a5e9625eeb78",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "cloned the Contacts server",
+                "installed the server's dependencies",
+                "started the backend server"
+              ],
+              "positive_feedback": "It's always a good idea to sanity check your code!",
+              "video_feedback": null,
+              "description": "To make sure we're working with the same code, check off each one of these:"
+            }
+          ]
+        },
+        {
+          "id": 573242,
+          "key": "c80b1ce1-9611-4c47-b5f3-d436b065d657",
+          "title": "Pass Data Into Components With Props",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c80b1ce1-9611-4c47-b5f3-d436b065d657",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578078,
+              "key": "0e01a312-0c87-4e5a-b647-ec2fa51a833e",
+              "title": "Passing Data With Props",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KJfpF08R6bw",
+                "china_cdn_id": "KJfpF08R6bw.mp4"
+              }
+            },
+            {
+              "id": 573229,
+              "key": "3f09f4a2-145d-4e22-a685-970f67c04d2d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You'll be needing this `contacts` array in the following video:\n\n```js\nconst contacts = [\n {\n   \"id\": \"karen\",\n   \"name\": \"Karen Isgrigg\",\n   \"handle\": \"karen_isgrigg\",\n   \"avatarURL\": \"http://localhost:5001/karen.jpg\"\n },\n {\n   \"id\": \"richard\",\n   \"name\": \"Richard Kalehoff\",\n   \"handle\": \"richardkalehoff\",\n   \"avatarURL\": \"http://localhost:5001/richard.jpg\"\n },\n {\n   \"id\": \"tyler\",\n   \"name\": \"Tyler McGinnis\",\n   \"handle\": \"tylermcginnis\",\n   \"avatarURL\": \"http://localhost:5001/tyler.jpg\"\n }\n];\n```\n\nThis `contacts` array is just temporary. Eventually, we'll be retrieving and storing contacts on our backend server. As of right now, though, we don't know how or where to make network requests. We'll get to this soon, so just stick with this static list of contacts for now.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573230,
+              "key": "f92b03c1-d52b-4030-aebf-21c6318c58c9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## Apps Are Running?\n>\n> To follow along, make sure that both your Contacts app and the backend server are running.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573501,
+              "key": "7e8adb21-1b71-4b57-aea3-da732626af6d",
+              "title": "Create The ListContacts Component",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jf1CJcJRjYU",
+                "china_cdn_id": "jf1CJcJRjYU.mp4"
+              }
+            },
+            {
+              "id": 573232,
+              "key": "19358670-aa61-4ff2-9424-2d56f89d5e40",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/c1bc05e7f73ab27c78ea32f11be0378f7daa42b4)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573297,
+              "key": "10fd954e-96d2-44e5-a4eb-3e28940ae40e",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "10fd954e-96d2-44e5-a4eb-3e28940ae40e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the following items with their respective concept:"
+                },
+                "concepts_label": "Concept",
+                "answers_label": "Item",
+                "concepts": [
+                  {
+                    "text": "functions",
+                    "correct_answer": {
+                      "id": "a1522111549590",
+                      "text": "arguments"
+                    }
+                  },
+                  {
+                    "text": "components",
+                    "correct_answer": {
+                      "id": "a1522111572880",
+                      "text": "props"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1522111549590",
+                    "text": "arguments"
+                  },
+                  {
+                    "id": "a1522111572880",
+                    "text": "props"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573233,
+              "key": "e8d16578-a918-45f2-8fa8-6ce1a721b174",
+              "title": "Pass Value Into A Component?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e8d16578-a918-45f2-8fa8-6ce1a721b174",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If there were a `<Clock />` component in an app you're building, how would you pass a `currentTime` `prop` into it?",
+                "answers": [
+                  {
+                    "id": "a1522191935709",
+                    "text": "`<Clock {new Date().getTime()} />`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522191960276",
+                    "text": "`<Clock this.props={new Date().getTime()} />`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522191960741",
+                    "text": "`<Clock currentTime={new Date().getTime()} />`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522191961173",
+                    "text": "`<Clock this.currentTime={new Date().getTime()} />`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 578079,
+              "key": "3b6ccaec-81e6-495e-bc45-3cf54107e86f",
+              "title": "Displaying The Contact Names",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mGe81Nl3zWU",
+                "china_cdn_id": "mGe81Nl3zWU.mp4"
+              }
+            },
+            {
+              "id": 573235,
+              "key": "ce6f8456-f717-4346-8d21-7ebacf72ab1b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/59e929c295c5b841eef9c62533ecfade7658e545)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573236,
+              "key": "f53f70f9-cb9c-4e42-85f6-bb442c7776de",
+              "title": "Access Data In A Component?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f53f70f9-cb9c-4e42-85f6-bb442c7776de",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Using the `<Clock />` component example:\n\n```js\n<Clock currentTime='3:41pm' />\n```\n\nHow would you access the value `3:41pm` from inside the component?\n\n",
+                "answers": [
+                  {
+                    "id": "a1522192120155",
+                    "text": "Clock.currentTime",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522192121832",
+                    "text": "currentTime",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522192122339",
+                    "text": "this.currentTime",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522192122778",
+                    "text": "this.props.currentTime",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573504,
+              "key": "fd1cde94-bf50-48ec-9291-3632efaa18f1",
+              "title": "Add Contact Details",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "knLnMTgn6a8",
+                "china_cdn_id": "knLnMTgn6a8.mp4"
+              }
+            },
+            {
+              "id": 573238,
+              "key": "5b23f474-863a-4b00-b8a0-6b77ee9980b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/7e77074e1a2fc63fab7374c527a301a7df08802b)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573239,
+              "key": "352c5b1a-fe41-4b75-afdf-0d31594448c5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> If you're following along on your own machine and the avatar images are not loading for you, check that the server is running.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573240,
+              "key": "b321d148-ed49-47a4-ac61-2b9bd9987004",
+              "title": "Passing data with props problem set",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b321d148-ed49-47a4-ac61-2b9bd9987004",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How do you pass multiple props individually to a component?",
+                "answers": [
+                  {
+                    "id": "a1522192195831",
+                    "text": "`<Clock time={Date.now()} zone='MST' />`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522192198707",
+                    "text": "`<Clock props={{time: Date.now(), zone: 'MST'}} />`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522192199246",
+                    "text": "`<Clock [time=Date.now(), zone='MST'] />`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522192199758",
+                    "text": "`<Clock props={[Date.now(), 'MST']}/>`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573241,
+              "key": "231fa8d7-a452-47e5-a54b-8814e63128d5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Passing Data With Props Recap\n\nA `prop` is any input that you pass to a React component. Just like an HTML attribute, a `prop` name and value are added to the Component.\n\n```js\n// passing a prop to a component\n<LogoutButton text='Wanna log out?' />\n```\n\nIn the code above, `text` is the `prop` and the string `'Wanna log out?'` is the value.\n\nAll props are stored on the `this.props` object. So to access this `text` `prop` from _inside_ the component, we'd use `this.props.text`:\n\n```js\n// access the prop inside the component\n...\nrender() {\n return <div>{this.props.text}</div>\n}\n...\n```\n\n### Further Research\n* [Components and Props](https://facebook.github.io/react/docs/components-and-props.html) from the React Docs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 626626,
+          "key": "a50a25e1-240e-4af2-a75a-a4d7f258cd60",
+          "title": "Exercises - Preface",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a50a25e1-240e-4af2-a75a-a4d7f258cd60",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626670,
+              "key": "be10e647-4958-42f8-afb1-e1e75a450210",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Workspaces\n\nIn this program, you'll be able to practice what you've learned right inside the classroom!\n\nA Workspace is a development environment integrated into the Udacity Classroom. Your Workspace is backed by a Linux virtual machine (Ubuntu). You have access to a terminal, so you have complete control over installing packages and modifying content.\n\n# Exercises in Workspaces\n\nEach Workspace contains an `instructions.md` file that contains the instructions for the exercise. Each Workspace also contain a `Possible Solution` folder located inside of the `src` folder. We recommend not looking inside the `Possible Solution` folder until you have finished the exercise on your own. That way, you can practice recalling and applying what you've learned, thereby solidifying your understanding of the material.\n\nLet's get started!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626627,
+              "key": "c83672f6-c8b6-4bdb-a588-03f2e5bf0173",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Below is what your Workspace will look like:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626646,
+              "key": "6600858c-8304-4280-8c81-47a508474458",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5af330e0_screen-shot-2018-05-09-at-10.32.19-am/screen-shot-2018-05-09-at-10.32.19-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6600858c-8304-4280-8c81-47a508474458",
+              "caption": "_Here's your Workspace! We'll go over the important bits in a second._",
+              "alt": "MyReads project Workspace",
+              "width": 1402,
+              "height": 927,
+              "instructor_notes": null
+            },
+            {
+              "id": 626635,
+              "key": "a387373c-a344-40ed-9d57-09af588a0b78",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Preservation Information\n\nThe first time you open your Workspace, a new virtual machine is created just for you. Any files that you modify in `/home/workspace` or any new files you add in `/home/workspace` are automatically backed up and saved. The next time you come back to the Workspace, any previous changes will be preserved.\n\nIf you don't interact with the Workspace for 30 minutes, the Workspace will be suspended. The Workspace becomes idle by any of the following:\n\n* not interacting with the browser tab of the Workspace\n* closing the browser tab with the Workspace\n* if your laptop goes to sleep\n* etc\n\n## Restoring Your Workspace\n\nIf your Workspace has been suspended after a period of inactivity, just click the \"Wake Up Workspace\" button to restore it. Remember that none of your data is lost. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626637,
+              "key": "41fbe6ab-a218-45ec-91cd-521677179051",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Development\n\nThink of your Workspace as a normal computer:\n\n* Open up the files you need to edit (saving is done automatically).\n* Open terminal windows as necessary.\n  - The terminal should start at `/home/workspace`, so make sure to `cd` to the correct directory as necessary.\n* Start the project\n  - start a terminal (no need to `cd` anywhere)\n  - run `npm install`\n  - run `npm start`\n* Open the `src` folder and start working on the exercise. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626647,
+              "key": "a2187608-dafa-4af8-aa56-d3328497a0a8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/May/5af3315f_screen-shot-2018-05-09-at-10.35.01-am/screen-shot-2018-05-09-at-10.35.01-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a2187608-dafa-4af8-aa56-d3328497a0a8",
+              "caption": "_To view your project, click the Open Preview Tab._",
+              "alt": "How to view the project in a Workspace",
+              "width": 471,
+              "height": 255,
+              "instructor_notes": null
+            },
+            {
+              "id": 626639,
+              "key": "84e47a5e-37de-40a7-938b-e6dfa6017610",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* To view your project, click the \"Open Preview Tab\" button located in the lower left of the screen.\n  - Running `npm start` causes Create React App to display a URL of `http://localhost:3000/`. Because your Workspace is running in a virtual machine, typing `http://localhost:3000/` into your browser will not access the local host of the VM, so make sure to use the \"Open Preview Tab\" button.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626642,
+              "key": "cdd5fafe-81f3-4d02-b1ab-b1d9b4fe806a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Committing to Github\n\nWe strongly recommend committing your files to Github whenever you're working on coding projects. Workspaces provide a convenient way to do that - just use the Workspace Terminal.\n\nTo commit files from your Workspace directly to Github:\n1. Set up a new Github repository.\n* Use the Workspace terminal to commit files to Github as usually would. If you need a refresher, click [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).\nDon't forget to add your `node_modules` folder to the `.gitignore` file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 626640,
+              "key": "4355e50f-d2ed-4140-b6db-7c9a6c33cad0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Unable to Access Your Workspace?\n\nIf you are unable to access your Workspace in the Classroom it could be because you have \"3rd Party Cookies\" disabled in your browser. Workspaces need to set a \"3rd party cookie\" to enable access.\n\nCheck out this [Workspace troubleshooting FAQ](https://udacity.zendesk.com/hc/en-us/articles/115004653246) for information on how to enable 3rd party cookies for your browser.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 626379,
+          "key": "343aacfa-641a-4f1f-85f4-b4f50b81a101",
+          "title": "Exercise 1 - Passing Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "343aacfa-641a-4f1f-85f4-b4f50b81a101",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626382,
+              "key": "fbab22c3-56b8-4a9b-9bd7-47ac0744e695",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewfbefff57",
+              "pool_id": "webterminal",
+              "view_id": "fbefff57-a7a6-480c-b70b-61d2e4e9f862",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/src/App.js",
+                      "/home/workspace/instructions.md"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 626628,
+          "key": "07ec1a50-bc4a-4e71-92d1-feefef8178a4",
+          "title": "Exercise 2 - Passing Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "07ec1a50-bc4a-4e71-92d1-feefef8178a4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626631,
+              "key": "c1e97be7-1a0b-4ec6-952a-f643efdaa70e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewf3efeae8",
+              "pool_id": "webterminal",
+              "view_id": "f3efeae8-bd82-4e68-844d-51774515d422",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/instructions.md",
+                      "/home/workspace/src/App.js"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 573250,
+          "key": "886daa1e-4477-438c-a551-660b4c6279f1",
+          "title": "Functional Components",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "886daa1e-4477-438c-a551-660b4c6279f1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578081,
+              "key": "d5388d7e-5cbe-4213-8a5c-66102b21ec35",
+              "title": "Create Functional Components",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ySW7t8X5jyQ",
+                "china_cdn_id": "ySW7t8X5jyQ.mp4"
+              }
+            },
+            {
+              "id": 573244,
+              "key": "767dec49-6a73-4f76-9b65-de2a258e4575",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡 Template Literals 💡\n\n> In the following video, you'll see us using back-ticks (\\` `\\) in the \"style\" attribute's value. Recall that these [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) allow for embedded expressions. Using template literals, you can interpolate expressions as normal strings through your app. \n\n> For further reading, feel free to check out [ES6 - JavaScript Improved](https://www.udacity.com/course/es6-javascript-improved--ud356) to explore the latest features and improvements to the language.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573507,
+              "key": "c2c5d2bc-868b-436d-adb2-f9d3d5885949",
+              "title": "Convert ListContacts To A Stateless Functional Component",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b05Cd0nkmfE",
+                "china_cdn_id": "b05Cd0nkmfE.mp4"
+              }
+            },
+            {
+              "id": 573246,
+              "key": "fef143db-a985-4c71-a2a4-502533d0936d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/b7b51c961edd507582974c60cd0c3635be66e8bb)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 771145,
+              "key": "7f1b4523-455f-42d9-8e19-0ebade80a0ae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Class Components vs. Stateless Functional Components",
+              "instructor_notes": ""
+            },
+            {
+              "id": 771122,
+              "key": "724a8896-07f8-4b71-83b2-8661525fed58",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Class Component ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 771124,
+              "key": "8b6727a9-2578-41d5-b84c-2c9a1161da2b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/October/5bd77e14_screen-shot-2018-10-29-at-2.38.39-pm/screen-shot-2018-10-29-at-2.38.39-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8b6727a9-2578-41d5-b84c-2c9a1161da2b",
+              "caption": "Class Component",
+              "alt": "",
+              "width": 400,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 771125,
+              "key": "02235292-55cf-47e5-bf1b-c306fbb00b16",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Stateless Functional Component",
+              "instructor_notes": ""
+            },
+            {
+              "id": 771127,
+              "key": "324bec19-8cfd-4e40-be4e-c211a8a0780e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/October/5bd77e3a_screen-shot-2018-10-29-at-2.38.24-pm/screen-shot-2018-10-29-at-2.38.24-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/324bec19-8cfd-4e40-be4e-c211a8a0780e",
+              "caption": "Stateless Functional Component",
+              "alt": "",
+              "width": 400,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 573247,
+              "key": "5c44e073-fcdd-4310-91a1-9efffe075d9d",
+              "title": "When to use an SFC?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5c44e073-fcdd-4310-91a1-9efffe075d9d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "When is it appropriate to use a Stateless Functional Component? Check all that apply.",
+                "answers": [
+                  {
+                    "id": "a1522192390027",
+                    "text": "When the component needs to initialize some data",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522192391383",
+                    "text": "When all the component needs is to just render something",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522192391929",
+                    "text": "When the component doesn't have any props passed in",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522192392319",
+                    "text": "When the component does not use JSX",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573511,
+              "key": "a471602a-e0b9-4e83-9b18-29e7987e64e6",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a471602a-e0b9-4e83-9b18-29e7987e64e6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If the `<IngredientList />` Component in the following code is a Stateless Functional Component, how would you access the `items` prop inside the Component?\n\n```js\n<IngredientList items={ingredient.items} />\n```",
+                "matchers": [
+                  {
+                    "expression": "^props\\.items$"
+                  },
+                  {
+                    "expression": "^{?props\\.items}?\\n?$"
+                  },
+                  {
+                    "expression": "^this\\.props\\.items$"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573249,
+              "key": "df95fd67-caae-4eed-9a4f-b44e8e37b178",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Stateless Functional Components Recap\n \nIf your component does not keep track of internal state (i.e., all it really has is just a `render()` method), you can declare the component as a Stateless Functional Component.\n\nRemember that at the end of the day, React components are really just JavaScript functions that return HTML for rendering. As such, the following two examples of a simple Email component are equivalent: \n\n```js\nclass Email extends React.Component {\n render() {\n   return (\n     <div>\n       {this.props.text}\n     </div>\n   );\n }\n}\n```\n\n```js\nconst Email = (props) => (\n <div>\n   {props.text}\n </div>\n);\n```\n\nIn the latter example (written as an ES6 function with an implicit return), rather than accessing `props` from `this.props`, we can pass in props directly as an argument to the function itself. In turn, this regular JavaScript function can serve as the Email component's `render()` method.\n\n### Further Research\n* [Functional Components vs. Stateless Functional Components vs. Stateless Components](https://tylermcginnis.com/functional-components-vs-stateless-functional-components-vs-stateless-components/) from Tyler",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 626649,
+          "key": "142ac090-a8dd-44a8-b804-033a3689bd0b",
+          "title": "Exercise - Functional Components ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "142ac090-a8dd-44a8-b804-033a3689bd0b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626671,
+              "key": "4e9b31dd-28e9-4700-8cb1-14ea70907e7d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewe89451d8",
+              "pool_id": "webterminal",
+              "view_id": "e89451d8-2293-433d-b2f8-49c19c94d4c1",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/instructions.md",
+                      "/home/workspace/src/App.js"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 573259,
+          "key": "94199ab4-a445-4205-a60c-b898a9224bf3",
+          "title": "Add State To A Component",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "94199ab4-a445-4205-a60c-b898a9224bf3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 573251,
+              "key": "821245d4-bb58-4049-9de2-e604d6e3609e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## State\n\nEarlier in this Lesson, we learned that `props` refer to attributes from parent components. In the end, props represent \"read-only\" data that are _immutable_.\n\nA component's `state`, on the other hand, represents _mutable_ data that ultimately affects what is rendered on the page. State is managed internally by the component itself and is meant to change over time, commonly due to user input (e.g., clicking on a button on the page).\n\nIn this section, we'll see how we can encapsulate the complexity of state management to individual components.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 578056,
+              "key": "f8f08364-2f48-46fd-885e-5ce99b588903",
+              "title": "Add State To Components",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_gQp4z4mCEQ",
+                "china_cdn_id": "_gQp4z4mCEQ.mp4"
+              }
+            },
+            {
+              "id": 573253,
+              "key": "f775b062-63c2-42f8-a3de-78713e4247c9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡 Class Fields 💡\n\n> In the code above, we put the `state` object directly inside the class..._not_ in a `constructor()` method!\n\n> ```js\nclass User extends React.Component {\n state = {\n   username: 'Tyler'\n } \n}\n```\n\n...rather than:\n\n> ```js\nclass User extends React.Component {\n constructor(props) {\n   super(props);\n   this.state = {\n     username: 'Tyler'\n   };\n }\n}\n```\n\n> This is slightly different from Facebook's [Setting the Initial State docs](https://facebook.github.io/react/docs/react-without-es6.html#setting-the-initial-state).\n\n> Having `state` outside the `constructor()` means it is a [class field](https://github.com/tc39/proposal-class-fields), which is a proposal for a new change to the language. It currently isn't supported by JavaScript, but thanks to Babel's fantastic powers of transpiling, we can use it!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573517,
+              "key": "b786e3bf-3381-4bf5-8851-7973ad6dd556",
+              "title": "Set Contacts Array As State In App",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yN_8MWv1g1o",
+                "china_cdn_id": "yN_8MWv1g1o.mp4"
+              }
+            },
+            {
+              "id": 573255,
+              "key": "a64cb0d4-3e35-4160-a322-efbb751b8c3c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/d3d6eee9287313c78705793fc5dccf54de27487d)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573256,
+              "key": "bf2bd9ad-d357-4536-a9e8-0781220ec740",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️ Props in Initial State ⚠️\n\n> When defining a component's initial state, avoid initializing that state with `props`. This is an error-prone _anti-pattern_, since state will only be initialized with `props` when the component is first created.\n\n>```js\nthis.state = {\n user: props.user\n}\n```\n\n> In the above example, if `props` are ever updated, the current state will not change unless the component is \"refreshed.\" Using `props` to produce a component's initial state also leads to duplication of data, deviating from a dependable \"source of truth.\"",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573257,
+              "key": "f8d44bde-ebe5-4f45-83d5-34abfc190d9f",
+              "title": "Properties of State?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f8d44bde-ebe5-4f45-83d5-34abfc190d9f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is true about `state` in React? Please select all that apply:",
+                "answers": [
+                  {
+                    "id": "a1522193674504",
+                    "text": "A component's state can be defined at initialization.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522193685153",
+                    "text": "State that is needed by multiple components needs to be lifted up to the closest common ancestor.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522193685732",
+                    "text": "State should be used when you want to store information that will never change.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522193686335",
+                    "text": "A component can alter its own internal state.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573258,
+              "key": "7bfdc67a-ec17-465a-9df3-01be08d8a3cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## State Recap\n \nBy having a component manage its own state, any time there are changes made to that state, React will know and _automatically_ make the necessary updates to the page.\n\nThis is one of the key benefits of using React to build UI components: when it comes to re-rendering the page, we just have to think about updating state. We don't have to keep track of exactly which parts of the page change each time there are updates. We don't need to decide how we will efficiently re-render the page. React compares the previous output and new output, determines what has changed, and makes these decisions for us. This process of determining what has changed in the previous and new outputs is called `Reconciliation`.\n \n### Further Research\n* [Identify Where Your State Should Live](https://facebook.github.io/react/docs/thinking-in-react.html#step-4-identify-where-your-state-should-live)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573266,
+          "key": "c04ddee7-b484-4c1d-ac60-f12e18df4057",
+          "title": "Update state with setState",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c04ddee7-b484-4c1d-ac60-f12e18df4057",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578082,
+              "key": "a479454d-fc7a-487a-b297-e64e32f5d644",
+              "title": "Update State With SetState",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "81CCwyeiaWE",
+                "china_cdn_id": "81CCwyeiaWE.mp4"
+              }
+            },
+            {
+              "id": 573516,
+              "key": "a56e0801-ee99-48f6-b082-9451464f32af",
+              "title": "Using SetState To Remove Contact",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qLa4LEvrYn4",
+                "china_cdn_id": "qLa4LEvrYn4.mp4"
+              }
+            },
+            {
+              "id": 573262,
+              "key": "0a16357f-db19-44e3-9076-20765d230455",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/4b656124626a1ea127baa92530bf87f89d14389c)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573263,
+              "key": "a6522c51-68f0-4c3a-b8b8-cb4ae5b6ea23",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## How State is Set\n\nEarlier in this lesson, we saw how we can define a component's state at the time of initialization. Since state reflects _mutable_ information that ultimately affects rendered output, a component may also update its state throughout its lifecycle using `this.setState()`. As we've learned, when local state changes, React will trigger a re-render of the component.\n\nThere are two ways to use `setState()`. The first is to merge state updates. Consider a snippet of the following component:\n\n```js\nclass Email extends React.Component {\n state = {\n   subject: '',\n   message: ''\n }\n // ...\n});\n```\n\nThough the initial state of this component contains two properties (`subject` and `message`), they can be updated independently. For example:\n\n```js\nthis.setState({\n subject: 'Hello! This is a new subject'\n})\n```\n\nThis way, we can leave `this.state.message` as-is, but replace `this.state.subject` with a new value.\n\nThe second way we can use `setState()` is by passing in a function rather than an object. For example:\n\n```js\nthis.setState((prevState) => ({\n count: prevState.count + 1\n}))\n```\n\nHere, the function passed in takes a single `prevState` argument. When a component's new state depends on the previous state (i.e., we are incrementing `count` in the previous state by 1), we want to use the functional `setState()`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573264,
+              "key": "58495f93-0a40-4cbf-915d-581c9f236de5",
+              "title": "Facts About Updating State?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "58495f93-0a40-4cbf-915d-581c9f236de5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is true about setting `state` in our components? Please check all that apply:",
+                "answers": [
+                  {
+                    "id": "a1522193920774",
+                    "text": "Whenever `setState()` is called, the component also calls `render()` with the new state",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522193926861",
+                    "text": "State updates can be merged by passing in an object to `setState()`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522193927566",
+                    "text": "Updating state directly is ideal when you want to re-render a component (i.e., preferring `this.state.message = 'Hi there';` rather than `this.setState({ message: 'Hi there' }`);",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522193928077",
+                    "text": "State updates can be asynchronous (i.e., `setState()` can accept a function with the previous state as its first argument)",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522193930351",
+                    "text": "`setState()` should be called within the component's `render()` method",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573265,
+              "key": "af5af9c8-3f92-4f9a-8b69-ca8aef48af7e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## `setState()` Recap\nWhile a component can set its state when it initializes, we expect that state to change over time, usually due to user input. The component is able to change its own internal state using `this.setState()`. Each time state is changed, React knows and will call `render()` to re-render the component. This allows for fast, efficient updates to your app's UI.\n\n### Further Research\n* [Using State Correctly](https://facebook.github.io/react/docs/state-and-lifecycle.html) from the React Docs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 626672,
+          "key": "0e4c9676-9d7e-424e-8777-76c3c128a228",
+          "title": "Exercise - Managing State",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0e4c9676-9d7e-424e-8777-76c3c128a228",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626673,
+              "key": "9f052b4f-b62c-4a33-869a-2d3fcb14f7fc",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewbe359e1c",
+              "pool_id": "webterminal",
+              "view_id": "be359e1c-615e-4ad4-ad0a-d9f9ef7d1b7d",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/instructions.md",
+                      "/home/workspace/src/App.js"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "terminalTitle": "BASH",
+                    "actionButtonText": "Preview",
+                    "openTerminalOnStartup": true
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 573273,
+          "key": "adad6a18-fdd1-4af2-8930-3db113b3842c",
+          "title": "PropTypes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "adad6a18-fdd1-4af2-8930-3db113b3842c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 573267,
+              "key": "28f66acc-57d9-44f9-8d36-ab6440149225",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Type checking a Component's Props with `PropTypes`\n\nAs we implement additional features into our app, we may soon find ourselves debugging our components more frequently. For example, what if the `props` that we pass to our components end up being an unintended data type (e.g. an object instead of an array)? PropTypes is a package that lets us define the data type we want to see right from the get-go and warn us during development if the prop that's passed to the component doesn't match what is expected.\n\nTo use PropTypes in our app, we need to install [prop-types](https://facebook.github.io/react/docs/typechecking-with-proptypes.html):\n\n```bash\nnpm install --save prop-types\n```\n\nAlternatively, if you have been using [yarn](https://www.npmjs.com/package/yarn) to manage packages, feel free to use it as well to install:\n\n```bash\nyarn add prop-types\n```\n\nLet's jump right in and see how it's used!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573518,
+              "key": "9eb5c639-5206-473d-afa8-1ed196598733",
+              "title": "Add PropTypes Package To Verify ListContacts Props",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9ngd5sfC4rw",
+                "china_cdn_id": "9ngd5sfC4rw.mp4"
+              }
+            },
+            {
+              "id": 573269,
+              "key": "f7532342-5dcc-4ada-b7f6-04fcdb9faf0f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/094067a5439f80481e1dd66af0468ebf41f0fc62)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573270,
+              "key": "f1493b73-f4a0-469d-afd8-29c553d79a99",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f1493b73-f4a0-469d-afd8-29c553d79a99",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "installed the [prop-types](https://www.npmjs.com/package/prop-types) package",
+                "restarted the Contacts app server"
+              ],
+              "positive_feedback": "Way to go!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 573519,
+              "key": "ae2702cd-911a-4ae2-860f-f3993b5046e8",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ae2702cd-911a-4ae2-860f-f3993b5046e8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Consider this component:\n\n```js\nimport PropTypes from 'prop-types';\n\nclass Email extends React.Component {\n  render() {\n    return (\n      <h3>Message: {this.props.text}</h3>\n    );\n  }\n}\n\nEmail.propTypes = {\n  text: // ???\n};\n```\n\nWe want to validate that a `text` prop is indeed being passed in, and that its data type is a string. What should the value of the above object's `text` key be?",
+                "matchers": [
+                  {
+                    "expression": "^PropTypes\\.string\\.isRequired$"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573272,
+              "key": "97c2e7b1-ca93-4993-bbb9-c0a122f9b070",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## PropTypes Recap\n\nAll in all, PropTypes is a great way to validate intended data types in our React app. Type checking our data with PropTypes helps us identify these bugs during development to ensure a smooth experience for our app's users.\n\n## Further Research\n\n* [prop-types](https://www.npmjs.com/package/prop-types) library from npm\n* [Typechecking With Proptypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) from the React Docs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573293,
+          "key": "911abf32-7b42-4437-a6c3-fa72436b6498",
+          "title": "Controlled Components",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "911abf32-7b42-4437-a6c3-fa72436b6498",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578083,
+              "key": "320eaa47-eb08-4d22-82da-b755e82dbc48",
+              "title": "Controlled Components",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "d4TOSRgm7GU",
+                "china_cdn_id": "d4TOSRgm7GU.mp4"
+              }
+            },
+            {
+              "id": 573275,
+              "key": "ae58148b-eea8-4204-a49b-e3c141b9fcd9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## React Developer Tools\n\nWhile building React apps, it may be tricky at times to see exactly is going on in your components. After all, with so many props being passed and accessed, numerous nested components, and all the JSX yet to be rendered as HTML, it can be tough to put things into perspective!\n\n`React Developer Tools` allows you to inspect your component hierarchy along with their respective props and states. Once you install the [Chrome extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en-US), open the Chrome console and check out the `React` tab. For a detailed overview, feel free to check out the [official documentation](https://github.com/facebook/react-devtools).\n\nLet's see it in action below!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573520,
+              "key": "00055f14-41b1-4215-836d-05d641be4496",
+              "title": "The Search Field  A Controlled Component",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0MZhfjHAT-U",
+                "china_cdn_id": "0MZhfjHAT-U.mp4"
+              }
+            },
+            {
+              "id": 573277,
+              "key": "c0e5dbbf-4b3a-4ed9-a141-c25884986995",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/df432ab6b51202e23382487cea26ecf2276dce76)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573278,
+              "key": "496f7705-b8ac-4a60-b0f3-9199670f08e4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Note that the `value` attribute is set on the `<input>` element. Since the displayed value will always be the value in the component's state, we can treat state, then, as the \"single source of truth\" for the form's state. \n\nTo recap how user input affects the `ListContacts` component's own state:\n\n1. The user enters text into the input field.\n* The `onChange` event listener invokes the `updateQuery()` function.\n* `updateQuery()` then calls `setState()`, merging in the new state to update the component's internal state.\n* Because its state has changed, the `ListContacts` component re-renders.\n\nLet's see how we can leverage this updated state to filter our contacts. To help us with our filtering we'll need the following packages:\n\n\n* [escape-string-regexp](https://www.npmjs.com/package/escape-string-regexp)\n* [sort-by](https://www.npmjs.com/package/sort-by)\n\n```bash\nnpm install --save escape-string-regexp sort-by\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573279,
+              "key": "00eeec35-2fe8-4f4e-a2f0-96c17ff9daf2",
+              "title": "What is a Controlled Component?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "00eeec35-2fe8-4f4e-a2f0-96c17ff9daf2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is a Controlled Component?",
+                "answers": [
+                  {
+                    "id": "a1522194433780",
+                    "text": "A component which controls the state of its children components",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522194435348",
+                    "text": "A component which renders a form, but the source of truth for that form state lives inside of the component state rather than inside of the DOM",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522194435790",
+                    "text": "A component which controls the UI for its children components",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522194436236",
+                    "text": "A component which renders a form, but the source of truth for that form state lives inside of DOM rather than inside of the component",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573521,
+              "key": "d08b4522-34cd-4d53-b778-6fb6ed093d70",
+              "title": "Display Queried Contacts",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-sgnik4W7vY",
+                "china_cdn_id": "-sgnik4W7vY.mp4"
+              }
+            },
+            {
+              "id": 573281,
+              "key": "51d0288d-0079-4c4b-8f45-440e6ec577ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/1671c5ca884e7f902ac9069d866079df34e42be1)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573284,
+              "key": "92ff7e49-d59d-4ce3-a750-886435259009",
+              "title": "Controlled Components vs “uncontrolled” components?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "92ff7e49-d59d-4ce3-a750-886435259009",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which benefit applies to Controlled Components that doesn't apply to \"uncontrolled\" components?",
+                "answers": [
+                  {
+                    "id": "a1522194558150",
+                    "text": "Controlled Components are more the \"React way\" of doing things",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522194559972",
+                    "text": "Controlled Components are less typing",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522194560428",
+                    "text": "Controlled Components are more performant",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522194560837",
+                    "text": "Controlled Components allow you to update your UI based on the form itself",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573288,
+              "key": "a7f8e95c-f064-4d4b-87b7-1aa04e390f5c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Showing The Displayed Contacts Count\n\nWe're almost done working with the controlled component! Our last step is to make our app display the count of how many contacts are being displayed out of the overall total.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573525,
+              "key": "5d01db9e-edf5-438f-87df-9e2e7f1b013a",
+              "title": "Add The Now Showing Details",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GbGpEAG-6-w",
+                "china_cdn_id": "GbGpEAG-6-w.mp4"
+              }
+            },
+            {
+              "id": 573290,
+              "key": "856b96f4-b357-484f-9c4a-32ca7d4e29f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/4e1e41b3234ec5297b215b137b7a5dd14ba8e3db)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 771113,
+              "key": "20aa32c9-9f0a-484c-bdb9-235c61f931d6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Do you feel comfortable with Controlled Components? If not, check out the [documentation](https://reactjs.org/docs/forms.html#controlled-components) to see another example. We'll get some practice with Controlled Components shortly. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573291,
+              "key": "7c487ff5-ee3e-44b2-aa1c-e5ac2ec19faf",
+              "title": "Controlled Components",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7c487ff5-ee3e-44b2-aa1c-e5ac2ec19faf",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Before we head into the next Lesson, let's check in on our knowledge of Controlled Components!\n\nWhich of the following is true about Controlled Components? Please check all that apply:",
+                "answers": [
+                  {
+                    "id": "a1522194862179",
+                    "text": "Each update to state has an associated handler function",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522194864139",
+                    "text": "Form elements receive their current value via an attribute",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522194864626",
+                    "text": "Form input values are generally stored in the component's state",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522194865058",
+                    "text": "`<textarea>` and `<select>` cannot be controlled elements",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522194876418",
+                    "text": "Event handlers for a controlled element update the component's state",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573292,
+              "key": "9bcff881-bd1b-4331-b425-db1df5096bc8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Controlled Components Recap\n\nControlled components refer to components that render a form, but the \"source of truth\" for that form state lives inside of the component state rather than inside of the DOM. The benefits of Controlled Components are:\n\n* instant input validation\n* conditionally disable/enable buttons\n* enforce input formats\n\nIn our `ListContacts` component, not only does the component render a form, but it also controls what happens in that form based on user input. In this case, event handlers update the component's state with the user's search query. And as we've learned: any changes to React state will cause a re-render on the page, effectively displaying our live search results.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 626674,
+          "key": "11941560-57ad-47fb-95f5-36a143167d10",
+          "title": "Exercise 1 - Controlled Components",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "11941560-57ad-47fb-95f5-36a143167d10",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626676,
+              "key": "c1806b3a-51cd-4076-b2af-7bfceaae0311",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewee06aff0",
+              "pool_id": "webterminal",
+              "view_id": "ee06aff0-0100-4c71-a2fb-e9253cf33021",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/instructions.md",
+                      "/home/workspace/src/App.js"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 626675,
+          "key": "869e4688-68f7-4c44-a119-74202b31062b",
+          "title": "Exercise 2 - Controlled Components",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "869e4688-68f7-4c44-a119-74202b31062b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626677,
+              "key": "44853e54-cb3d-49e6-8b3c-033b55824399",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view1d265499",
+              "pool_id": "webterminal",
+              "view_id": "1d265499-e579-4788-b3b1-19ffff68df6b",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/instructions.md",
+                      "/home/workspace/src/App.js"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 668207,
+          "key": "717a6222-7c5d-4f6b-a8bb-ed36b7a31f5a",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "717a6222-7c5d-4f6b-a8bb-ed36b7a31f5a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 668209,
+              "key": "8fc03dd7-fbaf-488b-a5c3-c0bc009df165",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Putting it All Into Perspective\n\nWhen it comes to keeping track of data in your app, think about what will be done with that data, and what that data will look like as your user interfaces with your app. If you want your component to store mutable local data, consider using `state` to hold this information. Many times, it is `state` that will be used to manage controlled form elements in your components.\n\nOn the other hand, if some information isn't expected to change over time, and is generally designed to be \"read-only\" throughout your app, consider using `props` instead. Both `state` and `props` will generally be in the form of an object, and changes in either will trigger a re-render of the component, but they each play very different roles in your app.\n\nWe covered a lot in this lesson, and you've made great progress - great work!\n\n### Lesson Challenge\n\nRead these articles: [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html), \n [Functional Components vs. Stateless Functional Components vs. Stateless Components](https://tylermcginnis.com/functional-components-vs-stateless-functional-components-vs-stateless-components/), \n [Controlled Components](https://facebook.github.io/react/docs/forms.html)\n, [Avoiding React SetState() Pitfalls](https://www.duncanleung.com/blog/2017-07-15-avoiding-react-setstate-pitfalls/), and [How to NOT React: Common Anti-Patterns and Gotchas in React](https://codeburst.io/how-to-not-react-common-anti-patterns-and-gotchas-in-react-40141fe0dcd) Answer the following questions and share your answers with your Study Group.\n\n1) What is the difference between Stateless Functional Components and class components?\n\n2) Describe the reasoning behind *Controlled Components*.\n\n3) What is the correct way to modify state? Make sure to explain what role a child component like “Add User” can have in the app.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 626682,
+          "key": "0727e430-08d3-4271-9081-ab9ad4d10698",
+          "title": "Exercise 1 - All Together",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0727e430-08d3-4271-9081-ab9ad4d10698",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626684,
+              "key": "08770f8a-1cda-4015-9b0f-c9ebb8db13d5",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewa41e7a0f",
+              "pool_id": "webterminal",
+              "view_id": "a41e7a0f-dff9-494c-9355-484dae062d6f",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/instructions.md",
+                      "/home/workspace/src/App.js"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 626683,
+          "key": "97f0cfa6-d8fe-4a72-8d69-007d99fe775d",
+          "title": "Exercise 2 - All Together",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "97f0cfa6-d8fe-4a72-8d69-007d99fe775d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 626685,
+              "key": "6bccf06d-4ab1-41cc-875c-89e610153660",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "viewaeb37e93",
+              "pool_id": "webterminal",
+              "view_id": "aeb37e93-ea0b-4785-8ed7-e253ea42e8e0",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "",
+                    "openFiles": [
+                      "/home/workspace/instructions.md",
+                      "/home/workspace/src/App.js"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "actionButtonText": "Preview"
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

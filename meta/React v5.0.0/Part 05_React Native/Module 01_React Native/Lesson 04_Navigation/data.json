@@ -1,0 +1,660 @@
+{
+  "data": {
+    "lesson": {
+      "id": 394100,
+      "key": "c66f0f4f-227b-4f3b-a7a3-483200f3bc12",
+      "title": "Navigation",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You’ll implement React Navigation’s navigators in order to be able to switch between tabs and screens in your application.\n",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/c66f0f4f-227b-4f3b-a7a3-483200f3bc12/394100/1518463535630/Navigation%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/c66f0f4f-227b-4f3b-a7a3-483200f3bc12/394100/1518463499618/Navigation%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 394150,
+          "key": "d21b7448-884d-48f1-9564-9f49a4522dee",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d21b7448-884d-48f1-9564-9f49a4522dee",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394283,
+              "key": "35443a4a-6d94-496c-a417-067f28ae29af",
+              "title": "Navigation Lesson Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ajrFLWzKdKk",
+                "china_cdn_id": "ajrFLWzKdKk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 394151,
+          "key": "172e4b01-a540-4893-8472-4a1196207eae",
+          "title": "Tab Navigator",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "172e4b01-a540-4893-8472-4a1196207eae",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 633722,
+              "key": "258de7a5-c820-4b33-b54a-6288f442fe6d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " >## 💡React Navigation v2💡\n>\n> The videos in this course cover React Navigation v1. Recently, an updated version of React Navigation was released. [Here](https://reactnavigation.org/blog) are some of the main differences between these two versions. The documentation for version 1 is located [here](https://v1.reactnavigation.org/), and the documentation for version 2 is [here](https://reactnavigation.org/). The default version shipped with `npm` is v2, so if you want to use v1, you'd have to specify that in your `package.json` file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394284,
+              "key": "867410ee-1de0-401b-9710-799bec65467f",
+              "title": "TabNavigatorIntroduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SfdRg-bMfLc",
+                "china_cdn_id": "SfdRg-bMfLc.mp4"
+              }
+            },
+            {
+              "id": 633808,
+              "key": "106d9f4b-55d5-4e81-918d-9fda6a0fd4f1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Tab Navigator v1\n\nBy using `TabNavigator`, users can navigate through different screens within an application simply by pressing tabs that render different components. \n\n## Tab Navigator v2 \n\n`TabNavigator` is deprecated in favor of [`createBottomTabNavigator`](https://reactnavigation.org/docs/en/tab-based-navigation.html). [`createMaterialTopTabNavigator`](https://reactnavigation.org/docs/en/material-top-tab-navigator.html) and [`createMaterialBottomTabNavigator`](https://reactnavigation.org/docs/en/material-bottom-tab-navigator.html) are also available as options for Android. Please note that `createBottomTabNavigator` does not support the `animationEnabled` and `swipeEnabled` properties.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394285,
+              "key": "545474ff-7105-4425-9142-d2d4f5c96189",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's see how we'd use Tab Navigator v2.\n\nSay we have two basic functional components that just render some text, `Hello` and `Goodbye`:\n\n```js\nconst Hello = () => (\n  <View>\n    <Text>Hello!</Text>\n  </View>\n);\n\nconst Goodbye = () => (\n  <View>\n    <Text>Goodbye!</Text>\n  </View>\n);\n```\n\nIf we want to add two tabs for users to select (one rendering `Hello`, the other rendering `Goodbye`), first we'll need to install `react-navigation` and then import `createBottomTabNavigator`:\n\n```\nyarn add react-navigation\n```\n\nor\n\n```bash\nnpm install --save react-navigation\n```\n\n```\nimport { createBottomTabNavigator } from 'react-navigation';\n```\n\nOnce this is done, we can pass an object into `createBottomTabNavigator` like so:\n\n```js\nconst Tabs = createBottomTabNavigator({\n  Hello: {\n    screen: Hello\n  },\n  Goodbye: {\n    screen: Goodbye\n  },\n});\n```\n\nInside the object, each key-and-value pair represents a single tab. The keys represent the _name_ of the tab; this is what users will see and press. Note that a `screen` property is included as well; this is the component that is rendered when the tab is active.\n\nHere comes the interesting part: what `createBottomTabNavigator` returns is actually a _component_! Since we have stored this in a `Tabs` variable, we can just render this as we would with any component:\n\n\n```js\n// App.js\n\n// ...\n\nexport default class App extends React.Component {\n  render() {\n    return (\n      <Tabs />\n    );\n  }\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394286,
+              "key": "158c388c-460d-4429-99bc-066154d9ad32",
+              "title": "TabNavigator",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4Ki4UbOy8II",
+                "china_cdn_id": "4Ki4UbOy8II.mp4"
+              }
+            },
+            {
+              "id": 394759,
+              "key": "e2d42ab6-4590-47da-b251-fdd365129561",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/9ff26370e4e5593195fdcad4d85e74f540a39220)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394642,
+              "key": "0f286560-c779-45ac-a816-797639fde468",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0f286560-c779-45ac-a816-797639fde468",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is true about the Tab Navigator? Please select all that apply:",
+                "answers": [
+                  {
+                    "id": "a1505168885383",
+                    "text": "`createBottomTabNavigator` is provided by React Native.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505168891129",
+                    "text": "The return value of `createBottomTabNavigator` is just a component that can be rendered like any other.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505168892479",
+                    "text": "Tab Navigator renders tabs that look identical in both Android and iOS.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505168893154",
+                    "text": "Tab Navigator is fully customizable.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 394288,
+              "key": "9a8f0a75-26e2-49c1-908d-fab2ae730236",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## StatusBar\n\nRecall that so far, our application has been using arbitrary `padding` to account for the status bar at the top of the device's screen. Let's go ahead and change that! React Native actually provides a simple `StatusBar` component to customize how the status bar appears in an application.\n\nBefore we take a look at how to implement `StatusBar`, be sure to import it from `react-native`:\n\n```js\nimport { StatusBar } from 'react-native';\n```\n\nLet's jump in!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394289,
+              "key": "e1bcdc06-a429-4c17-bdb6-efc584a33899",
+              "title": "StatusBar",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LzLIqKtjpD8",
+                "china_cdn_id": "LzLIqKtjpD8.mp4"
+              }
+            },
+            {
+              "id": 394762,
+              "key": "b3bb6fee-0dc5-443d-b37c-8bbb946c9ddf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/b5a0e8840cbc48486056331cd92399b729700b56)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 395907,
+              "key": "0bfa8bf7-afc9-4089-ae8f-781208b9eb66",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0bfa8bf7-afc9-4089-ae8f-781208b9eb66",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have installed `react-navigation`",
+                "I have passed an object into `createBottomTabNavigator` and saved the return value to `Tabs`",
+                "I am rendering `Tabs` in `app.js`",
+                "I have created the `UdaciStatusBar` component",
+                "I am rendering `UdaciStatusBar` in `app.js`"
+              ],
+              "positive_feedback": "Fantastic!",
+              "video_feedback": null,
+              "description": "We've just made it possible for users to navigate between different screens. How are things looking?"
+            },
+            {
+              "id": 394290,
+              "key": "6357c910-6f75-4e53-bc0b-5c3486074d30",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\nReact Navigator v1 offers a `TabNavigator` (and React Navigator v2 offers us `createBottomTabNavigator`) API that allows for navigation between different screens via individual tabs. Each tab is dedicated to rendering a specific component.\n\nThis section also detailed React Native's `StatusBar` component. `StatusBar` is relatively straightforward to use and is fully customizable -- we typically just set properties to change it!\n\nIn the next section, we'll take a look at React Navigator's Stack Navigator, which allows users to add and remove screens from a stack.\n\n### Further Research\n\n* [StatusBar props](https://facebook.github.io/react-native/docs/statusbar.html#props) from the React Native docs\n* [TabNavigator v1](https://v1.reactnavigation.org/docs/tab-navigator.html) from the React Navigator docs\n* [TabNavigator v2](https://reactnavigation.org/docs/en/bottom-tab-navigator.html) from the React Navigator docs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 394152,
+          "key": "2c0e8dfc-1f70-4712-a33c-b5ac85f44f18",
+          "title": "Stack Navigator",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2c0e8dfc-1f70-4712-a33c-b5ac85f44f18",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394291,
+              "key": "113276b5-dc8f-4a26-b087-8f1ab1754ada",
+              "title": "StackNavigator Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uMbBR5nu3eg",
+                "china_cdn_id": "uMbBR5nu3eg.mp4"
+              }
+            },
+            {
+              "id": 633839,
+              "key": "867a3cb0-b40e-456f-b2db-3d973f48659e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Stack Navigator v1\n\nWhen pressing an item in, say, an index view, we expect to go to a new screen with details on that item. React Navigation offers another navigator to do just that! With `Stack Navigator`, new screens are added and removed as a _stack_. This places screens on top of one another in a \"last in, first out\" manner, similar to `Array`'s `push()` and `pop()` methods.\n\n`StackNavigator`'s usage is largely similar to that of `TabNavigator`. But rather than passing in an object of different tabs, we pass in an object of the different screens that should be available in that stack.\n\n## Stack Navigator v2 \n\n`StackNavigator` has been deprecated in favor of [`createStackNavigator`](https://reactnavigation.org/docs/en/stack-navigator.html), which is functionally identical but clearly communicates that it's a function that returns a component.\n\nAccording to the [documentation](https://reactnavigation.org/blog/), the new [`StackNavigator`](https://reactnavigation.org/docs/en/stack-navigator.html) is “less pushy”:\n\n> [Each time you call push we add a new route to the navigation stack. When you call `navigate`, it first tries to find an existing route with that name, and only pushes a new route if there isn't yet one on the stack.]( https://reactnavigation.org/docs/en/navigating.html)\n \n>[Let's suppose that we actually _want_ to add another details screen. This is pretty common in cases where you pass in some unique data to each route (more on that later when we talk about `params`!). To do this, we can change `navigate` to `push`. This allows us to express the intent to add another route regardless of the existing navigation history.]( https://reactnavigation.org/docs/en/navigating.html)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394292,
+              "key": "32e683bc-be5b-44da-b927-e718c5feecb4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's see how we'd use the Stack Navigator from React Navigation v2.\n\nFirst, go ahead an import `createStackNavigator` from `react-navigation`. \n\n```\nimport { createStackNavigator } from 'react-navigation';\n```\n\nSay we have two basic components, `Home` and `Dashboard`:\n\n```js\nconst Home = ({ navigation }) => (\n  <View>\n    <Text>This is the Home view</Text>\n    <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>\n      <Text>Press here for the Dashboard</Text>\n    </TouchableOpacity>\n  </View>\n);\n\nconst Dashboard = () => (\n  <View>\n    <Text>This is the Dashboard</Text>\n  </View>\n);\n```\n\nNote that a `navigation` prop is passed to the stateless functional `Home` component, which allows navigation to another route. Once this is done, we can pass an object into `createStackNavigator` similar to how we did for `createBottomTabNavigator`:\n\n```js\nconst Stack = createStackNavigator({\n  Home: {\n    screen: Home\n  },\n  Dashboard: {\n    screen: Dashboard\n  }\n})\n```\n\nThe return value of passing an object into `createStackNavigator` is a component as well, and we can render it as such!\n\n```js\n// App.js\n\n// ...\n\nexport default class App extends React.Component {\n  render() {\n    return (\n      <Stack />\n    );\n  }\n}\n```\n\n[Stack Navigator](https://reactnavigation.org/docs/en/stack-navigator.html) and [Tab Navigator](https://reactnavigation.org/docs/en/bottom-tab-navigator.html) often go hand-in-hand. Since they each return _components_, you'll often see one nested within the other. Let's see this in action as we implement this into UdaciFitness!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394293,
+              "key": "6e04aa30-5b23-43fc-a077-1a3d9c0423a8",
+              "title": "StackNavigator",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "PkoZ__6NPE8",
+                "china_cdn_id": "PkoZ__6NPE8.mp4"
+              }
+            },
+            {
+              "id": 394749,
+              "key": "8dbff60f-b94c-4fe1-a02a-08d2932838c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/86af918722052eebafbc2892b6cd772b51a18dd4)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394643,
+              "key": "bcbd14d9-8ffe-4a75-85d9-ece666a1acac",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bcbd14d9-8ffe-4a75-85d9-ece666a1acac",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is true about the Stack Navigator? Please select all that apply:",
+                "answers": [
+                  {
+                    "id": "a1505169089248",
+                    "text": "Stack Navigator functions like a _queue_, implementing a \"first in, first out\" approach of managing screens.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505169095638",
+                    "text": "Stack Navigator cannot render the component returned by `createBottomTabNavigator`; they must be used separately.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505169096200",
+                    "text": "Stack Navigator animations render differently in Android and iOS.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505169096774",
+                    "text": "Similar to the Tab Navigator, the Stack Navigator can also leverage `navigationOptions`.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 394295,
+              "key": "8a7a0a8b-7a4a-4969-aff2-ec3cd45e5dd8",
+              "title": "NavigationOptions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JosvkjGlt30",
+                "china_cdn_id": "JosvkjGlt30.mp4"
+              }
+            },
+            {
+              "id": 394750,
+              "key": "7faa9bd3-474b-4d41-8e7f-4b799f5f8254",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/7d4fba6fba7e0f9833e9645c2f34e9c058c9feed)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394296,
+              "key": "aecf3e65-2475-4931-a82a-4454f8d66b6a",
+              "title": "Connect-EntryDetail",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-c5FZCh5LNo",
+                "china_cdn_id": "-c5FZCh5LNo.mp4"
+              }
+            },
+            {
+              "id": 394752,
+              "key": "dd3f5638-e615-46a8-8c2f-fc8b7c1ff05f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/5d77f8d831e170fc0ffdeae1bc92a0825e71e14a)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394297,
+              "key": "c031aaf0-3d5d-477d-b751-8f2d3ac3e3cc",
+              "title": "EntryDetail-Reset",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Hv_EbcrmbDY",
+                "china_cdn_id": "Hv_EbcrmbDY.mp4"
+              }
+            },
+            {
+              "id": 394754,
+              "key": "ed331ba5-c1be-4d80-ab98-a20a80c778eb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/7b2103a06e2394f938168d9f1040dd6ba9ac2e2d)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394298,
+              "key": "574c7562-95fa-4a87-9c50-743bf85cb0d3",
+              "title": "Finish-Navigation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_nRJsJ2-zgY",
+                "china_cdn_id": "_nRJsJ2-zgY.mp4"
+              }
+            },
+            {
+              "id": 394755,
+              "key": "ce2ee3d8-8891-477c-842c-ed73aae94a71",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/18aeee6aac40702c2d86cf976a9a67c5691505cf)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 395913,
+              "key": "fee537a9-a71e-46f8-bd1a-b0c31a5f4bff",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fee537a9-a71e-46f8-bd1a-b0c31a5f4bff",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have created the `EntryDetail` component",
+                "I have created the `MainNavigator` component, nesting `Tabs` into it",
+                "I have updated the `renderItem()` method in `History`",
+                "I have added `navigationOptions` to `EntryDetail`",
+                "I have connected `EntryDetail` to the store context with `connect()`",
+                "I have implemented a **reset** feature to `EntryDetail`",
+                "I have integrated `NavigationActions` to `AddEntry`"
+              ],
+              "positive_feedback": "Fantastic!",
+              "video_feedback": null,
+              "description": "Navigation should be good to go at this point! Be sure you have done the following:"
+            },
+            {
+              "id": 394299,
+              "key": "2ea9da37-e1b5-47c8-be27-6fe22203cedb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\nReact Navigation's Stack Navigator is another customizable navigation option based on adding and removing new screens to a stack. Its API is similar to that of the Tab Navigator; it takes in an object that defines all screens, then returns a component. Since both the Stack Navigator and the Tab Navigator both return components, a common practice is to nest these navigators within one another.\n\nIn the next section, we'll take a look at the Drawer Navigator, in which screens are switched from a drawer that pops out from the side of the screen!\n\n### Further Research\n\n* [Stack Navigation in React Native](https://medium.com/@swathylenjini/stack-navigation-in-react-native-2cd00374ff3a)\n* [StackNavigator v1](https://v1.reactnavigation.org/docs/stack-navigator.html) from the React Navigator docs\n* [StackNavigator v2](https://reactnavigation.org/docs/en/stack-navigator.html) from the React Navigator docs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 394153,
+          "key": "6b6fcd53-daa0-4dc8-995a-46a006044e59",
+          "title": "Drawer Navigator",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6b6fcd53-daa0-4dc8-995a-46a006044e59",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394300,
+              "key": "6629d826-6ab5-4cfb-807e-216b905ac602",
+              "title": "DrawerNavigator Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rxb47NRwix8",
+                "china_cdn_id": "rxb47NRwix8.mp4"
+              }
+            },
+            {
+              "id": 394301,
+              "key": "5292ef9b-f358-497b-8d69-8a95dcc3ab8b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Drawer Navigator v1\n\nReact Navigation offers one more basic navigator to create custom navigation through React Native apps: the `DrawerNavigator`. While `TabNavigator` uses tabs to help users navigate to specific screens, `DrawerNavigator` uses a drawer-like menu that slides in from the side of the screen. While we won't be implementing this into UdaciFitness -- it's still important to know and fairly common in React Native applications!\n\nTo use `DrawerNavigator`, be sure to install version 1 of `react-navigation` and import the following from `react-navigation`:\n\n```\nimport { DrawerNavigator } from 'react-navigation';\n```\n\nLuckily, many of the same philosophies shared by `StackNavigator` and `TabNavigator` apply here as well! Let's check out two basic components again and see how `DrawerNavigator` renders them:\n\n```js\nconst Home = ({ navigation }) => (\n  <View>\n    <Text>This is the Home view</Text>\n    <TouchableOpacity onPress={() => navigation.navigate('DrawerOpen')}>\n      <Text>Press here to open the drawer!</Text>\n    </TouchableOpacity>\n  </View>\n);\n\nconst Dashboard = ({ navigation }) => (\n  <View>\n    <Text>This is the Dashboard view</Text>\n    <TouchableOpacity onPress={() => navigation.navigate('DrawerOpen')}>\n      <Text>Press here to open the drawer!</Text>\n    </TouchableOpacity>\n  </View>\n);\n```\n\nNote that rather than routing to another component, each `TouchableOpacity` wrapper opens the drawer. Likewise, `'DrawerClose`' can be used to close the drawer. To simplify things, React Navigation also offers `'DrawerToggle'` to automatically select which navigation is appropriate based on the current drawer state.\n\nSimilar to `TabNavigator` and `StackNavigator`, we can then pass an object into `DrawerNavigator`, render the component returned, and we're all set!\n\n```js\nconst Drawer = DrawerNavigator({\n  Home: {\n    screen: Home\n  },\n  Dashboard: {\n    screen: Dashboard\n  }\n});\n```\n\n```js\n// App.js\n\n// ...\n\nexport default class App extends React.Component {\n  render() {\n    return (\n      <Drawer />\n    );\n  }\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 634277,
+              "key": "569b1f43-d592-46ae-92dd-c151617c7eb7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Drawer Navigator v2\n\n`DrawerNavigator` has been deprecated in favor of [`createDrawerNavigator`](https://reactnavigation.org/docs/en/drawer-navigator.html), which  is functionally identical but clearly communicates that it's a function that returns a component. \n\nAccording to the documentation:\n\n> [Rather than opening a drawer with `navigation.navigate(‘DrawerOpen’)`, you can now call `navigation.openDrawer()`. Other methods are `closeDrawer()` and `toggleDrawer()`.](https://reactnavigation.org/blog/)\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394645,
+              "key": "ad1c4f5d-9590-4c80-a270-850a37316c4f",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ad1c4f5d-9590-4c80-a270-850a37316c4f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What is true about the Drawer Navigator? Please select all that apply:",
+                "answers": [
+                  {
+                    "id": "a1505169245638",
+                    "text": "Drawer Navigator's drawer generally spans the height of the screen.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505169249812",
+                    "text": "The component returned by `createStackNavigator` can be nested inside a Drawer Navigator.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505169251610",
+                    "text": "Drawer Navigator is provided by `react-native`.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505169252106",
+                    "text": "Unlike the Tab Navigator and the Stack Navigator, the Drawer Navigator does not return a component.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 394646,
+              "key": "b4cceae4-9554-4597-9279-50ae270bc229",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b4cceae4-9554-4597-9279-50ae270bc229",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Time for a quick review! Please match the navigator with how it manages screens:"
+                },
+                "concepts_label": "Description",
+                "answers_label": "Component",
+                "concepts": [
+                  {
+                    "text": "Screens are rendered and placed on top of one another",
+                    "correct_answer": {
+                      "id": "a1505169319701",
+                      "text": "Stack Navigator"
+                    }
+                  },
+                  {
+                    "text": "Screens are switched by using a tab bar",
+                    "correct_answer": {
+                      "id": "a1505169340030",
+                      "text": "Tab Navigator"
+                    }
+                  },
+                  {
+                    "text": "Screens are switched by a menu that slides in from the side",
+                    "correct_answer": {
+                      "id": "a1505169340668",
+                      "text": "Drawer Navigator"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1505169354090",
+                    "text": "Drawer Navigator"
+                  },
+                  {
+                    "id": "a1505169340030",
+                    "text": "Tab Navigator"
+                  },
+                  {
+                    "id": "a1505169319701",
+                    "text": "Stack Navigator"
+                  },
+                  {
+                    "id": "a1505169340668",
+                    "text": "Drawer Navigator"
+                  },
+                  {
+                    "id": "a1505169364486",
+                    "text": "Tab Navigator"
+                  },
+                  {
+                    "id": "a1505169366466",
+                    "text": "Stack Navigator"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 394304,
+              "key": "d54b8e39-c1ad-4f05-a8db-54f96a4f253b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\nReact Navigation's Drawer Navigator is used to easily set up a screen with drawer navigation. Many of the same practices we use to set up the Stack Navigator and the Tab Navigator apply to the Drawer Navigator as well. Simply pass in an object containing the different screens, and the return value is a component ready to be rendered. As a result, this makes Drawer Navigator components easy for nesting with other navigators!\n\n### Further Research\n\n* [DrawerNavigator v1](https://v1.reactnavigation.org/docs/drawer-navigator.html) from the React Navigator docs\n* [DrawerNavigator v2](https://reactnavigation.org/docs/en/drawer-navigator.html) from the React Navigator docs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 394154,
+          "key": "294dc655-e090-4655-b677-f5c6455f062e",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "294dc655-e090-4655-b677-f5c6455f062e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394305,
+              "key": "d755d10f-7029-47bd-9ef8-f1e48634b67d",
+              "title": "Navigation Lesson Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pvGhbdf-2BA",
+                "china_cdn_id": "pvGhbdf-2BA.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

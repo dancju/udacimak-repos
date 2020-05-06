@@ -1,0 +1,830 @@
+{
+  "data": {
+    "lesson": {
+      "id": 668168,
+      "key": "5c567aa7-bb32-4892-8961-54da79711155",
+      "title": "React Router",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You'll learn how to add routing to a React app by using React Router. You'll learn about the BrowserRouter, Link, and Route components to dynamically render pages.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/5c567aa7-bb32-4892-8961-54da79711155/668168/1544026524810/React+Router+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/5c567aa7-bb32-4892-8961-54da79711155/668168/1544026519391/React+Router+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 573079,
+          "key": "a7df2d15-e49e-45b9-88b8-b00eb28de4a5",
+          "title": "React Router Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a7df2d15-e49e-45b9-88b8-b00eb28de4a5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578085,
+              "key": "4167d294-4297-43fb-a6a4-10fa72cd6ba1",
+              "title": "React Router Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "PV6TN8ahSX0",
+                "china_cdn_id": "PV6TN8ahSX0.mp4"
+              }
+            },
+            {
+              "id": 573077,
+              "key": "b95b72bb-c8e6-4bec-8738-55399daeccea",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Single-Page Apps\n\nSingle-page applications can work in different ways. One way a single-page app loads is by downloading _the entire_ site's contents all at once. This way, when you're navigating around on the site, everything is already available to the browser, and it doesn't need to refresh the page. Another way single-page apps work is by downloading everything that's needed to render the page the user requested. Then when the user navigates to a new page, asynchronous JavaScript requests are made for _just_ the content that was requested. \n\nAnother key factor in a good single-page app is that the URL controls the page content. Single-page applications are highly interactive, and users want to be able to get back to a certain state using just the URL. Why is this important? Bookmarkability! (pretty sure that's not a word...yet) When you bookmark a site, that bookmark is _only_ a URL, it doesn't record the state of that page.\n\nHave you noticed that any of the actions you perform in the app do not update the page's URL? We need to create React applications that offer bookmarkable pages!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573078,
+              "key": "df015a5d-9dfb-4de7-ba08-a96c22c0bedd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## React Router\n\nReact Router turns React projects into single-page applications. It does this by providing a number of specialized components that manage the creation of links, manage the app's URL, provide transitions when navigating between different URL locations, and so much more. \n\nAccording to the React Router website:\n\n> React Router is a collection of **navigational components** that compose declaratively with your application. \n\nIf you're interested, feel free to check out the website at [https://reacttraining.com/](https://reacttraining.com/).\n\nIn the next section, we'll dynamically render content to the page based on a value in the project's `this.state` object. We'll use this basic example as an idea of how React Router works by controlling what's being seen via state. Then we'll switch over to using React Router. We'll walk you through installing React Router, adding it to the project, and hooking everything together so it can manage your links and URLs.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573091,
+          "key": "2e4855e2-7bf3-4988-85a4-4b1518e665d0",
+          "title": "Dynamically Render Pages",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2e4855e2-7bf3-4988-85a4-4b1518e665d0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 573080,
+              "key": "273c11d3-b52f-4b88-a318-d32df932e42d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As the app currently functions, there's no way to add new contacts! That's a shame because I really need to add Richard to my list of contacts. So let's create a form that'll let us create new contacts and save them to the server.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573081,
+              "key": "52c13ddb-0b96-4ed8-a6d8-7de75be463ea",
+              "title": "Where To Add the Contact Form?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "52c13ddb-0b96-4ed8-a6d8-7de75be463ea",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "We're about to create a form that will create new contacts. Where should the code for the form UI go?",
+                "answers": [
+                  {
+                    "id": "a1522219151932",
+                    "text": "in `App.js`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522219153700",
+                    "text": "in `ListContacts.js`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522219154543",
+                    "text": "in `index.js`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522219155189",
+                    "text": "in a new component",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573082,
+              "key": "0fcd3667-7ba8-48ba-b2ac-f4b7f992789b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We don't want the form to display all of the time, so we'll start out by having the form show up only if a setting is enabled. We'll store this setting in `this.state`. Doing it this way will give us an idea of how React Router functions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573607,
+              "key": "f1dd1bff-225b-4c04-aaee-6ed4bb9fd54e",
+              "title": "StateBased Content Rendering",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "I4wTc_ulrME",
+                "china_cdn_id": "I4wTc_ulrME.mp4"
+              }
+            },
+            {
+              "id": 573084,
+              "key": "7517bd6f-481d-4f1e-86c7-fc33a9981fab",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/e4a527dbd7a5e1d3fca2a92251556024d834258a)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573085,
+              "key": "0c883b25-fbb9-4312-aeef-2ad0bd22f4e8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We packed quite a bit of important changes in this little video! We created the CreateContact component that'll be in charge of the form to create new contacts. In staying with the general React theme of favoring composition, we created this as a standalone component and used composition by adding it to the `render()` method in the `App` component.\n\nIn an attempt to do an _extremely_ simple recreation of how React Router works, we added a `screen` property to `this.state`, and used this property to control what content should display on the screen. If `this.state.screen` is `list` then we'll show the list of all existing contacts. If `this.state.screen` is `create` then we'll show the CreateContact component.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573086,
+              "key": "46bcfc66-3882-4ce1-922a-4d12bd0eb4d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Short-circuit Evaluation Syntax\n\nIn this video and when we created the Now showing section from earlier, we used a somewhat odd looking syntax:\n\n```js\n{this.state.screen === 'list' && (\n  <ListContacts\n  contacts={this.state.contacts}\n  onDeleteContact={this.removeContact}\n  />\n)};\n\n```\n\nand\n\n```js\n{this.state.screen === 'create' && (\n  <CreateContact />\n)}\n```\n\nThis can be a little confusing with both the JSX code for a component and the code to run an expression. But this is really just the logical expression `&&`:\n\n```js\nexpression && expression\n```\n\nWhat we're using here is a JavaScript technique called **short-circuit evaluation**. If the first expression evaluates to `true`, then the second expression is run. However, if the first expression evaluates to `false`, then the second expression is skipped. We're using this as a guard to first verify the value of `this.state.screen` before displaying the correct component.\n\nFor a deeper dive into this, check out [the short-circuit evaluation info on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Short-circuit_evaluation).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573087,
+              "key": "1ace4751-3740-48b2-8f0c-ea459bf2279f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Add A Button\n\nRight now we have to manually change the state to get the app to display the different screens. We want the user to be able to control that in the app itself, so let's add a button!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 578059,
+              "key": "f06d3e15-e2f2-457d-bcb9-972914161a05",
+              "title": "Adding The Back Button",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AX-ZpaliAYc",
+                "china_cdn_id": "AX-ZpaliAYc.mp4"
+              }
+            },
+            {
+              "id": 573089,
+              "key": "4771cdb7-6fe7-47d7-b10d-d630555b6284",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/93ff543181f0558ee5be9aab8eef771c47269451)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573090,
+              "key": "de73478a-2369-42f8-a7f8-37f0e903cd8c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Dynamic Routing Recap\n\nIn the code we added in this section, we tried our attempt at using state to control what content displays to the user. We saw things break down, though, when we used the back button. \n\nNow, let's switch over to using React Router to manage our app's screens.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573102,
+          "key": "e136b696-3e68-4ccf-840a-ce09138d53af",
+          "title": "The BrowserRouter Component",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e136b696-3e68-4ccf-840a-ce09138d53af",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 573092,
+              "key": "896fd1a4-0d0d-4f4d-8476-431ee0039f50",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As we've just seen, when the user presses the 'back' button in the browser, they will probably have to refresh the page to see the proper content at that location. This isn't the best experience for our user! When we update location, we can update the app as well using JavaScript. This is where React Router comes in. \n\n## Install React Router\n\nTo use React Router in our app, we need to install [react-router-dom](https://www.npmjs.com/package/react-router-dom).\n\n```bash\nnpm install --save react-router-dom\n```\n\nLet's see it in action!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573608,
+              "key": "30658fb7-70bc-4dd3-8a3a-b2eeb2cba238",
+              "title": "Install React Router",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qvy-_Pu9QNU",
+                "china_cdn_id": "qvy-_Pu9QNU.mp4"
+              }
+            },
+            {
+              "id": 573094,
+              "key": "4b60cf27-2cec-448f-892e-7f49158dfc0b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/fbd0cea0839d018209a19d468fc1661da9f9033a)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573095,
+              "key": "e1d41354-cef9-4933-8870-9df270ac008f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## BrowserRouter\n\nThe first component we'll look at is BrowserRouter.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 578060,
+              "key": "c89760f3-9b82-4461-a44c-127d58ae7bab",
+              "title": "BrowserRouter Component Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bhjvF7Qt7K0",
+                "china_cdn_id": "bhjvF7Qt7K0.mp4"
+              }
+            },
+            {
+              "id": 573609,
+              "key": "80724a92-678c-4a28-b10c-b20a79f6ea18",
+              "title": "Add BrowserRouter",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uIYOoQKwKfU",
+                "china_cdn_id": "uIYOoQKwKfU.mp4"
+              }
+            },
+            {
+              "id": 573098,
+              "key": "dae6d199-c428-4549-a084-b72753b884f9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/d1b067febbfc467563742fc3b52b6a34486ebde5)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573099,
+              "key": "43cc7dc9-cd8e-44ae-afc9-f25f96a79fd1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "What's nice about React Router is that everything is just a component. This makes using it nice, but it also makes diving into the code more convenient as well. Let's take a look at what exactly BrowserRouter is doing under the hood.\n\nHere is the code straight from the React Router repository.\n\n```js\nclass BrowserRouter extends React.Component {\n  static propTypes = {\n    basename: PropTypes.string,\n    forceRefresh: PropTypes.bool,\n    getUserConfirmation: PropTypes.func,\n    keyLength: PropTypes.number,\n    children: PropTypes.node\n  }\n\n  history = createHistory(this.props)\n\n  render() {\n    return <Router history={this.history} children={this.props.children} />\n  }\n}\n\n```\n\nWhen you use `BrowserRouter`, what you're really doing is rendering a `Router` component and passing it a `history` prop. Wait, what is `history`? `history` comes from the [history](https://github.com/ReactTraining/history) library (also built by React Training). The whole purpose of this library is it abstracts away the differences in various environments and provides a minimal API that lets you manage the history stack, navigate, confirm navigation, and persist state between sessions.\n\nSo in a nutshell, when you use `BrowserRouter`, you're creating a `history` object which will listen to changes in the URL and make sure your app is made aware of those changes.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573100,
+              "key": "a3d11819-f0d1-42d7-8d38-a2aceb3b5325",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a3d11819-f0d1-42d7-8d38-a2aceb3b5325",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have installed the `react-router-dom` package",
+                "I have imported `BrowserRouter` in `src/index.js`",
+                "I am now rendering `<BrowserRouter><App /></BrowserRouter>` in `src/index.js`"
+              ],
+              "positive_feedback": "Fantastic!",
+              "video_feedback": null,
+              "description": "Let's make sure you've performed the necessary steps. Check off each of the following:"
+            },
+            {
+              "id": 573101,
+              "key": "de967485-ba4f-4f85-9eca-078a2a8a4b92",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## `BrowserRouter` Component Recap\n\nIn summary, for React Router to work properly, you need to wrap your whole app in a `BrowserRouter` component. Also, `BrowserRouter` wraps the history library which makes it possible for your app to be made aware of changes in the URL. \n\n### Further Research\n\n* [history](https://github.com/reacttraining/history)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573109,
+          "key": "13773ba9-48f6-431f-b2d5-b65e41597b3e",
+          "title": "The Link Component",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "13773ba9-48f6-431f-b2d5-b65e41597b3e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578086,
+              "key": "f4596d0b-f678-4347-9e45-d300ed8fc266",
+              "title": "Link Component Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EZVVkrODWw8",
+                "china_cdn_id": "EZVVkrODWw8.mp4"
+              }
+            },
+            {
+              "id": 573610,
+              "key": "80a6e0ad-4f1f-4a68-a9f8-21fb207eff01",
+              "title": "Replace Anchor Links With The Link Component",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jrW6zIa0Qdc",
+                "china_cdn_id": "jrW6zIa0Qdc.mp4"
+              }
+            },
+            {
+              "id": 573105,
+              "key": "48fe9342-5ae5-46fe-bfba-2a42ef74f80d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/1197d9d7bb255f2ff17eed63d295a80014c26814)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573106,
+              "key": "d0df183c-2897-4023-8fd3-25f123d4bc5a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you've seen, `Link` is a straightforward way to provide declarative, accessible navigation around your application. By passing a `to` property to the `Link` component, you tell your app which path to route to.\n\n```js\n<Link to=\"/about\">About</Link>\n```\n\nIf you're experienced with routing on the web, you'll know that sometimes our links need to be a little more complex than just a string. For example, you can pass along query parameters or link to specific parts of a page. What if you wanted to pass state to the new route? To account for these scenarios, instead of passing a string to `Link`s `to` prop, you can pass it an object like this,\n\n```js\n<Link to={{\n pathname: '/courses',\n search: '?sort=name',\n hash: '#the-hash',\n state: { fromDashboard: true }\n}}>\n Courses\n</Link>\n```\n\nYou won't need to use this feature all of the time, but it's good to know it exists. You can read more information about `Link` in the [official docs](https://reacttraining.com/react-router/web/api/Link).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573107,
+              "key": "342ac2f3-ab05-49bb-87bb-78c28c25b98c",
+              "title": "Create A \"Members\" Link?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "342ac2f3-ab05-49bb-87bb-78c28c25b98c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "When creating anchors for our app's routes, let's say we want `<a href=\"/members\" class=\"members\">Members</a>` in the DOM. How should we write this using React Router's `<Link>` component?",
+                "answers": [
+                  {
+                    "id": "a1522219690020",
+                    "text": "`<Link to=\"/members\" class=\"members\">Members</Link>`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522219693543",
+                    "text": "`<a href=\"/members\" class=\"members\">Members</a>`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522219694195",
+                    "text": "`<Link to=\"/members\" className=\"members\">Members</Link>`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522219696913",
+                    "text": "`<Link to=\"/members\" class=\"members\" linkText=\"Members\" />`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573108,
+              "key": "853eb5b6-b28a-45cf-b420-586fbd851f9e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Link Recap\n\nReact Router provides a `Link` component which allows you to add declarative, accessible navigation around your application. You'll use it in place of anchor tags (`a`) as you're typically used to. React Router's `<Link>` component is a great way to make navigation through your app accessible for users. Passing a `to` prop to your link, for example, helps guide your users to an absolute path (e.g., `/about`):\n\n```js\n<Link to=\"/about\">About</Link>\n```\n\nSince the `<Link>` component fully renders a proper anchor tag (`<a>`) with the appropriate `href`, you can expect it to behave how a normal link on the web behaves.\n\n## Further Research\n* [`<Link>`](https://reacttraining.com/react-router/web/api/Link) at React Training\n* [Source Code](https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/modules/Link.js)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573116,
+          "key": "6ee56002-6e69-4c51-ab33-9918f6cb7cb1",
+          "title": "The Route Component",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6ee56002-6e69-4c51-ab33-9918f6cb7cb1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578061,
+              "key": "f3015e0a-4922-4fb9-bc6b-dd8fe4aee72a",
+              "title": "Route Component Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ocZkC0MqGPY",
+                "china_cdn_id": "ocZkC0MqGPY.mp4"
+              }
+            },
+            {
+              "id": 573611,
+              "key": "c193da4d-3259-4c26-a303-066a45dc0d56",
+              "title": "Add Routes To The App",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ka19h7gvKi0",
+                "china_cdn_id": "Ka19h7gvKi0.mp4"
+              }
+            },
+            {
+              "id": 573112,
+              "key": "54f7b458-c442-4b68-bf7b-6c5de9b74b0e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/66dcafce787f673b80622f808ca2dc4236aef0b0)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573113,
+              "key": "b5726175-cc86-4233-b916-709421f66f6d",
+              "title": "Which Route matches?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b5726175-cc86-4233-b916-709421f66f6d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If the browser loads the URL `/houses/green`, which of the following Routes will match?",
+                "answers": [
+                  {
+                    "id": "a1522219815467",
+                    "text": "`<Route path=\"/houses\" component={Houses} />`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522219844092",
+                    "text": "`<Route exact path=\"/houses\" component={Houses} />`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522219844703",
+                    "text": "`<Route path=\"/houses/green\" component={Houses} />`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522219845291",
+                    "text": "`<Route exact path=\"/houses/green\" component={Houses} />`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522219846303",
+                    "text": "`<Route path=\"/\" component={Houses} />`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 573114,
+              "key": "2cc1ee41-9c6c-4cf6-b475-99f40475aa80",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2cc1ee41-9c6c-4cf6-b475-99f40475aa80",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have imported `Route` in `src/App.js`",
+                "I have replaced the `this.state.screen === 'list'` code with a `Route` component",
+                "I have added an `exact` prop to the root `Route`",
+                "I have replaced the `this.state.screen === create'` code with a `Route` component",
+                "I have removed the `onNavigate` function from `ListContacts`"
+              ],
+              "positive_feedback": "Excellent!",
+              "video_feedback": null,
+              "description": "We're almost there! Let's quickly make sure we're both on the same page. Make sure to check off each of the following:"
+            },
+            {
+              "id": 573115,
+              "key": "93d28470-d21c-4f1d-a99b-0917fab7650a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Route Component Recap\n\nThe main takeaway from this section is that with a `Route` component if you want to be able to pass props to a specific component that the router is going to render, you'll need to use `Route`’s `render` prop. As you saw, `render` puts you in charge of rendering the component which in turn allows you to pass any props to the rendered component as you'd like.\n\nIn summary, the `Route` component is a critical piece of building an application with React Router because it's the component which is going to decide which components are rendered based on the current URL path.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573128,
+          "key": "30415299-18d5-4efd-8223-0fabc0fa7b4f",
+          "title": "Finishing The Contact Form",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "30415299-18d5-4efd-8223-0fabc0fa7b4f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 573117,
+              "key": "7968c287-af07-4f04-9784-9b61d9d922e0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create The Contact Form\n\nRight now, the page to create contacts is empty! Let's build out a form on that page so we start adding our own custom contacts.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573118,
+              "key": "7a80b31b-f68b-4179-9cfb-afee133f2933",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️ Required File ⚠️ \n \n> At the beginning of the program, we gave you the option to clone our starter project or to start from scratch using [create-react-app](https://github.com/facebookincubator/create-react-app). If you haven't added it yet, you'll need [the ImageInput.js file](https://github.com/udacity/reactnd-contacts-complete/blob/master/src/ImageInput.js) for the following video.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573119,
+              "key": "bebe63ae-ef37-43f1-a95a-a5a816133650",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The ImageInput component is a custom `<input>` that dynamically reads and resizes image files before submitting them to the server as data URLs. It also shows a preview of the image. We chose to give this component to you rather than build it ourselves because it contains features related to files and images on the web that aren't crucial to your education in this context. If you're curious, feel free to dive into the code, but know it's not a requirement.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573612,
+              "key": "de3fecea-373b-4dee-8de7-98f7b7321288",
+              "title": "Build Out The Contact Form",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "p3v2dgrqJsg",
+                "china_cdn_id": "p3v2dgrqJsg.mp4"
+              }
+            },
+            {
+              "id": 573121,
+              "key": "ff7f925b-af7f-4c9f-93d2-f92af3bb1a0e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/4b1693fa9b8268af8f1eb190d0bae66bf850ffb4)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573122,
+              "key": "e2abbb16-843e-4b2c-9154-b9606ab29cb8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Serialize The Form Data\n\nAt this point, our form will serialize the values from user input (i.e., the `name` and `email`), adding them as a query string to the URL. We can add some additional functionality by having our app serialize these form fields on its own. After all, we want the app to ultimately handle creating the contact and saving it to the state. \n\nTo accomplish this, we'll use the [form-serialize](https://www.npmjs.com/package/form-serialize) package to output this information as a regular JavaScript object for the app to use.\n\n```bash\nnpm install --save form-serialize\n```\n\nLet's see it all in action!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573613,
+              "key": "f1eaa541-cbf4-47f4-9a7c-21f4f2b53f4d",
+              "title": "Handle Submission Of The Contact Form",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "aAhaXlQ2G6I",
+                "china_cdn_id": "aAhaXlQ2G6I.mp4"
+              }
+            },
+            {
+              "id": 573124,
+              "key": "bc433b7e-6d6d-4a50-9f34-995c3a9210f5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/69c8b52ff523071db4ed9c5edb07aa34445d1570)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573125,
+              "key": "8e1134ef-b7d3-4f48-a2f2-6900e9ccc147",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Update Server With New Contact\n\nWe have our contact form. We're serializing our data and passing it up to the parent component. All we need to do to have a fully functional app is to save the contact to the server.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573614,
+              "key": "a9092d1a-765f-48bb-a05b-e34db57bcda9",
+              "title": "Add New Contact To State",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "24lu6iVQHro",
+                "china_cdn_id": "24lu6iVQHro.mp4"
+              }
+            },
+            {
+              "id": 573127,
+              "key": "988c7bc5-0100-4fd7-aa45-8fc224ecc99e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-contacts-app/commit/f876f2d17b338e57ec80e8f67abbb3efa83bff2a)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573131,
+          "key": "5aa72f58-9b0e-4e8b-8bcc-0f51a7d42782",
+          "title": "React Router Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5aa72f58-9b0e-4e8b-8bcc-0f51a7d42782",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578087,
+              "key": "73521333-26e8-455e-8956-d55278b90593",
+              "title": "Lesson Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3oyeoXXB2qA",
+                "china_cdn_id": "3oyeoXXB2qA.mp4"
+              }
+            },
+            {
+              "id": 573130,
+              "key": "4236eb9f-ddbf-47bb-9825-094c8a96ad26",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Learning\n\nIf you're interested in learning more about React Router, we recommend these two resources. First, [Build your own React Router v4](https://tylermcginnis.com/build-your-own-react-router-v4/) will walk through how to implement your own mini version of React Router to better understand its implementation details. Next, is React Training's [official documentation](https://reacttraining.com/react-router/web/guides/philosophy) for React Router. Feel free to also check out Tyler McGinnis's [React Router](https://tylermcginnis.com/courses/react-router/) course as well!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 644639,
+              "key": "9059e549-bb55-4e2c-8f57-a56484a9448d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Lesson Challenge\nRead Tyler's [Nested routes with React Router v4](https://tylermcginnis.com/react-router-nested-routes/) blog post and answer the following questions. Share your answers with your classmates.\n\n1) What is the difference between `Link` and `Route`?\n\n2) What is the difference between `match.path` and `match.url`? Give a use case for each.\n\n3) Create a code example where you (1) pass props to a component that's rendered by React Router and (2) use nested routes.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573134,
+          "key": "98e077be-cb71-4915-98bc-ef6f0c7ebdbb",
+          "title": "Course Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "98e077be-cb71-4915-98bc-ef6f0c7ebdbb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578062,
+              "key": "fb90be07-373c-4131-bd35-59fedc93dd08",
+              "title": "Course Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EvPfR_06CF8",
+                "china_cdn_id": "EvPfR_06CF8.mp4"
+              }
+            },
+            {
+              "id": 573133,
+              "key": "d3222db1-866c-4275-a8a0-8cc15baab76f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Keep Learning\n\nGreat work! You've learned how to build applications in React, but there's always more to learn! Check out the following resources to up your skills:\n\n* [The React Docs](https://facebook.github.io/react/docs/hello-world.html)\n* [Tyler's Blog](https://tylermcginnis.com/)\n\n### People to Follow\n\nWhether it be popular blog posts or developers to follow on Twitter, a large part of getting everything out of a new technology is utilizing existing community resources. So we want to share with you with our favorite resources from the React community that we've found helpful over the last few years. Hopefully you'll find them helpful as well.\n\n* [Dan Abramov](https://twitter.com/dan_abramov)\n* [Sebastian Markbåge](https://twitter.com/sebmarkbage)\n* [Henry Zhu](https://twitter.com/left_pad)\n* [Peggy Rayzis](https://twitter.com/peggyrayzis)\n* [Merrick Christensen](https://twitter.com/iammerrick)\n* [Christopher Chedeau](https://twitter.com/vjeux)\n* [React](https://twitter.com/reactjs)\n* [Tyler McGinnis](https://twitter.com/tylermcginnis)\n\n### Blog posts to read\n\n* [You're missing the point of React](https://medium.com/@dan_abramov/youre-missing-the-point-of-react-a20e34a51e1a)\n* [React \"Aha\" Moments](https://tylermcginnis.com/react-aha-moments/)\n* [9 Things every React.js Beginner should know](https://camjackson.net/post/9-things-every-reactjs-beginner-should-know)\n* [React Elements vs React Components](https://tylermcginnis.com/react-elements-vs-react-components/)\n\nIf you want to learn more advanced topics in React, you can check out [tylermcginnis.com](https://tylermcginnis.com/). \n\nThanks for joining us on this journey! Now it's time to move on to learning Redux!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 688768,
+              "key": "566ef932-5edb-4d37-ad82-f37eede21eb0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here's how what you've learned thus far maps to your career:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 688771,
+              "key": "aff1e3a9-a7fd-4da6-9f5e-590e1e44322f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b60f6e3_screen-shot-2018-07-31-at-4.54.59-pm/screen-shot-2018-07-31-at-4.54.59-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/aff1e3a9-a7fd-4da6-9f5e-590e1e44322f",
+              "caption": "",
+              "alt": "",
+              "width": 700,
+              "height": 600,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

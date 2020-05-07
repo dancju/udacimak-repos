@@ -1,0 +1,369 @@
+{
+  "data": {
+    "lesson": {
+      "id": 571789,
+      "key": "7bbe89c2-b7fa-420c-9ebb-175d9456f9b8",
+      "title": "Redux Middleware",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You’ll learn to create custom middleware and add it to your Redux store. This middleware will allow you to enhance your store by hooking into and intercepting actions before they reach any reducers.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/7bbe89c2-b7fa-420c-9ebb-175d9456f9b8/571789/1544474234463/Redux+Middleware+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/7bbe89c2-b7fa-420c-9ebb-175d9456f9b8/571789/1544474231831/Redux+Middleware+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 571770,
+          "key": "c15e03ff-f5ef-45e7-bb68-3dad60349b3c",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c15e03ff-f5ef-45e7-bb68-3dad60349b3c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572425,
+              "key": "1e45ebbc-0ac5-42ee-8a01-b81cc5d1dc36",
+              "title": "Redux Middleware Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9e3divgVWus",
+                "china_cdn_id": "9e3divgVWus.mp4"
+              }
+            },
+            {
+              "id": 572599,
+              "key": "919c93bc-0dad-4b4d-a7a5-c45ec35a0533",
+              "title": "Customizing Dispatch",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "TFzVN0hDcpI",
+                "china_cdn_id": "TFzVN0hDcpI.mp4"
+              }
+            },
+            {
+              "id": 571769,
+              "key": "7e00a90e-df5f-4877-bcdf-9ad319861b16",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/f9aed03cd19975c8aa96cd25f497cba955fb8d78)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571786,
+          "key": "887623bf-23d6-41c4-90c8-3328ad15d726",
+          "title": "Redux Middleware",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "887623bf-23d6-41c4-90c8-3328ad15d726",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572433,
+              "key": "a9f87814-371e-4023-8953-42811e1f3841",
+              "title": "Redux Middleware",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WOEUwVOI0iw",
+                "china_cdn_id": "WOEUwVOI0iw.mp4"
+              }
+            },
+            {
+              "id": 571772,
+              "key": "2d45c92c-93c2-49a7-8ed2-93c50b27d36a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You’ve learned how Redux makes state management more predictable: in order to change the store’s state, an action describing that change must be dispatched to the reducer. In turn, the reducer produces the _new_ state. This new state replaces the previous state in the store. So the next time `store.getState()` is called, the new, most up-to-date state is returned.\n\nBetween the dispatching of an action and the reducer running, we can introduce code called **middleware** to _intercept_ the action before the reducer is invoked. The [Redux docs](http://redux.js.org/docs/advanced/Middleware.html) describe middleware as:\n\n> …a third-party extension point between dispatching an action, and the moment it reaches the reducer.\n\nWhat's great about middleware is that once it receives the action, it can carry out a number of operations, including:\n\n* producing a side effect (e.g., logging information about the store)\n* processing the action itself (e.g., making an asynchronous HTTP request)\n* redirecting the action (e.g., to another piece of middleware)\n* dispatching supplementary actions\n\n…or even some combination of the above! Middleware can do any of these _before_ passing the action along to the reducer.\n\nLet's replace our `checkAndDispatch()` function with a real Redux middleware function.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572601,
+              "key": "23d91e54-ba56-4998-bc28-b067b8633e95",
+              "title": "Redux Middleware Continued",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2Dx7OBAEhV0",
+                "china_cdn_id": "2Dx7OBAEhV0.mp4"
+              }
+            },
+            {
+              "id": 571774,
+              "key": "58814970-001b-48ec-9bd0-4e749e53dee3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/e1e96d97cd1566a35a34623fc5b43d1a0ba5d3ef)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571775,
+              "key": "01e78c17-8d8e-427b-9658-99fc6a139f91",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Where Middleware Fits\n\nThe way we had to structure our code originally, our `checkAndDispatch()` function _had_ to run *before* `store.dispatch()`. Why is this? Because when `store.dispatch()` is invoked, it immediately calls the reducer that was passed in when `createStore()` was invoked. If you remember back to the first lesson, this is what our `dispatch()` function looked like (and is very similar to the real Redux `dispatch()` function):\n\n```js\nconst dispatch = (action) => {\n state = reducer(state, action)\n listeners.forEach((listener) => listener())\n}\n```\n\nSo you can see that calling `store.dispatch()` will _immediately_ invoke the `reducer()` function. There's no way to run anything in between the two function calls. So that's why we had to make our `checkAndDispatch()` so that we can run verification code _before_ calling `store.dispatch()`.\n\nHowever, this isn't maintainable. If we wanted to add another check, then we'd need to write _another_ preceding function, that then calls `checkAndDispatch()` that _then_ calls `store.dispatch()`. Not maintainable at all.\n\nWith Redux's middleware feature, we can run code _between_ the call to `store.dispatch()` and `reducer()`. The reason this works, is because Redux's version of `dispatch()` is a bit more sophisticated than ours was, and because we provide the middleware functions when we create the store.\n\n```js\nconst store = Redux.createStore( <reducer-function>, <middleware-functions> )\n```\n\nRedux's `createStore()` method takes the reducer function as its first argument, but then it can take a second argument of the middleware functions to run. Because we set up the Redux store with knowledge of the middleware function, it runs the middleware function between `store.dispatch()` and the invocation of the reducer.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571777,
+              "key": "9f3f9bea-6bda-4637-9384-f57985b7922f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Applying Middleware\n\nJust as we saw in the previous video, we can implement middleware into a Redux app by passing it in when creating the store. More specifically, we can pass in the `applyMiddleware()` function as an optional argument into `createStore()`. Here's `applyMiddleware()`'s signature:\n\n```js\napplyMiddleware(...middlewares)\n```\n\nNote the spread operator on the `middlewares` parameter. This means that we can pass in as many different middleware as we want! Middleware is called in the order in which they were provided to `applyMiddleware()`. \n\nWe currently have the `checker` middleware applied to our app, but we'll soon add a new `logger` middleware as well. To create a Redux store that uses our `checker` middleware, we can do the following:\n\n```js\nconst store = Redux.createStore(rootReducer, Redux.applyMiddleware(checker))\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571778,
+              "key": "69ec0d29-d6c8-48e9-8343-fec87bf4e452",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡Functions Returning Functions 💡\n>\n> Redux middleware leverages a concept called **higher-order functions**. A higher-order function is a function that either:\n>\n> * _accepts_ a function as an argument \n> * _returns_ a function\n>\n> Higher-order functions are a powerful programming technique that allow functions to be significantly more dynamic. You've actually already written a higher-order function in this course. The `createRemoveButton()` function is a higher-order function because the `onClick` parameter is expected to be a function (because `onClick` is set up as an event listener callback function.\n>\n> For a refresher on higher-order functions, feel free to check out Lesson 2 in [Object-Oriented JavaScript](https://www.udacity.com/course/object-oriented-javascript--ud711).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571779,
+              "key": "eb80a75e-4b1c-4390-aee1-d029bd1cada3",
+              "title": "Quiz: Middleware Facts",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "eb80a75e-4b1c-4390-aee1-d029bd1cada3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are true statements about middleware? Select all that apply.",
+                "answers": [
+                  {
+                    "id": "a1522104610237",
+                    "text": "Middleware intercepts a dispatched action *before* it reaches the reducer.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522104629661",
+                    "text": "The concept of \"middleware\" is exclusive to Redux apps.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522104634525",
+                    "text": "Using middleware lets you to create a Redux store without a reducer.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 571780,
+              "key": "c5e06021-abc9-46dc-add2-2637f13f01c5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### A New Middleware: Logging\n\nCurrently, our application is making use of a single middleware: `checker`. Because we can use multiple middleware functions in a single application, let's create a new middleware function called `logger` that will log out information about the state and action.\n\nThe benefits of this `logger()` middleware function are huge while developing the application. We'll use this middleware to intercept all dispatch calls and log out what the action is that's being dispatched and what the state changes to _after_ the reducer has run. Being able to see this kind of information will be immensely helpful while we're developing our app. We can use this info to help us know what's going on in our app and to help us track down any pesky bugs that creep in. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572617,
+              "key": "044ae4e8-409e-40bf-ab79-de40f91236bb",
+              "title": "Logger Middleware",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GWrRJOTCfI8",
+                "china_cdn_id": "GWrRJOTCfI8.mp4"
+              }
+            },
+            {
+              "id": 571782,
+              "key": "2c68a398-58d4-4311-89b7-dfaba8147a11",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/e07e1785e0bf90b2128eac3a63674ec9c8daabac)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571783,
+              "key": "5f35c8ee-acb0-4e14-a8e2-485877acdee4",
+              "title": "Quiz: Applying Middleware",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5f35c8ee-acb0-4e14-a8e2-485877acdee4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are true statements about middleware? Select all that apply.",
+                "answers": [
+                  {
+                    "id": "a1522104869068",
+                    "text": "Redux apps can only apply one _type_ of middleware to the store.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522104881294",
+                    "text": "`Redux.applyMiddleware()` can accept multiple arguments.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522104888447",
+                    "text": "Middleware is optional.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522104893238",
+                    "text": "Middleware can be considered a third-party extension point between dispatching and having the action reach the reducer.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 728496,
+              "key": "43a966fd-47ac-4d1d-a67b-2d118eec0309",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Lesson Challenge\n\nWrite middleware to achieve the following behavior:\n* Display an alert \"That's a great goal!\" whenever a new goal is added.\n* Display \"Don't forget to [name of your todo item]!\" whenever a new todo item is added. \n\nMake sure that the rest of the application works as intended (you see a list of your newly added goals and todo items).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 728495,
+              "key": "4de4eb10-15fa-497b-86c6-95a0997dcca8",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "view49q8walrn96",
+              "pool_id": "webterminal",
+              "view_id": "html-live-lpkrmuad3a",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "openFiles": [
+                      "/home/workspace/index.html"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "showEditor": true,
+                    "allowSubmit": false,
+                    "autoRefresh": true,
+                    "previewFile": "/home/workspace/index.html"
+                  },
+                  "kind": "html-live"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 571784,
+              "key": "26b3c43f-c5ab-4595-bff5-985b3423e4dc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Summary\n\nIn this section, we looked at using middleware. According to the Redux docs:\n\n> Middleware is the suggested way to extend Redux with custom functionality.\n\nMiddleware is added to the Redux store using `Redux.applyMiddleware()`. You can only add middleware when you initially create the store:\n\n```js\nconst store = Redux.createStore( <reducer-function>, Redux.applyMiddleware(<middleware-functions>) )\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571785,
+              "key": "1d7e242d-8794-4dbc-afd0-6d93657e5a73",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Research\n\nThe following might be a bit advanced at this point, but give them a quick read through right now and definitely bookmark them to come back and read later:\n\n* [Middleware Docs](https://redux.js.org/advanced/middleware)\n* [API for Redux's Middleware](https://redux.js.org/api-reference/applymiddleware)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571788,
+          "key": "44846024-0255-4694-8f7a-8b033a497034",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "44846024-0255-4694-8f7a-8b033a497034",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572443,
+              "key": "c7e66e89-4a68-4bb6-976b-45bf42cc7246",
+              "title": "Redux Middleware Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NqVZhcgmZyw",
+                "china_cdn_id": "NqVZhcgmZyw.mp4"
+              }
+            },
+            {
+              "id": 637870,
+              "key": "d523014c-b65a-4a5a-ba2a-6bee09857132",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Lesson Challenge\n\nAnswer the following questions and share your answers with your classmates:\n\n1) What is Redux middleware and what are some use cases for it?\n\n2) What is the relationship between middleware and the store?",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

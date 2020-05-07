@@ -1,0 +1,656 @@
+{
+  "data": {
+    "lesson": {
+      "id": 668163,
+      "key": "69df9c23-5c48-4ed6-b909-49a4e62d688c",
+      "title": "Why React",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You'll discover what makes React great. You will compose simple functions together to create complex ones, write declarative code, discover unidirectional data flow, and that React is just JavaScript.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/69df9c23-5c48-4ed6-b909-49a4e62d688c/668163/1544026783967/Why+React+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/69df9c23-5c48-4ed6-b909-49a4e62d688c/668163/1544026778611/Why+React+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 572967,
+          "key": "06b81b88-2280-4442-b631-e9f057f3afb4",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "06b81b88-2280-4442-b631-e9f057f3afb4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578045,
+              "key": "28aa7aca-eb95-4862-baea-59676d865b3b",
+              "title": "React Fundamentals Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "D3Tv9AeIgRA",
+                "china_cdn_id": "D3Tv9AeIgRA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 572973,
+          "key": "f60535c5-bfea-48c2-81b5-4496c79c4bc2",
+          "title": "What is Composition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f60535c5-bfea-48c2-81b5-4496c79c4bc2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572968,
+              "key": "61af9221-58c1-41aa-a4b1-a9e14202642e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "From <a href=\"https://en.wikipedia.org/wiki/Function_composition_(computer_science)\">Wikipedia</a>, Composition is:\n\n> to combine simple functions to build more complicated ones\n\nLet's take a look at how we can build up complex functions just by combining simple ones together.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 578046,
+              "key": "74fad150-ce6c-42a0-92a0-cab2310a23eb",
+              "title": "What Is Composition",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IDDIvXqMiD4",
+                "china_cdn_id": "IDDIvXqMiD4.mp4"
+              }
+            },
+            {
+              "id": 572970,
+              "key": "46b0bf26-4399-4a23-affe-ce8ea9569928",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Benefits of Composition\n\nBecause the concept of composition is such a large part of what makes React awesome and incredible to work with, let's dig into it a little bit. Remember that composition is just combining simple functions together to create complex functions. There are a couple of key ingredients here that we don't want to lose track of. These ingredients are:\n\n* simple functions\n* combined to create another function\n \nComposition is built from _simple_ functions. Let's look at an example:\n\n```js\nfunction getProfileLink (username) {\n return 'https://github.com/' + username\n}\n```\n\nThis function is _ridiculously_ simple, isn't it? It's just one line! Similarly, the `getProfilePic` function is _also_ just a single line:\n\n```js\nfunction getProfilePic (username) {\n return 'https://github.com/' + username + '.png?size=200'\n}\n```\n\nThese are definitely _simple_ functions, so to compose them, we'd just _combine_ them together inside another function:\n\n```js\nfunction getProfileData (username) {\n return {\n pic: getProfilePic(username),\n link: getProfileLink(username)\n }\n}\n```\n\nNow we _could_ have written `getProfileData` _without_ composition by providing the data directly:\n\n```js\nfunction getProfileData (username) {\n return {\n pic: 'https://github.com/' + username + '.png?size=200',\n link: 'https://github.com/' + username\n }\n}\n```\n\nThere's nothing technically wrong with this at all; this is entirely accurate JavaScript code. But this _isn't_ composition. There are also a couple of potential issues with this version that _isn't_ using composition. If the user's link to GitHub is needed somewhere else, then duplicate code would be needed. A good function should follow the \"DOT\" rule:\n\n> Do One Thing\n\nThis function is doing a couple of different (however minor) things; it's creating two different URLs, storing them as properties on an object, and then returning that object. In the composed version, each function just does one thing:\n\n* `getProfileLink` – just builds up a string of the user's GitHub profile link\n* `getProfilePic` – just builds up a string the user's GitHub profile picture\n* `getProfileData` – returns a new object",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572971,
+              "key": "442ddcf1-16a0-4022-97f1-332e1619a98a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## React & Composition\n\nReact makes use of the power of composition, heavily! React builds up pieces of a UI using **components**. Let's take a look at some pseudo code for an example. Here are three different components:\n\n```js\n<Page />\n<Article />\n<Sidebar />\n```\n\nNow let's take these _simple_ components, combine them together, and create a more complex component (aka, composition in action!):\n\n```js\n<Page>\n <Article />\n <Sidebar />\n</Page>\n```\n\nNow the `Page` component has the `Article` and `Sidebar` components _inside_. This is just like the earlier example where `getProfileData` had `getProfileLink` and `getProfilePic` inside it.\n\nWe'll dig into components soon, but just know that composition plays a huge part in building React components.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572972,
+              "key": "49db7a0f-910c-4540-9bad-3e6366c0fa64",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Composition Recap\n\nComposition occurs when _simple_ functions are _combined_ together to create _more complex_ functions. Think of each function as a single building block that _does one thing_ (DOT). When you combine these simple functions together to form a more complex function, this is **composition**.\n\n### Further Research\n\n* [Compose me That: Function Composition in JavaScript](https://www.linkedin.com/pulse/compose-me-function-composition-javascript-kevin-greene)\n* [Functional JavaScript: Function Composition For Every Day Use](https://hackernoon.com/javascript-functional-composition-for-every-day-use-22421ef65a10)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 572981,
+          "key": "81d313d9-75c7-4a7b-9dec-72d6feb960de",
+          "title": "What is Declarative Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "81d313d9-75c7-4a7b-9dec-72d6feb960de",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578047,
+              "key": "aa9d88e7-9fc7-4cea-b946-03138b74114f",
+              "title": "What Is Declarative Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JXR2p_vtP3c",
+                "china_cdn_id": "JXR2p_vtP3c.mp4"
+              }
+            },
+            {
+              "id": 572975,
+              "key": "22eff250-4209-4fb7-b200-bfa6c7bfd304",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Imperative Code\n\nA lot of JavaScript is **imperative code**. If you don't know what \"imperative\" means here, then you might be scratching your head a bit. [According to the dictionary](http://www.dictionary.com/browse/imperative), \"imperative\" means:\n\n> expressing a command; commanding\n\nWhen JavaScript code is written _imperatively_, we tell JavaScript exactly **what** to do and **how** to do it. Think of it as if we're giving JavaScript _commands_ on exactly what steps it should take. For example, I give you the humble `for` loop:\n\n```js\nconst people = ['Amanda', 'Farrin', 'Geoff', 'Karen', 'Richard', 'Tyler']\nconst excitedPeople = []\n\nfor (let i = 0; i < people.length; i++) {\n excitedPeople[i] = people[i] + '!'\n}\n```\n\nIf you've worked with JavaScript any length of time, then this should be pretty straightforward. We're looping through each item in the `people` array, adding an exclamation mark to their name, and storing the new string in the `excitedPeople` array. Pretty simple, right? \n\nThis is _imperative_ code, though. We're commanding JavaScript what to do at every single step. We have to give it commands to:\n\n* set an initial value for the iterator - (`let i = 0`)\n* tell the `for` loop when it needs to stop - (`i < people.length`)\n* get the person at the current position and add an exclamation mark - (`people[i] + '!'`)\n* store the data in the `i`<sup style=\"position:relative; top:-0.5em; font-size:0.8em\">th</sup> position in the other array - (`excitedPeople[i]`)\n* increment the `i` variable by one - (`i++`)\n\nRemember the example of keeping the air temperature at 71º? In my old car, I would turn the knob to get the cold air flowing. But if it got too cold, then I'd turn the knob up higher. Eventually, it would get too warm, and I'd have to turn the knob down a bit, again. I'd have to manage the temperature myself with every little change. Doesn't this sound like an imperative situation to you? I have to manually do multiple steps. It's not ideal, so let's improve things!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572976,
+              "key": "3db179f2-9c2f-4fe1-aebd-1e79434c31d3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Declarative Code\n\nIn contrast to imperative code, we've got **declarative code**. With declarative code, we don't code up all of the steps to get us to the end result. Instead, we _declare_ what we want done, and JavaScript will take care of doing it. This explanation is a bit abstract, so let's look at an example. Let's take the imperative `for` loop code we were just looking at and refactor it to be more declarative.\n\nWith the imperative code we were performing all of the steps to get to the end result. What _is_ the end result that we actually want, though? Well, our starting point was just an array of names:\n\n```js\nconst people = ['Amanda', 'Farrin', 'Geoff', 'Karen', 'Richard', 'Tyler']\n```\n\nThe end goal that we want is an array of the same names but where each name ends with an exclamation mark:\n\n```js\n[\"Amanda!\", \"Farrin!\", \"Geoff!\", \"Karen!\", \"Richard!\", \"Tyler!\"]\n```\n\nTo get us from the starting point to the end, we'll just use JavaScript's [`.map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map?v=example) function to declare what we want done.\n\n```js\nconst excitedPeople = people.map(name => name + '!')\n```\n\nThat's it! Notice that with this code we haven't:\n\n* created an iterator object\n* told the code when it should stop running\n* used the iterator to access a specific item in the `people` array\n* stored each new string in the `excitedPeople` array\n\n...all of those steps are taken care of by JavaScript's `.map()` Array method.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572977,
+              "key": "a96bc944-05a1-4c91-8b77-1ee5fed4ac04",
+              "title": "Declarative or Imperative",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a96bc944-05a1-4c91-8b77-1ee5fed4ac04",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Is the following code imperative or declarative?\n\n```js\nconst people = ['Amanda', 'Farrin', 'Geoff', 'Karen', 'Richard', 'Tyler']\nconst longNames = people.filter(name => name.length > 6)\n```",
+                "answers": [
+                  {
+                    "id": "a1522131384330",
+                    "text": "Imperative",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522131399101",
+                    "text": "Declarative",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 572978,
+              "key": "654323c5-4cc2-45b1-b154-22e74bce0af0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## `.map()` and `.filter()`\n\n> A bit rusty on JavaScript's `.map()` and `.filter()` Array methods? Or perhaps they're brand new to you. In either case, we'll be diving into them in the React is \"just JavaScript\" section. Hold tight!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572979,
+              "key": "b54466ea-ff0c-4f39-bc2f-d49798e427f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## React is Declarative\n\nWe'll get to writing React code very soon, but let's take another glimpse at it to show how it's declarative. \n\n```js\n<button onClick={activateTeleporter}>Activate Teleporter</button>\n```\n\nIt might seem odd, but this is valid React code and should be pretty easy to understand. Notice that there's just an `onClick` attribute on the button...we aren't using `.addEventListener()` to set up event handling with all of the steps involved to set it up. Instead, we're just declaring that we want the `activateTeleporter` function to run when the button is clicked.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572980,
+              "key": "326de6e6-92dd-4c6e-b5fc-525ee8c62347",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Declarative Code Recap\n\n_Imperative_ code instructs JavaScript on _how_ it should perform each step. With _declarative_ code, we tell JavaScript _what_ we want to be done, and let JavaScript take care of performing the steps.\n\nReact is declarative because we write the code that we _want_, and React is in charge of taking our declared code and performing all of the JavaScript/DOM steps to get us to our desired result.\n\n### Further Research\n\n* Tyler's [Imperative vs Declarative Programming](https://tylermcginnis.com/imperative-vs-declarative-programming/) blog post\n* [Difference between declarative and imperative in React.js?](https://stackoverflow.com/questions/33655534/difference-between-declarative-and-imperative-in-react-js) from StackOverflow",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 572991,
+          "key": "2ce529b7-7bcf-4516-8add-080c32a42eb1",
+          "title": "Unidirectional Data Flow",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2ce529b7-7bcf-4516-8add-080c32a42eb1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578048,
+              "key": "35d404ae-90d7-430b-b4e8-dd859e581cdc",
+              "title": "Unidirectional Data Flow",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pjflEf4mo6o",
+                "china_cdn_id": "pjflEf4mo6o.mp4"
+              }
+            },
+            {
+              "id": 572983,
+              "key": "4c198d2c-2b4a-45d3-ae4b-71851c19cdff",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Data-Binding In Other Frameworks\n \nFront-end frameworks like [Angular](https://angular.io/) and [Ember](https://emberjs.com/) make use of two-way data bindings. In two-way data binding, the data is kept in sync throughout the app no matter where it is updated. If a model changes the data, then the data updates in the view. Alternatively, if the user changes the data in the view, then the data is updated in the model. Two-way data binding sounds really powerful, but it can make the application harder to reason about and know where the data is actually being updated.\n \n### Further Research\n \n* [Angular's two-way data binding](https://angular.io/guide/template-syntax#two-way)\n* [Ember's two-way data binding](https://guides.emberjs.com/v2.13.0/object-model/bindings/)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572984,
+              "key": "3c7dbc80-9785-4444-8e7f-d961e8aa1ac6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## React's Data-flow\n\nData moves differently with React's unidirectional data flow. In React, the data flows from the parent component to a child component.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573406,
+              "key": "cc0990ef-1727-4a22-9adb-968949acc340",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/March/5ab9e2e5_nd019-c1-l1-reacts-data-flow/nd019-c1-l1-reacts-data-flow.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cc0990ef-1727-4a22-9adb-968949acc340",
+              "caption": "_Data flows down from parent component to child component. Data updates are sent to the parent component where the parent performs the actual change._",
+              "alt": "Data flows down from parent component to child component. Data updates are sent to the parent component where the parent performs the actual change.",
+              "width": 4001,
+              "height": 2251,
+              "instructor_notes": null
+            },
+            {
+              "id": 572986,
+              "key": "57d91b85-ee28-4eb8-8008-26a698459f8c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the image above, we have two components:\n\n* a parent component\n* a child component\n\nThe data lives in the parent component and is passed down to the child component. Even though the data lives in the parent component, both the parent and the child components can use the data. However, if the data must be updated, then only the parent component should perform the update. If the child component needs to make a change to the data, then it would send the updated data to the parent component where the change will actually be made. Once the change _is_ made in the parent component, the child component will be passed the data (that has just been updated!).\n\nNow, this might seem like extra work, but having the data flow in one direction and having one place where the data is modified makes it much easier to understand how the application works.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572987,
+              "key": "2c9ba3da-c1d8-4ad7-a738-ce6ccf82027d",
+              "title": "Where to Change the Data?",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2c9ba3da-c1d8-4ad7-a738-ce6ccf82027d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "A `FlightPlanner` component stores the information for booking a flight. It also contains `DatePicker` and `DestinationPicker` as child components. Here's what the code might look like:\n \n```js\n<FlightPlanner>\n <DatePicker />\n <DestinationPicker />\n</FlightPlanner>\n```\n \nIf this were a React application, which component should be in charge of making updates to the data? Check all that apply.",
+                "answers": [
+                  {
+                    "id": "a1522131757380",
+                    "text": "`FlightPlanner`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522131764999",
+                    "text": "`DatePicker`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522131765639",
+                    "text": "`DestinationPicker`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 572988,
+              "key": "df2e0d5f-d700-4cfb-81be-064d5aafcf58",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now let's say that the `FlightPlanner` component has two child components: `LocationPicker` and `DatePicker`. `LocationPicker` itself is a parent component that has two child components: `OriginPicker` and `DestinationPicker`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572989,
+              "key": "6f499981-1071-4588-b2d0-4bbdf3804d7c",
+              "title": "Where to Change the Data? 2",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6f499981-1071-4588-b2d0-4bbdf3804d7c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If the following sample code were a React application, which of the following components should be in charge of making updates to data? Check all that apply.\n\n```js\n<FlightPlanner>\n\n <LocationPicker>\n  <OriginPicker />\n  <DestinationPicker />\n </LocationPicker>\n\n <DatePicker />\n\n</FlightPlanner>\n```",
+                "answers": [
+                  {
+                    "id": "a1522131838384",
+                    "text": "`FlightPlanner`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522131894730",
+                    "text": "`DatePicker`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522131895274",
+                    "text": "`LocationPicker`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522131895819",
+                    "text": "`OriginPicker`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522131901196",
+                    "text": "`DestinationPicker`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 572990,
+              "key": "1a22fc05-ac08-4c28-970a-a4bcdbfa9fe7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Data Flow in React Recap\n\nIn React, data flows in only one direction, from parent to child. If data is shared between sibling child components, then the data should be stored in the parent component and passed to both of the child components that need it.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 573007,
+          "key": "fcff594f-c266-4f89-aa2a-35e250e17f5d",
+          "title": "React Is “just JavaScript”",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fcff594f-c266-4f89-aa2a-35e250e17f5d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 578049,
+              "key": "af602e7e-1738-484b-b027-7b3df9cad7df",
+              "title": "React Is Just JavaScript",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4Pc9xC5qqSU",
+                "china_cdn_id": "4Pc9xC5qqSU.mp4"
+              }
+            },
+            {
+              "id": 644204,
+              "key": "36e247a9-78cb-4f09-9296-a6791db14b35",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## It's Just JavaScript\n\nOne of the great things about React is that a lot of what you'll be using is regular JavaScript. To make sure you're ready to move forward, please take a look at the following code:\n\n```js\nconst shelf1 = [{name: 'name1', shelf: 'a'},{name: 'name2', shelf: 'a'}];\nconst shelf2 = [{name: 'name3', shelf: 'b'},{name: 'name4', shelf: 'b'}];\nconst allBooks = [...shelf1, ...shelf2];\n\nconst filter = books => shelf => books.filter(b => {\n  return b.shelf === shelf;\n});\n\nconst filterBy = filter(allBooks);\nconst booksOnShelf = filterBy('b');\n```\nIf _any_ of the code above looks confusing, or if you simply need a refresher on E6, please go through [our ES6 course](https://classroom.udacity.com/courses/ud356) before moving forward.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572993,
+              "key": "6d5bcee6-fb00-4136-be60-fdb242e7101f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Over the past couple of years, functional programming has had a large impact on the JavaScript ecosystem and community. Functional programming is an advanced topic in JavaScript and fills hundreds of books. It's too complex to delve into the benefits of functional programming (we've got to get to React content, right?!?). But React builds on a lot of the techniques of functional programming...techniques that you'll learn as you go through this program. \nHowever, there are a couple of important JavaScript functions that are vital to functional programming that we should look at. These are the Array's `.map()` and `.filter()` methods. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572994,
+              "key": "41942bcc-3011-49ac-b799-07cb4bcd09fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Array's `.map()` Method\n\nIf you're not familiar with JavaScript's [Array `.map()` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), it gets called on an existing array and returns a new array based on what is returned from the function that's passed as an argument. Let's take a look:\n\n```js\nconst names = ['Karen', 'Richard', 'Tyler'];\n\nconst nameLengths = names.map( name => name.length );\n```\n\nLet's go over what's happening here. The `.map()` method works on arrays, so we have to have an array to start with:\n\n```js\nconst names = ['Karen', 'Richard', 'Tyler'];\n```\n\nWe call `.map()` on the `names` array and pass it a function as an argument:\n\n```js\nnames.map( name => name.length );\n```\n\nThe arrow function that's passed to `.map()` gets called _for each item_ in the `names` array! The arrow function receives the first name in the array, stores it in the `name` variable and returns its length. Then it does that again for the remaining two names. \n\n`.map()` returns a new array with the values that are returned from the arrow function:\n\n```js\nconst nameLengths = names.map( name => name.length );\n```\n\nSo `nameLengths` will be a _new_ array `[5, 7, 5]`. This is important to understand; **the `.map()` method returns a new array, it does not modify the original array**.\n\nThis was just a brief overview of how the `.map()` method works. For a deeper dive, check out [`.map()` on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572995,
+              "key": "27edb833-88c0-418d-a5be-9c80e41dbe3d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### `.map()` Quiz\n\nUse the provided music data array and the `.map()` method to create a new array that contains items in the format:\n \n```text\n<album-name> by <artist> sold <sales> copies\n```\n \nStore the new array in an `albumSalesStrings` array. So the first item in the `albumSalesStrings` array should be `\"25 by Adele sold 1731000 copies\"`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573407,
+              "key": "a8660a14-f9fd-499e-947a-8789047a285d",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "a8660a14-f9fd-499e-947a-8789047a285d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "5349282291515392",
+                "initial_code_files": [
+                  {
+                    "text": "/* Using .map()\n *\n * Using the musicData array and .map():\n *   - return a string for each item in the array in the following format\n *     <album-name> by <artist> sold <sales> copies\n *   - store the returned data in a new albumSalesStrings variable\n *\n * Note:\n *   - do not delete the musicData variable\n *   - do not alter any of the musicData content\n *   - do not format the sales number, leave it as a long string of digits\n */\n\nconst musicData = [\n    { artist: 'Adele', name: '25', sales: 1731000 },\n    { artist: 'Drake', name: 'Views', sales: 1608000 },\n    { artist: 'Beyonce', name: 'Lemonade', sales: 1554000 },\n    { artist: 'Chris Stapleton', name: 'Traveller', sales: 1085000 },\n    { artist: 'Pentatonix', name: 'A Pentatonix Christmas', sales: 904000 },\n    { artist: 'Original Broadway Cast Recording', \n      name: 'Hamilton: An American Musical', sales: 820000 },\n    { artist: 'Twenty One Pilots', name: 'Blurryface', sales: 738000 },\n    { artist: 'Prince', name: 'The Very Best of Prince', sales: 668000 },\n    { artist: 'Rihanna', name: 'Anti', sales: 603000 },\n    { artist: 'Justin Bieber', name: 'Purpose', sales: 554000 }\n];\n\nconst albumSalesStrings = 'Replace this message with your code!';\n\nconsole.log(albumSalesStrings);\n",
+                    "name": "StudentMain.js"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 572997,
+              "key": "804239e4-496f-449a-b0ec-267341fdc7b3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Map Quiz Solution Code\n\n<div class=\"react-quiz-solution\">\nOnce you've tried your hand at solving this quiz, hover your mouse here for one possible solution. \n<style>\n.react-quiz-solution .react-quiz-code-snippet { display: none;}\n.react-quiz-solution:hover .react-quiz-code-snippet { display: block;}\n</style>\n<pre class=\"react-quiz-code-snippet\">const albumSalesStrings = musicData.map(album => \\`${album.name} by ${album.artist} sold ${album.sales} copies\\`);</pre>\n</div>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572998,
+              "key": "c37731f3-1d4e-4fc7-bdaa-e665f3027e03",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Array's `.filter()` Method\n\nJavaScript's [Array `.filter()` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) is similar to the `.map()` method:\n\n* it is called on an array\n* it takes a function as an argument\n* it returns a new array\n\nThe difference is that the function passed to `.filter()` is used as a test, and only items in the array that pass the test are included in the new array. Let's take a look at an example:\n\n```js\nconst names = ['Karen', 'Richard', 'Tyler'];\n\nconst shortNames = names.filter( name => name.length < 6 );\n```\n\nJust as before, we have the starting array:\n\n```js\nconst names = ['Karen', 'Richard', 'Tyler'];\n```\n\nWe call `.filter()` on the `names` array and pass it a function as an argument:\n\n```js\nnames.filter( name => name.length < 6 );\n```\n\nAgain, just like with `.map()` the arrow function that's passed to `.filter()` gets called _for each item_ in the `names` array. The first item (i.e. `'Karen'`) is stored in the `name` variable. Then the test is performed - this is what's doing the actual filtering. It checks the length of the name. If it's `6` or greater, then it's skipped (and _not_ included in the new array!). But if the length of the name is less than `6`, then `name.length < 6` returns `true` and the name _is_ included in the new array!\n\nAnd lastly, just like with `.map()` the `.filter()` method returns a _new_ array instead of modifying the original array:\n\n```js\nconst shortNames = names.filter( name => name.length < 6 );\n```\n\nSo `shortNames` will be the new array `['Karen', 'Tyler']`. Notice that it only has two names in it now, because `'Richard'` is 7 characters and was filtered out.\n\nThis was just a brief overview of how the `.filter()` method works. For a deeper dive, check out [`.filter()` on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572999,
+              "key": "8880e07b-2bf2-457b-8969-19e5577b392c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### `.filter()` Quiz\n\nUse the provided music data array and the `.filter()` method to create a new array that only contains albums with names between `10` and `25` characters long. Store the new array in a variable called `results`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573408,
+              "key": "078f268d-46ba-44ce-8fbd-340b28e1f228",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "078f268d-46ba-44ce-8fbd-340b28e1f228",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6262200138858496",
+                "initial_code_files": [
+                  {
+                    "text": "/* Using .filter()\n *\n * Using the musicData array and .filter():\n *   - return only album objects where the album's name is\n *     10 characters long, 25 characters long, or anywhere in between\n *   - store the returned data in a new `results` variable\n *\n * Note:\n *   - do not delete the musicData variable\n *   - do not alter any of the musicData content\n */\n\nconst musicData = [\n    { artist: 'Adele', name: '25', sales: 1731000 },\n    { artist: 'Drake', name: 'Views', sales: 1608000 },\n    { artist: 'Beyonce', name: 'Lemonade', sales: 1554000 },\n    { artist: 'Chris Stapleton', name: 'Traveller', sales: 1085000 },\n    { artist: 'Pentatonix', name: 'A Pentatonix Christmas', sales: 904000 },\n    { artist: 'Original Broadway Cast Recording', \n      name: 'Hamilton: An American Musical', sales: 820000 },\n    { artist: 'Twenty One Pilots', name: 'Blurryface', sales: 738000 },\n    { artist: 'Prince', name: 'The Very Best of Prince', sales: 668000 },\n    { artist: 'Rihanna', name: 'Anti', sales: 603000 },\n    { artist: 'Justin Bieber', name: 'Purpose', sales: 554000 }\n];\n\nconst results = 'Replace this message with your code!';\n\nconsole.log(results);",
+                    "name": "StudentMain.js"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 573001,
+              "key": "8639bbcf-fc7d-45b8-accd-253d41283a01",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Filter Quiz Solution Code\n\n<div class=\"react-quiz-solution\">\nOnce you've tried your hand at solving this quiz, hover your mouse here for one possible solution. \n<style>\n.react-quiz-solution .react-quiz-code-snippet { display: none;}\n.react-quiz-solution:hover .react-quiz-code-snippet { display: block;}\n</style>\n<pre class=\"react-quiz-code-snippet\">const results = musicData.filter(album => album.name.length <= 25 && album.name.length >= 10);</pre>\n</div>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573002,
+              "key": "385bd19a-fccd-4469-9334-877d8ccd11b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Combining `.map()` And `.filter()` Together\n\nWhat makes `.map()` and `.filter()` so powerful is that they can be combined. Because both methods return arrays, we can chain the method calls together so that the returned data from one can be a new array for the next.\n\n```js\nconst names = ['Karen', 'Richard', 'Tyler'];\n\nconst shortNamesLengths = names.filter( name => name.length < 6 ).map( name => name.length );\n```\n\nTo break it down, the `names` array is filtered, which returns a new array, but then `.map()` is called on that new array, and returns a new array of its own! This new array that's returned from `.map()` is what's stored in `shortNamesLengths`.\n\n### `.filter()` First!\n\nOn a side note, you'll want to run things in this order (`.filter()` first and then `.map()`). Because `.map()` runs the function once _for each item_ in the array, it will be faster if the array were already filtered.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573003,
+              "key": "75ddeab4-89a1-4a34-b6e6-53fa8cea737a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### `.filter()` and `.map()` Quiz\n\nUsing the same music data, use `.filter()` and `.map()` to filter and map over the list and store the result in a variable named `popular`. Use `.filter()` to filter the list down to just the albums that have sold over 1,000,000 copies. Then chain `.map()` onto the returned array to create a new array that contains items in the format:\n \n```text\n<artist> is a great performer\n```\n \nThe first item in the `popular` array will be `'Adele is a great performer'`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573409,
+              "key": "4db259b9-8799-4d2a-bbdc-3e1222b070a8",
+              "title": "",
+              "semantic_type": "QuizAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "user_state": {
+                "node_key": "4db259b9-8799-4d2a-bbdc-3e1222b070a8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "instruction": null,
+              "question": {
+                "title": "",
+                "semantic_type": "ProgrammingQuestion",
+                "evaluation_id": "6166561149288448",
+                "initial_code_files": [
+                  {
+                    "text": "/* Combining .filter() and .map()\n *\n * Using the musicData array, .filter, and .map():\n *   - filter the musicData array down to just the albums that have \n *     sold over 1,000,000 copies\n *   - on the array returned from .filter(), call .map()\n *   - use .map() to return a string for each item in the array in the\n *     following format: \"<artist> is a great performer\"\n *   - store the array returned form .map() in a new \"popular\" variable\n *\n * Note:\n *   - do not delete the musicData variable\n *   - do not alter any of the musicData content\n */\n\nconst musicData = [\n    { artist: 'Adele', name: '25', sales: 1731000 },\n    { artist: 'Drake', name: 'Views', sales: 1608000 },\n    { artist: 'Beyonce', name: 'Lemonade', sales: 1554000 },\n    { artist: 'Chris Stapleton', name: 'Traveller', sales: 1085000 },\n    { artist: 'Pentatonix', name: 'A Pentatonix Christmas', sales: 904000 },\n    { artist: 'Original Broadway Cast Recording', \n      name: 'Hamilton: An American Musical', sales: 820000 },\n    { artist: 'Twenty One Pilots', name: 'Blurryface', sales: 738000 },\n    { artist: 'Prince', name: 'The Very Best of Prince', sales: 668000 },\n    { artist: 'Rihanna', name: 'Anti', sales: 603000 },\n    { artist: 'Justin Bieber', name: 'Purpose', sales: 554000 }\n];\n\nconst popular = 'Replace this message with your code!';\n\nconsole.log(popular);\n",
+                    "name": "StudentMain.js"
+                  }
+                ]
+              },
+              "answer": null
+            },
+            {
+              "id": 573005,
+              "key": "e4bf3d0a-2696-4ba6-a6b1-203fbd0ec8db",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Filter & Map Quiz Solution Code\n\n<div class=\"react-quiz-solution\">\nOnce you've tried your hand at solving this quiz, hover your mouse here for one possible solution. \n<style>\n.react-quiz-solution .react-quiz-code-snippet { display: none;}\n.react-quiz-solution:hover .react-quiz-code-snippet { display: block;}\n</style>\n<pre class=\"react-quiz-code-snippet\">const popular = musicData\n .filter(album => album.sales > 1000000)\n .map(album => \\`${album.artist} is a great performer\\`);</pre>\n</div>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 573006,
+              "key": "208521fc-d88a-4f2b-a5d1-1785f240cd24",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## React is Just JavaScript Recap\n\nReact builds on what you already know - JavaScript! You don't have to learn a special template library or a new way of doing things. \n\nTwo of the main methods that you'll be using quite a lot are:\n\n* [`.map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)\n* [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)\n\nIt's important that you're comfortable using these methods, so take some time to practice using them. Why not look through some of your existing code and try converting your `for` loops to `.map()` calls or see if you can remove any `if` statements by using `.filter()`.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 668182,
+          "key": "6cac32fb-5f3d-434e-a84f-0b857c13c0ac",
+          "title": "Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6cac32fb-5f3d-434e-a84f-0b857c13c0ac",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 668191,
+              "key": "2398f23f-af91-45fd-b756-4e28d782f212",
+              "title": "Why React - Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RZrlbxM5BZw",
+                "china_cdn_id": "RZrlbxM5BZw.mp4"
+              }
+            },
+            {
+              "id": 668185,
+              "key": "c21958ed-9dc9-4323-b1b9-d12496df18bb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's recap on some of the things we covered in this lesson on why React is great:\n* its compositional model\n* its declarative nature\n* the way data flows from parent to child\n* and that React is really just JavaScript\n\n### Lesson Challenge\n\nRead these 3 articles that cover some of the essentials of React:  [Virtual DOM](https://facebook.github.io/react/docs/optimizing-performance.html#avoid-reconciliation), [The Diffing Algorithm](https://facebook.github.io/react/docs/reconciliation.html#the-diffing-algorithm), and [How Virtual-DOM and diffing works in React](https://medium.com/@gethylgeorge/how-virtual-dom-and-diffing-works-in-react-6fc805f9f84e). Answer the following questions (in your own words) and share your answers with your Study Group.\n\n1) What is the “Virtual DOM”? \n\n2) Explain what makes React performant.\n\n3) Explain the Diffing Algorithm to someone who does not have any programming experience. ",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

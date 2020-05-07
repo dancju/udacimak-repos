@@ -1,0 +1,642 @@
+{
+  "data": {
+    "lesson": {
+      "id": 261334,
+      "key": "7cd5017a-cdce-463f-ba13-e53603fa83eb",
+      "title": "Ajax with Fetch",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you'll use JavaScript Promises to create a fetch request and handle the returned data asynchronously. You'll also learn how to handle errors for failed requests.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/7cd5017a-cdce-463f-ba13-e53603fa83eb/261334/1516767578513/Ajax%20with%20Fetch%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/7cd5017a-cdce-463f-ba13-e53603fa83eb/261334/1516767567851/Ajax%20with%20Fetch%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 261335,
+          "key": "fe99e7bd-a590-4b93-9425-01cc5f26f78e",
+          "title": "Ajax call with the Fetch API",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fe99e7bd-a590-4b93-9425-01cc5f26f78e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 273045,
+              "key": "db040b22-ff36-4504-9a8f-0d824a0d7f48",
+              "title": "Fetch Cake!",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_nFeVVBzWa4",
+                "china_cdn_id": "_nFeVVBzWa4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 261337,
+          "key": "977b234d-c951-4033-9b9b-bdae7e3e93b5",
+          "title": "What is Fetch",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "977b234d-c951-4033-9b9b-bdae7e3e93b5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261338,
+              "key": "d96286f2-fbbe-4eaa-a5e6-67996593b219",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Fetch is the new way to make network requests! After looking at all of the manual setup that needs to go into setting up an `XMLHttpRequest`, you might be feeling (like I sure did!) that a lot of complexity went into making a simple request. If all I want is an image from Unsplash, why do I need to do all this setup before I can even make the request? I just want an image file, so let me just ask for the file without having to drill through the unnecessarily complicated XHR spec.\n\nFetch is a new API that was built to make requesting resources (primarily across a network) a whole lot easier. One thing that makes the new Fetch API a lot nicer than the old XHR way of doing things is that Fetch is promise-based!\n\nHopefully you're sold that Fetch is the way of the future for making requests, so let's see it in action!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261339,
+              "key": "fefb8c32-365e-4f0f-ba34-42b434770987",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️  **Fetch Is Promise-based** ⚠️  \n\n> As mentioned above, the new Fetch API utilizes Promises under the hood. If you've got a handle on how Promises work, then give yourself a pat on the back then skip down to the next section. If the word \"Promises\" makes you feel a little queasy and unsure of your life's future, don't panic! Breathe! Then head over to our short course on JavaScript Promises to level up your JavaScript muscles.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261340,
+              "key": "e1633bf8-9b46-452f-ad56-39c358ad68de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️  **Might Need A Polyfill** ⚠️\n\n> Check out http://caniuse.com/#feat=fetch to see if your browser supports this awesome new API!\n\n> If your browser is not supported, just add [this polyfill](https://github.com/github/fetch) to your project, so you can start using Fetch even without your browser supporting it!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261341,
+          "key": "7cd8e213-23ac-4eeb-858f-b3b90fc8a8b6",
+          "title": "Write the Fetch Request",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7cd8e213-23ac-4eeb-858f-b3b90fc8a8b6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261342,
+              "key": "789e7266-a73d-473d-b7e9-f9d04d4664f0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Write The Fetch Request\n\nOk, let's look at a sample fetch request, and then we'll make a fetch request for an image from Unsplash.\n\n```js\nfetch('<URL-to-the-resource-that-is-being-requested>');\n```\n\nSo yeah...that's it. In it's smallest form, a Fetch request is just the `fetch()` function and a string to the resource that's being requested. It's just so short and easy to read (*sigh* I think I'm in love!). Let's take a peek at what a real request looks like:\n\n```js\nfetch('https://api.unsplash.com/search/photos?page=1&query=flowers');\n``` \n\nIf you try running this Fetch request on the console, then you should get a Promise returned to you.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273068,
+              "key": "805aec1c-4f08-4be0-828f-391c603c5889",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58ba135b_ud109-l3-fetch-request/ud109-l3-fetch-request.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/805aec1c-4f08-4be0-828f-391c603c5889",
+              "caption": "_A fetch request being run on the console of Unsplash's website. The fetch request returns a Promise._",
+              "alt": null,
+              "width": 1280,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 261346,
+              "key": "3ecc02ce-bbc3-4235-9682-e59d62ac8c51",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡 **Cross-Origin Issues?** 💡\n\n> Did you just try running the Fetch request and it didn't work? Were you running it on Unsplash's website? If not, make sure you go to [https://unsplash.com/](https://unsplash.com/), open the console, and try running it from there.\n\n> Just because Fetch is new and awesome and is replacing the XHR object for making asynchronous network requests _doesn't_ mean it can bypass the rules for making those network requests. **Fetch requests still need to obey the cross-origin protocol** of how resources are shared. This means that, by default, you can only make requests for assets and data on the same domain as the site that will end up loading the data.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261352,
+              "key": "facec8eb-febc-4882-8c88-8dec822e31ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Remember that Unsplash requires an Authorization header to make a request through its API. Check out these links on Fetch's documentation to see how to add an `Authorization` header to the Fetch request.\n\n* https://developer.mozilla.org/en-US/docs/Web/API/GlobalFetch/fetch\n* https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch\n* https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261353,
+              "key": "e11ead22-1b63-42bb-b8b2-32637b0888c6",
+              "title": "Adding a Header to a Fetch Request",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e11ead22-1b63-42bb-b8b2-32637b0888c6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Docs are a dev's best friend! Take a quick look through them and pick the correct way(s) to add a header to a Fetch request from the options below. Also, instead of cheating and guessing, try testing out the code you think is correct in your app or on the console to see how it runs!",
+                "answers": [
+                  {
+                    "id": "a1485304902869",
+                    "text": "fetch.setRequestHeader('Authorization', 'Client-ID abc123'); <br>  fetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`);",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485304932675",
+                    "text": "fetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`, { <br>&nbsp;&nbsp;&nbsp;&nbsp; headers: {    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Authorization: 'Client-ID abc123'     <br>&nbsp;&nbsp;&nbsp;&nbsp;} <br>});",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1485304938612",
+                    "text": "const requestHeaders = new Headers(); <br> requestHeaders.append('Authorization', 'Client-ID abc123');  <br>  fetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`, {   <br>&nbsp;&nbsp;&nbsp;&nbsp;   headers: requestHeaders <br>});",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1485304945020",
+                    "text": "fetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`).then(function(request){   <br>&nbsp;&nbsp;&nbsp;&nbsp;   request.addHeader('Authorization', 'Client-ID abc123'); <br>});",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 261354,
+              "key": "7e5e3eee-c499-4942-ac14-bce5eddd5a91",
+              "title": "Get Or Post Request By Default",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7e5e3eee-c499-4942-ac14-bce5eddd5a91",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What do you think the default HTTP method is for a Fetch request? Why don't you try running a Fetch request and look in the DevTools to see the HTTP method that is used.\n\nCheck out these links from the specification to find out more:\n* https://fetch.spec.whatwg.org/#methods\n* https://fetch.spec.whatwg.org/#requests\n",
+                "answers": [
+                  {
+                    "id": "a1485305021974",
+                    "text": "FETCH",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305052987",
+                    "text": "fetch",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305053786",
+                    "text": "POST",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305055407",
+                    "text": "post",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305055879",
+                    "text": "GET",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1485305056305",
+                    "text": "get",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305070475",
+                    "text": "REQUEST",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305073331",
+                    "text": "request",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 261356,
+              "key": "355806b7-0a57-4cef-b81c-a302cc6a4bec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Changing The HTTP Method\n\nSo the default HTTP method for a Fetch request is the `GET` method. We can choose a different HTTP method by passing a `method` property in the configuration object:\n\n```js\nfetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`, {\n    method: 'POST'\n});\n```\n\nThis will send the request with the `POST` HTTP header.\n\nFetch's specification does not limit what HTTP methods can be used, although it does recommend that all methods are written in uppercase for consistency with the HTTP Verbs specification.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261355,
+          "key": "8cd0e9d7-cb9f-4ac5-976d-dab157a600f4",
+          "title": "Handle The Response",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8cd0e9d7-cb9f-4ac5-976d-dab157a600f4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261357,
+              "key": "d117f4e0-fc3e-483f-9305-b59bdebd54ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Handle The Response\n\nOk, you've learned about making a Fetch request, and you've sent a few of them off...but nothing happened because we didn't tell our code to handle the response. Let's get our code ready to handle the response.\n\nRemember that Fetch is Promise-based. This means that when we fire of the Fetch request, it will automatically return a promise that we can use to listen for the response.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261358,
+              "key": "332becd0-e9b3-45d8-8321-3ea04ad91364",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡 **Javascript Promises Reminder** 💡\n\n> Dealing with the returned data from a Fetch request is all done with Promises, so if any of this looks confusing or you don't know how `.then()` works or why it's needed, check out our [course on JavaScript Promises](https://www.udacity.com/course/javascript-promises--ud898).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261359,
+              "key": "25f114b9-ccd3-434c-a36b-3d0e907cefdb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Since a Fetch request returns a Promise, then all you have to do is call `.then()` on that Promise.\n\n```js\nfetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`, {\n    headers: {\n        Authorization: 'Client-ID abc123'\n    }\n}).then(function(response) {\n    debugger; // work with the returned response\n});\n```\n\nIf you haven't already, put the code above in our JavaScript file and search for something. Because we added a `debugger` line inside the `.then()` function, the code will pause on the `debugger` line when the response is finally returned. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273069,
+              "key": "fcc220ce-8bfc-4cbf-8e15-42fff227fb50",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58ba1383_ud109-l3-request-object/ud109-l3-request-object.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fcc220ce-8bfc-4cbf-8e15-42fff227fb50",
+              "caption": "_Browser showing the app with DevTools loaded. A search for \"trees\" is made. The browsers pauses at the debugger line. The response is a Response object. _",
+              "alt": null,
+              "width": 1280,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 261361,
+              "key": "8fb1027e-5b5f-47f6-ac00-a1f8cdb2ca7e",
+              "title": "Where's the Image Data?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8fb1027e-5b5f-47f6-ac00-a1f8cdb2ca7e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "We've successfully  made the request, and you should be able to see the response in your console. Which property has the actual JSON data of the images?",
+                "answers": [
+                  {
+                    "id": "a1485305360543",
+                    "text": "`.data`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305378807",
+                    "text": "`.images`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305379532",
+                    "text": "`.response`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305380104",
+                    "text": "both `.images` and `.data`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305380664",
+                    "text": "none of the above",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 261362,
+          "key": "f625c99a-96d7-41e9-ab25-e3d23c926f56",
+          "title": "The Response Object",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f625c99a-96d7-41e9-ab25-e3d23c926f56",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261363,
+              "key": "9709372d-3925-49ba-a424-cf4936833087",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The Response Object\n\nSee how the response that's returned is of the `Response` type? This `Response` object is new with the Fetch API and is what's returned when a Fetch request resolves.\n\nOk, so that's great and all, but did you notice anything weird about the response object? It didn't have any of the data that we searched for! That's because a response object has information about the response itself, it doesn't have the data...yet. To actually get the data, we need to get the \"body\" of the response.\n\nSince the Unsplash API we're using will return JSON to us, we just need to call `.json()` on the response variable.\n\n```js\nfetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`, {\n    headers: {\n        Authorization: 'Client-ID abc123'\n    }\n}).then(function(response) {\n    return response.json();\n});\n```\n\nThe `.json()` method on a Response object returns a Promise, so we need to chain on _another_ `.then()` to actually get and start using the returned data. This time, let's call `addImage` to pass it the returned data:\n\n```js\nfetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`, {\n    headers: {\n        Authorization: 'Client-ID abc123'\n    }\n}).then(function(response) {\n    return response.json();\n}).then(addImage);\n\nfunction addImage(data) {\n    debugger;\n}\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261364,
+              "key": "6b87c0bf-ac5b-416d-909e-5d389983e6e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There are a number of methods on a Response object. Each one will let the code handle different response types. \n\nFor example, the `.json()` method that we've looked at will take the response and convert it to from JSON. What happens if we requested an image, instead?",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261365,
+              "key": "eaa365ed-109d-44a4-8400-d700c0ca57a9",
+              "title": "Other Response Methods",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "eaa365ed-109d-44a4-8400-d700c0ca57a9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following methods should be used if you wanted to fetch an image? If you get stuck, check out:\n* [Making fetch requests](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Making_fetch_requests)\n* https://davidwalsh.name/fetch\n",
+                "answers": [
+                  {
+                    "id": "a1485305508037",
+                    "text": "`.arrayBuffer()`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305550822",
+                    "text": "`.blob()`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1485305551340",
+                    "text": "`.formData()`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305551805",
+                    "text": "`.json()`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485305552396",
+                    "text": "`.text()`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 261366,
+          "key": "4d889c67-d06c-4ee9-bf65-f8e9c059ced0",
+          "title": "ES6 Arrow Function",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4d889c67-d06c-4ee9-bf65-f8e9c059ced0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261367,
+              "key": "25f6fd8e-26a2-47d1-9904-d439d55ea608",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nYou might be thinking that this Fetch request is starting to look like a lot of code...and it is. One quick way to shrink the amount of code is to use an ES6 Arrow function! We can convert the first `.then()` function that gets the response, calls the `.json()` method on it, and returns a Promise all to a single line with an Arrow function:\n\n```js\n// without the arrow function\n}).then(function(response) {\n    return response.json();\n})\n\n// using the arrow function\n}).then(response => response.json())\n```\n\nSo the new request would be:\n\n```js\nfetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`, {\n    headers: {\n        Authorization: 'Client-ID abc123'\n    }\n}).then(response => response.json())\n.then(addImage);\n\nfunction addImage(data) {\n    debugger;\n}\n```\n\nIf Arrow functions are new to you, check out our [ES6 course](https://classroom.udacity.com/courses/ud356 )!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273070,
+              "key": "ec47abe8-3a0c-45de-b486-a993bff49b60",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58ba13a8_ud109-l3-request-json-response/ud109-l3-request-json-response.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ec47abe8-3a0c-45de-b486-a993bff49b60",
+              "caption": "_Browser showing the app with DevTools loaded. A search for \"trees\" is made. The browsers pauses at the debugger line. The actual JSON response appears on the console._",
+              "alt": "Browser showing the app with DevTools loaded. A search for \"trees\" is made. The browsers pauses at the debugger line. The actual JSON response appears on the console.",
+              "width": 1280,
+              "height": 720,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 261369,
+          "key": "18a6772b-7c45-4f23-8479-dd294633245a",
+          "title": "Display Content & Handling Errors",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "18a6772b-7c45-4f23-8479-dd294633245a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261370,
+              "key": "7ece6a8a-ff00-452e-9acb-1dd57832b4e3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Display The Image On The Page\n\nWe're making our request to Unsplash, it's returning a response that we're then converting to JSON, and now we're seeing the actual JSON data. Fantastic! All we need to do now is display the image and caption on the page.\n\nHere's the code that I'm using:\n\n```js\nfunction addImage(data) {\n    let htmlContent = '';\n    const firstImage = data.results[0];\n\n    if (firstImage) {\n        htmlContent = `<figure>\n            <img src=\"${firstImage.urls.small}\" alt=\"${searchedForText}\">\n            <figcaption>${searchedForText} by ${firstImage.user.name}</figcaption>\n        </figure>`;\n    } else {\n        htmlContent = 'Unfortunately, no image was returned for your search.'\n    }\n\n    responseContainer.insertAdjacentHTML('afterbegin', htmlContent);\n}\n```\n\nThis code will:\n* get the first image that's returned from Unsplash\n* create a `<figure>` tag with the small image\n* creates a `<figcaption>` that displays the text that was searched for along with the first name of the person that took the image\n* if no images were returned, it displays an error message to the user\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 269080,
+              "key": "81e235c3-7411-4996-836e-4ac7ac7763e6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Handling Errors\n\nOur app is now done with getting the image from Unsplash!...almost. We're requesting the image and adding it to the page, but this is only _one_ possible outcome. Granted, it's the most likely way that the app will end up, but we're not handling any errors. What errors could possible happen you ask? A couple I can think of are:\n\n* Issues with the network\n* Issues with the fetch request\n* Unsplash not having an image for the searched term\n\nWe're handling this last one in the `addImage` function. For the other two, we can use chain on a `.catch()` method to the Fetch request!\n\nAgain, because a Fetch request returns a Promise `.catch()` is available to us from the Promise API.\n\nSo let's add a `.catch()` method to handle errors:\n\n```js\nfetch(`https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`, {\n    headers: {\n        Authorization: 'Client-ID abc123'\n    }\n}).then(response => response.json())\n.then(addImage)\n.catch(e => requestError(e, 'image'));\n\nfunction addImage(data) {\n    debugger;\n}\n\nfunction requestError(e, part) {\n    console.log(e);\n    responseContainer.insertAdjacentHTML('beforeend', `<p class=\"network-warning\">Oh no! There was an error making a request for the ${part}.</p>`);\n}\n```\n\nThis code adds the `requestError` function and adds a `.catch()` request to the end of the Promise chain. The `.catch()` function will receive an error object (that we're storing in the `e` variable) and in turn calls `requestError` passing along the error object and the request that failed. If the Promise rejects anywhere along the line, the `requestError` function will log the error and display a warning message to the user that the request failed for some reason. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261373,
+          "key": "34192e0d-a9ae-46af-ab01-d7a513e1097a",
+          "title": "Project Wrap-up",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "34192e0d-a9ae-46af-ab01-d7a513e1097a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261374,
+              "key": "c3bc17a0-ad44-414c-842e-24ed7f7d17f9",
+              "title": "Add NY Times Code",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c3bc17a0-ad44-414c-842e-24ed7f7d17f9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I've added the NYTimes code, and articles are being added to the page!"
+              ],
+              "positive_feedback": "Awesome job!",
+              "video_feedback": null,
+              "description": "The app is now able to handle searching for images and displaying images! Woohoo!\n\nNow see if you can follow these same steps to get the New York Times articles to display. When you can perform a search in your app and have both an image and some New York Times articles display, check the checkbox below.\n\nThis might seem like a lot, but we looked in detail at how to make a Fetch request and how to handle the response. You're basically going to follow the exact same steps for this request. You'll need to:\nmake the request to the NYTimes API\nconvert the response to JSON\nloop through the JSON data and add the articles to the page\n\nBonus points if you use `.catch()` to handle any network errors!"
+            },
+            {
+              "id": 273071,
+              "key": "2c46488d-b278-49c3-abed-3e2f4583ab13",
+              "title": "Ud109 AJAX L3 23 Project Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pBLeFba1RCQ",
+                "china_cdn_id": "pBLeFba1RCQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 261377,
+          "key": "89f51a91-768e-4790-b077-8ef68637874b",
+          "title": "Fetch Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "89f51a91-768e-4790-b077-8ef68637874b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 273047,
+              "key": "61bfc206-efb6-407b-bc78-5dc9d9ffc4f3",
+              "title": "Fetch Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Z8YyDT4YSsE",
+                "china_cdn_id": "Z8YyDT4YSsE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 261379,
+          "key": "5727711c-b882-4922-850f-f4af84c10bd3",
+          "title": "Course Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5727711c-b882-4922-850f-f4af84c10bd3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 273048,
+              "key": "54d8d4f0-8927-4d16-ada7-38d960c9a1e7",
+              "title": "Course Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "stTMUXFdNcM",
+                "china_cdn_id": "stTMUXFdNcM.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

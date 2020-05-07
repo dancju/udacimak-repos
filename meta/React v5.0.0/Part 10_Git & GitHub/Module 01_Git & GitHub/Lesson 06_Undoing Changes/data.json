@@ -1,0 +1,592 @@
+{
+  "data": {
+    "lesson": {
+      "id": 256065,
+      "key": "f02167ad-3ba7-40e0-a157-e5320a5b0dc8",
+      "title": "Undoing Changes",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Help! Disaster has struck! You don't have to worry, though, because your project is tracked in version control! You'll learn how to undo and modify changes that have been saved to the repository.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/f02167ad-3ba7-40e0-a157-e5320a5b0dc8/256065/1517447365389/Undoing%20Changes%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/f02167ad-3ba7-40e0-a157-e5320a5b0dc8/256065/1517447355712/Undoing%20Changes%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 266845,
+          "key": "50740c4a-054c-46da-910a-8d1344b18d33",
+          "title": "Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "50740c4a-054c-46da-910a-8d1344b18d33",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 283737,
+              "key": "b3d98ae1-70ba-4c81-b7c0-80ba9a86f4ec",
+              "title": "Undoing Changes - Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Kfi7l41wUVc",
+                "china_cdn_id": "Kfi7l41wUVc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 266846,
+          "key": "e176503b-3eae-4b22-a1b3-2953bab3d5e5",
+          "title": "Modifying The Last Commit",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e176503b-3eae-4b22-a1b3-2953bab3d5e5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 266854,
+              "key": "e7b6ae7b-f7b0-4709-8ff1-32bca403eaf3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Changing The Last Commit\n\nYou've already made plenty of commits with the `git commit` command. Now with the `--amend` flag, you can alter the _most-recent_ commit.\n\n```bash\n$ git commit --amend\n```\n\nIf your Working Directory is clean (meaning there aren't any uncommitted changes in the repository), then running `git commit --amend` will let you provide a new commit message. Your code editor will open up and display the original commit message. Just fix a misspelling or completely reword it! Then save it and close the editor to lock in the new commit message.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266855,
+              "key": "1e7f5cd9-1931-4aa4-bba9-f26c4f13eaae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Add Forgotten Files To Commit\n\nAlternatively, `git commit --amend` will let you include files (or changes to files) you might've forgotten to include. Let's say you've updated the color of all navigation links across your entire website. You committed that change and thought you were done. But then you discovered that a special nav link buried deep on a page doesn't have the new color. You _could_ just make a new commit that updates the color for that one link, but that would have two back-to-back commits that do practically the exact same thing (change link colors).\n\nInstead, you can amend the last commit (the one that updated the color of all of the other links) to include this forgotten one. To do get the forgotten link included, just:\n* edit the file(s)\n* save the file(s)\n* stage the file(s)\n* and run `git commit --amend`\n\nSo you'd make changes to the necessary CSS and/or HTML files to get the forgotten link styled correctly, then you'd save all of the files that were modified, then you'd use `git add` to stage all of the modified files (just as if you were going to make a new commit!), but then you'd run `git commit --amend` to update the most-recent commit instead of creating a new one.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 266847,
+          "key": "2e4b1c76-466d-494d-959c-a1f2aef5c7f7",
+          "title": "Reverting A Commit",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2e4b1c76-466d-494d-959c-a1f2aef5c7f7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 266856,
+              "key": "93d715f5-9d6d-4c0a-a3c8-a9b239dad9a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "##  What Is A Revert?\n\nWhen you tell Git to **revert** a specific commit, Git takes the changes that were made in commit and does the exact opposite of them. Let's break that down a bit. If a character is added in commit A, if Git _reverts_ commit A, then Git will make a new commit where that character is deleted. It also works the other way where if a character/line is removed, then reverting that commit will _add_ that content back!\n\nWe ended the previous lesson with a merge conflict and resolved that conflict by setting the heading to `Adventurous Quest`. Let's say that there's a commit in your repository that changes the heading now to `Quests & Crusades`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266858,
+              "key": "f6eebf34-1af6-476e-bc3e-c39cbd6d745d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a4de9e_ud123-l6-git-revert-prep/ud123-l6-git-revert-prep.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f6eebf34-1af6-476e-bc3e-c39cbd6d745d",
+              "caption": "_The Terminal application showing the log of a repository. The most-recent commit changes the heading from \"Adventurous Quest\" to \"Quests & Crusades\"._",
+              "alt": "The Terminal application showing the log of a repository. The most-recent commit changes the heading from \"Adventurous Quest\" to \"Quests & Crusades\".",
+              "width": 1172,
+              "height": 632,
+              "instructor_notes": null
+            },
+            {
+              "id": 266859,
+              "key": "5733df47-0335-47c1-a8f3-2f8f25c62d71",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The `git revert` Command\n\nNow that I've made a commit with some changes, I can revert it with the `git revert` command\n\n```bash\n$ git revert <SHA-of-commit-to-revert>\n```\n\nSince the SHA of the most-recent commit is `db7e87a`, to revert it:\nI'll just run `git revert db7e87a` (this will pop open my code editor to edit/accept the provided commit message)\n\nI'll get the following output:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266860,
+              "key": "0bd442e8-61de-4f42-a964-28f74871b666",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a4dedb_ud123-l6-git-revert-post/ud123-l6-git-revert-post.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0bd442e8-61de-4f42-a964-28f74871b666",
+              "caption": "_The Terminal application showing the output of reverting a commit. The output provides the commit message of the commit that was reverted. It also creates a new commit to record this change._",
+              "alt": "The Terminal application showing the output of reverting a commit. The output provides the commit message of the commit that was reverted. It also creates a new commit to record this change.",
+              "width": 1172,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 266861,
+              "key": "fddaf43b-6ac5-490a-bf0d-5c8e3af9449c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Did you see how the output of the `git revert` command tells us what it reverted? It uses the commit message of the commit that I told it to revert. Something that's also important is that it creates _a new commit_.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266862,
+              "key": "d7a2ad6f-d634-44f0-bd46-09259c3dc522",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Revert Recap\n\nTo recap, the `git revert` command is used to reverse a previously made commit:\n\n```bash\n$ git revert <SHA-of-commit-to-revert>\n```\n\nThis command:\n* will undo the changes that were made by the provided commit\n* creates a new commit to record the change\n\n### Further Research\n* [git-revert](https://git-scm.com/docs/git-revert) from Git Docs\n* [git revert](https://www.atlassian.com/git/tutorials/undoing-changes) Atlassian tutorial",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 266848,
+          "key": "fed81eb7-49b4-4129-9f6b-8201e0796fd8",
+          "title": "Resetting Commits",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fed81eb7-49b4-4129-9f6b-8201e0796fd8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 266863,
+              "key": "03354b5e-a36f-4344-8141-c8f40d37a57a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reset vs Revert\n\nAt first glance, _resetting_ might seem coincidentally close to _reverting_, but they are actually quite different. Reverting creates a new commit that reverts or undos a previous commit. Resetting, on the other hand, _erases_ commits!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266865,
+              "key": "a0201847-a8d5-4df3-9c54-3b6344a4e615",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️ Resetting Is Dangerous ⚠️\n\n> You've got to be careful with Git's resetting capabilities. This is one of the few commands that lets you erase commits from the repository. If a commit is no longer in the repository, then its content is gone.\n\n> To alleviate the stress a bit, Git _does_ keep track of everything for about 30 days before it completely erases anything. To access this content, you'll need to use the `git reflog` command. Check out these links for more info:\n\n> * [git-reflog](https://git-scm.com/docs/git-reflog)\n* [Rewriting History](https://www.atlassian.com/git/tutorials/rewriting-history)\n* [reflog, your safety net](http://gitready.com/intermediate/2009/02/09/reflog-your-safety-net.html)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266869,
+              "key": "81991f8d-5c18-458b-9ece-14532b613cf2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Relative Commit References\n\nYou already know that you can reference commits by their SHA, by tags, branches, and the special `HEAD` pointer. Sometimes that's not enough, though. There will be times when you'll want to reference a commit relative to another commit. For example, there will be times where you'll want to tell Git about the commit that's one before the current commit...or two before the current commit. There are special characters called \"Ancestry References\" that we can use to tell Git about these relative references. Those characters are:\n* `^` – indicates the parent commit\n* `~` – indicates the _first_ parent commit\n\nHere's how we can refer to previous commits:\n* the parent commit – the following indicate the parent commit of the current commit\n    * HEAD^\n    * HEAD~\n    * HEAD~1\n* the grandparent commit – the following indicate the grandparent commit of the current commit\n    * HEAD^^\n    * HEAD~2 \n* the great-grandparent commit – the following indicate the great-grandparent commit of the current commit\n    * HEAD^^^\n    * HEAD~3\n\nThe main difference between the `^` and the `~` is when a commit is created _from a merge_. A merge commit has _two_ parents. With a merge commit, the `^` reference is used to indicate the _first_ parent of the commit while `^2` indicates the _second_ parent. The first parent is the branch you were on when you ran `git merge` while the second parent is the branch that was merged in.\n\nIt's easier if we look at an example. This what my `git log` currently shows:\n\n```bash\n* 9ec05ca (HEAD -> master) Revert \"Set page heading to \"Quests & Crusades\"\"\n* db7e87a Set page heading to \"Quests & Crusades\"\n*   796ddb0 Merge branch 'heading-update'\n|\\  \n| * 4c9749e (heading-update) Set page heading to \"Crusade\"\n* | 0c5975a Set page heading to \"Quest\"\n|/  \n*   1a56a81 Merge branch 'sidebar'\n|\\  \n| * f69811c (sidebar) Update sidebar with favorite movie\n| * e6c65a6 Add new sidebar content\n* | e014d91 (footer) Add links to social media\n* | 209752a Improve site heading for SEO\n* | 3772ab1 Set background color for page\n|/  \n* 5bfe5e7 Add starting HTML structure\n* 6fa5f34 Add .gitignore file\n* a879849 Add header to blog\n* 94de470 Initial commit\n```\n\nLet's look at how we'd refer to some of the previous commits. Since `HEAD` points to the `9ec05ca` commit:\n* `HEAD^` is the `db7e87a` commit\n* `HEAD~1` is also the `db7e87a` commit\n* `HEAD^^` is the `796ddb0` commit\n* `HEAD~2` is also the `796ddb0` commit\n* `HEAD^^^` is the `0c5975a` commit\n* `HEAD~3` is also the `0c5975a` commit\n* `HEAD^^^2` is the `4c9749e` commit (this is the grandparent's (`HEAD^^`) _second parent_ (`^2`))\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266870,
+              "key": "4748ada6-eafb-46cc-a2e4-bd83464d6321",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Which Commit?\n\nUse this repository to answer the following quiz questions:\n\n\n```bash\n* 9ec05ca (HEAD -> master) Revert \"Set page heading to \"Quests & Crusades\"\"\n* db7e87a Set page heading to \"Quests & Crusades\"\n*   796ddb0 Merge branch 'heading-update'\n|\\  \n| * 4c9749e (heading-update) Set page heading to \"Crusade\"\n* | 0c5975a Set page heading to \"Quest\"\n|/  \n*   1a56a81 Merge branch 'sidebar'\n|\\  \n| * f69811c (sidebar) Update sidebar with favorite movie\n| * e6c65a6 Add new sidebar content\n* | e014d91 (footer) Add links to social media\n* | 209752a Improve site heading for SEO\n* | 3772ab1 Set background color for page\n|/  \n* 5bfe5e7 Add starting HTML structure\n* 6fa5f34 Add .gitignore file\n* a879849 Add header to blog\n* 94de470 Initial commit\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266871,
+              "key": "3dd6117c-4754-4dc1-a290-cefacc642b07",
+              "title": "Which commit?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3dd6117c-4754-4dc1-a290-cefacc642b07",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which commit is referenced by `HEAD~6`?",
+                "answers": [
+                  {
+                    "id": "a1487200543058",
+                    "text": "4c9749e",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1487200564347",
+                    "text": "0c5975a",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1487200565134",
+                    "text": "1a56a81",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1487200566410",
+                    "text": "f69811c",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1487200566949",
+                    "text": "e014d91",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1487200577899",
+                    "text": "209752a",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 266872,
+              "key": "57144021-1d3b-4cda-a23c-32a8b66e3f2a",
+              "title": "",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "57144021-1d3b-4cda-a23c-32a8b66e3f2a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "You did so well on that last one, why not give this one a go! Using the same repository, which commit is referenced by `HEAD~4^2`?",
+                "matchers": [
+                  {
+                    "expression": "f69811c"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 266873,
+              "key": "23c9c63c-89aa-4f65-b549-f6a704295033",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The `git reset` Command\n\nThe `git reset` command is used to reset (erase) commits:\n\n```bash\n$ git reset <reference-to-commit>\n```\n\nIt can be used to:\n* move the HEAD and current branch pointer to the referenced commit\n* erase commits\n* move committed changes to the staging index\n* unstage committed changes\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266874,
+              "key": "03375d86-763e-4711-ad00-c46827c34e5e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Git Reset's Flags\n\nThe way that Git determines if it erases, stages previously committed changes, or unstages previously committed changes is by the flag that's used. The flags are:\n* `--mixed`\n* `--soft`\n* `--hard`\n\nIt's easier to understand how they work with a little animation.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273035,
+              "key": "fff106c3-cbd2-4a43-a98e-f77faabf7897",
+              "title": "Nd016 WebND Ud123 Gitcourse BETAMOJITO L6 17 Soft Vs Medium Vs Hard Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UN7ki2G2yKc",
+                "china_cdn_id": "UN7ki2G2yKc.mp4"
+              }
+            },
+            {
+              "id": 266876,
+              "key": "63aea17f-4a37-4142-88a7-2dd5e9ed08e4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡 Backup Branch 💡\n\n> Remember that using the `git reset` command will _erase_ commits from the current branch. So if you want to follow along with all the resetting stuff that's coming up, you'll need to create a branch on the current commit that you can use as a backup. \n\n> Before I do any resetting, I usually create a `backup` branch on the most-recent commit so that I can get back to the commits if I make a mistake:\n\n> ```bash\n$ git branch backup\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266877,
+              "key": "60984e31-fcbb-4eb1-83c4-e2dfd811bc25",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reset's `--mixed` Flag\n\nLet's look at each one of these flags.\n\n```bash\n* 9ec05ca (HEAD -> master) Revert \"Set page heading to \"Quests & Crusades\"\"\n* db7e87a Set page heading to \"Quests & Crusades\"\n* 796ddb0 Merge branch 'heading-update'\n```\n\nUsing the sample repo above with `HEAD` pointing to `master` on commit `9ec05ca`, running `git reset --mixed HEAD^` will take the changes made in commit `9ec05ca` and move them to the working directory.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266878,
+              "key": "3ff45517-b0a8-42f0-b9c1-9ccb0d6b281b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a4e242_ud123-l6-git-revert-mixed/ud123-l6-git-revert-mixed.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3ff45517-b0a8-42f0-b9c1-9ccb0d6b281b",
+              "caption": "_The Terminal application showing the result of resetting with the `--mixed` flag. The changes are unstaged._",
+              "alt": "The Terminal application showing the result of resetting with the `--mixed` flag. The changes are unstaged.",
+              "width": 1277,
+              "height": 661,
+              "instructor_notes": null
+            },
+            {
+              "id": 266879,
+              "key": "c84501cd-8774-44d4-a75a-6f5df9cc7135",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡 Back To Normal 💡\n\n> If you created the `backup` branch prior to resetting anything, then you can easily get back to having the `master` branch point to the same commit as the `backup` branch. You'll just need to:\n1. remove the uncommitted changes from the working directory\n* merge `backup` into `master` (which will cause a Fast-forward merge and move `master` up to the same point as `backup`)\n\n> ```bash\n$ git checkout -- index.html\n$ git merge backup\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266880,
+              "key": "26729e51-6ff2-4c20-bf03-8d6a566a8f87",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reset's `--soft` Flag\n\nLet's use the same few commits and look at how the `--soft` flag works:\n\n```bash\n* 9ec05ca (HEAD -> master) Revert \"Set page heading to \"Quests & Crusades\"\"\n* db7e87a Set page heading to \"Quests & Crusades\"\n* 796ddb0 Merge branch 'heading-update'\n```\n\nRunning `git reset --soft HEAD^` will take the changes made in commit `9ec05ca` and move them directly to the Staging Index.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266881,
+              "key": "49c58cdd-1b50-4683-8b86-b6e2fab321ad",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a4e29a_ud123-l6-git-revert-soft/ud123-l6-git-revert-soft.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/49c58cdd-1b50-4683-8b86-b6e2fab321ad",
+              "caption": "_The Terminal application showing the result of resetting with the `--soft` flag. The changes are moved to the Staging Index._",
+              "alt": "The Terminal application showing the result of resetting with the `--soft` flag. The changes are moved to the Staging Index.",
+              "width": 1277,
+              "height": 545,
+              "instructor_notes": null
+            },
+            {
+              "id": 266882,
+              "key": "4589e92d-bb58-4d1a-869d-22a3c313b620",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reset's `--hard` Flag\n\nLast but not least, let's  look at the `--hard` flag:\n\n```bash\n* 9ec05ca (HEAD -> master) Revert \"Set page heading to \"Quests & Crusades\"\"\n* db7e87a Set page heading to \"Quests & Crusades\"\n* 796ddb0 Merge branch 'heading-update'\n```\n\nRunning `git reset --hard HEAD^` will take the changes made in commit `9ec05ca` and erases them.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266883,
+              "key": "d917a9f9-665d-4e61-8c1c-2339f16af4f7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/February/58a4e2c2_ud123-l6-git-revert-hard/ud123-l6-git-revert-hard.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d917a9f9-665d-4e61-8c1c-2339f16af4f7",
+              "caption": "_The Terminal application showing the result of resetting with the `--hard` flag. The changes are moved erased._",
+              "alt": "The Terminal application showing the result of resetting with the `--hard` flag. The changes are moved erased.",
+              "width": 1277,
+              "height": 545,
+              "instructor_notes": null
+            },
+            {
+              "id": 266889,
+              "key": "c7f0aff8-cf01-4c47-b80f-057038d03cc5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now it's your turn!\n\nRefer to the following repository:\n\n```bash\n* e014d91 (HEAD -> master, footer) Add links to social media\n* 209752a Improve site heading for SEO\n* 3772ab1 Set background color for page\n* 5bfe5e7 Add starting HTML structure\n* 6fa5f34 Add .gitignore file\n* a879849 Add header to blog\n* 94de470 Initial commit\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 266888,
+              "key": "a1229e6c-1a39-4fd1-8b41-e64e11aa8e51",
+              "title": "Where's The Content?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a1229e6c-1a39-4fd1-8b41-e64e11aa8e51",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What will happen to the changes from the `3772ab1` commit if `git reset --hard HEAD~3` is run? Will the changes be in the Staging Index, in the Working Directory, or complete erased?",
+                "answers": [
+                  {
+                    "id": "a1487200983003",
+                    "text": "Staging Index",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1487201004561",
+                    "text": "Working Directory",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1487201005053",
+                    "text": "erased",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 266891,
+              "key": "1326ce4a-19bf-48ff-a7ac-6c1a2b6f34bf",
+              "title": "Where's The Content 2?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1326ce4a-19bf-48ff-a7ac-6c1a2b6f34bf",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What will happen to the changes from the `209752a` commit if `git reset --soft HEAD^^` is run? Will the changes be in the Staging Index, in the Working Directory, or complete erased?",
+                "answers": [
+                  {
+                    "id": "a1487201103314",
+                    "text": "Staging Index",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1487201111082",
+                    "text": "Working Directory",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1487201111663",
+                    "text": "erased",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 266892,
+              "key": "3d0d5f52-3786-4275-a578-9619daa9d04e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reset Recap\n\nTo recap, the `git reset` command is used erase commits:\n\n```bash\n$ git reset <reference-to-commit>\n```\n\nIt can be used to:\n* move the HEAD and current branch pointer to the referenced commit\n* erase commits with the `--hard` flag\n* moves committed changes to the staging index with the `--soft` flag\n* unstages committed changes `--mixed` flag\n\nTypically, ancestry references are used to indicate previous commits. The ancestry references are:\n* `^` – indicates the parent commit\n* `~` – indicates the first parent commit\n\n### Further Research\n* [git-reset](https://git-scm.com/docs/git-reset) from Git docs\n* [Reset Demystified](https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified) from Git Blog\n* [Ancestry References](https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection#Ancestry-References) from Git Book",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 266849,
+          "key": "cfec1ae1-81c7-49ca-a2e8-899449763bf4",
+          "title": "Lesson Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cfec1ae1-81c7-49ca-a2e8-899449763bf4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 273036,
+              "key": "8ac2e955-9c86-48d9-a393-90cdaec34ccb",
+              "title": "Undoing Changes",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-_PPVk2UZMU",
+                "china_cdn_id": "-_PPVk2UZMU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 266850,
+          "key": "60d2b050-0b84-4342-8d76-fe9b98887839",
+          "title": "Course Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "60d2b050-0b84-4342-8d76-fe9b98887839",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 283738,
+              "key": "43eb2745-56f5-4b65-b4ce-6af80f970ef2",
+              "title": "Course Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "twn_cheqoK8",
+                "china_cdn_id": "twn_cheqoK8.mp4"
+              }
+            },
+            {
+              "id": 266893,
+              "key": "2d89f294-bc05-41a3-92d7-e48428f1855f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Expand On Your Git Skills\n\n* take the companion GitHub course\n* create a repo to track your computer's settings - [https://dotfiles.github.io/](https://dotfiles.github.io/)\n* develop the next, awesome feature for your personal project \n* try tackling some Git challenges with the [Git-it app](https://github.com/jlord/git-it-electron)\n",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

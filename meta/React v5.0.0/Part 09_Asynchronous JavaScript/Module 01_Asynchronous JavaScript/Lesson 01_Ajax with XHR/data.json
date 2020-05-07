@@ -1,0 +1,764 @@
+{
+  "data": {
+    "lesson": {
+      "id": 372361,
+      "key": "46eaae46-af74-4264-9393-15fe8c3357ca",
+      "title": "Ajax with XHR",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you''ll learn why you should use asynchronous data requests. Use the `XHR` object to send and receive data asynchronously.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/46eaae46-af74-4264-9393-15fe8c3357ca/372361/1544282656811/Ajax+with+XHR+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/46eaae46-af74-4264-9393-15fe8c3357ca/372361/1544282653171/Ajax+with+XHR+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 372362,
+          "key": "39d3a627-aa6c-4123-8579-0495fdb32e8e",
+          "title": "Course Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "39d3a627-aa6c-4123-8579-0495fdb32e8e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372364,
+              "key": "e3d6d1ff-30c0-4682-afc3-4e9f86cc068d",
+              "title": "Intro To Ajax",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UGk5BPaytiA",
+                "china_cdn_id": "UGk5BPaytiA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 372365,
+          "key": "793f7c1c-ba50-49c6-8622-de9a81730a8a",
+          "title": "Client Server Demonstration",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "793f7c1c-ba50-49c6-8622-de9a81730a8a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372366,
+              "key": "d3808558-2bf0-4308-8c43-27934aa52adf",
+              "title": "Client Server Demonstration ",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "# Vocabulary\n\n**GET Request**: An internet request for data. Sent from a client to a server.\n\n**Response**: A server's response to a request. Sent from a server to a client. A response to a GET request will usually include data that the client needs to load the page's content.\n",
+              "video": {
+                "youtube_id": "nozbz6J3_4w",
+                "china_cdn_id": "nozbz6J3_4w.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 372368,
+          "key": "a374d801-e396-4ca6-a4ee-7e15d3360c69",
+          "title": "Ajax Definition & Examples",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a374d801-e396-4ca6-a4ee-7e15d3360c69",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372369,
+              "key": "35bc08da-88ea-4eee-b11b-ee29b9cdbfa0",
+              "title": "Ajax Definition & Examples",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7nufhg4DMuc",
+                "china_cdn_id": "7nufhg4DMuc.mp4"
+              }
+            },
+            {
+              "id": 372371,
+              "key": "a2cb792e-8210-461c-895d-c847b180dca3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### A little history\n\nJavaScript frameworks and Single Page Apps are the way to build today, but let's review where we've come from.\n\nIn the *traditional* server-rendered web application, the client computer makes a request for a web page. The server creates and returns a page to the client. Finally, the client loads the new page and displays the information. If they interact with the page, say to add or remove something by submitting a form, they start the cycle all over again. The client will make another request, the server returns a totally new page, the client loads and presents it to the user again.\n\nUp until the mid 2000s, this was basically the only way internet communication occurred. Information would reside on the server, and a client would request that data and refresh the page and display it. This cycle would repeat for each and every new page request.\n\nIn the late 90s, the Microsoft Outlook team added the XMLHTTP component to Internet Explorer and built a web version of the Outlook mail client. This code was later picked up by other browsers as XMLHttpRequest. This allowed browsers to make HTTP requests from Javascript and update the current page in place without fetching an entire page from the server. Instead of the synchronous model of waiting for a whole page, the user interface could update asynchronously as the user kept working. Most of the data being exchanged used the XML format.\n\n### AJAX\n\nIn 2005, [Jesse James Garrett coined the term AJAX](https://web.archive.org/web/20080702075113/http://www.adaptivepath.com/ideas/essays/archives/000385.php) to mean “Asynchronous Javascript and XML”.  This is essentially the technique of using [XMLHTTPRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) to fetch data and then modify the current page.\n\nAJAX took the web world by storm, spreading far beyond Microsoft Outlook. State-of-the-art web applications like Flickr, GMail, and Google Maps rapidly adopted it. Instead of having to wait for data and have the entire page refresh, these new, near instantaneous applications were incredible.\n\n### Browser Inconsistencies\n\nHold up, though. Ajax wasn't all ponies and rainbows. There were several different, incompatible browser implementations and developers were forced to code for one browser or write complex code for them all. Eventually, JavaScript libraries like jQuery and YUI emerged to reconcile the differences.\n\nAJAX apps were great, but difficult for individual developers to write; as browsers kept changing, and people demanded apps on more devices, the code then became more and more complex and confusing. This challenge led to the rise of standard Javascript frameworks and libraries. JavaScript libraries arose to hide the complex browser differences, JavaScript frameworks made developing  complex, powerful applications manageable.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372372,
+              "key": "eb013a34-965d-449b-8f44-059d5b16925f",
+              "title": "Nd016 Ud109 AJAX REDO Beta L1 04  Asynchronous Request Ex. 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9_d-Gs77KMg",
+                "china_cdn_id": "9_d-Gs77KMg.mp4"
+              }
+            },
+            {
+              "id": 372373,
+              "key": "d73cb56b-a7e0-40ab-8c9e-ba5a3e18a4c8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2016/August/57b4e021_placeholder-kitten/placeholder-kitten.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d73cb56b-a7e0-40ab-8c9e-ba5a3e18a4c8",
+              "caption": "Facebook showing new data appearing at the bottom of the page",
+              "alt": null,
+              "width": 680,
+              "height": 411,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 372374,
+          "key": "17d51752-5483-48d8-852f-2938203f5e92",
+          "title": "APIs",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "17d51752-5483-48d8-852f-2938203f5e92",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372375,
+              "key": "910332c5-93d4-4f6d-9374-efa0e8f8b754",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Getting Data\n\nWe've looked at the concepts of Ajax and that it's the technology we'll use to add data to our project asynchronously. But where is this data coming from? And how do we get access to it? How will our app know how to retrieve that data?\n\nWe'll be using an **API** to interact with various data sources.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372376,
+              "key": "6bdf7fc1-7b77-4012-bf02-ae93aa7d7be8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What's an API?\n\nThe acronym \"API\" stands for:\n\n**A**pplication<br>\n**P**rogramming<br>\n**I**nterface<br>\n\nThere's data out there that's just waiting to be used. Most of the data-rich applications you use get their data from 3rd party websites. They actually fetch this data using APIs. In the video below, Cameron will demo how Reddit uses APIs for added interactivity on its site.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372377,
+              "key": "4a5556bb-978e-4b51-8ada-1162b58a79b5",
+              "title": "API Inspiration",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fkBPirXPwNU",
+                "china_cdn_id": "fkBPirXPwNU.mp4"
+              }
+            },
+            {
+              "id": 372378,
+              "key": "020b7165-9fb0-48b2-9627-09815b467248",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Google's APIs](https://developers.google.com/apis-explorer/)<br>\nAll the Google services you can imagine.\n\n[Giant database of APIs](http://www.programmableweb.com/apis/directory)<br>\nThis is definitely worth skimming for some inspiration.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372379,
+          "key": "14693da2-6051-4157-bab4-974420281d7d",
+          "title": "Create An Async Request with XHR",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "14693da2-6051-4157-bab4-974420281d7d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372382,
+              "key": "c8f532f8-f7b7-4c51-b345-8dfbbcf11189",
+              "title": "Create An Async Request with XHR",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9-_O_0gfVHo",
+                "china_cdn_id": "9-_O_0gfVHo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 372383,
+          "key": "d6890e50-7705-4861-af0e-a22f41a328aa",
+          "title": "The XHR Object",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d6890e50-7705-4861-af0e-a22f41a328aa",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372384,
+              "key": "a68cc26b-6ee5-4626-82a7-3f64aa5692d6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Just like how the `document` is provided by the JavaScript engine, the JavaScript engine also provides a way for us to make asynchronous HTTP requests. We do that with an `XMLHttpRequest` object. We can create these objects with the provided `XMLHttpRequest` constructor function. \n\nOne of the best ways to learn is to get your hands dirty and try things out! So go to [Unsplash](https://unsplash.com/), open up the developer tools, and run the following on the console:\n\n```js\nconst asyncRequestObject = new XMLHttpRequest();\n```\n\nConfusingly, the constructor function has \"XML\" in it, but it's not limited to only XML documents. Remember that the \"AJAX\" acronym used to stand for \"Asynchronous JavaScript and XML\". Since the main file format that was originally used for asynchronous data exchange were XML files, it's easy to see why the function is called `XMLHttpRequest`!\n\nXMLHttpRequests (commonly abbreviated as XHR or xhr) can be used to request any file type (e.g. plain text files, HTML files, JSON files, image files, etc.) or data from an API. \n        ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372385,
+              "key": "32fdbc8a-bcc1-45c6-9424-eb56ee8d2ee0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> **Note:** We'll be digging into the `XMLHttpRequest` object. We'll look at how to create it, what methods and properties need to be used, and how to actually send asynchronous requests. For even more info on using the XHR object to make async requests, check out these links:\n* MDN's docs - https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest\n* WHATWG Spec - https://xhr.spec.whatwg.org/\n* W3C Spec - https://www.w3.org/TR/XMLHttpRequest/\n        ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372386,
+          "key": "e41647c9-d6c8-459d-a612-fb1fe531855e",
+          "title": "XHR's .open() method",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e41647c9-d6c8-459d-a612-fb1fe531855e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372387,
+              "key": "3597f0bb-7d0c-4683-a1a6-f3061c72cb51",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " So we've constructed an XHR object named `asyncRequestObject`. There are a number of methods that are available to us. One of the most important is the [open method](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open).\n\n```js\nasyncRequestObject.open();\n```\n`.open()` takes a number of parameters, but the most important are its first two:\nthe HTTP method\nURL to send the request\n\nIf we want to asynchronously request the homepage from the popular high-res image site, Unsplash, we'd use a `GET` request and provide the URL:\n\n```js\nasyncRequestObject.open('GET', 'https://unsplash.com');\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372388,
+              "key": "2a8abb59-c912-4ae9-a78b-e5b8f54a5fde",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## A little rusty on your HTTP methods?\nThe main two that you'll be using are:\n* `GET` - to retrieve data\n* `POST` - to send data\n\nFor more info, check out our course on [HTTP & Web Servers](https://classroom.udacity.com/courses/ud303)!\n        ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372389,
+              "key": "3b7df37e-b549-45cd-ac5b-f2c925382538",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " > **Warning:** For security reasons, you can only make requests for assets and data on the same domain as the site that will end up loading the data. For example, to asynchronously request data from google.com your browser needs to be on google.com. This is known as the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy). This might seem extremely limiting, and it is!\n\n> The reason for this is because JavaScript has control over so much information on the page. It has access to all cookies and can determine passwords since it can track what keys are pressed. However, the web wouldn't be what it is today if all information was bordered off in its own silos. The way to circumvent the same-origin policy is with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) (Cross-Origin Resource Sharing). CORS must a technology that is implemented on the server. Services that provide APIs use CORS to allow developers to circumvent the same-origin policy and access their information.\n        ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372392,
+              "key": "91e01d6a-b1b6-4b4e-87b9-47506d3b793b",
+              "title": "XHR's .open() method quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "91e01d6a-b1b6-4b4e-87b9-47506d3b793b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Go to [Google](https://www.google.com), open up the developer tools, and run the following on the console:\n\n```js\nconst req = new XMLHttpRequest();\nreq.open('GET', 'https://www.google.com/');\n```\n\nWhat happens?\n          ",
+                "answers": [
+                  {
+                    "id": "a1502839869394",
+                    "text": "The Google homepage open in the browser",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502839956548",
+                    "text": "An async request sent to https://www.google.com",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502839972905",
+                    "text": "Nothing happens",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502839981136",
+                    "text": "An error occurs",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 372394,
+              "key": "21c868ed-52aa-4c7e-9943-324db34b056e",
+              "title": "XHR's .open() method quiz 2",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "21c868ed-52aa-4c7e-9943-324db34b056e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "An XHR object's `.open()` method can take a number of arguments. Use [the documentation](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open) to explain what the following code does:\n\n```js\nconst myAsyncRequest = new XMLHttpRequest();\nmyAsyncRequest.open('GET', 'https://udacity.com/', false);\n```",
+                "answers": [
+                  {
+                    "id": "a1502840049706",
+                    "text": "Nothing special, this is the standard way `.open()` works.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502840130052",
+                    "text": "The request is sent immediately.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502840137166",
+                    "text": "The JavaScript freezes and waits until the request is returned.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 372395,
+          "key": "0cd27aed-f95a-4148-ab61-c910b90d32a0",
+          "title": "XHR's .send() method",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0cd27aed-f95a-4148-ab61-c910b90d32a0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372396,
+              "key": "289547f5-0bbc-40a3-9254-5af5446de1bb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To actually send the request, we need to use the [send method](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send):\n\n```js\nasyncRequestObject.send();\n```\n\nLet's check out what happens:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372397,
+              "key": "dd214bda-434d-4515-8aba-04415e24e345",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/August/59938614_ud109-l1-send-xhr-request-1/ud109-l1-send-xhr-request-1.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dd214bda-434d-4515-8aba-04415e24e345",
+              "caption": "_The XHR request is sent, but we don''t see anything!_",
+              "alt": null,
+              "width": 640,
+              "height": 305,
+              "instructor_notes": null
+            },
+            {
+              "id": 372398,
+              "key": "d06a94d6-ba45-4c78-a102-58d58cf62d2c",
+              "title": "XHR Request In Dev Tools",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "m9C0LJoWhOE",
+                "china_cdn_id": "m9C0LJoWhOE.mp4"
+              }
+            },
+            {
+              "id": 372399,
+              "key": "51aeee97-a6af-4725-b631-7d4e0726f06c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "It's a little pointless to make a request for something but then do absolutely nothing with it! Why would you order some cake and then not go to pick it up or not eat it? The horror! We want to eat our cake, too!\n\n\n### Handling Success\nTo handle the successful response of an XHR request, we set the [onload property](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestEventTarget/onload) on the object to a function that will handle it:\n\n```js\nfunction handleSuccess () {\n    // in the function, the `this` value is the XHR object\n    // this.responseText holds the response from the server\n\n    console.log( this.responseText ); // the HTML of https://unsplash.com/\n}\n\nasyncRequestObject.onload = handleSuccess;\n```\n\nAs we just saw, if `onload` isn't set, then the request _does_ return...but nothing happens with it.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372400,
+              "key": "97d32376-6571-4959-a90d-2ebec7142c45",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Handling Errors\nYou might've picked up that **onload** is called when the response is _successful_. If something happens with the request and it can't be fulfilled, then we need to use the **onerror property**:\n```js\nfunction handleError () {\n    // in the function, the `this` value is the XHR object\n    console.log( 'An error occurred 😞' );\n}\n\nasyncRequestObject.onerror = handleError;\n\n```\nAs with `onload`, if `onerror` isn't set and an error occurs, that error will just fail silently and your code (and your user!) won't have any idea what's wrong or any way to recover.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372401,
+          "key": "b097333c-2fc3-43b1-8141-5812fcd4a4a6",
+          "title": "A Full Request",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b097333c-2fc3-43b1-8141-5812fcd4a4a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372402,
+              "key": "2a233725-f570-4f99-9f9e-49392030f4ad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here's the full code that we've built up that creates the XHR object, tells it what info to request, sets up handlers for a success or error, and then actually sends the request:\n\n```js\nfunction handleSuccess () { \n  console.log( this.responseText ); \n// the HTML of https://unsplash.com/\n}\n\nfunction handleError () { \n  console.log( 'An error occurred \\uD83D\\uDE1E' );\n}\n\nconst asyncRequestObject = new XMLHttpRequest();\nasyncRequestObject.open('GET', 'https://unsplash.com');\nasyncRequestObject.onload = handleSuccess;\nasyncRequestObject.onerror = handleError;\nasyncRequestObject.send();```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372403,
+              "key": "7c0ff6e5-c950-48d8-8717-e0f039d80427",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## APIs and JSON\n\nGetting the HTML of a website is ok, but it's probably not very useful. The data it returns is in a format that is extremely difficult to parse and consume. It would be a lot easier if we could get just the data we want in an easily formatted data structure. If you're thinking that JSON would be a good idea, then you're right and I'll give you a piece of my cake!\n\nInstead of requesting the base URL for Unsplash, let's create an app that pulls an image from Unsplash's API and relevant articles from the New York Times.\n\nWhen making a request from an API that returns JSON, all we need to do is convert that JSON response into a JavaScript object. We can do that with `JSON.parse();`. Let's tweak the onload function to handle a JSON response:\n\n```js\nfunction handleSuccess () {\nconst data = JSON.parse( this.responseText ); // convert data from JSON to a JavaScript object\nconsole.log( data );\n}\n\nasyncRequestObject.onload = handleSuccess;\n```",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372404,
+          "key": "685ff9da-fbaa-400c-94ae-72ab42743137",
+          "title": "Project Initial Walkthrough",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "685ff9da-fbaa-400c-94ae-72ab42743137",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372405,
+              "key": "54afa605-c680-44ef-8529-99e587dc76cb",
+              "title": "Project Initial Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-LG9wKufSjg",
+                "china_cdn_id": "-LG9wKufSjg.mp4"
+              }
+            },
+            {
+              "id": 411173,
+              "key": "26aa1104-b9f7-451e-8f98-6d40484f2755",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Download the Starter Code\n\nThe starter project is on GitHub: [https://github.com/udacity/course-ajax](https://github.com/udacity/course-ajax). You can clone the project by running the following Git command in your terminal:\n\n```bash\ngit clone https://github.com/udacity/course-ajax.git\n```\n\nOnce you've cloned the project, you'll notice that it has three separate folders:\n\n1. `lesson-1-async-w-xhr`\n* `lesson-2-async-w-jQuery`\n* `lesson-3-async-w-fetch`\n\nMake sure to work on the files for the correct lesson. Since this is the _first_ lesson, we'll be working in the `lesson-1-async-w-xhr` directory. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372406,
+              "key": "f91260a9-5191-4ce8-a789-2f08ecf7bd68",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create Your Accounts\n\nTo complete these final steps, you'll need accounts with Unsplash and The New York Times.\n\n## Unsplash\n* Create a developer account here - https://unsplash.com/developers\n* Next, create an application here - https://unsplash.com/oauth/applications\n    * this will give you an \"Application ID\" that you'll need to make requests\n\n## The New York Times\n* Create a developer account here - https://developer.nytimes.com/\n* They'll email you your api-key (you'll need this to make requests)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372407,
+              "key": "a43ee9f2-49c3-4cfb-8acd-f05314a2b29a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Unsplash Request\n\nIn our app, the variable `searchedForText` contains the text we're interested in, and we'll set the `onload` property to a function called `addImage` (which is a do-nothing function that we'll flesh out in a moment). If we temporarily set `searchedForText` to \"hippos\", the code for the XHR call to Unsplash is:\n\n```js\nfunction addImage(){}\nconst searchedForText = 'hippos';\nconst unsplashRequest = new XMLHttpRequest();\n\nunsplashRequest.open('GET', `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`);\nunsplashRequest.onload = addImage;\n\nunsplashRequest.send()\n```\n\n...but if you try running this code, you'll get an error.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372408,
+              "key": "1fe9b774-7d53-4563-912d-91b23e62a28a",
+              "title": "Unsplash Request Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1fe9b774-7d53-4563-912d-91b23e62a28a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "The request for Unsplash doesn''t work because it needs an HTTP header to be sent along. What is the XHR method to add a header to the request? Check out [the documentation](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for help!",
+                "answers": [
+                  {
+                    "id": "a1502840796762",
+                    "text": ".includeRequestHeader()",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502840819603",
+                    "text": ".addHeader()",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1502840826549",
+                    "text": ".setRequestHeader()",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1502840832712",
+                    "text": ".sendHeader()",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 372409,
+          "key": "9795d421-8e6c-4ab4-85ad-5b786aa36238",
+          "title": "Setting a Request Header",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9795d421-8e6c-4ab4-85ad-5b786aa36238",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372410,
+              "key": "2a554cf0-1183-4f52-bbf2-18b54d145790",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The XHR method to include a header with the request is [setRequestHeader](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/setRequestHeader). So the full code needs to be:\n\n```js\nconst searchedForText = 'hippos';\nconst unsplashRequest = new XMLHttpRequest();\n\nunsplashRequest.open('GET', `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`);\nunsplashRequest.onload = addImage;\nunsplashRequest.setRequestHeader('Authorization', 'Client-ID <your-client-id>');\nunsplashRequest.send();\n\nfunction addImage(){\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372411,
+              "key": "9f4273c5-b881-43a9-9298-4feb24aa965d",
+              "title": "Adding the image",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rgupp3Tk5tw",
+                "china_cdn_id": "rgupp3Tk5tw.mp4"
+              }
+            },
+            {
+              "id": 372412,
+              "key": "2ba1dbcc-6e85-4fe1-9963-822da6ed78ca",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Since the New York Times doesn't require a specific header, we don't need to do anything special. We'll set its `onload` property to the function `addArticles` that we'll flesh out in a minute:\n\n```js\nfunction addArticles () {}\nconst articleRequest = new XMLHttpRequest();\narticleRequest.onload = addArticles;\narticleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=<your-API-key-goes-here>`);\narticleRequest.send();\n```\n\nMake sure to fill in the URL above with the API key you received in an email from the New York Times after signing up as a developer.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372413,
+              "key": "569c6b35-761c-4e71-93c8-62b1ab3f0ad8",
+              "title": "Adding The Articles",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "569c6b35-761c-4e71-93c8-62b1ab3f0ad8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "My code now adds the articles to the page!"
+              ],
+              "positive_feedback": "Great! Take a look at the video below where I code the solution.",
+              "video_feedback": null,
+              "description": "Similar to how we added the Unsplash image to the page. See if you can add all of the New York Times articles to the page. When you''re done, check the box to continue."
+            },
+            {
+              "id": 372414,
+              "key": "3943945d-b0e3-48a4-bec8-50fa78db6b7c",
+              "title": "Adding The Articles Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "V3zRuIqdUuU",
+                "china_cdn_id": "V3zRuIqdUuU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 372415,
+          "key": "5d834eaf-f6c6-482e-ba71-708c58175a46",
+          "title": "Project Final Walkthrough",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d834eaf-f6c6-482e-ba71-708c58175a46",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372416,
+              "key": "f97b8dc3-6b94-4c02-aef6-9c0b3931724a",
+              "title": "Project Final Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eumAZ9Wo9i0",
+                "china_cdn_id": "eumAZ9Wo9i0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 372417,
+          "key": "f5bdb4b3-c4dc-4e8a-a18b-e2340a298961",
+          "title": "XHR Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f5bdb4b3-c4dc-4e8a-a18b-e2340a298961",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372418,
+              "key": "4bd53178-1006-4ce4-b869-bf6a002fc301",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## XHR Usage Review\nThere are a number of steps you need to take to send an HTTP request asynchronously with JavaScript. \n\n### To Send An Async Request\n* create an XHR object with the `XMLHttpRequest` constructor function\n* use the `.open()` method - set the HTTP method and the URL of the resource to be fetched\n* set the `.onload` property - set this to a function that will run upon a successful fetch\n* set the `.onerror` property - set this to a function that will run when an error occurs\n* use the `.send()` method - send the request\n\n### To Use The Response\n* use the `.responseText` property - holds the text of the async request's response",
+              "instructor_notes": ""
+            },
+            {
+              "id": 372419,
+              "key": "3c593087-5b52-4452-a81a-23c5a682d96b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> **Note:** The original XHR specification was created in 2006. This was version 1 of the specification. A number of years with minimal changes to the spec.\n\n> In 2012, work was started on a version 2 of the XHR specification. In 2014, the XHR2 spec was merged into the XHR1 spec so that there wouldn't be diverging standards. There are still references to XHR2, but the XHR specification now fully incorporates XHR2.\n\n> Check out this HTML5Rocks article for info on the [new tricks in XHR2](http://www.html5rocks.com/en/tutorials/file/xhr2/) that are now in the XHR spec. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 372420,
+          "key": "879e3376-9d9f-48c6-86a0-e2cd0da754eb",
+          "title": "XHR Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "879e3376-9d9f-48c6-86a0-e2cd0da754eb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 372421,
+              "key": "aae6c53c-5c4a-4b42-a7e1-6379c8abeaba",
+              "title": "XHR Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZHHubdMGMvI",
+                "china_cdn_id": "ZHHubdMGMvI.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

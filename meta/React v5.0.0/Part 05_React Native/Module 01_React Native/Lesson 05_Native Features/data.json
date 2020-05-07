@@ -1,0 +1,1033 @@
+{
+  "data": {
+    "lesson": {
+      "id": 394101,
+      "key": "8b4d3cba-8e1b-4a7b-9065-dacce0b095e5",
+      "title": "Native Features",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You'll extend your application by adding Animations, support for both Geolocation and Local Notifications, how to work with photos, and how to get it prepped for submitting to App stores.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/8b4d3cba-8e1b-4a7b-9065-dacce0b095e5/394101/1518463555654/Native%20Features%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/8b4d3cba-8e1b-4a7b-9065-dacce0b095e5/394101/1518463512292/Native%20Features%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 394155,
+          "key": "57d419e6-e01a-4a5d-a969-58d7fcb2c781",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "57d419e6-e01a-4a5d-a969-58d7fcb2c781",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394306,
+              "key": "563f6a1c-1299-436f-8bce-fe43e8d275a1",
+              "title": "Lesson Overview",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BeJTeUg09mo",
+                "china_cdn_id": "BeJTeUg09mo.mp4"
+              }
+            },
+            {
+              "id": 394798,
+              "key": "ab028c10-9163-4828-bd32-b70e74538514",
+              "title": "Live",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "94Bb8stLHrU",
+                "china_cdn_id": "94Bb8stLHrU.mp4"
+              }
+            },
+            {
+              "id": 394743,
+              "key": "3cd639c2-ea2c-4c81-ae64-c266b4bd1de7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/8f38bb640f0441383ca906597049190989be853f)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 396400,
+              "key": "80642cdb-7794-4e40-ba82-299086f537ce",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "80642cdb-7794-4e40-ba82-299086f537ce",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have created the `Live` component",
+                "I have added the `Live` screen to `TabNavigator`"
+              ],
+              "positive_feedback": "Fantastic!",
+              "video_feedback": null,
+              "description": "Before we check out the `Location` API, be sure you have done the following:"
+            }
+          ]
+        },
+        {
+          "id": 394156,
+          "key": "67e442e4-39e4-4659-a0fc-a62ece4382ff",
+          "title": "Geolocation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "67e442e4-39e4-4659-a0fc-a62ece4382ff",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394654,
+              "key": "4f7bf401-37c0-4660-9072-b136350722c5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Geolocation",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394307,
+              "key": "1282c8a0-a931-4521-a8ab-f9f28a47edf4",
+              "title": "Introduction to Geolocation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ynXUEGUVGA8",
+                "china_cdn_id": "ynXUEGUVGA8.mp4"
+              }
+            },
+            {
+              "id": 394308,
+              "key": "61696409-0f1c-4a54-b5ce-430422452da2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A common feature of native applications is the ability to access and receive updates about the user's current location. Like most things, Expo makes this rather straightforward by giving us a JavaScript API that will work on both iOS and Android. \n\n```js\nimport { Location } from 'expo';\n```\n\nTypically when dealing with location services, there are one of two features you'll need: getting the user's current location, or getting and _watching_ the user's current location for updates. Expo's `Location` property gives us both of these options with `getCurrentPositionAsync` and `watchPositionAsync`. \n\n`getCurrentPositionAsync` gets the current location of the device, without watching for future updates. `watchPositionAsync` will also get the current location of the device, but it will also subscribe to location updates. This way, you'll be notified if that device moves location.\n\nFor the full documentation on how to use Expo's `Location` property, visit [Location](https://docs.expo.io/versions/latest/sdk/location.html)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394309,
+              "key": "37dac6a1-b818-4695-ba94-efb7ceb24293",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## 💡 Geolocation Tips 💡\n>\n> Whenever you're dealing with a feature that requires the user's permission to work properly, it's important that you account for all the different UI options that could be shown. For example, when dealing with a user's location, there are three scenarios to manage:\n>\n> 1. The user gives you permission to view their location (best-case scenario). \n> 2. The user decides to neither deny nor grant you permission to their location. \n> 3. The user denies giving you access to their location. \n>\n> In an ideal world, the user would always grant you permission to whatever you'd like, but, this isn't always the case and as a UI developer, you need to plan accordingly for those moments.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394310,
+              "key": "6e730742-505f-4e93-a0ff-70b3dcf30de2",
+              "title": "Live-Undetermined",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nIQMG9N33IE",
+                "china_cdn_id": "nIQMG9N33IE.mp4"
+              }
+            },
+            {
+              "id": 394735,
+              "key": "bf1f99c5-1b45-409c-bd57-acc413686c7d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/62780584135dbfcee999b10ec3f01ec646aeb27b)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394311,
+              "key": "19895bbf-addc-4207-befd-524198da2775",
+              "title": "Live-Denied",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "B56Uz-NKKhs",
+                "china_cdn_id": "B56Uz-NKKhs.mp4"
+              }
+            },
+            {
+              "id": 394737,
+              "key": "c65e0ca2-c499-4961-abb6-80665ab9c88f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/70aa708e381b86471da886e01efc6568df076c54)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394312,
+              "key": "5d80d4e8-2c7c-46dd-8ec2-7147fac303b9",
+              "title": "Live-Granted",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oiz4Fn1Iqqk",
+                "china_cdn_id": "oiz4Fn1Iqqk.mp4"
+              }
+            },
+            {
+              "id": 394739,
+              "key": "b00eace4-5902-4d96-b981-95ebd7065ce4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/5a834dc7790f3612a9bebdf4b25ded34e9bfe580)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394313,
+              "key": "9e935b9a-85c5-4946-9c57-d7e73a320f60",
+              "title": "Live-SetLocation",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BNYvgnCvPFc",
+                "china_cdn_id": "BNYvgnCvPFc.mp4"
+              }
+            },
+            {
+              "id": 394740,
+              "key": "f314534f-4f06-4f3a-ab5b-2b4b0e8f2cd2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/654fab8ad1502c104a0501adea1819a4f9ab54c1)\n\nBe sure that you have included the following imports: in `Live.js`:\n```js\nimport { Location, Permissions } from 'expo';\n```\n\n```js\nimport { calculateDirection } from '../utils/helpers';\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394314,
+              "key": "6b96bc3e-0af1-4709-8cd9-4c98f4d8a245",
+              "title": "Live-AskPermission",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tl8blRR_nc0",
+                "china_cdn_id": "tl8blRR_nc0.mp4"
+              }
+            },
+            {
+              "id": 394742,
+              "key": "318885f0-90f0-489c-a5ad-a4284a2e73ee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/0b092b57b530fd6b2d9e9577dd299351e74df75f)\n\n**Note**: If you are running into errors with the code in this commit, update the initial value of the `Live`'s state's `coords` property to a non-`null` value.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394649,
+              "key": "a59743aa-6dbe-4610-a67f-dfc28ef83987",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a59743aa-6dbe-4610-a67f-dfc28ef83987",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following methods would you use to subscribe to the user's location using Expo? Select all that apply.",
+                "answers": [
+                  {
+                    "id": "a1505169600587",
+                    "text": "`watchPositionAsync`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505169607042",
+                    "text": "`subscribePositionAsync`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505169642626",
+                    "text": "`watchPosition`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505169643224",
+                    "text": "`listenForPositionChangeAsync`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 396410,
+              "key": "ed763c61-dc7e-4f1c-a986-14b3a2623195",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ed763c61-dc7e-4f1c-a986-14b3a2623195",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have styled `Live`, including the **undetermined**, **denied**, and **granted** conditions",
+                "I have created the `setLocation()`, `componentDidMount`, and ‘askPermission` methods in `Live`",
+                "I have updated the `render()` method in `Live`"
+              ],
+              "positive_feedback": "Fantastic!",
+              "video_feedback": null,
+              "description": "As we wrap up adding geolocation to the application, how are things looking on your end?"
+            },
+            {
+              "id": 394316,
+              "key": "1dc2c8f9-fd28-4e59-95de-dd6b42512c69",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\nIn this concept, we saw how to use Expo's `Location` property to watch the user's current location using `watchPositionAsync`. For further reading, feel free to check out the [official documentation](https://docs.expo.io/versions/latest/sdk/location.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 394157,
+          "key": "864d715b-ee67-461a-9600-6c21097d74ce",
+          "title": "Animations",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "864d715b-ee67-461a-9600-6c21097d74ce",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394652,
+              "key": "8711a9c8-9032-491f-a380-648c049b48f2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Animations",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394318,
+              "key": "7303503f-688e-48c0-8f5a-ec87325a5f75",
+              "title": "Introduction to Animated",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "lyM8LcmrdS8",
+                "china_cdn_id": "lyM8LcmrdS8.mp4"
+              }
+            },
+            {
+              "id": 394319,
+              "key": "b5131ce9-8e7e-4166-a2e4-5786c4f11f3f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Animations are a fundamental aspect of any native application. Because of this, React Native comes built in with an animations library called `Animated`. The whole idea of Animated is that it \"focuses on declarative relationships between inputs and outputs, with configurable transforms in between, and simple start/stop methods to control time-based animation execution.\" In other words, Animated allows you to establish different types of transformations on specific values. For example, you could easily animate an image's `opacity` property from 0 to 1, giving the effect that the image is slowly appearing. \n\nThere are three types of animation configurations that you have access to out of the box with Animated. They are `decay`, `spring`, and `timing`. Again, all three of these allow you to transform a specific value, but each differ in how that value is transformed: \"decay\" will start with an initial velocity and gradually slow to a stop, \"spring\" provides a normal spring type of animation, and \"timing\" animates a value of a specified time. \n\nLet's take a look at some of these in action!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394320,
+              "key": "4959c643-10b4-4308-8dd1-29bb3066ca63",
+              "title": "Animated",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "H1LJ3C8yzuc",
+                "china_cdn_id": "H1LJ3C8yzuc.mp4"
+              }
+            },
+            {
+              "id": 394723,
+              "key": "d7f5c632-f1fe-44a4-a8f2-2c257c475003",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/7a701a6fbe7d0331e3ae8cce7899d55ce9653bd3)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394322,
+              "key": "8f91e1d6-8d19-40d8-98e6-e01474bddaab",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️ Cautions: Animations ⚠️\n\n> Once you fully grasp the Animated API, a whole new world will open up to you. It sounds great, but this can be a double-edged sword. It's a great thing because you now have the ability to enhance the feel of your application with animations. However, with great power comes great responsibility. \n\n> The goal of having animations is to add to the user's experience, not distract from it. By keeping this in mind whenever you're adding animations to your app, not only will your app perform better -- you'll also minimize the risk of ruining your user's experience with unnecessary animations.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394655,
+              "key": "060b30d9-c82b-4d70-b0ca-810d4065dc8c",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "060b30d9-c82b-4d70-b0ca-810d4065dc8c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Animated comes with three built in animation configurations. Please select all that apply: ",
+                "answers": [
+                  {
+                    "id": "a1505170031854",
+                    "text": "`Animated.timing`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505170035351",
+                    "text": "`Animated.ease`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505170035880",
+                    "text": "`Animated.spring`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505170036463",
+                    "text": "`Animated.decay`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 396419,
+              "key": "1df3577e-e209-4c1a-8107-4647013da86a",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1df3577e-e209-4c1a-8107-4647013da86a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have added animations to directional changes in `Live` (e.g., from `North West` to `West`)"
+              ],
+              "positive_feedback": "Fantastic!",
+              "video_feedback": null,
+              "description": "Time for a _quick_ check-in!"
+            },
+            {
+              "id": 394323,
+              "key": "890cea89-b30a-40a8-b0bc-db41938ddac1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\nIn this section we learned how to improve your application's UX by using React Native's `Animated` library to add thoughtful animations. For more reading on Animated, you can view the [official documentation](https://facebook.github.io/react-native/docs/animated.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 394158,
+          "key": "b7e96b91-0309-46fc-af2a-83109d86b27a",
+          "title": "Local Notifications",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b7e96b91-0309-46fc-af2a-83109d86b27a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394656,
+              "key": "1eec35ea-7cc7-4053-8c4b-2b6b4b8459bd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Local Notifications",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394324,
+              "key": "4c86b927-1101-4e6a-91dd-1bc0d0ca72d3",
+              "title": "Introduction to Local Notifications",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "knsXBVw_U84",
+                "china_cdn_id": "knsXBVw_U84.mp4"
+              }
+            },
+            {
+              "id": 394325,
+              "key": "86e8723e-c05a-4cd6-a87b-eb47cb423140",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When dealing with notifications, it's important to understand that there are two different types: **push notifications**, and **local notifications**. \n\nLocal notifications do not use or require any external infrastructure; they happen entirely on the device itself. That means that the only requirement for the device to display the notification is that the device is on. On the other hand, push notifications require you to have a server which handles pushing the notification to your user's devices when a certain event occurs. \n\nBut since we're not incorporating an external server, and all the logic about when we should show the notification can be done on the phone itself -- local notifications will be the most ideal for our application. Let's see how it's done!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 410027,
+              "key": "9782d86f-8f8b-4f13-96c8-17a40026f3cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️ Notifications on iOS ⚠️\n\n> Before we jump in, note that with iOS, notifications (both push notifications and local notifications) **do not** appear at the top of the screen automatically if the application is in the foreground. Moreover, push notifications **do not** function in the iOS simulator (whether or not Expo is used).\n\n> For more information, check out [this post](https://forums.expo.io/t/psa-reminder-notifications-in-ios-foregrounded-apps/641) in the Expo forums. This issue does not appear when working with notifications on Android.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394326,
+              "key": "5b914d29-0e85-4254-a43d-6a0f8170d65f",
+              "title": "SetLocalNotification",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Qp7OpUgkhsQ",
+                "china_cdn_id": "Qp7OpUgkhsQ.mp4"
+              }
+            },
+            {
+              "id": 410018,
+              "key": "b2c405d8-615e-4009-b9a2-2f14a6156b4e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️ scheduleLocalNotificationAsync ⚠️ \n\n> In the previous video, `scheduleLocalNotificationAsync` should have been used instead of the erroneous `scheduleLocalNotificationsAsync` (note that \"Notification\" is pluralized in the incorrect version). \n\n> The following commit contains the correct version in `helpers.js`. For additional information, feel free to check out [this article](https://docs.expo.io/versions/latest/sdk/notifications.html#exponotificationsschedulelocalnotificationasynclocalnotification-schedulingoptions) in the Expo documentation. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394717,
+              "key": "500ffb3f-67a1-4e17-aecf-73d35a17a08a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/blob/setLocalNotification/utils/helpers.js)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394327,
+              "key": "4c2d0461-b866-4721-966b-6d1054201d47",
+              "title": "UseLocalNotification",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sGdXitMsRTE",
+                "china_cdn_id": "sGdXitMsRTE.mp4"
+              }
+            },
+            {
+              "id": 394718,
+              "key": "49ec92fd-88d1-4688-8271-de254fe836e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/63778456f674355e40044c673f4b966ebd446866)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394658,
+              "key": "e2d7e62f-3757-4eef-a857-0f5121e5490a",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e2d7e62f-3757-4eef-a857-0f5121e5490a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What's the API for scheduling future local notifications with Expo?",
+                "answers": [
+                  {
+                    "id": "a1505170162684",
+                    "text": "`Notifications.scheduleNotification`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505170165888",
+                    "text": "`Notifications.scheduleLocalNotificationAsync`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505170167767",
+                    "text": "`Notifications.futureLocalNotificationAsync`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505170168262",
+                    "text": "`Notifications.scheduleNotificationAsync`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 396424,
+              "key": "48156977-7314-4aa3-9b8c-6d516b0078c0",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "48156977-7314-4aa3-9b8c-6d516b0078c0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have created the `clearlocalNotification()` helper function",
+                "I have created the `createNotification()` helper function",
+                "I have created the `setLocalNotification()` helper function",
+                "I have updated `App`",
+                "I have updated `AddEntry`"
+              ],
+              "positive_feedback": "Fantastic!",
+              "video_feedback": null,
+              "description": "Almost there! How did local notifications go?"
+            },
+            {
+              "id": 394329,
+              "key": "e22b1ea9-87c7-4816-8751-7c31051fa113",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\nIn this section, you learned how to add local notifications to your app using Expo's `Notifications` property. For further reading, you can visit the [official documentation](https://docs.expo.io/versions/latest/sdk/notifications.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 394159,
+          "key": "d2f62ac2-1c7d-4edd-bba9-e7ffd23797e3",
+          "title": "Handling Photos",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d2f62ac2-1c7d-4edd-bba9-e7ffd23797e3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394661,
+              "key": "16936112-7c78-48d1-aca6-72d69700096c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Handling Photos",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394330,
+              "key": "e878b228-611f-42cd-b925-2386400c32c0",
+              "title": "Introduction to Handling Photos",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WVCmP3-0_ic",
+                "china_cdn_id": "WVCmP3-0_ic.mp4"
+              }
+            },
+            {
+              "id": 394331,
+              "key": "4aa843fd-b875-485e-91d4-8c0a3a08f8df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "At this point it shouldn't be a surprise that Expo provides a nice JavaScript abstraction over the native iOS and Android approaches to accessing photos from the device's photo gallery. The name of this property is `ImagePicker` and it does exactly what you would expect: \"Provides access to the system's UI for selecting images from the phone's photo library or taking a photo with the camera.\"\n\nWe won't be adding any of this functionality to the UdaciFitness app we're building, but in the next video we will walk through how to use `ImagePicker` just in case you'll need it for a future project. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394332,
+              "key": "71681bd8-f317-4b2b-a690-2960f0d489e5",
+              "title": "Photos Fun",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fAqI8iGAgiQ",
+                "china_cdn_id": "fAqI8iGAgiQ.mp4"
+              }
+            },
+            {
+              "id": 394663,
+              "key": "a9999452-6eaf-49a7-8e07-3d75f2abedbb",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a9999452-6eaf-49a7-8e07-3d75f2abedbb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What's the method for launching the UI for the device's image gallery?",
+                "answers": [
+                  {
+                    "id": "a1505170356685",
+                    "text": "`Image.launchImageLibraryAsync`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505170359877",
+                    "text": "`ImagePicker.launchImageGalleryAsync`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505170360596",
+                    "text": "`Image.launchImageGallryAsync`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505170361238",
+                    "text": "`ImagePicker.launchImageLibraryAsync`",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 394334,
+              "key": "29541020-5eb2-4c51-bbe5-35cd48c024fc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\nIn this section, you learned about Expo's `ImagePicker` component to grab images from the phone's photo gallery. For more information, you can read the [official documentation](https://docs.expo.io/versions/latest/sdk/imagepicker.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 394160,
+          "key": "ae96e81c-9da6-4f61-8a61-3754361e1afa",
+          "title": "App Store Preparation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ae96e81c-9da6-4f61-8a61-3754361e1afa",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394664,
+              "key": "7573d254-8e96-4145-9bca-1a7b9a94ac6a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## App Store Preparations",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394335,
+              "key": "6b3c084d-bac9-41e9-99ca-96caa7e3d0d9",
+              "title": "Preparing for the App Stores",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_tyCx2yAkc0",
+                "china_cdn_id": "_tyCx2yAkc0.mp4"
+              }
+            },
+            {
+              "id": 394336,
+              "key": "1d99551a-88cc-45c4-8c48-f28d7f2608fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When you submit an app to either app store, there is more information you need to submit than just the app itself. For example, you need details such as the app description, icon, etc. Luckily for us, Expo make it easy to specify these sorts of things just by editing the `app.json` file at the root of our app folder. Here's an example of configurations we'll be adding in our UdaciFitness app:\n\n```js\n{\n  \"expo\": {\n    \"sdkVersion\": \"19.0.0\",\n    \"orientation\": \"portrait\",\n    \"name\": \"Udacifitness\",\n    \"description\": \"The best triathlon training app in the world.\",\n    \"slug\": \"udacifitness\",\n    \"version\": \"1.0\",\n    \"icon\": \"https://maxcdn.icons8.com/Color/PNG/512/Sports/triathlon-512.png\",\n    \"notification\": {\n      \"icon\": \"http://www.student-scholarships.com/images/made/img/featured/nav_basketball_45_45.png\"\n    },\n    \"ios\": {\n     \"bundleIdentifier\": \"org.udacifitness.exp\",\n    },\n    \"android\": {\n     \"package\": \"org.udacifitness.exp\",\n    }\n  },\n}\n```\n\nLet's go ahead and add this to our app!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394337,
+              "key": "c56b94f4-f1a4-4efd-b904-b76bbada0714",
+              "title": "App-Prep",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4rcPX-bIneE",
+                "china_cdn_id": "4rcPX-bIneE.mp4"
+              }
+            },
+            {
+              "id": 394707,
+              "key": "5dba0ad0-2f05-4aa1-877c-58d489fe31cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-UdaciFitness-complete/commit/ca00e023b9c01139efdfb54d7dfa9e18c75b4297)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 396427,
+              "key": "9540ba58-6055-466b-b750-8f215d95a6a2",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9540ba58-6055-466b-b750-8f215d95a6a2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have added application details to `app.json`"
+              ],
+              "positive_feedback": "Fantastic!",
+              "video_feedback": null,
+              "description": "This is the final check-in!"
+            },
+            {
+              "id": 394665,
+              "key": "2b08048a-3682-46af-845f-fdc702c0efe6",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2b08048a-3682-46af-845f-fdc702c0efe6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which file do you need to change in order to configure your application for the app store?",
+                "answers": [
+                  {
+                    "id": "a1505170522097",
+                    "text": "app.json",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1505170527078",
+                    "text": "config.json",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505170528553",
+                    "text": "app.js",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1505170529295",
+                    "text": "config.js",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 394339,
+              "key": "6dbd9c46-632b-4e22-9da7-8493b7a68ed8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## What are .apk and .ipa Files?\n\nBefore you submit your application to either app store, you need to \"package\" it appropriately. The iOS App Store will ask you for a *.ipa* (\"iOS App Store Package\") file and the Android Google Play store will ask you for a *.apk* (\"Android Application Package\") file. When you create either an ipa or a apk file, you're essentially creating a bundle of all of the necessary information that either App store needs in order to process and run your application. \n\nThe easiest way to generate both the .apk and the .ipa files is to use Expo's `exp` CLI. First, run `npm install -g exp`. Once that's installed (and after you've configured your `app.json` file), you can run `exp build:ios` to build your .ipa file, and `exp build:android` to build your .apk file.\n\nNote that these will take anywhere from 10-20 minutes to build, so you'll need to be patient. To check the status of the build you can run `exp build:status`. Eventually that command will give you a URL where you can go to download either your .ipa or .apk files.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394340,
+              "key": "a7cd7a47-d720-4481-8cdd-6164a2f55570",
+              "title": "Generating .apk and .ipa Files",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IryVgEQ0SvE",
+                "china_cdn_id": "IryVgEQ0SvE.mp4"
+              }
+            },
+            {
+              "id": 394341,
+              "key": "6d450c0a-7086-456d-a11b-9a70e78b0341",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## ⚠️ The Rest of the Way ⚠️\n\n> The hardest part about uploading your application to either app store is generating a .ipa or .apk file. Because we covered that in the previous section, we're not going to cover the entire process of actually uploading your app. The following documents should help you: for iOS, [Uploading a Build for an App](https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/UploadingBinariesforanApp.html#//apple_ref/doc/uid/TP40011225-CH38-SW1) and for Android, [Upload an App](https://support.google.com/googleplay/android-developer/answer/113469?hl=en).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 394342,
+              "key": "f0ac5f12-e44a-4e63-ac0b-94ffdf5f48b9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Summary\n\nIn this section we learned about preparing your application for the app store and generating .apk and .ipa files. For further reading, feel free t ocheck out [Building Standalone Apps with Expo](https://docs.expo.io/versions/latest/guides/building-standalone-apps.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 394161,
+          "key": "36a867e8-3324-4838-870b-d9dcc8ce7821",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "36a867e8-3324-4838-870b-d9dcc8ce7821",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394343,
+              "key": "7bbc5e7d-dbc8-4a7a-b5a0-a2d0d1229385",
+              "title": "Native Features Lesson Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "PRU2urbTxxo",
+                "china_cdn_id": "PRU2urbTxxo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 394162,
+          "key": "53dcace1-abcb-474b-8efb-699fcce6c0b9",
+          "title": "Course Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "53dcace1-abcb-474b-8efb-699fcce6c0b9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 394799,
+              "key": "a6773b1c-2b09-4431-a1c5-2ea8869ac8c8",
+              "title": "Course Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SZrLiGBApGo",
+                "china_cdn_id": "SZrLiGBApGo.mp4"
+              }
+            },
+            {
+              "id": 688774,
+              "key": "bc195a4d-faf9-4fcb-965f-7f26bbfd54a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Here's how what you've accomplished in the program thus far maps to your career:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 688775,
+              "key": "34f45277-062f-4ef7-9af0-b67d0879d811",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2018/July/5b60f7e7_screen-shot-2018-07-31-at-4.59.14-pm/screen-shot-2018-07-31-at-4.59.14-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/34f45277-062f-4ef7-9af0-b67d0879d811",
+              "caption": "",
+              "alt": "",
+              "width": 700,
+              "height": 600,
+              "instructor_notes": null
+            },
+            {
+              "id": 730213,
+              "key": "29ed1c2b-22b9-43f6-9df9-2cddb0840aa7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Research\n\n* [11 Mistakes I’ve Made During React Native / Redux App Development](https://medium.com/dailyjs/11-mistakes-ive-made-during-react-native-redux-app-development-8544e2be9a9)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 688922,
+              "key": "ac836d7c-421e-4984-ac2a-2d5b298c0382",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now, it's time to practice your newly acquired React Native skills by building a React Native project on your own!",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

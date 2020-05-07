@@ -1,0 +1,803 @@
+{
+  "data": {
+    "lesson": {
+      "id": 571863,
+      "key": "abd2152d-c9bc-4a09-84cf-3190e96f8e63",
+      "title": "Asynchronous Redux",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You’ll learn to better abstract asynchronous events by creating your own custom Thunk middleware and adding it to your store.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/abd2152d-c9bc-4a09-84cf-3190e96f8e63/571863/1544474099769/Asynchronous+Redux+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/abd2152d-c9bc-4a09-84cf-3190e96f8e63/571863/1544474093337/Asynchronous+Redux+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 571814,
+          "key": "a1ef812c-4c1b-4a02-b39a-980c7e630515",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a1ef812c-4c1b-4a02-b39a-980c7e630515",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572457,
+              "key": "c7f16e92-1e09-4bab-a36a-b60793657aa1",
+              "title": "Asynchronous Redux Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wmuL0wNvaZs",
+                "china_cdn_id": "wmuL0wNvaZs.mp4"
+              }
+            },
+            {
+              "id": 571813,
+              "key": "227131c3-dcf0-4660-a08a-01d164410f17",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, we're going to be working with a (simulated) remote database. We'll use a provided API to interact with this database.\n\nThe important skill that you'll be learning in this lesson is how to make _asynchronous requests in Redux_. If you recall, the way Redux works right now is:\n\n* `store.dispatch()` calls are made\n* if the Redux store was set up with any middleware, those functions are run\n* then the reducer is invoked\n\nBut how do we handle the case where we need to interact with an external API to fetch data. For example, what if our Todos app had a button that would load existing Todos from a database? If we dispatch that action, we currently do not have a way to wait for the list of remote Todo items to be returned.\n\nAfter going through this lesson, you'll be able to make asynchronous requests and work with remote data in a Redux application.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571829,
+          "key": "50c2530c-fa04-444f-8405-fd8323405a7d",
+          "title": "External Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "50c2530c-fa04-444f-8405-fd8323405a7d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 571815,
+              "key": "973c8b49-6e3a-41ed-9607-45339c9bedd1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We're going to use a database to interact with our Todos application. We're simulating the database to keep that aspect of the project less complex. This is the HTML script tag you need to add the database to your application which we'll use in the following video:\n\n```html\n<script src=\"https://tylermcginnis.com/goals-todos-api/index.js\"></script>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572650,
+              "key": "e994ab9a-92b2-45e9-a3e1-3baf663f9e6d",
+              "title": "Using A Remote API",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "diArZ09Mw1U",
+                "china_cdn_id": "diArZ09Mw1U.mp4"
+              }
+            },
+            {
+              "id": 571817,
+              "key": "d56031da-ec52-49c7-9d4a-4085feba2f8d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/ac11f181a90e77a21478e59c258d720a658ec869)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571818,
+              "key": "f4b63b6b-e2cb-4527-85d5-d6f1ca48bba2",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f4b63b6b-e2cb-4527-85d5-d6f1ca48bba2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have linked to the API in my `index.html` file.",
+                "I have checked out what methods the API provides.",
+                "I have examined the API to see what each method should be called with/what they return."
+              ],
+              "positive_feedback": "Great work, keep going!",
+              "video_feedback": null,
+              "description": "Working with a new [API](https://tylermcginnis.com/goals-todos-api/index.js) can be a bit tricky. Make sure to check off each of the following."
+            },
+            {
+              "id": 572658,
+              "key": "5e453bbc-a99f-4fc7-8929-0b42e71e2cff",
+              "title": "Which Method?",
+              "semantic_type": "ValidatedQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5e453bbc-a99f-4fc7-8929-0b42e71e2cff",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Take a look at the [API](https://tylermcginnis.com/goals-todos-api/index.js). Which method will get all Goals?",
+                "matchers": [
+                  {
+                    "expression": "fetchGoals"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 571820,
+              "key": "4401ed42-cb71-4766-8d8e-4e8c86de3471",
+              "title": "How long will it run?",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4401ed42-cb71-4766-8d8e-4e8c86de3471",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "From the [API](https://tylermcginnis.com/goals-todos-api/index.js), how long will the `saveTodo` method run before stopping itself?",
+                "answers": [
+                  {
+                    "id": "a1522106184280",
+                    "text": "1 second",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522106199680",
+                    "text": "0.7 seconds",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522106200773",
+                    "text": "0.5 seconds",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522106205988",
+                    "text": "0.3 seconds",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 728838,
+              "key": "97c0be04-bed2-4118-b80b-1bcfdff70d2c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## 🔨Task\nAdd the following behavior to the project:\n\n* When the app loads, `console.log` all of the todos and all of the goals that reside in our fake database.\n\n#### Solution Code\n\n<div class=\"react-quiz-solution\">\nOnce you've tried your hand at tackling the task above, hover your mouse here for a possible solution. \n<style>\n.react-quiz-solution .react-quiz-code-snippet { display: none;}\n.react-quiz-solution:hover .react-quiz-code-snippet { display: block;}\n</style>\n<pre class=\"react-quiz-code-snippet\">\nclass App extends React.Component {\n      componentDidMount () {\n        const { store } = this.props\n\n        Promise.all([\n          API.fetchTodos(),\n          API.fetchGoals()\n        ]).then(([ todos, goals ]) => {\n          console.log('Todos', todos)\n          console.log('Goals', goals)\n        })\n        ...\n}\n</pre>\n</div>",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571823,
+              "key": "2881a972-9f94-493a-830b-bf04a8b12730",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Promise-Based API\n\nThe methods in the provided API are all Promise-based. Let's take a look at the `.fetchTodos()` method:\n\n```js\nAPI.fetchTodos = function () {\n  return new Promise((res, rej) => {\n    setTimeout(function () {\n      res(todos);\n    }, 2000);\n  });\n};\n```\n\nSee how we're creating and returning a new `Promise()` object?\n\nIn the task above, you could've just fetched all of our todos and then all of our Goals, but that's serial and is just making the user wait an unnecessarily long amount of time. Since the API is Promise-based, we can use `Promise.all()` to wait until all Promises have resolved before displaying the content to the user.\n\nPromises are asynchronous, and this lesson is all about working with asynchronous data and asynchronous requests. If you're feeling a little unsure about Promises, check out [the Promise documentation on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or check out our [JavaScript Promises course](https://www.udacity.com/course/javascript-promises--ud898).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572663,
+              "key": "d85b9c9f-a93c-49da-91a1-ddab12c48aff",
+              "title": "Handling Initial Data",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "94ipRgIS9CY",
+                "china_cdn_id": "94ipRgIS9CY.mp4"
+              }
+            },
+            {
+              "id": 571822,
+              "key": "5ec09a24-f42d-41c0-941c-87768247ef2c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/98d9b5468262eb4ea786cb55c3d68ed9de78af09)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572665,
+              "key": "5188b61b-0d23-467e-b23a-afd3ccba34f1",
+              "title": "Flash Of No Data",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KS0xPETRzRA",
+                "china_cdn_id": "KS0xPETRzRA.mp4"
+              }
+            },
+            {
+              "id": 571825,
+              "key": "b1cd3214-2d06-42fa-bbbb-5f1011c0f43b",
+              "title": "Implementing a Loading Indicator",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b1cd3214-2d06-42fa-bbbb-5f1011c0f43b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "At this point, when we refresh our app, only the UI seems to load. There is a noticeable delay before any of the data (i.e., todos and goals) actually appears on the screen. To ensure a smooth experience for users, it would be great if we can have a loading indicator on the screen as content is being fetched.\n\nHow would you implement this feature? Should this be tracked in the state? Do we need to make a new component? What about our reducers -- should they require any new logic? Please write your thoughts below."
+              },
+              "answer": {
+                "text": "Thanks for your response.",
+                "video": null
+              }
+            },
+            {
+              "id": 728868,
+              "key": "44b97082-d919-41b9-93f0-3b231fb1cf29",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "💫Remember that the `render()`  has to be a pure function and it runs before `componentDidMount()`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572670,
+              "key": "c779ea22-f33d-499b-abfe-6932f1656b6d",
+              "title": "Loading States With Redux",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "w5fQmGBKn1g",
+                "china_cdn_id": "w5fQmGBKn1g.mp4"
+              }
+            },
+            {
+              "id": 571827,
+              "key": "4fa0983d-9af6-4961-8fb3-f03712990a32",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/6bb7f0d521986a316b9aa45cac4f2fae886c4bfc)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571828,
+              "key": "736d269e-3a3c-4d41-848c-74bf440f62d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Summary\n\nIn this section, we looked at how to work with an external API. We added a new action (`RECEIVE_DATA`), created a new action creator, and built a new reducer...all to handle the different states our app can be in while getting our remote data:\n\n* before the app has the data\n* while the app is fetching the data\n* after the data has been received\n\nIn the next section, we'll look at how to optimistically update the UI based on the API actions that are performed.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571839,
+          "key": "442b5345-d5d5-4ba1-b2b4-a8b5e3cd86f3",
+          "title": "Optimistic Updates",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "442b5345-d5d5-4ba1-b2b4-a8b5e3cd86f3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 571830,
+              "key": "a56b6223-2a44-4630-ae89-59a93393e908",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Optimistic Updates\n\nWhen dealing with asynchronous requests, there will always be some delay involved. If not taken into consideration, this could cause some weird UI issues. For example, let’s say when a user wants to delete a todo item, that whole process from when the user clicks“delete” to when that item is removed from the database takes two seconds. If you designed the UI to _wait for the confirmation from the server_ to remove the item from the list on the client, your user would click “delete” and then would have to wait for two seconds to see that update in the UI. That’s not the best experience.\n\nInstead what you can do is a technique called **optimistic updates**. Instead of waiting for confirmation from the server, just instantly remove the user from the UI when the user clicks “delete”, then, if the server responds back with an error that the user wasn’t actually deleted, you can add the information back in. This way your user gets that instant feedback from the UI, but, under the hood, the request is still asynchronous. \n\nWe’ll see this technique in the upcoming screencasts. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572674,
+              "key": "69ebadb0-182d-4414-8b8b-949edec1f337",
+              "title": "Optimistically Deleting Items",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "l-wRpOTFOys",
+                "china_cdn_id": "l-wRpOTFOys.mp4"
+              }
+            },
+            {
+              "id": 571832,
+              "key": "ce323bf6-7530-4adc-8774-8e0dc4514b95",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/5186502ac6461c2e88ba1dbf1ec158764c84823c)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571833,
+              "key": "03e4fcfb-2258-4150-9d0a-bffc38de0281",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "03e4fcfb-2258-4150-9d0a-bffc38de0281",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have updated the `toggleItem` method to make an API call to `saveTodoToggle()`",
+                "My updated `toggleItem` optimistically toggles the item and then makes the API call.",
+                "My updated `toggleItem` handles API errors by setting the item back to its original state."
+              ],
+              "positive_feedback": "Awesome, keep up the good work!",
+              "video_feedback": null,
+              "description": "Now it's your turn. Why don't you try updating the `toggleItem` method yourself."
+            },
+            {
+              "id": 572676,
+              "key": "f99800f7-0e25-4efe-9702-a3a88d416e33",
+              "title": "Optimistically Toggling Todos",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7nicdmL-1k4",
+                "china_cdn_id": "7nicdmL-1k4.mp4"
+              }
+            },
+            {
+              "id": 571835,
+              "key": "56a0eb9f-44b4-40fd-9144-159c47e88efb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/89a31404efd2482256e4ce4fbf698fee4afda100)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572677,
+              "key": "0fddf5d9-c996-407c-b53d-bb1908cf1d49",
+              "title": "Persisting Items",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-uooq_C6jqM",
+                "china_cdn_id": "-uooq_C6jqM.mp4"
+              }
+            },
+            {
+              "id": 571837,
+              "key": "b08c6b7f-de91-4360-b9f4-6949ca374346",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/d4732ee5af9cf1ee87b5bd42ec46034b38de4aa3)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571838,
+              "key": "68ffbd54-305a-43fb-b46e-d1d77eaedc69",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Summary\n\nIn this section, swapped more functionality over to using the API. We now use the database to:\n\n* remove Todos and Goals\n* toggle the state of a Todos\n* save a new Todo or Goal\n\nWhat's important is that for the removing and toggling, we're doing these actions _optimistically_. So we're assuming the change will succeed correctly on the server, so we update the UI immediately, and then only roll back to the original state if the API returns an error. Doing optimistic updates is better because it provides a more realistic and dynamic experience to the user.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571850,
+          "key": "412e741d-bbfb-424c-8559-d2ae48ac62f0",
+          "title": "Thunk",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "412e741d-bbfb-424c-8559-d2ae48ac62f0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572464,
+              "key": "a3f78153-0f2f-4048-ade8-10937ef3c62b",
+              "title": "Mixed Logic - Thunk",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WHbfLpT0Ftg",
+                "china_cdn_id": "WHbfLpT0Ftg.mp4"
+              }
+            },
+            {
+              "id": 571841,
+              "key": "ce52fa2b-c3e9-4bcc-b914-cc77e6e2c449",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Currently, our code for removing a todo item looks like this:\n\n```js\nremoveItem(item) {\n  const { dispatch } = this.props.store\n\n  dispatch(removeTodoAction(item.id))\n\n  return API.deleteTodo(item.id)\n    .catch(() => {\n      dispatch(addTodoAction(item))\n      alert('An error occured. Try again.')\n    })\n  }\n}\n```\n\nDo you see how we are mixing our component-specific code with the API-specific code? If we move the data-fetching logic from our component to the action creator, our final `removeItem()` method might look like this:\n\n```js\nremoveItem(item) {\n  const { dispatch } = this.props.store\n\n  return dispatch(handleDeleteTodo(item))\n}\n```\n\nThis is much better! The `removeItem()` function only has one task; dispatching that a specific item needs to be deleted. \n\nHowever, we need to make it so our `handleDeleteTodo` action creator makes an asynchronous request before it returns the action. What if we just return a promise from `handleDeleteTodo` that resolves with the action once we get the data? Well, that won't quite work; as of right now, every action creator needs to return an _object_, not a promise:\n\n```js\nfunction asyncActionCreator (id) {\n  return {\n    type: ADD_USER,\n    user: ??\n  };\n}\n```\n\nWhat if we used our knowledge of functional programming along with our knowledge of Redux middleware to solve this? Remember that middleware sits _between_ the dispatching of an action, and the running of the reducer. The reducer expects to receive an action object, but what if, instead of returning an object, we have our action creator return a function?\n\nWe could use some middleware to check if the returned action is either a function or an object. If the action is an object, then things will work as normal - it will call the reducer passing it the action. However, if the action is a function, it can invoke the function and pass it whatever information it needs (e.g. a reference to the `dispatch()` method). This function could do anything it needs to do, like making asynchronous network requests, and can then dispatch a _different_ action (that returns a regular object) when its finished.\n\nAn action creator that returns a function might look something like this:\n\n```js\nfunction asyncActionCreator (id) {\n  return (dispatch) => {\n    return API.fetchUser(id)\n    .then((user) => {\n      dispatch(addUser(user));\n    });\n  };\n}\n\n```\n\nNotice that we’re no longer returning the action itself! Instead, we’re returning a function that is being passed dispatch. We then call this function when we have the data. \n\nNow, this won’t work out of the box, but there's some good news: we can add some middleware to our app to support it! Let’s go ahead and see what that actually looks like.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571842,
+              "key": "16d888fa-7f95-4b50-80b0-b46c757239f6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We'll be adding the [redux-thunk library](https://github.com/gaearon/redux-thunk) in the following video, so you'll need this:\n\n```html\n<script src=\"https://unpkg.com/redux-thunk@2.2.0/dist/redux-thunk.min.js\"></script>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572680,
+              "key": "a3764d04-c287-4cb2-a178-42e94d25ff33",
+              "title": "Custom Thunk",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rrEV_gNSvmM",
+                "china_cdn_id": "rrEV_gNSvmM.mp4"
+              }
+            },
+            {
+              "id": 571844,
+              "key": "e10493dd-5bc3-4183-8734-7bf1433d3cab",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/524066483d154851d417e6567e50edca9b85109b)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 728941,
+              "key": "0e931ccd-bd84-4b3c-8465-7350dbacd95d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "💫Remember middleware executes in the order it is listed in the `applyMiddleware()` function.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571845,
+              "key": "5395c583-696f-450c-b1d3-2699e3b8af0b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Benefits of Thunks\n\nOut of the box, the Redux store can only support the _synchronous_ flow of data. Middleware like **thunk** helps support _asynchronicity_ in a Redux application. You can think of thunk as a wrapper for the store’s `dispatch()` method; rather than returning action objects, we can use thunk action creators to dispatch functions (or even or Promises).\n\nWithout thunks, synchronous dispatches are the default. We _could_ still make API calls from React components (e.g., using the `componentDidMount()` lifecycle method to make these requests) -- but using thunk middleware gives us a cleaner separation of concerns. Components don't need to handle what happens after an asynchronous call, since API logic is _moved away_ from components to action creators. This also lends itself to greater predictability, since action creators will become the source of every change in state. With thunks, we can dispatch an action only when the server request is resolved!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571846,
+              "key": "beeb225a-28b0-4288-a6c5-e7488533fe96",
+              "title": "Quiz: Benefits of thunks",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "beeb225a-28b0-4288-a6c5-e7488533fe96",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are the benefits of using thunk middleware?",
+                "answers": [
+                  {
+                    "id": "a1522106741886",
+                    "text": "Asynchronicity",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1522106756171",
+                    "text": "UI logic and data-fetching logic are together in one place",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522106766888",
+                    "text": "API logic remains in components",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1522106768030",
+                    "text": "Components don't need to handle what happens after asynchronous calls",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 572683,
+              "key": "fbac18dd-eacd-4ae2-b333-68e19e17791b",
+              "title": "Order of Operations",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fbac18dd-eacd-4ae2-b333-68e19e17791b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Take a look at this example:\n```js\nexport const fetchTodos = () => dispatch => (\n  TodoAPIUtil\n      .fetchTodos()\n      .then(todos => dispatch(receiveTodos(todos)))\n);\n```\n\nPlease place the following events in order of execution:"
+                },
+                "concepts_label": "Order",
+                "answers_label": "Event",
+                "concepts": [
+                  {
+                    "text": "1st",
+                    "correct_answer": {
+                      "id": "a1522106799037",
+                      "text": "API request occurs"
+                    }
+                  },
+                  {
+                    "text": "2nd",
+                    "correct_answer": {
+                      "id": "a1522106838681",
+                      "text": "API request is resolved"
+                    }
+                  },
+                  {
+                    "text": "3rd",
+                    "correct_answer": {
+                      "id": "a1522106841398",
+                      "text": "Thunk middleware invokes the function with `dispatch()`"
+                    }
+                  },
+                  {
+                    "text": "4th",
+                    "correct_answer": {
+                      "id": "a1522106842880",
+                      "text": "The action returned by `receiveTodos` is dispatched"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1522106799037",
+                    "text": "API request occurs"
+                  },
+                  {
+                    "id": "a1522106842880",
+                    "text": "The action returned by `receiveTodos` is dispatched"
+                  },
+                  {
+                    "id": "a1522106841398",
+                    "text": "Thunk middleware invokes the function with `dispatch()`"
+                  },
+                  {
+                    "id": "a1522106838681",
+                    "text": "API request is resolved"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 571848,
+              "key": "94b58109-81a3-40d9-9805-ba093f377e71",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Summary\n\nIf a web application requires interaction with a server, applying middleware such as **thunk** helps solve the issue of asynchronous data flow. Thunk middleware allows us to write action creators that return _functions_ rather than objects. \n\nBy calling our API in an action creator, we make the _action creator_ responsible for fetching the data it needs to create the action. Since we move the data-fetching code to action creators, we build a cleaner separation between our UI logic and our data-fetching logic. As a result, thunks can then be used to delay an action dispatch, or to dispatch only if a certain condition is met (e.g., a request is resolved). ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571849,
+              "key": "81c85203-d1ec-4b3c-bfa8-dcf524ba0cd1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Research\n\n* [Redux Thunk on GitHub](https://github.com/gaearon/redux-thunk)\n* [Async Flow from the Redux docs](http://redux.js.org/docs/advanced/AsyncFlow.html)\n* [Dan Abramov's Stack Overflow on Asynchronicity in Redux](http://stackoverflow.com/questions/35411423/how-to-dispatch-a-redux-action-with-a-timeout/35415559#35415559)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571860,
+          "key": "97c044e8-a0a4-48f5-ae0e-e837573de257",
+          "title": "Leveraging Thunks in our App",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "97c044e8-a0a4-48f5-ae0e-e837573de257",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572692,
+              "key": "31dc4bd3-0e8b-4016-bd54-c20ba77e3510",
+              "title": "Thunkify Goals",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WysYSogVCAo",
+                "china_cdn_id": "WysYSogVCAo.mp4"
+              }
+            },
+            {
+              "id": 571852,
+              "key": "809d0e1f-ffe8-423b-88bd-a7a29dba4090",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/f791da39440d43bcd3f24ed37fa078ecaf72cb97)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572696,
+              "key": "2b085633-ded5-4860-8a13-76a205e23bf5",
+              "title": "Thunkify Todos",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GAn1-rLDmYc",
+                "china_cdn_id": "GAn1-rLDmYc.mp4"
+              }
+            },
+            {
+              "id": 571854,
+              "key": "dc824c3a-bc91-4c8f-acfc-6280b3ae1079",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/6fb6208f7f67dfe601a8efa9de44a10208863be9)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 572697,
+              "key": "a6d887d1-3fe8-42c1-a15a-2407678cb1b9",
+              "title": "Thunkify Initial Data",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Bzn33iPkKDA",
+                "china_cdn_id": "Bzn33iPkKDA.mp4"
+              }
+            },
+            {
+              "id": 571856,
+              "key": "556635d0-5ed3-46d4-9382-a3c0295f9146",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[Here's the commit with the changes made in this video.](https://github.com/udacity/reactnd-redux-todos-goals/commit/e40512f5cd22b35c6461fa334636aaa1eb9f27d2)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571857,
+              "key": "926253bb-4f4b-4de2-a514-ce422ead6260",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "926253bb-4f4b-4de2-a514-ce422ead6260",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have converted my Goals to use thunks.",
+                "I have converted my Todos to use thunks.",
+                "I have converted the fetching of the initial data to use thunks."
+              ],
+              "positive_feedback": "Great work!",
+              "video_feedback": null,
+              "description": "Converting to thunks improves the responsibilities of the code. Make sure to check off each of the following:"
+            },
+            {
+              "id": 571858,
+              "key": "bd72815b-6aed-4e90-8b7a-f71bfa7bab00",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## More Asynchronous Options\n\nThe most common requests I get for this course are around more advanced data-fetching topics with Redux. I've resisted because typically they bring in _a lot_ of complexity, while the benefits aren't seen until your data-fetching needs become large enough. With that said, now that you have a solid foundation on Redux and specifically, asynchronous Redux, you'll be in a good position to read up on the different options to decide if any would work best for the type of application you're working on. I encourage to read up on both of the other (popular) options.\n\n* [Redux Promise](https://github.com/redux-utilities/redux-promise) - FSA-compliant promise middleware for Redux.\n* [Redux Saga](https://github.com/redux-saga/redux-saga) - An alternative side effect model for Redux apps",
+              "instructor_notes": ""
+            },
+            {
+              "id": 571859,
+              "key": "5f70cb9f-3169-4373-8500-b17840df8f1e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Summary\n\nIn this section, we used the thunk library that we installed in the previous section to make our code more singularly-focused and maintainable. We converted the:\n\n* Goals code to use thunks\n* Todos code to use \n* initial data fetching to use thunks ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 571862,
+          "key": "3d232736-8488-4237-9ab7-5baaa431e6ba",
+          "title": "Lesson Summary",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3d232736-8488-4237-9ab7-5baaa431e6ba",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 572465,
+              "key": "014f26cb-853f-4ab8-b68e-68745fc37c20",
+              "title": "Asynchronous Redux Summary",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "62vf5k7CvCo",
+                "china_cdn_id": "62vf5k7CvCo.mp4"
+              }
+            },
+            {
+              "id": 637925,
+              "key": "35f32449-3409-43a0-bb9b-4c2972257d6e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Lesson Challenge\n\nRead these articles: [Redux Thunk](https://blog.nojaf.com/2015/12/06/redux-thunk/), [Why do we need middleware for async flow in Redux?](https://stackoverflow.com/questions/34570758/why-do-we-need-middleware-for-async-flow-in-redux), and [Understanding how redux-thunk works](https://medium.com/@gethylgeorge/understanding-how-redux-thunk-works-72de3bdebc50). Answer the following questions and share your answers with your classmates:\n\n1) Why do we use middleware to perform asynchronous tasks in Redux apps?\n\n2) How do we use `redux-thunk` to make API requests in Redux apps?",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

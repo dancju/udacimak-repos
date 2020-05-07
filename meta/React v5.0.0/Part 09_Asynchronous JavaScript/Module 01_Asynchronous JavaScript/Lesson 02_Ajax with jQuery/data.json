@@ -1,0 +1,701 @@
+{
+  "data": {
+    "lesson": {
+      "id": 261280,
+      "key": "3cad9ae5-9def-458d-8c44-cc23cf7e37a3",
+      "title": "Ajax with jQuery",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you'll compare using `XHR` with using jQuery's Ajax method. You'll send and receive data using jQuery's Ajax methods and learn how jQuery's Ajax works under the hood.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/3cad9ae5-9def-458d-8c44-cc23cf7e37a3/261280/1516767519294/Ajax%20with%20jQuery%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/3cad9ae5-9def-458d-8c44-cc23cf7e37a3/261280/1516767509078/Ajax%20with%20jQuery%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 261281,
+          "key": "a32d21c3-25d5-40f9-a05f-a8db811cddf2",
+          "title": "The jQuery Library & Ajax",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a32d21c3-25d5-40f9-a05f-a8db811cddf2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261403,
+              "key": "f73a79e4-3e24-48b5-a61c-24ff97fb512b",
+              "title": "Ajax Call with $.ajax()?",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NFGrayBZOVM",
+                "china_cdn_id": "NFGrayBZOVM.mp4"
+              }
+            },
+            {
+              "id": 267969,
+              "key": "771fadf6-de3a-4cbb-9f3b-45c1e9d08639",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "jQuery is an incredibly popular JavaScript library that provides a lot of functionality right out of the box. It was created a number of years ago back when browsers hadn't joined together to standardize on functionality. jQuery made life easier for developers that were building websites that had to function in all of the major browsers by providing a unified interface. The developer would use jQuery-specific functions and then jQuery would figure out what code to run depending on the browser that was being used. \n\njQuery is just JavaScript, so you'd [download a current version](https://code.jquery.com/) and link to it with a regular `<script>` tag. Once it's been included it on the page, you've got this powerhouse of functionality right at your fingertips.\n\nNow that browsers have pretty much aligned, jQuery's usage is not as necessary as it was several years ago. However, one powerful tool that it provides is it's `ajax()` method.\nAs its name suggests, jQuery's `ajax()` method is used to handle all asynchronous requests.\n\nLet's see it in action.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267970,
+              "key": "686dc9b5-08ac-4be6-a985-045a932c4d1f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## Wanna Learn jQuery?\n> jQuery is incredibly popular and used by hundreds of thousands of sites. If you want dig deeper into this cool JavaScript library, check out our [Intro to jQuery](https://www.udacity.com/course/intro-to-jquery--ud245) course.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261287,
+          "key": "971d5fe1-d027-44ab-b029-0d8ce134607b",
+          "title": "jQuery's `ajax()` Method",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "971d5fe1-d027-44ab-b029-0d8ce134607b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261288,
+              "key": "a93692bc-52e8-4b3d-be7f-f26fef60e57d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nThe [`.ajax()` method](http://api.jquery.com/jquery.ajax/) is at the heart of all asynchronous requests for the entire jQuery library. There are a couple of ways you can call the `.ajax()` method:\n\n```js\n$.ajax(<url-to-fetch>, <a-configuration-object>);\n\n// or \n\n$.ajax(<just a configuration object>);\n```\n\nThe most common way to use the `.ajax()` method is with just the configuration object, since everything can be set inside the configuration object.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 267972,
+              "key": "818563c4-0dce-4912-9761-7480ab2a63dd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## What's a \"configuration object\"?\n\n> A configuration object is just a plain ol' JavaScript object that's used to configure something. For example:\n> \n>```js\n> var settings = {\n>    frosting: 'buttercream',\n>    colors: ['orange', 'blue'],\n>    layers: 2,\n>    isRound: true\n> };\n```\n>\n> ...the `settings` configuration object can be used in the imaginary `MakeCake` constructor function:\n>\n> ```js\n> const myDeliciousCake = MakeCake( settings );\n>```\n\n> Alternatively, the `settings` object could be passed in directly:\n> \n> ```js\n> const myDeliciousCake = MakeCake({\n>    frosting: 'buttercream',\n>    colors: ['orange', 'blue'],\n>    layers: 2,\n>    isRound: true\n> });\n>```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261289,
+              "key": "cae649a0-87c9-4618-9da1-ca8f1f82abd2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Making an Ajax call\n\njQuery's `.ajax()` method has to be incredibly versatile and powerful if it's what powers all of jQuery's asynchronous requests. A simple Ajax request would look like this:\n\n```js\n$.ajax({\n    url: 'https://swapi.co/api/people/1/'\n});\n```\n\nLet's test it out!\n\n1. go to the [jQuery website](http://jquery.com/)\n2. open up your browser's developer tools\n3. make sure the network traffic is being recorded\n     * in Chrome, switch to the network pane\n4. add the request above to the console\n5. ...aaaand run it!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273049,
+              "key": "75626212-e63d-4f3a-b01f-e3a1bf7013d0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58ba105b_ud109-l2-swapi-request/ud109-l2-swapi-request.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/75626212-e63d-4f3a-b01f-e3a1bf7013d0",
+              "caption": "_Running an asynchronous request in the console. The request is for a resource on SWAPI. The request is displayed in the network pane._",
+              "alt": null,
+              "width": 1280,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 267978,
+              "key": "bbf68dd5-9dcb-4828-8fd8-d41939f33af2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "So we can make a request with `.ajax()`, but we haven't handled the response yet.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261291,
+          "key": "9ddece95-4369-44d4-a080-ed581fa16340",
+          "title": "Handling The Returned Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9ddece95-4369-44d4-a080-ed581fa16340",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261292,
+              "key": "5400490b-4311-4bdb-b71a-8ee4b8b5682d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you recall from setting up an XHR object, the response was handled by a function. It's the same thing with the `.ajax()` method. We can *chain* on to `.ajax()` with a `.done()` method. We pass the `.done()` method a function that will run with the Ajax call is done!\n\n```js\nfunction handleResponse(data) {\n    console.log('the ajax request has finished!');\n    console.log(data);\n}\n\n$.ajax({\n    url: 'https://swapi.co/api/people/1/'\n}).done(handleResponse);\n```\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273050,
+              "key": "d184dfc5-21ea-436a-bac0-4b5053eac81b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58ba1097_ud109-l2-swapi-request-with-done/ud109-l2-swapi-request-with-done.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d184dfc5-21ea-436a-bac0-4b5053eac81b",
+              "caption": "_Asynchronous call set up with a `done` method to handle the response. The request is made, and then the response is logged to the console._",
+              "alt": null,
+              "width": 1280,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 261295,
+              "key": "37c3a0cc-751b-4302-b197-87803225508b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let's convert the existing, plain XHR call with jQuery's `.ajax()`. This is what the app currently has:\n\n```js\nconst imgRequest = new XMLHttpRequest();\nimgRequest.onload = addImage;\nimgRequest.open('GET', `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`);\nimgRequest.setRequestHeader('Authorization', 'Client-ID <your-client-id-here>');\nimgRequest.send();\n```\n\nA lot of this information is handled behind the scene by jQuery, so here's the first step in the conversion:\n\n```js\n$.ajax({\n    url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`\n}).done(addImage);\n```\n\nWith the jQuery code:\n\n* we do not need to create an XHR object\n* instead of specifying that the request is a `GET` request, it defaults to that and we just provide the URL of the resource we're requesting\n* instead of setting `onload`, we use the `.done()` method\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261296,
+              "key": "cede64ff-3d74-4659-b494-7f6a6f68ebe6",
+              "title": "Adding Headers To A `.Ajax()` Call",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cede64ff-3d74-4659-b494-7f6a6f68ebe6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "The only change that needs to be made is including the Client ID header along with the request so that Unsplash will verify the request. Why don't you check out [the API for the .ajax() method](http://api.jquery.com/jQuery.ajax/) and select the code below that correctly adds an \"Authorization\" header to the request.",
+                "answers": [
+                  {
+                    "id": "a1485302601990",
+                    "text": "$.ajax({<br>&nbsp;&nbsp;&nbsp;&nbsp;url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`<br>}).addHeader('Authorization', 'Client-ID 123abc456def')<br>.done(addImage);",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485302665712",
+                    "text": "$.ajax({<br>&nbsp;&nbsp;&nbsp;&nbsp;url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`     <br>&nbsp;&nbsp;&nbsp;&nbsp;setHeader: [['Authorization', 'Client-ID 123abc456def']] <br>}).done(addImage);",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485302700121",
+                    "text": "$.ajax({     <br>&nbsp;&nbsp;&nbsp;&nbsp;url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`     <br>&nbsp;&nbsp;&nbsp;&nbsp;authorization: 'Client-ID 123abc456def' <br>}).done(addImage);",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485302706701",
+                    "text": "$.ajax({     <br>&nbsp;&nbsp;&nbsp;&nbsp;url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`     <br>&nbsp;&nbsp;&nbsp;&nbsp;headers: {         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Authorization: 'Client-ID 123abc456def'     <br>&nbsp;&nbsp;&nbsp;&nbsp;} <br>}).done(addImage);",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 267979,
+              "key": "a61e9c09-e6d1-46c9-940e-7dee367660c0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The request should send perfectly now. Fantastic work! But there seem to be issues with the response and how it's handled.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261298,
+          "key": "78fc8a06-d10b-4f57-a8ba-29872e854113",
+          "title": "Cleaning up the Success Callback",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "78fc8a06-d10b-4f57-a8ba-29872e854113",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261299,
+              "key": "a6cdb61b-c6ab-49be-b5a8-5901fe75698a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Content isn't getting added to the page jQuery detects the response and if it's JSON, it will automatically convert it to JavaScript for us. How awesome is that! So we only need to make a few tweaks to the existing code. Here's what it currently is:\n\n```js\nfunction addImage() {\n    const data = JSON.parse(this.responseText);\n    const firstImage = data.results[0];\n\n    responseContainer.insertAdjacentHTML('afterbegin', `<figure>\n            <img src=\"${firstImage.urls.small}\" alt=\"${searchedForText}\">\n            <figcaption>${searchedForText} by ${firstImage.user.name}</figcaption>\n        </figure>`\n    );\n}\n```\n\nWe just need to change the first three lines:\n\n```js\nfunction addImage(images) {\n    const firstImage = images.results[0];\n\n    responseContainer.insertAdjacentHTML('afterbegin', `<figure>\n            <img src=\"${firstImage.urls.small}\" alt=\"${searchedForText}\">\n            <figcaption>${searchedForText} by ${firstImage.user.name}</figcaption>\n        </figure>`\n    );\n}\n```\n## What changed\n* the function now has one parameter `images`\n* this parameter has already been converted from JSON to a JavaScript object, so * the line that had `JSON.parse()` is no longer needed.\n* the `firstImage` variable is set to the `images.results` first item\n\nThe code that adds the HTML to the response container hasn't changed at all!\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261300,
+              "key": "ce8f1ad8-b942-41c6-b217-53fa1858ecda",
+              "title": "Replace Nytimes Xhr With $.Ajax()",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ce8f1ad8-b942-41c6-b217-53fa1858ecda",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I've successfully converted the code!"
+              ],
+              "positive_feedback": "Great!",
+              "video_feedback": null,
+              "description": "Now that we've walked through converting one request from using XHR to jQuery's `.ajax()` method, why don't you give it a shot on your own and convert the second request!\n\nMake sure to use the existing code as an example. If you get stuck, check out the documentation page.\n\nWhen you're successfully converted the code to use jQuery's `.ajax()` method and fixed the callback function so it adds the data to the page, check the checkbox to continue."
+            }
+          ]
+        },
+        {
+          "id": 261301,
+          "key": "729a3abb-ddd5-4e5f-ad1a-5ab62ad8f26e",
+          "title": "Code Walkthrough",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "729a3abb-ddd5-4e5f-ad1a-5ab62ad8f26e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261305,
+              "key": "23d0e4ca-4b1d-49fb-80d8-37386e596317",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Code Walkthrough",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273075,
+              "key": "0989121c-6c0f-4f82-b5d3-d5fe09da44c3",
+              "title": "Ud109 AJAX L2 13 Code Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "VZ-D0Odce9M",
+                "china_cdn_id": "VZ-D0Odce9M.mp4"
+              }
+            },
+            {
+              "id": 261304,
+              "key": "72d7b9e6-2f61-4105-b50f-37cf44bd3d38",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Using jQuery's `.ajax()` method, there's less setup code that you need to manage. That's good, but to use jQuery we also have to include the entire library and force our users to download the entire thing every time. \n\nIt's true that they might have it cached, but do we really need jQuery? Is it doing something special?",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261306,
+          "key": "9bac1c70-165c-4a41-853e-a063b83f64d1",
+          "title": "Peek inside $.ajax()",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9bac1c70-165c-4a41-853e-a063b83f64d1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 273074,
+              "key": "6cf5c397-5cc5-4d84-9c54-fcffab71c7a5",
+              "title": "Ud109 AJAX L2 15 L Peek Inside $.Ajax()",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kSOsySJGerA",
+                "china_cdn_id": "kSOsySJGerA.mp4"
+              }
+            },
+            {
+              "id": 267980,
+              "key": "268e55f4-e5d3-4c8e-8f90-889bb8e4ae08",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We're about to dig into jQuery's source for a second. To do that, you need to:\n1. open up the project in a browser\n2. open up DevTools\n3. switch to the \"Sources\" pane\n4. open up the jquery.js file\n     * in Chrome, you can open a specific file by searching for it with ctrl/command + P\n5. set a breakpoint on line 9036\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273051,
+              "key": "bf1ac9d5-cadf-4982-970e-314b41d515e3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58ba1156_ud109-l2-jquery-xhr-set-breakpoint/ud109-l2-jquery-xhr-set-breakpoint.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bf1ac9d5-cadf-4982-970e-314b41d515e3",
+              "caption": "_A breakpoint set in the jQuery source file right where new XMLHttpRequest object is created_",
+              "alt": null,
+              "width": 1280,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 267981,
+              "key": "c74f253a-528d-42a9-bf76-ee044e80fdc7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Search For A Topic\n\nNow that we've added the breakpoint, if we do a search, then the JavaScript code will run (which will use jQuery's `.ajax()` method!) and DevTools will pause when it hits the line with the breakpoint. So go ahead and do a search to cause the code to break at the breakpoint. Why not search for something exciting like \"Volcanoes\"!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273053,
+              "key": "399247e9-34bb-4928-a334-0930caa7b5be",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58ba1216_ud109-l2-code-paused-at-breakpoint/ud109-l2-code-paused-at-breakpoint.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/399247e9-34bb-4928-a334-0930caa7b5be",
+              "caption": "_DevTools paused at breakpoint_",
+              "alt": null,
+              "width": 1999,
+              "height": 1225,
+              "instructor_notes": null
+            },
+            {
+              "id": 267985,
+              "key": "12088a0e-1c13-4c42-8966-0718bed55027",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## Debugging in Chrome\n> TIP: If you've never done it before, debugging is a JavaScript application can seem like a complicated process. We'll be looking at the important parts of DevTools in this course, but if you're looking for a deeper dive, check out the following resources on Google's Developer site:\n\n> * [Pause Your Code With Breakpoints](https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints)\n> * [JavaScript Debugging Reference](https://developers.google.com/web/tools/chrome-devtools/javascript/reference)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261314,
+          "key": "005f9d90-3a7c-4ec9-b289-5f486c04cdff",
+          "title": "Review the Call Stack",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "005f9d90-3a7c-4ec9-b289-5f486c04cdff",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261316,
+              "key": "df4d3a00-793c-40bb-822f-3d06428cffc1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The DevTools has a ton of helpful information! If you're not familiar with them, you really should spend some learning about all of its features. It'll make developing and debugging websites a lot easier! One helpful piece of info that DevTools provides is the JavaScript Call Stack. This displays the order of function calls that are in progress. The function at the bottom of the stack is the first one to run. It calls the second one on the stack...the second calls the third, the third… you get the idea. A function stays on the stack until the one above it returns.\n\nWe can click on the bottom function in the stack (the `anonymous function`) to see that what kicked all this code off was the `$.ajax()` call for the Unsplash images. That `$.ajax()` call in turn calls `transport.send()`, which calls `options.xhr()`, which creates a new `XMLHttpRequest()` object!\n\nSo the order is:\n1. our code in an anonymous function calls `.ajax()`\n2. `.ajax()` calls a `.send()` method\n3. `.send()` calls `options.xhr()`\n4. `options.xhr()` calls `jQuery.ajaxSettings.xhr` which creates a new XHR object\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273056,
+              "key": "031c3536-8ee0-442e-b525-e813568906aa",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58ba123e_ud109-l2-jquery-xhr-call-stack/ud109-l2-jquery-xhr-call-stack.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/031c3536-8ee0-442e-b525-e813568906aa",
+              "caption": "_Clicking through the call stack to see the order of function calls_",
+              "alt": null,
+              "width": 1280,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 261318,
+              "key": "f58b59b7-04af-45ce-8ef7-77dfec3dfaad",
+              "title": "New XHR Or Reused XHR Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f58b59b7-04af-45ce-8ef7-77dfec3dfaad",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "When `$.ajax()` is called, does the jQuery code create a new XHR object each time or does it create an initial one and reuses it for each subsequent call to `.ajax()`?",
+                "answers": [
+                  {
+                    "id": "a1485303332066",
+                    "text": "It creates a new one each time",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1485303355111",
+                    "text": "It reuses the existing XHR object each time",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 261319,
+              "key": "ad8acf56-8849-455f-8269-25036a41368e",
+              "title": "24_Q - Adding All Headers Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ad8acf56-8849-455f-8269-25036a41368e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Try working through the `.send()` function (the third item from the bottom of the call stack) on your own to see how it sets up the newly created XHR object. After reviewing the code, how does it set all of the headers?",
+                "answers": [
+                  {
+                    "id": "a1485303385020",
+                    "text": "It uses a `for` loop",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485303406429",
+                    "text": "it uses a `while` loop",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1485303413437",
+                    "text": "it uses a `for...in` loop",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1485303413821",
+                    "text": "it uses a `do while` loop",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 261320,
+          "key": "3476a7ee-853b-4746-b20f-9d6431f223fc",
+          "title": "Walkthrough of .ajaxTransport",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3476a7ee-853b-4746-b20f-9d6431f223fc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 273073,
+              "key": "0dd11858-87b0-4ba2-8343-15a69fedfa71",
+              "title": "Ud109 AJAX L2 25 Walkthrough Of .Ajax Transport Function",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "qtZJzY66RoM",
+                "china_cdn_id": "qtZJzY66RoM.mp4"
+              }
+            },
+            {
+              "id": 261322,
+              "key": "c6648347-1b0d-481d-9d75-d1633124e77d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## $.ajax() Uses XHR Recap\n\njQuery's ajax method does a lot of things under the hood. \n* creates a new XHR object each time it's called\n* sets all of the XHR properties and methods\n* sends the XHR request\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261323,
+          "key": "956502ee-f755-4cad-8db7-ba2e1f44ffe2",
+          "title": "jQuery's Other Async Methods",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "956502ee-f755-4cad-8db7-ba2e1f44ffe2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 261324,
+              "key": "ad951356-2936-41d1-b7be-aab7e05880d4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\njQuery has a number of other methods that can be used to make asynchronous calls. These methods are:\n\n* [.get()](http://api.jquery.com/jQuery.get/)\n* [.getJSON()](http://api.jquery.com/jQuery.getJSON/)\n* [.getScript()](http://api.jquery.com/jQuery.getScript/)\n* [.post()](http://api.jquery.com/jQuery.post/)\n* [.load()](http://api.jquery.com/load/)\n\nEach one of these functions in turn calls jQuery's main `.ajax()` method. These are called \"convenience methods\" because they provide a convenient interface and do some default configuration of the request before calling `.ajax()`.\n\nLet's look at the `.get()` and `.post()` methods to see how they just call `.ajax()` under the hood.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 261325,
+              "key": "2060e250-2922-4f66-8dcd-ef6096c2f100",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Add a Breakpoint\n\nWith the project open in a browser:\n\n1. load up DevTools\n* open the Sources pane\n* open the jQuery file\n* add a breakpoint to line 8797\n* reload the page (this will pause the code at the breakpoint you just made!)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273065,
+              "key": "32ca6f79-42dc-4735-973f-9004c4bda740",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58ba12cb_ud109-l2-jquery-xhr-set-breakpoint/ud109-l2-jquery-xhr-set-breakpoint.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/32ca6f79-42dc-4735-973f-9004c4bda740",
+              "caption": "_Breakpoint added to jQuery source file in DevTools. The browser has been reloaded and is paused at the newly added breakpoint._",
+              "alt": null,
+              "width": 1280,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 261327,
+              "key": "bef3dd32-d8a8-4135-a917-7dde4bc155de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nThe first time through the loop, the `method` variable will be `get`. This makes \n```js\njQuery[ method ] = function(...) { … }\n```\nbecome\n```js\njQuery[ 'get' ] = function( … ) { … }\n```\nwhich gives us the `$.get()` method!\n\nOn line 8807 you can see that this new `jQuery[ 'get' ]` function returns a call made to `jQuery.ajax( … );`! Notice that _before_ the `.ajax()` call is run, the `type` property is set to the `method` variable (which is  still`'get'`). So calling `$.get()` calls `$.ajax()` with some preset properties.\n\nAll this was for `'get'`. This exact same code runs right after this for `'post'`! So the code creates a `jQuery[ 'post' ]` function that will call `jQuery.ajax( … )` and set the `type` property to `'post'`.\n\nIsn't it pretty cool how jQuery provides these convenience methods that just end up calling the main `.ajax()` method!?\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 273067,
+              "key": "764e3b29-7c69-480e-88f3-a356f7a92cfb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58ba12ed_ud109-l2-jquery-get-post-methods/ud109-l2-jquery-get-post-methods.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/764e3b29-7c69-480e-88f3-a356f7a92cfb",
+              "caption": "_Walking through the jQuery source to see how the $.get() and $.post() methods are created, set some default properties, and then end up running $.ajax()._",
+              "alt": null,
+              "width": 1280,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 261329,
+              "key": "5d09f39f-83ab-4a84-88cb-354ed2c3c0ad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> ## Which Method Should You Use?\n\n> [From the jQuery website](https://learn.jquery.com/ajax/jquery-ajax-methods/):\n\n> It's often considered good practice to use the $.ajax() method over the jQuery provided convenience methods.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 261331,
+          "key": "c4bbcf73-1115-412b-8acf-3a18ed5e4794",
+          "title": "Async with jQuery Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c4bbcf73-1115-412b-8acf-3a18ed5e4794",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 273072,
+              "key": "be221b3d-4f68-4c04-b2b0-9b60312783c3",
+              "title": "jQuery Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tGkWX8YrP1k",
+                "china_cdn_id": "tGkWX8YrP1k.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,1890 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1011770,
+      "key": "361204a8-ce3a-4bfb-be32-48b0e10d398e",
+      "title": "Securing Access to Cloud Infrastructure",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "After this lesson, you will be able to access cloud resources securely, protect against data exfiltration, ensure compliance, and configure VPC endpoints to keep traffic within your VPC.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1011754,
+          "key": "b450590b-0272-4b10-aac7-28f4759bbc8b",
+          "title": "Securing Access",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b450590b-0272-4b10-aac7-28f4759bbc8b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011649,
+              "key": "f52df3da-545d-4d0f-9ebe-efa073456f07",
+              "title": "Securing Access to Cloud Infrastructure Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Securing Access to Cloud Infrastructure\n\nIn this lesson, we will go ahead and discuss network and server access design methods to ensure network level access to your cloud resources.\n\nBy network level access, we mean access to IP networks provisioned by cloud customers using infrastructure as a service including VPCs, subnets, and resources deployed within them such as containers, VM instances, load balancers, database instances.\n\nWe will also discuss the ability to log into VM instances and other best practices for ensuring that VM instances are accessed in a secure manner.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011658,
+              "key": "7b49df78-c29e-42a3-b23f-aff4eba3f706",
+              "title": "ND063 C3 L2 01 Securing Access To Cloud Infrastructure Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OsgZW-TEGR8",
+                "china_cdn_id": "OsgZW-TEGR8.mp4"
+              }
+            },
+            {
+              "id": 1011666,
+              "key": "c5c2dee7-630d-46f5-869e-9538fb804ef1",
+              "title": "Securing Access to Cloud Infrastructure Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, we will investigate best practices for ensuring that your cloud network and server resources are accessed in a secure manner.\n\nNetwork level access includes access to:\n- VPCs\n- Subnets\n- Containers and VM instances\n- Load Balancers\n- Database Instances \n- Etc.\n\nOther resources that can be accessed privately from within your cloud private network include S3 buckets, lambda functions, etc.\n\nWe will also investigate methods for controlling outbound traffic (egress) from our network to protect against data exfiltration and ensure compliance.\n\nLastly, we will explore the use of VPC endpoints so that the use of common AWS API's such as S3 does not need to leave your private VPC.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011660,
+              "key": "1098b102-8ab1-44fb-8689-1d7a9816f48b",
+              "title": "Lesson Location Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94f80f_0.-lesson-location-image/0.-lesson-location-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1098b102-8ab1-44fb-8689-1d7a9816f48b",
+              "caption": "**You are Here**",
+              "alt": "You are in the Securing Access to Cloud Infrastructure Lesson.",
+              "width": 2528,
+              "height": 372,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1011750,
+          "key": "3f3ebb99-40c0-4d69-86f8-1043ad8c487a",
+          "title": "Big Picture and Intuition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3f3ebb99-40c0-4d69-86f8-1043ad8c487a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011667,
+              "key": "894d272a-4b82-4863-a3de-71e22588eebe",
+              "title": "Big Picture Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Big Picture and Developing Intuition",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011659,
+              "key": "17edc450-f100-4a96-8386-02c1c77e965e",
+              "title": "ND063 C3 L2 02 Big Picture And Developing Intuition",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Rpv7jrb6Iho",
+                "china_cdn_id": "Rpv7jrb6Iho.mp4"
+              }
+            },
+            {
+              "id": 1011665,
+              "key": "e1d72908-6cea-42f9-988b-60d2a513d591",
+              "title": "Big Picture Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When designing and deploying cloud networks and infrastructure there are a few key questions to be asking related to security controls:\n- Which trusted networks will traffic to your cloud environment originate from?\n- Which components in your environment will need network connectivity to other components?\n- Are security groups and network ACLs as specific as possible?\n- Which components will be taking traffic from the internet? \n- How is access to servers managed? \n- Have outbound traffic needs been identified? ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011661,
+              "key": "c78e738d-ed9c-4559-9da3-4619474ed7bd",
+              "title": "Big Picture Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c78e738d-ed9c-4559-9da3-4619474ed7bd",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following considerations are important to ensure secure access to cloud networks and server infrastructure?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Try to ensure that sensitive data is never put in the cloud.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Block all access to cloud networks from corporate networks.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Identify and restrict which IP ranges and ports will need access to resources in cloud subnets.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Ensuring that access control is applied at a server level.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011760,
+          "key": "1936f393-f576-4516-a151-752bc26a60a1",
+          "title": "Common Practices",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1936f393-f576-4516-a151-752bc26a60a1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011703,
+              "key": "1e274b66-8d8e-4dec-aab2-17e9b3cb0c14",
+              "title": "Common Practices for Accessing Servers in the Cloud Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Common Practices for Accessing Servers in the Cloud\n\nIn this section, we will discuss a few common approaches to providing console login access to cloud instances or servers.   \n\nWhile providing console access to cloud instances predicates common actions such as server configuration, application deployment, and operations, providing this access could lead to security breaches in the cloud.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011696,
+              "key": "8844a42e-760e-4bb9-96c6-7a8769c958f2",
+              "title": "ND063 C3 L2 03 Common Practices For Accessing Servers In The Cloud Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mUFzl0Tkz9Q",
+                "china_cdn_id": "mUFzl0Tkz9Q.mp4"
+              }
+            },
+            {
+              "id": 1011675,
+              "key": "e6ab58f2-ed24-4c1e-b74d-2101271bb16b",
+              "title": "Asymmetric Key Pairs Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Common Practices to Provide Access to Cloud Instances:\n\n#### 1. Usage of Asymmetric Key Pairs \nAn asymmetric key pair consists of a public key and a private key. The biggest risk is that end users are responsible for maintaining and managing private keys.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011669,
+              "key": "2847c0dd-90a7-42bf-bc85-43712f78e9b4",
+              "title": "Asymmetric Key Pairs Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94f835_1.-asymmetric-key-pairs-image/1.-asymmetric-key-pairs-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2847c0dd-90a7-42bf-bc85-43712f78e9b4",
+              "caption": "**Asymmetric Key Pairs**: A User has the Private Key and the Instance has the Public Key",
+              "alt": "**Asymmetric Key Pairs**: A User has the Private Key and the Instance has the Public Key",
+              "width": 600,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011668,
+              "key": "0b996b5b-a903-4750-8f98-b4bbb0e7c916",
+              "title": "Passwords SSH Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### 2. Passwords are Enabled for SSH\nThis is highly discouraged as it can leave the server open to brute force SSH attacks.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011670,
+              "key": "3c067050-836f-4065-b100-77e9204fb388",
+              "title": "Passwords SSH Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94f878_2.-passwords-ssh-image/2.-passwords-ssh-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3c067050-836f-4065-b100-77e9204fb388",
+              "caption": "**Many Vulnerability Scanners Flag this as a Misconfiguration**",
+              "alt": "Passwords enabled for SSH or RDP.",
+              "width": 500,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011672,
+              "key": "62bda5cc-f434-4e9c-a07b-2ee63ca7315c",
+              "title": "PAM Tool Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### 3. Using a Privileged Access Management (PAM) Tool with Identity Federation \nThis can improve security by moving the responsibility of managing credentials and user privileges from the user to a trusted process used by the organization.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011701,
+              "key": "acef3439-fd3e-4a71-8818-88db85d41934",
+              "title": "PAM Tool Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94f8d1_3.-pam-tool-image/3.-pam-tool-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/acef3439-fd3e-4a71-8818-88db85d41934",
+              "caption": "**PAM Tool with Identity Federation**",
+              "alt": "Diagram showing usage of a PAM Tool",
+              "width": 600,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011671,
+              "key": "49b24f80-737e-44df-93f6-ae866089d4c2",
+              "title": "Native Tools Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### 4. Use Cloud Providers Native Tools \nAWS provides a service called SSM (AWS Systems Manager). This service enables users to manage EC2 instances at the operating system level. The biggest risk is that SSM also has many other functions which may be used by other users.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011673,
+              "key": "d2c606ce-fb64-446f-b854-2a84088449ef",
+              "title": "Native Tools Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94f907_4.-native-tools-image/4.-native-tools-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d2c606ce-fb64-446f-b854-2a84088449ef",
+              "caption": "**No Internet Exposure is Required and Passwords/Private Keys Do Not Need to be Managed**",
+              "alt": "A diagram showing SSM, AWS IAM, etc in an authentication process.",
+              "width": 600,
+              "height": 310,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011652,
+              "key": "65aabb58-92ab-4f3c-92a8-6377a21fe025",
+              "title": "Open Vulnerability Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### 5. Through an Open Vulnerability  \nOftentimes web servers and applications have security vulnerabilities which allow users to exploit those vulnerabilities with the intention of gaining console access to the instance.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011712,
+              "key": "059d5378-3a70-40c7-a8dc-b74693f22b94",
+              "title": "Open Vulnerability Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94f933_5.-open-vulnerability-image/5.-open-vulnerability-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/059d5378-3a70-40c7-a8dc-b74693f22b94",
+              "caption": "**Users Can Exploit Vulnerable Instances**",
+              "alt": "Open vulnerabilities can be exploited.",
+              "width": 500,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011674,
+              "key": "a3a8dfff-69a0-46ba-ac48-7b9a277edc22",
+              "title": "Common practices for accessing servers in the cloud Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### 6. The Best Method to Log Into Cloud Servers and Instances... \n… is to not login at all! This is called **immutability** and we will discuss it further in a future concept.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011678,
+              "key": "b1703ca1-1e90-4543-bc22-aa3ef77dfcc0",
+              "title": "Common practices for accessing servers in the cloud Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94f962_6.-common-practices-for-accessing-servers-in-the-cloud-image/6.-common-practices-for-accessing-servers-in-the-cloud-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b1703ca1-1e90-4543-bc22-aa3ef77dfcc0",
+              "caption": "**Just Don't Do It!**",
+              "alt": "The best  method to login is to not log in at all!",
+              "width": 500,
+              "height": 210,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011676,
+              "key": "f7e30cbb-62d0-41bc-9b40-b138356ea10d",
+              "title": "Common practices for accessing servers in the cloud New Terms or Vocabulary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n\n#### Key Pair\nA key pair consists of a public key and a private key that authenticate and encrypt an SSH session. The public key can be hosted on cloud servers and the private key is held by the user. Only a user with the private key that corresponds to the public key will be able to authenticate to the SSH server.\n\n#### Privilege Access Management (PAM) Tool\nA privileged access management tool provides management of authentication, sessions, password storage, audit, and privilege escalation when it comes to logging into server infrastructure.\n\n#### AWS Systems Manager (SSM)\nThe AWS Systems Manager service provides the ability to manage EC2 instances at the operating system level - including patching, command execution, automation, state management, inventory.\n\n#### Session Manager\nSession Manager is a feature within AWS Systems Manager which allows an authenticated IAM user or role the ability to start a terminal session on an EC2 instance.\n\n#### Open Vulnerability\nAn exploitable vulnerability in the OS kernel, packages, or applications installed on an instance which could lead to a remote actor gaining unauthorized access.\n\n#### Immutability\nA deployment model where components do not undergo any changes from provisioning to deprovisioning.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011654,
+              "key": "bfe1e3d8-f7c0-4be4-ba27-32d02995e18d",
+              "title": "Common practices for accessing servers in the cloud Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Resources\n- [AWS SSM](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011757,
+          "key": "d1d51ea1-7124-4068-a593-b46decf6a870",
+          "title": "Common Practices Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d1d51ea1-7124-4068-a593-b46decf6a870",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011695,
+              "key": "006dc01f-3bec-4312-9d11-a47088ed75a4",
+              "title": "Common practices for accessing servers in the cloud Easy Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "006dc01f-3bec-4312-9d11-a47088ed75a4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following methods for providing access to an instance can increase the risk of unauthorized access (and therefore should be avoided)?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Use a private key pair and share the private key .pem file with the rest of the developers on the team.  Store it on your laptop or Github repo to use whenever you need to login to the instance.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Set up password authentication on the instance and send the passwords to appropriate parties.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Store the private key safely in a secret management system and set up identity federation with AD or LDAP based authorization for users to login.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Design your deployment in such a way that no one will need to login to the servers for any reason.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011684,
+              "key": "1714efbc-cb96-478c-b908-d418405c370a",
+              "title": "Common practices for accessing servers in the cloud Hard Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1714efbc-cb96-478c-b908-d418405c370a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Research the following security vulnerability: [CVE-2020-0610](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0610)  \n\nYou have launched a Windows server 2019 instance in your AWS environment.  Let’s say an attacker had network connectivity to your AWS instance - which of the following outcomes could be expected?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "An attacker would be able to login with RDP as a normal user using a brute force attack.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "An attacker may be able to run a script on the server allowing them to copy data from disk to an external location.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "An attacker would not be able to do anything because this vulnerability only affects Windows server 2016.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "An attacker might be able to run a command allowing them to make AWS API calls using the instance's role.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011762,
+          "key": "24243317-d710-405b-bc6e-14a527fcacc7",
+          "title": "Secure Access",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "24243317-d710-405b-bc6e-14a527fcacc7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011664,
+              "key": "6dd5ea29-5fb8-4591-bfbc-bb61470dc4b3",
+              "title": "Techniques to provide secure access to servers Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Techniques to Provide Secure Access to Servers\n\nLet’s look at better methods to provide access to servers and other best practices to prevent unauthorized access.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011692,
+              "key": "68bac63d-4e4d-4344-867d-88fafa1e3955",
+              "title": "ND063 C3 L2 04 Techniques To Provide Secure Access To Servers Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "V6Jbfq6zBT4",
+                "china_cdn_id": "V6Jbfq6zBT4.mp4"
+              }
+            },
+            {
+              "id": 1011677,
+              "key": "5d0dbdb8-f712-48e2-9d12-9e7cabb938cb",
+              "title": "Image Build Pipeline Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Techniques to Provide Secure Access to Servers\n\n#### Deploy Immutable Instances\nPrevent unauthorized access through deploying servers as immutable components.\n\nImmutable instances are launched from virtual machine images that are created in a private environment. The images have ideally gone through security patching and hardening, custom configuration, application code deployment, and vulnerability scanning.  \n\nWhen it’s time to update the application, a new image is created and deployed and the old instance is then deprovisioned.\n\nDuring this cycle no individual ever needs to login to the instance. \n\nThis is a huge step in the right direction in protecting instances from security breaches and unauthorized access.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011648,
+              "key": "2e80de48-06f1-4ca0-927a-73bb6cc5e064",
+              "title": "Image Build Pipeline Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94f9a6_7.-image-build-pipeline-image/7.-image-build-pipeline-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2e80de48-06f1-4ca0-927a-73bb6cc5e064",
+              "caption": "**Example of an Immutable Instance**",
+              "alt": "A diagram showing an example of an immutable instance.",
+              "width": 2530,
+              "height": 1108,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011656,
+              "key": "5ee1574b-6db6-4a7f-b42b-7738e2082735",
+              "title": "Configuration Management Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Configuration Management Tools\n\nUse a configuration management tool to enforce hardening and configuration policies. Even in the event that someone deployed an instance with insecure configuration, the configuration management tool would override this by applying the correct configuration. Some popular tools with this regard are ansible, chef and puppet.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011679,
+              "key": "395cf73f-bcd0-4d6c-ae9d-509b0f21ce82",
+              "title": "Configuration Management Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94f9dd_8.-configuration-management-image/8.-configuration-management-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/395cf73f-bcd0-4d6c-ae9d-509b0f21ce82",
+              "caption": "**Configuration Management is the Next Best Option**",
+              "alt": "A diagram showing an architecture with configuration management",
+              "width": 450,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011705,
+              "key": "8b12ba43-f8f5-4463-8acb-e6adab95d0a7",
+              "title": "Techniques to provide secure access to servers Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Privileged Access Management Tools\n\nThe use of a Privileged Access Management (PAM) tool can provide additional benefits such as:\n- time based or temporary access to elevated privileges\n- granular privilege management\n- session recording and audit trails\n- password and secrets management\n- multi factor authentication\n\n#### Additional Best Practices To Prevent Unauthorized Access\nFinally, in addition to choosing a method for providing access, it’s critical to observe a few additional best practices:\n- Keep instances up to date and patched.\n- Enforce hardening that encompasses security best practices around OS hardening\n- Add monitoring for vulnerabilities to ensure that either OS or application vulnerabilities are addressed as soon as possible.\n- Implement monitoring and alerting for suspicious events using tools such as intrusion detection systems or IDS or security information and event management or  SIEM tools.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011681,
+              "key": "9f38ba10-3531-4c04-9101-2e08b45c9f6e",
+              "title": "Techniques to provide secure access to servers Heading New Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key terms\n#### Immutable Instances\nInstances that are launched from pre-configured images and do not undergo any changes from deployment to deprovisioning.\n\n#### Configuration Management Tool\nTools that can enforce operating system configuration state based on versioned code templates.\n\n#### Intrusion Detection System (IDS)\nA process that monitors system activity and identifies suspicious behaviour indicating that a server has been compromised.\n\n#### Security Information and Event Management (SIEM)\nTools that aggregate system events and logs in order to provide historical and real-time analysis, correlation, dashboards, and alerting.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011717,
+              "key": "d2f723a8-3ee8-405f-891c-cb15b8f66fe4",
+              "title": "Techniques to provide secure access to servers Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Research\n#### Background Reading on Privileged Access Management\n- [CyberArk](https://www.cyberark.com/privileged-access-management/)\n- [thycotic](https://thycotic.com/resources/privileged-access-management/)\n\n#### AWS Systems Manager Session Manager\n- [Documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011749,
+          "key": "f9eb2d2e-3547-4fdc-8d41-242609f0be5f",
+          "title": "Exercise: Secure Access",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f9eb2d2e-3547-4fdc-8d41-242609f0be5f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011651,
+              "key": "46b1c633-8fc5-49e9-8385-393a501de262",
+              "title": "Techniques to provide secure access to servers Exercise Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Secure Access With Systems Manager\nIn this exercise, you will use AWS Systems Manager to SSH into an EC2 instance in your AWS account.\n\n1. Create an Instance Profile Role. \n- Refer to the [AWS documentation for setting up an instance profile role](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) for AWS Systems Manager. **Skip straight to Task 2 in this AWS documentation**. \n- You may name the role `cand-c2-l2-instance-role`.\n\n2. Launch An EC2 Instance.\n - When choosing the AMI, use Quick Start and select the Amazon Linux 2 AMI.\n - For the IAM role, assign the name of the role you just created: `cand-c3-l2-instance-role`.\n - The rest of the options can be left default or of your own choosing.\n - Please refer to the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html) for more information on launching an EC2 instance.\n\n3. Connect to your EC2 instance. Follow the [AWS documentation for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html) to connect to the EC2 instance you have just created.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011662,
+              "key": "9c7eff75-cb19-4497-bc40-ba8c537106c3",
+              "title": "Techniques to provide secure access to servers Exercise",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9c7eff75-cb19-4497-bc40-ba8c537106c3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Setup a new IAM instance profile role.",
+                "Verify that the role is assigned a policy AmazonSSMManagedInstanceCore.",
+                "Launch a new instance using the Amazon Linux 2 AMI.",
+                "Assign the instance the IAM instance profile role you created.",
+                "Use Systems Manager Session Manager to create a terminal session on the instance."
+              ],
+              "positive_feedback": "Awesome! You were able to successfully obtain terminal access to an instance without needing private keys, passwords, or direct connectivity to the instance over the internet.",
+              "video_feedback": null,
+              "description": "Use SSM to access a bastion that is not exposed to the internet"
+            }
+          ]
+        },
+        {
+          "id": 1011753,
+          "key": "154bdb2b-adfb-49e7-9f6f-b825a4c193d3",
+          "title": "Solution: Secure Access",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "154bdb2b-adfb-49e7-9f6f-b825a4c193d3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011683,
+              "key": "cc96f625-ba33-4392-8ee8-840e147aad36",
+              "title": "Techniques to provide secure access to servers Exercise Solution Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Techniques to Provide Secure Access to Servers",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011720,
+              "key": "a06dfa77-ff18-4750-9291-58083029e6aa",
+              "title": "ND063 C3 L2 05 Solution- Techniques To Provide Secure Access To Servers",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vVNAHA2_zxA",
+                "china_cdn_id": "vVNAHA2_zxA.mp4"
+              }
+            },
+            {
+              "id": 1011655,
+              "key": "8db85470-3a8d-4b45-bcd6-3461daaa6905",
+              "title": "Techniques to provide secure access to servers Exercise Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this exercise, the goal was to demonstrate how to securely connect to an instance in AWS without requiring local storage of passwords or private key files.\n\nI hope that, through this exercise, you have become more comfortable with a secure method of connecting to instances running in the cloud.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011759,
+          "key": "eec7e607-cb4f-4624-b696-57f696ce4fe4",
+          "title": "Control Traffic",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "eec7e607-cb4f-4624-b696-57f696ce4fe4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011685,
+              "key": "65b7b2b3-e548-4643-8604-698deba3a1c4",
+              "title": "Controlling network traffic Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Controlling Network Traffic\n\nSo far in this course, we have discussed methods to ensure secure authenticated and authorized access to the cloud control plane and server instances. We emphasized the idea of shifting management of users and roles to a centralized identity provider, providing least privilege permissions, and designing your environment with the least need to provide access to users. \n\nInevitably, traffic will need to reach cloud resources for applications to work and to carry out day to day operations.\n\nNext, we will look at methods to control and restrict network traffic to and from your cloud environment.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011728,
+              "key": "080dd344-842c-4abe-8cab-dfaf83337f42",
+              "title": "ND063 C3 L2 06 Controlling Network Traffic",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vIJxP0LC108",
+                "china_cdn_id": "vIJxP0LC108.mp4"
+              }
+            },
+            {
+              "id": 1011650,
+              "key": "12510adb-4900-44af-9345-527340430e51",
+              "title": "Controlling network traffic Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Ingress\nIngress can be required to access services and resources that are running in our cloud environment.\n\nA few examples of ingress traffic are:\n- Web application traffic comes from the internet to your web applications.\n- Traffic comes from other cloud virtual private networks.\n- Traffic comes from on-premise networks such as data centers or corporate offices for management, internal user traffic, or other application integration for hybrid cloud environments.\n\n### Egress\nWe also need to be able to access the internet or other external networks for our applications to be able to function. We will call this egress.\n\nCommon egress destinations are:  \n- Integrations with other cloud based APIs.\n- Application API traffic to AWS cloud services.\n- Downloading patches, etc.\n- Sending monitoring and metric data to external tools.\n\n### Controlling Access\nIngress traffic can be controlled and restricted using network ACLs, security groups, which are both effective firewalls, routing rules, and host based endpoint security tools which oftentimes contain firewall capabilities. \n\nIn addition to the configuration of ACLs and security groups, private access to VPC networks is also required, either from user work locations or from corporate-owned network spaces.\n\nEgress traffic in AWS is generally handled using internet gateways and nat gateways. As with ingress traffic, egress traffic should also be controlled and restricted for a number of reasons.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011653,
+              "key": "b8091e0c-4751-4c91-8eb8-f4212fe17b19",
+              "title": "Controlling network traffic New Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n#### Ingress\nIn-bound network traffic that is entering your cloud environment from the outside.\n\n#### Egress\nOut-bound network traffic that is leaving your cloud environment.\n\n#### Internet Gateway\nNetwork component that is part of a VPC. Facilitates out-bound and in-bound traffic to the internet.\n\n#### VPN\nExtends a private network such as an AWS VPC to an on-premise LAN or a user’s local host.  VPNs are encrypted tunnels that traverse the Internet.\n\n#### Direct Connect\nA dedicated and private network link between a company's on-premise local network and an AWS Direct Connect location. Enables two-way traffic between AWS resources and the local network. \n\n#### Network ACL (NACL)\nFirewall construct in AWS which allows controls to be placed on VPC subnet network traffic.\n\n#### Security Group\nFirewall construct in AWS which allows controls to be placed on individual resources that are deployed in a VPC.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011698,
+              "key": "d83f4876-369f-4ddb-83eb-2e2e28b1563e",
+              "title": "Controlling network traffic Hard Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d83f4876-369f-4ddb-83eb-2e2e28b1563e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following actions would reduce the chances that an attacker could establish a network connection directly to a cloud host?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Do not allow outbound internet access from the host.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Ensure that the IAM role for this instance is the least privileged.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Restrict inbound traffic by only allowing connections from trusted networks.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011755,
+          "key": "d744adbe-3c07-4afb-8814-26f85457d79e",
+          "title": "Restrict Access",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d744adbe-3c07-4afb-8814-26f85457d79e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011663,
+              "key": "a672a9c6-f99d-4d5a-abb9-1b524ced0046",
+              "title": "Restrict Access to Cloud Resources Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Restrict Access to Cloud Resources\n\nThe use of firewalls will provide the ability to granularly restrict and control network traffic to and from cloud VPCs, subnets, instances, databases and other resources which reside in the private IP space of your VPCs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011687,
+              "key": "065774d6-5cd4-4323-8772-66d7571c8815",
+              "title": "ND063 C3 L2 07 Restrict Access To Cloud Resources Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Q5oUovI0WIQ",
+                "china_cdn_id": "Q5oUovI0WIQ.mp4"
+              }
+            },
+            {
+              "id": 1011726,
+              "key": "237cfd33-b7f0-4434-ba44-217795115f93",
+              "title": "Restrict Access to Cloud Resources Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Our goal should be to limit and restrict connectivity to specific IP ranges and ports.\n\nThis is traditionally done with the use of firewalls. In the cloud, there are a number of ways that we can implement firewall functionality.\n\n### 1. Host based firewalls \nHost based firewalls allow server admins and developers to define at the operating system level specific inbound and outbound sources and ports.\n### 2. Firewall appliances \nCommercial Firewall products or appliances can also be deployed in cloud environments.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011682,
+              "key": "140b80bc-8acc-490c-917b-b52048f0e18b",
+              "title": "ND063 C3 L2 08 Using Security Groups And Network ACLs",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8DtEO1sQTAw",
+                "china_cdn_id": "8DtEO1sQTAw.mp4"
+              }
+            },
+            {
+              "id": 1011657,
+              "key": "8cd3d06a-b48d-43c3-a819-aa06a7190d92",
+              "title": "Network ACL and Security Group Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### 3. Network ACLs \nNetwork ALCs can be applied at a subnet level and allow you to add multiple firewall rules.\n### 4. Security Groups \nSecurity groups are a second layer and by far the most utilized tool to restrict traffic to and from your cloud hosts and instances\n\nMost cloud native patterns will at minimum tend to use a combination of NACLs and Security groups.\n\n### General Guidelines for using ACLs and Security Groups\n- Know and define your trusted networks for your source and destination traffic.\n- Apply ACLs for incoming traffic to all subnets based on trusted networks. \n- Apply Security groups to instances based on the role or functionality of that instance or application.\n- For both Security groups and NACLs, following the principle of the least privilege only allows traffic from specific hosts or IP ranges to specific ports. \n- Determine the default Security group for a VPC. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011721,
+              "key": "2bb58254-67d7-4ccc-9f3c-4158987059ab",
+              "title": "Restrict Access to Cloud Resources New Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n\n#### Security Groups\nA set of network control rules that can be applied at the instance or resource level.\n\n#### Network ACL (NACL)\nA set of network control rules that can be applied at the network subnet level.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011723,
+              "key": "de29fdde-97e8-430c-9922-81b69d65e744",
+              "title": "Restrict Access to Cloud Resources Additional Resources",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Reading\n\n- [AWS NACL Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html)\n\n- [AWS Security Group Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011752,
+          "key": "4c9e33ea-a453-42af-b4af-a7142cc14218",
+          "title": "Restriction Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4c9e33ea-a453-42af-b4af-a7142cc14218",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011715,
+              "key": "07ac71a4-f419-4b1c-907d-5d69a09b5996",
+              "title": "Restrict Access to Cloud Resources Easy Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "07ac71a4-f419-4b1c-907d-5d69a09b5996",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Identify the true statements below about NACLs and Security groups.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Security groups do not have explicit deny rules, whereas NACLs can.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "They are effectively the same.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "NACLs can not be applied to an entire subnet or subnets, they can only be applied to an instance.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Security groups can be applied to a specific instance, whereas NACLs are applied to an entire subnet.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011680,
+              "key": "b57ba63f-5b43-42ba-9c9b-601275b9b34e",
+              "title": "Restrict Access Example",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Question 2\nYour company has provisioned a database instance in AWS.  We would like to configure Security Group rules to secure this database.\n\nThe following are our connectivity requirements:\n\n- The database has been launched in a private subnet with a CIDR block of 10.10.1.0/24.   \n- The database listens on TCP port 3306.\n- Applications which need to connect to the database are running in a separate subnet with a CIDR block of 10.11.3.0/24. \n- The mentioned application instances have been launched with their own security group sg-123456.  \n- There are other servers in the application subnet which should not be able connect to this database. \n- The data engineering team who has a source IP range of 172.16.0.0/8, also needs to be able to connect to the database on port 3306.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011689,
+              "key": "1a3a62fd-0c4a-4580-bcac-4d4b8c9c091a",
+              "title": "Restrict Access to Cloud Resources Hard Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1a3a62fd-0c4a-4580-bcac-4d4b8c9c091a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following security group rule configurations would most effectively restrict inbound traffic to the database?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Allow - all protocols - from  172.16.0.0/8 - all ports.\n\nAllow TCP - from 10.10.1.0/24 - port 3306",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Allow TCP - 172.16.0.0/8 - port 3306\n\nAllow TCP - 10.10.1.0/24 - port 3306",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Allow TCP - 172.16.0.0/8 - port 3306\n\nAllow TCP - sg-123456 - port 3306",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011764,
+          "key": "8b531961-1e4d-49c1-9350-0b965c91aafe",
+          "title": "Exercise: Restriction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8b531961-1e4d-49c1-9350-0b965c91aafe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011735,
+              "key": "b80a8aed-4d18-4091-8f31-d5791d2d83da",
+              "title": "Restrict Access to Cloud Resources Exercise Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Configure Security Groups and ACLs\n\nIn this exercise, you will choose a VPC and public subnet in your AWS account to setup a new NACL and security group and test both.\n\n1. Setup a new public subnet in your VPC for this exercise.\n\n2. Create a new Network ACL for the VPC.\n\n3. Observe the inbound and outbound rules for the newly created NACL.\n\n4. Associate the new NACL with the new public subnet you have created.\n\n5. Create a new security group in the same VPC. Do not add any rules at this time. Note down the security group name.\n\n6. Determine your public IP address (Hint: Google *what's my IP*).\n\n7. Launch a linux EC2 instance into the public subnet you have created. Assign it a public IP address and the new security group that was created.\n\n8. Attempt to ping the EC2 instance on its public IP address.\n\n9. Attempt to ssh into the EC2 instance.\n\n10. Update the NACL. Add an **inbound** rule, number 100, allowing TCP traffic. All ports (0) all IPs (0.0.0.0/0).\n\n11. Add an **outbound** rule, number 100, allowing all traffic, all ports, all IPs.\n\n12. Although your ACL now allows SSH, attempt to SSH and ping the instance. Neither should work since the security group has not been updated.\n\n13. Update the security group to allow SSH connections from your public IP address.  Also allow ICMP traffic from your public IP address.\n\n14. Again attempt the SSH connection, the connection should succeed (you don’t need to login).  Attempt the ping, it will still fail since we haven’t allowed ICMP traffic on the NACL.\n\n15. Update the NACL. Add a rule to allow ICMP traffic from all IPs.\n\n16. Try the ping again. This time it should succeed.\n\n18. Update the NACL. Remove the outbound rule that allows all traffic. Now the outbound portion of the NACL should be a simple deny all.\n\n19. Attempt the ping and SSH again. Note that they no longer work since the return traffic has been blocked by the NACL.\n\n19. Re-add the NACL allowing all outbound traffic. Verify that connectivity is restored.\n\n20.  Add an explicit deny in the NACL. Deny your IP inbound TCP connectivity on port 22.  \n\n21. Attempt the SSH connection again. Notice that it no longer works.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011713,
+              "key": "96a4567e-7e3a-46fe-8174-fd7b604137b7",
+              "title": "Restrict Access to Cloud Resources Exercise",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "96a4567e-7e3a-46fe-8174-fd7b604137b7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a new public subnet in your VPC.",
+                "Create a new Network ACL and associate it with the public subnet.",
+                "Create a new Security Group in the VPC.",
+                "Create a new EC2 instance in the public subnet and assign it the Security Group.",
+                "Experiment with connecting to the EC2 instance.",
+                "Update the NACL to allow inbound and outbound rules & retry connection tests.",
+                "Update Security Group rules to allow connections to the instance and retry connection tests.",
+                "Remove outbound rule on the NACL and observe behavior of connection attempts.",
+                "Add explicit deny on the NACL and observe behavior of connection attempts."
+              ],
+              "positive_feedback": "Congratulations! You have configured and tested security groups and ACLs.",
+              "video_feedback": null,
+              "description": "Students will have a chance to configure and test the effects of security groups and ACLs"
+            }
+          ]
+        },
+        {
+          "id": 1011763,
+          "key": "79ed3ff2-04e2-49e4-bdb8-c62fee0808df",
+          "title": "Solution: Restriction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "79ed3ff2-04e2-49e4-bdb8-c62fee0808df",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011736,
+              "key": "8d5e5341-3a28-4571-b3a0-1db32d1632dc",
+              "title": "Restrict Access to Cloud Resources Exercise Solution Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Restrict Access to Cloud Resources",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011688,
+              "key": "991c4b6f-f8ce-4551-9327-871d4605dd73",
+              "title": "ND063 C3 L2 09 Restrict Access To Cloud Resources Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AEGcOUwX1H0",
+                "china_cdn_id": "AEGcOUwX1H0.mp4"
+              }
+            },
+            {
+              "id": 1011731,
+              "key": "1b0e09d2-61c3-4ae3-8b57-badeba2b67b5",
+              "title": "Restrict Access to Cloud Resources Exercise Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this exercise, you were tasked with testing Network ACLs and Security Groups in your AWS environment.\n\nI hope that after running through this exercise you have a better feel for how network ACLs and security groups can be used to control network traffic to resources deployed in your cloud environment.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011768,
+          "key": "42df06b0-3220-4938-b540-750400d06ada",
+          "title": "Egress Control",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "42df06b0-3220-4938-b540-750400d06ada",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011693,
+              "key": "6853650c-0123-465f-b52a-48edb41618e6",
+              "title": "Egress control Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Egress Control",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011690,
+              "key": "30f636a5-6cae-46d1-93b4-4fb4a310de96",
+              "title": "ND063 C3 L2 10 Egress Traffic To The Internet",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5sjAWmG1Iik",
+                "china_cdn_id": "5sjAWmG1Iik.mp4"
+              }
+            },
+            {
+              "id": 1011708,
+              "key": "a5340cf8-8e5f-4cab-8b61-2b70ffd33d4a",
+              "title": "Egress control Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "**Using NACLs and security groups to restrict internet bound traffic to specific entities is not the best approach.**\n\nAWS provides a few different conduits for connecting to internet sites from our VPC subnets:\n- Resources deployed in a subnet can be assigned to public IP addresses and will have internet bound traffic routed through an \"internet gateway\".  \n- A NAT instance or NAT gateway can be deployed in public subnets so that instances in other subnets can use this device to gain access to the internet. \n\nFrom a security perspective, it is not practical to deploy all application resources that require internet connectivity into a public subnet. This widens the attack surface and leaves the environment open to exploitation.\n\nTo solve this, a device such as the NAT gateway is the most common solution.\n\nThe shortfall with the NAT gateway solution from a security perspective is that it is difficult to monitor and restrict traffic at the application layer to specific domains and sites. \n\n### Securing Egress Traffic",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011714,
+              "key": "dbeac4d0-97d7-4817-a935-efd3abe56feb",
+              "title": "ND063 C3 L2 11 Securing Egress Traffic",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4T5a-5_Enlc",
+                "china_cdn_id": "4T5a-5_Enlc.mp4"
+              }
+            },
+            {
+              "id": 1011709,
+              "key": "24b52d1f-83d2-4c54-8946-7a1af4c806cb",
+              "title": "Securing Egress Traffic Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### A Few Solutions\n\n- **Set Up a Web Proxy Layer**: \nThis is the simplest way to log application internet traffic. Proxies can also be used to restrict traffic to allowed sites. There are a few drawbacks:\n\n 1. Additional Configuration: applications and instances that require internet access will need to be configured to make use of an http proxy. \n\n 2. The proxy farm itself will need to be configured, managed and maintained.\n\n- **In-Line Gateway Appliance**: \nThese appliances generally come from commercial vendors and provide a range of capabilities for controlling and inspecting outbound traffic out of the box.  Cost is the biggest barrier to this approach.\n\n- **Host-Based IDS**:\nA host-based IDS is an agent based solution that runs on each instance. Providing many of the capabilities that the in-line gateway appliance provides including egress control and data loss prevention, intrusion detection and prevention. The biggest disadvantage is enforcing that  all hosts in your environment have the agent running.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011733,
+              "key": "942ba972-e113-4be0-92ad-398443f30fba",
+              "title": "Egress control New Terms or Vocabulary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n#### Network ACL (NACL)\nFirewall construct in AWS which allows controls to be placed on VPC subnet network traffic.\n\n#### NAT Gateway\nA NAT Gateway is an AWS managed network component which allows instances in private subnets to connect to the Internet but does not allow connection attempts from the Internet to reach private instances. \n\n#### Proxy Layer (or Proxy Farm)\nA set of HTTP proxy servers designed to handle Internet-bound HTTP traffic.  This solution provides additional visibility and control of which Internet sites can be reached.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011746,
+              "key": "7c9ebd76-1c00-4ea5-8af6-950af823f389",
+              "title": "Egress control Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Resources\nWe highly advise [this article be reviewed in detail](https://aws.amazon.com/answers/networking/controlling-vpc-egress-traffic/).\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011766,
+          "key": "0f070c3f-8c16-4e71-aac4-67474618718b",
+          "title": "Egress Control Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0f070c3f-8c16-4e71-aac4-67474618718b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011739,
+              "key": "47dba810-84c6-4d60-a993-56d6a7b5a9df",
+              "title": "Egress control Easy Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "47dba810-84c6-4d60-a993-56d6a7b5a9df",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Identify the following scenarios which may require egress control.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Establishing an SSH connection from home.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Internal corporate security and compliance policies.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Regulatory compliance such as \"PCI-DSS\" etc.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011732,
+              "key": "60f00a27-ff7a-44d9-9a01-13728579be7b",
+              "title": "Egress control Hard Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "60f00a27-ff7a-44d9-9a01-13728579be7b",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Based on [this AWS article](https://aws.amazon.com/answers/networking/controlling-vpc-egress-traffic/), which solutions may provide protection from malicious outbound traffic without having to install in-line infrastructure or appliances in the environment?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Forward proxy servers",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Host based solutions",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "NAT Gateways",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011756,
+          "key": "cb8037a0-07e1-4d59-bed7-232db5387114",
+          "title": "Exercise: Egress Control",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cb8037a0-07e1-4d59-bed7-232db5387114",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011718,
+              "key": "a4a811fd-9887-4764-8ee0-5638269793d8",
+              "title": "Egress control Exercise Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Egress Control\n\n[This article references third party vendors that provide products for controlling traffic](https://aws.amazon.com/answers/networking/controlling-vpc-egress-traffic/).\n\nDo some of your own research and compare two vendor products.\n\n**Identify and describe:**\n- Common features between both products.\n- Features unique to each product.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011691,
+              "key": "32b6d202-8984-46b2-965d-97e5c38a83dc",
+              "title": "Vendors Chosen",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "32b6d202-8984-46b2-965d-97e5c38a83dc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Vendors",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Which two vendor products did you choose?"
+              },
+              "answer": {
+                "text": "Now, answer the below questions about your two chosen products.",
+                "video": null
+              }
+            },
+            {
+              "id": 1011686,
+              "key": "90e2ba57-8f54-4602-b9dc-63dd844786c9",
+              "title": "Common Features",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "90e2ba57-8f54-4602-b9dc-63dd844786c9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Shared Features",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What are some common features between both products?"
+              },
+              "answer": {
+                "text": "Now, answer the last question about your two chosen products.",
+                "video": null
+              }
+            },
+            {
+              "id": 1011697,
+              "key": "5dd63e7a-4000-4691-abc2-7ca6cc724c61",
+              "title": "Unique Features",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5dd63e7a-4000-4691-abc2-7ca6cc724c61",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Unique Features",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "What are some unique features about each product?"
+              },
+              "answer": {
+                "text": "Thanks for your response!",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011761,
+          "key": "e8be0437-2625-487e-b7bb-ddd591454131",
+          "title": "Solution: Egress Control",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e8be0437-2625-487e-b7bb-ddd591454131",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013398,
+              "key": "fecf819d-1fae-476e-b7e8-413bded1a7a2",
+              "title": "Solution Header for Egress",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Egress Control",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011734,
+              "key": "d7174d68-6fca-48cb-8eca-b3c3cb1f42cd",
+              "title": "ND063 C3 L2 12 Solution- Egress Control Exercise",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vE3XxG1V8_M",
+                "china_cdn_id": "vE3XxG1V8_M.mp4"
+              }
+            },
+            {
+              "id": 1011729,
+              "key": "27fae1c4-b320-4ddd-adbf-a657dce4cd9a",
+              "title": "Egress control Exercise Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This exercise was mostly a practice in research and analysis. If you continue in this field, you'll have to become very comfortable with researching different solutions and technologies.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011767,
+          "key": "db57b8f6-6719-4586-9f6e-f69c7d222cc6",
+          "title": "Access to Cloud Networks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "db57b8f6-6719-4586-9f6e-f69c7d222cc6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011730,
+              "key": "72f5672d-55ee-4393-8ca4-eaf0b50aa16b",
+              "title": "Access to Cloud Networks Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Access to Cloud Networks\n\nPreviously, we talked about obtaining console login access to cloud servers and instances. Oftentimes, developers and engineers will need to establish network connectivity with these hosts and other hosts running in private subnets, such as RDS database instances, etc.  \n\nHere, we will outline a few methods for establishing network access to resources running in your cloud environments.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011694,
+              "key": "ea4c5061-b162-4b06-b7a9-088c76e26879",
+              "title": "ND063 C3 L2 13 Access To Cloud Networks",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ySoY-TicvKI",
+                "china_cdn_id": "ySoY-TicvKI.mp4"
+              }
+            },
+            {
+              "id": 1011738,
+              "key": "b80ea6eb-c577-4eb2-994c-e1e12258eceb",
+              "title": "Bastion Hosts Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Methods for Establishing Network Access to Resources Running in your Cloud Environments\n\n#### Bastion Hosts \nBastion hosts, or jump hosts, are set up in a public subnet to allow a user to login from either their home or office network, and subsequently access or jump to resources in private networks. \n- Pros: It is a simple and low cost method for getting onto your cloud VPC.\n- Cons: It needs additional effort to harden the bastion host. It is not scalable for many users, and may not work if client applications need to be on the user's laptop or desktop. It is a common target for attackers who hope to gain access to the network by exploiting a vulnerability on the bastion host.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011699,
+              "key": "0c5573e5-55b0-47a2-b81b-bbc42dc63c3c",
+              "title": "Bastion Hosts Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94fbb9_9.-bastion-hosts-image/9.-bastion-hosts-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0c5573e5-55b0-47a2-b81b-bbc42dc63c3c",
+              "caption": "**Bastion Hosts**",
+              "alt": "A diagram showing someone using a Bastion Host to work from home.",
+              "width": 600,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011737,
+              "key": "6eb95a44-90f7-4024-956e-b41021eaee32",
+              "title": "Virtual Desktop Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Virtual Desktop Solution\nSimilar to a bastion host, except that each user will get their own virtual bastion.\n- Pros:  It allows users to install their desktop application clients in the cloud environment without having connectivity to the VPC from their local laptop\n- Cons: It costs more than a bastion host. Users will not have direct connectivity to any backend services in the VPC.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011742,
+              "key": "121d5391-f40b-45a2-b832-b1b9f1b8ba11",
+              "title": "Virtual Desktop Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94fc3e_10.-virtual-desktop-image/10.-virtual-desktop-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/121d5391-f40b-45a2-b832-b1b9f1b8ba11",
+              "caption": "**Virtual Desktop**",
+              "alt": "A diagram showing virtual desktops in use.",
+              "width": 600,
+              "height": 333,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011711,
+              "key": "8dda9565-2b1a-427b-815c-474c11b8f5c6",
+              "title": "Client VPN Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Client VPN \nA client VPN solution allows a user to connect to the cloud VPC using a secure VPN client to establish an encrypted tunnel. \n- Pros: Easy to set up. It has the ability to manage many users and roles. It places the user into the VPC so that they may use client applications on their local host to hit the resources deployed in the VPC.\n- Cons: It has additional cost as compared to a bastion host. Users may need to install proprietary VPN clients on their local machines.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011700,
+              "key": "2cd6cf94-4d19-442e-b490-03f12db6de8b",
+              "title": "Client VPN Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94fc58_11.-client-vpn-image/11.-client-vpn-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2cd6cf94-4d19-442e-b490-03f12db6de8b",
+              "caption": "**Client VPN**",
+              "alt": "A diagram showing VPN clients in action.",
+              "width": 600,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011702,
+              "key": "dcef2296-5d58-4209-be75-8d559f783c90",
+              "title": "Site to Site VPN Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Site-to Site-VPN\nWe can connect a local trusted network's firewall with the AWS VPN service to establish VPN tunnel connectivity from the entire local network to the AWS VPC network.\n- Pros: No need to install any VPN client software on each user's local machine.\n- Cons: Additional routing and configuration needs to be performed on the local network. It often leads to delays in setup. No role based routing.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011710,
+              "key": "9393cffe-4926-48e2-bed2-eccddc593e25",
+              "title": "Site to Site VPN Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94fcce_12.-site-to-site-vpn-image/12.-site-to-site-vpn-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9393cffe-4926-48e2-bed2-eccddc593e25",
+              "caption": "**Site to Site VPN**",
+              "alt": "A diagram showing site to site VPNs in action.",
+              "width": 600,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011745,
+              "key": "c1e947c0-de3e-4a34-a392-d20cec910071",
+              "title": "Access to Cloud Networks Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Direct Connect Link \nA dedicated link from a corporate office network or co-location datacenter.\n- Pros: Dedicated bandwidth. It is ideal for hybrid cloud environments.\n- Cons: Higher costs and require more time to set up. Once set up, if users are not on the corporate LAN, a solution such as VPN or VDI will still need to be implemented. Generally, it is not an option for small or virtual teams that do not have a LAN to work out of. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011725,
+              "key": "42dfdc1c-9017-4768-9035-19807cf4c205",
+              "title": "Access to Cloud Networks Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94fce7_13.-access-to-cloud-networks-image/13.-access-to-cloud-networks-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/42dfdc1c-9017-4768-9035-19807cf4c205",
+              "caption": "**Direct Connect Link**",
+              "alt": "A diagram showing direct connect link in action.",
+              "width": 600,
+              "height": 250,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011707,
+              "key": "34b92f08-3e21-4829-a0be-09feba43594e",
+              "title": "Access to Cloud Networks New Terms or Vocabulary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms:\n#### Bastion Hosts \nBastion hosts, or jump hosts, are set up in a public subnet to allow a user to login from either their home or office network, and subsequently access or jump to resources in private networks. \n\n#### Client VPN \nA secure tunnel between a user's local host and a VPN server in a cloud VPC. The tunnel is established using a VPN client running on the user's host.\n\n#### Sit- to-Site VPN\nA secure network tunnel between a local trusted network and the AWS VPC, using the AWS VPN service or other VPN product.\n\n#### Virtual Desktop\nA desktop deployed in a cloud VPC that can be used to run applications that need connectivity to resources in the VPC. A user would install a virtual desktop client on their local host to connect to and use the virtual desktop.\n\n#### Direct Connect\nA dedicated and private network link between a company's on-premise local network and an AWS Direct Connect location - enabling two way traffic between AWS resources and the local network. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011748,
+              "key": "d3c23bdc-a609-4546-8f38-0aa90964c7d1",
+              "title": "Access to Cloud Networks Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Resources\n\n- [AWS Client VPN](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html)\n\n- [AWS Workspaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html)\n\n- [OpenVPN on AWS](https://aws.amazon.com/blogs/awsmarketplace/setting-up-openvpn-access-server-in-amazon-vpc/)\n\n\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011758,
+          "key": "3e045d18-efbb-4b07-a6dd-2678d158ad33",
+          "title": "Access Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3e045d18-efbb-4b07-a6dd-2678d158ad33",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011704,
+              "key": "46f0b183-97cc-4eae-a257-aabc80cc0348",
+              "title": "Access to Cloud Networks Easy Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "46f0b183-97cc-4eae-a257-aabc80cc0348",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Choose which techniques would enable access to cloud private networks from a user's home or office network.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "NAT Gateway",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Bastion Host",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "VPN Client",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "VPC Peering",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1013395,
+              "key": "bf1e37c6-9b5c-4b91-9d36-c4f5778a4f22",
+              "title": "Benefits and Drawbacks",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bf1e37c6-9b5c-4b91-9d36-c4f5778a4f22",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match each method of access with the correct benefit or drawback.\n"
+                },
+                "concepts_label": "Method",
+                "answers_label": "Benfit/Drawback",
+                "concepts": [
+                  {
+                    "text": "\nVPN Client",
+                    "correct_answer": {
+                      "id": "a1586822451362",
+                      "text": "\nUsers need to install clients on their desktops."
+                    }
+                  },
+                  {
+                    "text": "\nDirect Connect",
+                    "correct_answer": {
+                      "id": "a1586822498278",
+                      "text": "\nRelatively costly, not feasible for virtual teams which do not have a corporate LAN."
+                    }
+                  },
+                  {
+                    "text": "\nBastion Hosts",
+                    "correct_answer": {
+                      "id": "a1586822499859",
+                      "text": "\nRelatively low cost, easy to deploy."
+                    }
+                  },
+                  {
+                    "text": "\nVirtual Desktop (VDI)",
+                    "correct_answer": {
+                      "id": "a1586822501220",
+                      "text": "\nUsers will not have direct connectivity to the cloud network and will need to install their applications on the desktop."
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586822499859",
+                    "text": "\nRelatively low cost, easy to deploy."
+                  },
+                  {
+                    "id": "a1586822498278",
+                    "text": "\nRelatively costly, not feasible for virtual teams which do not have a corporate LAN."
+                  },
+                  {
+                    "id": "a1586822501220",
+                    "text": "\nUsers will not have direct connectivity to the cloud network and will need to install their applications on the desktop."
+                  },
+                  {
+                    "id": "a1586822451362",
+                    "text": "\nUsers need to install clients on their desktops."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011765,
+          "key": "36a44ced-47e8-438f-b10e-52a79a59648f",
+          "title": "Exercise: Architecture Design",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "36a44ced-47e8-438f-b10e-52a79a59648f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011741,
+              "key": "75b4d6be-a765-4071-83a5-d0daee8443b9",
+              "title": "Designing an Architecture Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Designing an Architecture\n\nIn this exercise, you will start with a simple reference architecture and use the design principles outlined in the lesson to improve the security posture of the environment.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011743,
+              "key": "8038964d-2761-4a6b-bffb-e4d54b7ddd0d",
+              "title": "Designing an Architecture Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Refer to a simple reference architecture and use the design principles outlined in the lesson to improve the security posture of the environment.\n\nFor your convenience we have provided a starter architecture diagram file in \"draw.io\" format.\nThe file is available via [AWS S3 and is named \"cand-c3-l2-architecture-design.drawio\"](https://cloud-architect-nanodegree-program.s3-us-west-2.amazonaws.com/cand-c3-l2-architecture-design.drawio).\n\nYou may import this file into [draw.io](https://app.diagrams.net/) (or [Lucidchart](https://www.lucidchart.com)) and make the necessary updates.\n\nThis environment contains the following components:\n\n- VPC with an internet gateway\n- Public subnet hosting a NAT gateway\n- Application instance Kubernetes cluster running our application containers in a private subnet.\n- RDS database - Postgres - deployed in a private subnet\n- Internet facing load balancer to accept web traffic (80 and 443) - deployed in a public subnet.\n- Security groups assigned to the load balancer, instances, and RDS database.\n\nYour assignment is to improve the architecture so that it meets the following requirements for security and access:\n\n1. Developers need network connectivity to the Kubernetes cluster to manage on 6443. They do not need to login to any instances.\n\n2. Application containers need connectivity to the database on Postgres port.\n\n3. The data science team needs access to the database as well. They do not need access to the application cluster.\n\n4. The applications will need to connect to an external service such as Mailgun. At this time, we don’t know Mailgun’s IP ranges or what other services the application will need to connect to.\n\n5. We want to monitor network traffic from the application containers out to the internet.\n\n6. All access needs to be the least privilege. Security group rules should be as specific as possible.\n\n7. Team members do not have access to a corporate network.\n\nYou may either complete a new version of the diagram or a writeup outlining each layer of security that you would incorporate into this design.\n\nBe sure to be specific about chosen tools and products and how they would help make this environment more secure.\n\n### Hints and Approach\n- Fine tune each security group to only allow access from IP ranges or security groups which need access. Ensure ports are specific.\n- Stick with a bastion or VPN client based approach to allow team members access to the environment. A new security group should be set up for the VPN clients or bastion host users.\n- Research container based IDS/IPS/host monitoring solutions, aqua, sysdig, alertlogic, twistlock are notable products. Just include a few sentences on how the chosen tool might meet the requirement.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011740,
+              "key": "a17252ca-81bd-4c15-aa4c-e7f2337eca92",
+              "title": "Designing an Architecture Diagram",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94ff4d_starter-image/starter-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a17252ca-81bd-4c15-aa4c-e7f2337eca92",
+              "caption": "**Starting Architecture Diagram of Environment**",
+              "alt": "The starting diagram.",
+              "width": 2626,
+              "height": 1370,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011744,
+              "key": "147c0ae7-effa-49b6-95f3-807e442897a6",
+              "title": "Designing an Architecture",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "147c0ae7-effa-49b6-95f3-807e442897a6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Review and identify outbound internet traffic routing in the initial architecture.",
+                "Review security groups for load balancer, kubernetes cluster, and RDS database.",
+                "Modify architecture design to fulfill connectivity requirements for developers.",
+                "Modify architecture design to fulfill connectivity requirements for the analytics team.",
+                "Update security group rules to be least privilege based on specific connectivity requirements.",
+                "Add internet connectivity solution to control and monitor connections to internet sites such as [mailgun.com](https://www.mailgun.com/).",
+                "Identify additional tooling for security monitoring related to the application containers running in the kubernetes cluster."
+              ],
+              "positive_feedback": "Wonderful! You have successfully applied cloud security best practices to a cloud architecture design.",
+              "video_feedback": null,
+              "description": "Steps to begin redesigning your architecture."
+            }
+          ]
+        },
+        {
+          "id": 1011769,
+          "key": "4e2e6ccb-5460-44bc-a141-f92c2eb44e8e",
+          "title": "Solution: Architecture Design",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4e2e6ccb-5460-44bc-a141-f92c2eb44e8e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011747,
+              "key": "e3f7f985-b6dd-4eff-a996-25ee2956c1b7",
+              "title": "ND063 C3 L2 14 Designing An Architecture Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7jULQ4UKLQc",
+                "china_cdn_id": "7jULQ4UKLQc.mp4"
+              }
+            },
+            {
+              "id": 1013399,
+              "key": "88412819-6dee-44b1-a2a1-dde0746cfc7b",
+              "title": "Header for Architecture Solution",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Architecture Design",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011716,
+              "key": "bc99bbf4-1aa4-4440-bdcd-1e757e6f4575",
+              "title": "Solution Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94ff6a_14.-solution-image/14.-solution-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bc99bbf4-1aa4-4440-bdcd-1e757e6f4575",
+              "caption": "**Example Solution**",
+              "alt": "An example solution architecture.",
+              "width": 2496,
+              "height": 1376,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011706,
+              "key": "442b61dd-3f13-43aa-b34f-607ba4fcb116",
+              "title": "Designing an Architecture Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "While your diagram doesn't need to be identical to mine, the result should be very similar. We may have made some different decisions along the way, but your diagram should solve the same problems as this solution.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011751,
+          "key": "7caebbe2-0055-4a3f-b515-f0ebf175d207",
+          "title": "Lesson Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7caebbe2-0055-4a3f-b515-f0ebf175d207",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011719,
+              "key": "32509f24-595f-46f6-812a-3ea28a547141",
+              "title": "Lesson Conclusion Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Conclusion",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011727,
+              "key": "95570f95-9eba-41d6-8a08-ee98da7a1db1",
+              "title": "ND063 C3 L2 15 Lesson Conclusion Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BIHu46fsP4Q",
+                "china_cdn_id": "BIHu46fsP4Q.mp4"
+              }
+            },
+            {
+              "id": 1011724,
+              "key": "86c2b61f-d09c-4e50-92e8-eece3104cbd9",
+              "title": "Lesson Conclusion Text",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What We Learned\nIn this lesson, we have explored a number of different methods to ensure secure access to cloud infrastructure and resources.\n\n- We have looked into methods for providing secure login access to cloud hosts and instances.\n- We have discussed the importance of controlling and restricting network traffic, including incoming ingress traffic and outbound egress traffic. We also reviewed tools and products to help facilitate this.\n- We looked at methods for providing engineers secure network connectivity with cloud resources deployed within the cloud VPC.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011722,
+              "key": "82464c4b-95eb-462f-94ab-f30c244845cc",
+              "title": "Glossary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Glossary\n#### Key Pair\nA key pair consists of a public key and private key that authenticate and encrypt an SSH session. The public key can be hosted on cloud servers and the private key is held by the user. Only a user with the private key that corresponds to the public key will be able to authenticate to the SSH server.\n\n#### Privilege Access Management (PAM) Tool\nA privileged access management tool provides management of authentication, sessions, password storage, audit, and privilege escalation when it comes to logging into server infrastructure.\n\n#### AWS Systems Manager (SSM)\nThe AWS Systems Manager service provides the ability to manage EC2 instances at the operating system level - including patching, command execution, automation, state management, inventory.\n\n#### Session Manager\nSession Manager is a feature within AWS Systems Manager which allows an authenticated IAM user or role the ability to start a terminal session on an EC2 instance.\n\n#### Open Vulnerability\nAn exploitable vulnerability in the OS kernel, packages, or applications installed on an instance which could lead to a remote actor gaining unauthorized access.\n\n#### Immutability\nA deployment model where components do not undergo any changes from provisioning to deprovisioning.\n\n#### Immutable Instances\nInstances that are launched from pre-configured images and do not undergo any changes from deployment to deprovisioning.\n\n#### Configuration Management Tool\nTools that can enforce operating system configuration state based on versioned code templates.\n\n#### Intrusion Detection System (IDS)\nA process that monitors system activity and identifies suspicious behaviour indicating that a server has been compromised.\n\n#### Security Information and Event Management (SIEM)\nTools that aggregate system events and logs in order to provide historical and real-time analysis, correlation, dashboards, and alerting.\n\n#### Ingress\nIn-bound network traffic that is entering your cloud environment from the outside.\n\n#### Egress\nOut-bound network traffic that is leaving your cloud environment.\n\n#### Internet Gateway\nNetwork component that is part of a VPC that facilitates out-bound and in-bound traffic to the internet.\n\n#### NAT Gateway\nA NAT Gateway is an AWS managed network component which allows instances in private subnets to connect to the internet but does not allow connection attempts from the internet to reach private instances.\n\n#### Proxy Layer (or Proxy Farm)\nA set of HTTP proxy servers designed to handle internet bound HTTP traffic.  This solution provides additional visibility and control on which internet sites can be reached.\n\n#### VPN\nExtends a private network such as an AWS VPC to an on-premise LAN or a user’s local host.  VPNs are encrypted tunnels that go over the internet.\n\n#### Direct Connect\nA dedicated and private network link between a company's on-premise local network and an AWS Direct Connect location - enabling two way traffic between AWS resources and the local network.\n\n#### Network ACL (NACL)\nFirewall construct in AWS which allows controls to be placed on VPC subnet network traffic.\n\n#### Security Group\nFirewall construct in AWS which allows controls to be placed on individual resources that are deployed in a VPC.\n\n#### Bastion Hosts\nBastion hosts, or jump hosts, are set up in a public subnet to allow a user to login from either their home or office network, and subsequently access or jump to resources in private networks.\n\n#### Virtual Desktop Solution\nA desktop deployed in a cloud VPC that can be used to run applications that need connectivity to resources in the VPC. A user would install a virtual desktop client on their local host to connect to the virtual desktop.\n\n#### Client VPN\nA secure tunnel between a user's local host and a VPN server in a cloud VPC. The tunnel is established using a VPN client running on the user's host.\n\n#### Site-to-Site VPN\nA secure network tunnel between a local trusted network and the AWS VPC, using the AWS VPN service or other VPN product.\n\n#### Direct Connect\nA dedicated and private network link between a company's on-premise local network and an AWS Direct Connect location - enabling two way traffic between AWS resources and the local network.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

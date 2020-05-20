@@ -1,0 +1,632 @@
+{
+  "data": {
+    "lesson": {
+      "id": 983096,
+      "key": "17c43d9a-4ba9-48c5-9c7b-163f4542d2b9",
+      "title": "Project: Recoverability In AWS",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": null,
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": {
+        "key": "85601b2e-4a38-4f3b-82e0-840ee8ac0918",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Recoverability In AWS",
+        "description": "In this project you will create highly available solutions to common use cases. You will build a Multi-AvailabilityZone, Multi-Region database and show how to use it in multiple geographically separate AWS regions. You will also build a website hosting solution that is versioned so that any data destruction and accidents can be quickly and easily undone.\n\nThroughout the instructions you will find notes (anything starting with ***\"SAVE\"***) as to what to submit for this project.  The project completion submission should include:\n- Various screenshots as denoted in the instructions\n- Database command line logs from the various interactions with the databases of this project\n- A written description of the RTO and RPO related to this project as described within the instructions\n\nBefore you submit the project, read the [project rubric](https://review.udacity.com/#!/rubrics/2811/view).",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2811",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1010629,
+          "key": "243f1286-6903-4903-ab42-68c9848d52d3",
+          "title": "Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "243f1286-6903-4903-ab42-68c9848d52d3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010630,
+              "key": "a92fe91e-d702-4998-b36e-06b8147e844c",
+              "title": "ND0063 C1 L4 21 Project Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "UmCJEcjcF9w",
+                "china_cdn_id": "UmCJEcjcF9w.mp4"
+              }
+            },
+            {
+              "id": 1010631,
+              "key": "fd2be807-ad77-439b-95d7-2006c4794285",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Data Durability And Recovery\nIn this project you will create highly available solutions to common use cases. You will build a Multi-AvailabilityZone, Multi-Region database and show how to use it in multiple geographically separate AWS regions. You will also build a website hosting solution that is versioned so that any data destruction and accidents can be quickly and easily undone.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1010633,
+          "key": "d968280e-2271-4dab-b355-e2ef5f974220",
+          "title": "GitHub Repository",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d968280e-2271-4dab-b355-e2ef5f974220",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010634,
+              "key": "471795a9-c147-4181-8fd4-8e904cac0ff5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# GitHub Repository\n\nTo get started, clone [this GitHub repository](https://github.com/udacity/nd063-c2-design-for-availability-resilience-reliability-replacement-project-starter-template).  Aside from instructions, it contains a CloudFormation script to build an AWS VPC with public and private subnets.  It also contains an example website that you will host in an AWS S3 bucket in your account.\n\nhttps://github.com/udacity/nd063-c2-design-for-availability-resilience-reliability-replacement-project-starter-template",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1010636,
+          "key": "88aea6e7-1864-4d22-a8a3-f82ec4971c03",
+          "title": "CloudFormation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "88aea6e7-1864-4d22-a8a3-f82ec4971c03",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011284,
+              "key": "a5bffcc6-d6c7-409f-bb0f-444f1719fcb6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e8e2a8b_aws-cloudformation4x/aws-cloudformation4x.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a5bffcc6-d6c7-409f-bb0f-444f1719fcb6",
+              "caption": "",
+              "alt": "",
+              "width": 300,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 1010637,
+              "key": "3f2231e6-204a-46bd-a979-ba3de6ccfaad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this project, you will use the [AWS CloudFormation](https://aws.amazon.com/cloudformation/) to create Virtual Private Clouds.  CloudFormation is an AWS service that allows you to create \"infrastructure as code\".  This allows you to define the infrastructure you'd like to create in code, just like you do with software.  This has the benefits of being able to share your infrastructure in a common language, use source code control systems to version your infrastructure and allows for documenting and reviewing of infrastructure and infrastructure proposed changes.\n\nCloudFormation allows you to use a configuration file written in a YAML file to automate the creation of AWS resources such as VPCs.  In this project, you will use a pre-made CloudFormation template to get you started.  This will allow you to create some of the infrastructure that you'll need without spending a lot of time learning details that are beyond the scope of this course.\n\nYou can find the YAML file in the GitHub repo: https://github.com/udacity/nd063-c2-design-for-availability-resilience-reliability-replacement-project-starter-template/blob/master/cloudformation/vpc.yaml\n\nIn order to build a VPC from the YAML file, follow the steps (keep in mind you'll want to name the primary VPC \"Primary\" and the secondary VPC \"Secondary\":\n1. Services -> CloudFormation\n2. Create stack “With new resources (standard)”\n1. Template is ready\n2. Upload a template file\n3. Click “Choose file” button\n4. Select provided YAML file\n5. Next",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010639,
+              "key": "ac7cbea4-5733-4fe1-83ba-354fb4617dd7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e5bf1b5_cloudformationcreate/cloudformationcreate.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ac7cbea4-5733-4fe1-83ba-354fb4617dd7",
+              "caption": "",
+              "alt": "",
+              "width": 1208,
+              "height": 930,
+              "instructor_notes": null
+            },
+            {
+              "id": 1010640,
+              "key": "428f0c24-f5ba-4c7d-9150-c8a940efb42d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "8. Fill in Stack name\n9. Name the VPC\n10. Update the CIDR blocks\n11. Click Next\n12. Click Next again\n13. Click Create stack\n14. Wait for the stack to build out.  Refresh until status becomes “CREATE_COMPLETE”\n15. Observe the “Outputs” tab for the created IDs.  These will be used later.\n\nOnce the CloudFormation Stack has completed, you can look at the \"Resources\" tab to see all of the AWS resources that the stack has created.  You can see both the type of resources that have been created, as well as the AWS identifiers for those resources so that you can locate these resources in the AWS service that they are a part of.\n\nThe \"Outputs\" tab shows you custom output from the CloudFormation Stack that is labeled and described for you.  These descriptions are custom descriptions that were added to the CloudFormation template and make it easier for you to find specific values that have been created as a part of the CloudFormation stack.  Here, you can find the VPC ID that has been created, the subnet IDs including which subnets are public and which are private, and the Security Groups that have been created and a description of each.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010641,
+              "key": "fd9905e8-5cf9-418e-90b3-b809f1786586",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e5bf1f8_cloudformationoutputs/cloudformationoutputs.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fd9905e8-5cf9-418e-90b3-b809f1786586",
+              "caption": "",
+              "alt": "",
+              "width": 1329,
+              "height": 989,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 983098,
+          "key": "1be3bc01-aea6-49ac-a10c-84e852a7d120",
+          "title": "Part 1: Data Durability And Recovery",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1be3bc01-aea6-49ac-a10c-84e852a7d120",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010635,
+              "key": "7797d8dd-e1a5-4e82-b789-b204defa9b82",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Data Durability And Recovery\n1. Pick two AWS regions. An active region and a standby region.\n2. Use CloudFormation to create one VPC in each region. Name the VPC in the active region \"Primary\" and name the VPC in the standby region \"Secondary\".\n\n**NOTE**: Be sure to use different CIDR address ranges for the VPCs.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010843,
+              "key": "a86d6191-2322-4d5f-9098-56304f5e25f0",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a86d6191-2322-4d5f-9098-56304f5e25f0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "primary_Vpc.png",
+                "secondary_Vpc.png"
+              ],
+              "positive_feedback": "You got it.",
+              "video_feedback": null,
+              "description": "**SAVE** screenshots of both VPCs after they are created. Name your screenshots:"
+            },
+            {
+              "id": 1010844,
+              "key": "70c1442a-b103-4653-ba67-b67692fe62aa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Highly durable RDS Database\n1. Create a new RDS Subnet group in the active and standby region using private subnets.\n2. Create a new MySQL, multi-AZ database in the active region. The database must:\n     - Be a “burstable” instance class.\n     - Have only the “UDARR-Database” security group.\n     - Have an initial database called “udacity.”\n3. Create a read replica database in the standby region. This database has the same requirements as the database in the active region. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010847,
+              "key": "42232113-7daa-47f1-928a-09f9e0694c1f",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "42232113-7daa-47f1-928a-09f9e0694c1f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "primaryDB_config.png",
+                "secondaryDB_config.png",
+                "primaryDB_subnetgroup.png",
+                "secondaryDB_subnetgroup.png",
+                "primaryVPC_subnets.png",
+                "secondaryVPC_subnets.png",
+                "primary_subnet_routing.png",
+                "secondary_subnet_routing.png"
+              ],
+              "positive_feedback": "You got it.",
+              "video_feedback": null,
+              "description": "**SAVE** screenshots of the configuration of the databases in the active and secondary region after they are created. Also, save screenshots of the configuration of the database subnet groups as well as route tables associated with those subnets. Name the screenshots:"
+            },
+            {
+              "id": 1010945,
+              "key": "2fbbeb5a-0f22-4f60-9ab7-d62cd3a7b3ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Availability Estimate\nWrite a paragraph or two describing the achievable Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for this Multi-AZ, multi-region database in terms of:\n\n1. Minimum RTO for a single AZ outage\n2. Minimum RTO for a single region outage\n3. Minimum RPO for a single AZ outage\n4. Minimum RPO for a single region outage",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010944,
+              "key": "3cd67340-12a0-4dee-9743-7e5752f0f2b5",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3cd67340-12a0-4dee-9743-7e5752f0f2b5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "**SAVE** your answers in a text file named \"estimates.txt\""
+              ],
+              "positive_feedback": "Nice work!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 1010946,
+              "key": "e61f571c-dd4e-497c-8258-dc6e628d6c98",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Demonstrate normal usage\nIn the active region:\n1. Create an EC2 keypair in the region\n2. Launch an Amazon Linux EC2 instance in the active region. Configure the instance to use the VPC's public subnet and security group (\"UDARR-Application\"). \n3. SSH to the instance and connect to the \"udacity\" database in the RDS instance. \n4. Verify that you can create a table, insert data, and read data from the database. \n5. You have now demonstrated that you can read and write to the primary database\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010947,
+              "key": "8ec98143-cc35-49a2-b450-199a5030fa37",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8ec98143-cc35-49a2-b450-199a5030fa37",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "**SAVE** the log of connecting to the database, creating the table, writing to and reading from the table in a text file called \"log_primary.txt\""
+              ],
+              "positive_feedback": "Nice work!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 983105,
+              "key": "31312062-81ca-46bd-853a-7acb9c1ea69a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Monitor database\n\n1. Observe the “DB Connections” to the database and how this metric changes as you connect to the database\n2. Observe the “Replication” configuration with your multi-region read replica. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010948,
+              "key": "99b43d50-1510-468e-ac8b-447e092ed1e9",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "99b43d50-1510-468e-ac8b-447e092ed1e9",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "monitoring_connections.png",
+                "monitoring_replication.png"
+              ],
+              "positive_feedback": "Well done!",
+              "video_feedback": null,
+              "description": "**SAVE** screenshots of the DB Connections and the database replication configuration. Name your screenshots:"
+            },
+            {
+              "id": 1015428,
+              "key": "baa87d2a-8526-4e62-bd0f-100676e5e468",
+              "title": "ND0063 C1 Project Part 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1_VFDekXpRQ",
+                "china_cdn_id": "1_VFDekXpRQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1010949,
+          "key": "44d7fd45-b901-43bd-81a0-756d9cb03934",
+          "title": "Part 2: Failover And Recovery",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "44d7fd45-b901-43bd-81a0-756d9cb03934",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010954,
+              "key": "41b5d11e-bbe7-43c1-ba98-f99b0f318119",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Failover And Recovery\nIn the standby region:\n\n1. Create an EC2 keypair in the region\n2. Launch an Amazon Linux EC2 instance in the standby region. Configure the instance to use the VPC's public subnet and security group (\"UDARR-Application\").\n3. SSH to the instance and connect to the read replica database.\n4. Verify if you are not able to insert data into the database but are able to read from the database.\n5. You have now demonstrated that you can only read from the read replica database.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010956,
+              "key": "eb5032c0-1eb9-4037-bf74-8fd8a438ae6c",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "eb5032c0-1eb9-4037-bf74-8fd8a438ae6c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "**SAVE** log of connecting to the database, writing to and reading from the table in a text file called \"log_rr_before_promotion.txt\"",
+                "**SAVE** screenshot of the database configuration now, before promoting the read replica database in the next step. Name your screenshot: rr_before_promotion.png"
+              ],
+              "positive_feedback": "Good job!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 1010950,
+              "key": "83f7228a-82d0-4094-8e26-99355754045f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "6. Promote the read replica\n7. Verify that if you are able to insert data into and read from the read replica database.\n8. You have now demonstrated that you can read and write the promoted database in the standby region.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010966,
+              "key": "9e47f1ec-abc7-4d7c-9f5b-353ff512d70e",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9e47f1ec-abc7-4d7c-9f5b-353ff512d70e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "**SAVE** log of connecting to the database, writing to and reading from the database in a text file named \"log_rr_after_promotion.txt\"",
+                "**SAVE** screenshots of the database configuration after the database promotion. Name your screenshot: rr_after_promotion.png"
+              ],
+              "positive_feedback": "Well done!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 1015429,
+              "key": "5734e34e-5196-4259-9650-603d5c05ee87",
+              "title": "ND0063 C1 Project Part 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Sjpx6GdJqio",
+                "china_cdn_id": "Sjpx6GdJqio.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1010951,
+          "key": "f6cea887-2f77-4ccc-9fdf-a693071fb0c0",
+          "title": "Part 3: Web Resiliency",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f6cea887-2f77-4ccc-9fdf-a693071fb0c0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010952,
+              "key": "67a53743-9d79-4d11-a3fa-7c4861bf20c6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Website Resiliency\n\nBuild a resilient static web hosting solution in AWS. Create a versioned S3 bucket and configure it as a static website.\n\n1. Enter “index.html” for both Index document and Error document\n2. Upload the files from the GitHub repo (under `/project/s3/`)\n3. Paste URL into a web browser to see your website. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010961,
+              "key": "e8126a42-b35d-4c73-8616-e844e1244aa2",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e8126a42-b35d-4c73-8616-e844e1244aa2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "**Save** the screenshot of the webpage. Name your screenshot \"s3_original.png\""
+              ],
+              "positive_feedback": "Keep it up!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 1010953,
+              "key": "3b955fb7-4646-4e33-a374-28d8cd88d297",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You will now “accidentally” change the contents of the website such that it is no longer serving the correct content\n\n1. Change `index.html` to refer to a different “season”\n2. Re-upload `index.html`\n3. Refresh web page",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010965,
+              "key": "87ecf4f8-6cac-4353-93dc-029f2b2e1ddb",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "87ecf4f8-6cac-4353-93dc-029f2b2e1ddb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "**SAVE** a screenshot of the modified webpage. Name your screenshot \"s3_season.png\""
+              ],
+              "positive_feedback": "Well done!",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 1010955,
+              "key": "dd2a54dd-d9d6-478d-a611-45beec19f20a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You will now need to “recover” the website by rolling the content back to a previous version.\n\n1. Recover the `index.html` object back to the original version\n2. Refresh web page",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010967,
+              "key": "069973b5-97de-46fe-afd9-bcac0dfa0532",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "069973b5-97de-46fe-afd9-bcac0dfa0532",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "**SAVE** a screenshot of the modified webpage. Name your screenshot \"s3_season_revert.png\""
+              ],
+              "positive_feedback": "You got it.",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 1010957,
+              "key": "86d6fd54-e017-4931-8e9e-e1c1a0e98c02",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You will now “accidentally” delete contents from the S3 bucket. Delete “winter.jpg”",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010968,
+              "key": "d76a62df-9ed4-40b2-a6ff-fcff1c6b8184",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d76a62df-9ed4-40b2-a6ff-fcff1c6b8184",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "s3_deletion.png",
+                "s3_delete_marker.png"
+              ],
+              "positive_feedback": "Good job!",
+              "video_feedback": null,
+              "description": "**SAVE** screenshots of the modified webpage and of the existing versions of the file showing the \"Deletion marker\". Name your screenshots:"
+            },
+            {
+              "id": 1010958,
+              "key": "78dafe11-b77f-4613-a3f6-427588af88e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You will now need to “recover” the object:\n\n1. Recover the deleted object\n2. Refresh web page",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1010969,
+              "key": "2dbd3efb-d121-4e3d-9b2e-ef03419f9919",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2dbd3efb-d121-4e3d-9b2e-ef03419f9919",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "**SAVE** a screenshot of the modified webpage. Name your screenshot \"s3_delete_revert.png\""
+              ],
+              "positive_feedback": "Well done.",
+              "video_feedback": null,
+              "description": ""
+            },
+            {
+              "id": 1015430,
+              "key": "8b98dc98-1b14-4011-a29f-c873f465c29d",
+              "title": "ND0063 C1 Project Part 3",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ymya6IvDN-k",
+                "china_cdn_id": "ymya6IvDN-k.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

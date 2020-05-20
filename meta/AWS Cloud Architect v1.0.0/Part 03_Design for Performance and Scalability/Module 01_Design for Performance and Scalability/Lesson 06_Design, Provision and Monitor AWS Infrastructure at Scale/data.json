@@ -1,0 +1,232 @@
+{
+  "data": {
+    "lesson": {
+      "id": 958601,
+      "key": "873fda6a-ddea-476a-89f7-bddd463d3519",
+      "title": "Design, Provision and Monitor AWS Infrastructure at Scale",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this project, you will plan, design, provision, and monitor infrastructure in AWS using industry-standard and open source tools.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": {
+        "key": "b2f78b30-25c1-4a5c-834a-2d91f0ecb582",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Design, Provision and Monitor AWS Infrastructure at Scale",
+        "description": "To begin the project you can fork the **[project starter code repository](https://github.com/udacity/cand-c2-project)**\n\n\n\n----\n### Required Screenshots and File Uploads\n\nYour Git repository should include the code for the Terraform Exercises, infrastructure diagrams, cost estimates/rationales and all required screenshots:\n\n- Updated Terraform code \n- Cost-effective AWS infrastructure diagram\n- Serverless schematic diagram\n- Initial_Cost_Estimate.csv\n- Reduced_Cost_Estimate.csv including rationale\n- Increased_Cost_Estimate.csv including rationale\n- IAMS Password policy screenshot (from Account settings page)\n- CloudTrail Log (CSV file)\n- Cloudwatch Billing alarm (screenshot)\n- AWS Console screenshots from the Terraform exercises:\n  - Terraform_1_1\n  - Terraform_1_2\n  - Terraform_2_1\n  - Terraform_2_2\n  - Terraform_2_3\n  - Terraform_destroyed\n\nBefore submitting the project, please check the **[Project Rubric](https://review.udacity.com/#!/rubrics/2757/view)** to confirm that you have completed all of the requirements.",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2757",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 958603,
+          "key": "c23e6f29-5181-4bef-8ba1-bc9172e630eb",
+          "title": "Project Details",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c23e6f29-5181-4bef-8ba1-bc9172e630eb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 958706,
+              "key": "20f7fd86-5048-4d72-8581-be7922aa2190",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Design, Provision and Monitor AWS Infrastructure at Scale\n\n\nIn this project, you will plan, design, provision, and monitor infrastructure in AWS using industry-standard and open source tools. You will practice the skills you have learned throughout the course to optimize infrastructure for cost and performance. You will also use Terraform to provision and configure AWS services in a global configuration.\n\n### Before you get started\n\nConfirm that you have installed the required tooling for this project:\n\n- [AWS CLI](https://aws.amazon.com/cli/)\n- [Terraform](https://www.terraform.io/)\n\nYou will also need user accounts for AWS and Terraform. \n\n\n#### Permissions  \nThe tasks carried out for this project should be carried out by a user logged in with the IAM role of Administrator with access to Billing information. You can learn more about setting up a user with the Admin role here:  [Creating Your First Admin User and Group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html)  \n\n\n### Task 1: Create AWS Architecture Schematics\n\n#### Part 1\n\nYou have been asked to plan and provision a cost-effective AWS infrastructure for a new social media application development project for 50,000 single-region users. The project requires the following AWS infrastructure and services. Please include your name and label all elements of the infrastructure on the diagram.\n\n* Infrastructure in the following regions: `us-east-1`\n* Users and Client machines\n* One VPC\n* Two Availability Zones\n* Four Subnets (2 Public, 2 Private)\n* A NAT Gateway\n* A CloudFront distribution with an S3 bucket\n* Web servers in the Public Subnets sized according to your usage estimates\n* Application Servers in the Private Subnets sized according to your usage estimates\n* DB Servers in the Private Subnets\n* Web Servers Load Balanced and Autoscaled\n* Application Servers Load Balanced and Autoscaled\n* A Master DB in AZ1 with a read replica in AZ2\n\nUse [LucidChart](https://www.lucidchart.com/) or a similar diagramming application to create your schematic. Export your schematic as a PDF and save as `Udacity_Diagram_1.pdf`.\n\n#### Part 2\n\nYou have been asked to plan a SERVERLESS architecture schematic for a new application development project. The project requires the following AWS infrastructure and services.\n\n* A user and client machine\n* AWS Route 53\n* A CloudFront Distribution\n* AWS Cognito\n* AWS Lambda\n* API Gateway\n* DynamoDB\n* S3 Storage\n\nExport your schematic as a PDF and save as `Udacity_Diagram_2.pdf`\n\n### Task 2:  Calculate Infrastructure Costs \n\n1. Use the [AWS Pricing Calculator](https://calculator.aws/#/) to estimate how much it will cost to run the services in your Part 1 diagram for one month.  \n    - Target a  monthly estimate between $8,000-$10,000.\n    - Be mindful of AWS regions when you are estimating costs.\n    - Export the estimate as a CSV  file named `Initial_Cost_Estimate.csv`.\n\n2. Return to the [AWS Pricing Calculator](https://calculator.aws/#/) and reconfigure your estimates for the following scenarios: \n    - Your budget has been reduced from $8,000-$10,000 to a maximum of $6,500. What services will you modify to meet this new budget?\n      Export the updated costs in a CSV file named `Reduced_Cost_Estimate.csv` and write up a brief narrative of the changes you made in the CSV file below the cost estimate.\n\n    - Your budget has been increased to $20,000. What resources will you add and why?  \n      Think about where to add redundancy and how to improve performance. Re-configure your estimate to a monthly invoice of $18K-20K.\n       Export the updated costs to a CSV file named `Increased_Cost Estimate.csv` and write up a brief narrative of the changes you made in the CSV file below the cost estimate.\n\n### Task 3: Configure Permissions. \n\nIn order to complete this task, please ensure your IAM users have been [granted access to the billing dashboard](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html) (Activating Access to the Billing and Cost Management Console).      \n\n1. Update the AWS password policy.\n\n   - Minimum password length = 8\n   - Require at least one uppercase letter\n   - Require at least one lowercase letter\n   - Require at least one number\n   - Require at least one non-alphanumeric character.\n\n   Submit a screenshot of the Password Policy from the IAM Account settings page. Name the screenshot `udacity_password_policy.png` or `udacity_password_policy.jpg`.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959384,
+              "key": "54f52fc5-d8a7-4aeb-92b8-4f6fa983bfd0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/November/5ddc8952_password-policy/password-policy.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/54f52fc5-d8a7-4aeb-92b8-4f6fa983bfd0",
+              "caption": "Example AWS Password Policy",
+              "alt": "AWS Password Policy",
+              "width": 858,
+              "height": 407,
+              "instructor_notes": null
+            },
+            {
+              "id": 959383,
+              "key": "cc59f6a9-dffd-43ad-ade3-5ebd0a2a03d7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Create a Group named `CloudTrailAdmins` and give it the two `CloudTrail` privileges.\n\n3. Create a Group named `Reviewers` and give it the `Billing` privilege.\n\n4. Configure a user named `CloudTrail` and a user named `Accountant`. Give the users AWS Console access and assign them a password that conforms to your password policy. Require them to change their password when they login.\n\n5. Assign `CloudTrail` to the `CloudTrailAdmins` group. Assign `Accountant` to the `Reviewers` group .\n\n6. Test both user accounts by logging into the AWS console as the users `CloudTrail` and `Accountant` after changing their passwords on login. Login using your numerical AccountID\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959520,
+              "key": "f6e9e294-743d-42d3-abeb-2ca35c2043b1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/November/5dded289_aws-login-cloudtrail/aws-login-cloudtrail.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f6e9e294-743d-42d3-abeb-2ca35c2043b1",
+              "caption": "",
+              "alt": "AWS Sign In",
+              "width": 416,
+              "height": 486,
+              "instructor_notes": null
+            },
+            {
+              "id": 959519,
+              "key": "b893ad96-8efa-41f3-bff6-e1769a843e76",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "7. While logged-in as the user `CloudTrail`, go to the CloudTrail page and create a trail named `Udacity_Trail`. Enable logging on all Read/Writes Management Events and S3 and Lambda events Data Events. Create a new S3 Bucket to store the CloudTrail log. There is no need for advanced configuration.\n\n8. Download the portion of the CloudTrail log that shows the entire Task 3 timeframe and save  it as `UdacityCloudTrailLog.csv`.\n9. Before Logging off, return to the CloudTrail configuration page. Disable S3 logging. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959386,
+              "key": "e98e89d0-8cab-49d1-b1c3-a5e5b7072348",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/November/5ddc8a7a_stop-logging/stop-logging.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e98e89d0-8cab-49d1-b1c3-a5e5b7072348",
+              "caption": "Are you sure you want to stop logging?",
+              "alt": "Are you sure you want to stop logging?",
+              "width": 1000,
+              "height": 285,
+              "instructor_notes": null
+            },
+            {
+              "id": 959385,
+              "key": "c725d7bf-3f81-48a5-9098-a6c8b87fae6b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Task 4: Set up Cost Monitoring\n\n1. Configure CloudWatch billing alarm\n\n2. Set up a Billing alarm with a $5 threshold\n3. Set up notification so that you get an email alert when the alarm is triggered.\n\nSave a screenshot of the CloudWatch Alarms page showing the new alarm with a green OK status as `CloudWatch_alarm.png` or `CloudWatch_alarm.jpg`\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959388,
+              "key": "4adef82f-93cd-40e7-a815-34fe6ceb91c6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/November/5ddc8b05_cloud-watch-billing-alarm/cloud-watch-billing-alarm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4adef82f-93cd-40e7-a815-34fe6ceb91c6",
+              "caption": "Example CloudWatch Alarm",
+              "alt": "Example CloudWatch Alarm",
+              "width": 1276,
+              "height": 303,
+              "instructor_notes": null
+            },
+            {
+              "id": 959387,
+              "key": "8d0218cc-51e6-476e-b8f6-7651c08e385f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Task 5 :  Use Terraform to Provision AWS  Infrastructure\n\n#### Part 1\n\n1. Download the [starter code](https://github.com/udacity/cand-c2-project).\n2. In the `main.tf` file write the code to provision\n    - AWS as the cloud provider\n    - Use an existing VPC ID\n    - Use an existing public subnet\n    - 4 AWS t2.micro EC2 instances named `Udacity T2`\n    - 2 m4.large EC2 instances named `Udacity M4`\n\n3. Run Terraform.\n4. Take a screenshot of the 6 EC2 instances in the AWS console. Save it as `Terraform_1_1.png` or `Terraform_1_1.jpg` .\n5. Use Terraform to delete the 2 m4.large instances. \n6. Take an updated screenshot of the AWS console showing only the 4 t2.micro instances and save it as `Terraform_1_2.png` or `Terraform_1_2.jpg`\n\n\n#### Part 2\n\n1. In the Exercise_2 folder, write the code to deploy an AWS Lambda Function using Terraform. Your code should include:\n\n   - A `lambda.py` file\n   - A `main.tf` file\n   - An `outputs.tf` file\n   - A `variables.tf` file\n\n2. Take a screenshot of the EC2 instances page and save it as `Terraform_2_1.png` or `Terraform_2_1.jpg`.\n3. Take a screenshot of the VPC page and save it as `Terraform_2_2.png` or `Terraform_2_2.jpg`.\n4. Take a screenshot of the CloudWatch log entry for the lambda function execution and save it as `Terraform_2_3.png` or `Terraform_2_3.jpg`.\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1018429,
+              "key": "80cb7382-707d-4182-9dc1-15b02ad9d489",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/May/5eb01d7b_cloudwatch-management-console-lambda/cloudwatch-management-console-lambda.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/80cb7382-707d-4182-9dc1-15b02ad9d489",
+              "caption": "Example Screenshot of CloudWatch Entry",
+              "alt": "Screenshot of CloudWatch entry",
+              "width": 2542,
+              "height": 1226,
+              "instructor_notes": null
+            },
+            {
+              "id": 1018428,
+              "key": "09ed2f12-a29a-4d5c-a22b-75941b231f98",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Task 6: Destroy the Infrastructure using Terraform and prepare for submission\n\n1. Destroy all running provisioned infrastructure using Terraform so as not to incur unwanted charges.\n2. Take a screenshot of the EC2 instances page and label it `Terraform_destroyed.png` or `Terraform_destroyed.jpg` .\n3. Upload Terraform files, screenshots, schematics and CSV files to your GitHub repo\n\n\n  \n### Before submitting your project, please check to confirm that you have completed all of the requirements in the **[Project Rubric](https://review.udacity.com/#!/rubrics/2757/view)**\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 959389,
+              "key": "470d47b6-5f59-410c-a669-90a39291c3a5",
+              "title": "Required Screenshots and File Uploads",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "470d47b6-5f59-410c-a669-90a39291c3a5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Cost-effective AWS infrastructure diagram",
+                "Serverless schematic diagram",
+                "Initial_Cost_Estimate.csv",
+                "Reduced_Cost_Estimate.csv including rationale",
+                "Increased_Cost_Estimate.csv including rationale",
+                "udacity_password_policy (screenshot -  either .jpg or .png file)",
+                "CloudTrail Log (CSV file)",
+                "CloudWatch_alarm  (screenshot -  either .jpg or .png file)",
+                "Terraform_1_1 (AWS Console screenshot -  either .jpg or .png file)",
+                "Terraform_1_2 (AWS Console screenshot -  either .jpg or .png file)",
+                "Terraform_2_1 (AWS Console screenshot -  either .jpg or .png file)",
+                "Terraform_2_2 (AWS Console screenshot -  either .jpg or .png file)",
+                "Terraform_2_3  (AWS Console screenshot -  either .jpg or .png file)",
+                "Terraform_destroyed (AWS Console screenshot -  either .jpg or .png file)",
+                "Updated Terraform code"
+              ],
+              "positive_feedback": "Nice work!  It looks like you are ready to submit your project!",
+              "video_feedback": null,
+              "description": "Your Git repository should include the code for the Terraform Exercises, infrastructure diagrams, cost estimates/rationales and all required screenshots:"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

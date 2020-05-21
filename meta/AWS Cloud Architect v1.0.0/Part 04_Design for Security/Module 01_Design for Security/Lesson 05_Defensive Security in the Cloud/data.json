@@ -1,0 +1,1821 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1012753,
+      "key": "e9aa5f75-2ce0-4b47-bc12-7668ed5d4a9f",
+      "title": "Defensive Security in the Cloud",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "You will identify vulnerable misconfigurations, guard against malicious activity, and design a deployment pipeline that ensures that security practices are implemented early on.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1012740,
+          "key": "92b1e52d-6442-472d-bdf6-55fbaac080ee",
+          "title": "Defensive Security",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "92b1e52d-6442-472d-bdf6-55fbaac080ee",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012693,
+              "key": "acf2d8ee-ac46-4b20-9fd8-66070d44abac",
+              "title": "Defensive Security in the Cloud Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Defensive Security in the Cloud\n\nIn this lesson, we will explore methodologies to incorporate defensive security when designing a cloud architecture.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012657,
+              "key": "31efa6c8-e148-490d-b6c9-de40c8bb3e63",
+              "title": "ND063 C3 L3 01 Protecting Data Stored In The Cloud Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6meokBg7hPc",
+                "china_cdn_id": "6meokBg7hPc.mp4"
+              }
+            },
+            {
+              "id": 1012659,
+              "key": "0d14e92c-e27f-474a-a9b6-8ea197bd7d06",
+              "title": "Defensive Security in the Cloud Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, we are going to explore ways to defend cloud native applications and infrastructure. \n\nWe will identify tools and methods to help safeguard applications and data in the cloud at the various stages of an application's life cycle. \n\nWe will also look at an example deployment pipeline that incorporates these common security practices.\n\nBy the end of the lesson you will have a better understanding of:\n- How to identify misconfigurations that can lead to vulnerabilities\n- How to identify and guard against malicious activity\n- How to design a deployment pipeline that ensures that security practices are implemented early on. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012662,
+              "key": "8eaa3eac-30c9-49bf-bf84-8c61721ca74d",
+              "title": "Lesson Location Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95f0ba_0.-lesson-location-image/0.-lesson-location-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8eaa3eac-30c9-49bf-bf84-8c61721ca74d",
+              "caption": "**You are Here**",
+              "alt": "You are starting the Defensive Security in the Cloud lesson.",
+              "width": 1704,
+              "height": 270,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1012738,
+          "key": "7ebce676-a7af-4770-9a62-af5b01370603",
+          "title": "Big Picture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7ebce676-a7af-4770-9a62-af5b01370603",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012705,
+              "key": "bde5d5de-09c2-456c-9a52-a7ce5f3ca8f9",
+              "title": "Big Picture Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Big Picture\n\nBefore we delve into tools and techniques, let's first get a better feel for the common threat vectors that affect cloud environments.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012668,
+              "key": "f91791a9-35e3-4d91-aec0-1bc224b32824",
+              "title": "ND063 C3 L4 02 Big Picture",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oQrzRF4i4K4",
+                "china_cdn_id": "oQrzRF4i4K4.mp4"
+              }
+            },
+            {
+              "id": 1012666,
+              "key": "d323c87b-5a2e-48b1-8624-a3205f38f135",
+              "title": "Big Picture Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Common Threat Vectors\n\nLet's get a better feel for the common threat vectors that affect cloud environments. I have categorized these into **external threats** and **internal threats**.\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012699,
+              "key": "ebe8b91f-f385-4e53-9c32-1b18b11a84f2",
+              "title": "External Threat Surface - Public Facing Web Applications",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### External Threats\nLet us look at the attack surface of a cloud environment from the perspective of an actor who is on the internet and does not have access to the private network space of our cloud environment.\n\n#### Public Facing Web Applications\nAttackers will attempt to exploit application related vulnerabilities such as those found in the OWASP top 10. \n\nCloud architects and engineers designing cloud environments need to ensure that any external web applications are defended appropriately. Teams should also perform security and penetration testing on applications to reduce risks prior to deployment.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012664,
+              "key": "caf88eaa-2871-46c2-8a45-eeb74042c999",
+              "title": "Public Facing Web Applications",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95f300_1.-public-facing-web-applications/1.-public-facing-web-applications.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/caf88eaa-2871-46c2-8a45-eeb74042c999",
+              "caption": "\n**Web Applications in the Cloud are Targets of External Attackers**",
+              "alt": "Web Applications in the cloud are vulnerable to external attacks",
+              "width": 450,
+              "height": 375,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012681,
+              "key": "ce9848fc-4f2a-43b1-8869-2320218e4a89",
+              "title": "Public Facing Cloud Infrastructure and API",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Public Facing Server Infrastructure\nAside from web applications, any other server infrastructure such as bastion hosts, databases, etc are prime targets for attackers.  Any resources, such as these, need to have additional hardening and isolation from other internal resources that host sensitive data.  At a high level, the use of these types of resources and exposing them to the internet should be avoided, limited, and restricted.\n\n#### The AWS API and Console\nDue to the inherent nature of the public cloud being public, access to the AWS API for managing cloud services is public facing.  If this access is compromised, an attacker could gain control of your environment and start managing your resources from anywhere!\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012651,
+              "key": "d607e79e-2fda-4652-97da-e2f12fa4699e",
+              "title": "Public Facing Cloud Infrastructure and API",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95f3b4_2.-public-facing-cloud-infrastructure-and-api/2.-public-facing-cloud-infrastructure-and-api.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d607e79e-2fda-4652-97da-e2f12fa4699e",
+              "caption": "\n**Public Facing Infrastructure and the AWS API are Both Common Targets of Internet-Based Attackers**",
+              "alt": "Attackers target any publicly exposed infrastructure such as EC2 instance bastion hosts or RDS databases.\n\nAttackers are also trying to exploit the AWS API to gain management access to your environment.",
+              "width": 700,
+              "height": 440,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012656,
+              "key": "cd4afc41-5f22-4672-b998-d4f301944905",
+              "title": "Internal Attack Vectors",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Internal Threats\n\nAlthough it is important to defend our external public facing perimeter, it is equally important to assume those same threats can potentially exist within the private network. Internal attackers may also have gained access to instances and hosts running in the cloud and will attempt to install and run malware or access data on cloud instances. \n\nThe threat is compounded if an attacker or a piece of malicious software has gained network access to other private networks that are connected to your cloud environment. To prevent this, it is critical that cloud hosts are hardened and set up to restrict access even if they are not public facing.\n\nThe AWS API can also become a target if attackers gain access to internal code repositories that mistakenly hold API keys and other secrets.\n\n### Identifying Threats and Vulnerabilities\n\nThe goal of this entire course is to design cloud architectures so that the likelihood of any of these types of attacks, both external and internal, are reduced or eliminated. \n\nIn previous lessons we looked at how to implement best practices around securing cloud networks, access to the API, and storing our data securely. In this lesson, we want to take that a step further so that we can identify vulnerabilities and identify and block suspicious behaviour.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012663,
+              "key": "88dcf82a-803e-4abf-bc00-b608007d6e1c",
+              "title": "Internal Attack Vectors",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95f42e_3.-internal-attack-vectors/3.-internal-attack-vectors.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/88dcf82a-803e-4abf-bc00-b608007d6e1c",
+              "caption": "\n**Attackers who have Gained Access can Obtain API Credentials to Gain Control Over Other AWS Services**",
+              "alt": "Attackers who have gained access to cloud hosts or other internal resources such as code repositories can obtain API credentials to gain control over other AWS services.",
+              "width": 445,
+              "height": 420,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012670,
+              "key": "643249ac-51b0-4769-af96-48d0b7100ae5",
+              "title": "Big Picture Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "643249ac-51b0-4769-af96-48d0b7100ae5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following might be considered an attack vector for a cloud environment? \n\nSelect all that apply.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "A public facing web application that uses SSL.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Code repositories containing secrets.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "An application server in a private subnet.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1012735,
+          "key": "f940503d-4fa4-4b72-8517-d52e730ee7e2",
+          "title": "Intuition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f940503d-4fa4-4b72-8517-d52e730ee7e2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012669,
+              "key": "7d8b08b3-e59f-4d39-8e77-0c1eff92a8e9",
+              "title": "Developing Your Intuition About Defensive Security in the Cloud Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Developing Your Intuition about Defensive Security in the Cloud",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012675,
+              "key": "8b4767c5-0f67-4b92-a07d-b440042421ed",
+              "title": "ND063 C3 L4 03 Developing Your Intuition About Defensive Security In The Could",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "npaiCKoFNPc",
+                "china_cdn_id": "npaiCKoFNPc.mp4"
+              }
+            },
+            {
+              "id": 1012677,
+              "key": "8c46ba2b-89ff-4b02-ae99-969542330c85",
+              "title": "Developing Your Intuition About Defensive Security in the Cloud Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Defensive Security In The Cloud\n\nOne of the most widely accepted benefits of leveraging public cloud services for running applications is the speed and agility with which we can deploy new infrastructure and environments.\n\nAgility and speed of change bring challenges to security and stability.\n\nIn the first few lessons we focused on designing cloud environments securely. We now want to get a better sense of how to keep those environments once they are deployed.\n\n### Important Considerations for Defensive Security\n\n#### Understanding of Threat Landscape\nThe first step is to have a **firm understanding of the threat landscape**. Quantify specific vulnerabilities that could increase risk and lead to exploitations. \n\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012692,
+              "key": "13f9cc78-c9c7-4913-8ede-4fe46b1c9acb",
+              "title": "Identify Misconfigurations and Vulnerabilities",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Identify Misconfigurations and Vulnerabilities\nThe second key item is to ensure checks and processes are in place to scan for **misconfigurations and vulnerabilities**. \nThese processes should be designed to assess each part of the application stack from the code all the way to the core cloud infrastructure services.  \n\nWhen it comes to the cloud, some of the most obvious vulnerabilities include:\n- Server instances without any OS hardening\n- Exposure of AWS API keys and other secrets\n- Overly permissive firewall rules and IAM policies\n\nIdentification of these types of vulnerabilities needs to happen during all phases starting from initial deployment of a dev environment all the way to post production. Identification and remediation of vulnerabilities earlier drastically reduces risk of exploitation.\n \nWe call this idea \"**shift left**\".",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012665,
+              "key": "0a09c4b4-b62b-449f-ac13-aed6f2697ef8",
+              "title": "Identify Misconfigurations and Vulnerabilities",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95f51c_4.-identify-misconfiguration-and-vulnerabilities/4.-identify-misconfiguration-and-vulnerabilities.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0a09c4b4-b62b-449f-ac13-aed6f2697ef8",
+              "caption": "\n**Shift Left**: Reduce Risk and Cost to Fix by Identifying Vulnerabilities Early On",
+              "alt": "Shift Left means to identify vulnerabilities early on.  This reduces the risk and cost to fix vulnerabilities and bugs.",
+              "width": 650,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012678,
+              "key": "811fb0d1-62cf-4f5c-ae42-4ae113e7c9b8",
+              "title": "Intuition Key Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Identify Suspicious Activity\nLastly we want to be able to identify suspicious activity so that active threats can be identified and remediated as soon as possible.  \n\nIt is critical that tools and processes for defensive threat detection are checking all layers of the stack.\n\nAs an architect it is essential that you design environments with the right tools in place for threat defense and monitoring.\n\n### Key Terms\n#### Threat Landscape\nIdentify potential attack vectors and quantify potential exploitation and worst case blast radius.\n\n#### Shift Left\nIdentifying security vulnerabilities and misconfigurations in the early phases of an application or environment's lifecycle.\n\n#### Public Facing\nAny resources which are accessible from the internet, such as web applications, public facing infrastructure, or the AWS console and API.\n\n#### OWASP Top 10\nA widely accepted set of vulnerabilities which can lead to exploitation of web applications.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1013724,
+              "key": "3162ac65-6820-4206-94f7-d7be24e990f8",
+              "title": "Scenarios and Concepts",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3162ac65-6820-4206-94f7-d7be24e990f8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "\nMatch each below scenario with the most appropriate concept that it would be an example of."
+                },
+                "concepts_label": "Scenario",
+                "answers_label": "Concept",
+                "concepts": [
+                  {
+                    "text": "A hacker is attempting a DDoS attack on your web application.",
+                    "correct_answer": {
+                      "id": "a1586885963370",
+                      "text": "\nMalicious Activity\n"
+                    }
+                  },
+                  {
+                    "text": "\nScan a CloudFormation template, prior to deploying a development environment, for any security groups rules that allow all source IPs and all ports.\n",
+                    "correct_answer": {
+                      "id": "a1586885983742",
+                      "text": "\nShift Left\n"
+                    }
+                  },
+                  {
+                    "text": "\nScanning logs for suspicious activity.",
+                    "correct_answer": {
+                      "id": "a1586885984733",
+                      "text": "\nThreat Detection\n"
+                    }
+                  },
+                  {
+                    "text": "\nA public facing instance has been deployed allowing inbound connections and this is out of compliance with an organization's security standards.",
+                    "correct_answer": {
+                      "id": "a1586885985571",
+                      "text": "\nMisconfiguration\n"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586885985571",
+                    "text": "\nMisconfiguration\n"
+                  },
+                  {
+                    "id": "a1586885983742",
+                    "text": "\nShift Left\n"
+                  },
+                  {
+                    "id": "a1586886060181",
+                    "text": "\nMalware"
+                  },
+                  {
+                    "id": "a1586885984733",
+                    "text": "\nThreat Detection\n"
+                  },
+                  {
+                    "id": "a1586885963370",
+                    "text": "\nMalicious Activity\n"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1012660,
+              "key": "8fdd03b5-8195-4790-bc57-4e985e08acb4",
+              "title": "Developing Your Intuition About Defensive Security in the Cloud Quiz 2",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8fdd03b5-8195-4790-bc57-4e985e08acb4",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the below processes attempt to adopt a \"shift left\" or DevSecOps paradigm when it comes to security?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Adding penetration or other security testing to a QA test cycle.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Installing anti-malware on a production instance.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Automating application deployments.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Scanning a code repository for API keys that have been hard coded.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1012742,
+          "key": "b0a6daa9-fe53-4547-bb4f-2dfe5d8a5627",
+          "title": "Infrastructure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b0a6daa9-fe53-4547-bb4f-2dfe5d8a5627",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012658,
+              "key": "22c7d328-3d05-47eb-882c-49ba9923b38b",
+              "title": "Checking infrastructure as code for vulnerabilities Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Checking Infrastructure as Code for Vulnerabilities\n\nWith any software that is developed, the cost to remediate and the impact of finding defects is much lower when identified earlier in the life cycle rather than later.\n\nThis also applies to code that defines cloud infrastructure or infrastructure as code.  Infrastructure as code should be tested prior to deployment to ensure that it will do what it is intended to do and to ensure that any potentially insecure configurations are identified early on.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012696,
+              "key": "a39deaa8-7608-49eb-a60c-b1c5d6f54033",
+              "title": "ND063 C3 L4 04 Checking Infrastructure As Code For Vulnerabilities",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "KutU6-MpB7k",
+                "china_cdn_id": "KutU6-MpB7k.mp4"
+              }
+            },
+            {
+              "id": 1012708,
+              "key": "0dd436c1-252e-44ff-8a19-f9d8e9af47ce",
+              "title": "Checking infrastructure as code for vulnerabilities Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Static Code Analysis for Infrastructure as Code\n\nStatic code analysis for finding application security vulnerabilities is not a new concept. However, this concept also applies to code that defines cloud infrastructure or infrastructure as code. Infrastructure as code should be tested prior to deployment to ensure that it will do what it is intended to do and to also ensure that any potentially insecure configurations are identified early on.\n\nThese insecure configurations should be treated as vulnerabilities and dealt with as such.  Many times organizations will check these configurations post deployment, however it is important to add this check during the development phase to ensure that vulnerabilities are investigated and remediated.\n\n\n#### Open Source Resources\n\nThere are many open source projects which allow you to construct security policies and then check terraform or cloudformation template code for any security related configurations which are out of compliance with your security requirements as defined in the policies.\n\n##### CloudFormation\n- [Cfripper](https://github.com/Skyscanner/cfripper)\n- [Cloudsploit](https://cloudsploit.com/opensource)\n- [cfn-lint](https://github.com/aws-cloudformation/cfn-python-lint)\n\n##### Terraform\nTerraform is much more widely used infrastructure as code language, so there are more options including:\n- [Chef inspec](https://github.com/inspec/inspec)\n- [Open policy agent / Regula](https://github.com/fugue/regula)\n- [Terrascan](https://github.com/cesar-rodriguez/terrascan)\n\nIn addition to open source options, many of the major commercial cloud security products offer infrastructure as code scanning as part of their product platform including prisma cloud, cloud conformity, fugue, terraform cloud etc.  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012682,
+              "key": "9c368506-0f5f-4898-9614-e7bb8c053fdc",
+              "title": "Scanning Infrastructure as Code for Vulnerabilities",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95f700_5.-scanning-infrastructure-as-code-for-vulnerabilities/5.-scanning-infrastructure-as-code-for-vulnerabilities.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9c368506-0f5f-4898-9614-e7bb8c053fdc",
+              "caption": "\n**Scan Code that Defines Cloud Infrastructure, Configuration Management, and Docker Files**",
+              "alt": "Scan all code that defines cloud infrastructure, configuration management, and docker files",
+              "width": 750,
+              "height": 331,
+              "instructor_notes": null
+            },
+            {
+              "id": 1018184,
+              "key": "a849a768-8fec-482b-9c87-47093dbc53a6",
+              "title": "Scanning Code Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Additional Considerations\nWhen implementing infrastructure as code scanning in your DevOps pipeline there are a few additional considerations to keep in mind.\n\n##### Scan Configuration Management Code and DockerFiles\n\nScanning Code for OS / VM / Docker images in addition to Cloud or AWS Configuration Docker files, Ansible, Puppet, Chef, etc should ensure that configurations are in-line with security standards that have been established by the organization.\n\n##### Scan on Code Check-in or Prior to Deployment\nThis depends on the tool selected, such as, during a terraform plan.  If security related violations are found, your process should be set up to notify the appropriate parties and halt the pipeline from progressing.\n\n### Scanning Demo",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012674,
+              "key": "35a6f76a-c564-4df9-a5d0-dca48f846cf5",
+              "title": "ND063 C3 L4 05 Checking Infrastructure As Code For Vulnerabilities Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Mow8ontF9cA",
+                "china_cdn_id": "Mow8ontF9cA.mp4"
+              }
+            },
+            {
+              "id": 1012671,
+              "key": "6516e844-c0d7-4ee6-ae98-da619573991e",
+              "title": "Checking infrastructure as code for vulnerabilities Heading Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95f795_6.-checking-infrastructure-as-code-for-vulnerabilities-heading-image/6.-checking-infrastructure-as-code-for-vulnerabilities-heading-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6516e844-c0d7-4ee6-ae98-da619573991e",
+              "caption": "\n**Scan Terraform Code Using Regula for Security Compliance Prior to Deployment**",
+              "alt": "Scanning terraform code for security compliance prior to deployment.",
+              "width": 750,
+              "height": 335,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012680,
+              "key": "61ab7abd-c96c-41e6-9504-3592416a5ac5",
+              "title": "Checking infrastructure as code for vulnerabilities Heading New Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Key Terms\n#### Infrastructure as Code (IaC)\nCode that is developed to define cloud infrastructure, operating system, and container configuration.  Code is version controlled and follows the similar principles for changes and updates as application feature code.\n\n#### CloudFormation\nAWS native service for deploying services with infrastructure as code. CloudFormation templates defined in JSON or YAML can be deployed using the CloudFormation service.\n\n#### Terraform\nPopular infrastructure as code language from HashiCorp.  Supports many different cloud providers in addition to AWS.\n\n#### DockerFile\nDefinition specifying how a docker image will be built and configured.\n\n#### DevOps Pipeline\nA set of processes and tools to build, deploy, and update application environments.  Pipelines include build of application artifacts, docker and VM images, scanning and automated testing, deployment orchestration of infrastructure and application artifacts.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012703,
+              "key": "b9d795d1-037c-4a8a-896d-4457772031cf",
+              "title": "Checking infrastructure as code for vulnerabilities Easy Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b9d795d1-037c-4a8a-896d-4457772031cf",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What might be some benefits of scanning infrastructure code prior to deployment?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Identify changes to code that would lead to a vulnerability after deployment.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Makes the deployment pipeline much faster.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "There are no benefits to this method.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Time and effort to remediate is less.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1012691,
+              "key": "e72eb627-b3e6-4d74-bb40-6c3a06a7112b",
+              "title": "Checking infrastructure as code for vulnerabilities Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Resources\n- [Regula Tool Used in Walkthrough](https://github.com/fugue/regula)\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1012739,
+          "key": "76c02351-c78b-4efb-bf64-1d1dbf79a074",
+          "title": "Exercise: Infrastructure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "76c02351-c78b-4efb-bf64-1d1dbf79a074",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012676,
+              "key": "e5a35946-9c35-4a15-9ff3-447302452aef",
+              "title": "Checking infrastructure as code for vulnerabilities Exercise Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Checking Infrastructure as Code for Vulnerabilities\n\nIn this exercise, you will perform a check on a terraform template. This is similar to our walkthrough earlier in the lesson. You will be writing a custom policy and showing that the terraform template does not pass. You will then remediate the code and try the scan again to verify that it passed.\n\n### Technology Requirements\n- You are recommended to use the same tool, [Regula](https://github.com/fugue/regula), that we used in the walkthrough, however, you can also investigate other tools which will accomplish the same goal.\n- You will need [Terraform installed locally](https://learn.hashicorp.com/terraform/getting-started/install.html) in the environment that you will perform this exercise.\n- You will also need [opa](https://www.openpolicyagent.org/docs/latest/#1-download-opa) installed.\n\n### Steps\n1. Ensure that your local terraform environment is set up with a valid profile and region set to your AWS account and preferred region.\n\nCreate a simple terraform file with the below contents. Call it `iam_policy.tf`:\n\n```json\nresource \"aws_iam_policy\" \"policy\" {\n  name        = \"cand-c3-l4-e1-iam-policy\"\n  path          = \"/\"\n  description = \"a policy to test IAC scanning\"\n\n  policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": [\n        \"*\"\n      ],\n      \"Effect\": \"Allow\",\n      \"Resource\": \"*\"\n    }\n  ]\n}\nEOF\n}\n```\n\n2. Clone the [regula tool locally](https://github.com/fugue/regula).\n\n3. Spend a few minutes reading the regula tool README to get familiar with how it works.\n\n4. Run the regula tool from the root directory where you have cloned your repo:\n```bash\n./bin/regula ~/tf_test/ lib rules/aws/\n```\nReplace `~/tf_test/` with the path to the directory where you saved your `iam_policy.tf file`.\n\n5. Examine the outputs and notice which rule has failed. It should be the `iam_admin_policy` rule.\n\n6. Update the IAM policy in the `.tf` file so that it is more restrictive.  \nIn the statement change:\n```json\n     \"Action\": [\n        \"*\"\n      ],\n```\n\nTo:\n```json\n     \"Action\": [\n        \"s3:GetObject\"\n      ],\n```\n\n7. Run the regula command again.  All the checks should pass this time.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012695,
+              "key": "0510bb72-6f72-4a61-bc66-5ee859abed22",
+              "title": "Checking infrastructure as code for vulnerabilities Exercise TaskList",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0510bb72-6f72-4a61-bc66-5ee859abed22",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "1. Set up your terraform environment and create `iam_policy.tf`.",
+                "2. Clone regula locally.",
+                "3. Read regula README.",
+                "4. Run regula from the root directory of your cloned repo.",
+                "5. Note that the `iam_admin_policy` rule has failed.",
+                "6. Update the IAM policy in your `.tf` file so that it is more restrictive.",
+                "7. Run regula again and note that all checks pass."
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Check off each item once you've completed it. Full instructions for each step are above."
+            }
+          ]
+        },
+        {
+          "id": 1012745,
+          "key": "96fe9653-6aa0-448c-8006-3727d6061bf3",
+          "title": "Solution: Infastructure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "96fe9653-6aa0-448c-8006-3727d6061bf3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012672,
+              "key": "92ec98c3-d10f-4f0e-a103-9eb417acede2",
+              "title": "Checking infrastructure as code for vulnerabilities Exercise Solution Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Checking Infrastructure as Code for Vulnerabilities",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012697,
+              "key": "ef156901-7923-48b7-9ec9-49adeaea8323",
+              "title": "ND063 C3 L4 06 Checking Infrastructure As Code For Vulnerabilities Exercise Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hyBoLBo1YKQ",
+                "china_cdn_id": "hyBoLBo1YKQ.mp4"
+              }
+            },
+            {
+              "id": 1012707,
+              "key": "895f7711-4d91-48e9-b143-e5a02b57d3de",
+              "title": "Checking infrastructure as code for vulnerabilities Exercise Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this exercise, you went through the process of scanning terraform code and identifying a misconfiguration with the regula tool. You would have successfully cloned the repo and tested the tool to find a poor security configuration in a terraform file. Finally, you have remediated the issue in your terraform code and run the tool again to verify that it passed.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1012741,
+          "key": "859f55b5-9d31-4e54-85d9-3e10cee3e6e7",
+          "title": "Identify Vulnerabilities",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "859f55b5-9d31-4e54-85d9-3e10cee3e6e7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012683,
+              "key": "f04fe122-a8c6-441a-9d81-9505f34cd381",
+              "title": "Identify Vulnerabilities in AWS Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Monitoring for Vulnerabilities and Misconfigurations in AWS\n\nIn the previous lessons, we had discussed the importance of designing your AWS architecture with security in mind. We looked at identity and access management, network configuration, and ensuring data is protected.\n\nWe also looked at checking our infrastructure code for misconfigurations that could lead to vulnerabilities.  \n\nNow, regardless of how AWS services and resources are deployed and configured, be it via infrastructure as code, the console, CLI, or other methods,  once your resources are actually deployed and set up in AWS, it's critical to ensure that things have been configured with the security best practices that we outlined earlier.\n\nLets go over some AWS native and other tools to identify misconfigurations and vulnerabilities. AWS provides some native services that can be used to check your environment for vulnerabilities and misconfigurations.\n\nThere are also a plethora of commercial and open source tools that will also provide visibility into the overall security configuration posture of your AWS environment.  Almost all of them also provide the ability of writing custom rules to allow you to test any custom security requirements that need to be met.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012710,
+              "key": "107dde1a-dfc7-4ad8-95d8-14000b414f0f",
+              "title": "ND063 C3 L4 07 Identify Vulnerabilities In AWS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1pYsaivWmS4",
+                "china_cdn_id": "1pYsaivWmS4.mp4"
+              }
+            },
+            {
+              "id": 1012701,
+              "key": "ff5dc26f-2f8b-48db-a477-88a56b7fc4d6",
+              "title": "Identify Vulnerabilities in AWS Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Vulnerabilities in the AWS Account, Services, and Infrastructure.\n\nWhen AWS cloud resources are set up and configured, it is important to verify that they have been done in accordance with security best practices.  \n\nIf a configuration is out of compliance with security standards, it needs to be identified as a vulnerability and remediated.\n\nTo illustrate this, here are a few basic examples of insecure configurations might be:\n- An IAM role assigned a policy that allows admin access.\n- Disk storage has been provisioned without volume encryption enabled.\n- A server instance has been created and configured to allow RDP connections from the public internet.\n\nBoth native AWS, open source, and commercial tools are available to help identify these types of configurations in our environments.\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012702,
+              "key": "1f04ceaa-2d94-47d0-8e2a-87f383a9345c",
+              "title": "Identify Vulnerabilities in AWS - AWS Config",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### AWS Config\n\nAWS Config collects configuration snapshots of many of the core infrastructure services that AWS provides. When Config is enabled, you will have insight into how a particular resource is configured, when it changed, and what was changed.\n\nThe configuration snapshot serves as an input to rules which evaluate whether the configuration is in compliance or out of compliance with the conditions specified in the rule.\n\n##### Config Rules\n\nAWS provides a decent number of rules out of the box which are based on standard security recommendations. Rules can be set up to evaluate on configuration change, or on a cron schedule.\n\nA basic example of a rule could be to identify any security group that allows RDP access from all IP addresses - or 0.0.0.0/0 port 3389.\n\nSince all rules are based on lambda functions, AWS provides the ability to create custom rules that evaluate a specific criteria which may not be available as a rule out of the box.  This also allows custom rules which can check compliance of resources outside the fold of AWS config. Results of AWS Config from multiple accounts can also be sent to a central AWS account for analysis.\n\n**It is strongly recommended to setup AWS Config rules for any security or compliance requirements that your organization has**.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012652,
+              "key": "7b6abd08-ed19-46f4-8848-92f6f293c3cd",
+              "title": "Identify Vulnerabilities in AWS - AWS Config",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95f88c_7.-aws-config/7.-aws-config.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7b6abd08-ed19-46f4-8848-92f6f293c3cd",
+              "caption": "\n**AWS Config Allows You to View a Timeline and Details of Configuration Changes to Your AWS Resources**",
+              "alt": "AWS Config allows you to view a timeline and details of configuration changes to your AWS resources.",
+              "width": 760,
+              "height": 125,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012690,
+              "key": "b8947023-859d-49d1-9801-b5ba3617bcb2",
+              "title": "Identify Vulnerabilities in AWS - SecurityHub",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Security Hub\nSecurity HUB is a service within AWS which aggregates findings from other security tools into a single pane of glass. Security monitoring services such as AWS Config, Inspector, GuardDuty, and many open source and commercial tools integrate findings with Security Hub.\n\nSecurity Hub can also be enabled to provide a turnkey set of Config rules that will check the AWS account against the CIS AWS foundations and PCI DSS checks.\n\n#### Other Tools and Products\nOutside of AWS there are many many products that can integrate into AWS accounts and monitor the security and compliance posture of your AWS account level configuration.  \n\nOpen source products that can perform one time indepth checks include:\n- Prowler\n- Scout2\n- Cloudsploit\n- CloudCustodian\n- etc.\n\nSome commercial products which can also provide more of a dynamic real time monitoring of your cloud security footprint include:\n- Fugue\n- Palo Alto Prisma Cloud\n- CloudConformity\n- CheckPoint CloudGuard Dome9 \n- etc.\n\nMany of these products provide real time detection of configuration changes in your cloud environment, and automatic remediation capabilities as well.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012689,
+              "key": "32e59bfa-3546-4f0d-82e2-4d20a92161aa",
+              "title": "Identify Vulnerabilities in AWS - SecurityHub",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95f8ec_8.-securityhub/8.-securityhub.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/32e59bfa-3546-4f0d-82e2-4d20a92161aa",
+              "caption": "\n**Use AWS Security Hub to Aggregate Security Events from Security Monitoring Tools such as AWS Config, GuardDuty, AWS Inspector and Other External Tools**",
+              "alt": "Use AWS Security Hub to aggregate security events from security monitoring tools such as AWS Config, GuardDuty, AWS Inspector and other external tools.",
+              "width": 650,
+              "height": 375,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1018189,
+          "key": "d59e5c06-6f4e-460b-bdbb-a1423702be0f",
+          "title": "Vulnerabilities on Instances and Containers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d59e5c06-6f4e-460b-bdbb-a1423702be0f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1018188,
+              "key": "89549185-8dcf-44d8-8db3-a2c7165d240d",
+              "title": "Identify Vulnerabilities in Workloads Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Vulnerabilities on Instances and Containers",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012698,
+              "key": "ba15d3b0-61e9-4b58-b004-b917d11b1363",
+              "title": "ND063 C3 L4 08 Identify Vulnerabilities In Workloads-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EuQpLCc3KHQ",
+                "china_cdn_id": "EuQpLCc3KHQ.mp4"
+              }
+            },
+            {
+              "id": 1012704,
+              "key": "1916e96e-a749-432f-a353-66f26f896e8d",
+              "title": "Identify Vulnerabilities in Workloads Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Vulnerabilities in Cloud Workloads\n\nContainers and instances that are deployed and running in your cloud environment should also be checked for vulnerabilities. These types of checks will scan instances and containers for vulnerabilities and lack of best practices.\n\nExamples of these types of vulnerabilities include:\n- Allowing SSH password login\n- Vulnerabilities to Django libraries\n\nEnsuring that instances are launched from the latest image,  patched regularly and have basic security hardening will reduce the chance of vulnerabilities being found.\n\n#### AWS Inspector\nAWS inspector is intended to specifically analyze and report on vulnerabilities on EC2 instances.  \n\n##### Operating System Vulnerabilities\nAWS Inspector is designed to identify vulnerabilities at the OS level.\n\nOnce the inspector agent is installed on an instance, it can scan against:\n- CIS benchmarks for linux and windows\n- AWS security best practices\n- Common vulnerabilities and exposures or CVE findings\n\n##### Network Reachability\nInspector can also provide a report on network reachability from the public internet to instances and load balancers along with specific ports that are reachable.\n\n##### Limitations with AWS Inspector\nThe type of scanning that inspector provides is considered static scanning.\n\n**Static scanning** refers to a one time (or  scheduled) that will run and provide a set of findings.\n\n**Dynamic scanning**, on the other hand, is continuous monitoring that is designed to catch changes to configuration or other suspicious activity in real-time.  \n\nOutside of AWS, there are many many products and vendors that provide varying levels of OS vulnerability scanning.  Since this concept is not new to the cloud, many security teams opt to use existing products to achieve OS level vulnerability scanning.\n\n#### Vulnerabilities on Containers\n\nChecking container images for vulnerabilities can be done using a number of open source and commercial tools. \n\nOpen source tools include:\n- Clair\n- Anchore\n- Trivy\n- etc.\n\nCommercial products include: \n- aquasec, \n- sysdig\n- twistlock\n-  etc.\n\nCommercial products generally also provide dynamic container monitoring once containers are deployed and running.\n\n#### Disclaimer:\nPlease note that the landscape of vendors and products that provide security monitoring in the cloud changes by the day.  The tools mentioned here are simply mentioned as examples and not specific recommendations. \n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1012746,
+          "key": "b8cd38d9-b9ab-4d13-8f23-585569bbcf7a",
+          "title": "Vulnerabilities Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b8cd38d9-b9ab-4d13-8f23-585569bbcf7a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013727,
+              "key": "ed6b90c3-5557-418f-8042-bf60d2cc177c",
+              "title": "Scenarios and Recommendations",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ed6b90c3-5557-418f-8042-bf60d2cc177c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "\nFor a given scenario, identify a recommendation that applies."
+                },
+                "concepts_label": "Scenario",
+                "answers_label": "Recommendation",
+                "concepts": [
+                  {
+                    "text": "\nNeed to identify all security groups which allow 0.0.0.0/0 port 22.",
+                    "correct_answer": {
+                      "id": "a1586886953718",
+                      "text": "\nUse AWS Config rules."
+                    }
+                  },
+                  {
+                    "text": "\nCheck if a given instance is hardened and patched.",
+                    "correct_answer": {
+                      "id": "a1586886977956",
+                      "text": "\nUse AWS Inspector.\n"
+                    }
+                  },
+                  {
+                    "text": "\nVulnerability found on instance, OpenSSH package CVE vulnerability.",
+                    "correct_answer": {
+                      "id": "a1586886978905",
+                      "text": "\nPerform OS patching or package updates.\n"
+                    }
+                  },
+                  {
+                    "text": "\nS3 buckets have been found in the account that allow public read, but they should not.",
+                    "correct_answer": {
+                      "id": "a1586886979777",
+                      "text": "\nUpdate bucket policy or configuration to restrict access."
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586886982175",
+                    "text": " \nDelete S3 buckets from the account."
+                  },
+                  {
+                    "id": "a1586886953718",
+                    "text": "\nUse AWS Config rules."
+                  },
+                  {
+                    "id": "a1586886979777",
+                    "text": "\nUpdate bucket policy or configuration to restrict access."
+                  },
+                  {
+                    "id": "a1586886977956",
+                    "text": "\nUse AWS Inspector.\n"
+                  },
+                  {
+                    "id": "a1586886978905",
+                    "text": "\nPerform OS patching or package updates.\n"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1012728,
+              "key": "fec5c3ba-69e8-4c8a-acfd-5319fe6f760d",
+              "title": "Identify Vulnerabilities in AWS Hard Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fec5c3ba-69e8-4c8a-acfd-5319fe6f760d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Identify the true statements that apply to dynamic and static scanning.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Dynamic scanning can identify new vulnerabilities or changes to configuration as they happen.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Static scanning provides a point-in-time view of misconfigurations and vulnerabilities.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Static scanning can never be done more than once.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Dynamic scanning is not possible in the cloud.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1012750,
+          "key": "c9c87097-fcb0-48ff-af1a-24cae70fbf58",
+          "title": "Exercise: Vulnerabilities",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c9c87097-fcb0-48ff-af1a-24cae70fbf58",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012667,
+              "key": "1c762b4f-5a7c-4e34-8450-9b06adc44206",
+              "title": "Identify Vulnerabilities in AWS Exercise Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Find Misconfigurations Using AWS Config\n\nIn this exercise, you will get a feel for how AWS Config can help identify vulnerabilities in your AWS account.\n\n1. Login to your AWS Account and Turn on Config Recording\n - Go to the AWS Config service page.\n - Follow the [instructions here to set up config recording](https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html)\n - Check the **Choose Specific Resources** option to see all available AWS resource types that can be monitored with AWS Config. Select **S3 Buckets** for this exercise.\n - Please note down which S3 bucket you have used to store config logs.\n\n2. Set Up a Rule to Monitor S3 Bucket Encryption\n - Go to **Rules** and add a rule. On this page, you can browse through the many preconfigured rules that are available in AWS config.\n - In the search box, put \n\"S3-bucket-server-side-encryption-enabled\" and select the rule. \n - On the next page, leave all the defaults, and click save.\n\n3. Check Rule Compliance\n - Scroll through the list of rules until you find the rule that was added: `s3-bucket-server-side-encryption-enabled`\n - You can see if the rule is in compliance or not. Click the rule name to see more details.\n - You can view details related to specific resources that are in compliance or out of compliance. \n - Choose a bucket that is not in compliance.  If there or no buckets in the list go ahead and create a new S3 bucket for this exercise that does not have default encryption enabled.\n - If you created a new bucket, verify that it has been evaluated and is now showing in the list.\n - Go to the bucket of choice and update the default encryption setting on the bucket.\n - Wait roughly 5 minutes for the change to trigger a rule check and check the config rule again. \n - Change the filter in the rule to show in compliance resources only.  You should see the bucket listed. \n - Click the bucket name to see further details. Click on the \"configuration timeline\".\n - You can see details of when the s3 bucket was changed.  Try to use this page to see what specifically changed in terms of the S3 configuration.\n\n4. Cleanup\n - Delete the rule and S3 bucket that you have created for this exercise.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012718,
+              "key": "66bbe0e3-672f-4232-b713-5518a1b95adb",
+              "title": "Identify Vulnerabilities in AWS Exercise",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "66bbe0e3-672f-4232-b713-5518a1b95adb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Login to your AWS Account and Turn on Config Recording",
+                "Set Up a Rule to Monitor S3 Bucket Encryption",
+                "Check Rule Compliance",
+                "Cleanup"
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Check off each item once you've completed it. Full instructions for each step are above."
+            }
+          ]
+        },
+        {
+          "id": 1012737,
+          "key": "dc619f15-9820-4302-93a6-b16bee1a5d38",
+          "title": "Solution: Vulnerabilities",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dc619f15-9820-4302-93a6-b16bee1a5d38",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012694,
+              "key": "525d3f1c-ba21-4534-9c5f-6bafc40a0f9a",
+              "title": "Identify Vulnerabilities in AWS Exercise Solution Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Identify Vulnerabilities in AWS",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012688,
+              "key": "3ac16991-3dad-4b81-9485-605d8f52ff39",
+              "title": "ND063 C3 L4 09 Identify Vulnerabilities In AWS Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xjPgMe6aZTw",
+                "china_cdn_id": "xjPgMe6aZTw.mp4"
+              }
+            },
+            {
+              "id": 1012654,
+              "key": "824d212f-2aca-4510-812d-7940711300ae",
+              "title": "Identify Vulnerabilities in AWS Exercise Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this exercise, you were able to get a feel for how AWS Config can help identify vulnerabilities in your AWS account. AWS config is a powerful tool to track configuration changes and compliance violations in your AWS account.\n\nI encourage you to explore the AWS config dashboard, conformance packs, and rule aggregation features in more depth.\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1012749,
+          "key": "0fc344d6-c3ad-429c-bb86-2aa8049bfae7",
+          "title": "Security Event Monitoring",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0fc344d6-c3ad-429c-bb86-2aa8049bfae7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012673,
+              "key": "7c198bbc-a1f2-4a62-bac9-e5c06620f218",
+              "title": "Security Event Sources Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Security Information and Event Monitoring Sources in AWS\n\nSecurity information and event monitoring is a fundamental pillar of information security.\n\nAs you start operationalizing and deploying workloads to cloud environments, it is critical that there is insight into activity and events related to the cloud accounts or applications.\n\nIt is important to have this monitoring in place in order to:\n1.  Identify any suspicious activity in cloud accounts, servers, networks, and applications.\n2.  Provide auditability, and traceability for forensics and root cause analysis.\n\nWe will look at some of the event sources available in AWS and methods to monitor these sources.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012719,
+              "key": "7c2d89af-b3dc-48e1-9455-9df135ca0fcb",
+              "title": "ND063 C3 L4 10 Security Event Sources Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "LtvnPBGz0KI",
+                "china_cdn_id": "LtvnPBGz0KI.mp4"
+              }
+            },
+            {
+              "id": 1012684,
+              "key": "233c8d9b-9ea2-4758-a606-10b156bd23e6",
+              "title": "Security Event Sources Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Security Event Sources in AWS\n\nSecurity information and event monitoring is a pillar of information security.\n\nAs you operationalize your workloads in the cloud it is critical that you have insight into activity and security events related to the cloud accounts and applications.\n\nThis type of security monitoring is important in order to:\n- Identify any anomalous or suspicious activity in cloud accounts, servers, networks, and applications\n- Provide traceability for forensics and root cause analysis.\n- Provide auditability for access to sensitive data or actions\n\n#### Event Sources Available in AWS\n\nLet's look at some of the event sources we should be looking at in AWS.\n\n##### CloudTrail\n\nAWS CloudTrail is the source of activity logging within an AWS account.  Any API activity, console usage, cross account access etc will be recorded in CloudTrail. CloudTrail will log all activity and allow you to search these logs for 90 days. \n\nHowever it is highly recommended to configure CloudTrail logs in all accounts and all regions to be written to S3 buckets, preferably a central S3 bucket in a dedicated security account. These logs can then be examined later or ingested by a log analysis or SIEM tool.\n\n**CloudTrail is by far the most valuable tool to monitor and audit activity in your AWS account**.  \n\n##### VPC Flow Logs\n\nWhen VPC flow logs provide insight into network activity including:\n- Connection attempts or rejects, allows or denies\n- Source and destination IPs, ports\n- Packets and byte counts\n\nIt is important to note that VPC flow logs do not provide visibility into actual traffic content or payload.\n\nIf you need visibility into network traffic content in order to perform more sophisticated detection of activity you can enable VPC traffic mirroring.  Once VPC traffic mirroring is enabled, you can ship this data to third party network monitoring tools.\n\nFor more details regarding network mirroring please [refer to AWS documentation](https://docs.aws.amazon.com/vpc/latest/mirroring/flow-log.html)\n\n##### S3 Bucket Logs\nAny changes to an S3 bucket's configuration will be logged as API calls in CloudTrail.\n\nFrom a security standpoint it is important to be aware of attempts to read or write objects to S3 buckets - especially those that contain sensitive or critical data. Object level logging is optional and can be enabled either through CloudTrail or the S3 bucket's settings.  All calls to read or write data will appear in CloudTrail.\n\n##### AWS Config logs\nConfig logs record all state changes for any resources that are being monitored by AWS Config. These logs should be sent to a log analysis tool to gain deeper visibility into configuration state changes.\n\n##### DNS logs\nDNS query logging is also available in AWS Route53. Regardless of your choice to enable DNS query logging, AWS does maintain these logs behind the scenes and will use them for identifying suspicious activity.\n\n##### EC2 Instance Server Logs\nSystem logs from your Linux and Windows instances are also critical to identifying suspicious activity or auditing. These logs can be sent to cloudwatch logs or other log analysis tools or products that provide intrusion detection and dynamic host based security event monitoring.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1018190,
+          "key": "75f6520f-faf1-481d-9b6f-0a29f68aeaaf",
+          "title": "Security Event Sources",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "75f6520f-faf1-481d-9b6f-0a29f68aeaaf",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1018186,
+              "key": "6a7d093d-8f02-4307-b1c7-f02fcdee5130",
+              "title": "Security Event Sources Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Security Event Sources",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012720,
+              "key": "4f7e17c6-5aac-49bb-9ac8-2816b18c9257",
+              "title": "ND063 C3 L4 11 Security Event Monitoring",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bP4LAs1C2sM",
+                "china_cdn_id": "bP4LAs1C2sM.mp4"
+              }
+            },
+            {
+              "id": 1012713,
+              "key": "892fc3f4-8266-40ea-9820-49e24db08706",
+              "title": "Server Event Monitoring Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Identify and Monitor Security Events\n\nLet's look at some methods to identify suspicious activity based on security event sources in the cloud.\n\n### Setup AWS GuardDuty\nAWS GuardDuty can monitor CloudTrail, DNS, and VPC flow logs to identify suspicious activity.\nA few examples of activity that GuardDuty can identify:\n- SSH brute force attempts.\n- API calls from IP addresses that are on threat lists.\n- Traffic that is destined for crypto-currency related IPs from an EC2 instance.\n\n### Use an SIEM Tool\nLog sources can be sent to SIEM tools for creating security dashboards. Many cloud security monitoring and SIEM tools have out of the box features to look at cloud native logs such as CloudTrail and VPC flow logs and identify anomalous activity.  \n\nExample vendor tools include:\n- Splunk\n- Sumologic, \n- Lacework\n- CloudKnox\n- etc.\n\n### CloudWatch Alarms\nCloudTrail logs can be sent to CloudWatch logs and custom alarms can be set up to monitor specific CloudTrail event types. An example use case of this, is an admin being notified on concerning activity, such as modifications to security groups or a root user login to the AWS account.\n\n### Examining CloudTrail Logs and Watching for Events",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012729,
+              "key": "652107f9-0551-4440-a81e-25bc32708cb1",
+              "title": "ND063 C3 L4 12 Security Event Sources Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AzyDyEi_Ndo",
+                "china_cdn_id": "AzyDyEi_Ndo.mp4"
+              }
+            },
+            {
+              "id": 1018187,
+              "key": "b63a633a-1748-4305-a495-f4a4c5eac2d9",
+              "title": "GuardDuty Demo Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### GuardDuty Demo",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1018185,
+              "key": "b24e4167-cc69-42fb-9799-aaad4af4303b",
+              "title": "ND063 C3 L4 13 GuardDuty Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Wx0vVJcUldo",
+                "china_cdn_id": "Wx0vVJcUldo.mp4"
+              }
+            },
+            {
+              "id": 1012715,
+              "key": "f10a0132-2a53-4752-8dbc-1ac4d1e0cd7e",
+              "title": "Security Event Sources Key Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms  \n\n#### Security Information and Event Management (SIEM)\nThe process of collecting and combining security activity and events from cloud providers, servers, and applications for further analysis.\n\n#### AWS CloudTrail\nAWS CloudTrail is the source of activity logging within an AWS account.  Any API activity, console usage, cross account access etc will be recorded in CloudTrail.\n\n#### VPC Flow logs\nVPC flow logs provide insight into network activity in an AWS VPC.\n\n#### DNS logs\nLogs generated by a DNS such as Route53 providing DNS query activity.\n\n#### AWS GuardDuty \nAWS GuardDuty can monitor CloudTrail, DNS, and VPC flow logs to identify suspicious activity in the environment.\n\n#### AWS CloudWatch\nAWS native service that provides monitoring, alarming, and dashboarding capabilities on metrics and logs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012722,
+              "key": "43a25e70-39e3-47e8-9dab-b4063efe3da3",
+              "title": "Security Event Sources Heading Links",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Resources\n- [Guard Duty Finding Types](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-active.html)\n\n- [Working with CloudTrail](https://docs.aws.amazon.com/awsCloudTrail/latest/userguide/CloudTrail-working-with-log-files.html)\n\n- [Monitoring CloudTrail events with CloudWatch](https://docs.aws.amazon.com/awsCloudTrail/latest/userguide/monitor-CloudTrail-log-files-with-cloudwatch-logs.html)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1012734,
+          "key": "70729a78-511e-44dc-9b1b-815cc37ef5b5",
+          "title": "Security Event Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "70729a78-511e-44dc-9b1b-815cc37ef5b5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013728,
+              "key": "8c04d359-ffaf-4064-971a-4a79df95d63d",
+              "title": "Log Data and Log Sources",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8c04d359-ffaf-4064-971a-4a79df95d63d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "For each type of log data, identify an example log source that will provide insight into the requested data."
+                },
+                "concepts_label": "Log Data",
+                "answers_label": "Log Sources",
+                "concepts": [
+                  {
+                    "text": "\nManagement activity in AWS\n",
+                    "correct_answer": {
+                      "id": "a1586887406784",
+                      "text": "\nCloudTrail\n"
+                    }
+                  },
+                  {
+                    "text": "\nNetwork traffic logs\n",
+                    "correct_answer": {
+                      "id": "a1586887494838",
+                      "text": "\nVPC flow logs\n"
+                    }
+                  },
+                  {
+                    "text": "\nSSH login activity to a linux instance\n",
+                    "correct_answer": {
+                      "id": "a1586887495543",
+                      "text": "\nsyslog\n"
+                    }
+                  },
+                  {
+                    "text": "\nDNS queries\n",
+                    "correct_answer": {
+                      "id": "a1586887496286",
+                      "text": "\nRoute53 DNS query logging\n"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586887406784",
+                    "text": "\nCloudTrail\n"
+                  },
+                  {
+                    "id": "a1586887496286",
+                    "text": "\nRoute53 DNS query logging\n"
+                  },
+                  {
+                    "id": "a1586887494838",
+                    "text": "\nVPC flow logs\n"
+                  },
+                  {
+                    "id": "a1586887549336",
+                    "text": "\nELB logs\n"
+                  },
+                  {
+                    "id": "a1586887495543",
+                    "text": "\nsyslog\n"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1012653,
+              "key": "615f5dd2-bc47-46d2-9f90-1aaeaadd37f3",
+              "title": "Security Event Sources Hard Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "615f5dd2-bc47-46d2-9f90-1aaeaadd37f3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Your company has had an incident. A **crypto attack** has taken place! \n\nThis typically involves an actor gaining access to a cloud environment and then provisioning new instances which would be used to run crypto currency miners.  We want to do an audit of this incident.  What set of services may help us identify details of the attack?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "CloudWatch, Route53, Application Load Balancer logs",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "S3 access logging, Key Management Service",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "CloudTrail, VPC Flow logs and GuardDuty",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1012748,
+          "key": "99f76b0c-ec7d-4ff5-82a6-379ed369f60a",
+          "title": "Exercise: Security Event",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "99f76b0c-ec7d-4ff5-82a6-379ed369f60a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012706,
+              "key": "250a95bc-ae12-49ea-9caf-1b45652978aa",
+              "title": "Security Event Sources Exercise Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Viewing Activity With CloudTrail\n\nIn this exercise, you will make some changes to your environment and verify that your activity can be audited using CloudTrail.\n\n### 1. Generate some activity\n- Log out of your AWS account and log back in\n- Create a new bucket in your AWS account.  Ensure that you select default encryption.\n- Once the bucket is created, go back and remove the default encryption setting.\n\n### 2. Search CloudTrail Event History\n- After a few minutes, go to the CloudTrail service console and go to Event History.\n- Search for the login event by choosing \"Event Name\" in the first filter box and pasting the text ConsoleLogin into the second filter box.  You should not only see your login that you just performed but all logins in the last 90 days.\n- Expand the event to see more details.  Click View Event.\n\n#### 3. Expected Results\n- You should be able to see the IP address you logged in from, the user name, time, and other valuable details.\n- Search again, this time on the filter choose \"Resource Name\" and in the second box put the S3 bucket name that you just created.\n\n#### 4. Expected Results\n- You should see all activity related to creating the bucket and removing the encryption setting.\n\nContinue to explore the CloudTrail history in your account to get a better feel for the types of management and API calls being made.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012661,
+              "key": "0134fb3a-0dc5-4812-86f2-6bbb2a2fbc91",
+              "title": "Security Event Sources TaskList",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0134fb3a-0dc5-4812-86f2-6bbb2a2fbc91",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Log out of your AWS account and log back in.",
+                "Create a new bucket in your AWS account with default encryption enabled.",
+                "Search CloudTrail for ConsoleLogin activity.",
+                "View changes to S3 bucket configuration in CloudTrail."
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "Configure CloudTrail for S3"
+            }
+          ]
+        },
+        {
+          "id": 1012743,
+          "key": "38e727fd-a45e-4462-a1d5-d35387726d63",
+          "title": "Solution: Security Event",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "38e727fd-a45e-4462-a1d5-d35387726d63",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012723,
+              "key": "520d2c95-d819-4401-a7cb-dc24b35e1c24",
+              "title": "Security Event Sources Exercise Solution Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Security Event Sources",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012700,
+              "key": "02a79938-4f94-4c9d-9255-565f3cfae9fc",
+              "title": "ND063 C3 L4 14 Security Event Sources Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xFYlY9VqGYs",
+                "china_cdn_id": "xFYlY9VqGYs.mp4"
+              }
+            },
+            {
+              "id": 1012709,
+              "key": "a90b6252-dadd-4e67-8a5e-e51575e36dc9",
+              "title": "Security Event Sources Exercise Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this exercise, your goal was to get a better understanding of how to view user activity in AWS cloud trail.\n\nI highly recommend you use a combination of CloudTrail, config, and cloudwatch - and other tools if possible - to monitor your AWS account for security related changes to any of your resources.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1012752,
+          "key": "62537eb8-d320-4625-8a1f-20417336e30e",
+          "title": "Defend Web Applications",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "62537eb8-d320-4625-8a1f-20417336e30e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012733,
+              "key": "f567e0bb-f635-48a5-8969-816b66e41bd7",
+              "title": "Defend web applications Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Defending Web Applications from Exploits\n\nMany cloud architectures and environments are designed to host internet facing web applications and services.\n\nOnce an internet facing application or resource comes online it can be as little as a few minutes before external actors start testing those applications for exploitable vulnerabilities. When designing the environment, it is critical to be aware of cloud native defense mechanisms for blocking these types of attacks and where in your environment this type of defense should be set up.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012717,
+              "key": "dc5bff1f-509c-441c-8858-cc6e46c39cfc",
+              "title": "ND063 C3 L4 15 Defend Web Applications Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uhHFDe6Zok0",
+                "china_cdn_id": "uhHFDe6Zok0.mp4"
+              }
+            },
+            {
+              "id": 1012685,
+              "key": "ba7b3636-9b25-45dd-97f0-9da268d5e37c",
+              "title": "Defend web applications Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Defending Web Applications\n\nOnce an internet facing application or resource comes online, it can be as little as a few minutes before external actors start testing those applications for exploitable vulnerabilities.\n\nTo learn more about these types of attacks I recommend you become familiar with the **OWASP Top Ten**, which functions as a high level list of the most common security risks that  web applications may be susceptible to.\n\nWeb application firewalls or WAFs are designed to sit between a client and an application to inspect application HTTP traffic and determine if the traffic patterns signify exploitation attempts.  The WAF can then be set up to block or log suspicious traffic.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012726,
+              "key": "4bf9a8a3-f438-42c9-bd1c-d184bd198e80",
+              "title": "Defend Web Applications - WAF",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95fd9a_9.-waf/9.-waf.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4bf9a8a3-f438-42c9-bd1c-d184bd198e80",
+              "caption": "\n**A WAF can Protect Internet Facing Applications from Attacks that Attempt to Exploit Application Vulnerabilities**",
+              "alt": "A web application firewall or WAF can protect internet facing applications from attacks that attempt to exploit application vulnerabilities.\n\nA WAF is designed to sit between applications and the internet and should be used to protect web applications running hosted in AWS CloudFront, API Gateway, EC2, or other services.",
+              "width": 750,
+              "height": 400,
+              "instructor_notes": null
+            },
+            {
+              "id": 1012716,
+              "key": "6258cd52-ca4a-4b72-8a99-360c73a93585",
+              "title": "Defend Web Applications - WAF Types",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Web Application Firewalls in the Cloud\n\nThere are a few different ways of incorporating WAF protection to defend against application level exploits.\n\n#### Cloud-Based WAF product\n\nThere are many vendors, such as Akamai or Cloudflare, which web clients point to as an entry point into your application. These are designated as CDN providers, however they provide WAF capabilities as part of their offering.\n\nCloud providers such as AWS also provide this type of service natively.  AWS WAF can be placed in front of public facing application services such as CloudFront and API Gateway transparently so that application endpoints do not need to change.\n\n#### WAF appliance \n\nA WAF appliance or network based WAF can be deployed into a VPC to protect EC2 based application traffic. These can be costly and complex to implement and what you would typically find in a traditional data center environment.\n\nExample vendors include:\n- F5\n- Fortinet\n- Imperva \n- etc.\n\n#### Host-Based WAFs\n\nThese products attempt to provide similar defense but are deployed as part of a web applications server instance.  \n\n#### Serverless Security Tools\nServerless applications also need to be defended.  Many products offer capabilities to defend serverless applications from application exploits.\n\nExample products include: \n- Aqua\n- Twistlock\n- PureSec\n\n### WAF Best Practices\n\n#### 1. Test and Fine Tune WAF Rules\n\nSet up the WAF with identical configuration in lower environments for testing to ensure that your applications still work as expected in production.  Fine tuning may be required to rule out false positives.\n\n#### 2. Penetration Testing\nPerform penetration and exploit testing against applications to ensure that the WAF defends as expected.  Test both with and without the WAF to get a better understanding of defensive capabilities.\n\n#### 3. Logging\nEnable WAF logging and export logs to your security monitoring tools.\n\n#### 4. Discovery\nIdentify all public endpoints for your applications including CloudFront, Application Load Balancers, API Gateway.  If your application is exposed to the internet with other methods, consider moving your application behind these mentioned services.\n\nOnce identified, put together a plan to start defending your applications with a web application firewall.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012655,
+              "key": "d21b319c-7a7c-46a6-8930-469845579ef5",
+              "title": "Defend Web Applications - WAF Types",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95fde3_10.-waf-types/10.-waf-types.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d21b319c-7a7c-46a6-8930-469845579ef5",
+              "caption": "\n**Web Applications can be Protected using Third Party WAF Providers or the AWS Native WAF**",
+              "alt": "Web applications can be protected using third party WAF providers or the AWS native WAF.",
+              "width": 600,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 1013732,
+              "key": "3f59839b-a9ae-4658-9b0f-69307424695d",
+              "title": "AWS WAF Demo Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS WAF Demo",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012732,
+              "key": "a513d87d-38dd-4643-b810-bf3bc54849cd",
+              "title": "ND063 C3 L4 16 Defend Web Applications Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wuGz4cooBTQ",
+                "china_cdn_id": "wuGz4cooBTQ.mp4"
+              }
+            },
+            {
+              "id": 1012679,
+              "key": "0d3e8388-3467-40cf-91b9-23d26b90e852",
+              "title": "Defend web applications New Terms or Vocabulary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n#### Web Application Firewall (WAF)\nA web application firewall is used to defend an application that may contain vulnerabilities from exploitation. \n\n#### WAF Rules\nLogic that will dictate what type of requests to allow or block\n\n#### Managed Rules\nSets of rules provided and managed by third parties or AWS. Different rule sets are designed for specific purposes.\n\n#### AWS Firewall Manager\nControl WAF settings and Security Groups for all AWS accounts from a central management interface.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012725,
+              "key": "004498d2-a0c2-4bfa-9b2f-55181c2afa38",
+              "title": "Defend web applications Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Resources\n- [AWS WAF and Firewall Manager documentation](https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html)\n\n- [AWS WAF Managed Rule Groups](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html)\n\n- [OWASP Top 10](https://owasp.org/www-project-top-ten/)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1012736,
+          "key": "f617b19d-b434-4a85-a9a6-3469c10ab743",
+          "title": "Defense Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f617b19d-b434-4a85-a9a6-3469c10ab743",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013731,
+              "key": "b651e5c7-768c-42c3-af49-4a4be8f916bd",
+              "title": "AWS Services and Functions",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b651e5c7-768c-42c3-af49-4a4be8f916bd",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the given AWS service to the correct functionality.\n"
+                },
+                "concepts_label": "AWS Service",
+                "answers_label": "Function",
+                "concepts": [
+                  {
+                    "text": "\nWeb Application Firewall\n",
+                    "correct_answer": {
+                      "id": "a1586888268563",
+                      "text": "\nScans application traffic for exploit attempts\n"
+                    }
+                  },
+                  {
+                    "text": "\nSecurity Group\n",
+                    "correct_answer": {
+                      "id": "a1586888290109",
+                      "text": "\nAllows network ingress traffic from specific IP ranges to specific ports\n"
+                    }
+                  },
+                  {
+                    "text": "\nCloudTrail\n",
+                    "correct_answer": {
+                      "id": "a1586888291114",
+                      "text": "\nLogs all management activity\n"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586888291114",
+                    "text": "\nLogs all management activity\n"
+                  },
+                  {
+                    "id": "a1586888296981",
+                    "text": "\nBlocks access to S3 buckets"
+                  },
+                  {
+                    "id": "a1586888268563",
+                    "text": "\nScans application traffic for exploit attempts\n"
+                  },
+                  {
+                    "id": "a1586888290109",
+                    "text": "\nAllows network ingress traffic from specific IP ranges to specific ports\n"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1012687,
+              "key": "69157c84-90a2-4c38-af23-4f4c7923b6f8",
+              "title": "Defend web applications Hard Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "69157c84-90a2-4c38-af23-4f4c7923b6f8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "You would like to protect your applications from bot traffic and plan on using the AWS managed rules. Check [the documentation](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html) and identify which AWS managed rule set will help us mitigate bot traffic.\n\n",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Admin Protection",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Windows Operating System",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Amazon IP protection",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "SQL Database",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1012751,
+          "key": "ce2c11bd-dd28-4fd2-9ca5-d9d852c11f68",
+          "title": "Lesson Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ce2c11bd-dd28-4fd2-9ca5-d9d852c11f68",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012724,
+              "key": "8f5b4ea8-8f84-4aec-b2d3-0ff84d871551",
+              "title": "Lesson Conclusion Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Conclusion\nIn this lesson, we have looked at various methods and capabilities in the cloud to defend your cloud infrastructure and applications against misconfigurations, vulnerabilities, and attacks.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012711,
+              "key": "e9ef9632-6081-40e0-9f16-3b12bdf4d682",
+              "title": "ND063 C3 L4 17 Lesson Conclusion Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4ZbMs7T73aY",
+                "china_cdn_id": "4ZbMs7T73aY.mp4"
+              }
+            },
+            {
+              "id": 1012712,
+              "key": "29412802-00cc-47df-a69e-3017ba206602",
+              "title": "Lesson Conclusion Text",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You have learned how to:\n- Identify misconfigurations that can lead to vulnerabilities\n- Identify and guard against malicious activity\n- Design a deployment pipeline that ensures that security practices are implemented early on. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012721,
+              "key": "c31f406b-624c-4e1c-b6db-cc9d5f12c086",
+              "title": "Glossary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Glossary\n\n#### Threat Landscape\nIdentify potential attack vectors and quantify potential exploitation and worst case blast radius.\n\n#### Shift Left\nIdentifying security vulnerabilities and misconfigurations in the early phases of an application or environment's lifecycle.\n\n#### Public Facing\nAny resources which are accessible from the internet, such as web applications, public facing infrastructure, or the AWS console and API.\n\n#### OWASP Top 10\nA widely accepted set of vulnerabilities which can lead to exploitation of web applications.\n\n#### Infrastructure as Code (IaC)\nCode that is developed to define cloud infrastructure, operating system, and container configuration.  Code is version controlled and follows the similar principles for changes and updates as application feature code.\n\n#### CloudFormation\nAWS native service for deploying services with infrastructure as code.  CloudFormation templates defined in json or yaml can be deployed using the CloudFormation service.\n\n#### Terraform\nPopular infrastructure as code language from HashiCorp. Supports many different cloud providers in addition to AWS.\n\n#### DockerFile\nDefinition specifying how a docker image will be built and configured.\n\n#### Static Scanning \nOne-time (or  scheduled) that will run and provide a set of findings.\n\n#### Dynamic Scanning\nContinuous monitoring that is designed to catch changes to configuration or other suspicious activity in real-time.  \n\n#### DevOps Pipeline\nA set of processes and tools to build, deploy, and update application environments.  Pipelines include build of application artifacts, docker and VM images, scanning and automated testing, deployment orchestration of infrastructure and application artifacts.\n\n#### Security Information and Event Management (SIEM)\nThe process of collecting and combining security activity and events from cloud providers, servers, and applications for further analysis.\n\n#### AWS CloudTrail\nAWS CloudTrail is the source of activity logging within an AWS account.  Any API activity, console usage, cross account access etc will be recorded in CloudTrail.\n\n#### VPC Flow logs\nVPC flow logs provide insight into network activity in an AWS VPC\n\n#### DNS logs\nLogs generated by a DNS such as Route53 providing DNS query activity.\n\n#### AWS GuardDuty \nAWS GuardDuty can monitor CloudTrail, DNS, and VPC flow logs to identify suspicious activity in the environment\n\n#### AWS CloudWatch\nAWS native service that provides monitoring, alarming, and dashboarding capabilities on metrics and logs.\n\n#### Web Application Firewall (WAF)\nA web application firewall is used to defend an application that may contain vulnerabilities from exploitation. \n\n#### WAF Rules\nLogic that will dictate what type of requests to allow or block\n\n#### Managed Rules\nSets of rules provided and managed by third parties or AWS. Different rule sets are designed for specific purposes.\n\n#### AWS Firewall Manager\nControl WAF settings and Security Groups for all AWS accounts from a central management interface.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1012744,
+          "key": "52540181-7629-4cf8-9617-b990ddc43c09",
+          "title": "Course Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "52540181-7629-4cf8-9617-b990ddc43c09",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012730,
+              "key": "ca9853bd-08b5-4353-a685-1d15f2320690",
+              "title": "Recap of Course Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Course Recap\n\nIn this course, we introduced fundamental concepts to help you design, deploy, and run cloud workloads with security in mind.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012686,
+              "key": "198d8485-68cd-4cdf-bd84-936d04e3e4a7",
+              "title": "ND063 C3 L4 18 Course Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AAx6bbEBoPU",
+                "china_cdn_id": "AAx6bbEBoPU.mp4"
+              }
+            },
+            {
+              "id": 1012731,
+              "key": "e181789c-3899-4406-9baf-c0e7f6624fd6",
+              "title": "Lesson Recap Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95ff02_screen-shot-2020-04-02-at-3.30.23-pm/screen-shot-2020-04-02-at-3.30.23-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e181789c-3899-4406-9baf-c0e7f6624fd6",
+              "caption": "**You Did It!**",
+              "alt": "Picture with list of lessons.",
+              "width": 1394,
+              "height": 250,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1012747,
+          "key": "8bb6c9e8-2e23-474f-bea2-33df9ce2af9a",
+          "title": "Congratulations!",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8bb6c9e8-2e23-474f-bea2-33df9ce2af9a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012727,
+              "key": "8b637064-575e-4093-82ec-d2549761292f",
+              "title": "Congratulations Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Congratulations!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1012714,
+              "key": "eecc7fbb-89a9-49e1-9359-a9c089fad420",
+              "title": "ND063 C3 L4 19 Congratulations",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ig6OU6sVOU8",
+                "china_cdn_id": "ig6OU6sVOU8.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

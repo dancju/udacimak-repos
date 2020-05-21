@@ -1,0 +1,1527 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1005578,
+      "key": "11c3044b-fb00-4151-8dd8-3c89f9556ba1",
+      "title": "Building For Resiliency",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson you will learn how to make individual AWS services resilient.  You'll look at native and non-native services and learn about the difference between them with regard to high availability",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1005579,
+          "key": "924830b6-a7a9-4036-8940-50da4733c522",
+          "title": "Introduction to Building For Resiliency",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "924830b6-a7a9-4036-8940-50da4733c522",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010001,
+              "key": "8dd3a5be-d270-4b02-b8fa-f3601c6c2022",
+              "title": "ND0063 C1 L2 00 Building For Resiliency Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dGlb1GPDdtQ",
+                "china_cdn_id": "dGlb1GPDdtQ.mp4"
+              }
+            },
+            {
+              "id": 1006370,
+              "key": "2c5a1320-23ae-476f-b9e8-f8e36bdff5a9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This lesson will teach you about several different types of services within AWS that can be used in a resilient manner, but must be specifically set up to do so.  Depending on the service, you may or may not automatically get Multi-AZ redundancy.  With almost all AWS services, you do not get Multi-Region redundancy without extra configuration.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005580,
+          "key": "b6a4efc4-ac8c-453c-b625-9d31b8db0f06",
+          "title": "Lesson Outline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b6a4efc4-ac8c-453c-b625-9d31b8db0f06",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009588,
+              "key": "bc14d377-4c45-4dd1-9bef-b44f3505cd13",
+              "title": "ND0063 C1 L2 01 Lesson Outline Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "_kf6rXxxxbI",
+                "china_cdn_id": "_kf6rXxxxbI.mp4"
+              }
+            },
+            {
+              "id": 1006371,
+              "key": "3acf962a-3ab1-472f-9af5-7ebbe0e009a7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Outline\n* Server-based Services\n* DynamoDB\n* S3\n* Compute Services\n\nIn this lesson, you will learn about \"server-based\" services such as RDS, ElastiCache and ElasticSearch and how to make them fault tolerant.  From there, you will get to know AWS native services DynamoDB and S3 and how to enable advanced redundancy and configuration.  Finally, you'll wrap up with gaining an understanding of AWS compute services and how to build with those services in a highly available way.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006118,
+          "key": "65c6789f-3315-4fc1-876c-a432507e0714",
+          "title": "Big Picture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "65c6789f-3315-4fc1-876c-a432507e0714",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009589,
+              "key": "901d96b8-de94-4c43-859b-105386fe731b",
+              "title": "ND0063 C1 L2 02 Big Picture",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eec2PqczA3w",
+                "china_cdn_id": "eec2PqczA3w.mp4"
+              }
+            },
+            {
+              "id": 1006372,
+              "key": "85f4cc50-6c51-4129-8f50-f888d5470cfc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Just because you are building your product or application in AWS does not mean that it is redundant or highly available.  Making highly reliable platforms within AWS is drastically easier than doing it on your own, but it does require some work, configuration and understanding.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006126,
+              "key": "1da411ab-37a2-4a16-8a3f-e62659e66f90",
+              "title": "AWS resiliency",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1da411ab-37a2-4a16-8a3f-e62659e66f90",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If you’re using AWS, everything you do is highly available and redundant",
+                "answers": [
+                  {
+                    "id": "a1584244045259",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584244050539",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006119,
+          "key": "32f3a740-0171-44f6-abf3-ede51e92c4a3",
+          "title": "Developing Intuition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "32f3a740-0171-44f6-abf3-ede51e92c4a3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006373,
+              "key": "a0ca90cd-1183-4e3c-8166-ea3902e91315",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can build a system that is singular with no failover options, and you can build systems that are Multi-AZ, Multi-Region with automated lightning fast failover.  It is up to you to first determine what level of redundancy is appropriate and then figure out how to build that system.\n\nWhen approaching a new product or service, you should consider how important the system will be.  Will the existence of the company depend on it staying up, or is it just helping a team vote on lunch choices?  Will it bring in 10 million dollars a month, or is it providing a service for free?  Ultimately, there are tradeoffs that need to be considered, and understanding them is key to understanding how resilient to make a system.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1009590,
+              "key": "b015360a-4f48-4cc4-8b9e-fe9963da5791",
+              "title": "ND0063 C1 L2 03 Developing Your Intuition About Resiliency Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QgWUJHahJVc",
+                "china_cdn_id": "QgWUJHahJVc.mp4"
+              }
+            },
+            {
+              "id": 1013162,
+              "key": "3a47d50e-1513-4158-8f1c-4a6f09d1c967",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Not all AWS services are redundant by default.   Some services have varying degrees of redundancy and it usually costs more to make a service redundant.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006127,
+              "key": "9f71f406-a231-486e-acaf-966590bc538e",
+              "title": "Considerations",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9f71f406-a231-486e-acaf-966590bc538e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What should you consider when determining how resilient a system needs to be?\n",
+                "answers": [
+                  {
+                    "id": "a1584244115388",
+                    "text": "Cost",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584244123389",
+                    "text": "SLAs",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584244124353",
+                    "text": "Programming language used",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584244138177",
+                    "text": "How critical the system is to your users",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005910,
+          "key": "8e45bf6a-c91a-4ccc-a06e-a70f8649e713",
+          "title": "Server-Based Services",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8e45bf6a-c91a-4ccc-a06e-a70f8649e713",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009591,
+              "key": "d91c7bba-9087-4653-abe8-18b6e8cb325e",
+              "title": "ND0063 C1 L2 04 AWS Server-Based Services Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "YuJg8D6EPAA",
+                "china_cdn_id": "YuJg8D6EPAA.mp4"
+              }
+            },
+            {
+              "id": 1006374,
+              "key": "be051636-095f-4acf-b524-d9d9efd0e186",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Server bases services are those that are \"instance\" based.  Services like RDS and ElastiCache are instanced based in that you can run one instance, but you will not have any fault tolerance.  In order to gain high availability, you need to tell the service to provision a second instance for the primary instance to failover to, should there be an issue with it.  This model is similar to traditional data center environments.  A good way to tell if a service is a server/instance based service is if the service is a pre-existing product that AWS has create a service with (MongoDB, Redis, MySQL, Postgres).\n\nTo get Multi-AZ availability, you need to configure a Subnet Group within the service.  A subnet is attached to an AZ, and creating a grouping of subnets within the service tells the service where it can place the primary and standby instances of a service.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1009592,
+          "key": "85ab124b-8f67-4fa0-aeb3-ef788c20941e",
+          "title": "Redundancy In AWS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "85ab124b-8f67-4fa0-aeb3-ef788c20941e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009593,
+              "key": "06e1a651-bb56-4f8a-a197-ae599058b979",
+              "title": "ND0063 C1 L2 05 Redundancy In AWS Services",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bCdbxLsBY8Q",
+                "china_cdn_id": "bCdbxLsBY8Q.mp4"
+              }
+            },
+            {
+              "id": 1009595,
+              "key": "9f5d08c3-5dc3-4fe3-91e5-27e4f884d6d7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Subnet Groups are key to creating Multi-AZ redundancy in server-based services.  Subnet Groups define the different availability zones that your service will run in, and having multiple instances allow for fast failover if a single AZ were to go down.\n\nMulti-Region redundancy is more tricky.  Depending on the service, it is harder, or not possible to run a service with failover between regions.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005911,
+          "key": "90ffb89b-a2d3-4084-9dd4-896b5223e604",
+          "title": "Quiz: Server-Based Services",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "90ffb89b-a2d3-4084-9dd4-896b5223e604",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006128,
+              "key": "a9d0f779-e5a3-4673-a0d3-bea719e0ac95",
+              "title": "Server based services",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a9d0f779-e5a3-4673-a0d3-bea719e0ac95",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which services are “Server based”?",
+                "answers": [
+                  {
+                    "id": "a1584244464584",
+                    "text": "S3",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584244475702",
+                    "text": "RDS",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584244476535",
+                    "text": "Route53",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584244477393",
+                    "text": "ElastiCache",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006129,
+              "key": "335e307d-c17e-4e88-b14c-294d32e99bd6",
+              "title": "Which is easier",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "335e307d-c17e-4e88-b14c-294d32e99bd6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Should you first make a service Multi-AZ or Multi-Region?\n",
+                "answers": [
+                  {
+                    "id": "a1584244574616",
+                    "text": "Multi-AZ",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584244586087",
+                    "text": "Multi-Region",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1010008,
+              "key": "bdd8366d-8940-42b4-bb7b-7941cfd69b83",
+              "title": "ND0063 C1 L2 05.1 AWS Server-Based Services Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nZX-Marqm3w",
+                "china_cdn_id": "nZX-Marqm3w.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005912,
+          "key": "210f072c-d39f-4353-8f97-93e69ece08ed",
+          "title": "Exercise: Server-Based Services",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "210f072c-d39f-4353-8f97-93e69ece08ed",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1005914,
+              "key": "0b7cb851-c81c-4c0b-8336-68d0576d7dbd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Server-Based Services\n\nMost of the server based services have similar concepts for handling a hardware failover automatically.  This functionality is the same that handles a single availability zone failure.  By creating active/standby pairs of servers that replicate and by having each member of the pair in a different availability zone, you create the infrastructure that handles both of these failure modes.\n\n## ElastiCache\n\nElastiCache is one of these services.  You will create an ElastiCache cluster that does not have a single point of failure, and that can handle an AZ outage.\n\nFirst, create an ElastiCache subnet group in the default VPC using each available subnet and then create a multi-AZ redis cluster.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005913,
+          "key": "92200f28-5190-4b53-b47f-bb27c3769bd1",
+          "title": "Solution: Server-Based Services Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "92200f28-5190-4b53-b47f-bb27c3769bd1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009598,
+              "key": "02c55325-bfb8-4914-ab73-9efbaed8ad39",
+              "title": "ND0063 C1 L2 06 AWS Server-Based Services Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mnyUPg4b_nI",
+                "china_cdn_id": "mnyUPg4b_nI.mp4"
+              }
+            },
+            {
+              "id": 1005921,
+              "key": "e5149619-e00e-4f52-a31f-a9ce023fa6d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Server based services\n\n### Create Subnet Group\n\n1. Go to the ElastiCache service.\n2. Select \"Subnet group\" -> Create Subnet group\n3. Name the group \"Udacity\" and give it a Description\n4. Select the default VPC\n5. For each Availability Zone, select the associated subnet and then save.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005922,
+              "key": "1ed6e5dd-43e0-4fc6-b95f-d905c3a4fa1f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3890_subnetgroup/subnetgroup.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1ed6e5dd-43e0-4fc6-b95f-d905c3a4fa1f",
+              "caption": "",
+              "alt": "",
+              "width": 865,
+              "height": 471,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005923,
+              "key": "2a284082-bc8e-4855-9233-28a7610e4298",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c389d_subnetgroup2/subnetgroup2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/2a284082-bc8e-4855-9233-28a7610e4298",
+              "caption": "",
+              "alt": "",
+              "width": 1156,
+              "height": 720,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005924,
+              "key": "ad897992-42cb-48af-b170-171ec2ef4778",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Create Redis cluster\n\n1. Select Redis -> create\n2. Change the \"Number of replicas\" to 1\n3. Make sure \"Multi-AZ with Auto-Failover\" is checked\n4. Note that your newly created subnet group is selected by default.\n5. Click Create and wait for the cluster to be available.\n\n## Results\n\nNote the available zones that each instance in your cluster is in and the state of each member of the cluster.\n\nRedis cluster details",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005925,
+              "key": "d616c06b-bc14-478a-b6d7-2fda20329d78",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c38c3_one/one.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d616c06b-bc14-478a-b6d7-2fda20329d78",
+              "caption": "",
+              "alt": "",
+              "width": 1147,
+              "height": 772,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005926,
+              "key": "22f14099-2108-4197-a149-01233d7ce20a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c38d1_two/two.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/22f14099-2108-4197-a149-01233d7ce20a",
+              "caption": "",
+              "alt": "",
+              "width": 1154,
+              "height": 428,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1005933,
+          "key": "ac49932d-ae45-4b75-9806-a16285a08ef9",
+          "title": "DynamoDB",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ac49932d-ae45-4b75-9806-a16285a08ef9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009599,
+              "key": "a93fe61f-3d8f-4003-bc52-829fa3397fcb",
+              "title": "ND0063 C1 L2 07 DynamoDB Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2fK-xl59thI",
+                "china_cdn_id": "2fK-xl59thI.mp4"
+              }
+            },
+            {
+              "id": 1006375,
+              "key": "36626e21-817f-456d-ab70-d4b545142f6b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[DynamoDB](https://aws.amazon.com/dynamodb/) is a native AWS service for non-relational databases.  It is Multi-AZ by default and can be made Multi-Region with DynamoDB Streams and by creating a Global DynamoDB table.  DynamoDB scales to extremely high loads with very fast response times.  It also supports configuring a caching layer in front of the database.\n\nDynamoDB Streams allow every change made to a DynamoDB table to be \"streamed\" into other services.  These other services can then choose what actions to take on the different items or operations within the stream.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011497,
+          "key": "03a65f31-c01f-47d3-8c9e-a1f6a54f877f",
+          "title": "DynamoDB Global Tables",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "03a65f31-c01f-47d3-8c9e-a1f6a54f877f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011498,
+              "key": "504d22da-1511-442e-a5dd-81605c8278a7",
+              "title": "ND0063 C1 L2 07.1 DynamoDB Video Pt 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "CsdQw3JJrkQ",
+                "china_cdn_id": "CsdQw3JJrkQ.mp4"
+              }
+            },
+            {
+              "id": 1011499,
+              "key": "1ce2dc4f-2372-4d0c-a67c-ca2cb3dc0782",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# DynamoDB Streams And Global Tables\n\nDynamoDB Streams capture all changes made to a DynamoDB Table.  This includes **only** actions that modify the table, not actions that only read from the table.\n\nDynamoDB Global Tables take advantage of DynamoDB Streams the create Multi-Region active/active DynamoDB Tables.  This allows you to modify a table in multiple regions and have those changes reflected in all regions.\n\nMulti-Region, active/active data stores are a **big deal** and extremely useful for use cases that require it.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005934,
+          "key": "4190e2ca-f0b1-4430-b2b0-ba5e9d8c52a5",
+          "title": "Quiz: DynamoDB",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4190e2ca-f0b1-4430-b2b0-ba5e9d8c52a5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006130,
+              "key": "e25c6ee1-8fc9-4a07-a03b-a7180a960c63",
+              "title": "Multi-Region",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e25c6ee1-8fc9-4a07-a03b-a7180a960c63",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "DynamoDB is Multi-Region by default",
+                "answers": [
+                  {
+                    "id": "a1584251082672",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584251101409",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006131,
+              "key": "a6ab5e50-9bd8-45ec-8735-1b1a17471cdf",
+              "title": "DynamoDB Streams",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a6ab5e50-9bd8-45ec-8735-1b1a17471cdf",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which are true about DynamoDB Streams?",
+                "answers": [
+                  {
+                    "id": "a1584251150082",
+                    "text": "They can only stream to the same region as the table",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584251158972",
+                    "text": "They only stream inserts",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584251160087",
+                    "text": "They stream all changes to a table",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584251160754",
+                    "text": "They are required to backup a DynamoDB table",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1010006,
+              "key": "f22bb0c4-8cac-4288-8d0e-b4d5337c6de1",
+              "title": "ND0063 C1 L2 08 DynamoDB Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "lvnv0o6PYjw",
+                "china_cdn_id": "lvnv0o6PYjw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005937,
+          "key": "47238a70-92c6-4967-857c-a7d03972d31f",
+          "title": "Exercise: DynamoDB",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "47238a70-92c6-4967-857c-a7d03972d31f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1005939,
+              "key": "78f5e9c1-0a72-41eb-9a75-1d90250bc5cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# DynamoDB\n\nDynamoDB is a non-relational database.  It is a fully managed service created by AWS.  With DynamoDB you create tables, but unlike a relational database, each table is completely independent.  \n\nDynamoDB is not like the server-based services that AWS offers (RDS, ElastiCache, etc.), it is \"serverless\" in the sense that you do not have any control over the physical infrastructure that it runs on. You do not pay for the service when you are not using it (except used storage space).  Because DynamoDB is different than server-based offerings, the mechanisms for redundancy are also different.  DynamoDB offers multi-region, active/active service if you elect it.  This is called DyanmoDB Global Tables.\n\nCreate a DynamoDB table and extend it as a Global table into a second region.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005938,
+          "key": "6d858931-8e38-434d-b134-cc38cb5934ed",
+          "title": "Solution: DynamoDB Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6d858931-8e38-434d-b134-cc38cb5934ed",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009600,
+              "key": "51c972a6-d375-4171-9fac-9c9b64540629",
+              "title": "ND0063 C1 L2 09 DynamoDB Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pcmsuiLqJ90",
+                "china_cdn_id": "pcmsuiLqJ90.mp4"
+              }
+            },
+            {
+              "id": 1005940,
+              "key": "b1ad6aaa-0aa8-4016-8f9a-dcbdac8bead1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# DynamoDB\n\n## Setting up a DynamoDB table\n\n1. Select DynamoDB -> Create table.\n2. Name the table \"udacity\" and the primary key \"id\"\n3. Uncheck \"Use default settings\"\n4. Change \"Read/write capacity mode\" to \"On-demand\"\n5. Click Create.\n\n## Configuring the table to be a Global table\n\n1. Select the Global Tables tab.\n2. Note the notice about needing to enable Streams and click the Enable Streams button.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005941,
+              "key": "9eeb7551-621d-4b7a-a2ad-3321f521c711",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3d07_streams/streams.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9eeb7551-621d-4b7a-a2ad-3321f521c711",
+              "caption": "",
+              "alt": "",
+              "width": 1162,
+              "height": 777,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005942,
+              "key": "2484bdff-e913-4858-b881-c79155f949c5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. Click Add region.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005943,
+              "key": "644a4a06-53bb-4ec4-a19b-d9da489764e6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3d2d_region/region.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/644a4a06-53bb-4ec4-a19b-d9da489764e6",
+              "caption": "",
+              "alt": "",
+              "width": 1146,
+              "height": 686,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005944,
+              "key": "65807275-2b09-4737-a633-5a6d379da507",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. Select a region and click Create replica and wait for the table to be available.\n\nYou now have a table that can be read from _and written to_ in multiple regions.  In the Items tab, click Create item in the table in one of the two regions, then switch to the other region and observe that you can see the item there as well.\n\nOregon:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005945,
+              "key": "f06e8352-fdfe-4ccb-8d8a-931e91f8dbe0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3d50_oregon/oregon.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f06e8352-fdfe-4ccb-8d8a-931e91f8dbe0",
+              "caption": "",
+              "alt": "",
+              "width": 1166,
+              "height": 474,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005946,
+              "key": "3011679a-f4ed-4598-a3d7-209ed53c41d5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Northern California:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005947,
+              "key": "494d42e3-5c3a-4dad-a283-3332da85b38c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3d6a_cali/cali.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/494d42e3-5c3a-4dad-a283-3332da85b38c",
+              "caption": "",
+              "alt": "",
+              "width": 1167,
+              "height": 468,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1005957,
+          "key": "c0987379-a1ad-4bb7-8c07-05ffbd79caf8",
+          "title": "S3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c0987379-a1ad-4bb7-8c07-05ffbd79caf8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009601,
+              "key": "60ab6fd2-7ecc-47d8-b40d-9e5d77a44398",
+              "title": "ND0063 C1 L2 10 S3 Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "NxQaAdbZszs",
+                "china_cdn_id": "NxQaAdbZszs.mp4"
+              }
+            },
+            {
+              "id": 1006376,
+              "key": "d670f400-7639-4e5e-8b4c-5488157d68cc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "[S3](https://aws.amazon.com/s3/) is one of the very first AWS services and is an object store.  You create buckets and you can store an unlimited number of objects in a bucket.\n\nOver the years, AWS has added many features to S3.  There are now many different levels of storage options within S3.  These options vary between the cost of use and time or frequency to retrieve objects stored there.  AWS has features to execute Lambda functions on the creation, updating or deleting of objects.  You can also automatically move or delete objects based on the time that they have been in a bucket with a lifecycle policy.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011500,
+          "key": "235b28f7-2951-44a0-bb6d-f01fb38fef17",
+          "title": "S3 Storage Classes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "235b28f7-2951-44a0-bb6d-f01fb38fef17",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011501,
+              "key": "990b952e-0131-4240-b8de-a31d0459b171",
+              "title": "ND0063 C1 L2 10.1 S3 Video Pt 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vCS6MwI8mY4",
+                "china_cdn_id": "vCS6MwI8mY4.mp4"
+              }
+            },
+            {
+              "id": 1011502,
+              "key": "0408c1bf-27a8-4680-bf06-abd97f153eb5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# [S3 Storage Classes](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html)\n* Standard\n* Infrequently Accessed (IA)\n* Intelligent Tiering\n* Glacier\n* Glacier Deep Archive",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1009602,
+          "key": "82d54cc2-34c0-427b-b197-081ede9a923f",
+          "title": "S3 Features",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "82d54cc2-34c0-427b-b197-081ede9a923f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009603,
+              "key": "8eefeca8-e49d-4a21-972a-dac709be2c3b",
+              "title": "ND0063 C1 L2 11 S3 Features Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "H9a7z6o9Ido",
+                "china_cdn_id": "H9a7z6o9Ido.mp4"
+              }
+            },
+            {
+              "id": 1009604,
+              "key": "668796ba-3a93-4243-88b3-b237fb7976ae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# S3 Features\n\nYou can use an S3 Lifecycle Policy to automatically move or delete objects based on the time that they have been in a bucket.  \n\nWith S3 Events allow you to execute Lambda functions on the creation, updating or deleting of objects.  \n\nS3 Versioned Buckets keep all versions of an S3 object as you make changes to the object.  You can even use this functionality to recover deleted objects.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005958,
+          "key": "1f4d3852-ec3c-475f-bcae-288da2821e4d",
+          "title": "Quiz: S3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1f4d3852-ec3c-475f-bcae-288da2821e4d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006132,
+              "key": "4c6a5f7f-76fb-4357-b173-7186829b7276",
+              "title": "S3 bucket limits",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "4c6a5f7f-76fb-4357-b173-7186829b7276",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "You can store a maximum of 1 trillion objects in an S3 bucket",
+                "answers": [
+                  {
+                    "id": "a1584251272428",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584251286639",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006133,
+              "key": "d68311db-6bf0-42e7-ab50-83c4bcfc43d6",
+              "title": "S3 lifecycle policies",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d68311db-6bf0-42e7-ab50-83c4bcfc43d6",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which can you do with an S3 lifecycle policy?",
+                "answers": [
+                  {
+                    "id": "a1584251347757",
+                    "text": "Move an object to a different storage class",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584251392597",
+                    "text": "Delete an object",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584251393693",
+                    "text": "Move an object to DynamoDB",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584251429931",
+                    "text": "Compress the object",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1010009,
+              "key": "fc78d721-8f36-40cf-a596-4916da17b0a6",
+              "title": "ND0063 C1 L2 12 S3 Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AS7F3dv6zqw",
+                "china_cdn_id": "AS7F3dv6zqw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005959,
+          "key": "36372d77-6cd2-4b64-9783-52710770f54b",
+          "title": "Exercise: S3",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "36372d77-6cd2-4b64-9783-52710770f54b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009606,
+              "key": "fc07dded-0865-4419-b46c-6290b3ba1d2e",
+              "title": "ND0063 C1 L2 15 S3 Lifecycle Policy Exercise Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "n4JGleU4NL0",
+                "china_cdn_id": "n4JGleU4NL0.mp4"
+              }
+            },
+            {
+              "id": 1005961,
+              "key": "0642469d-7973-4e52-aaaf-3852212d3fb7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# S3\n\nS3 has evolved to offer many classes of storage, access options and different types of events.  As data ages, its value can diminish.  After some time, we may wish to save money and have it less durably stored.  After even more time, we may want to automatically delete it.\n\nS3 offers \"unlimited\" storage.  You can store trillions of objects in an S3 bucket spanning millions of customers or thousands of applications.  How can you keep track of when data was created so that you can remove old data that is no longer valuable?  S3 offers a solution for this with Lifecycle rules.\n\nSetup an S3 bucket with a Lifecycle rule to delete any object placed in the bucket after one day.  In actual use, you can select the amount of time that data is valuable before deletion.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005960,
+          "key": "840188b3-aee7-488f-abc9-1ce84a8b262e",
+          "title": "Solution: S3 Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "840188b3-aee7-488f-abc9-1ce84a8b262e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1005962,
+              "key": "b6528999-4510-4309-89a9-8890f3410d7f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# S3\n\n1. Create an S3 bucket\n2. In the S3 console view of that bucket, on the Management tab, click Add lifecycle rule.\n3. Here you will name a rule, apply it to all items in the bucket, and in step 3 of the wizard expire the current version of the object after 1 day.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005963,
+              "key": "ae2fb598-ee3b-4123-bbde-4c19dcdc297e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3e0d_options/options.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ae2fb598-ee3b-4123-bbde-4c19dcdc297e",
+              "caption": "",
+              "alt": "",
+              "width": 707,
+              "height": 704,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005964,
+              "key": "bb2e45d4-cb56-4592-b036-1d89474588c9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "NOTE: **Any object you place in this bucket will be automatically deleted after one day.**\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005965,
+              "key": "286af80b-514a-4c51-9840-1afe0cab907d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3e25_created/created.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/286af80b-514a-4c51-9840-1afe0cab907d",
+              "caption": "",
+              "alt": "",
+              "width": 1211,
+              "height": 485,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1006120,
+          "key": "980657c3-c8ec-41d2-995a-f987f451e106",
+          "title": "Compute Services",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "980657c3-c8ec-41d2-995a-f987f451e106",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009605,
+              "key": "89ea32c1-8a29-4a03-b92e-cefcfcf0c51e",
+              "title": "ND0063 C1 L2 14 AWS Computer Services Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IU7DEWSMd_Q",
+                "china_cdn_id": "IU7DEWSMd_Q.mp4"
+              }
+            },
+            {
+              "id": 1008896,
+              "key": "7cbcdc76-b481-40bf-995c-fa56053be48e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e8190a4_aws-compute-services/aws-compute-services.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7cbcdc76-b481-40bf-995c-fa56053be48e",
+              "caption": "",
+              "alt": "",
+              "width": 574,
+              "height": 192,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006377,
+              "key": "14fa585d-d330-43c6-8d09-e565ff659699",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "AWS offers several options for compute resources.  [EC2](https://aws.amazon.com/ec2/), [Lambda](https://aws.amazon.com/lambda/) and various container services are a few of them.  These resources are similar to server based services in that they are not Multi-AZ by default, but with some work, they can be made to be.  \n\nEC2 instances can be run as a group with an [AutoScaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html) and that AutoScaling Group can be capable of running in multiple AZs.  If the EC2 instances are serving incoming HTTP requests, they can be put behind an [Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/), which can also be configured to span AZs.\n\nAWS Lambda has different connectivity modes.  If you have a Lambda that does not need to access your VPCs, then it can run independently.  If your Lambda does need to access a VPC resource, then it needs to be configured to do so, and part of this configuration can be to allow the Lambda to connect to different AZs (subnets).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006121,
+          "key": "0e251769-0efe-4303-8d51-075783f4a788",
+          "title": "Quiz: Compute Services",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0e251769-0efe-4303-8d51-075783f4a788",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006134,
+              "key": "b8344761-5cd5-4bbe-8718-aba8724e97f0",
+              "title": "Lambdas in VPCs",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b8344761-5cd5-4bbe-8718-aba8724e97f0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "By default, Lambdas can’t connect to any resources inside of a VPC.",
+                "answers": [
+                  {
+                    "id": "a1584251607535",
+                    "text": "True",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584251625503",
+                    "text": "False",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006135,
+              "key": "928c93af-bb8b-4ac3-a5c2-d5ffa11801bd",
+              "title": "Elastic Load Balancer",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "928c93af-bb8b-4ac3-a5c2-d5ffa11801bd",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which are true about an Elastic Load Balancer?",
+                "answers": [
+                  {
+                    "id": "a1584251675882",
+                    "text": "They can span AZs",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584251686779",
+                    "text": "They can span Regions",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584251687779",
+                    "text": "Their IP addresses can change",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1010010,
+              "key": "1daa66a3-beeb-4ef7-af18-eff57ada5bc4",
+              "title": "ND0063 C1 L2 15 AWS Computer Services Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MN-Ah8CLScI",
+                "china_cdn_id": "MN-Ah8CLScI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006122,
+          "key": "684503d9-2382-40a5-a597-282eefa5903a",
+          "title": "Edge Cases",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "684503d9-2382-40a5-a597-282eefa5903a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009607,
+              "key": "c7b9656d-701c-4b3a-89f5-5fc26626e11e",
+              "title": "ND0063 C1 L2 16 Edge Cases",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "C77vX4s62CE",
+                "china_cdn_id": "C77vX4s62CE.mp4"
+              }
+            },
+            {
+              "id": 1006378,
+              "key": "578519ad-de6d-4934-8e53-a699995d49b9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When considering which services to utilize in a project, be sure to consider the usage patterns.  Patterns that are \"spikey\" or seldomly used will be better suited for serverless services where you don't have to pay for idle resources.  If you need a service to run in multiple regions, be sure to consider which services are capable of this.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006136,
+              "key": "04b857e4-e20e-47ed-a0eb-41a6e4ba8f3f",
+              "title": "Intuition",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "04b857e4-e20e-47ed-a0eb-41a6e4ba8f3f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following are indicators that you’re using a “server based” service?",
+                "answers": [
+                  {
+                    "id": "a1584251839254",
+                    "text": "The service requires you to define a Subnet Group",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584251860975",
+                    "text": "The service runs in your VPC",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584251861783",
+                    "text": "The service is a Global service",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584251862592",
+                    "text": "The service requires you select options that you want redundancy",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006137,
+              "key": "367ebb93-14eb-4b48-82a4-bf368760be65",
+              "title": "Knowledge",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "367ebb93-14eb-4b48-82a4-bf368760be65",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of these services are the least expensive to use for services that run randomly, but infrequently everyday (pick 3)?",
+                "answers": [
+                  {
+                    "id": "a1584251999050",
+                    "text": "Lambda",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584252014923",
+                    "text": "S3",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584252017531",
+                    "text": "DynamoDB",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584252018269",
+                    "text": "RDS",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584252027237",
+                    "text": "EC2",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006124,
+          "key": "cabd3e48-7bfc-48ec-92a6-8308fb1c6c0d",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "cabd3e48-7bfc-48ec-92a6-8308fb1c6c0d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009609,
+              "key": "ee779f7b-7412-4610-84a5-d2ec274e42d9",
+              "title": "ND0063 C1 L2 17 Lesson Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GfXXBpVLpII",
+                "china_cdn_id": "GfXXBpVLpII.mp4"
+              }
+            },
+            {
+              "id": 1008892,
+              "key": "5645f91d-71ab-4d37-875c-b0a141dfc81d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Recap\n* Server-based Services\n* DynamoDB\n* S3\n* Compute Services\n\nIn this lesson, we looked at a variety of AWS data storage and compute options. AWS provides many options. Thinking through your use case, usage patterns, cost constraints and availability requirements are the key to successfully choosing the right services.\n\n# Lesson Objectives\n\nYou will be able to:\n\n* Take advantage of different high availability options on AWS\n* Create multi-AZ services\n* Create multi-region services\n* Identify what availability options exist for which AWS services\n* Take advantage of resilient features in AWS services",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011512,
+              "key": "5fc6f0bf-2ac2-4bd5-9ed8-ac232f77f36c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary\n\n- **Active/Active:** A system that is running actively in multiple instances, typically in a distributed manner where complete functionality is available in more than one area.\n- **Snapshot:** A complete copy of a dataset at a specific point in time.\n- **Server-based Services:** Services that are existing applications that AWS provides as \"managed services\" and run on individual server instances.\n- **DynamoDB:** AWS developed non-relational database\n- **DynamoDB Global Tables:** Multi-Region DynamoDB Tables.\n- **S3:** AWS developed object store that can store an unlimited amount of data.\n- **Compute Services:** AWS services that provide generic compute capacity.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011996,
+              "key": "506d07d1-047f-40b7-9eca-a68cc1e56d3b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "##  Further Reading\n\n- [Redis](https://redis.io/)\n- [ElasticSearch](https://www.elastic.co/)\n- [MongoDB](https://www.mongodb.com/)\n- [DynamoDB Pricing Models](https://aws.amazon.com/dynamodb/pricing/)\n- [Amazon Prime Day 2019](https://aws.amazon.com/blogs/aws/amazon-prime-day-2019-powered-by-aws/)\n- [S3 Pricing](https://aws.amazon.com/s3/pricing/)\n- [WannaCry randsomware attack](https://en.wikipedia.org/wiki/WannaCry_ransomware_attack)\n- [CloudFormation](https://aws.amazon.com/cloudformation/)\n- [Terraform](https://www.terraform.io/)",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

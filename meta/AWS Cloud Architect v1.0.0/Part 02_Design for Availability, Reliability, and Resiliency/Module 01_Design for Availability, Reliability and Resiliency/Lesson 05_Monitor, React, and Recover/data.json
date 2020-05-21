@@ -1,0 +1,1760 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1005586,
+      "key": "2f33f04c-ba03-4638-8a62-3d8d4a866988",
+      "title": "Monitor, React, and Recover",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Now that you've seen how to build highly available systems, you'll take a look at how to make sure that these systems are up and running and what to do when problems do occur.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1005587,
+          "key": "f34e3ee5-df66-46e6-8ef5-04a4e5a3ec74",
+          "title": "Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f34e3ee5-df66-46e6-8ef5-04a4e5a3ec74",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010421,
+              "key": "b19e034c-63f7-471e-958d-cf21843acfc1",
+              "title": "ND0063 C1 L4 01 Montior, React And Recover Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "p9bc4tp9p98",
+                "china_cdn_id": "p9bc4tp9p98.mp4"
+              }
+            },
+            {
+              "id": 1006722,
+              "key": "5ae0fa71-3537-40c5-810a-f83ac48ef1ca",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Creating highly available resilient platforms is a significant accomplishment, but your work doesn't stop there.  To ensure that you keep delivering for your customers, you'll need to actively monitor your platform, react to changes or issues and recovery from failures when they occur.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005596,
+          "key": "fc614a10-f56e-49c0-879c-4836bcd762fc",
+          "title": "Lesson Outline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fc614a10-f56e-49c0-879c-4836bcd762fc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010422,
+              "key": "b647fc9a-b191-4f76-95ff-5f7804bacd53",
+              "title": "ND0063 C1 L4 02 Lesson Outline Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "fUAED5bWKZQ",
+                "china_cdn_id": "fUAED5bWKZQ.mp4"
+              }
+            },
+            {
+              "id": 1008907,
+              "key": "252ccd60-abe6-4c9e-a189-a8c6a2ff181c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e8196c0_cand-course-1-outline-lesson-4/cand-course-1-outline-lesson-4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/252ccd60-abe6-4c9e-a189-a8c6a2ff181c",
+              "caption": "",
+              "alt": "Cloud Architect Nanodegree Program Course Outline",
+              "width": 803,
+              "height": 246,
+              "instructor_notes": null
+            },
+            {
+              "id": 1008908,
+              "key": "6f468387-695b-4992-aca2-e370614aff3a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Outline\n* Monitoring\n* Alerting\n* Recovering\n* Automating",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006723,
+              "key": "3992ea3d-c543-4c03-8562-e5531c687b98",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, you will learn how to use AWS tools to monitor and alert on the systems that you build.  You'll create alerts and think through how to find problems and recover from them.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006161,
+          "key": "7f063bff-3c92-4242-a3f9-9fa729fb9949",
+          "title": "Big Picture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7f063bff-3c92-4242-a3f9-9fa729fb9949",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010423,
+              "key": "b3407d8e-4c5d-42d2-a547-1d941db2940c",
+              "title": "ND0063 C1 L4 03 Big Picture Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WEbXU76VZuI",
+                "china_cdn_id": "WEbXU76VZuI.mp4"
+              }
+            },
+            {
+              "id": 1006724,
+              "key": "1683d489-aa4f-4dca-85dd-840957a88607",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Without monitoring, you are blind to what is happening in your systems.  Without having knowledgable folks alerted when things go wrong, you're deaf to system failures.  Creating systems that reach out to you and ask you for help when they need it, or better yet, let you know that they might need help soon, is critical to meeting your business goals and sleeping easier at night.\n\nOnce you have master monitoring and alerting, you can begin to think about how your systems can fix themselves.  At least for routine problems, automation can be a fantastic tool for keeping your platform running seamlessly.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006169,
+              "key": "6176e39d-11b7-4a3b-b78d-b97685320551",
+              "title": "What to monitor",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6176e39d-11b7-4a3b-b78d-b97685320551",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which components of your platform should you monitor?",
+                "answers": [
+                  {
+                    "id": "a1584254524488",
+                    "text": "Any that are important",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584254540167",
+                    "text": "Those that are expensive",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584254540995",
+                    "text": "Those that are Multi-Region",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006162,
+          "key": "ddf83204-3acc-430e-9350-02ed86716c35",
+          "title": "Developing Your Intuition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ddf83204-3acc-430e-9350-02ed86716c35",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010424,
+              "key": "db8d1049-a537-4256-be68-e29ddb404f2d",
+              "title": "ND0063 C1 L4 04 Developing Your Intuition About X Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tyhqJM0l3vc",
+                "china_cdn_id": "tyhqJM0l3vc.mp4"
+              }
+            },
+            {
+              "id": 1006725,
+              "key": "820e91d1-2e8b-477e-82bb-3ca6ac4afaec",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Monitoring and responding are core to every vital system.  When you architect a platform, you should always think about how you will know if something is wrong with that platform early on in the design process.  There are many different kinds of monitoring that can be applied to many different facets of the system, and knowing which types to apply where it can be the difference between success and failure.\n\nAlways ask yourself how you would diagnose issues with an application, how would you understand it's health, what are it's choke points, how would you identify them and what would you do when something breaks.  While thinking through these concepts is important, it is very difficult to foresee every possible scenario.  This is why advanced organizations employ techniques like \"chaos engineering\" to intentionally cause breakage in their environments in a controlled manner.  If you build a resilient system, it should be resilient, so why not terminate a random server?  It may be hard to get accustomed to this idea, but it can provide insight that would otherwise be impossible to gain.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006170,
+              "key": "df1b1ead-0f92-43fa-9f1c-e172d9ae8115",
+              "title": "Practicing",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "df1b1ead-0f92-43fa-9f1c-e172d9ae8115",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Name one reason to monitor your non-production environments.",
+                "answers": [
+                  {
+                    "id": "a1584254611948",
+                    "text": "To practice monitoring your production environments",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584254628436",
+                    "text": "All environments should be monitored",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584254629653",
+                    "text": "You can't monitor production if you don't monitor non-production",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006171,
+              "key": "ed18e46d-87eb-443d-818d-977643511401",
+              "title": "Disrupt production",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "ed18e46d-87eb-443d-818d-977643511401",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Should you ever intentionally disrupt a production service?",
+                "answers": [
+                  {
+                    "id": "a1584254726997",
+                    "text": "Yes, chaos engineering is a strong practice",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584254760918",
+                    "text": "Yes, live on the edge",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584254768156",
+                    "text": "No, never",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005999,
+          "key": "9cec31fc-d1cc-4b9a-a5e6-196d213f38ef",
+          "title": "Monitoring in AWS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9cec31fc-d1cc-4b9a-a5e6-196d213f38ef",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011299,
+              "key": "8c3c29ea-5727-4142-a1d4-1d80b1d9ab87",
+              "title": "ND0063 C1 L4 05 Monitoring With CloudWatch Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "RQtIQjXDhxQ",
+                "china_cdn_id": "RQtIQjXDhxQ.mp4"
+              }
+            },
+            {
+              "id": 1008909,
+              "key": "ef536fad-0d6b-4e77-b82a-bad5601d42a4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e819773_binoculars/binoculars.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ef536fad-0d6b-4e77-b82a-bad5601d42a4",
+              "caption": "",
+              "alt": "Binoculars",
+              "width": 161,
+              "height": 135,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006726,
+              "key": "5304e6ff-76e7-44fc-b1e2-956b8060f020",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "AWS provides robust monitoring capabilities for their services.  This is vital for understanding how your systems are performing not just at the moment, but also over time.  CloudWatch Metrics tracks metrics on AWS services.  Any metric that AWS makes available is presented via CloudWatch.  You can also create your own metrics with a \"custom metric\".  Taking a variety of related metrics and putting them on a CloudWatch Dashboard is an effective way to gaining visibility into your system without spending a lot of time doing it.  Investing in understanding what metrics are available on the services you use, what each metric means, and what your usage is are imperative to running a highly available platform.\n\nRefer to the following for links to every AWS service that pushes metrics into CloudWatch, and what those metrics mean:\nhttps://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-services-cloudwatch-metrics.html",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006000,
+          "key": "f89421fb-8f08-4f33-becc-edfcb426425c",
+          "title": "Quiz: Monitoring in AWS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f89421fb-8f08-4f33-becc-edfcb426425c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006172,
+              "key": "b0ac03f6-fe05-44c7-9ee6-78164def71d5",
+              "title": "Lambda metrics",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b0ac03f6-fe05-44c7-9ee6-78164def71d5",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which are metrics available for a Lambda function?",
+                "answers": [
+                  {
+                    "id": "a1584254866206",
+                    "text": "Invocation count",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584254878677",
+                    "text": "Duration",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584254882089",
+                    "text": "Cost",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584254885437",
+                    "text": "Error count",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006173,
+              "key": "b9b453a2-a4c8-4df3-8d9d-3986b942a98e",
+              "title": "SQS metrics",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b9b453a2-a4c8-4df3-8d9d-3986b942a98e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which SQS metric tells you how many messages are waiting in the queue?",
+                "answers": [
+                  {
+                    "id": "a1584254944185",
+                    "text": "ApproximateAgeOfOldestMessage",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584254951606",
+                    "text": "ApproximateNumberOfMessagesVisible",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584254952302",
+                    "text": "NumberOfEmptyReceives",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584254953153",
+                    "text": "NumberOfMessagesReceived",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1010479,
+              "key": "a4ecac55-243c-484e-9dd0-ac14e47d0d88",
+              "title": "ND0063 C1 L4 08 Monitoring With CloudWatch Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pzqZ8BFZ_UE",
+                "china_cdn_id": "pzqZ8BFZ_UE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006001,
+          "key": "5f38a988-5000-4d07-a14d-8edc2034c00f",
+          "title": "Exercise: Monitoring in AWS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5f38a988-5000-4d07-a14d-8edc2034c00f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011325,
+              "key": "5a06eebf-4d2e-41f6-a869-0801fd1cd8b4",
+              "title": "ND0063 C1 L4 07 Monitoring With CloudWatch Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "q8HYim_GmeU",
+                "china_cdn_id": "q8HYim_GmeU.mp4"
+              }
+            },
+            {
+              "id": 1006003,
+              "key": "3f9fe9eb-b554-4c69-b5cf-882eade19f26",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Monitoring in AWS\n\nMonitoring is critical to running production class systems.  In AWS, CloudWatch is a service that provides an array of monitoring services.  \n\nIn this exercise, you will create a Lambda function and monitor its execution using AWS CloudWatch.  Create a Lambda function using the Lambda \"Author from scratch\" template, configure a test event for the Lambda and run the Lambda several times.  Then in CloudWatch, find the metrics for your Lambda function.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006002,
+          "key": "0ff8151b-f83c-4bad-8bda-2d4d3c051038",
+          "title": "Solution: Monitoring in AWS Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0ff8151b-f83c-4bad-8bda-2d4d3c051038",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010466,
+              "key": "d07886b8-8079-4f91-a812-532db5ecc661",
+              "title": "ND0063 C1 L4 09 Monitoring With CloudWatch Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "I8C4TouWFNQ",
+                "china_cdn_id": "I8C4TouWFNQ.mp4"
+              }
+            },
+            {
+              "id": 1006004,
+              "key": "6323a5d6-1860-46ac-8c20-055f204deb49",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Monitoring in AWS\n\n## Create Lambda function\n\n1. Go to Lambda -> Create function.\n2. Select Author from scratch, name your lambda function \"udacity\" and leave the remaining options at their default.\n3. Click Create function.\n\nThis will create a Lambda function with the following basic code:\n\n```\nexports.handler = async (event) => {\n    // TODO implement\n    const response = {\n        statusCode: 200,\n        body: JSON.stringify('Hello from Lambda!'),\n    };\n    return response;\n};\n```\n\n## Run Lambda function\n\n1. Configure a test event",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006005,
+              "key": "0b077600-3cf2-4818-9c21-be54f83766e8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c41fc_configuretest/configuretest.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0b077600-3cf2-4818-9c21-be54f83766e8",
+              "caption": "",
+              "alt": "",
+              "width": 1246,
+              "height": 517,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006006,
+              "key": "b5e1c717-dc47-415b-8565-1e06b68a343a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Name the test and click Save.\n3. Click the Test button several times",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006007,
+              "key": "593898a5-016b-4632-87fa-8f33ebcd82df",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c421f_test/test.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/593898a5-016b-4632-87fa-8f33ebcd82df",
+              "caption": "",
+              "alt": "",
+              "width": 1245,
+              "height": 591,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006008,
+              "key": "ea300ad9-5584-48a1-87d1-63cfbc8cd51b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Monitor\n\n### Monitor in the Lambda interface\n\nSwitch to the Monitoring tab and click Test several more times.  Wait a few minutes and refresh the monitoring charts.  You will see that the number of Invocations, Duration and Error counts are tracked in the Lambda interface.\n\n### Monitor in CloudWatch\n\n1. Go to the CloudWatch service.  Then select Metrics -> Lambda.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006009,
+              "key": "af915419-ec04-4f9b-9343-c37497489357",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c4248_cwmetrics/cwmetrics.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/af915419-ec04-4f9b-9343-c37497489357",
+              "caption": "",
+              "alt": "",
+              "width": 1304,
+              "height": 732,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006010,
+              "key": "8a3aaf0d-57e9-412c-a012-c7c77330ddc5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. By Function Name\n3. Select the function name of \"udacity\" and \"Invocations.\"",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006011,
+              "key": "d39d6b83-7b09-436d-a8e9-b63c5cf120ea",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c426f_cwgraph/cwgraph.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d39d6b83-7b09-436d-a8e9-b63c5cf120ea",
+              "caption": "",
+              "alt": "",
+              "width": 1316,
+              "height": 628,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006012,
+              "key": "0c85298b-4373-4608-8faf-096afe125f20",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Lambda monitoring\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006013,
+              "key": "1d0a2e03-1cac-4cea-a2c8-1750d91c5c5f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c4292_lambda/lambda.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1d0a2e03-1cac-4cea-a2c8-1750d91c5c5f",
+              "caption": "",
+              "alt": "",
+              "width": 1239,
+              "height": 688,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006014,
+              "key": "30732fbb-5bb3-456f-899d-191e589fa2ca",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "CloudWatch Metrics monitoring\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006015,
+              "key": "e66fc77e-3644-49b7-b7e3-1f46dfe74aaf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c42aa_cw/cw.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e66fc77e-3644-49b7-b7e3-1f46dfe74aaf",
+              "caption": "",
+              "alt": "",
+              "width": 1104,
+              "height": 617,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1006016,
+          "key": "8b78d02d-f304-4f91-ab75-13903c0990af",
+          "title": "Alerting",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8b78d02d-f304-4f91-ab75-13903c0990af",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010467,
+              "key": "e30f721f-c287-43fb-8ea5-8214f0fcdf8c",
+              "title": "ND0063 C1 L4 10 Alerting To Problems Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DCEF_EjTnkQ",
+                "china_cdn_id": "DCEF_EjTnkQ.mp4"
+              }
+            },
+            {
+              "id": 1006727,
+              "key": "a3710a4e-65e3-4eea-8578-2268a6b04ece",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Proper alerting will help you keep tabs on your systems and will help you meet your SLAs.  Alerting in ways that bring attention to important issues will keep everyone informed and prevent your customers from being the ones to inform you of problems.  CloudWatch Alarms integrates with CloudWatch Metrics.  Any metric in CloudWatch can be used as the basis for an alarm.  These alarms are sent to SNS topics, and from there, you have a whole variety of options for distributing information such as email, text message, Lambda invocation or third party integration.\n\nAlerting when problems occur is critical, but alerting when problems **are about** to occur is far better.  Understanding the design and architecture of your platform is key to being able to set thresholds correctly.  You want to set your thresholds so that your systems are quiet when the load is within their capacity, but to start speaking up when they head toward exceeding their capacity.  You will need to determine how much advanced warning you will need to fix issues.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006017,
+          "key": "ee8118ff-10e5-4675-aa35-34cbf9b57e5a",
+          "title": "Quiz: Alerting",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ee8118ff-10e5-4675-aa35-34cbf9b57e5a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1006174,
+              "key": "857487e7-4060-4932-80aa-fcb0e5408fac",
+              "title": "CloudWatch Alarms",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "857487e7-4060-4932-80aa-fcb0e5408fac",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What service does CloudWatch Alarms send messages to?",
+                "answers": [
+                  {
+                    "id": "a1584255031909",
+                    "text": "SNS",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255044320",
+                    "text": "SQS",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584255045202",
+                    "text": "SES",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584255048619",
+                    "text": "EC2",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006175,
+              "key": "63ffa01f-a789-4fa8-a96f-eaecc3430c9f",
+              "title": "Alert threshold",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "63ffa01f-a789-4fa8-a96f-eaecc3430c9f",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How do you determine what amount of free space in a database is low enough to alert on?",
+                "answers": [
+                  {
+                    "id": "a1584255107070",
+                    "text": "Look at historical usage and set the level so that you have more than a week to react",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255120538",
+                    "text": "10GB free is the proper level to alert at",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584255121610",
+                    "text": "1GB free is the proper level to alert at",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584255122426",
+                    "text": "Look at historical usage and set the level so that you have 2 days to react",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1010468,
+              "key": "4da9cd90-c2d7-4cd4-b23e-f0178cb25534",
+              "title": "ND0063 C1 L4 11 Alerting To Problems Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xW-px0FyLcY",
+                "china_cdn_id": "xW-px0FyLcY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006018,
+          "key": "749caef5-c349-47b0-b81a-62859999b69f",
+          "title": "Exercise: Alerting",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "749caef5-c349-47b0-b81a-62859999b69f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013713,
+              "key": "ca46a620-7852-42cf-aca4-d4feb543aacd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95e9f3_alerting-exercise/alerting-exercise.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ca46a620-7852-42cf-aca4-d4feb543aacd",
+              "caption": "",
+              "alt": "Lambda triggers a CloudWatch alarm, which sends an email.",
+              "width": 952,
+              "height": 235,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006020,
+              "key": "c0404b7f-52de-43eb-a2a7-7d3d5b8381f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Alerting\n\nAlerting is the layer on top of monitoring.  Alerting raises the flag that something is wrong and requires attention.  \n\nIn this exercise, create a Lambda function and set up an alert on a Lambda functions invocation in CloudWatch Alarms to email you anytime that the Lamdba is run.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006019,
+          "key": "24ad8239-0f34-48a7-b73d-ca647781a4af",
+          "title": "Solution: Alerting Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "24ad8239-0f34-48a7-b73d-ca647781a4af",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010469,
+              "key": "1b2abbd0-3904-4424-b8a0-b1df20178b64",
+              "title": "ND0063 C1 L4 12 Alerting To Problems Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Ls24ktcqcCU",
+                "china_cdn_id": "Ls24ktcqcCU.mp4"
+              }
+            },
+            {
+              "id": 1006021,
+              "key": "79988ad3-b418-46e4-952c-f543494c824e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Alerting\n\n## Create Lambda function\n\n1. Go to Lambda -> Create function.\n2. Select Author from scratch, name your lambda function \"udacity\" and leave the remaining options at their default.\n3. Click Create function.\n\nThis will create a Lambda function with the following basic code:\n\n```\nexports.handler = async (event) => {\n    // TODO implement\n    const response = {\n        statusCode: 200,\n        body: JSON.stringify('Hello from Lambda!'),\n    };\n    return response;\n};\n```\n\n## Create Alarm\n\n1. Go to CloudWatch -> Alarms -> Create Alarm.\n2. Click Select metric -> Lambda -> By function name.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006023,
+              "key": "65715f01-81a7-47c8-bfa7-f08af71362bc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c4354_invocation/invocation.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/65715f01-81a7-47c8-bfa7-f08af71362bc",
+              "caption": "",
+              "alt": "",
+              "width": 1282,
+              "height": 778,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006024,
+              "key": "78d8b251-91a6-4350-bf72-69c8e8f8650c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "3. Select \"udacity\" Invocations.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006022,
+              "key": "b03d8b68-fe7a-46e5-9d7e-87608a1826a9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c433f_lambda/lambda.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b03d8b68-fe7a-46e5-9d7e-87608a1826a9",
+              "caption": "",
+              "alt": "",
+              "width": 1278,
+              "height": 767,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006025,
+              "key": "83cc482f-e867-4d6b-8d63-595ab6605a26",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "4. Click \"Select metric.\"\n5. Change Period to One minute.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006026,
+              "key": "ed8f9ca2-f1e0-43da-8f90-b0d223ed81e0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c4396_onemin/onemin.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ed8f9ca2-f1e0-43da-8f90-b0d223ed81e0",
+              "caption": "",
+              "alt": "",
+              "width": 1081,
+              "height": 693,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006027,
+              "key": "4b2482fb-252a-4f09-85c7-ba49041a704a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "6. Set Condition to Greater than 0, and click Next.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006028,
+              "key": "96bf4024-05c5-485c-9b03-f58ccee53322",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c43b2_greater/greater.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/96bf4024-05c5-485c-9b03-f58ccee53322",
+              "caption": "",
+              "alt": "",
+              "width": 810,
+              "height": 493,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006029,
+              "key": "f8f1e89d-98a9-48bd-ac19-13b08b776a45",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "7. Under \"Select an SNS topic,\" choose \"Create new topic\" and add your email address and click Create topic, then click Next.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006030,
+              "key": "d1bcdd58-03d4-43fb-9b1e-61f89a85b24a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c43cd_notification/notification.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d1bcdd58-03d4-43fb-9b1e-61f89a85b24a",
+              "caption": "",
+              "alt": "",
+              "width": 794,
+              "height": 731,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006031,
+              "key": "47c98185-142e-4be8-b145-715c406ba3e6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "8. Name and describe the Alarm, then finish creating the alarm.\n9. Check your email. You will need to confirm your subscription to the SNS topic.\n\n## Testing\n\nNow go back to your Lambda function and click the \"Test\" button a few times.  Give CloudWatch a few minutes and then check your email for the alarm notification.\n\nEmail alert:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006032,
+              "key": "5a6713d8-dbf6-425f-afbb-2cc25e12a6c0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c43ea_email/email.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5a6713d8-dbf6-425f-afbb-2cc25e12a6c0",
+              "caption": "",
+              "alt": "",
+              "width": 1066,
+              "height": 973,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1006033,
+          "key": "d2367091-75e3-4579-af9a-d2dffe321635",
+          "title": "Recovering From Failure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d2367091-75e3-4579-af9a-d2dffe321635",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010470,
+              "key": "52f00e3f-828c-4597-a643-cbe666321336",
+              "title": "ND0063 C1 L4 13 Recovery From Failure Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kSgMUmI6RK8",
+                "china_cdn_id": "kSgMUmI6RK8.mp4"
+              }
+            },
+            {
+              "id": 1006728,
+              "key": "e4fd37c8-7bde-4a06-bc06-85b48bc69bc7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The key to recovering from failure is to understand how the failure occurred.  Once you have this understanding, you can be sure that you've fixed the root cause, and you will know how to prevent a reoccurrence.  Finding a root cause can be straightforward is there is a direct cause and effect (we changed A, and B immediately happened).  Some issues are harder to identify, and some can only be identified by understanding \"what changed?\". \n\nCloudTrail is a great tool for determining what changed.  It allows you to audit and review changes and commands run with all AWS credentials associated with your account.  Once you've discovered what was changed and who/what changed it, you can resolve the issue and ensure that the incident is not repeated.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006034,
+          "key": "dd9a32b6-91fa-46b6-b88c-089e88d2e244",
+          "title": "Quiz: Recovering From Failure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dd9a32b6-91fa-46b6-b88c-089e88d2e244",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012027,
+              "key": "43fabb80-1a76-40c4-b867-4c2742182a35",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Recovering From Failure",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006176,
+              "key": "3999b825-9509-457d-ad4b-0d81472adea8",
+              "title": "API tracking",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3999b825-9509-457d-ad4b-0d81472adea8",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What AWS service tracks API requests made to your AWS account?",
+                "answers": [
+                  {
+                    "id": "a1584255232798",
+                    "text": "CloudTrail",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255245895",
+                    "text": "CloudWatch",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584255246533",
+                    "text": "RDS",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584255247347",
+                    "text": "SNS",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006177,
+              "key": "0176ccf4-2116-4217-9939-eeb9a640906a",
+              "title": "Root cause",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0176ccf4-2116-4217-9939-eeb9a640906a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "If the cause of an issue is not immediately obvious, what things should you look at to find the cause?",
+                "answers": [
+                  {
+                    "id": "a1584255338614",
+                    "text": "Recent changes",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255351389",
+                    "text": "Documentation",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255352203",
+                    "text": "Changes over the last 30 days",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584255353004",
+                    "text": "Your AWS bill",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1010471,
+              "key": "b0d82792-3e4d-4d48-9adc-1ab268564306",
+              "title": "ND0063 C1 L4 14 Recovery From Failure Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tq8M1RtQ1gM",
+                "china_cdn_id": "tq8M1RtQ1gM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006035,
+          "key": "be38aa51-c3be-4772-b9b7-1c882e6aadad",
+          "title": "Exercise: Recovering From Failure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "be38aa51-c3be-4772-b9b7-1c882e6aadad",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013715,
+              "key": "7002bb55-b4e8-4715-9589-101ed723287b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e95ea5d_aws-cloudtrail4x/aws-cloudtrail4x.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7002bb55-b4e8-4715-9589-101ed723287b",
+              "caption": "",
+              "alt": "CloudTrail logo",
+              "width": 300,
+              "height": 300,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006037,
+              "key": "91af7258-94bb-446e-b224-a6d9a9b2f29b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Recovering From Failure\n\nThe key to recovering from failure is identifying the root cause as well as how and who/what triggered the incident.  \n\nIn this exercise, enable CloudTrail on your AWS account to ensure that you have the data necessary to look at the history of your AWS account and determine what happened and when.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006036,
+          "key": "c301ef74-4d12-4d5c-af1c-d10416220022",
+          "title": "Solution: Recovering From Failure Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c301ef74-4d12-4d5c-af1c-d10416220022",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010472,
+              "key": "14baf4bc-65fb-4a02-ab65-ac161b234abc",
+              "title": "ND0063 C1 L4 15 Recovery From Failure Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rAjZnU83lhk",
+                "china_cdn_id": "rAjZnU83lhk.mp4"
+              }
+            },
+            {
+              "id": 1006038,
+              "key": "766b4834-7938-4bbc-8949-99be19032998",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Recovering from Failure\n\n1. Go to CloudTrail -> Trails -> Create trail.\n2. Name your CloudTrail and enter a name for a new S3 bucket.\n\nYou will now be able to refer to this CloudTrail log for a complete history of the actions taken in your AWS account.  You can also query these logs with Amazon Athena, which lets you filter through large amounts of data with ease.\n\nConfigured CloudTrail:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006039,
+              "key": "bc594d72-7525-401e-96ff-e0962c6a5a19",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c4491_config/config.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/bc594d72-7525-401e-96ff-e0962c6a5a19",
+              "caption": "",
+              "alt": "",
+              "width": 1098,
+              "height": 279,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1006163,
+          "key": "aa34465b-6955-42e6-81c2-6c2d18c2aa4c",
+          "title": "Automating Recovery",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "aa34465b-6955-42e6-81c2-6c2d18c2aa4c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010473,
+              "key": "7fc8b06c-bb93-4903-a336-5c58accfb673",
+              "title": "ND0063 C1 L4 16 Automating Recovery Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MymybBUWWk4",
+                "china_cdn_id": "MymybBUWWk4.mp4"
+              }
+            },
+            {
+              "id": 1006729,
+              "key": "e62d74ac-d07f-4584-a424-beeb92fefbb2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Automating service recovery and creating \"self-healing\" systems can take you to the next level of system architecture.  Some solutions are quite simple.  Using autoscaling within AWS, you can handle single instance/server failures without missing a beat.  These solutions will automatically replace a failed server or will create or delete servers based on the demand at any given point in time.  \n\nBeyond the simple tasks, many types of failure can be automatically recovered from, but this can involve significant work.  Many failure events can generate notifications, either directly from the service, or via an alarm generated out of CloudWatch.  These events can have a Lambda function attached to them, and from there, you can do anything you need to in order to recover the system.  Do be cautious with this type of automation where you are, in essence, turning over some control of the platform - to the platform.  Just like with a business application, there can be defects.  However, as with any software, proper and thorough testing can help ensure a high-quality product.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011974,
+          "key": "462ae630-acf9-415c-a8f6-b48dc89f1f78",
+          "title": "Chaos Engineering",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "462ae630-acf9-415c-a8f6-b48dc89f1f78",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011975,
+              "key": "84e26fed-9772-4bf4-bebd-4cd4964276eb",
+              "title": "ND0063 C1 L4 16.1 Automating Recovery Video Pt 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "D-DtUYOf-x0",
+                "china_cdn_id": "D-DtUYOf-x0.mp4"
+              }
+            },
+            {
+              "id": 1011976,
+              "key": "79302bc6-2e12-4fff-a215-dd476d5726c5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Chaos Engineering\n\nChaos Engineering is the practice of intentionally breaking things in production.  If your systems can handle these failures, why not allow *or encourage* these failures?\n\nSet rational alerting levels for your system so that for foreseeable issues, you get alerted so that you can take care of issues before they become critical.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006164,
+          "key": "c25102a7-e5a0-4090-82bc-c4f7e54acddc",
+          "title": "Quiz: Automating Recovery",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c25102a7-e5a0-4090-82bc-c4f7e54acddc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1012026,
+              "key": "df1ede7d-755e-4c7c-857f-f4c7c67bf0a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Automating Recovery",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006178,
+              "key": "5492a6df-f237-45ec-a653-88f2bd288d56",
+              "title": "Autoscaling",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "5492a6df-f237-45ec-a653-88f2bd288d56",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What services have autoscaling available?",
+                "answers": [
+                  {
+                    "id": "a1584255489817",
+                    "text": "RDS",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255499508",
+                    "text": "DynamoDB",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255500284",
+                    "text": "ElastiCache",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584255501028",
+                    "text": "ElasticSearch",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006179,
+              "key": "c410e4f2-fd70-442e-9ffc-cc647c6aea23",
+              "title": "Risks",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c410e4f2-fd70-442e-9ffc-cc647c6aea23",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are risks of trying to automate recovery?\n",
+                "answers": [
+                  {
+                    "id": "a1584255564088",
+                    "text": "A false positive that triggered an automated recovery",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255572805",
+                    "text": "Runaway automation that could make issues worse",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255573508",
+                    "text": "Too much free time",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584255574225",
+                    "text": "Automating yourself and team out of a job",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1010474,
+              "key": "57304b95-aa0f-4d40-9640-7f091842cdc2",
+              "title": "ND0063 C1 L4 17 Automating Recovery Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "j4DY8ppWTWA",
+                "china_cdn_id": "j4DY8ppWTWA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006165,
+          "key": "46a37e17-c231-4a2d-9205-deb58f3dd194",
+          "title": "Edge Cases",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "46a37e17-c231-4a2d-9205-deb58f3dd194",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010475,
+              "key": "640a8a95-4316-4e30-be14-82cbc6c81837",
+              "title": "ND0063 C1 L4 18 Edge Case- [#1] Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DE02HgxokW0",
+                "china_cdn_id": "DE02HgxokW0.mp4"
+              }
+            },
+            {
+              "id": 1006730,
+              "key": "9a8a9042-634f-4263-880c-213c99411287",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Many applications and services lend themselves to being monitored and maintained.  When you run into an application that does not, it is no less important (it's like **more** important) to monitor, alert and maintain these applications.  You may find yourself needing to go to extremes in order to pull these systems into your monitoring framework, but if you do not, you are putting yourself at risk for letting faults go undetected.  Ensuring coverage of all of the components of your platform, documenting and training staff to understand the platform and practicing what to do in the case of outages will help ensure the highest uptime for your company.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006180,
+              "key": "9bea43e8-4406-4a7b-b5e3-f4b033755f13",
+              "title": "Monitoring challenges",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9bea43e8-4406-4a7b-b5e3-f4b033755f13",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What should you do if there are not straightforward ways to monitor an important system component?",
+                "answers": [
+                  {
+                    "id": "a1584255708643",
+                    "text": "Find a more complex way",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255724756",
+                    "text": "Alter the system to make it more easily monitorable",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255725549",
+                    "text": "Simply monitor the components around it",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584255726330",
+                    "text": "Manually monitor this component",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006181,
+              "key": "61441fd6-617b-4a0b-96c1-3f76b87711a3",
+              "title": "Crucial items",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "61441fd6-617b-4a0b-96c1-3f76b87711a3",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which are crucial items to allow for systems to be recovered in a timely manner?\n",
+                "answers": [
+                  {
+                    "id": "a1584255812880",
+                    "text": "Documentation",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255825001",
+                    "text": "People empowered to decide when systems require recovery",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584255825692",
+                    "text": "Configuration in place to allow for recovery",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006167,
+          "key": "c7b42563-fc98-444e-95a9-1b4a10ca7566",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c7b42563-fc98-444e-95a9-1b4a10ca7566",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010476,
+              "key": "26f96122-0787-40bc-8c6d-410922d8adf7",
+              "title": "ND0063 C1 L4 19 Lesson Recap Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yBKo07yNfh0",
+                "china_cdn_id": "yBKo07yNfh0.mp4"
+              }
+            },
+            {
+              "id": 1008914,
+              "key": "ef02f11e-e372-42c8-8780-f8bac68b570a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e819902_cand-course-1-outline-lesson-4/cand-course-1-outline-lesson-4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ef02f11e-e372-42c8-8780-f8bac68b570a",
+              "caption": "",
+              "alt": "Cloud Architect Nanodegree Program Courses",
+              "width": 803,
+              "height": 246,
+              "instructor_notes": null
+            },
+            {
+              "id": 1008910,
+              "key": "8c326bf7-e0ff-44e9-9907-c06bcf746f40",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Recap\n* Monitoring\n* Alerting\n* Recovering\n* Automating\n\n# Lesson Objectives\n\nYou will be able to:\n\n* Monitor AWS applications\n* Alert on problems in applications\n* Recover failures in your platform\n* Understand testing and tradeoffs in automating recovery from failure",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1008911,
+              "key": "126530ad-3551-4ee9-98d8-b6194636bfe0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson, you learned how to monitor and maintain systems in AWS.  You also looked at what and how to recover systems that have failed.  The larger your application grows, the more parts and services it will have.  The more complex it grows, the more things that can go wrong.  The more things that can go wrong, the more frequently they will go wrong.  Expect failures, and plan to address and recover from them.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011514,
+              "key": "34893a5f-f8a9-45ca-bb07-c44a985f56e4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary\n\n- **SSL certificate:** Cryptographic certificate for encrypting traffic between two computers.\n- **Source of truth:** When data is stored in multiple places or ways, the \"source of truth\" is the one that is used when there is a discrepancy between the multiple sources.\n- **Monitoring:** Systems to track and make visible metrics that are useful in identifying system performance.\n- **Alerting:** Systems to attract attention when performance thresholds are crossed.\n- **Chaos Engineering:** Intentionally causing issues in order to validate that a system can respond appropriately to problems.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011515,
+              "key": "00cbbd59-b05d-43e4-be17-e9607e717804",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Reading\n\n- [AWS Services That Publish CloudWatch Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-services-cloudwatch-metrics.html)\n- [PagerDuty](https://www.pagerduty.com/)\n- [VictorOps](https://victorops.com/)\n- [Analyzing Log Data with CloudWatch Logs Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html)\n- [Everything Fails All the Time](https://cacm.acm.org/magazines/2020/2/242334-everything-fails-all-the-time/fulltext)\n- [Principles of Chaos Engineering](http://principlesofchaos.org/)\n- [Chaos Monkey](https://github.com/Netflix/chaosmonkey)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011484,
+          "key": "6908b952-647e-4881-a1ac-a6707eb98f38",
+          "title": "Course Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6908b952-647e-4881-a1ac-a6707eb98f38",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011485,
+              "key": "dc34c35b-142d-4147-b04b-94f526682bc1",
+              "title": "ND0063 C1 L4 20 Course Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7jZ9fv2tVhY",
+                "china_cdn_id": "7jZ9fv2tVhY.mp4"
+              }
+            },
+            {
+              "id": 1011486,
+              "key": "1b7bccd8-df84-446e-8c8a-690f9e02fb42",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Course Recap\n\n### Regions and Availability Zones\n\nCore to AWS resiliency.  Regions and AZs are key to high availability in AWS.\n\n### Building for Resiliency\n\nApplication service redundancy is different in different services.  Here we learned how to identify these techniques.\n\n### Business Objectives\n\nUnderstanding how Engineering objectives map to Business objectives is important to keep your company speaking the same language.\n\n### Monitor, React and Recover\n\nThings will fail, and when they do, you must know before your customers and be able to react quickly to recover your platform.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1008912,
+          "key": "0b3d5118-077a-4623-9862-bf0b206b81bd",
+          "title": "Congratulations!",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0b3d5118-077a-4623-9862-bf0b206b81bd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010477,
+              "key": "a3d1d3e3-70e8-4aac-8532-ee20e8b5422f",
+              "title": "ND0063 C1 L4 22 Congrats",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xXVTivelWpM",
+                "china_cdn_id": "xXVTivelWpM.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

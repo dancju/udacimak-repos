@@ -1,0 +1,1995 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1003828,
+      "key": "235ce755-3278-4016-91e8-d8be273a463e",
+      "title": "AZs and Regions",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Overview of AWS Regions and Availability Zones and how they are used to enable high availability and geographic redundancy.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1006081,
+          "key": "91c8bfd1-3e53-4d81-8fe2-0e7abff75255",
+          "title": "Introduction to AZs and Regions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "91c8bfd1-3e53-4d81-8fe2-0e7abff75255",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009536,
+              "key": "a2cc4e5f-acaf-44d6-b51f-8536d6bbe0cc",
+              "title": "ND0063 C1 L1 01 Availability Zones And Regions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9izV0eXkqyg",
+                "china_cdn_id": "9izV0eXkqyg.mp4"
+              }
+            },
+            {
+              "id": 1006354,
+              "key": "c97ea91a-268b-428f-9cd4-1b578157a14a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Introduction to AZs and Regions\n\nAvailability Zones and Regions are the core components within AWS that allow for fault isolation.  \n\nThe AWS global infrastructure is made up of multiple geographic regions spread around the world.  They are connected via high-speed networking but are independent.\n\nAn AWS region is made up of multiple Availability Zones.  These Availability Zones allow for fault isolation within a region and provide the simplest way to achieve a significant level of redundancy.\n\n# Lesson Objectives\n\nYou will be able to: \n\n* Build on the AWS global infrastructure\n* Take advantage of the multiple availability options AWS provides\n* Build multiple AWS VPCs to suit requirements\n* Create custom isolated networks to meet business needs",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006082,
+          "key": "8e5c2a21-cc17-472e-b806-be0982ab38f0",
+          "title": "Lesson Outline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8e5c2a21-cc17-472e-b806-be0982ab38f0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009537,
+              "key": "55b6289b-6702-4718-95cd-4c17810878e0",
+              "title": "ND0063 C1 L1 02 Lesson Outline",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vZSC7vkfpJY",
+                "china_cdn_id": "vZSC7vkfpJY.mp4"
+              }
+            },
+            {
+              "id": 1008884,
+              "key": "779adeac-26d4-4b67-ab72-094670aa2a0c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e818725_cand-course-1-outline-lesson-1/cand-course-1-outline-lesson-1.jpg",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/779adeac-26d4-4b67-ab72-094670aa2a0c",
+              "caption": "",
+              "alt": "",
+              "width": 803,
+              "height": 246,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006355,
+              "key": "cbf094cf-4c3b-49ca-ab11-1d12bc2feb6d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "* Regions\n* Availability Zones (AZs)\n* Virtual Private Clouds (VPCs)\n* AWS VPC Networking\n\nIn this lesson, you will learn about the physical and networking infrastructure that AWS provides.  You will build infrastructure that uses many of the capabilities of AWS's global footprint.  \n\nYou will begin at the largest level with AWS Regions, then learn about Availability Zones within Regions.  From there, you'll get to know more about VPCs, your own network within AWS, and then how to use AWS networking features to create custom network layouts.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006083,
+          "key": "551af883-6005-470d-ac56-cdd68a5bc49b",
+          "title": "Cornerstone of AWS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "551af883-6005-470d-ac56-cdd68a5bc49b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009538,
+              "key": "6dfef3a5-63bb-4d77-bdc2-e5c71e0dd1e9",
+              "title": "ND0063 C1 L1 03 The Cornerstone Of AWS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5aIgV2j8_1k",
+                "china_cdn_id": "5aIgV2j8_1k.mp4"
+              }
+            },
+            {
+              "id": 1006356,
+              "key": "277b6059-0537-407a-9ab0-1fe76595109c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Regions and Availability Zones allow anyone to create worldwide infrastructure with ease.  They also allow for many options for creating redundancy within your platform.  By properly using these components, you can create world-class level systems in terms of both scale and reach.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006092,
+              "key": "c395401c-7f98-4386-b111-9f9e803f653c",
+              "title": "Abilities",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c395401c-7f98-4386-b111-9f9e803f653c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "AZs and regions allow you to:",
+                "answers": [
+                  {
+                    "id": "a1584236448742",
+                    "text": "Build a worldwide system",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584236486419",
+                    "text": "Create highly redundant platforms",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584236489990",
+                    "text": "Use new AWS services",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584236490872",
+                    "text": "Write better software",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006084,
+          "key": "04b031df-fffe-47c4-9440-e7dc92c25599",
+          "title": "AWS Infrastructure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "04b031df-fffe-47c4-9440-e7dc92c25599",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009539,
+              "key": "97f18898-a9da-492f-84f6-b4bdca76afcf",
+              "title": "ND0063 C1 L1 04 Understanding The AWS Infrastructure",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "MotC4IrAXWA",
+                "china_cdn_id": "MotC4IrAXWA.mp4"
+              }
+            },
+            {
+              "id": 1006357,
+              "key": "6d03a1a2-2970-4bae-bf1c-40ad2e8fd040",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you learn about the capabilities of AWS for reliability and redundancy, it is important to consider what level of availability is required for a use case or environment.  Some non-critical cases require no redundancy, while production environments typically do require it.  \n\nWhen considering how to architect a service, you should think about how a disruption or data loss in that service would impact your business.  You'll need to think about what it will take to restore service as well as what your business has committed to in its contractual obligations.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006093,
+              "key": "db607751-a4cb-4d7a-9b1e-b59606f5e404",
+              "title": "Application availablity",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "db607751-a4cb-4d7a-9b1e-b59606f5e404",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Every application should be highly available",
+                "answers": [
+                  {
+                    "id": "a1584236640884",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584236647299",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006094,
+              "key": "e682fc12-c497-4659-b733-b545c58e9256",
+              "title": "Worse case",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e682fc12-c497-4659-b733-b545c58e9256",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which should you consider when thinking about worst case scenarios?",
+                "answers": [
+                  {
+                    "id": "a1584236881729",
+                    "text": "What people will say about you on Twitter if your system is down",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584236888699",
+                    "text": "What would happen if you lost all the data in a database",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584236889713",
+                    "text": "How many users the system has",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584236890386",
+                    "text": "Where your users are located",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584236891197",
+                    "text": "What you’ve promised your customers",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005852,
+          "key": "4122d058-11d6-4dd3-a7a5-ccdd17e67bf5",
+          "title": "Regions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4122d058-11d6-4dd3-a7a5-ccdd17e67bf5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009542,
+              "key": "6d4afa8e-2def-4300-92f4-37fa482d65e0",
+              "title": "ND0063 C1 L1 05 Regions Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1BZHJ7vIjwA",
+                "china_cdn_id": "1BZHJ7vIjwA.mp4"
+              }
+            },
+            {
+              "id": 1006358,
+              "key": "37779ed3-e8f5-4a09-b6df-839759c9f0db",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "An AWS Region is a geographically separate portion of the AWS global infrastructure.  Each region is separated from the others by hundreds of miles.  They are isolated so that they are not interdependent, but they are connected by a global high speed, high bandwidth private AWS network.\n\nRunning in multiple regions is completely optional.  In fact, if you don't intentionally try to, you'll only be running in one region.  One reason for this is that there is some amount of additional cost to run in multiple regions.  You must determine if your use case warrants the cost and complexity.\n\nMost AWS services must be managed on a per-region basis.  When you create a resource in one region, it does not exist in the other regions.  There are a few exceptions, however.  These exceptions are \"global\" AWS services such as IAM, where identity and access management must span the entirety of AWS or services such as CloudFront and S3 where they are not managed on a per-region basis.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005856,
+          "key": "4cdbba72-0f87-4f70-b192-ca459ad2a56c",
+          "title": "Quiz: Regions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4cdbba72-0f87-4f70-b192-ca459ad2a56c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1010970,
+              "key": "8d701e55-d1c1-402b-b69f-714822342132",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Regions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006096,
+              "key": "9a3fdee7-3b47-4ab6-922d-6366b4d48aeb",
+              "title": "Region pricing",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9a3fdee7-3b47-4ab6-922d-6366b4d48aeb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Running in how many regions makes your application the least expensive to run?",
+                "answers": [
+                  {
+                    "id": "a1584238099412",
+                    "text": "One",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584238108490",
+                    "text": "Two",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584238109192",
+                    "text": "Three",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584238110033",
+                    "text": "All regions",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006097,
+              "key": "a601df08-3a3d-4fd9-aa75-00cf88995f77",
+              "title": "Global services",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a601df08-3a3d-4fd9-aa75-00cf88995f77",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which services are automatically distributed to all regions?",
+                "answers": [
+                  {
+                    "id": "a1584238184147",
+                    "text": "IAM",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584238201998",
+                    "text": "CloudFront",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584238202905",
+                    "text": "EC2",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584238203772",
+                    "text": "RDS",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1010016,
+              "key": "1a0b8d4b-1891-49d3-a3f0-fc4c0b56b18d",
+              "title": "ND0063 C1 L1 06 Region Quiz Headshot",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ngZVqsYMx6E",
+                "china_cdn_id": "ngZVqsYMx6E.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1019631,
+          "key": "5015d9b0-5711-4c5d-94fb-41bb8f9b4bb5",
+          "title": "AWS Setup instructions for Educate Starter account ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5015d9b0-5711-4c5d-94fb-41bb8f9b4bb5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1019640,
+              "key": "27637fcb-44bf-4def-b2b1-74755a0f3012",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Please follow the steps below to set up your AWS Educate starter account and receive AWS Credit.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019658,
+              "key": "158ff099-9533-4e2e-be15-15ca089bb417",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/December/5df73042_aws-educate/aws-educate.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/158ff099-9533-4e2e-be15-15ca089bb417",
+              "caption": "",
+              "alt": "",
+              "width": 1602,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 1019642,
+              "key": "3f69dec4-10fd-437f-aa20-8b8925ebaeee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create an AWS Educate Starter Account\n\n1.  Go to the following link: https://www.awseducate.com/PromotionSignup?pcode=CS8AYI",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019645,
+              "key": "6a0bcd24-5dfe-41fc-b061-c7f9a05cd066",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Follow the on-screen instructions to apply.\n3. Check for an email from AWS Educate Support (this may go to your spam or promotions folder). Verify your email address and review the **AWS Educate program terms and conditions**.\n3. After agreeing, you'll receive another email from AWS Support. Use the link to open the Student Portal.\n4. Set a password for your AWS Educate Account.\n5. Click on “**AWS Account**” in the top right corner of your AWS Educate home page.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019646,
+              "key": "86156de4-7b2a-4773-83ce-ea7c0e970b94",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "7. Choose **Create Starter Account**. On the next screen, click **AWS Educate Starter Account**.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019648,
+              "key": "a9398d10-d407-40f8-b819-1ed09a9f73fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "8. Once you accept the terms and conditions, you will have access to the AWS Console through the AWS Educate Starter Account pre-loaded with credits.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019649,
+              "key": "553c8bf9-f30f-42d0-a239-d9575ff7b2d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This information can also be found on AWS’s [support page](https://aws.amazon.com/education/awseducate/), under “Using AWS Educate Starter Accounts.”",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005857,
+          "key": "2a682a79-0573-4130-ac72-760ba7e858ee",
+          "title": "Exercise: Regions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2a682a79-0573-4130-ac72-760ba7e858ee",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1005859,
+              "key": "9b555cc0-1680-4abf-a0a7-93ccd459380b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# AWS Regions\n\nAWS regions are geographically separate and are also managed separately.  When you use the AWS management console, CLI or SDKs, you must be conscious of which region your resources are in as well as which region you are issuing commands to.\n\nMost AWS services are region specific.  A few are \"global\" services meaning that there is no need to specify a region for these services.  Global services still make use of the worldwide AWS infrastructure, but they are centrally managed.  Route53 and IAM are examples of global AWS services.\n\nIn this exercise, we will add resources in both a region specific service and a global service and observe the differences.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011242,
+              "key": "583e9927-a6bf-4af0-be8e-d6f78730b64d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Region specific resources\n\n1. Log into the AWS management console, go to the EC2 service and make note of the region listed in the upper right hand corner of the page.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005860,
+              "key": "9a0b8061-d0bb-47b7-b055-dc268451a468",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c1af8_regionselector/regionselector.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9a0b8061-d0bb-47b7-b055-dc268451a468",
+              "caption": "",
+              "alt": "",
+              "width": 1427,
+              "height": 729,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005861,
+              "key": "6a64e0ff-207d-4f89-80ff-23095ef1ca74",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Create a new EC2 instance and wait for it to launch\n3. Observe the EC2 instance in the instance listed\n4. Switch to another AWS regions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005862,
+              "key": "596b25d7-b871-43db-be9a-e1848331eb9f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3100_regions/regions.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/596b25d7-b871-43db-be9a-e1848331eb9f",
+              "caption": "",
+              "alt": "",
+              "width": 324,
+              "height": 699,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005863,
+              "key": "f5feb4a1-ab9b-48e4-8a1b-3d74643c187c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "5. Observe that the instance does not appear in the instance list\n6. Switch back to the original region and see the instance again in the instance list.\n\n## Global resources\n\n1. In the AWS management console, go to the IAM service.  Note that the Region says \"Global.\" \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005864,
+              "key": "f85a99c4-2c1b-411f-8f9a-947161fa16ee",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3130_globalregion/globalregion.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/f85a99c4-2c1b-411f-8f9a-947161fa16ee",
+              "caption": "",
+              "alt": "",
+              "width": 339,
+              "height": 747,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005865,
+              "key": "c4937d58-918a-48a8-88ef-d12a658ba277",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Create a new IAM policy named \"Udacity-temp\" with the following policy\n\n```\n{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"ec2:DescribeInstances\"\n            ],\n            \"Resource\": \"*\"\n        }\n    ]\n}\n```\n\n3. Observe that the Region selector doesn't let you change to another region because IAM is \"global.\"",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005858,
+          "key": "8f09fa9d-e95d-440a-b3df-772eb04696a0",
+          "title": "Solution: Regions Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8f09fa9d-e95d-440a-b3df-772eb04696a0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009571,
+              "key": "765ca7a5-c862-4e9a-a2c0-2b4308a503b4",
+              "title": "ND0063 C1 L1 07 Regions Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "49quRTWOq2k",
+                "china_cdn_id": "49quRTWOq2k.mp4"
+              }
+            },
+            {
+              "id": 1005866,
+              "key": "0d9c1c66-add6-41b9-81a8-e104af06b037",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Solution\n\n## Region specific resources\n\nEC2 instance in California",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005867,
+              "key": "b7e38d9d-cde3-4e46-99d1-18ee3a0bdced",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c31de_ec2cali/ec2cali.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b7e38d9d-cde3-4e46-99d1-18ee3a0bdced",
+              "caption": "",
+              "alt": "",
+              "width": 828,
+              "height": 413,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005868,
+              "key": "22627541-0559-4c50-a87d-c66da864ba03",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Looking for the same EC2 instance in Oregon Region\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005869,
+              "key": "5812904f-c39d-4c34-b5f8-5e7753bde6b2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c31fc_ec2oregon/ec2oregon.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5812904f-c39d-4c34-b5f8-5e7753bde6b2",
+              "caption": "",
+              "alt": "",
+              "width": 827,
+              "height": 322,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005870,
+              "key": "be78e043-ad18-4c6c-a29d-a246418384ab",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Global resources\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005871,
+              "key": "7e017af5-5789-4414-a5a9-2af869edf953",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3216_global/global.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7e017af5-5789-4414-a5a9-2af869edf953",
+              "caption": "",
+              "alt": "",
+              "width": 765,
+              "height": 735,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1006098,
+          "key": "a6052148-2332-4624-a552-57ef862011c3",
+          "title": "Availability Zones",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a6052148-2332-4624-a552-57ef862011c3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009573,
+              "key": "ae859aa7-7f03-4cdf-8803-f0341af50c00",
+              "title": "ND0063 C1 L1 08 AWS AZs Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "5b2R2iFRyTI",
+                "china_cdn_id": "5b2R2iFRyTI.mp4"
+              }
+            },
+            {
+              "id": 1006359,
+              "key": "b5220bc8-1839-4b86-bd4a-01dde937839f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "An AWS Availability Zone (AZ) is a subsection of an AWS Region.  A Region has multiple Availability Zones, and the exact number depends on the Region.  An AZ is a physically independent building with its own power and network connectivity.  AZs within a region are generally separated by several miles and connected to each other with extremely high bandwidth network connections.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1010971,
+          "key": "4a3ab742-6934-4b91-ab89-d93d6a231ca6",
+          "title": "Multi-AZ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4a3ab742-6934-4b91-ab89-d93d6a231ca6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011248,
+              "key": "bd6b3e99-5fa3-47e4-8ea7-b2520a82e8a6",
+              "title": "ND0063 C1 L1 08.1 AWS AZs Video Pt 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "jqmyzrW8VRE",
+                "china_cdn_id": "jqmyzrW8VRE.mp4"
+              }
+            },
+            {
+              "id": 1010972,
+              "key": "4ac6940f-1e6a-4e8d-9d27-c9963d6b259a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Many AWS services are able to make use of multiple AZs if you configure them to do so.  When services are configured to use multiple AZs, they are considered to be highly available.  Even if an entire AZ (complete datacenter) went down, your service would continue to run with minimal interruption.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1006100,
+          "key": "06208a8e-452a-4f1d-85cd-4a536ee9f8b5",
+          "title": "Quiz: Availability Zones",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "06208a8e-452a-4f1d-85cd-4a536ee9f8b5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011786,
+              "key": "e18ef9c8-5eac-4513-b3d0-a5177f36e9a5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Availability Zones",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006102,
+              "key": "c1909787-e309-4c00-bc8d-2d16c0efd6f0",
+              "title": "AZs vs Regions",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "c1909787-e309-4c00-bc8d-2d16c0efd6f0",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Multi-AZ means the same thing as Multi-Region",
+                "answers": [
+                  {
+                    "id": "a1584238640297",
+                    "text": "True",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584238659134",
+                    "text": "False",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006103,
+              "key": "8dbf479d-d5f7-4f54-9028-98caeed29406",
+              "title": "AZ facts",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8dbf479d-d5f7-4f54-9028-98caeed29406",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which are true about AZs?",
+                "answers": [
+                  {
+                    "id": "a1584238713934",
+                    "text": "The number of AZs varies per region",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584238722135",
+                    "text": "You need to consider latency between AZs",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584238739015",
+                    "text": "AZs are in the same datacenter",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584238739945",
+                    "text": "AWS services automatically use all AZs",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1009574,
+              "key": "ea4c29e3-12ac-4711-8146-f993aaa2d2a3",
+              "title": "ND0063 C1 L1 09 AWS AZs Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "6G--z9Gj_po",
+                "china_cdn_id": "6G--z9Gj_po.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005872,
+          "key": "1f8c4a56-22bf-43ea-a449-0fad5b8c93a0",
+          "title": "Virtual Private Clouds",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1f8c4a56-22bf-43ea-a449-0fad5b8c93a0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009575,
+              "key": "f9dbad9e-eb83-444d-9faa-e52709026e51",
+              "title": "ND0063 C1 L1 10 VPCs Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "l5VChBPtTOY",
+                "china_cdn_id": "l5VChBPtTOY.mp4"
+              }
+            },
+            {
+              "id": 1006360,
+              "key": "a2a4a28c-962b-400d-bbef-57c7c3890f11",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A Virtual Private Cloud (VPC) is a private network that you control within the larger AWS network.  These private networks allow you to configure your network architecture the way you desire.  A VPC is region specific.  You decide if your VPCs connect to each other or if you keep them independent.  If you connect your VPCs, it's up to you to configure them according to regular networking guidelines.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011488,
+          "key": "f8085923-5fd3-4041-8449-665bc1cc3795",
+          "title": "Network Ranges",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f8085923-5fd3-4041-8449-665bc1cc3795",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011489,
+              "key": "291e1dd7-476b-4284-a82d-9f99bf31faec",
+              "title": "ND0063 C1 L1 10.1 VPCs Video Pt 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bQT0GeeNjBM",
+                "china_cdn_id": "bQT0GeeNjBM.mp4"
+              }
+            },
+            {
+              "id": 1011492,
+              "key": "83c351cd-3674-4dba-b24c-30122d3a4b11",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Network Ranges\n\nA network range is a consecutive set of IP addresses.  \n\nNetwork ranges are described using \"CIDR\" notation.  CIDR notation consists of the first IP address of the network range, followed by a \"slash\", followed by a number.  That number describes how many consecutive address are in the range.  A \"/24\" address has 255 addresses, while a \"/16\" has 65,536 addresses.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005873,
+          "key": "57ec413f-3555-46fc-affa-4f806562d91e",
+          "title": "Quiz: Virtual Private Cloud",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "57ec413f-3555-46fc-affa-4f806562d91e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011785,
+              "key": "a1dc02fa-8946-4a7c-9f0e-1c94149166de",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Virtual Private Cloud",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006109,
+              "key": "a7c367b8-8dbb-463f-97f1-b8fc370dff7d",
+              "title": "How many VPCs",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a7c367b8-8dbb-463f-97f1-b8fc370dff7d",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "An AWS can have how many VPCs?",
+                "answers": [
+                  {
+                    "id": "a1584239695287",
+                    "text": "One",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584239714954",
+                    "text": "One per region",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584239715825",
+                    "text": "Multiple per region",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006111,
+              "key": "eca46a63-e01b-4d27-a1c5-8125e0ab20e2",
+              "title": "VPC facts",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "eca46a63-e01b-4d27-a1c5-8125e0ab20e2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which are true about a VPC?",
+                "answers": [
+                  {
+                    "id": "a1584239784861",
+                    "text": "Two VPCs in a region cannot have overlapping network addresses",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584239791317",
+                    "text": "A VPC can have only one subnet",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584239792248",
+                    "text": "You can only have one VPC per AZ",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584239805975",
+                    "text": "AWS creates a default VPC for you in each region",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1009576,
+              "key": "18014fd1-5fb4-4a29-9a1b-edb8470b1999",
+              "title": "ND0063 C1 L1 11 VPCs Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "c8gG0rFDLI0",
+                "china_cdn_id": "c8gG0rFDLI0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005874,
+          "key": "54181a87-5f55-48af-b5a4-41b53e3db996",
+          "title": "Exercise: Virtual Private Cloud",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "54181a87-5f55-48af-b5a4-41b53e3db996",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1005876,
+              "key": "f74919c6-75ef-4942-a1a6-c64d82e80f35",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# VPCs\n\nThere are two ways in the AWS management console to create a new VPC.  \n\nYou can create a very basic VPC by creating a new VPC from within the \"Your VPCs\" section of the VPC service.  This option is best if you are an advanced VPC user and want to customize your VPC completely.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005877,
+              "key": "013d317a-93bb-4075-ac56-0478e30d34ff",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3432_plainvpc/plainvpc.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/013d317a-93bb-4075-ac56-0478e30d34ff",
+              "caption": "",
+              "alt": "",
+              "width": 1156,
+              "height": 393,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005878,
+              "key": "1f212139-228f-4b04-8606-d169cb467fb7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The second way is by using the VPC launch wizard.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005879,
+              "key": "39f0c19c-fc2a-4140-bcec-09c445971ceb",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3456_wizardvpc/wizardvpc.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/39f0c19c-fc2a-4140-bcec-09c445971ceb",
+              "caption": "",
+              "alt": "",
+              "width": 1018,
+              "height": 373,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005880,
+              "key": "57a41067-a07b-40b8-b261-842e68021439",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Using the \"Launch VPC Wizard,\" create a new VPC.  Select the \"VPC with a Single Public Subnet\" option.  Name the VPC \"Udacity-VPC\" and keep the default options and create the VPC.  \n\nReview the new VPC, the routing tables that were created with it as well as the subnet and Internet Gateway.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005875,
+          "key": "1e71dbc3-2eb7-4dc6-926e-3f9aa81575e8",
+          "title": "Solution: Virtual Private Cloud Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1e71dbc3-2eb7-4dc6-926e-3f9aa81575e8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009577,
+              "key": "52b98521-d4a0-48f4-acc6-aa95cf215102",
+              "title": "ND0063 C1 L1 12 VPCs Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cBuzO3K0nE8",
+                "china_cdn_id": "cBuzO3K0nE8.mp4"
+              }
+            },
+            {
+              "id": 1005881,
+              "key": "895a6571-3bef-4a3a-82c7-0a66b20d154e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# VPCs\n\nVPC\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005882,
+              "key": "7d701ef4-bb8b-4618-b5dc-0dc6c7a19ce2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c34b8_vpc/vpc.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7d701ef4-bb8b-4618-b5dc-0dc6c7a19ce2",
+              "caption": "",
+              "alt": "",
+              "width": 972,
+              "height": 640,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005883,
+              "key": "410c8797-a480-42f5-a4e6-0e10edc0fb2a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Routing tables\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005884,
+              "key": "b45c759d-e46b-4552-9bf9-2ced62aee4f0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c34d5_routing/routing.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b45c759d-e46b-4552-9bf9-2ced62aee4f0",
+              "caption": "",
+              "alt": "",
+              "width": 966,
+              "height": 608,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005885,
+              "key": "80f32a43-2ebf-4655-a830-e648ba0030fd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Subnets\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005886,
+              "key": "fa1ee4af-9524-4e8f-8511-bbc97d5fd194",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c34ef_subnet/subnet.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fa1ee4af-9524-4e8f-8511-bbc97d5fd194",
+              "caption": "",
+              "alt": "",
+              "width": 977,
+              "height": 570,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005887,
+              "key": "b050d74b-d90d-470a-a84b-8ede5551b085",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Internet Gateway\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005888,
+              "key": "a81ca638-2004-4649-bdc6-a0cb09a8f334",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3507_igw/igw.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a81ca638-2004-4649-bdc6-a0cb09a8f334",
+              "caption": "",
+              "alt": "",
+              "width": 965,
+              "height": 546,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1005889,
+          "key": "35b250e4-eaf3-41f5-9b3d-4b336c4a0a9e",
+          "title": "Networking In AWS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "35b250e4-eaf3-41f5-9b3d-4b336c4a0a9e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009578,
+              "key": "480a9dd7-c772-424d-a211-7a840e977420",
+              "title": "ND0063 C1 L1 13 Networking In AWS Video 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Lf9a4m-YTbg",
+                "china_cdn_id": "Lf9a4m-YTbg.mp4"
+              }
+            },
+            {
+              "id": 1008890,
+              "key": "6a261b7b-75d9-4082-8bde-9816ad72ca79",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e818bc0_networking-in-aws/networking-in-aws.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6a261b7b-75d9-4082-8bde-9816ad72ca79",
+              "caption": "",
+              "alt": "",
+              "width": 219,
+              "height": 221,
+              "instructor_notes": null
+            },
+            {
+              "id": 1006361,
+              "key": "d9db39d5-17b1-4b6e-85e7-d6b333986f87",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "With an AWS VPC, you get to set up your own private network segment within AWS.  Your VPC network in AWS is very similar to a regular IP network.  You choose your overall network ranges, setup route tables, subnets and connect everything together.\n\nAccess into and out of your VPC is something you should pay special attention to.  Just like with a regular network, managing its security is paramount.  In AWS, you have several options to connect to the outside world.  You can connect directly to the Internet with an Internet Gateway, you can use a NAT Gateway to allow outbound only connections from your VPC to the Internet, and you can also use a VPN connection or direct fiber connection to your on-premise datacenter.  ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011493,
+          "key": "33d96b66-9258-4e27-ad8a-7cd3aa686f6d",
+          "title": "Debugging VPC Networks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "33d96b66-9258-4e27-ad8a-7cd3aa686f6d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011494,
+              "key": "bc6014ab-132f-4572-ad46-897e457fc09d",
+              "title": "ND0063 C1 L1 13.1 Debugging VPC Networks",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XrbJtQhHAKs",
+                "china_cdn_id": "XrbJtQhHAKs.mp4"
+              }
+            },
+            {
+              "id": 1013063,
+              "key": "18cf6e23-c11b-4ba5-8a1a-fbc59ce5cfe0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Debugging VPC Networks\n\n## VPC Flow Logs\nFlow logs allow you to see higher level network debugging information like the source port and source IP, and destination port and destination IP of traffic flowing within your VPC.\n\n## Traffic Mirroring\nTraffic mirroring is like traditional \"packet sniffing\" on specific ports.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005890,
+          "key": "7c09ead3-6abb-4aff-8faa-3b7ffede18d4",
+          "title": "Quiz: Networking In AWS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "7c09ead3-6abb-4aff-8faa-3b7ffede18d4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011784,
+              "key": "1dcfb619-d5aa-417e-ac8a-4aa325978234",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Quiz: Networking In AWS",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006113,
+              "key": "a34789ca-c7b8-41b3-a5a9-9e9907797bfb",
+              "title": "Internet connections",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a34789ca-c7b8-41b3-a5a9-9e9907797bfb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which are ways to connect to the Internet from AWS?",
+                "answers": [
+                  {
+                    "id": "a1584239973590",
+                    "text": "TOR",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584239984831",
+                    "text": "Internet Gateways",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584239986202",
+                    "text": "NAT Gateways",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584240007345",
+                    "text": "The Internet is accessible from everywhere within AWS",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006114,
+              "key": "481390e3-4742-4700-99b2-96428f8ab612",
+              "title": "CIDR",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "481390e3-4742-4700-99b2-96428f8ab612",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the following CIDR networks is within 10.0.0.0/16?",
+                "answers": [
+                  {
+                    "id": "a1584240102900",
+                    "text": "10.1.0.0/16",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584240127819",
+                    "text": "10.1.0.0/24",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584240129006",
+                    "text": "10.0.1.0/24",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584240129698",
+                    "text": "10.0.0.0/24",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1009580,
+              "key": "216d4997-ba80-4c4f-a967-8933078b24db",
+              "title": "ND0063 C1 L1 15 Networking In AWS Hard Quiz Solution",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "b5HETb-yjGs",
+                "china_cdn_id": "b5HETb-yjGs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 1005891,
+          "key": "e6d87fbf-8485-4ed2-be84-1c15fd37da0b",
+          "title": "Exercise: Networking In AWS",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e6d87fbf-8485-4ed2-be84-1c15fd37da0b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009584,
+              "key": "ca71dc39-d382-4b57-ad3a-a20504779b26",
+              "title": "ND0063 C1 L1 16 Networking In AWS Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ITnHoB6tdMQ",
+                "china_cdn_id": "ITnHoB6tdMQ.mp4"
+              }
+            },
+            {
+              "id": 1005893,
+              "key": "161cf6bf-8a04-4995-ac95-e7bdc2940ded",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Networking In AWS\n\nWe've seen the many networking options that are available in AWS.  These network options exist to provide flexibility but also support important business needs, such as security and network architecture best practices.\n\nIn this exercise, you will use some of the more advanced networking options in order to create a subnet so that resources in this subnet will be able to access the Internet, but will not be directly accessible _from_ the Internet.  This configuration allows you to put resources an additional layer deeper within your network.  Security has a concept referred to as \"defense in depth,\" which promotes multiple layers of defense such that a compromise of any one layer does not expose important assets.  \n\nUsing the \"Launch VPC Wizard\", create a new VPC.  Select the \"VPC with a Single Public Subnet\" option.  Name the VPC \"Udacity-NAT-Exercise\" and keep the default options and create the VPC.\n\n## NAT Gateway And Route Table\n\nCreate a NAT Gateway in the new public subnet that was just created.  Select the route table in the new VPC that is *not* associated with the public subnet and update it to include a default route of the new NAT Gateway.  Then create a new subnet in your new VPC and have that subnet use your modified route table.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1005892,
+          "key": "4333b148-2ad2-42c2-b18d-0e23a87d6407",
+          "title": "Solution: Networking In AWS Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4333b148-2ad2-42c2-b18d-0e23a87d6407",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1005894,
+              "key": "5e690267-e17b-47eb-84fe-0a698cf9fdc2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Networking In AWS\n\n\n1. In the VPC service, click on \"NAT Gateways\" -> \"Create NAT Gateway\"",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1009583,
+              "key": "a62182e1-4ce0-409c-bcf8-e7b62087e961",
+              "title": "ND0063 C1 L1 14 Networking In AWS Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xSZmPxPIjS0",
+                "china_cdn_id": "xSZmPxPIjS0.mp4"
+              }
+            },
+            {
+              "id": 1005896,
+              "key": "73e80673-e833-4087-9e7e-c54ecb7ebc39",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Pick the subnet that was just created.\n3. Click \"Allocate Elastic IP address\"\n4. Click \"Create NAT Gateway\"\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1009581,
+              "key": "82ec627f-735a-4575-b9a8-88e4c44b19c5",
+              "title": "ND0063 C1 L1 16 Networking In AWS Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ITnHoB6tdMQ",
+                "china_cdn_id": "ITnHoB6tdMQ.mp4"
+              }
+            },
+            {
+              "id": 1005897,
+              "key": "6db95713-3e6e-499f-beed-f91590b58fb0",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3666_editroute/editroute.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6db95713-3e6e-499f-beed-f91590b58fb0",
+              "caption": "",
+              "alt": "",
+              "width": 1024,
+              "height": 484,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005898,
+              "key": "47830ae0-8336-483e-80f4-530895fb9ab5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "5. Click \"Edit route tables\"\n6. Select the route table with no subnet association.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005899,
+              "key": "fe1a3276-d2e0-40ff-9b86-99c9e7c7d1e9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3685_selectroute/selectroute.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fe1a3276-d2e0-40ff-9b86-99c9e7c7d1e9",
+              "caption": "",
+              "alt": "",
+              "width": 954,
+              "height": 644,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005900,
+              "key": "5668493f-b6fe-4f8f-aec0-286117e667ed",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "7. Click on the \"Routes\" tab, then \"Edit Routes\"\n\n8. Select your NAT Gateway and click \"Save routes\"",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005901,
+              "key": "4e74018c-d08f-4366-a25a-1fc3c46a8f52",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c36b0_natroute/natroute.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/4e74018c-d08f-4366-a25a-1fc3c46a8f52",
+              "caption": "",
+              "alt": "",
+              "width": 1149,
+              "height": 566,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005902,
+              "key": "5e5e1268-78fe-4df1-ab72-730a0bb6b01a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Subnet\n\n1. In the VPC service, select Subnets -> Create Subnet\n2. Name the subnet \"Private subnet\"\n3. Choose your VPC that was just created.\n4. Leave Availability Zone as \"No preference\"\n5. Enter an IPv4 CIDR block\n    - This CIDR block must fall within the VPC CIDR block and cannot overlap with another subnet in this VPC",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005903,
+              "key": "439bb41e-5fe1-428a-a99b-b33fdb4bf36b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c36d4_createsubnet/createsubnet.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/439bb41e-5fe1-428a-a99b-b33fdb4bf36b",
+              "caption": "",
+              "alt": "",
+              "width": 1155,
+              "height": 621,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005904,
+              "key": "63bb2a74-889e-4324-9e8c-d6fd264c852a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Results\n\nYou have now created a private subnet that will add an additional layer of security to your applications.  Be sure to review the NAT Gateway, route table and subnet and how they are connected.\n\n\n\nNAT Gateway",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005905,
+              "key": "c372647b-bb1e-409f-8a34-cf4db09b6292",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c36f2_natgw/natgw.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c372647b-bb1e-409f-8a34-cf4db09b6292",
+              "caption": "",
+              "alt": "",
+              "width": 960,
+              "height": 507,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005906,
+              "key": "84c5b52b-4fc7-4019-8d1c-26ca22d05656",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Route table\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005907,
+              "key": "ffdd44df-bf89-4641-aaab-35a2261e0558",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c370d_route/route.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ffdd44df-bf89-4641-aaab-35a2261e0558",
+              "caption": "",
+              "alt": "",
+              "width": 1155,
+              "height": 738,
+              "instructor_notes": null
+            },
+            {
+              "id": 1005908,
+              "key": "c5e79311-930a-4722-83ac-d536fcdf71c3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Subnet",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1005909,
+              "key": "75cfbff2-b02a-4853-95fd-d1d24e618777",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/March/5e6c3729_subnet/subnet.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/75cfbff2-b02a-4853-95fd-d1d24e618777",
+              "caption": "",
+              "alt": "",
+              "width": 980,
+              "height": 625,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1006085,
+          "key": "c859442e-bf5c-49bb-87d7-4a908b7e9ea7",
+          "title": "Edge Cases",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c859442e-bf5c-49bb-87d7-4a908b7e9ea7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009585,
+              "key": "82174296-2d08-46df-bafc-afc65ae33c5b",
+              "title": "ND0063 C1 L1 17 Edge Case- [#1] Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SAVG5chPllQ",
+                "china_cdn_id": "SAVG5chPllQ.mp4"
+              }
+            },
+            {
+              "id": 1006362,
+              "key": "aea67c1a-837f-448e-8579-eff36746cb3b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "AWS networking does have some limitations that your own data center network would not.\n\n- You cannot use multicast in a VPC\n- You cannot put network cards into \"promiscuous\" mode to sniff ethernet packets.\n- There are some restrictions on opening up ports for SMTP\n- You cannot have network scans run against your account without discussing with AWS\n\nYou can connect VPCs together to enable:\n- Cross VPC connections\n- Cross region connections\n- Cross account connections",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1006116,
+              "key": "cf380663-bbfd-4d45-a1ee-b8ef634ca169",
+              "title": "Intuition",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cf380663-bbfd-4d45-a1ee-b8ef634ca169",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which do you think are possible with a VPC?",
+                "answers": [
+                  {
+                    "id": "a1584240553990",
+                    "text": "Creating a permanent connection to an existing datacenter",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584240567967",
+                    "text": "Connecting two of your VPCs",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584240568743",
+                    "text": "Connecting two VPCs in different regions",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584240569544",
+                    "text": "Connecting two VPCs in different AWS accounts",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1006117,
+              "key": "0d6ad7b6-17ae-4570-93c5-426088d6ce62",
+              "title": "Knowledge",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0d6ad7b6-17ae-4570-93c5-426088d6ce62",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How many total Availability Zones does AWS have?",
+                "answers": [
+                  {
+                    "id": "a1584240658684",
+                    "text": "Around 10",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584240667981",
+                    "text": "Around 30",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1584240668742",
+                    "text": "Around 75",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1584240669543",
+                    "text": "Around 150",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1006087,
+          "key": "1d7470dd-caa8-44ab-9357-768dd883cfd3",
+          "title": "Lesson Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1d7470dd-caa8-44ab-9357-768dd883cfd3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1009586,
+              "key": "8de63249-7d49-4eca-bc1c-33e4718c33be",
+              "title": "ND0063 C1 L1 18 Lesson Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rSn9_miRRFE",
+                "china_cdn_id": "rSn9_miRRFE.mp4"
+              }
+            },
+            {
+              "id": 1008885,
+              "key": "6b40bb2f-24e5-45ea-b75f-7591dd52e3d5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson Recap\n\n* Regions\n* Availability Zones (AZs)\n* Virtual Private Clouds (VPCs)\n* AWS VPC Networking\n\nThere are many tools and capabilities at your disposal with Regions, AZs, VPCs and AWS networking.  Most things that are possible in an in-house network are available in AWS.  These functions allow you to have flexibility and security as well as global reach.\n\n# Lesson Objectives\n\nYou will be able to: \n\n* Build on the AWS global infrastructure\n* Take advantage of the multiple availability options AWS provides\n* Build multiple AWS VPCs to suit requirements\n* Create custom isolated networks to meet business needs",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011510,
+              "key": "1a06a852-7562-49be-af57-095f58b38653",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Glossary\n\n- **Fault isolation:** Means of containing a fault in a system to a limited area.\n- **Network latency:** The time it takes network traffic to traverse back and forth over the network.\n- **Data locality:** The practice of keeping data in a certain region or country because of legal restrictions.\n- **CLI:** Command Line Interface.\n- **SDK:** Software Development Kit.\n- **Network fabic:** A high speed network interconnect, where high volumes of traffic move over short distances.\n- **Multicast networking:** A networking protocol where traffic is sent in a \"one-to-many\" manner.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011511,
+              "key": "513123da-fdc5-4e72-bf0e-ba5123309b50",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Further Reading\n\n- [Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/)\n- [Case Studies](https://aws.amazon.com/solutions/case-studies/)\n- [AWS Reliability Pillar](https://d1.awsstatic.com/whitepapers/architecture/AWS-Reliability-Pillar.pdf)\n- [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\n- [Network address translation](https://en.wikipedia.org/wiki/Network_address_translation)",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

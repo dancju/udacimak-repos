@@ -1,0 +1,510 @@
+{
+  "data": {
+    "lesson": {
+      "id": 970723,
+      "key": "c2e786fc-8e30-42b3-abeb-12582120659f",
+      "title": "Project: Secure the Recipe Vault Web Application",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": null,
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": {
+        "key": "3151ae5c-dad5-4f3c-8b09-84c16d84c4ed",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Securing the Recipe Vault Web Application",
+        "description": "### Double-check the rubric\nMake sure you have completed all the rubric items [here](https://review.udacity.com/#!/rubrics/2800/view).\n\n### Submit your project\n\nYou can submit your project as either a zip file or a Github repository link.\n\n## Project Submission Checklist\n\n**Before submitting your project, please review and confirm the following items.** \n<input type=\"checkbox\"> I am confident all rubric items have been met and my project will pass as submitted. (If not, I will discuss with my mentor prior to submitting.)\n<input type=\"checkbox\"> Project builds correctly without errors and runs.\n<input type=\"checkbox\"> All required functionality exists and my project behaves as expected per the project's specifications.\n\n**Once you have checked all these items, you are ready to submit!**\n",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2800",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 970768,
+          "key": "ae84ce49-e14b-4e93-ad0e-b9781465f3a2",
+          "title": "Setup",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ae84ce49-e14b-4e93-ad0e-b9781465f3a2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 970769,
+              "key": "7e0ec22f-ad9b-44bf-90ab-2995c371cc99",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Cloud Security - Protecting Resources and Data in the Cloud\n \nIn this project, you will:\n \n* Deploy and assess a simple web application environment’s security posture\n* Test the security of the environment by simulating attack scenarios and exploiting cloud configuration vulnerabilities\n* Implement monitoring to identify insecure configurations and malicious activity \n* Apply methods learned in the course to harden and secure the environment\n* Design a DevSecOps pipeline\n \n## Dependencies and Prerequisites\n \n### Access to AWS account  \nStudents will need to use their personal AWS accounts.  Udacity will provide a $100 credit for any usage costs. If project instructions are followed we do not anticipate usage costs to exceed this amount.\n \n### Installation of the AWS CLI and Local Setup of AWS API keys\nInstructions and examples in this project will make use of the AWS CLI in order to automate and reduce time and complexity.\nRefer to the below links to get the AWS CLI installed and configured in your local environment.\n \n[Installing the CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)\n \n[Configuring the CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)\n \n### Local setup of git and GitHub Repository\nYou will need to clone or download [this GitHub repo](https://github.com/udacity/nd063-c3-design-for-security-project-starter) in order to work on and submit this project.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 970724,
+          "key": "275b3d51-5588-43d0-9fc1-c18a541c0fbe",
+          "title": "Exercise 1: Deploy Project Environment",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "275b3d51-5588-43d0-9fc1-c18a541c0fbe",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 970726,
+              "key": "78885014-592a-44c6-ba54-e584219486ff",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise 1 - Deploy Project Environment\n \n**_Deliverables for Exercise 1:_**\n* **E1T4.txt** - Text file identifying 2 poor security practices with justification. \n \n### Task 1:  Review Architecture Diagram\nIn this task, the objective is to familiarize yourself with the starting architecture diagram. An architecture diagram has been provided which reflects the resources that will be deployed in your AWS account.\n \nThe diagram file, title `AWS-WebServiceDiagram-v1-insecure.png`, can be found in the _starter_ directory in [this repo](https://github.com/udacity/nd063-c3-design-for-security-project-starter).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970727,
+              "key": "ede23098-6b05-4b81-8ec0-45d4b49888ec",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46ed35_aws-webservicediagram-v1-insecure/aws-webservicediagram-v1-insecure.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ede23098-6b05-4b81-8ec0-45d4b49888ec",
+              "caption": "",
+              "alt": "",
+              "width": 2747,
+              "height": 1914,
+              "instructor_notes": null
+            },
+            {
+              "id": 970728,
+              "key": "9624688a-0c1d-43fc-ae42-6b8eb682e5e1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Expected user flow:\n- Clients will invoke a public-facing web service to pull free recipes.  \n- The web service is hosted by an HTTP load balancer listening on port 80.\n- The web service is forwarding requests to the web application instance which listens on port 5000.\n- The web application instance will, in turn, use the public-facing AWS API to pull recipe files from the S3 bucket hosting free recipes. An IAM role and policy will provide the web app instance permissions required to access objects in the S3 bucket.\n- Another S3 bucket is used as a vault to store secret recipes; there are privileged users who would need access to this bucket. The web application server does not need access to this bucket.\n \n#### Attack flow:\n- Scripts simulating an attack will be run from a separate instance which is in an un-trusted subnet.\n- The scripts will attempt to break into the web application instance using the public IP and attempt to access data in the secret recipe S3 bucket.\n \n### Task 2: Review CloudFormation Template\nIn this task, the objective is to familiarize yourself with the starter code and to get you up and running quickly. Spend a few minutes going through the .yml files in the _starter_ folder to get a feel for how parts of the code will map to the components in the architecture diagram. \n \nAdditionally, we have provided a CloudFormation template which will deploy the following resources in AWS:\n \n#### VPC Stack for the underlying network:\n* A VPC with 2 public subnets, one private subnet, and internet gateways etc for internet access.\n \n#### S3 bucket stack:\n* 2 S3 buckets that will contain data objects for the application.\n \n#### Application stack:\n* An EC2 instance that will act as an external attacker from which we will test the ability of our environment to handle threats\n* An EC2 instance that will be running a simple web service.\n* Application LoadBalancer\n* Security groups\n* IAM role\n \n### Task 3: Deployment of Initial Infrastructure\nIn this task, the objective is to deploy the CloudFormation stacks that will create the below environment.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970729,
+              "key": "a2dd00f2-5d15-4d88-a81f-e335cc655ac8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46ed73_aws-webservicediagram-v1-insecure/aws-webservicediagram-v1-insecure.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a2dd00f2-5d15-4d88-a81f-e335cc655ac8",
+              "caption": "",
+              "alt": "",
+              "width": 2747,
+              "height": 1914,
+              "instructor_notes": null
+            },
+            {
+              "id": 970730,
+              "key": "446fad88-4f64-4b3d-ad55-fe37b84f3e00",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "We will utilize the AWS CLI in this guide, however you are welcome to use the AWS console to deploy the CloudFormation templates.\n \n \n#### 1. From the root directory of the repository - execute the below command to deploy the templates.\n \n##### Deploy the S3 buckets\n\n```\naws cloudformation create-stack --region us-east-1 --stack-name c3-s3 --template-body file://starter/c3-s3.yml\n```\n \nExpected example output:\n```\n{\n    \"StackId\": \"arn:aws:cloudformation:us-east-1:4363053XXXXXX:stack/c3-s3/70dfd370-2118-11ea-aea4-12d607a4fd1c\"\n}\n```\n##### Deploy the VPC and Subnets\n```\naws cloudformation create-stack --region us-east-1 --stack-name c3-vpc --template-body file://starter/c3-vpc.yml\n```\n \nExpected example output:\n```\n{\n    \"StackId\": \"arn:aws:cloudformation:us-east-1:4363053XXXXXX:stack/c3-vpc/70dfd370-2118-11ea-aea4-12d607a4fd1c\"\n}\n```\n \n##### Deploy the Application Stack \nYou will need to specify a pre-existing key-pair name. Make sure you've created a key before this step. Your key's region must exist in the same the region that you plan to deploy your stack.\n```\naws cloudformation create-stack --region us-east-1 --stack-name c3-app --template-body file://starter/c3-app.yml --parameters ParameterKey=KeyPair,ParameterValue=<add your key pair name here> --capabilities CAPABILITY_IAM\n```\n \nExpected example output:\n```\n{\n    \"StackId\": \"arn:aws:cloudformation:us-east-1:4363053XXXXXX:stack/c3-app/70dfd370-2118-11ea-aea4-12d607a4fd1c\"\n}\n```\n \nExpected example AWS Console status: \nhttps://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970731,
+              "key": "10a63ea1-f9f2-4e39-9293-5661f43aae24",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46edac_cloudformation-status/cloudformation-status.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/10a63ea1-f9f2-4e39-9293-5661f43aae24",
+              "caption": "",
+              "alt": "",
+              "width": 3260,
+              "height": 740,
+              "instructor_notes": null
+            },
+            {
+              "id": 970732,
+              "key": "68376ca9-086c-4b67-a0bc-10e875fa7e1e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### 2. Once you see Status is CREATE_COMPLETE for all 3 stacks, obtain the required parameters needed for the project.\n \nObtain the name of the S3 bucket by navigating to the Outputs section of the stack:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970733,
+              "key": "61a65e22-896d-4462-a5af-f31fe595f224",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46ede9_s3stack-output/s3stack-output.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/61a65e22-896d-4462-a5af-f31fe595f224",
+              "caption": "",
+              "alt": "",
+              "width": 2726,
+              "height": 1036,
+              "instructor_notes": null
+            },
+            {
+              "id": 970744,
+              "key": "d577c59a-6876-41c3-80d4-0ed258d160a8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Note down the names of the two other buckets that have been created, one for free recipes and one for secret recipes.  You will need the bucket names to upload example recipe data to the buckets and to run the attack scripts.\n \n- You will need the Application Load Balancer endpoint to test the web service - ApplicationURL\n- You will need the web application EC2 instance public IP address to simulate the attack - ApplicationInstanceIP\n- You will need the public IP address of the attack instance from which to run the attack scripts - AttackInstanceIP\n \nYou can get these from the Outputs section of the **c3-app** stack.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970745,
+              "key": "0490bb2c-eeaf-4989-8924-90808029eab6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46faf5_outputs/outputs.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0490bb2c-eeaf-4989-8924-90808029eab6",
+              "caption": "",
+              "alt": "",
+              "width": 2430,
+              "height": 1066,
+              "instructor_notes": null
+            },
+            {
+              "id": 970746,
+              "key": "da8c9c8a-8c3d-4c62-b08a-6eaad089a768",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### 3.  Upload data to S3 buckets\nUpload the free recipes to the free recipe S3 bucket from step 2. Do this by typing this command into the console (you will replace `<BucketNameRecipesFree>` with your bucket name):\n \nExample:  \n```\naws s3 cp free_recipe.txt s3://<BucketNameRecipesFree>/ --region us-east-1\n```\n \nUpload the secret recipes to the secret recipe S3 bucket from step 2. Do this by typing this command into the console (you will replace `<BucketNameRecipesSecret>` with your bucket name):\n \nExample:  \n```\naws s3 cp secret_recipe.txt s3://<BucketNameRecipesSecret>/ --region us-east-1\n```\n \n \n#### 4. Test the application\nInvoke the web service using the application load balancer URL:\n```\nhttp://<ApplicationURL>/free_recipe\n```\nYou should receive a recipe for banana bread.\n\nThe AMIs specified in the cloud formation template exist in the us-east-1 (N. Virginia) region.  You will need to set this as your default region when deploying resources for this project.\n \n### Task 4:  Identify Bad Practices\n \nBased on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security. List these 2 practices, and a justification for your choices, in the text file named E1T4.txt.\n \n**Deliverables:** \n- **E1T4.txt** - Text file identifying 2 poor security practices with justification. ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 970747,
+          "key": "51c96bdf-2197-4cca-a11c-5534a2ef7a50",
+          "title": "Exercise 2: Enable Security Monitoring",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "51c96bdf-2197-4cca-a11c-5534a2ef7a50",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 970748,
+              "key": "0e9e0a18-f780-49fc-ad35-aa04e6154ddc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise 2: Enable Security Monitoring\n \n**_Deliverables for Exercise 2:_**\n- **E2T2_config.png** - Screenshot of AWS Config showing non-compliant rules.\n- **E2T2_inspector.png** - Screenshot of AWS Inspector showing scan results.\n- **E2T2_securityhub.png** - Screenshot of AWS Security Hub showing compliance standards for CIS foundations.\n- **E2T2.txt** - Provide recommendations on how to remediate the vulnerabilities.\n \n### Task 1: Enable Security Monitoring using AWS Native Tools\n \nFirst, we will set up security monitoring to ensure that the AWS account and environment configuration is in compliance with the CIS standards for cloud security.\n \n#### 1. Enable AWS Config (skip this step if you already have it enabled)  \n a. See below screenshot for the initial settings.  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970749,
+              "key": "743ccab0-77ce-4467-a8ff-979ead865be2",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46fda3_config-enable/config-enable.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/743ccab0-77ce-4467-a8ff-979ead865be2",
+              "caption": "",
+              "alt": "",
+              "width": 3310,
+              "height": 1728,
+              "instructor_notes": null
+            },
+            {
+              "id": 970750,
+              "key": "3c51a8ef-5cc4-455d-a678-d8d508777e5f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " b. On the Rules page, click **Skip**.  \n c. On the Review page, click **Confirm**.\n#### 2. Enable AWS Security Hub\n a. From the Security Hub landing page, click **Go To Security Hub**.  \nb. On the next page, click **Enable Security Hub**\n#### 3. Enable AWS Inspector scan\n a. From the Inspector service landing page, leave the defaults and click **Advanced setup**.  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970751,
+              "key": "a3e29650-4bb9-4517-9c04-a1e5b13e378e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46fdd2_inspector-setup-runonce/inspector-setup-runonce.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a3e29650-4bb9-4517-9c04-a1e5b13e378e",
+              "caption": "",
+              "alt": "",
+              "width": 3338,
+              "height": 1210,
+              "instructor_notes": null
+            },
+            {
+              "id": 970752,
+              "key": "ab06a8d3-8267-4a2d-b070-6418193903b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " b. Uncheck **All Instances** and **Install Agents**.  \n c. Choose Name for Key and ‘Web Service Instance - C3’ for value, click **Next**.  \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970753,
+              "key": "194e5ebb-7223-4a1f-82e7-6794cd0d1ecd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46fdfc_inspector-setup-2/inspector-setup-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/194e5ebb-7223-4a1f-82e7-6794cd0d1ecd",
+              "caption": "",
+              "alt": "",
+              "width": 3352,
+              "height": 1256,
+              "instructor_notes": null
+            },
+            {
+              "id": 970754,
+              "key": "d54f3918-a16b-47e5-ba40-d259845d440a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "d. Edit the rules packages as seen in the screenshot below.  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970755,
+              "key": "7ed12484-b2c1-4681-9929-62fb2d058ef1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46fe31_inspector-setup-3/inspector-setup-3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7ed12484-b2c1-4681-9929-62fb2d058ef1",
+              "caption": "",
+              "alt": "",
+              "width": 3342,
+              "height": 1272,
+              "instructor_notes": null
+            },
+            {
+              "id": 970756,
+              "key": "406fab39-324a-4a1b-a9d2-0255cac33816",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "e. Uncheck **Assessment Schedule**.  \n f. Set a duration of 15 minutes.  \ng. Click **Next** and **Create**.\n#### 4. Enable AWS Guard Duty\na. After 1-2 hours, data will populate in these tools giving you a glimpse of security vulnerabilities in your environment.\n \n### Task 2: Identify and Triage Vulnerabilities\n \nPlease submit screenshots of:\n- AWS Config - showing non-compliant rules\n- AWS Inspector - showing scan results\n- AWS Security Hub - showing compliance standards for CIS foundations.\n \nName the files E2T2_config.png, E2T2_inspector.png, E2T2_securityhub.png respectively.\n \nResearch and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project. Provide recommendations on how to remediate the vulnerabilities. Submit your findings in E2T2.txt\n \n**Deliverables:** \n- **E2T2_config.png** - Screenshot of AWS Config showing non-compliant rules.\n- **E2T2_inspector.png** - Screenshot of AWS Inspector showing scan results.\n- **E2T2_securityhub.png** - Screenshot of AWS Security Hub showing compliance standards for CIS foundations.\n- **E2T2.txt** - Provide recommendations on how to remediate the vulnerabilities.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 970757,
+          "key": "581c2367-6d82-4e10-b2ba-2ded27596674",
+          "title": "Exercise 3: Attack Simulation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "581c2367-6d82-4e10-b2ba-2ded27596674",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 970758,
+              "key": "179b03b4-e1fe-4e52-9c79-b93f492b2733",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise 3 - Attack Simulation\n \nNow you will run scripts that will simulate the following attack conditions:\nMaking an SSH connection to the application server using brute force password cracking.\nCapturing secret recipe files from the s3 bucket using stolen API keys.\n \n**_Deliverables for Exercise 3:_**\n- **E3T1_guardduty.png** - Screenshot of Guard Duty findings specific to the Exercise 3, Task 1 attack.\n- **E3T1.txt** - Answer to the questions at the end of Exercise 3, Task 1.\n- **E3T2_s3breach.png** - Screenshot showing the resulting breach after the brute force attack.\n- _Optional_ **Task 3** - Screenshots showing attack attempts and monitoring or logs from the WAF showing blocked attempts.\n \n### Task 1: Brute force attack to exploit SSH ports facing the internet and an insecure configuration on the server\n \n#### 1. Log into the attack simulation server using your SSH key-pair.\n\n```\nssh -i <your private key file> ubuntu@<AttackInstanceIP>\n```\nThe above instructions are for macOS X users.  For further guidance and other options to connet to the EC2 instance refer to [this guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html).\n\n#### 2. Run the below commands to start a brute force attack against the application server.  You will need the application server hostname for this.\n\n```\ndate\nhydra -l ubuntu -P rockyou.txt ssh://<YourApplicationServerDnsNameHere>\n```\n \nYou should see output similar to the following.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970759,
+              "key": "b154cf98-6b31-4438-9436-f68a5c83dcb4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46fe99_brute-force/brute-force.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b154cf98-6b31-4438-9436-f68a5c83dcb4",
+              "caption": "",
+              "alt": "",
+              "width": 2398,
+              "height": 376,
+              "instructor_notes": null
+            },
+            {
+              "id": 970760,
+              "key": "3c813c35-4afc-4931-97ee-c689e1f8b919",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Wait 10 - 15 minutes and check AWS Guard Duty.\n \n#### 3. Answer the following questions:\n1. What findings were detected related to the brute force attack?\n2. Take a screenshot of the Guard Duty findings specific to the attack. Title this screenshot E3T1_guardduty.png.\n3. Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information?\n\n Submit text answers in E3T1.txt.\n \n**Deliverables:**\n- **E3T1_guardduty.png** - Screenshot of Guard Duty findings specific to the Exercise 3, Task 1 attack.\n- **E3T1.txt** - Answer to the questions at the end of Exercise 3, Task 1.\n \n### Task 2: Accessing Secret Recipe Data File from S3\n \nImagine a scenario where API keys used by the application server to read data from S3 were discovered and stolen by the brute force attack.  This provides the attack instance the same API privileges as the application instance.  We can test this scenario by attempting to use the API to read data from the secrets S3 bucket.\n \n#### 1. Make sure you're still logged into the attack instance and run the following API calls to view and download files from the secret recipes S3 bucket.  You will need the name of the S3 bucket for this.\n \n```\n# view the files in the secret recipes bucket\naws s3 ls  s3://<BucketNameRecipesSecret>/ --region us-east-1\n \n# download the files\naws s3 cp s3://<BucketNameRecipesSecret>/secret_recipe.txt  .  --region us-east-1\n\n# view contents of the file\ncat secret_recipe.txt\n```\nTake a screenshot showing the breach:\nE3T2_s3breach.png\n\n_Optional Stand Out Suggestion_ Task 3:\nChoose one of the application vulnerability attacks outlined in the OWASP top 10 (e.g. SQL injection, cross-site scripting)\nAttempt to invoke the application using the ALB URL with a corrupt or malicious URL payload.\nSetup the AWS WAF in front of the ALB URL.\nRepeat the malicious URL attempts\nObserve the WAF blocking these requests.\nSubmit screenshots of your attempts and monitoring or logs from the WAF showing the blocked attempts.\n\n**Deliverables:**\n- **E3T2_s3breach.png** - Screenshot showing the resulting breach after the brute force attack.\n- _Optional_ **Task 3** - Screenshots showing attack attempts and monitoring or logs from the WAF showing blocked attempts.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 970761,
+          "key": "35575b8f-1a5e-4a8c-8e77-e207e9f96c96",
+          "title": "Exercise 4: Implement Security Hardening",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "35575b8f-1a5e-4a8c-8e77-e207e9f96c96",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 970762,
+              "key": "a46c616b-3e7b-4203-a77f-44ca2b576ce4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise 4 - Implement Security Hardening\n\n**_Deliverables for Exercise 4:_**\n- **E4T1.txt** - Answer to the prompts in Exercise 4, Task 1.\n- **E4T2_sshbruteforce.png** - Screenshot of terminal window showing the brute force attack and the remediation.\n- **E4T2_networksg.png** - Screenshot of the security group change. \n- **E4T2_sshattempt.png** - Screenshot of your SSH attempt.\n- **E4T2_s3iampolicy.png** - Screenshot of the updated IAM policy.\n- **E4T2_s3copy.png** - Screenshot of the failed copy attempt.\n- **E4T2_s3encryption.png** - screenshot of the S3 bucket policy\n- **E4T3_securityhub.png** - Screenshot of Security Hub after reevaluating the number of findings.\n- **E4T3_config.png** - Screenshot of Config after reevaluating the number of findings.\n- **E4T3_inspector.png** - Screenshot of Inspector after reevaluating the number of findings.\n- **E4T4.txt** - Answers from prompts in Exercise 4, Task 4.\n- _Optional_ **c3-app_solution.yml** and **c3-s3_solution.yml** - Updated cloud formation templates which reflect changes made in E4 tasks related to AWS configuration changes.\n- _Optional_ **E4T5.txt** - Additional hardening suggestions from Exercise 4, Task 5.\n\n### Task 1 - Remediation plan\n\nAs a Cloud Architect, you have been asked to apply security best practices to the environment so that it can withstand attacks and be more secure.\n1. Identify 2-3 changes that can be made to our environment to prevent an SSH brute force attack from the internet.\n2. Neither instance should have had access to the secret recipes bucket; even in the instance that API credentials were compromised how could we have prevented access to sensitive data?\n\nSubmit answer in E4T1.txt\n\n**Deliverables:**\n- **E4T1.txt** - Answer to the prompts in Exercise 4, Task 1.\n\n### Task 2 - Hardening\n\n#### Remove SSH Vulnerability on the Application Instance\n\n1. To disable SSH password login on the application server instance.\n\n```\n# open the file /etc/ssh/sshd_config\nsudo vi /etc/ssh/sshd_config\n\n# Find this line:\nPasswordAuthentication yes\n\n# change it to:\nPasswordAuthentication no\n\n# save and exit\n\n#restart SSH server\nsudo service ssh restart\n```\n2. Test that this made a difference.  Run the brute force attack again from Exercise 3, Task 1.  \n\n3. Take a screenshot of the terminal window where you ran the attack highlighting the remediation and name it E4T2_sshbruteforce.png.\n\n**Deliverables:**\n- **E4T2_sshbruteforce.png** - Screenshot of terminal window showing the brute force attack and the remediation.\n\n#### Apply Network Controls to Restrict Application Server Traffic\n\n1. Update the security group which is assigned to the web application instance. Any method you use to do this is acceptable. The requirement is that we only allow connections to port 5000 from the public subnet where the application load balancer resides.\n2. Test that the change worked by attempting to make an SSH connection to the web application instance using its public URL.\n3. Submit a screenshot of the security group change and your SSH attempt.\n\n**Deliverables**:\n- **E4T2_networksg.png** - Screenshot of the security group change. \n- **E4T2_sshattempt.png** - Screenshot of your SSH attempt.\n\n#### Least Privilege Access to S3  \n\n1. Update the IAM policy for the instance profile role used by the web application instance to only allow read access to the free recipes S3 bucket.\n2. Test the change by using the attack instance to attempt to copy the secret recipes.\n3. Submit a screenshot of the updated IAM policy and the attempt to copy the files. \n\n** Deliverables:**\n- **E4T2_s3iampolicy.png** - Screenshot of the updated IAM policy.\n- **E4T2_s3copy.png** - Screenshot of the failed copy attempt.\n\n#### Apply Default Server-side Encryption to the S3 Bucket\n\nThis will cause the S3 service to encrypt any objects that are stored going forward by default.\nUse the below guide to enable this on both S3 buckets.   \n[Amazon S3 Default Encryption for S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)\n\nCapture the screenshot of the secret recipes bucket showing that default encryption has been enabled.\n\n**Deliverables**:\n- **E4T2_s3encryption.png** - Screenshot of the S3 bucket policy.\n\n### Task 3: Check Monitoring Tools to see if the Changes that were made have Reduced the Number of Findings\n\n1. Go to AWS inspector and run the inspector scan that was run in Exercise 2.\n2. After 20-30 mins - check Security Hub to see if the finding count reduced.\n3. Check AWS Config rules to see if any of the rules are now in compliance.\n4. Submit screenshots of Inspector, Security Hub, and AWS Config titled E4T3_inspector.png, E4T3_securityhub.png, and E4T3_config.png respectively.\n\n**Deliverables**:\n- **E4T3_securityhub.png** - Screenshot of Security Hub after reevaluating the number of findings.\n- **E4T3_config.png** - Screenshot of Config after reevaluating the number of findings.\n- **E4T3_inspector.png** - Screenshot of Inspector after reevaluating the number of findings.\n\n### Task 4: Questions and Analysis\n\n1. What additional architectural change can be made to reduce the internet-facing attack surface of the web application instance.\n2. Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.\n3. Will applying default encryption setting to the s3 buckets encrypt the data that already exists?\n4. The changes you made above were done through the console or CLI; describe the outcome if the original cloud formation templates are applied to this environment?\n\nSubmit your answers in E4T4.txt.\n\n**Deliverables**:\n- **E4T4.txt** - Answers from prompts in Exercise 4, Task 4.\n\n###  _Optional Standout Suggestion_ Task 5 - Additional Hardening\n\nMake changes to the environment by updating the cloud formation template. You would do this by copying c3-app.yml and c3-s3.yml and putting your new code into c3-app_solution.yml and c3-s3_solution.yml.\nBrainstorm and list additional hardening suggestions aside from those implemented that would protect the data in this environment. Submit your answers in E4T5.txt.\n\n**Deliverables**:\n- _Optional_ **c3-app_solution.yml** and **c3-s3_solution.yml** - updated cloud formation templates which reflect changes made in E4 tasks related to AWS configuration changes.\n- _Optional_ **E4T5.txt** - Additional hardening suggestions from Exercise 4, Task 5.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 970763,
+          "key": "79808835-9696-4066-8c37-85fd8fa1d149",
+          "title": "Exercise 5: Designing a DevSecOps Pipeline",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "79808835-9696-4066-8c37-85fd8fa1d149",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 970764,
+              "key": "8370858f-d5c7-42dc-b449-b28bb867d4d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise 5 - Designing a DevSecOps Pipeline\n\nTake a look at a very common deployment pipeline diagrammed below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 970765,
+              "key": "cf55c9b9-e6c0-4fae-a2ad-dd6a46604cc9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/February/5e46ff1a_devopspipeline/devopspipeline.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cf55c9b9-e6c0-4fae-a2ad-dd6a46604cc9",
+              "caption": "",
+              "alt": "",
+              "width": 960,
+              "height": 540,
+              "instructor_notes": null
+            },
+            {
+              "id": 970766,
+              "key": "83fe9436-14cd-4dfa-8c30-dd12ad236267",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The high-level steps are as follows:\n\n1. The user makes a change to the application code or OS configuration for a service.\n2. Once the change is committed to source, a build is kicked off resulting in an AMI or a container image.\n3. The infrastructure as code is updated with the new AMI or container image to use.\n4. Changes to cloud configuration or infrastructure as code may have also been committed.\n5. A deployment to the environment ensues applying the changes\n\n**_Deliverables for Exercise 5:_**\n- **DevSecOpsPipline.[ppt or png]** - Your updated pipeline.\n- **E5T2.txt** - Answer from prompts in Exercise 5, Task 2.\n- *Optional* **E5T3.png** - Screenshot of tool that has identified bad practices.\n- *Optional* **E5T3.txt** - Answers from prompts in Exercise 5, Task 3.\n\n### Task 1:  Design a DevSecOps pipeline\n\nUpdate the starter DevOpsPipeline.ppt (or create your own diagram using a different tool)\nAt minimum you will include steps for:\n- Infrastructure as code compliance scanning.\n- AMI or container image scanning.\n- Post-deployment compliance scanning.\n\nSubmit your design as a ppt or png image named DevSecOpsPipeline.[ppt or png].\n\n**Deliverables**:\n- **DevSecOpsPipline.[ppt or png]** - Your updated pipeline.\n\n### Task 2 - Tools and Documentation\n      \nYou will need to determine appropriate tools to incorporate into the pipeline to ensure that security vulnerabilities are found.\n\n1. Identify tools that will allow you to do the following:\n a. Scan infrastructure as code templates.\n b. Scan AMI’s or containers for OS vulnerabilities.\n c. Scan an AWS environment for cloud configuration vulnerabilities.\n2. For each tool - identify an example compliance violation or vulnerability which it might expose.\n\nSubmit your answers in E5T2.txt\n\n**Deliverables**:\n- **E5T2.txt** - Answer from prompts in Exercise 5, Task 2.\n\n### _Optional Standout Suggestion_ Task 3 - Scanning Infrastructure Code\n\n- Run an infrastructure as code scanning tool on the cloud formation templates provided in the starter.\n- Take a screenshot of the tool that has correctly identified bad practices.\n- If you had completed the remediations by updating the cloud formation templates, run the scanner and compare outputs showing that insecure configurations were fixed.\n\n**Deliverables**:\n- _Optional_ **E5T3.png** - Screenshot of tool that has identified bad practices.\n- _Optional_ **E5T3.txt** - Answers from prompts in Exercise 5, Task 3.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 970792,
+          "key": "afa52ebe-9222-438f-95ef-79dab5d94bb7",
+          "title": "Exercises 6 and 7",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "afa52ebe-9222-438f-95ef-79dab5d94bb7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 970793,
+              "key": "b1623ec8-d6bf-4289-865e-4aa843391667",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise 6 - Clean up \n\nOnce your project has been submitted and reviewed - to prevent undesired charges don’t forget to: \n- Disable Security Hub and Guard Duty.\n- Delete recipe files uploaded to the S3 buckets.\n- Delete your cloud formation stacks.\n\n## _Optional Standout Suggestion_ Exercise 7 - Enjoying the Spoils of Your Good Security Work!\n\nBake one of the desserts from the recipe text files and submit a picture. :-)",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

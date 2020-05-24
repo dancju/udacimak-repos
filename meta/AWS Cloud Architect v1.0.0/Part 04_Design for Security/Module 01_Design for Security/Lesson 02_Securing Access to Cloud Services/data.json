@@ -1,0 +1,1449 @@
+{
+  "data": {
+    "lesson": {
+      "id": 1011902,
+      "key": "07cda550-c7d9-4b75-a089-e7726736d76d",
+      "title": "Securing Access to Cloud Services",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "After this lesson, you will be able to secure access for both AWS users and applications, apply security best practices such as identity federation, and fine tune least privilege access permissions.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": null,
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 1011887,
+          "key": "4b3972ca-7324-4ced-b2e0-a85dcf81d39b",
+          "title": "Securing Access",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4b3972ca-7324-4ced-b2e0-a85dcf81d39b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011832,
+              "key": "b3adea48-b78d-4a05-9abf-db13cc7a6176",
+              "title": "Securing Access to Cloud Services Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Overview of Access to Cloud Services",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011834,
+              "key": "a9828aa6-51ed-467c-97e0-1ddd0d6a1c09",
+              "title": "ND063 C3 L1 01 Securing Access To Cloud Services Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "p8eVUBnbA3o",
+                "china_cdn_id": "p8eVUBnbA3o.mp4"
+              }
+            },
+            {
+              "id": 1011827,
+              "key": "93d2fbcd-9535-466a-af96-9627e82dd7dd",
+              "title": "Securing Access to Cloud Services Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson we will focus on:\n- AWS Control Plane and Access Model\n- The Importance of Identity and Access Management Best Practices\n- Using IAM roles and Identity Federation to Provide Secure Access to Users or Applications\n- Least Privilege Permissions and Policies",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011846,
+              "key": "faa0fc32-38aa-4173-a8f9-dacd7233c7fb",
+              "title": "Lesson Location Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94e916_0.-lesson-location-image/0.-lesson-location-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/faa0fc32-38aa-4173-a8f9-dacd7233c7fb",
+              "caption": "**You are Here**",
+              "alt": "You are in the Securing Access to Cloud Services Lesson",
+              "width": 2510,
+              "height": 434,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 1011893,
+          "key": "d0201207-f09c-4782-9520-bb3d46eab8e7",
+          "title": "Big Picture",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d0201207-f09c-4782-9520-bb3d46eab8e7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011855,
+              "key": "2e463c01-ba33-447c-9834-cce4764c6dd6",
+              "title": "Big Picture Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Big Picture",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011845,
+              "key": "97b4e594-fbe8-4446-b568-caa43ebd824e",
+              "title": "ND063 C3 L1 02 Big Picture Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "boFX-3PWV1c",
+                "china_cdn_id": "boFX-3PWV1c.mp4"
+              }
+            },
+            {
+              "id": 1018129,
+              "key": "05d1864d-1b52-404d-9822-baccac540bdb",
+              "title": "Big Picture First Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Securing Access\nIdentity and Access Management in the cloud is the cornerstone of a secure environment.  \n\nSecuring access to the control plane will determine security on a network, data, and resource consumption level.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011868,
+              "key": "3d6865ba-25fb-4fed-bb67-7c181698f3a7",
+              "title": "Big Picture Heading Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94e927_1.-big-picture/1.-big-picture.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3d6865ba-25fb-4fed-bb67-7c181698f3a7",
+              "caption": "**Identity and Access Management in AWS**",
+              "alt": "Identity and Access Management in AWS  ",
+              "width": 2456,
+              "height": 1156,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011844,
+              "key": "73153026-94e1-44e8-ab32-020c6a88944c",
+              "title": "Big Picture Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n#### Authentication\nWho can sign in and use the API.\n\n#### Authorization \nWhat permissions that user has.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011828,
+              "key": "05a79c69-edff-406a-ab96-8a5ba05d9a13",
+              "title": "Big Picture Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "05a79c69-edff-406a-ab96-8a5ba05d9a13",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "With authenticated access to the AWS API, assuming they had the permissions to do so, a user could potentially:",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Read data in an S3 bucket",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Change the admin password of an RDS database",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Open a security group rule to allow SSH access.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Retrieve files from an EBS disk volume",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011890,
+          "key": "fe12a7fe-ad1a-4efd-9f26-7acf7a4bb773",
+          "title": "Developing Intuition",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fe12a7fe-ad1a-4efd-9f26-7acf7a4bb773",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011824,
+              "key": "90a8b001-07ea-4977-81a5-cdc64675072f",
+              "title": "Developing Your Intuition About Security Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Developing Your Intuition about Security",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011856,
+              "key": "6331c8b6-e2c3-4654-bd4d-b5df1c6affd7",
+              "title": "ND063 C3 L1 03 Developing Your Intuition About Security Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "alu_cCDr5kw",
+                "china_cdn_id": "alu_cCDr5kw.mp4"
+              }
+            },
+            {
+              "id": 1011859,
+              "key": "70499392-8f94-4b95-b707-8fb1b98c145f",
+              "title": "Developing Your Intuition About Security Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Concerns Related to Access Management when Designing for Security:\n\n- How will users and permissions be provisioned in your AWS environment?\n\n- Can we avoid the use of API credentials and passwords and push for temporary credentials, one-time password/multi-factor authentication, and identity federation?\n\n- Are permissions *least privilege* access and reviewed so that they are fine tuned to only what a user requires?\n\n- **What's the worst case scenario if credentials were stolen?**\n\n### Key Terms\n#### Control Plane\nAlso known as the **management plane**, this is the ability to interact with AWS in order to provision and configure services.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011840,
+              "key": "6b53a25d-c8f4-4294-954e-2d22fcc465e1",
+              "title": "Developing Your Intuition About Security Quiz 1",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "6b53a25d-c8f4-4294-954e-2d22fcc465e1",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What could be a benefit of limiting API permissions in AWS to least privilege?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "It would stop users from using the API.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "It would prevent authorized users and applications from decrypting data they need to take action on.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "It would allow users in the organization to act as super admins.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "In case credentials or API access were to be compromised, the risk of accessing sensitive data or other malicious activity is reduced.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011835,
+              "key": "e79f351b-18dc-4e32-9b35-1b35e297604e",
+              "title": "Developing Your Intuition About Security Quiz 2",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e79f351b-18dc-4e32-9b35-1b35e297604e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "As it relates to identity and access management in the cloud, identify what you understand to be the best practices.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "It's critical to ensure that no one is accessing your environment from the internet.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "User permissions should be limited to actions related to their role.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Identity management should be federated to a central entity.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Do not allow unrestricted RDP access from the internet.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011894,
+          "key": "dac74680-82ce-4e6a-aa00-ebdeb67b25e1",
+          "title": "Leveraging IAM Roles",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dac74680-82ce-4e6a-aa00-ebdeb67b25e1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011838,
+              "key": "ad96e5a0-3202-4cc9-9eb0-5d0bd7a2e234",
+              "title": "Leveraging IAM Roles Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Leveraging IAM Roles\n\nUnderstanding and leveraging capabilities provided by IAM roles is key to providing segmented and secure role based access control to the AWS control plane.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011837,
+              "key": "0e8cdd76-9743-4e1b-95ab-e9654d746388",
+              "title": "ND063 C3 L1 04 Introduction To IAM Roles",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "rOW2pR4CZTc",
+                "china_cdn_id": "rOW2pR4CZTc.mp4"
+              }
+            },
+            {
+              "id": 1011833,
+              "key": "95c44138-ce95-45cf-a226-f51db119be38",
+              "title": "Intro to IAM Roles Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Imagine a situation where keys in a config file or code were accidently pushed to a repository which is viewable by unauthorized parties, such as a public GitbHub repo. Or, imagine a situation where a user's laptop or server were compromised and keys were stolen. This could be disastrous depending on how users are given access to information and services.\n\nA much better alternative to managing sensitive keys all together is to provide access using **Identity Access Management (IAM) roles**. The key benefit to IAM roles is that all credentials are temporary once assumed and there is no need to store API keys permanently.\n\n### A Few Common Use Cases",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011854,
+              "key": "ef40e2c0-0f4a-4118-a5f9-de3b0b0bdef7",
+              "title": "ND063 C3 L1 05 Leveraging IAM Roles Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HiAk84i08uU",
+                "china_cdn_id": "HiAk84i08uU.mp4"
+              }
+            },
+            {
+              "id": 1011831,
+              "key": "2105e390-e24a-4a49-98dc-e550d2bfe30d",
+              "title": "Leveraging IAM Roles Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Assuming Roles\nApplications running on containers and servers can simply assume roles which are assigned to the server infrastructure without the need to handle API keys within code or config files.\n\nAdditionally, IAM roles can be used to provide access to a multi AWS account structure without the need for managing users across many accounts - which is a common challenge.\n\nAnother benefit is that IAM roles pave the way for devising an elevated privilege model or complete identity federation. This removes the risk associated with managing users and identities in AWS.\n\nIdentity federation involves trusting a centralized identity provider that your organization is using to effectively shift user management and authorization from your AWS account to the identity provider.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011830,
+              "key": "5566a648-ca96-4868-9bad-e774905b0f4f",
+              "title": "Leveraging IAM Roles Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94e9b5_2.-leveraging-iam-roles/2.-leveraging-iam-roles.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5566a648-ca96-4868-9bad-e774905b0f4f",
+              "caption": "**Assuming Appropriates Roles for the Appropriate Task**",
+              "alt": "A picture of a user and the tasks associated with various roles they might assume.",
+              "width": 2652,
+              "height": 1036,
+              "instructor_notes": null
+            },
+            {
+              "id": 1018128,
+              "key": "e9bb5c30-4d13-493d-8b07-d1d31045fda5",
+              "title": "IAM Roles for Applications Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### IAM Roles for Applications\n\nApplications running on instances or containers should use **instance profile roles** and not user api keys.\n\nInstance profile role is a special role that is assigned to EC2 instances which allow applications running on those instances to obtain temporary credentials aligned with that role.\n\n#### IAM Roles for Users\nAll users should be using **multi-factor authentication (MFA) protected role escalation** or **identity federation**.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011843,
+              "key": "72b76f83-6580-4e12-a70c-2f8454ca1780",
+              "title": "Using IAM Roles With Applications",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94ea74_25.-iam-roles-and-applications/25.-iam-roles-and-applications.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/72b76f83-6580-4e12-a70c-2f8454ca1780",
+              "caption": "\n**An Application can Leverage an IAM Role to Access AWS Services without Needing Permanent API Keys**",
+              "alt": " Diagram demonstrating that an application can leverage an IAM role to access AWS services without needing permanent API keys.",
+              "width": 615,
+              "height": 281,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011839,
+              "key": "862ee49b-a91c-44e1-8701-247e672e34cb",
+              "title": "IAM Roles Demo Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### How To Assume a Role\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011849,
+              "key": "3a892881-be4c-4282-8c74-b148c60db29d",
+              "title": "ND063 C3 L1 06 Leveraging IAM Roles Demo Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "SysJuq0lkPA",
+                "china_cdn_id": "SysJuq0lkPA.mp4"
+              }
+            },
+            {
+              "id": 1011848,
+              "key": "9ebddfec-d748-4ffc-abc7-cecf11142d9e",
+              "title": "Leveraging IAM Roles New Terms or Vocabulary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n#### IAM Users\nAn IAM User is a resource that represents a person or application and allows that person to interact with AWS. It consists of a name, console login credentials, and API keys.\n#### IAM Roles\nAn IAM Role is an identity in AWS that has permission policies to interact with AWS. A role can be assumed by anyone who needs it, such as, users, applications, or other AWS services and accounts.\n#### Instance Profile Roles\nInstance profile role is a special role that is assigned to EC2 instances which allow application running on those instances to obtain temporary credentials aligned with that role.\n#### Identity Federation\nIdentity federation involves trusting a centralized identity provider that your organization is using to effectively shift user management and authorization from your AWS account to the identity provider.\n#### Assume Role\nWhen I say a server can \"assume a role\", I mean the application can obtain temporary credentials that are aligned to a role from AWS. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011847,
+              "key": "96265a35-0e0e-4495-8791-e100a00917cb",
+              "title": "Leveraging IAM Roles Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Research: \n- [AWS Documentation for IAM Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)\n\n- [Use Cases for Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011889,
+          "key": "675f3d18-728f-4db9-9422-894d41698d9d",
+          "title": "IAM Roles Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "675f3d18-728f-4db9-9422-894d41698d9d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011860,
+              "key": "88d9aba8-9caf-4c52-83b5-2a4a5d96368a",
+              "title": "Leveraging IAM Roles Easy Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "88d9aba8-9caf-4c52-83b5-2a4a5d96368a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some advantages of using IAM roles instead of IAM user credentials (API keys)?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "IAM users don't need to be created and managed in all accounts",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "API keys do not need to be managed or rotated",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "IAM users cannot provide admin level access",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Applications cannot use IAM user credentials",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1013369,
+              "key": "420a6497-d2cc-4fc1-a851-d3dd60f1de09",
+              "title": "Leveraging IAM Roles",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "420a6497-d2cc-4fc1-a851-d3dd60f1de09",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the concepts below to the statements that are true about them.\n"
+                },
+                "concepts_label": "Concepts",
+                "answers_label": "True Statement",
+                "concepts": [
+                  {
+                    "text": "IAM API Keys",
+                    "correct_answer": {
+                      "id": "a1586817685743",
+                      "text": "\nRequired for programmatic access to AWS services."
+                    }
+                  },
+                  {
+                    "text": "\nInstance Profile Role",
+                    "correct_answer": {
+                      "id": "a1586817785134",
+                      "text": "\nProvides applications temporary API keys."
+                    }
+                  },
+                  {
+                    "text": "\nAssume Role",
+                    "correct_answer": {
+                      "id": "a1586817799589",
+                      "text": "\nUsed to allow a user or application to perform actions assigned to a role."
+                    }
+                  },
+                  {
+                    "text": "\nIAM Role",
+                    "correct_answer": {
+                      "id": "a1586817816023",
+                      "text": "\nCan be used by identity providers, applications, or other aws accounts to provide access to AWS services.\n"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586817799589",
+                    "text": "\nUsed to allow a user or application to perform actions assigned to a role."
+                  },
+                  {
+                    "id": "a1586817816023",
+                    "text": "\nCan be used by identity providers, applications, or other aws accounts to provide access to AWS services.\n"
+                  },
+                  {
+                    "id": "a1586817831810",
+                    "text": "\nCan be used to login as the root user of the AWS account."
+                  },
+                  {
+                    "id": "a1586817785134",
+                    "text": "\nProvides applications temporary API keys."
+                  },
+                  {
+                    "id": "a1586817685743",
+                    "text": "\nRequired for programmatic access to AWS services."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1019631,
+          "key": "5015d9b0-5711-4c5d-94fb-41bb8f9b4bb5",
+          "title": "AWS Setup instructions for Educate Starter account ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5015d9b0-5711-4c5d-94fb-41bb8f9b4bb5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1019640,
+              "key": "27637fcb-44bf-4def-b2b1-74755a0f3012",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Please follow the steps below to set up your AWS Educate starter account and receive AWS Credit.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019658,
+              "key": "158ff099-9533-4e2e-be15-15ca089bb417",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/December/5df73042_aws-educate/aws-educate.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/158ff099-9533-4e2e-be15-15ca089bb417",
+              "caption": "",
+              "alt": "",
+              "width": 1602,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 1019642,
+              "key": "3f69dec4-10fd-437f-aa20-8b8925ebaeee",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Create an AWS Educate Starter Account\n\n1.  Go to the following link: https://www.awseducate.com/PromotionSignup?pcode=CS8AYI",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019645,
+              "key": "6a0bcd24-5dfe-41fc-b061-c7f9a05cd066",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "2. Follow the on-screen instructions to apply.\n3. Check for an email from AWS Educate Support (this may go to your spam or promotions folder). Verify your email address and review the **AWS Educate program terms and conditions**.\n3. After agreeing, you'll receive another email from AWS Support. Use the link to open the Student Portal.\n4. Set a password for your AWS Educate Account.\n5. Click on “**AWS Account**” in the top right corner of your AWS Educate home page.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019646,
+              "key": "86156de4-7b2a-4773-83ce-ea7c0e970b94",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "7. Choose **Create Starter Account**. On the next screen, click **AWS Educate Starter Account**.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019648,
+              "key": "a9398d10-d407-40f8-b819-1ed09a9f73fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "8. Once you accept the terms and conditions, you will have access to the AWS Console through the AWS Educate Starter Account pre-loaded with credits.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1019649,
+              "key": "553c8bf9-f30f-42d0-a239-d9575ff7b2d8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This information can also be found on AWS’s [support page](https://aws.amazon.com/education/awseducate/), under “Using AWS Educate Starter Accounts.”",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011891,
+          "key": "1bf4cef7-bd03-46cb-af28-10203e88ada3",
+          "title": "Exercise: IAM Roles",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1bf4cef7-bd03-46cb-af28-10203e88ada3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011850,
+              "key": "ddae26dd-3b43-4655-a6fd-a7776baec5b5",
+              "title": "Leverages IAM Roles Exercise Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Leverages IAM Roles",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011861,
+              "key": "d0c21c39-8beb-441e-95da-abdb98821ee0",
+              "title": "Leveraging IAM Roles Exercise Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this exercise, you will create a user and a role that can be assumed by that user. \n\nIf you meet the prerequisites for this course, you should be familiar with many of these processes already. If you are not, we have linked to the AWS documentation in some steps, and you can find more information by navigating to the AWS documentation yourself.\n\n### Instructions\n\n1. Log into your AWS account\n2. Create a new IAM user from the IAM service page. Call the user `cand-c3-iam-user`. \n3. Set up a secure password for console access and keep this password for use later.  Do not set up MFA at this time.\n3. Create an IAM policy called `cand-c3-iam-user-policy`. Paste the below JSON to create the IAM policy:\n```json\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": {\n    \"Effect\": \"Allow\",\n    \"Action\": \"sts:AssumeRole\",\n    \"Resource\": \"arn:aws:iam::[ACCOUNT-ID-WITHOUT-HYPHENS]:role/cand-c3-iam-role\"\n  }\n}\n```\n4. Assign the policy to the user you have created.\n5. Create an IAM role that can be assumed by this user.  Call the role `cand-c3-iam-role`.\n6. Use [this guide to create the IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html). As you go through the instructions, ensure that MFA is required. Do not set the external ID.\n7. Once you create the role, go into the trust policy of the role. It should have the following condition:\n```json\n\"Condition\": { \"Bool\": { \"aws:MultiFactorAuthPresent\": \"true\" } }\n```\nAlso note down the role arn.\n\n8. Assign the role a policy. We will use an existing AWS managed policy  called `AmazonS3ReadOnlyAccess`. This policy provides read only access to S3 buckets and data.\n9. Log out and log in with the new user. Attempt to go to the S3 service page to see what buckets are in the account. You should see an error stating you do not have permissions.\n10: Attempt to assume the role you created. [Use this guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html). It will fail since you did not login using MFA.  \n11. Log out and log back in with the personal user you used to create the IAM user for this exercise.\n12. Setup MFA for the user. Log out and log back in with the user and MFA.\n13. Attempt to assume the role again. You should have been able to successfully assume the role.\n14. Try to go to the S3 page and see if you can list buckets, list objects within buckets,  or download objects from buckets.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011841,
+              "key": "a78a8014-d7d0-4d6f-b524-ae3d91bf4cd7",
+              "title": "Leveraging IAM Roles Exercise",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a78a8014-d7d0-4d6f-b524-ae3d91bf4cd7",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create a new IAM user from the IAM service page.",
+                "Set up a secure password for console access.",
+                "Create an IAM policy called `cand-c3-iam-user-policy` and assign this policy to your user.",
+                "Create an IAM role that can be assumed by this user.",
+                "Check the trust policy of the role. Ensure it is `\"true\"`.",
+                "Assign the role a policy.",
+                "Logout and login with the new user and attempt to go to the S3 service page to see what buckets are in the account.",
+                "Attempt to assume the role you created.",
+                "Log out and log back in with your personal user you used to create the IAM user for this exercise.",
+                "Setup MFA for the user.",
+                "Go to the S3 page and see if you can list buckets, list objects within buckets, or download objects from buckets."
+              ],
+              "positive_feedback": "Great Job! In this exercise, you have demonstrated how to reduce the risk associated with an IAM user by leveraging a role that has elevated permissions.  ",
+              "video_feedback": null,
+              "description": "In this exercise, you will create a user and a role that can be assumed by this user."
+            }
+          ]
+        },
+        {
+          "id": 1011900,
+          "key": "d85e5d22-636a-4493-b083-eaceb9e8d771",
+          "title": "Solution: IAM Roles",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d85e5d22-636a-4493-b083-eaceb9e8d771",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1018130,
+              "key": "8d43412c-41fe-446b-ad9a-dabe1e25d93d",
+              "title": "Solution IAM Roles Header",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: IAM Roles",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011886,
+              "key": "2814681a-9d4e-413e-acb3-ab31e7e0fc37",
+              "title": "ND063 C3 L1 07 Solution- Leveraging IAM Roles Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "if_v0bUhmuE",
+                "china_cdn_id": "if_v0bUhmuE.mp4"
+              }
+            },
+            {
+              "id": 1011866,
+              "key": "d2afbc12-7ea6-4dbc-83c4-0994028b530f",
+              "title": "Leveraging IAM Roles Exercise Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this exercise, you have seen how to reduce the risk associated with an IAM user by creating a role that has elevated permissions.  \n\nIf the IAM user’s credentials were stolen, or MFA was disabled and someone was able to get access to the IAM user’s account and login, the perpetrator would not be able to take any actions on the account until their MFA device was restored and they assumed the role.  ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011874,
+              "key": "e71cbf46-f132-43d9-85ce-75881860c55c",
+              "title": "Reflection on Leveraging IAM Roles",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e71cbf46-f132-43d9-85ce-75881860c55c",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "title": "Brainstorm changes that your organization can make to their AWS access model to incorporate IAM roles.",
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "IAM Roles can be leveraged in many ways. One way is to provide users and applications access to AWS APIs.  Based on what you have learned so far, how can you, your team, or your organization start using roles in place of permanent IAM users and API keys?"
+              },
+              "answer": {
+                "text": "Thank you for your response.",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011888,
+          "key": "1863a73a-141b-499a-a649-a55b90ce3c60",
+          "title": "IAM Best Practices",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1863a73a-141b-499a-a649-a55b90ce3c60",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011857,
+              "key": "edc4717b-d629-46a6-b05f-ed4615e7fd67",
+              "title": "IAM Best Practices Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## IAM Best Practices\n\nWe will explore additional best practices related to identity and access management within AWS.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011851,
+              "key": "9ba1f340-abc3-40d6-8aaa-07a71d58aa88",
+              "title": "ND063 C3 L1 08 Additional Access Management Best Practices For AWS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XwER7aWmN9c",
+                "china_cdn_id": "XwER7aWmN9c.mp4"
+              }
+            },
+            {
+              "id": 1011842,
+              "key": "87f0d1a8-a27f-417c-a0e5-bda54e85352d",
+              "title": "IAM Best Practices Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### AWS Account Access: General Best Practices\nLet's go over a few additional Identity and Access Management best practices to secure access to your AWS account.\n\n#### Root User\nThe root user of the AWS account is the email address that was used to create the account.\nThis user has full control of the account and its credentials should be treated with the highest sensitivity.\n\n##### Root User Multi-Factor Authentication\nMulti-factor authentication (MFA) should be set up and in the hands of a trusted member of your organization.  \n\n##### Root User Password\nThe password should be stored in your organization's secrets management store with the highest sensitivity.\n\n##### Root User API Keys\nNever create API credentials for the root user.\n\n##### Limit Usage\nAvoid using the root user for anything once the account is created and initial setup has been performed. The root user has full admin access to the AWS account and can even close the account. Due to the unrestricted nature of the root user, the risk of using and sharing root credentials increases significantly.\n\n#### IAM Users & Roles\n\n##### IAM User Best Practices\n- Enforce strong password policies in your AWS account.\n- Enforce MFA for all IAM users.\n- As discussed earlier, IAM user API keys should be avoided as much as possible. \n- Ensure that keys are rotated regularly if they have to be used.\n\n##### Audit IAM Users, Roles, and Policies Periodically\n- Ensure IAM users and roles are reviewed and audited on a regular basis.\n- Audit IAM policy permissions granted versus actions executed based on CloudTrail audit logs.\n- Remove IAM users and roles which have not been used recently and no longer needed.\n- If IAM users are being used, do not assign IAM policies to users. Instead use IAM groups to designate permissions based on a user’s group.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011852,
+              "key": "80ecfbff-e287-4eb0-8c39-1490c935deeb",
+              "title": "IAM Best Practices Heading Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94f4c4_iam-best-practices-image/iam-best-practices-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/80ecfbff-e287-4eb0-8c39-1490c935deeb",
+              "caption": "\n**Authenticate to Prove Identities and Authorize to Grant Permissions**",
+              "alt": " Identity and Access Management allows us to authenticate users to prove that their identity can access a system.  We can also fine tune permissions to restrict access to certain actions.",
+              "width": 300,
+              "height": 150,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011862,
+              "key": "9e7f007a-8a16-4e6e-aa67-04602dba32d1",
+              "title": "IAM Best Practices Heading New Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n\n### Root User\nThe root user of the AWS account is the email address that was used to create the account.\nThis user has full control of the account and its credentials should be treated with the highest sensitivity\n\n### Multi-Factor Authentication (MFA)\nAn authentication mechanism in which a user must present two or more pieces of evidence (or factors).\nIn AWS the user can configure multi-factor authentication by designating a virtual or physical  device to provide an authentication code, in addition to a password.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011853,
+              "key": "0165bfb0-3c96-47a7-8066-fdd24b891ad3",
+              "title": "IAM Best Practices Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Further Research on IAM Best Practices\n- [List of IAM Best Practices from AWS IAM Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html)\n\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011898,
+          "key": "ddeec2a7-1b39-49d8-be5d-0f1edbb6a237",
+          "title": "Identity Federation",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ddeec2a7-1b39-49d8-be5d-0f1edbb6a237",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011858,
+              "key": "28df26ca-d29b-4bce-9cb3-532296c400bb",
+              "title": "Identity Federation Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Identity Federation for Controlling User Access\n\nIn this lesson, we will introduce the idea of identity federation and why it is an extremely useful tool to manage and segment user and application access to cloud environments.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011829,
+              "key": "9da34627-339c-44d2-a0f3-794a59314c05",
+              "title": "ND063 C3 L1 09 Identity Federation Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "AXoBO4d789s",
+                "china_cdn_id": "AXoBO4d789s.mp4"
+              }
+            },
+            {
+              "id": 1011872,
+              "key": "d240ea3b-662b-4b39-9aae-007de74d0448",
+              "title": "Identity Federation Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Using IAM roles is more secure than provisioning IAM users and managing API keys.\n\nIdentity federation allows an organization to manage identities using an external identity provider instead of attempting to provision and manage user identities from within the AWS environment.\n\nIf a mobile or web application requires access to the AWS API, the user of that application can authenticate with a web identity provider such as facebook, google, or amazon to obtain temporary API credentials.\n\n### Examples of External Identity Providers\n- SAML 2.0 Identity Providers\n - Corporate active directory\n - Cloud-based identity providers such as _Okta, OneLogin, Ping, Centrify, AWS SSO_, etc.\n- Web Identity Providers \n - _Facebook, Google, Amazon_, etc.\n\nIdentity providers can provide role based access control mapped to IAM roles and AWS accounts.\n\n### Two Primary Security Benefits of Incorporating Identity Federation\n1. Organizations can centrally manage users, their identities and authentication, and their various roles with respect to access to various applications and platforms.  This will allow onboarding and offboarding of an employee's access to entities such as AWS seamless and compliant with an organizations approval and off boarding processes.\nAn example of this would be an employee that has access to multiple AWS accounts, Azure, windows servers, corporate VPN etc, If the employee leaves the organization, this access can be revoke centrally.\n2. Identity federation removes the need to use AWS IAM users and user api keys.  Access to the API is then always dependent on IAM roles via federation.  \n\n ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011880,
+              "key": "7f24420d-8236-4d98-a768-d0171984dac7",
+              "title": "Identity Federation Image",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94ec83_3.-identity-federation-image/3.-identity-federation-image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7f24420d-8236-4d98-a768-d0171984dac7",
+              "caption": "**Identity Federation for Users**",
+              "alt": "An example architecture showing identity federation for users.",
+              "width": 900,
+              "height": 413,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011864,
+              "key": "574ff2d8-71aa-449d-91c6-ecb97676095d",
+              "title": "Identity Federation for Applications",
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2020/April/5e94ec8f_4.-identity-federation-for-applications/4.-identity-federation-for-applications.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/574ff2d8-71aa-449d-91c6-ecb97676095d",
+              "caption": "**Identity Federation for Applications**",
+              "alt": "An example architecture showing identity federation for applications.",
+              "width": 900,
+              "height": 413,
+              "instructor_notes": null
+            },
+            {
+              "id": 1011867,
+              "key": "d318b6cf-714e-486d-86c8-61cbcb7b92cb",
+              "title": "Identity Federation Key Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n#### Identity Federation\nIdentity Federation enables you to manage access to your AWS resources centrally. With federation, you can use single sign-on (SSO) to access your AWS accounts using credentials from your corporate directory. Federation uses open standards, such as Security Assertion Markup Language 2.0 (SAML), to exchange identity and security information between an identity provider (IdP) and an application.\n\n#### External Identity Providers\nAn identity provider external to your AWS accounts. Examples include corporate ADFS, cloud-based identity-as-a-service provider, or web identity provider, such as Google or Facebook.\n\nIdentity providers such as ADFS and cloud identity providers use open standards such as SAML 2.0. Web identity providers such as Google or Facebook comply with OpenID Connect.  Both SAML 2.0 and OpenID Connect allow the exchange of identity information between the  Identity Provider (IdP) and AWS.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011884,
+              "key": "651f2f22-6eba-4927-b79e-abc72e49e935",
+              "title": "Identity Federation Further Research",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Additional Resources\nStudents can read more on identity federation in the AWS Documentation.\n- DevOps engineers and those setting up and managing AWS accounts should be familiar with [the material related to setting up SAML 2.0 federation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html).\n\n- Application developers who need to invoke AWS API operations from their frontend web or mobile applications can learn more about [web identity federation here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011899,
+          "key": "74fe6c7f-264a-4ef4-b261-3d728f0cc91d",
+          "title": "Identity Federation Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "74fe6c7f-264a-4ef4-b261-3d728f0cc91d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1013380,
+              "key": "05577fe8-4529-4d07-b063-9f8b6c595dda",
+              "title": "Identity Federation",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "05577fe8-4529-4d07-b063-9f8b6c595dda",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Match the definition with the word(s) that fit within that category."
+                },
+                "concepts_label": "Definition",
+                "answers_label": "Matching Words",
+                "concepts": [
+                  {
+                    "text": "\nWeb identity providers for mobile applications that need access to AWS APIs.",
+                    "correct_answer": {
+                      "id": "a1586818212613",
+                      "text": "\nFacebook, Google"
+                    }
+                  },
+                  {
+                    "text": "\nSAML 2.0 identity provider",
+                    "correct_answer": {
+                      "id": "a1586818305369",
+                      "text": "\nActive Directory"
+                    }
+                  },
+                  {
+                    "text": "\nUsers in a corporate directory or identity provider who need access to AWS can be mapped to this/these.",
+                    "correct_answer": {
+                      "id": "a1586818321477",
+                      "text": "\nIAM Roles"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1586818212613",
+                    "text": "\nFacebook, Google"
+                  },
+                  {
+                    "id": "a1586818349680",
+                    "text": "\nIAM Users"
+                  },
+                  {
+                    "id": "a1586818305369",
+                    "text": "\nActive Directory"
+                  },
+                  {
+                    "id": "a1586818321477",
+                    "text": "\nIAM Roles"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011881,
+              "key": "1188bcb0-49c3-439d-aeb0-c9a1a4032336",
+              "title": "Identity Federation Hard Quiz",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1188bcb0-49c3-439d-aeb0-c9a1a4032336",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Mary is on a team that needs read access to all S3 buckets in AWS account 12345. What is the best high-level solution to provide this type of access?",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Provision an IAM user for Mary in the AWS account.  Give the user permissions to access the S3 buckets.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Add Mary to an Active Directory group mapped to AWS account 12345 and a role with access to the S3 buckets.  Enable identity federation to the corporate active directory.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "Ask Mary to borrow IAM user credentials from one of her other team members.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "Create a user central AWS account and allow that user to assume a role in account 12345. The role will have permissions to access S3.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011892,
+          "key": "b3d27bf2-8bbb-41a4-928f-6c62feff1d21",
+          "title": "Least Privilege Access",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b3d27bf2-8bbb-41a4-928f-6c62feff1d21",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011836,
+              "key": "4e490f6d-12a4-4e51-b867-d1a58f4fb1a6",
+              "title": "least Privilege Access Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Least Privilege Access\n\nWhen creating IAM policies that provide permissions to users and roles, we want to follow the common security practice of granting least privilege. Least Privilege means we grant only the permissions required to perform the necessary tasks.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011876,
+              "key": "fcb399e0-8e39-40ce-9fc9-a1ac2d5af561",
+              "title": "ND063 C3 L1 10 Least Privledge Access",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9BUxr5kbtqw",
+                "china_cdn_id": "9BUxr5kbtqw.mp4"
+              }
+            },
+            {
+              "id": 1011826,
+              "key": "cbbdae58-32f0-4832-8618-0daeadc634b2",
+              "title": "least Privilege Access Notes",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When creating IAM policies that provide permissions to users and roles, we want to follow the common security practice of granting least privilege. Remember, least privilege grants only the permissions required to perform necessary tasks.\n\nIt is a very common practice to allow more permissions than necessary. Usually this is for reasons such as convenience or not knowing what permissions are required. Some of the noteworthy recent cloud data breaches were partly related to users or roles which were compromised. These users and rules had expansive enough permissions to ultimately gain access to sensitive data. \n\nA few of the noteworthy breaches were:\n- [Capital One breach from 2019](https://www.bloomberg.com/news/articles/2019-07-29/capital-one-data-systems-breached-by-seattle-woman-u-s-says):\nAn intruder was able to exploit vulnerabilities on an EC2 instance to obtain API keys, and use those keys to perform other malicious activity, including exfiltrating millions of customer records.\n- [Imperva breach from 2018](https://www.cisomag.com/data-breach-occurred-due-to-series-of-missteps-imperva/):\nHackers were able to retrieve a set of AWS API from compromised cloud instances. The keys were used to access other data.\n- [OneLogin 2017](https://www.onelogin.com/blog/may-31-2017-security-incident):\nAWS API keys were compromised and used to access customer data.\n\nWe have discussed best practices around securing IAM access for users or roles. However, there will always be a risk that temporary credentials are compromised.\n\nFor that reason it is critical to fine-tune IAM policies to restrict and limit, at minimum:\n- What Can be Done (Actions)\n- To What (Resources)\n- By Who (Principals, Trust Policies)\n\n### Build A Least Privilege Policy\n\nLet’s take a look at a simple example of taking an IAM policy and making it least privilege.\n\nSay you have a microservice that is designed to read and write data to a recipes table in DynamoDB.\n\nOur environment also contains other tables to store user profile information that is accessed by other microservices that are deployed.\n\nA simple IAM policy allowing our recipe microservice to use DynamoDB might look like this:\n\n```\n        {\n            \"Sid\": \"DDBTableAccess\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"dynamodb:*\"\n            ],\n            \"Resource\": \"*\"\n        }\n```\n\nThe problem here is that the policy will allow the application full access to perform all operations on DynamoDB.  This could include access data in other tables such as the user profile table or even deleting tables!\n\nIn the event that the role was compromised, the threat posed to our environment would be very high.\n\nA better solution would be to fine tune the access policy so that the application only gets permission to perform the actions it needs.\n\nIn the below example, we have an IAM policy that allows specific actions and limits those actions to a specific resource - in this case, the recipes table.\n\n``` \n        {\n            \"Sid\": \"DDBTableAccessLeastPrivilege\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"dynamodb:BatchGet*\",\n                \"dynamodb:DescribeStream\",\n                \"dynamodb:DescribeTable\",\n                \"dynamodb:Get*\",\n                \"dynamodb:Query\",\n                \"dynamodb:Scan\",\n                \"dynamodb:BatchWrite*\",\n                \"dynamodb:Delete*\",\n                \"dynamodb:Update*\",\n                \"dynamodb:PutItem\"\n            ],\n            \"Resource\": \"arn:aws:dynamodb:*:*:table/recipes\"\n        }\n```\n\n### Building a Least Privilege Policy Demo",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011865,
+              "key": "8b48e7c1-0493-45fb-b054-c97951fb2830",
+              "title": "ND063 C3 L1 11 Build A Least Privilege Policy Demo Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "j57MwkVKyu0",
+                "china_cdn_id": "j57MwkVKyu0.mp4"
+              }
+            },
+            {
+              "id": 1011863,
+              "key": "aa91379e-162a-4952-ab59-fd40a6ffd218",
+              "title": "Least Privilege Access Key Terms",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Key Terms\n#### Least Privilege Access\nGranting a user or application **only** the permissions they need to do the required task.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011895,
+          "key": "db7bb444-b2bc-4ea6-b2d8-fe9b44e4dda6",
+          "title": "Least Privilege Quizzes",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "db7bb444-b2bc-4ea6-b2d8-fe9b44e4dda6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011875,
+              "key": "1ed4a21a-1dd5-4b97-befc-305ae3dda979",
+              "title": "Least Privilege Access Easy Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1ed4a21a-1dd5-4b97-befc-305ae3dda979",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Identify some motivations around enforcing least privilege access when creating IAM policies.",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Least privilege IAM policies can protect against data breaches.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Fine tuning IAM policies can help ensure data is encrypted.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "This will allow us to stop using API keys.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "In the event of a compromised access to the user or role, this reduces the chance of malicious and destructive activity.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 1011825,
+              "key": "2cc700cf-fda7-42b2-b04d-36f2a099788b",
+              "title": "Least Privilege Example",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Question 2\nA user needs access to be able to view data in DynamoDB tables that start with the prefix \"prod\" to troubleshoot an application. The user also needs to see a list of all tables. The following IAM policy will allow them to see basic info about all tables and also provides full access to the `prod1-recipes` table.\n\n```json\n{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"ListAndDescribe\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"dynamodb:List*\",\n                \"dynamodb:DescribeReservedCapacity*\",\n                \"dynamodb:DescribeLimits\",\n                \"dynamodb:DescribeTimeToLive\"\n            ],\n            \"Resource\": \"*\"\n        },\n        {\n            \"Sid\": \"SpecificTable\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"dynamodb:BatchGet*\",\n                \"dynamodb:DescribeStream\",\n                \"dynamodb:DescribeTable\",\n                \"dynamodb:Get*\",\n                \"dynamodb:Query\",\n                \"dynamodb:Scan\",\n                \"dynamodb:BatchWrite*\",\n                \"dynamodb:CreateTable\",\n                \"dynamodb:Delete*\",\n                \"dynamodb:Update*\",\n                \"dynamodb:PutItem\"\n            ],\n            \"Resource\": \"arn:aws:dynamodb:*:*:table/prod1-recipes\"\n        }\n    ]\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011869,
+              "key": "cedf3d4a-3be6-4e22-9e19-5c4108bdff46",
+              "title": "least Privilege Access Hard Quiz",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "cedf3d4a-3be6-4e22-9e19-5c4108bdff46",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Identify whether the previous policy is following least privilege.\n\nFor this quiz, you may need to reference the [AWS Documentation on JSON Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json).",
+                "answers": [
+                  {
+                    "id": "rbk1",
+                    "text": "Yes, this policy provides least privilege based on the requirement because it only allows access to the specific table.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk2",
+                    "text": "Yes, this policy is least privilege because it only allows specific actions.",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "rbk3",
+                    "text": "No, this policy is not least privilege because it allows access to delete, update, and put related actions (full write access).",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "rbk4",
+                    "text": "No, this policy is not least privilege because it allows the user to list all tables.",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 1011901,
+          "key": "908c533c-5fe7-44fd-a124-5a4355bfbba8",
+          "title": "Exercise: Least Privilege",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "908c533c-5fe7-44fd-a124-5a4355bfbba8",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011873,
+              "key": "45f419ed-2808-46fd-b924-d26e58980fc0",
+              "title": "least Privilege Access Exercise Instructions",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise: Least Privilege Access\n\nYou have been tasked with setting up a new IAM policy that will be used by an application.\n\nWe will use the Role that you had created in the previous exercise in this lesson (Exercise - Leveraging IAM roles): `cand-c3-iam-role`\n\n1. Create a new S3 bucket for this exercise.  Call it `cand-c3-s3-app1-yourname` or similar. Note down the name of the bucket.\n2. Create a second bucket to test denial of access.  Call it `cand-c3-s3-offlimits-yourname` or similar.\n3. Upload a test file to both buckets.\n4. Go to the IAM service in the console and create a new IAM policy. Call the IAM policy `cand-c3-iam-policy-least-priv`.\n5. The IAM policy will need to be able to do the following:\n - Upload objects to an S3 bucket\n - Download objects from an S3 bucket\n - List objects that are in the S3 bucket\n - Only be able to perform these options on the new S3 bucket you have created.\n - List S3 buckets\n - Deny the ability to download files (s3:getObject) from any other S3 buckets that are not the S3 bucket you created.\n - Helpful Examples: [Example 1](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_rw-bucket-console.html) and [Example 2](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_notresource.html)\n6.  In the IAM console go to the role that you had created in the previous exercise: `cand-c3-iam-role`\n7. Assign the new policy you created to the role and remove the managed policy that had previously been assigned to the role.\n8. Test the policy by assuming the role and attempting to download the file that you had uploaded from both buckets. *You should be denied downloading the file from the `offlimit` bucket*.\n9. Go back to your admin user.\n10. Add a managed policy to the `cand-c3-iam-role` which allows full S3 access.\n11. Assume the role and test the policy again. The original restriction should still be in place due to the deny you had added in the custom IAM policy.\n\nYou have successfully fine-tuned a policy and achieved a level of least privilege access for a role!\n\n\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011885,
+              "key": "1c02bc99-b3e5-4a76-8881-52e29629f9aa",
+              "title": "Least Privilege Access Exercise",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1c02bc99-b3e5-4a76-8881-52e29629f9aa",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Create an S3 bucket called `cand-c3-s3-app1-yourname` or similar.",
+                "Create a second bucket called `cand-c3-s3-offlimits-yourname` or similar.",
+                "Upload a test file to both buckets.",
+                "Create a new IAM policy called `cand-c3-iam-policy-least-priv`.",
+                "Add the appropriate permissions to this policy (listed in the instructions above).",
+                "Go to the role: `cand-c3-iam-role`",
+                "Assign the new policy you created to the role and remove the managed policy that had previously been assigned to the role.",
+                "Test the policy.",
+                "Go back to your admin user.",
+                "Add a managed policy to the `cand-c3-iam-role` which allows full S3 access.",
+                "Assume the role and test the policy again."
+              ],
+              "positive_feedback": "Great job!",
+              "video_feedback": null,
+              "description": "You have been tasked with setting up a new IAM policy that will be used by an application. Check off each of these items as you complete them; full instructions for each step are above."
+            }
+          ]
+        },
+        {
+          "id": 1011896,
+          "key": "ff0294af-35fb-49d2-beee-86fec79760f7",
+          "title": "Solution: Least Privilege",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ff0294af-35fb-49d2-beee-86fec79760f7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011871,
+              "key": "a4d0972e-960e-4bab-8845-75e4c8ac7479",
+              "title": "least Privilege Access Exercise Solution Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Solution: Least Privilege Access",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011883,
+              "key": "813e59a0-f9af-4a9d-9e5e-6239c24dc81e",
+              "title": "ND063 C3 L1 12 Lease Privilege Access Exercise Solution Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "o5IGZOtKUmo",
+                "china_cdn_id": "o5IGZOtKUmo.mp4"
+              }
+            },
+            {
+              "id": 1011878,
+              "key": "a53e15dc-24fb-4d27-9ad4-9de93c0d4908",
+              "title": "least Privilege Access Exercise Solution Summary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You should now have a better understanding of how we can fine tune an IAM policy and how this can make the environment more secure!",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 1011897,
+          "key": "2de1722b-b458-4abf-a1e3-8c79f892fc32",
+          "title": "Lesson Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "2de1722b-b458-4abf-a1e3-8c79f892fc32",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 1011870,
+              "key": "238b2a1d-0c18-4b77-99a7-27c625507cdc",
+              "title": "Lesson Conclusion Heading",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Conclusion",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011882,
+              "key": "f561dbfd-6000-41f6-98bd-8104bf380408",
+              "title": "ND063 C3 L1 13 Lesson Conclusion Video",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bTPL6A4_TC4",
+                "china_cdn_id": "bTPL6A4_TC4.mp4"
+              }
+            },
+            {
+              "id": 1011877,
+              "key": "349f1991-ab58-4be1-8a24-9b281c69478e",
+              "title": "Lesson Conclusion Text",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### What We Learned\n- The importance of the right identity and access management strategy in the cloud.\n- The criticality of reducing the use of IAM users and API keys and instead leveraging roles. Roles allow you to provide access to applications and users without providing permanent API keys.\n- Using identity federation to improve security of AWS environments. Identity Federation ensures that user and role management are moved to an organizational level and outside of the AWS environment.\n- Least privilege access, an important yet often overlooked safeguard for ensuring that compromised credentials lead to the least possible consequences.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 1011879,
+              "key": "986fd31b-1a1a-4d7e-bbbd-0beed1199e29",
+              "title": "Glossary",
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Glossary\n\n#### Authentication\nWho can sign in and use the API.\n\n#### Authorization \nWhat permissions that user has.\n\n#### IAM Users\nAn IAM User is a resource that represents a person or application and allows that person to interact with AWS. It consists of a name, console login credentials, and API keys.\n\n#### Instance Profile Roles\nInstance profile role is a special role that is assigned to EC2 instances which allow application running on those instances to obtain temporary credentials aligned with that role.\n\n#### Assume Role\nWhen I say a server can \"assume a role\", I mean the application can obtain temporary credentials that are aligned to a role from AWS. \n\n#### Root User\nThe root user of the AWS account is the email address that was used to create the account.\nThis user has full control of the account and its credentials should be treated with the highest sensitivity\n\n#### Multi-Factor Authentication (MFA)\nAn authentication mechanism in which a user must present two or more peices of evidence (or factors) to an authentication system.\nIn AWS the user can setup multi factor authentication by setting up a virtual or physical  MFA device which they would need to physically posses and present in addition to their password for logging in.\n\n#### RBAC\nRole Based Access Control refers to the model of allowing users permission to use roles which they have been assigned to as part of their job function.  Specific roles would provide access and permissions to specific systems and actions.\n\n#### Identity Federation\nIdentity Federation enables you to manage access to your AWS resources centrally. With federation, you can use single sign-on (SSO) to access your AWS accounts using credentials from your corporate directory.  Federation uses open standards, such as Security Assertion Markup Language 2.0 (SAML), to exchange identity and security information between an identity provider (IdP) and an application.\n\n#### IAM Roles\nAWS IAM identity in an AWS account which provides specific AWS permissions.  Authorized entities, such as IAM users, identity providers, and AWS services shall assume a role and gain the permissions assigned with that role.  No permanent password or credentials exist with an IAM role.  Users who assume the role will have access to temporary credentials to make API calls.\n\n#### IAM Policies\nDocument(s) assigned to IAM users and roles  that specify what actions that user can take in AWS, whether to allow or deny the action, what specific resources that action can be executed on, and any other conditions related to the permissions.\n\n#### Resource Policies\nPolicy documents associated with a specific resource in AWS, such as an S3 bucket, which defines who can perform what actions, with specific resources and conditions as needed.  Similar to an IAM policy except it is associated with a resource and the actor or principal needs to be defined.\n\n#### Attribute Based Access Control\nAttribute-based access control (ABAC) is an authorization strategy that defines permissions based on AWS tags. Tags can be attached to IAM principals (users or roles) and to AWS resources. You can create a single ABAC policy or small set of policies for your IAM principals. These ABAC policies can be designed to allow operations when the principal's tag matches the resource tag.\n\n#### Least Privilege Access\nWhen creating IAM policies that provide permissions to users and roles, we want to follow the common security practice of granting least privilege. Least Privilege means we grant only the permissions required to perform the necessary tasks.\n\n#### Control Plane\nAlso known as the **management plane**, this is the ability to interact with AWS in order to provision and configure services.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,1080 @@
+{
+  "data": {
+    "lesson": {
+      "id": 825359,
+      "key": "4636c0ce-e36e-479b-ba36-58b4b849a9e8",
+      "title": "Project: System Monitor",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Time to build the project! In this lesson, you'll get the tools you need to build the project for this course, a system monitor application similar to htop!",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/4636c0ce-e36e-479b-ba36-58b4b849a9e8/825359/1581974727690/Project%3A+System+Monitor+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/4636c0ce-e36e-479b-ba36-58b4b849a9e8/825359/1581974723178/Project%3A+System+Monitor+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "2356317f-921e-4852-b4a0-32b4d9dd439d",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "System Monitor",
+        "description": "# CppND-System-Monitor\n\nStarter code for System Monitor Project is provided on GitHub: [https://github.com/udacity/CppND-System-Monitor-Project-Updated](https://github.com/udacity/CppND-System-Monitor-Project-Updated)\n\nFollow along with the classroom lesson to complete the project!\n\n## Udacity Linux Workspace\nUdacity provides a browser-based Linux [Workspace](https://engineering.udacity.com/creating-a-gpu-enhanced-virtual-desktop-for-udacity-497bdd91a505) for students. \n\nYou are welcome to develop this project on your local machine, and you are not required to use the Udacity Workspace. However, the Workspace provides a convenient and consistent Linux development environment we encourage you to try.\n\n## ncurses\n[ncurses](https://www.gnu.org/software/ncurses/) is a library that facilitates text-based graphical output in the terminal. This project relies on ncurses for display output.\n\nWithin the Udacity Workspace, `.student_bashrc` automatically installs ncurses every time you launch the Workspace.\n\nIf you are not using the Workspace, install ncurses within your own Linux environment: `sudo apt install libncurses5-dev libncursesw5-dev`\n\n## Make\nThis project uses [Make](https://www.gnu.org/software/make/). The Makefile has four targets:\n* `build` compiles the source code and generates an executable\n* `format` applies [ClangFormat](https://clang.llvm.org/docs/ClangFormat.html) to style the source code\n* `debug` compiles the source code and generates an executable, including debugging symbols\n* `clean` deletes the `build/` directory, including all of the build artifacts\n\n## Rubric\nBefore you start the project, read the [project rubric](https://review.udacity.com/#!/rubrics/2518/view).\n\n## Mentor\nWe suggest you schedule a check in call with your mentor before you start this project. Your mentor can help you develop a plan to successfully complete the project.\n\n## Instructions\n\n1. Clone the project repository: `git clone https://github.com/udacity/CppND-System-Monitor-Project-Updated.git`\n\n2. Build the project: `make build`\n\n3. Run the resulting executable: `./build/monitor`\n\n4. Follow along with the lesson.\n\n5. Implement the `System`, `Process`, and `Processor` classes, as well as functions within the `LinuxParser` namespace.\n\n6. Verify that your submission meets all of the criteria in the [project rubric](https://review.udacity.com/#!/rubrics/2518/view).\n\n7. Submit!",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2518",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": {
+          "url": "https://video.udacity-data.com/topher/2019/August/5d5303ef_monitor-hero/monitor-hero.png",
+          "width": 1200,
+          "height": 900
+        }
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 900473,
+          "key": "36ee7d26-fd16-4c95-81e2-5fbdecd1d898",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "36ee7d26-fd16-4c95-81e2-5fbdecd1d898",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900994,
+              "key": "ff1eb23a-d675-448b-b734-e8937858bd8e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Updates!\nUdacity has updated and improved the System Monitor Project!\n\nThese updates help organize and clarify the project.\n\nThe new project version is available right now in this lesson.\n\nStudents who have already completed the System Monitor Project are all set! There is no requirement to revisit this lesson and complete the new version of the project.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 900993,
+              "key": "d4f28794-5e47-45c1-a668-6def63c6ccc2",
+              "title": "ND213 A10 Project Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EbgJYBZ4QDA",
+                "china_cdn_id": "EbgJYBZ4QDA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 900474,
+          "key": "82f3d6c2-5dc8-413f-b6e0-00871f881dc6",
+          "title": "htop",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "82f3d6c2-5dc8-413f-b6e0-00871f881dc6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900995,
+              "key": "f36ab82e-55f8-48f3-a781-81cbb6f457f6",
+              "title": "Htop",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Cz4rDC-WecA",
+                "china_cdn_id": "Cz4rDC-WecA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 900996,
+          "key": "db7d70c9-719e-4c2d-ae83-b3839bfc0b75",
+          "title": "Starter Code",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "db7d70c9-719e-4c2d-ae83-b3839bfc0b75",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900998,
+              "key": "2d028e82-7869-40a1-8a2c-ee00ff852c6f",
+              "title": "CPPND System Monitor Project Starter Code",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eguBVmzhTS4",
+                "china_cdn_id": "eguBVmzhTS4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 900475,
+          "key": "c5658269-35fc-4f53-a976-7e82030990ee",
+          "title": "Project Structure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c5658269-35fc-4f53-a976-7e82030990ee",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 901200,
+              "key": "85c11b35-8159-4e92-874d-951ec6db27c3",
+              "title": "Structure",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "dOnUD8UUhMg",
+                "china_cdn_id": "dOnUD8UUhMg.mp4"
+              }
+            },
+            {
+              "id": 901201,
+              "key": "260861df-b2c5-404b-9c2b-2fa83fe30250",
+              "title": "Walkthrough",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "10HWAXzY_90",
+                "china_cdn_id": "10HWAXzY_90.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 901197,
+          "key": "1eeb430f-2a04-4334-b44e-ceca5444794d",
+          "title": "Build Tools",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1eeb430f-2a04-4334-b44e-ceca5444794d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 901203,
+              "key": "d9cac77f-408d-4bcc-af97-af7edf4192e2",
+              "title": "CPPND System Monitor Project Build Tools",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "PSPI33rKQas",
+                "china_cdn_id": "PSPI33rKQas.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 900476,
+          "key": "397f3fac-07f2-4f0b-bf16-754d1528664e",
+          "title": "System Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "397f3fac-07f2-4f0b-bf16-754d1528664e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 901204,
+              "key": "bb5bc893-54f8-4d3d-9aa2-a743d7bc6caf",
+              "title": "CPPND System Monitor Project System Class",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "M6tpsAZWnjI",
+                "china_cdn_id": "M6tpsAZWnjI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 906375,
+          "key": "8b7ff1b6-3cb8-4573-9743-173895cd8224",
+          "title": "System Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8b7ff1b6-3cb8-4573-9743-173895cd8224",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906419,
+              "key": "1d5380cf-4088-4856-bcb1-f6ee07ac60b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# System Data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906447,
+              "key": "c79e8834-a570-4ce0-bcac-a8301713ae33",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cef85_system-monitor-system/system-monitor-system.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/c79e8834-a570-4ce0-bcac-a8301713ae33",
+              "caption": "",
+              "alt": "",
+              "width": 731,
+              "height": 451,
+              "instructor_notes": null
+            },
+            {
+              "id": 906423,
+              "key": "5c5c1243-0bd4-4336-8ec1-c73c909ed296",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Linux stores a lot of system data in files within the `/proc` directory. Most of the data that this project requires exists in those files.\n## Operating System\nInformation about the operating system exists outside of the `/proc` directory, in the `/etc/os-release` file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906421,
+              "key": "a9c45e21-42a1-4110-afcb-156e03322c98",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cde7d_system-monitor-os-release/system-monitor-os-release.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a9c45e21-42a1-4110-afcb-156e03322c98",
+              "caption": "",
+              "alt": "`cat /etc/os-release`",
+              "width": 849,
+              "height": 433,
+              "instructor_notes": null
+            },
+            {
+              "id": 906422,
+              "key": "7a5fed01-78c6-4a7b-bb8c-e15869169336",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There are several strings from which to choose here, but the most obvious is the value specified by \"PRETTY_NAME\".",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906424,
+              "key": "d1f96c99-94ea-4044-a88f-fecdfc68b52e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Kernel\nInformation about the kernel exists `/proc/version` file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906426,
+              "key": "9d3d60ea-2875-4fec-9b28-dbc1501808f4",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cdfbc_system-monitor-kernel/system-monitor-kernel.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9d3d60ea-2875-4fec-9b28-dbc1501808f4",
+              "caption": "",
+              "alt": "`cat /proc/version`",
+              "width": 850,
+              "height": 433,
+              "instructor_notes": null
+            },
+            {
+              "id": 906427,
+              "key": "7dbd05d8-0a7c-4f37-8acf-313b108bac9f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Memory Utilization\nInformation about memory utilization exists in the `/proc/meminfo` file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906429,
+              "key": "6e38fcd5-33b0-4349-b67d-057e76f7bf85",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3ce0a1_system-monitor-memory-utilization/system-monitor-memory-utilization.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6e38fcd5-33b0-4349-b67d-057e76f7bf85",
+              "caption": "",
+              "alt": "`cat /proc/meminfo`",
+              "width": 611,
+              "height": 685,
+              "instructor_notes": null
+            },
+            {
+              "id": 906430,
+              "key": "ab185583-3ac7-40f0-9b4f-2fb1043384bb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "There are a [variety](https://www.thegeekdiary.com/understanding-proc-meminfo-file-analyzing-memory-utilization-in-linux/) of [ways](https://access.redhat.com/solutions/406773) to use this data to calculate memory utilization. \n\n[Hisham H. Muhammad](http://hisham.hm/about), the author of [htop](http://hisham.hm/htop/index.php), wrote a [Stack Overflow answer](https://stackoverflow.com/a/41251290) about how htop calculates memory utilization from the data in `/proc/meminfo`.\n\nUse the formula that makes the most sense to you!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906431,
+              "key": "55d5556c-a66b-456b-a032-94ee26ca0b75",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Total Processes\nInformation about the total number of processes on the system exists in the `/proc/meminfo` file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906432,
+              "key": "7dcce8cc-42a8-4f28-811e-11bdb2d0c68b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3ce30f_system-monitor-total-processes/system-monitor-total-processes.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7dcce8cc-42a8-4f28-811e-11bdb2d0c68b",
+              "caption": "",
+              "alt": "`cat /proc/stat`",
+              "width": 809,
+              "height": 686,
+              "instructor_notes": null
+            },
+            {
+              "id": 906433,
+              "key": "c1b52f6c-6d9c-4648-847b-316c4d663f57",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Running Processes\nInformation about the number of processes on the system that are currently running exists in the `/proc/meminfo` file. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906434,
+              "key": "0ce44167-0669-43a4-b0bf-8f506202267d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3ce362_system-monitor-running-processes/system-monitor-running-processes.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0ce44167-0669-43a4-b0bf-8f506202267d",
+              "caption": "",
+              "alt": "`cat /proc/stat`",
+              "width": 809,
+              "height": 686,
+              "instructor_notes": null
+            },
+            {
+              "id": 906435,
+              "key": "16ae7f60-f841-4213-b367-ede72ced3ca8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Up Time\nInformation about system up time exists in the `/proc/uptime` file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906436,
+              "key": "17049f31-27a5-4851-ab05-05aa5b4e9f88",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3ce3e2_system-monitor-up-time/system-monitor-up-time.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/17049f31-27a5-4851-ab05-05aa5b4e9f88",
+              "caption": "",
+              "alt": "`cat /proc/uptime`",
+              "width": 844,
+              "height": 127,
+              "instructor_notes": null
+            },
+            {
+              "id": 906437,
+              "key": "2e6dc633-968b-4043-8be2-8bdad26367d1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "> This file contains two numbers (values in seconds): the uptime of the system (including time spent in suspend) and the amount of time spent in the idle process.\n\nFrom the [*man* page for `proc`](http://man7.org/linux/man-pages/man5/proc.5.html)",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 900477,
+          "key": "07ae35ad-68bd-45c1-9a94-bea122410390",
+          "title": "LinuxParser Namespace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "07ae35ad-68bd-45c1-9a94-bea122410390",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 901208,
+              "key": "f6dd79fb-9fb2-4a69-9f8b-929380830f2e",
+              "title": "CPPND System Monitor Project LinuxParser Namespace",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "f9Qt2AlPQeE",
+                "china_cdn_id": "f9Qt2AlPQeE.mp4"
+              }
+            },
+            {
+              "id": 901209,
+              "key": "4a7972eb-f274-463a-b348-027027dba81e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Relationship To System Class",
+              "instructor_notes": ""
+            },
+            {
+              "id": 901210,
+              "key": "f164a1d4-f58c-42a0-ad87-ad9a6afb8d52",
+              "title": "CPPND System Monitor Project LinuxParser Namespace Relationship To System Class",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XQrAStOlZCQ",
+                "china_cdn_id": "XQrAStOlZCQ.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 900478,
+          "key": "9dc1e826-09d8-47fc-974c-a2dcda654873",
+          "title": "String Parsing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9dc1e826-09d8-47fc-974c-a2dcda654873",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 901211,
+              "key": "267b3052-1e80-429d-9e11-5d94adeb1c54",
+              "title": "CPPND System Monitor Project String Parsing",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vFhTd8HyiJw",
+                "china_cdn_id": "vFhTd8HyiJw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 900479,
+          "key": "9c9ad8cd-0329-4125-a88e-b1c9657f94a6",
+          "title": "Processor Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9c9ad8cd-0329-4125-a88e-b1c9657f94a6",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 901213,
+              "key": "18393570-a3c1-489e-bd13-54225ba4a59a",
+              "title": "CPPND System Monitor Project Processor",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "eMkJE3y9bwo",
+                "china_cdn_id": "eMkJE3y9bwo.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 906376,
+          "key": "beb4374f-bbf3-4706-a7dc-702199a8426a",
+          "title": "Processor Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "beb4374f-bbf3-4706-a7dc-702199a8426a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906438,
+              "key": "02f7cf20-b766-48e7-adf0-1a9f8ecacf81",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Processor Data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906445,
+              "key": "e0602bc0-ebda-45de-ac63-46ff8df66c6a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cee3c_system-monitor-processor/system-monitor-processor.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e0602bc0-ebda-45de-ac63-46ff8df66c6a",
+              "caption": "",
+              "alt": "",
+              "width": 731,
+              "height": 451,
+              "instructor_notes": null
+            },
+            {
+              "id": 906446,
+              "key": "58cdf568-4d70-4668-8e51-10a9cc94ac3e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Linux stores processor utilization data within the `/proc/stat` file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906439,
+              "key": "23d5ee31-8ebd-44d8-815f-04754c8aa23a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3ce60e_system-monitor-processor-utilization/system-monitor-processor-utilization.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/23d5ee31-8ebd-44d8-815f-04754c8aa23a",
+              "caption": "",
+              "alt": "`cat /proc/stat`",
+              "width": 809,
+              "height": 686,
+              "instructor_notes": null
+            },
+            {
+              "id": 906440,
+              "key": "317132af-48ec-418e-ac21-6e2d3e3f1562",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This data is more complex than most of the other data necessary to complete this project.\n\nFor example, `/proc/stat` contains aggregate processor information (on the \"cpu\" line) and individual processor information (on the \"cpu0\", \"cpu1\", etc. lines). Indeed, [htop](https://hisham.hm/htop/) displays utilization information for each individual processor.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906443,
+              "key": "fe973f79-ede8-4848-abe8-8cf12ad5269c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3ce79a_htop-processor-utilization/htop-processor-utilization.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fe973f79-ede8-4848-abe8-8cf12ad5269c",
+              "caption": "",
+              "alt": "",
+              "width": 928,
+              "height": 537,
+              "instructor_notes": null
+            },
+            {
+              "id": 906444,
+              "key": "321bfebb-5904-4332-89b5-8ef3b7c27221",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "For this project, however, you only need to display aggregate CPU information, which you can find on the \"cpu\" line of `/proc/stat`. \n\nIf you would like to add individual processor information to your system monitor project, go for it!\n\n## Data\n`/proc/stat` contains 10 integer values for each processor. The Linux source code [documents each of these numbers](https://github.com/torvalds/linux/blob/master/Documentation/filesystems/proc.txt):\n\n> The very first  \"cpu\" line aggregates the  numbers in all  of the other \"cpuN\" lines.  These numbers identify the amount of time the CPU has spent performing different kinds of work.  Time units are in USER_HZ (typically hundredths of a second).  The meanings of the columns are as follows, from left to right:\n- user: normal processes executing in user mode\n- nice: niced processes executing in user mode\n- system: processes executing in kernel mode\n- idle: twiddling thumbs\n- iowait: In a word, iowait stands for waiting for I/O to complete. But there\n  are several problems:\n  1. Cpu will not wait for I/O to complete, iowait is the time that a task is\n     waiting for I/O to complete. When cpu goes into idle state for\n     outstanding task io, another task will be scheduled on this CPU.\n  2. In a multi-core CPU, the task waiting for I/O to complete is not running\n     on any CPU, so the iowait of each CPU is difficult to calculate.\n  3. The value of iowait field in /proc/stat will decrease in certain\n     conditions.\n  So, the iowait is not reliable by reading from /proc/stat.\n- irq: servicing interrupts\n- softirq: servicing softirqs\n- steal: involuntary wait\n- guest: running a normal guest\n- guest_nice: running a niced guest\n\nEven once you know what each of these numbers represents, it's still a challenge to determine exactly how to use these figures to calculate processor utilization. [This guide](https://github.com/Leo-G/DevopsWiki/wiki/How-Linux-CPU-Usage-Time-and-Percentage-is-calculated) and [this StackOverflow post](https://stackoverflow.com/questions/23367857/accurate-calculation-of-cpu-usage-given-in-percentage-in-linux) are helpful.\n\n## Measurement Interval\nOnce you've parsed `/proc/stat` and calculated the processor utilization, you've got what you need for this project. Congratulations!\n\nHowever, when you run your system monitor, you might notice that the process utilization seems very stable. Too stable.\n\nThat's because the processor data in `/proc/stat` is measured since boot. If the system has been up for a long time, a temporary interval of even extreme system utilization is unlikely to change the long-term average statistics very much. This means that the processor could be red-lining *right now* but the system monitor might still show a relatively underutilized processor, if the processor has spent most of the time since boot in an idle state.\n\nYou might want to update the system monitor to report the current utilization of the processor, rather than the long-term average utilization since boot. You would need to measure the difference in system utilization between two points in time relatively close to the present. A formula like:\n\nΔ active time units / Δ total time units\n\nConsider this a bonus challenge that is not required to pass the project.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 900480,
+          "key": "95ceaee8-b088-4c62-9d37-a4e7e6d18c5f",
+          "title": "Process Class",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "95ceaee8-b088-4c62-9d37-a4e7e6d18c5f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 901216,
+              "key": "331ff004-b038-44cb-8121-1ca74b213861",
+              "title": "CPPND System Monitor Project Process Class",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "sEkf6TqLKBk",
+                "china_cdn_id": "sEkf6TqLKBk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 906377,
+          "key": "629dbd7b-18f2-4f43-9cb7-d74714b761af",
+          "title": "Process Data",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "629dbd7b-18f2-4f43-9cb7-d74714b761af",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 906448,
+              "key": "2fcba1a5-b73f-41ad-92fc-9d81f6139a31",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Process Data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906450,
+              "key": "fe5d923a-e417-49a9-abde-046d88632057",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cf140_system-monitor-processes/system-monitor-processes.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fe5d923a-e417-49a9-abde-046d88632057",
+              "caption": "",
+              "alt": "",
+              "width": 731,
+              "height": 451,
+              "instructor_notes": null
+            },
+            {
+              "id": 906449,
+              "key": "f33d038c-d541-4050-8cf8-5bf6c3d78515",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Linux stores data about individual processes in files within subdirectories of the `/proc` directory. Each subdirectory is named for that particular process's [identifier](https://en.wikipedia.org/wiki/Process_identifier) number. The data that this project requires exists in those files.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906451,
+              "key": "bddb5125-5972-42d4-85e5-4a271428987c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## PID\nThe process identifier (PID) is accessible from the `/proc` directory. Typically, all of the subdirectories of `/proc` that have integral names correspond to processes. Each integral name corresponds to a process ID.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906452,
+              "key": "1ab258c5-ab1b-407d-a3bf-fce7851907f7",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cf2c4_system-monitor-process-id/system-monitor-process-id.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1ab258c5-ab1b-407d-a3bf-fce7851907f7",
+              "caption": "",
+              "alt": "`ls /proc`",
+              "width": 829,
+              "height": 686,
+              "instructor_notes": null
+            },
+            {
+              "id": 906469,
+              "key": "e69ec5ee-3f98-47e7-8404-ffbd5c1eef99",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Parsing directory names with C++ is tricky, so we have provided in the project starter code a pre-implemented function to capture the PIDs.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906453,
+              "key": "0578f1e4-a396-4b06-b7b7-fa5877615574",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## User\nEach process has an associated [user identifier (UID)](https://en.wikipedia.org/wiki/User_identifier), corresponding to the process owner. This means that determining the process owner requires two steps:\n1. Find the UID associated with the process\n2. Find the user corresponding to that UID\n\nThe UID for a process is stored in `/proc/[PID]/status`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906455,
+              "key": "ce776dc9-047f-4f32-81a7-fc3ed05ae2b9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cf526_system-monitor-process-uid/system-monitor-process-uid.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ce776dc9-047f-4f32-81a7-fc3ed05ae2b9",
+              "caption": "",
+              "alt": "`cat /proc/[PID]/status`",
+              "width": 522,
+              "height": 686,
+              "instructor_notes": null
+            },
+            {
+              "id": 906454,
+              "key": "6e6e9887-1c3e-4aa2-bfed-3d1bd8eb22d4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The [*man* page for `proc`](http://man7.org/linux/man-pages/man5/proc.5.html) contains a \"/proc/[pid]/status\" section that describes this file.\n\nFor the purposes of this project, you simply need to capture the first integer on the \"Uid:\" line.\n\n### Username\n\n[`/etc/passwd`](http://man7.org/linux/man-pages/man5/passwd.5.html) contains the information necessary to match the UID to a username.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906457,
+              "key": "3d62ce1b-2aea-431f-930f-71ab76459b1c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cf7a1_system-monitor-username-1/system-monitor-username-1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3d62ce1b-2aea-431f-930f-71ab76459b1c",
+              "caption": "",
+              "alt": "`cat /etc/passwd`",
+              "width": 648,
+              "height": 687,
+              "instructor_notes": null
+            },
+            {
+              "id": 906458,
+              "key": "00844ead-b7da-4d79-b1b7-623e68550330",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Processor Utilization\nLinux stores the CPU utilization of a process in the `/proc/[PID]/stat` file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906459,
+              "key": "fab2b156-7ff2-4136-963d-d1493880b50c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cfadd_system-monitor-process-utilization/system-monitor-process-utilization.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fab2b156-7ff2-4136-963d-d1493880b50c",
+              "caption": "",
+              "alt": "`cat /proc/[PID]/stat`",
+              "width": 847,
+              "height": 163,
+              "instructor_notes": null
+            },
+            {
+              "id": 906460,
+              "key": "91a6d6cc-28a6-4608-806e-398435830e62",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Much like the calculation of aggregate processor utilization, half the battle is extracting the relevant data from the file, and the other half of the battle is figuring out how to use those numbers to calculate processor utilization.\n\nThe \"/proc/[pid]/stat\" section of the [`proc` *man* page](http://man7.org/linux/man-pages/man5/proc.5.html) describes the meaning of the values in this file. [This StackOverflow answer](https://stackoverflow.com/a/16736599) explains how to use this data to calculate the process's utilization.\n\nAs with the calculation of aggregate processor utilization, it is sufficient for this project to calculate the average utilization of each process since the process launched. If you would like to extend your project to calculate a more current measurement of process utilization, we encourage you to do that!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906461,
+              "key": "a0ac4d6b-a793-4b3d-8d2c-cd03f1fe3205",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Memory Utilization\nLinux stores memory utilization for the process in `/proc/[pid]/status`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906462,
+              "key": "022efcc7-1e6a-40e2-97a0-8319d87965df",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cfd56_system-monitor-process-memory/system-monitor-process-memory.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/022efcc7-1e6a-40e2-97a0-8319d87965df",
+              "caption": "",
+              "alt": "",
+              "width": 522,
+              "height": 686,
+              "instructor_notes": null
+            },
+            {
+              "id": 906463,
+              "key": "a43bd677-d8d5-4942-bd53-2b74d986160f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In order to facilitate display, consider [converting the memory utilization into megabytes](https://www.google.com/search?q=convert+from+kb+to+mb&oq=convert+from+kb+to+mb).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906464,
+              "key": "8f16b3b7-769f-48d7-83b5-da39cb98d14c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Up Time\nLinux stores the process up time in `/proc/[pid]/stat`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906465,
+              "key": "abfc6533-bbaa-43ec-bdbc-c13260cffa8a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3cfeb9_system-monitor-process-up-time/system-monitor-process-up-time.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/abfc6533-bbaa-43ec-bdbc-c13260cffa8a",
+              "caption": "",
+              "alt": "`cat /proc/[pid]/stat`",
+              "width": 847,
+              "height": 163,
+              "instructor_notes": null
+            },
+            {
+              "id": 906466,
+              "key": "28c143b9-af30-4caf-8604-e3378de9195b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The \"/proc/[pid]/stat\" section of the [`proc` *man* page](http://man7.org/linux/man-pages/man5/proc.5.html) describes each of the values in this file.\n\n> (22) starttime  %llu\n>\n> The time the process started after system boot.  In kernels before Linux 2.6, this value was expressed in jiffies.  Since Linux 2.6, the value is expressed in clock ticks (divide by sysconf(_SC_CLK_TCK)).\n\nNote that the \"starttime\" value in this file is measured in \"clock ticks\". In order to convert from \"clock ticks\" to seconds, you must:\n* #include [<unistd.h>](http://pubs.opengroup.org/onlinepubs/9699919799/basedefs/unistd.h.html)\n* divide the \"clock ticks\" value by `sysconf(_SC_CLK_TCK)`\n\nOnce you have converted the time value to seconds, you can use the `Format::Time()` function from the project starter code to display the seconds in a \"HH:MM:SS\" format.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906467,
+              "key": "f452eb8b-8725-40b1-963c-71da8802490a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Command\nLinux stores the command used to launch the function in the `/proc/[pid]/cmdline` file.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 906468,
+              "key": "a77dcaea-050b-43cf-b405-b765fc2b86dc",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/July/5d3d0178_system-monitor-process-command/system-monitor-process-command.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a77dcaea-050b-43cf-b405-b765fc2b86dc",
+              "caption": "",
+              "alt": "`cat /proc/[pid]/cmdline`",
+              "width": 847,
+              "height": 109,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 900997,
+          "key": "6278aa7c-75ef-4140-bef7-d6b8b8a5970d",
+          "title": "Goal",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6278aa7c-75ef-4140-bef7-d6b8b8a5970d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 900999,
+              "key": "1e437fc0-ab8f-401a-99fe-74cfbbc61b24",
+              "title": "CPPND System Monitor Finished Project",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "xw6_Mz3O54Y",
+                "china_cdn_id": "xw6_Mz3O54Y.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 825360,
+          "key": "5bc7a4ee-ddad-4d33-9c38-d1ce858f691f",
+          "title": "Project Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5bc7a4ee-ddad-4d33-9c38-d1ce858f691f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 825361,
+              "key": "59c8383f-685e-4388-b017-fe605be22ba6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Udacity Workspace\nYou are welcome to use this Udacity Workspace to complete the project. Or you can use your own Linux development environment, if you have one.\n\n## GitHub Repo\nThe starter code is available on GitHub: [https://github.com/udacity/CppND-System-Monitor](https://github.com/udacity/CppND-System-Monitor)\n\nYou can clone the starter code repository, either into the Udacity Workspace or into your own development environment, by running:\n```bash\ngit clone https://github.com/udacity/CppND-System-Monitor\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 825363,
+              "key": "6455df84-6947-4e30-a599-96b3dcb61773",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r812755c825360xREACToxev3j25",
+              "pool_id": "autonomouscpu",
+              "view_id": "react-6ucwd",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "sudo apt update\nsudo apt install -y libncurses5-dev libncursesw5-dev",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "terminalTitle": "BASH",
+                    "actionButtonText": "Go To Desktop",
+                    "openTerminalOnStartup": true
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

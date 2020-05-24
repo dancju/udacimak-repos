@@ -1,0 +1,1253 @@
+{
+  "data": {
+    "lesson": {
+      "id": 825482,
+      "key": "4c62f051-2032-4ca1-aaa9-6293e0cbe6db",
+      "title": "Build an OpenStreetMap Route Planner",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this project you will extend the IO2D map display code to use A*, so your program will be able to find a path between two points on the map.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/4c62f051-2032-4ca1-aaa9-6293e0cbe6db/825482/1581974559003/Build+an+OpenStreetMap+Route+Planner+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/4c62f051-2032-4ca1-aaa9-6293e0cbe6db/825482/1581974556330/Build+an+OpenStreetMap+Route+Planner+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "1ac639f6-4d45-40ba-8988-64a852615dc4",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Build an OpenStreetMap Route Planner",
+        "description": "Check your project carefully against the rubric [here](https://review.udacity.com/#!/rubrics/2494/view). When you feel like your project meets all of the criteria listed there, you are ready to submit! \n\nYou can submit your project directly from the workspace in the previous concept, or if you have developed your code locally, you can submit using a .zip file or Github repo.\n\n## Project Submission Checklist\n\n**Before submitting your project, please review and confirm the following items.** \n<input type=\"checkbox\"> I am confident all rubric items have been met and my project will pass as submitted. (If not, I will discuss with my mentor prior to submitting.)\n<input type=\"checkbox\"> Project builds correctly without errors and runs.\n<input type=\"checkbox\"> All required functionality exists and my project behaves as expected per the project's specifications.\n\n**Once you have checked all these items, you are ready to submit!**\n",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2494",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": {
+          "url": "https://s3.amazonaws.com/video.udacity-data.com/topher/2019/February/5c75bf8e_map-5/map-5.png",
+          "width": 1200,
+          "height": 900
+        }
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 907076,
+          "key": "285bffbf-2faa-454d-a81f-9057a270e9e9",
+          "title": "Project Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "285bffbf-2faa-454d-a81f-9057a270e9e9",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 907360,
+              "key": "31e9ad30-121b-4753-9d1b-19506c53a365",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Intro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909759,
+              "key": "e15d729d-1564-4df0-977f-68b516dd42c4",
+              "title": "C++ND C1 Project Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IMmcqtAFpq8",
+                "china_cdn_id": "IMmcqtAFpq8.mp4"
+              }
+            },
+            {
+              "id": 909621,
+              "key": "66045f32-0aac-4382-b8fa-8aab94d4d369",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Welcome to the course project! In this project, you will create a route planner that plots a path between two points on a map using real map data from the [OpenStreeMap project](). When you are finished with the project, your output should look like the image below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909762,
+              "key": "33b3b197-b503-4866-bc50-a06bb187cf8a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c75a30c_screenshot-from-2019-02-05-13-16-53/screenshot-from-2019-02-05-13-16-53.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/33b3b197-b503-4866-bc50-a06bb187cf8a",
+              "caption": "A path rendered between two points on a map.",
+              "alt": "",
+              "width": 400,
+              "height": 428,
+              "instructor_notes": null
+            },
+            {
+              "id": 909763,
+              "key": "81c96898-7d89-4ad8-85bf-583e95fd0ac4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This starting code for this project comes from [a map rendering example](https://github.com/cpp-io2d/P0267_RefImpl/tree/master/P0267_RefImpl/Samples/maps) in the Github repo for the 2D Graphics Library, IO2D. In your project, you will be extending the code to search for and display a path between two points on the map. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929945,
+              "key": "640480fd-1168-4cfb-89d7-81b4eeab58b8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d72e10a_project-intro/project-intro.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/640480fd-1168-4cfb-89d7-81b4eeab58b8",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 825545,
+          "key": "9151140b-6585-4e63-b0d6-fae743f5a347",
+          "title": "The OpenStreetMap Project",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9151140b-6585-4e63-b0d6-fae743f5a347",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 825547,
+              "key": "0f0d6db4-eb5b-4978-8379-cae30b508397",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# The OpenStreetMap Project\n\nIn the next classroom concepts, you will write a course project in C++ using real map data and A\\* search to find a path between two points, just as you might see in a desktop or mobile mapping application. The project you will will write will be using data from the [OpenStreetMap project](https://www.openstreetmap.org). \n\nThe OpenStreetMap project is an open source, collaborative endeavor to create free, user-generated maps of every part of the world. These maps are similar to the maps you might use in Google Maps or the Apple Maps app on your phone, but they are completely generated by individuals who volunteer to perform ground surveys of their local environment. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 825548,
+              "key": "22492282-d0ad-485b-a4f1-098df5d593ef",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c64ca52_screenshot-from-2019-02-05-13-16-53/screenshot-from-2019-02-05-13-16-53.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/22492282-d0ad-485b-a4f1-098df5d593ef",
+              "caption": "Example OpenStreetMap with plotted path",
+              "alt": "",
+              "width": 400,
+              "height": 428,
+              "instructor_notes": null
+            },
+            {
+              "id": 825549,
+              "key": "9325bb5a-65ce-412b-b935-b70bf6314eb2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## OpenStreetMap Data",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909607,
+              "key": "296559ce-ca06-4f45-9977-9a8bc2c02db2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "OpenStreetMap data can come in several different formats. The data that is used for this project comes in the form of an OSM XML file (.osm file), and we have provided a sample from the [OpenStreetMap Wiki](https://wiki.openstreetmap.org/wiki/Main_Page) below. Although you may not have worked with this type of data before, have a look at the data below and try to guess which element types from the next quiz are present in the data. We are confident you can figure this out by carefully studying the data!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907361,
+              "key": "29486353-2519-4471-be90-a67050e78597",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "29486353-2519-4471-be90-a67050e78597",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Have a look at the element types in the XML map data below. Which of the following types do you see in the data?",
+                "answers": [
+                  {
+                    "id": "a1565115606905",
+                    "text": "node",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1565115715172",
+                    "text": "way",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1565115718561",
+                    "text": "relation",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 909606,
+              "key": "1ff7a1e4-1b7f-4426-9e08-16df41f8c4f7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "```\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<osm version=\"0.6\" generator=\"CGImap 0.0.2\">\n <bounds minlat=\"54.0889580\" minlon=\"12.2487570\" maxlat=\"54.0913900\" maxlon=\"12.2524800\"/>\n <node id=\"298884269\" lat=\"54.0901746\" lon=\"12.2482632\" user=\"SvenHRO\" uid=\"46882\" visible=\"true\" version=\"1\" changeset=\"676636\" timestamp=\"2008-09-21T21:37:45Z\"/>\n <node id=\"261728686\" lat=\"54.0906309\" lon=\"12.2441924\" user=\"PikoWinter\" uid=\"36744\" visible=\"true\" version=\"1\" changeset=\"323878\" timestamp=\"2008-05-03T13:39:23Z\"/>\n <node id=\"1831881213\" version=\"1\" changeset=\"12370172\" lat=\"54.0900666\" lon=\"12.2539381\" user=\"lafkor\" uid=\"75625\" visible=\"true\" timestamp=\"2012-07-20T09:43:19Z\">\n  <tag k=\"name\" v=\"Neu Broderstorf\"/>\n  <tag k=\"traffic_sign\" v=\"city_limit\"/>\n </node>\n ...\n <node id=\"298884272\" lat=\"54.0901447\" lon=\"12.2516513\" user=\"SvenHRO\" uid=\"46882\" visible=\"true\" version=\"1\" changeset=\"676636\" timestamp=\"2008-09-21T21:37:45Z\"/>\n <way id=\"26659127\" user=\"Masch\" uid=\"55988\" visible=\"true\" version=\"5\" changeset=\"4142606\" timestamp=\"2010-03-16T11:47:08Z\">\n  <nd ref=\"292403538\"/>\n  <nd ref=\"298884289\"/>\n  ...\n  <nd ref=\"261728686\"/>\n  <tag k=\"highway\" v=\"unclassified\"/>\n  <tag k=\"name\" v=\"Pastower Straße\"/>\n </way>\n <relation id=\"56688\" user=\"kmvar\" uid=\"56190\" visible=\"true\" version=\"28\" changeset=\"6947637\" timestamp=\"2011-01-12T14:23:49Z\">\n  <member type=\"node\" ref=\"294942404\" role=\"\"/>\n  ...\n  <member type=\"node\" ref=\"364933006\" role=\"\"/>\n  <member type=\"way\" ref=\"4579143\" role=\"\"/>\n  ...\n  <member type=\"node\" ref=\"249673494\" role=\"\"/>\n  <tag k=\"name\" v=\"Küstenbus Linie 123\"/>\n  <tag k=\"network\" v=\"VVW\"/>\n  <tag k=\"operator\" v=\"Regionalverkehr Küste\"/>\n  <tag k=\"ref\" v=\"123\"/>\n  <tag k=\"route\" v=\"bus\"/>\n  <tag k=\"type\" v=\"route\"/>\n </relation>\n ...\n</osm>\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 825553,
+              "key": "ead425d5-e992-401b-8a0d-90238531c6bf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Data Types Overview\n\nExcellent work in guessing the types present in the data above! If you look closely at the XML element types in the sample above, you should see the three element types which are important to the code you will be writing: Nodes, Ways, and Relations.\n\n### Node",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909611,
+              "key": "7e56e630-e6ee-49a1-b4f5-f22579c7671a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d51a982_node/node.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7e56e630-e6ee-49a1-b4f5-f22579c7671a",
+              "caption": "",
+              "alt": "Node icon",
+              "width": 100,
+              "height": 100,
+              "instructor_notes": null
+            },
+            {
+              "id": 909610,
+              "key": "54fa1b16-39f5-4768-ae10-acacaa3148df",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A [_node_](https://wiki.openstreetmap.org/wiki/Node) is one of the most basic elements in the OpenStreetMap data model. Each node indicates a single point with an identifier `id`, latitude `lat`, and longitude `lon`. There are other XML attributes in a node element that won't be relevant to this project, such as the `user` id and the `timestamp` when the node was added to the data set. Additionally, a node can have several tags which provide additional information.\n\n### Way",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909613,
+              "key": "d0d5bf49-d68e-4906-93cd-10550deda843",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d51aa3c_way/way.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d0d5bf49-d68e-4906-93cd-10550deda843",
+              "caption": "",
+              "alt": "Way icon",
+              "width": 100,
+              "height": 100,
+              "instructor_notes": null
+            },
+            {
+              "id": 909612,
+              "key": "f6c0e834-c92d-414a-8f4f-a018c423dc53",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A [_way_](https://wiki.openstreetmap.org/wiki/Way) is an ordered list of nodes that represents a feature in the map. This feature could be a road, or a boundary of a park, or some other feature in the map. Each way has at least one `tag` which denotes some information about the way, and each way also belongs to at least one relation, which is described below.\n\n### Relation",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909615,
+              "key": "33a1823a-1201-4b12-bddc-67a4199c8943",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d51aa87_relation/relation.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/33a1823a-1201-4b12-bddc-67a4199c8943",
+              "caption": "",
+              "alt": "Way icon",
+              "width": 100,
+              "height": 100,
+              "instructor_notes": null
+            },
+            {
+              "id": 909614,
+              "key": "6f306abe-223a-4bd5-8ff1-f2f3791217ca",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A [_relation_](https://wiki.openstreetmap.org/wiki/Relation) is a data structure which documents a relationship between other data elements. Examples from the [OpenStreetMap wiki](https://wiki.openstreetmap.org/wiki/Relation) include:\n>- A route relation which lists the ways that form a major highway, cycle route, or bus route.\n- A multipolygon that describes an area with holes, where the outer and inner boundaries of the area are given by two ways.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909616,
+              "key": "cc762ecb-dc3d-40c5-9c65-54cc23cbebc6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Example\n\nTo help you understand how all these types are used together, consider the following [example from the OpenStreetMap wiki](https://wiki.openstreetmap.org/wiki/Tag:waterway%3Driverbank) of mapping a large river with distinct banks on either side of the river. In the image below, nodes are used to provide the coordinates of points along the banks of the river. Multiple nodes are then connected using ways; there are ways which form closed sections of the river, labeled as \"Areas\" in the image below. Another way is used to represent the island in the middle of the river. These ways are then grouped together using a relation, which represents the entire river. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909617,
+              "key": "8a5bcc4a-cfc2-4960-851f-7803c741dfbd",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d51adfa_osm-river/osm-river.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8a5bcc4a-cfc2-4960-851f-7803c741dfbd",
+              "caption": "",
+              "alt": "",
+              "width": 704,
+              "height": 150,
+              "instructor_notes": null
+            },
+            {
+              "id": 909620,
+              "key": "2b835f29-377b-4c19-9156-0cc9ef4efebc",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "2b835f29-377b-4c19-9156-0cc9ef4efebc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Imagine you are going to create a bus route using OpenStreetMap data. Match the OpenStreetMap data type with the part of the bus route it represents."
+                },
+                "concepts_label": "Bus Route Part",
+                "answers_label": "OSM Data Type",
+                "concepts": [
+                  {
+                    "text": "A collection of points that form a road on the bus route",
+                    "correct_answer": {
+                      "id": "a1565636410630",
+                      "text": "Way"
+                    }
+                  },
+                  {
+                    "text": "A single point on the bus route",
+                    "correct_answer": {
+                      "id": "a1565636587820",
+                      "text": "Node"
+                    }
+                  },
+                  {
+                    "text": "A collection of roads the form the entire route",
+                    "correct_answer": {
+                      "id": "a1565636612297",
+                      "text": "Relation"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1565636587820",
+                    "text": "Node"
+                  },
+                  {
+                    "id": "a1565636612297",
+                    "text": "Relation"
+                  },
+                  {
+                    "id": "a1565636410630",
+                    "text": "Way"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 825812,
+              "key": "0efb2e03-f406-4a59-9010-81bb5398a897",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Up Next\n\nFor your project, you will primarily be working with Nodes, although the code that we provide determines which nodes are neighbors by using the ways and relations those nodes belong to. \n\nBoth the code to parse the OSM data and the data structures which are used to store the data in your program have already been written in the [IO2D OpenStreetMap example](https://github.com/cpp-io2d/P0267_RefImpl/tree/master/P0267_RefImpl/Samples/maps). In your project, you won't need to recreate any of this code - you task will be writing code that extends the code in order to plot a path between two points. \n\nUp next, you will learn how to build, run, and test the project code. After that, we'll have an in-depth look at the files in the project starter code so you will be prepared to work on your project.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 907079,
+          "key": "774c60a7-bd48-499b-aa48-afbb771faf92",
+          "title": "Building and Running",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "774c60a7-bd48-499b-aa48-afbb771faf92",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 907090,
+              "key": "0c810f61-dbb6-4dbe-83f5-a1e3dd550d43",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Building and Running",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907089,
+              "key": "7f65eee8-bb0b-4a4a-a2a9-b1e252a1ae0d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "To get started with your project, you can download the code from the GitHub repo [here](https://github.com/udacity/CppND-Route-Planning-Project), or you can use the workspace provided below. If you decide to work on this project on your local machine, you will need to install the dependencies outlined in the GitHub [README](https://github.com/udacity/CppND-Route-Planning-Project/blob/master/README.md) for the project.\n\nIn this classroom concept, you will see the instructions for building, running, and testing your project. In the next classroom concept, you will see a detailed overview of the project code, so you'll be well prepared to start work on the project.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909635,
+              "key": "da928da6-cb49-4c43-b16f-e49341ecb1f0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Building\n\nThis project will use CMake as the build system. Building the project code can be done from the terminal workspace or from the virtual desktop workspace. It is also possible to build this project locally. To do this, you will need to install the project dependencies in your local environment, including the IO2D library, which can be difficult. The complete list of dependencies can be found in the [GitHub README](https://github.com/udacity/CppND-Route-Planning-Project/blob/master/README.md) for the project.\n\n#### Building Using Udacity Workspaces\n\n** To build the code from the terminal workspace, GPU must be enabled**. If using the virtual desktop, **you will want to use a terminal from within VS Code**, as the correct compiler options have been set up in the VS Code preferences. See the video below for a walkthrough of how to do this.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909636,
+              "key": "3fe7ca22-cc72-4d99-bc3c-b3fadd1a67af",
+              "title": "Project Build",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WURLUIt8Q9Q",
+                "china_cdn_id": "WURLUIt8Q9Q.mp4"
+              }
+            },
+            {
+              "id": 909641,
+              "key": "63f986a9-8fd2-4590-ac2b-50c222e950a6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " The video above demonstrates building the project in the virtual desktop. To follow along, be sure to click on the \"Desktop\" button in your workspace to open a virtual desktop window: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907086,
+              "key": "83bbcb0a-45fb-4091-9ec3-74ec3adc24d9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c670bb6_desktop-button-2/desktop-button-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/83bbcb0a-45fb-4091-9ec3-74ec3adc24d9",
+              "caption": "",
+              "alt": "",
+              "width": 604,
+              "height": 213,
+              "instructor_notes": null
+            },
+            {
+              "id": 909640,
+              "key": "2ecacabb-b5e5-4107-b306-40dcaa15e71f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the workspace desktop, you can open Visual Studio Code and a terminal within Visual Studio. To build the code, make a `build` directory and then `cd` into that directory. From within the `build` directory, you can then run the following commands to compile:\n```\ncmake ..\nmake\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907085,
+              "key": "786570ce-2d67-4fcd-90d9-f5765f7422ce",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Running\n\nOnce the build is complete, the executable binary files will be in the `build` folder of the project, and the project will be ready to run. \n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909639,
+              "key": "bb530996-7091-403f-aabc-50dcceb9aeca",
+              "title": "Run",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "e77EWSxUOUs",
+                "china_cdn_id": "e77EWSxUOUs.mp4"
+              }
+            },
+            {
+              "id": 907087,
+              "key": "3e45df6f-e0aa-48b5-85cb-2a648017c94f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Running the project must be done from the workspace desktop in order for you to be able to see the mapped output. In the terminal, navigate to the build folder. From the `build` directory, you can run the compiled executable with map data using the following command:\n```\n./OSM_A_star_search\n```\nOr to specify a map file:\n```\n./OSM_A_star_search -f ../<your_osm_file.osm>\n```\nWhen you run the project for the first time, you should see a blank map like the one below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907093,
+              "key": "0e960c92-1220-4577-881a-d72f4f57df16",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d437998_new-map/new-map.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0e960c92-1220-4577-881a-d72f4f57df16",
+              "caption": "When running the project code for the first time, you should see a map like the one above.",
+              "alt": "",
+              "width": 551,
+              "height": 508,
+              "instructor_notes": null
+            },
+            {
+              "id": 907100,
+              "key": "5665d7e7-67c9-4810-a505-40d7520dab9d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Workspace",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907098,
+              "key": "21a26194-2fd6-4fb0-98ad-d148127a88c8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Be sure to try this yourself in the workspace below or locally on your own machine!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907099,
+              "key": "613f3bb5-44ab-473f-b2cd-c849995b60a9",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r845225c907079xREACTaj99nmrb",
+              "pool_id": "autonomouscpu",
+              "view_id": "react-ozok4",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "export CXX=g++-7\nexport CXXFLAGS=-std=c++17",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "terminalTitle": "BASH",
+                    "actionButtonText": "Dekstop",
+                    "openTerminalOnStartup": true
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 907101,
+              "key": "fc2c062a-f2f9-431c-a499-b71d7ae64e19",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "fc2c062a-f2f9-431c-a499-b71d7ae64e19",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I have run the project using the workspace above, or I have downloaded the GitHub repo, installed the dependencies, and run the project locally"
+              ],
+              "positive_feedback": "Great work! You can now try running the tests for the project in the next concept.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 907095,
+          "key": "e78c8d6b-811b-42b3-b172-0e5d8d15ff81",
+          "title": "Testing",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e78c8d6b-811b-42b3-b172-0e5d8d15ff81",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 907096,
+              "key": "91dd3311-9fa4-4791-96fe-f01ad62ea6da",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Testing",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909642,
+              "key": "1bcabacb-ca8a-4c7e-9628-2b67d59b8c4c",
+              "title": "Test",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "P0gUkqjnR5o",
+                "china_cdn_id": "P0gUkqjnR5o.mp4"
+              }
+            },
+            {
+              "id": 907097,
+              "key": "7d94eda0-6ec7-4011-b82d-32634f90f0db",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Your project is supplied with unit tests that you can use to ensure that you are on the right track. When you complete the project, the unit tests should all pass. The tests are located in the `<PROJECT_DIRECTORY>/test/utest_rp_a_star_search.cpp` file, and you can view the tests to help you as you write your code.\n\nAfter you compile the project, the testing executable is placed in the `build` directory along with the project executable. You can run the tests from the `build` directory as follows:\n```\n./test\n```\nThe initial output of your tests should look something like the following:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907102,
+              "key": "552f664c-d3ea-4464-90bb-a0f96c31305b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d4386c6_tests/tests.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/552f664c-d3ea-4464-90bb-a0f96c31305b",
+              "caption": "",
+              "alt": "",
+              "width": 2048,
+              "height": 1430,
+              "instructor_notes": null
+            },
+            {
+              "id": 907106,
+              "key": "8158777b-5b97-4986-b310-499ef7c13567",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When you have completed the project, the tests should look like the following:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907107,
+              "key": "9eecc070-219d-4fe2-8dad-b813e4610d42",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d438969_passed/passed.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/9eecc070-219d-4fe2-8dad-b813e4610d42",
+              "caption": "",
+              "alt": "",
+              "width": 2068,
+              "height": 936,
+              "instructor_notes": null
+            },
+            {
+              "id": 907103,
+              "key": "556dddfb-b703-4204-a470-216cedc9018d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Workspace",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907104,
+              "key": "f45bff38-bf28-4863-8670-7c161aa3ce7b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r845225c907079xREACTaj99nmrb",
+              "pool_id": "autonomouscpu",
+              "view_id": "react-5ivmd",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "export CXX=g++-7\nexport CXXFLAGS=-std=c++17",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "terminalTitle": "BASH",
+                    "actionButtonText": "Dekstop",
+                    "openTerminalOnStartup": true
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 907105,
+              "key": "9a69eb19-82a6-438f-bf0d-48ee5a49c14a",
+              "title": "",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9a69eb19-82a6-438f-bf0d-48ee5a49c14a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "After building the project, I have run the project tests using the workspace above or on my local machine."
+              ],
+              "positive_feedback": "Great work! in the next concept, we'll start look at the structure of the project code.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 907077,
+          "key": "77981727-ea35-4c14-8e08-a13b3497e4f7",
+          "title": "Project Code Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "77981727-ea35-4c14-8e08-a13b3497e4f7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 907078,
+              "key": "87abe760-d695-4100-99fb-f005970fdd69",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Code Overview\nNow that you are able to build, run, and test the project starter code, you are ready to have a closer look at the code and its structure.\n\nWe've modified the IO2D example code slightly to help you get started with the project. In particular, we included some classes that will help you extend the existing code, and we added a few short plotting functions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909760,
+              "key": "d1a2535e-e2d4-4886-b264-5430a8698385",
+              "title": "Code Structure Re-Edit",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-orQxTCLOuw",
+                "china_cdn_id": "-orQxTCLOuw.mp4"
+              }
+            },
+            {
+              "id": 907080,
+              "key": "03831f29-7367-4a8d-b8ca-95cf49365101",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d4373ed_lesson-diagrams/lesson-diagrams.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/03831f29-7367-4a8d-b8ca-95cf49365101",
+              "caption": "This diagram shows the overall class structure for the project. See the video for more details.",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 909624,
+          "key": "a11303e4-f96d-4e7b-9e76-6863621194b4",
+          "title": "Project Starter Repository",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a11303e4-f96d-4e7b-9e76-6863621194b4",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 909643,
+              "key": "0b891f12-b816-4b31-84a8-a745b4c4c336",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Starter Repository",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909645,
+              "key": "83edaff5-8a61-4f6e-9560-f2165ea479b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the next video, we'll discuss some of the files and directories you'll find in the top level of the Route Planning starter repo.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909644,
+              "key": "be866905-16fa-4487-a120-0380d2effc9d",
+              "title": "Top Level",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "GNXp-PLjKbE",
+                "china_cdn_id": "GNXp-PLjKbE.mp4"
+              }
+            },
+            {
+              "id": 909646,
+              "key": "27ead279-0271-46c7-b48b-b3d549e8c937",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The starter code for the project can be found [here](https://github.com/udacity/CppND-Route-Planning-Project). This code is already loaded into a workspace, and you are not required to download or run the code locally to do the project. However, it may be a good idea to open the repository in a different tab or download the code so you can follow along as you watch the video above or read through the descriptions below. In the repo, you should see the following four directories:\n\n- **`cmake` **\n\n  This directory contains some `.cmake` files that are needed for the project to find necessary libraries. You will not need to work with this directory for this project.\n\n\n- **`src`** \n\n  The source code for the project is contained here, and this is where you will be doing all of the project work. See the next classroom concepts more information about the contents of this directory.\n\n\n- **`test`**\n\n  This directory contains unit tests for various exercises, implemented using the Google Test framework. As you are developing your code, _it may be helpful to look at the relevant tests in this directory to see the expected results and corresponding code_. The code written here can be used to understand how different classes and objects in your work. If your code fails a test, the console message will indicate which is the failing test.\n\n\n- **`thirdparty`**\n\n  This directory contains third party libraries that have been included with this project. You will not need to work directly with this code.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 909651,
+          "key": "8b12d38f-8f5c-40fb-8a56-06afa62441a7",
+          "title": "The src Directory",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8b12d38f-8f5c-40fb-8a56-06afa62441a7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 909653,
+              "key": "416764fe-64dc-42f8-bd67-3db380e58438",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# The `src` Directory",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909656,
+              "key": "4c8d8969-acd3-4c5f-ad44-dec0f89ecf4c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The `src` directory contains the following files:\n\n- `main.cpp`\n- `model.h` and `model.cpp`\n- `render.h `and `render.cpp`\n- `route_model.h` and `route_model.cpp\n- `route_planner.h` and `route_planner.cpp\n\nYou will be writing all of your code in `main.cpp`and `route_planner.cpp`, so we will cover those files first.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909847,
+              "key": "368f34e2-021d-4549-a300-6a643c4509c3",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d4373ed_lesson-diagrams/lesson-diagrams.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/368f34e2-021d-4549-a300-6a643c4509c3",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 909655,
+              "key": "5cc94b58-556f-4d93-8066-6af566e36a94",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "&nbsp;\n&nbsp;\n\n## main.cpp\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909652,
+              "key": "3142f5ca-b6c7-4222-858d-e89e5f87f798",
+              "title": "Main",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3cpzSaLqyVs",
+                "china_cdn_id": "3cpzSaLqyVs.mp4"
+              }
+            },
+            {
+              "id": 909654,
+              "key": "763278ce-1fd4-499f-846d-6ea62e25be46",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The `main.cpp` controls the flow of the program, accomplishing four primary tasks:\n- The OSM data is read into the program. \n- A `RouteModel` object is created to store the OSM data in usable data structures.\n- A `RoutePlanner` object is created using the `RouteModel`. This planner will eventually carry out the A\\* search on the model data and store the search results in the `RouteModel`.\n- The `RouteModel` data is rendered using the IO2D library.\n\nYour first task is to complete **TODO** in `main.cpp`.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909657,
+              "key": "95dfec54-ef7d-4d3f-be3d-df3b23b0ed50",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "----\n\n&nbsp;\n\n&nbsp;\n\n## route_planner.h and route_planner.cpp",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909658,
+              "key": "218f9b82-b8a5-441a-861b-5007a775aef7",
+              "title": "Rp Full",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "C79dfjxHruo",
+                "china_cdn_id": "C79dfjxHruo.mp4"
+              }
+            },
+            {
+              "id": 909659,
+              "key": "1c93a1fd-ad3c-41e1-83e4-67b32944cbf0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "These files define the `RoutePlanner` class and methods for the A\\* search . Your task is to implement the A\\* search by completing all of the **TODOs** in `route_planner.cpp`.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 909660,
+          "key": "c10e8b06-d2fc-412a-96d0-25539af09c2f",
+          "title": "The src Directory Additional Files",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c10e8b06-d2fc-412a-96d0-25539af09c2f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 909661,
+              "key": "0c6ef7c7-2515-41df-8182-c65c48664d47",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# The src Directory Additional Files",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909662,
+              "key": "6c706c01-0a13-4bba-aa4e-cb8d509bbfcb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You will not need to write code in the following files:\n\n- `model.h` and `model.cpp`\n- `render.h `and `render.cpp`\n- `route_model.h` and `route_model.cpp`\n\nThe videos below are included to give you a better understanding of the code in those files. We will not cover `model.cpp` or `render.cpp`, as these are beyond the scope of the first course in this Nanodegree. However, we will walk through the header files for these two files, which will provide an overview of the corresponding classes and methods.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909848,
+              "key": "d994b728-7a7d-458d-a32f-67bdf93d1994",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/August/5d4373ed_lesson-diagrams/lesson-diagrams.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/d994b728-7a7d-458d-a32f-67bdf93d1994",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            },
+            {
+              "id": 909750,
+              "key": "b0ad7e83-6d4d-48b9-8af8-9ce38c422a57",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "&nbsp;\n\n&nbsp;\n\n## model.h",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909752,
+              "key": "a36148e5-18d5-4ad7-8e46-9960e0753bdc",
+              "title": "Model H Take 2",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "EXCq7OTqrkI",
+                "china_cdn_id": "EXCq7OTqrkI.mp4"
+              }
+            },
+            {
+              "id": 909753,
+              "key": "1a70ff16-a22d-4720-829d-1d141a939edf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The `model.h` and `model.cpp` files come from the IO2D example code. We provide an overview of only the `model.h` file, as the method implementations in `model.cpp` file are beyond the scope of the course.  \n\nThese files are used to define the data structures and methods that read in and store OSM data. OSM data is stored in a `Model` class which contains nested structs for Nodes, Ways, Roads, and other OSM objects. Have a look at the video above for an overview of the code in the header file.\n\n---\n\n&nbsp;\n\n&nbsp;\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909663,
+              "key": "33c66345-f973-4895-847a-ffc59fb48636",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## route_model.h and route_model.cpp",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909664,
+              "key": "b7d5097b-4cba-4290-a1e5-2493be97ecb5",
+              "title": "Rm Full",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "HqL3a6T8mLg",
+                "china_cdn_id": "HqL3a6T8mLg.mp4"
+              }
+            },
+            {
+              "id": 909749,
+              "key": "e21c621f-ab26-4e7a-9e9a-09ff0f841b02",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "These files contain classes which are used to extend the `Model` and `Node` data structures from `model.h` and `model.cpp` using class inheritance.  Remember that inheritance in this case will allow you to use all of the _public_ methods and attributes of the `Model` class and `Node` struct in the derived `RouteModel` and `RouteModel::Node` classes.\n\nThe reason for extending the existing `Model` class and `Node` struct is to include additional methods and variables which are useful for A\\* search. In particular, the new `RouteModel::Node` class now allows nodes to store the following:\n- the h-value,\n- the g-value,\n- a \"visited\" flag,\n- a vector of pointers to neighboring nodes.\n\nIn addition, there are now methods for\n- finding neighboring Node objects of a Node,\n- getting the distance to other nodes,\n- finding the closest node to a given (x, y) coordinate pair.\n\n---\n\n&nbsp;\n\n&nbsp;\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909754,
+              "key": "47b77e0f-c8c4-4a1d-96d6-7b7949502fe5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## render.h",
+              "instructor_notes": ""
+            },
+            {
+              "id": 909755,
+              "key": "89887764-aedb-4830-b4b9-682e54a55629",
+              "title": "Render H",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "p_aqFUIIod0",
+                "china_cdn_id": "p_aqFUIIod0.mp4"
+              }
+            },
+            {
+              "id": 909756,
+              "key": "3ea74f82-1b5a-4e7e-af97-dd41ef322b5a",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The `render.h` and `render.cpp` files come from the IO2D example code. These take map data that is stored in a `Model` object and render that data as a map. We have modified these files slightly to include three extra methods which render the start point, end point, and path from the A\\* search. You won't need to work with these files directly, but you can watch the video above for a brief overview of the header file code.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 909761,
+          "key": "fce28981-9d1d-40cc-a056-8f380a233d2a",
+          "title": "Steps to Complete the Project",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "fce28981-9d1d-40cc-a056-8f380a233d2a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 909765,
+              "key": "b11ae6be-120e-44ae-8634-a6cc7749e402",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Steps to Complete the Project\n\n## Completing the Project\n\nTo complete this project you will need to:\n\n1. Complete the **TODO** in `main.cpp`\n2. Complete the **TODO**s in `route_planner.cpp`\n3. Check that all tests are passed when you run the `test` executable in your `build` directory.\n4. Check that you have satisfied all of the criteria in the [project rubric](https://review.udacity.com/#!/rubrics/2494/view). If you feel like all the criteria from the rubric are met, you are ready to submit!\n\n## Submitting the Project\n\nYou can submit your project using the \"SUBMIT PROJECT\" button in the terminal in the next classroom concept.\n\nThis project can only be submitted through the workspace in the next concept. This is done to ensure that you are able to test your code in an environment similar to what reviewers will use. \n\nIf you have developed your project locally, you can upload the project directory to the workspace for submission. Similarly, if you have your code in Github, you can clone your project into the workspace for submission.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 907108,
+          "key": "5d7fbace-572e-44b4-a732-60b24a83215a",
+          "title": "Project Submission and Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5d7fbace-572e-44b4-a732-60b24a83215a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 907109,
+              "key": "76660905-06e8-42d9-b1c4-acbf101cfe94",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Project Workspace",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907110,
+              "key": "b7611733-e2bb-4a34-ae1f-6b49cb9cd625",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Below is the workspace that you have used in the **Building and Running** and ** Testing** concepts. You can use this workspace to work on the project and submit your solution.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 907111,
+              "key": "b00cc98a-fe39-4d61-88b7-248fb0f67d25",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r845225c907079xREACTaj99nmrb",
+              "pool_id": "autonomouscpu",
+              "view_id": "react-trgfj",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "export CXX=g++-7\nexport CXXFLAGS=-std=c++17",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": true,
+                    "terminalTitle": "BASH",
+                    "actionButtonText": "Desktop",
+                    "openTerminalOnStartup": true
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

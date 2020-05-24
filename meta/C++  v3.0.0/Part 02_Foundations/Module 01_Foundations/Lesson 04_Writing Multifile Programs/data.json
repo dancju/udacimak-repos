@@ -1,0 +1,989 @@
+{
+  "data": {
+    "lesson": {
+      "id": 810197,
+      "key": "a72bf7f4-3962-4907-a7b7-5002251dfc5e",
+      "title": "Writing Multifile Programs",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson, you will learn the syntax for C++ language features that you will need for the next steps in the course. This includes an overview of header files, pointers, build tools, and classes.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/a72bf7f4-3962-4907-a7b7-5002251dfc5e/810197/1581974643393/Writing+Multifile+Programs+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/a72bf7f4-3962-4907-a7b7-5002251dfc5e/810197/1581974641403/Writing+Multifile+Programs+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 810198,
+          "key": "3e50f7c1-d078-4ab7-a7e2-f4cb850779de",
+          "title": "Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3e50f7c1-d078-4ab7-a7e2-f4cb850779de",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 830928,
+              "key": "12553747-92e4-4f2a-823c-4a09ebd9f538",
+              "title": "C++ND C1 L04 Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "2vJtny9S_LM",
+                "china_cdn_id": "2vJtny9S_LM.mp4"
+              }
+            },
+            {
+              "id": 929938,
+              "key": "16e748ce-e62e-419a-96cb-0ae8aa2ac574",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Outline",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929939,
+              "key": "5469b790-6889-49cf-871a-05354d375b0f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d72dd2d_l4-intro/l4-intro.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5469b790-6889-49cf-871a-05354d375b0f",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        },
+        {
+          "id": 826875,
+          "key": "9f4c1d73-2bc5-4b68-8b20-1d314579824a",
+          "title": "Header Files",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9f4c1d73-2bc5-4b68-8b20-1d314579824a",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 830951,
+              "key": "dfc19cc2-4c5e-49da-ad40-55ee1b577d77",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Header Files",
+              "instructor_notes": ""
+            },
+            {
+              "id": 830952,
+              "key": "6512f41d-64cf-4e17-8c90-2011ebbf0391",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6dea9e_header-file/header-file.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6512f41d-64cf-4e17-8c90-2011ebbf0391",
+              "caption": "",
+              "alt": "",
+              "width": 200,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 830956,
+              "key": "51bce14f-750a-4c6c-adce-94e817c4d494",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Header files, or `.h` files, allow related function, method, and class declarations to be collected in one place. The corresponding definitions can then be placed in `.cpp` files. The compiler considers a header declaration a \"promise\" that the definition will be found later in the code, so if the compiler reaches a function that hasn't been defined yet, it can continue on compiling until the definition is found. This allows functions to be defined (and declared) in arbitrary order.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 830955,
+              "key": "c43c79e1-b9df-47b9-b98d-19074040ceff",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r780803c809478xJUPYTERw1unvo08",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-sma85",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Header%20Files.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 830953,
+          "key": "ed5a2a91-1d50-48f0-9220-73c0f7cfe0e5",
+          "title": "Using Headers with Multiple Files",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ed5a2a91-1d50-48f0-9220-73c0f7cfe0e5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 831059,
+              "key": "df62f45d-d429-48e7-9169-c027274271f8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Using Headers with Multiple Files",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831086,
+              "key": "ffd3e285-1e26-4111-a75e-708460b051b5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6f0084_c-and-h-2/c-and-h-2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/ffd3e285-1e26-4111-a75e-708460b051b5",
+              "caption": "",
+              "alt": "",
+              "width": 4800,
+              "height": 1200,
+              "instructor_notes": null
+            },
+            {
+              "id": 831064,
+              "key": "3c0c3553-0d42-419b-85c9-5127f0965bd5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the previous concept, you saw how header files could be useful for separating definitions from declarations, so that you don't need to be too careful about the order in which functions are defined. Using header files is typically the first step in creating a multi-file program. In this concept, you will learn about using multiple `.cpp` and `.h` files in a program - how to compile all the files together, and how to ensure the code from one file can be used in another.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831069,
+              "key": "f47304ca-642c-4362-9f6a-addb1c080438",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r780803c809478xJUPYTERw1unvo08",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-ef296",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Using%20Headers%20with%20Multiple%20Files.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 845259,
+          "key": "004b46ec-57a9-4947-b8ba-db331ea87d7e",
+          "title": "Bjarne on Build Systems",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "004b46ec-57a9-4947-b8ba-db331ea87d7e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 845261,
+              "key": "779e614d-092d-4f0d-986b-120e1e9fe1ad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Bjarne on Build Systems",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845260,
+              "key": "e40173f2-acb8-482e-a7c6-c4a0dae66651",
+              "title": "ND213 C01 Testing What Do You Think Of The Build Process- How Do You Build-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Wn1KTnVi7Fw",
+                "china_cdn_id": "Wn1KTnVi7Fw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 851071,
+          "key": "8f4e78d4-02b1-4b19-aa29-b3c82e246f34",
+          "title": "CMake and Make",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8f4e78d4-02b1-4b19-aa29-b3c82e246f34",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 851074,
+              "key": "6117bd15-f8a0-4497-bd3a-8b1ee20b3f9b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r845225c851071xJUPYTERL9sbdfdsf",
+              "pool_id": "jupyterlab",
+              "view_id": "jupyter-lab-86c7m",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 830964,
+          "key": "d45fb6ac-a2d5-4ab8-bdb3-b063c1dcd150",
+          "title": "References",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d45fb6ac-a2d5-4ab8-bdb3-b063c1dcd150",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 830965,
+              "key": "d7b4b8ac-6906-42b8-b29f-4dc368a73210",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# References",
+              "instructor_notes": ""
+            },
+            {
+              "id": 830966,
+              "key": "52670b4c-0b01-4ec1-b6b7-06905faabb6b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You have seen references used previously, in both pass-by-reference for functions, and in a range-based`for` loop example that used references to modify a vector. As you write larger C++  programs, you will find references useful in a variety of situations. In this short notebook, you will see a few more examples of references to solidify your knowledge.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 830967,
+              "key": "424d3858-3ba0-4301-81a1-e70cad97182a",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r780803c809478xJUPYTERw1unvo08",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-mr8vy",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/References.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 826774,
+          "key": "f935d281-5bfa-4615-9626-39fa4aa990c5",
+          "title": "Pointers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f935d281-5bfa-4615-9626-39fa4aa990c5",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 830961,
+              "key": "e709c437-a55f-4906-8c07-2337aef0876b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Pointers",
+              "instructor_notes": ""
+            },
+            {
+              "id": 830963,
+              "key": "7b3fa30e-b5ff-4975-bce3-221a1f31e3fa",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6dfebb_pointer/pointer.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/7b3fa30e-b5ff-4975-bce3-221a1f31e3fa",
+              "caption": "",
+              "alt": "",
+              "width": 200,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 830962,
+              "key": "76a9ffa4-bc48-4d98-ab8c-0453e270cd3c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Pointers have traditionally been a stumbling block for many students learning C++, but they do not need to be! \n>_A C++ pointer is just a variable that stores the memory address of an object in your program._\n\nThat is the most important thing to understand and remember about pointers - they essentially keep track of _where_ a variable is stored in the computer's memory. \n\nIn the previous lessons, you implemented A\\* search in a single file without using C++ pointers, except in `CellSort` code that was provided for you; a C++ program can be written without using pointers extensively (or at all). However, pointers give you better control over how your program uses memory. However, much like the pass-by-reference example that you saw previously, it can often be far more efficient to perform an operation with a pointer to an object than performing the same operation using the object itself.\n\nPointers are an extremely important part of the C++ language, and as you are exposed to more C++ code, you will certainly encounter them. In this notebook, you will become familiar with basic pointers so you get comfortable with the syntax, and you will be ready to use them in the course project code.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 827525,
+              "key": "27be70dd-aaff-4ae3-9a40-7318c007b88b",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r780803c809478xJUPYTERw1unvo08",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-zgc3b",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Pointers.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 840513,
+          "key": "6ca02b0a-97ce-4d20-bb26-71aeb2bbd593",
+          "title": "Pointers Continued",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6ca02b0a-97ce-4d20-bb26-71aeb2bbd593",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840527,
+              "key": "c18197c5-2941-4ffb-90af-21f7985473e9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Pointers Continued",
+              "instructor_notes": ""
+            },
+            {
+              "id": 840519,
+              "key": "e674b7ee-c4d0-40c5-8a7d-f0c69f1140e1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6dfebb_pointer/pointer.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e674b7ee-c4d0-40c5-8a7d-f0c69f1140e1",
+              "caption": "",
+              "alt": "",
+              "width": 200,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 840518,
+              "key": "8a3a68bb-08dc-4c68-a881-bd6454c04250",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the previous concept, you were introduced to `int` pointers, and you learned the syntax for creating a pointer and retrieving an object from a pointer.\n\nIn the notebook below, you will see how to create pointers to other object types, and you will learn about how to use pointers with functions.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 840514,
+              "key": "e7189dad-8ffd-45ff-8ec4-f30e676a29d7",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r780803c809478xJUPYTERw1unvo08",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-d8py1",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Pointers%20Continued.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 850789,
+          "key": "33b7ff3c-7fd9-44aa-a619-64046707e2f3",
+          "title": "Bjarne on pointers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "33b7ff3c-7fd9-44aa-a619-64046707e2f3",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850790,
+              "key": "dde7610b-98c8-450c-a9d0-80e2210c98b0",
+              "title": "ND213 C03 Pointers What Is A Pointer",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wBJc9szaiJ8",
+                "china_cdn_id": "wBJc9szaiJ8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 840515,
+          "key": "5cfacbb7-8e28-42e9-a9da-da22406ff071",
+          "title": "References vs Pointers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5cfacbb7-8e28-42e9-a9da-da22406ff071",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840516,
+              "key": "86e8ac72-4172-44cb-b7c5-95b7092ae87d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## References vs Pointers\n\nPointers and references can have similar use cases in C++. As seen previously both references and pointers can be used in pass-by-reference to a function. Additionally, they both provide an alternative way to access an existing variable: pointers through the variable's address, and references through another name for that variable. But what are the differences between the two, and when should each be used? The following list summarizes some of the differences between pointers and references, as well as when each should be used:\n\n| References                                                                                                                                          | Pointers                                                                                                                                                                                                                                                                                             |\n|-----------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| References must be initialized when they are declared. This means that a reference will always point to data that was intentionally assigned to it. | Pointers can be declared without being initialized, which is dangerous. If this happens mistakenly, the pointer could be pointing to an arbitrary address in memory, and the data associated with that address could be meaningless, leading to undefined behavior and difficult-to-resolve bugs. |\n| References can not be null. This means that a reference should point to meaningful data in the program.                                             | Pointers can be null. In fact, if a pointer is not initialized immediately, it is often best practice to initialize to `nullptr`, a special type which indicates that the pointer is null.                                                                                                           |\n| When used in a function for pass-by-reference, the reference can be used just as a variable of the same type would be.                              | When used in a function for pass-by-reference, a pointer must be dereferenced in order to access the underlying object.                                                                                                                                                                              |\n|                                                                                                                                                     |                                                                                                                                                                                                                                                                                                      |\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 840517,
+              "key": "3968ddf3-e846-49bd-a195-2c2e95accc5d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "References are generally easier and safer than pointers. As a decent rule of thumb, references should be used in place of pointers when possible. \n\nHowever, there are times when it is not possible to use references. One example is object initialization. You might like one object to store a reference to another object. However, if the other object is not yet available when the first object is created, then the first object will need to use a pointer, not a reference, since a reference cannot be null. The reference could only be initialized once the other object is created.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 850791,
+          "key": "e56e15c9-9fda-43f8-93ae-9b43fd540b7b",
+          "title": "Bjarne on References",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e56e15c9-9fda-43f8-93ae-9b43fd540b7b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850795,
+              "key": "1a344965-31c2-4873-aad3-5198b20b47fb",
+              "title": "ND213 C03 References What'S A Refrence--",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3fSSyJZI3y4",
+                "china_cdn_id": "3fSSyJZI3y4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 831192,
+          "key": "907b1ed1-7936-4f3e-b9c0-2560ce93526d",
+          "title": "Maps",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "907b1ed1-7936-4f3e-b9c0-2560ce93526d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 831224,
+              "key": "e7b08567-39df-4db6-872b-bc0b42102825",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Maps",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831234,
+              "key": "461d22d2-cf7b-4280-a255-8219b9894b63",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c704d34_dictionary/dictionary.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/461d22d2-cf7b-4280-a255-8219b9894b63",
+              "caption": "",
+              "alt": "",
+              "width": 200,
+              "height": 200,
+              "instructor_notes": null
+            },
+            {
+              "id": 831225,
+              "key": "4334b8a6-faa7-4793-8827-2ff03a3a4e3b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "So far in this course you have seen container data structures, like the `vector` and the `array`. Additionally, you have used classes in your code for this project. Container data structures are fantastic for storing ordered data, and classes are useful for grouping related data and functions together, but neither of these data structures is optimal for storing associated data.\n\n## Dictionary Example\nA map (alternatively [hash table](https://en.wikipedia.org/wiki/Hash_table), hash map, or dictionary) is a data structure that uses _key/value_ pairs to store data, and provides efficient lookup and insertion of the data. The name \"dictionary\" should provide an excellent idea of how these work, since a dictionary is a real life example of a map. Here is a slightly edited entry from [www.dictionary.com](https://www.dictionary.com/browse/word?s=t) defining the word \"word\":\n\n\n> word\n- a unit of language, consisting of one or more spoken sounds or their written representation, that functions as a principal carrier of meaning. \n- speech or talk: to express one's emotion in words.\n- a short talk or conversation: \"Marston, I'd like a word with you.\"\n>- an expression or utterance: a word of warning.\n\n## Data Representation\nIf you were to store this data in your program, you would probably want to be able to quickly look up the definitions using the _key_ \"word\". With a map, a vector of definitions could be stored as the _value_ corresponding to the \"word\" key: \n\n| Key `string` | Value `vector<string>`                                                                                                                                                                                                                                                                                                              |\n|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| `\"word\"`       | `<\"a unit of language, consisting of one or more spoken sounds or their written representation, that functions as a principal carrier of meaning.\",  \"speech or talk: to express one's emotion in words.\", \"a short talk or conversation: 'Marston, I'd like a word with you.'\", \"an expression or utterance: a word of warning.\">'`|\n\nIn the following notebook, you will learn how to use an `unordered_map`, which is the C++ standard library implementation of a map. Although C++ has several different implementations of map data structures which are similar, `unordered_map` is the structure that you will use in your project.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831235,
+              "key": "c896d76c-35b3-4c15-88c3-5b8aa5636cca",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r780803c809478xJUPYTERw1unvo08",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-3opy3",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Hash%20Tables.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 830949,
+          "key": "f5380e9b-facd-4468-a659-4d62b24d40e2",
+          "title": "Classes and Object-Oriented Programming",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f5380e9b-facd-4468-a659-4d62b24d40e2",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 831152,
+              "key": "c15196d2-d1aa-48f2-8788-dafc58cb6129",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Classes and Object-Oriented Programming",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831155,
+              "key": "45eeb591-e6bb-4f0d-88f4-56a05cf41a9c",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6f2d05_object/object.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/45eeb591-e6bb-4f0d-88f4-56a05cf41a9c",
+              "caption": "",
+              "alt": "",
+              "width": 3600,
+              "height": 1200,
+              "instructor_notes": null
+            },
+            {
+              "id": 831153,
+              "key": "bca7b401-8841-4b10-b04f-af5277213a45",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "If you are taking this course, you have probably used object-oriented programming (OOP) previously in another language. If it's been a while since you've used OOP, OOP is a style of coding that collects related data (object _attributes_) and functions (object _methods_) together to form a single data structure, called an _object_. This allows that collection of attributes and methods to be used repeatedly in your program without code repetition.\n\nIn C++ the attributes and methods that make up an object are specified in a code _class_, and each object in the program is an _instance_ of that class. \n\nThis concept is intended to provide you with the basic syntax for writing classes in C++. In this Foundations course, you will not need to write your own classes for the project, but you will be modifying existing classes in the code. You will be writing your own classes in the next course of this Nanodegree: Object-Oriented Programming.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 831163,
+              "key": "5f1fcc92-c155-4d2a-97d5-65c1a88d5981",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r780803c809478xJUPYTERw1unvo08",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-vyoxh",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Classes%20and%20Object-Oriented%20Programming.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 831937,
+              "key": "c7095fa9-9542-4cd3-a4fb-4809d99a51fe",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Inheritance\n\nIt is possible for a class to use methods and attributes from another class using class _inheritance_. For example, if you wanted to make a `Sedan` class with additional attributes or methods not found in the generic `Car` class, you could create a `Sedan` class that inherited from the `Car` by using the colon notation:\n```cpp\nclass Sedan : public Car {\n    // Sedan class declarations/definitions here.\n};\n```\n\nBy doing this, each `Sedan` class instance will have access to any of the _public_ methods and attributes of `Car`. In the code above, these are`IncrementDistance()` and `PrintCarData()`. You can add additional features to the `Sedan` class as well. In the example above, `Car` is often referred to as the _parent_ class, and `Sedan` as the _child_ or _derived_ class.\n\nA full discussion of inheritance is beyond the scope of this course, but you will encounter it briefly in the project code later. In the project code, the classes are set up to inherit from existing classes of an open source code project. You won't need to use inheritance otherwise, but keep in mind that your classes can use all of the public methods and attributes of their parent class.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 840526,
+          "key": "c6c59833-3612-4877-a5a6-cab56fbf63da",
+          "title": "Classes and OOP Continued",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c6c59833-3612-4877-a5a6-cab56fbf63da",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 840528,
+              "key": "883cb5f9-cb75-4e34-9778-8334b53012b1",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Classes and OOP Continued",
+              "instructor_notes": ""
+            },
+            {
+              "id": 840529,
+              "key": "23064d10-c144-411e-bcfe-c659f5ffad55",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/February/5c6f2d05_object/object.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/23064d10-c144-411e-bcfe-c659f5ffad55",
+              "caption": "",
+              "alt": "",
+              "width": 3600,
+              "height": 1200,
+              "instructor_notes": null
+            },
+            {
+              "id": 840530,
+              "key": "745a3a2e-6af8-47a5-bdd3-ee026e337aac",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r780803c809478xJUPYTERw1unvo08",
+              "pool_id": "jupyter",
+              "view_id": "jupyter-th70n",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "ports": [],
+                    "allowGrade": false,
+                    "allowSubmit": false,
+                    "defaultPath": "/notebooks/Classes%20and%20OOP%20Continued.ipynb"
+                  },
+                  "kind": "jupyter"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        },
+        {
+          "id": 831296,
+          "key": "777cd3fe-3863-4594-9e6d-6512b1d171d7",
+          "title": "This Pointer",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "777cd3fe-3863-4594-9e6d-6512b1d171d7",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 831297,
+              "key": "b190d321-af09-467f-8e8e-9db159c9de0b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# This Pointer\n\nWhen working with classes it is often helpful to be able to refer to the current class instance or object. For example, given the following `Car` class from a previous lesson, the `IncrementDistance()` method implicitly refers to the current `Car` instance's `distance` attribute:\n```cpp\n// The Car class\nclass Car {\n  public:\n    // Method to print data.\n    void PrintCarData() {\n        cout << \"The distance that the \" << color << \" car \" << number << \" has traveled is: \" << distance << \"\\n\";\n    }\n    \n    // Method to increment the distance travelled.\n    void IncrementDistance() {\n        distance++;\n    }\n    \n    // Class/object attributes\n    string color;\n    int distance = 0;\n    int number;\n};\n```\n\nIt is possible to make this explicit in C++ by using the `this` pointer, which points to the current class instance. Using `this` can sometimes be helpful to add clarity to more complicated code:\n```cpp\n// The Car class\nclass Car {\n  public:\n    // Method to print data.\n    void PrintCarData() {\n        cout << \"The distance that the \" << this->color << \" car \" << this->number << \" has traveled is: \" << this->distance << \"\\n\";\n    }\n    \n    // Method to increment the distance travelled.\n    void IncrementDistance() {\n        this->distance++;\n    }\n    \n    // Class/object attributes\n    string color;\n    int distance = 0;\n    int number;\n};\n```\nNote: you may see `this` used in some code in the remainder of the course.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 845262,
+          "key": "bd4adf49-f54e-43aa-8903-ab947453b378",
+          "title": "How Long Does it Take to Learn C++? ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bd4adf49-f54e-43aa-8903-ab947453b378",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 845263,
+              "key": "d9b6a2ad-400f-4854-b152-7bc293138f9f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# How Long Does it Take to Learn C++?\n\nBy this point, you are well on your way to becoming a proficient C++ developer. You only have a handful of exercises left before your Route Planning application is complete!\n\nHowever, C++ is a well developed language with a long history, so there are still many more exciting things you can learn about the language, many of which you will see later in this Nanodegree Program! In this next video, Bjarne gives his thoughts on how long it takes to learn the language.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 845264,
+              "key": "309e1f4e-03fe-4b7f-b47a-f9cbdf020de9",
+              "title": "ND213 C01 How To Learn C++ How Long Does It Take To Learn C++-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "3COOvy3f0UA",
+                "china_cdn_id": "3COOvy3f0UA.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 830929,
+          "key": "91c708e3-d974-4fd0-9d2b-95b860030b6e",
+          "title": "Outro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "91c708e3-d974-4fd0-9d2b-95b860030b6e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 830930,
+              "key": "1051cf3c-308b-4188-9b6d-bcd866f0f7d9",
+              "title": "C++ND C1 L04 Outro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7DncZWgHTno",
+                "china_cdn_id": "7DncZWgHTno.mp4"
+              }
+            },
+            {
+              "id": 929942,
+              "key": "af9506be-bc59-416b-b1b6-87f88644a00e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Lesson Summary",
+              "instructor_notes": ""
+            },
+            {
+              "id": 929943,
+              "key": "5a1cd83c-50b2-4d0c-a9d2-47ae9a149ce6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d72e05e_l4-outro/l4-outro.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5a1cd83c-50b2-4d0c-a9d2-47ae9a149ce6",
+              "caption": "",
+              "alt": "",
+              "width": 1920,
+              "height": 1080,
+              "instructor_notes": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

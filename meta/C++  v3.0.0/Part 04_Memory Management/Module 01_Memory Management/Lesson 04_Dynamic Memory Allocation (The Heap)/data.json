@@ -1,0 +1,723 @@
+{
+  "data": {
+    "lesson": {
+      "id": 931019,
+      "key": "956ca75e-7c65-45a6-999e-a84d420a26c8",
+      "title": "Dynamic Memory Allocation (The Heap)",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "This lesson introduces dynamic memory allocation on the heap. The commands malloc and free as well as new and delete are introduced for this purpose.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/956ca75e-7c65-45a6-999e-a84d420a26c8/931019/1570750154213/Dynamic+Memory+Allocation+%28The+Heap%29+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/956ca75e-7c65-45a6-999e-a84d420a26c8/931019/1570750150787/Dynamic+Memory+Allocation+%28The+Heap%29+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 931020,
+          "key": "6919820e-e097-4310-a16e-23b08ff76c0d",
+          "title": "Heap Memory",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6919820e-e097-4310-a16e-23b08ff76c0d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931023,
+              "key": "5e7df7f0-f73d-4ede-baca-4b01ce0dc1e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Properties of Heap Memory",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931024,
+              "key": "15d87de9-c33c-4ac9-a2b4-ab0594f0f205",
+              "title": "ND213 C03 L03 01.1 Heap Memory HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "t8i6V0l-Awg",
+                "china_cdn_id": "t8i6V0l-Awg.mp4"
+              }
+            },
+            {
+              "id": 931025,
+              "key": "1e3ff045-6b66-4ae4-b156-20eb4232cf16",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Heap memory, also know as dynamic memory , is an important resource available to programs (and programmers) to store data. The following diagram again shows the layout of virtual memory with the heap being right above the BSS and Data segment.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931026,
+              "key": "cc6a3bb6-1fde-4950-b5da-0ba0e2fb0f1e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d8935a5_c21-fig1/c21-fig1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cc6a3bb6-1fde-4950-b5da-0ba0e2fb0f1e",
+              "caption": "",
+              "alt": "Image showing layout of virtual memory including stack, heap, BSS, and data segments.",
+              "width": 1162,
+              "height": 1162,
+              "instructor_notes": null
+            },
+            {
+              "id": 931027,
+              "key": "82b4b290-c2cd-4cd0-aaef-6759c3d3aeda",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As mentioned earlier, the heap memory grows upwards while the stack grows in the opposite direction.  We have seen in the last lesson that the automatic stack memory shrinks and grows with each function call and local variable. As soon as the scope of a variable is left, it is automatically deallocated and the stack pointer is shifted upwards accordingly. \n\nHeap memory is different in many ways: The programmer can request the allocation of memory by issuing a command such as `malloc` or `new` (more on that shortly). This block of memory will remain allocated until the programmer explicitly issues a command such as `free` or `delete`. The huge advantage of heap memory is the high degree of control a programmer can exert, albeit at the price of greater responsibility since memory on the heap must be actively managed. \n\nLet us take a look at some properties of heap memory:\n\n1. As opposed to local variables on the stack, memory can now be allocated in an arbitrary scope (e.g. inside a function) without it being deleted when the scope is left. Thus, as long as the address to an allocated block of memory is returned by a function, the caller can freely use it. \n\n2. Local variables on the stack are allocated at compile-time. Thus, the size of e.g. a string variable might not be appropriate as the length of the string will not be known until the program is executed and the user inputs it. With local variables, a solution would be to allocate a long-enough array of and hope that the actual length does not exceed the buffer size. With dynamically allocated heap memory, variables are allocated at run-time. This means that the size of the above-mentioned string variable can be tailored to the actual length of the user input. \n\n3. Heap memory is only constrained by the size of the address space and by the available memory. With modern 64 bit operating systems and large RAM memory and hard disks the programmer commands a vast amount of memory. However, if the programmer forgets to deallocate a block of heap memory, it will remain unused until the program is terminated. This is called a \"memory leak\".\n\n4. Unlike the stack, the heap is shared among multiple threads, which means that memory management for the heap needs to take concurrency into account as several threads might compete for the same memory resource. \n\n5. When memory is allocated or deallocated on the stack, the stack pointer is simply shifted upwards or downwards. Due to the sequential structure of stack memory management, stack memory can be managed (by the operating system) easily and securely. With heap memory, allocation and deallocation can occur arbitrarily, depending on the lifetime of the variables. This can result in fragmented memory over time, which is much more difficult and expensive to manage. \n\n## Memory Fragmentation\nLet us construct a theoretic example of how memory on the heap can become fragmented: Suppose we are interleaving the allocation of two data types `X` and `Y` in the following fashion: First, we allocate a block of memory for a variable of type `X`, then another block for `Y` and so on in a repeated manner until some upper bound is reached. At the end of this operation, the heap might look like the following: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931028,
+              "key": "3c742466-f6b0-467b-8d0d-a3c750f30df6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d893546_c31-fig2/c31-fig2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/3c742466-f6b0-467b-8d0d-a3c750f30df6",
+              "caption": "",
+              "alt": "Image showing fragmented blocks of memory.",
+              "width": 2133,
+              "height": 324,
+              "instructor_notes": null
+            },
+            {
+              "id": 931029,
+              "key": "4498de4e-0579-4cd8-9241-45965ccf5a52",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "At some point, we might then decide to deallocate all variables of type `Y`, leading to empty spaces in between the remaining variables of type `X`. In between two blocks of type \"X\", no memory for an additional \"X\" could now be squeezed in this example.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931030,
+              "key": "72b9ac3d-aa61-44d8-a24b-5a0ba481b5d1",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d893561_c31-fig3/c31-fig3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/72b9ac3d-aa61-44d8-a24b-5a0ba481b5d1",
+              "caption": "",
+              "alt": "Image showing memory with empty spaces between variables of type x.",
+              "width": 2133,
+              "height": 324,
+              "instructor_notes": null
+            },
+            {
+              "id": 931031,
+              "key": "42ddcf41-d1bb-4520-b7fb-9a29c008f37f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "A classic symptom of memory fragmentation is that you try to allocate a large block and you can’t, even though you appear to have enough memory free. On systems with virtual memory however, this is less of a problem, because large allocations only need to be contiguous in virtual address space, not in physical address space. \n\nWhen memory is heavily fragmented however, memory allocations will likely take longer because the memory allocator has to do more work to find a suitable space for the new object.\n\nUntil now, our examples have been only theoretical. It is time to gain some practical experience in the next section using `malloc` and `free` as C-style methods for dynamic memory management.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931034,
+              "key": "95cb441e-1693-4b80-bbed-7da61b8d87af",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931033,
+              "key": "8d3630c3-a821-42c5-91ba-fa72cf5997ee",
+              "title": "ND213 C03 L03 01.2 Heap Memory HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0k2CqV063zw",
+                "china_cdn_id": "0k2CqV063zw.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 850777,
+          "key": "010cdfdb-9a4a-4d27-99c4-a138baa57747",
+          "title": "Bjarne on Stack and Heap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "010cdfdb-9a4a-4d27-99c4-a138baa57747",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850780,
+              "key": "f3dae452-b3a6-4f5b-b2e4-f85e354264a3",
+              "title": "ND213 C03 Stack And Heap What Is The Difference Between The Stack And The Heap-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "wsdf7Dz4ykk",
+                "china_cdn_id": "wsdf7Dz4ykk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 931035,
+          "key": "9096792e-9dda-4d60-8e79-ab7442391896",
+          "title": "Using malloc and free",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "9096792e-9dda-4d60-8e79-ab7442391896",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931036,
+              "key": "4ffcf3f2-c43c-4184-9cf4-37d0ce3793f2",
+              "title": "ND213 C03 L03 02.1 Using Malloc And Free HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "nawlbRI6xzo",
+                "china_cdn_id": "nawlbRI6xzo.mp4"
+              }
+            },
+            {
+              "id": 931044,
+              "key": "b4f63498-310a-4291-9811-8c0d0df59ac2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "So far we only considered primitive data types, whose storage space requirement was already fixed at compile time and could be scheduled with the building of the program executable. However, it is not always possible to plan the memory requirements exactly in advance, and it is inefficient to reserve the maximum memory space each time just to be on the safe side. C and C++ offer the option to reserve memory areas during the program execution, i.e. at runtime. It is important that the reserved memory areas are released again at the \"appropriate point\" to avoid memory leaks. It is one of the major challenges in memory management to always locate this \"appropriate point\" though. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931046,
+              "key": "830c5153-526a-4ec7-8855-ea669dd5f8fb",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r859981c931035xJUPYTERLks0zsuqe",
+              "pool_id": "jupyterlab",
+              "view_id": "jupyter-lab-na9wr",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [
+                      {
+                        "id": "101687",
+                        "duration": 233,
+                        "subtitles": [],
+                        "topher_id": "aa3655f9-dbfa-11e9-b7ab-0242ac11000d",
+                        "youtube_id": "WnavCaCu74E",
+                        "transcodings": {
+                          "uri_hls": "https://video.udacity-data.com/topher/2019/September/5d855a6d_nd213-c03-l03-02.2-using-malloc-and-free-sc/hls/playlist.m3u8",
+                          "uri_480p_mp4": "https://video.udacity-data.com/topher/2019/September/5d855a6d_nd213-c03-l03-02.2-using-malloc-and-free-sc/nd213-c03-l03-02.2-using-malloc-and-free-sc_480p.mp4",
+                          "uri_720p_mp4": "https://video.udacity-data.com/topher/2019/September/5d855a6d_nd213-c03-l03-02.2-using-malloc-and-free-sc/nd213-c03-l03-02.2-using-malloc-and-free-sc_720p.mp4",
+                          "uri_480p_1000kbps_mp4": "https://video.udacity-data.com/topher/2019/September/5d855a6d_nd213-c03-l03-02.2-using-malloc-and-free-sc/nd213-c03-l03-02.2-using-malloc-and-free-sc_480p_1000kbps.mp4"
+                        }
+                      }
+                    ],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 931052,
+              "key": "c23ec0d1-8f98-475d-87d3-2312f714d749",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quiz : Dynamic Memory Management with `malloc`, `calloc`, `resize` and `free`\n\n#### Question 1: Match the code snippets to the respective comments\n\n```cpp\n#include <stdio.h> \n#include <stdlib.h> \n\nint main()\n{\n    // (X)\n    int *m = (int*)malloc(sizeof(int)); \n    m = NULL; \n\n    // (Y)\n    int *n = (int*)malloc(sizeof(int)); \n    free(n);\n    *n = 23;\n\n    // (Z)\n    char *o;\n    *o = 'a'; \n\n    return 0;\n}\n```\n\nComments: \n1. uses a dangling pointer\n2. uses an uninitialized pointer\n3. generates a memory leak",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931053,
+              "key": "8cffe011-d17e-45ca-a3f1-350366c6349a",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "8cffe011-d17e-45ca-a3f1-350366c6349a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "In the code above, there are three snippets marked with X, Y, and Z. Below the code there are three comments. Match the code snippets to the respective comments. Which pairing of comments and code snippets is the correct one?",
+                "answers": [
+                  {
+                    "id": "a1568314637132",
+                    "text": "X-1, Y-3, Z-2",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1568314684904",
+                    "text": "X-2, Y-1, Z-3",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1568314696987",
+                    "text": "X-3, Y-2, Z-1",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1568314699091",
+                    "text": "X-3, Y-1, Z-2",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 931054,
+              "key": "f5ca9c02-0a68-4472-8f14-a2b5f602be0c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "#### Question 2 : Problems with pointers\n\n```cpp\nint *f1(void)\n{\n    int x = 10;\n    return (&x);\n}\n\nint *f2(void)\n{\n    int *px;\n    *px = 10;\n    return px;\n}\n\nint *f3(void)\n{\n    int *px;\n    px = (int *)malloc(sizeof(int));\n    *px = 10;\n    return px;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931056,
+              "key": "7a25df22-c50e-4a40-a403-3d528c11c636",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7a25df22-c50e-4a40-a403-3d528c11c636",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Which of the functions above is likely to cause pointer-related problems?",
+                "answers": [
+                  {
+                    "id": "a1568314933413",
+                    "text": "only `f3`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1568314955131",
+                    "text": "`f1` and `f3`",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1568314962476",
+                    "text": "`f1` and `f2`",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1568315010388",
+                    "text": "`f1`, `f2`, and `f3`",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 931057,
+              "key": "45cbbdb0-6f9e-4fb4-9466-4b2c2dd7f770",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931058,
+              "key": "47cda09f-58b3-4c92-a567-53fa4cf6bd4b",
+              "title": "ND213 C03 L03 02.3 Using Malloc And Free HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "X8OcmAwAYp8",
+                "china_cdn_id": "X8OcmAwAYp8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 931059,
+          "key": "92293a8d-e8a5-41b9-933a-dd5406e6a674",
+          "title": "Using new and delete",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "92293a8d-e8a5-41b9-933a-dd5406e6a674",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931060,
+              "key": "1d6db31f-4932-4056-8ead-b1b0c104ad5e",
+              "title": "ND213 C03 L03 03.1 Using New And Delete HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "y6xpWulUsEM",
+                "china_cdn_id": "y6xpWulUsEM.mp4"
+              }
+            },
+            {
+              "id": 931070,
+              "key": "071e5177-e2c7-4c3f-93a8-93b6cd4d9d2d",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r859981c931059xJUPYTERL7snjsl7i",
+              "pool_id": "jupyterlab",
+              "view_id": "jupyter-lab-32mcw",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "videos": [
+                      {
+                        "id": "101686",
+                        "duration": 207,
+                        "subtitles": [],
+                        "topher_id": "982aa1ed-dbfa-11e9-8d55-0242ac11001f",
+                        "youtube_id": "c15TrbmYY0o",
+                        "transcodings": {
+                          "uri_hls": "https://video.udacity-data.com/topher/2019/September/5d855a4f_nd213-c03-l03-03.2-using-new-and-delete-sc/hls/playlist.m3u8",
+                          "uri_480p_mp4": "https://video.udacity-data.com/topher/2019/September/5d855a4f_nd213-c03-l03-03.2-using-new-and-delete-sc/nd213-c03-l03-03.2-using-new-and-delete-sc_480p.mp4",
+                          "uri_720p_mp4": "https://video.udacity-data.com/topher/2019/September/5d855a4f_nd213-c03-l03-03.2-using-new-and-delete-sc/nd213-c03-l03-03.2-using-new-and-delete-sc_720p.mp4",
+                          "uri_480p_1000kbps_mp4": "https://video.udacity-data.com/topher/2019/September/5d855a4f_nd213-c03-l03-03.2-using-new-and-delete-sc/nd213-c03-l03-03.2-using-new-and-delete-sc_480p_1000kbps.mp4"
+                        }
+                      }
+                    ],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 931082,
+              "key": "18193796-10b6-4ed7-81dc-ee4bff9c94b0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Reasons for overloading `new` and `delete`\n\nNow that we have seen how to overload the new and delete operators, let us summarize the major scenarios where it makes sense to do this: \n\n1. The overloaded new operator function allows to **add additional parameters**. Therefore, a class can have multiple overloaded new operator functions. This gives the programmer more flexibility in customizing the memory allocation for objects. \n\n2. Overloaded the new and delete operators provides an easy way to **integrate a mechanism similar to garbage collection** capabilities (such as in Java), as we will shorty see later in this course. \n\n3. By adding **exception handling capabilities** into new and delete, the code can be made more robust. \n\n4. It is very easy to add customized behavior, such as overwriting deallocated memory with zeros in order to increase the security of critical application data. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931083,
+              "key": "2034f00c-c399-4328-8e9b-03a450c65847",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931084,
+              "key": "cd560c06-bfc8-42be-9a84-1879ea7db3f3",
+              "title": "ND213 C03 L03 03.3 Using New And Delete HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mT6Mn754d_o",
+                "china_cdn_id": "mT6Mn754d_o.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 850796,
+          "key": "354615c4-78fb-4189-9cee-a1c17f1f0ec1",
+          "title": "Bjarne on new and delete",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "354615c4-78fb-4189-9cee-a1c17f1f0ec1",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850797,
+              "key": "8d774882-8dd8-453b-be01-5af27ee6cf4a",
+              "title": "ND213 C03 New How Should Programmers Use New Or Delte-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DN2qXt27Hxc",
+                "china_cdn_id": "DN2qXt27Hxc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 931086,
+          "key": "5609f92c-53f4-4ae5-9a13-3d95a74cee45",
+          "title": "Typical Memory Management Problems",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "5609f92c-53f4-4ae5-9a13-3d95a74cee45",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 931087,
+              "key": "601dc7f2-a44e-48aa-9399-9f8cfa18486c",
+              "title": "ND213 C03 L03 04.1 Typical Memory Management Problems HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FfyFNqAFlIY",
+                "china_cdn_id": "FfyFNqAFlIY.mp4"
+              }
+            },
+            {
+              "id": 931090,
+              "key": "53093b95-6786-4ee7-86c1-e216c7757059",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Overview of memory management problems\nOne of the primary advantages of C++ is the flexibility and control of resources such as memory it gives to the programmer. This advantage is further amplified by a significant increase in the performance of C++ programs compared to other languages such as Python or Java.\n\nHowever, these advantages come at a price as they demand a high level of experience from the programer. As Bjarne Stroustrup put it so elegantly: \n\n*\"C makes it easy to shoot yourself in the foot; C++ makes it harder, but when you do it blows your whole leg off\".* \n\nIn this chapter, we will look at a collection of typical errors in memory management that you need to watch out for. \n\n1. **Memory Leaks**\nMemory leaks occur when data is allocated on the heap at runtime, but not properly deallocated. A program that forgets to clear a memory block is said to have a memory leak - this may be a serious problem or not, depending on the circumstances and on the nature of the program. \nFor a program that runs, computes something, and quits immediately, memory leaks are usually not a big concern. Memory leaks are mostly problematic for programs that run for a long time and/or use large data structures. In such a case, memory leaks can gradually fill the heap until allocation requests can no longer be properly met and the program stops responding or crashes completely. We will look at an example further down in this section. \n\n2. **Buffer Overruns**\nBuffer overruns occur when memory outside the allocated limits is overwritten and thus corrupted. One of the resulting problems is that this effect may not become immediately visible. When a problem finally does occur, cause and effect are often hard to discern. It is also sometimes possible to inject malicious code into programs in this way, but this shall not be discussed here.  \n\n  In this example, the allocated stack memory is too small to hold the entire string, which results in a segmentation fault: \n```cpp\nchar str[5];\nstrcpy(str,\"BufferOverrun\");\nprintf(\"%s\",str);\n```\n\n\n3. **Uninitialized Memory**\nDepending on the C++ compiler, data structures are sometimes initialized (most often to zero) and sometimes not. So when allocating memory on the heap without proper initialization, it might sometimes contain garbage that can cause problems. \n\n  Generally, a variable will be automatically initialized in these cases: \n  * it is a class instance where the default constructor initializes all primitive types\n  * array initializer syntax is used, such as int a[10] = {}\n  * it is a global or extern variable\n  * it is defined `static`\n\n  The behavior of the following code is potentially undefined:\n```cpp\nint a;\nint b=a*42;\nprintf(\"%d\",b);\n```\n\n4. **Incorrect pairing of allocation and deallocation**\nFreeing a block of memory more than once will cause a program to crash. This can happen when a block of memory is freed that has never been allocated or has been freed before. Such behavior could also occur when improper pairings of allocation and deallocation are used such as using `malloc()` with `delete` or `new` with `free()`.\n\n  In this first example, the wrong `new` and `delete` are paired\n```cpp\ndouble *pDbl=new double[5];\ndelete pDbl;\n```\n\n  In this second example, the pairing is correct but a double deletion is performed:\n```cpp\nchar *pChr=new char[5];\ndelete[] pChr;\ndelete[] pChr;\n```\n\n5. **Invalid memory access**\nThis error occurs then trying to access a block of heap memory that has not yet or has already been deallocated. \n\n  In this example, the heap memory has already been deallocated at the time when `strcpy()` tries to access it: \n```\nchar *pStr=new char[25];\ndelete[] pStr;\nstrcpy(pStr, \"Invalid Access\");\n```\n\n\n## Debugging memory leaks with Valgrind",
+              "instructor_notes": ""
+            },
+            {
+              "id": 940372,
+              "key": "1bc096d2-402c-416d-96a9-4a004ff2c415",
+              "title": "ND213 C03 L03 04.2 Typical Memory Management Problems SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "y0m_6V8fvzA",
+                "china_cdn_id": "y0m_6V8fvzA.mp4"
+              }
+            },
+            {
+              "id": 940373,
+              "key": "31f9de00-d4bf-4639-81fa-a305c28c7588",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Even experienced developers sometimes make mistakes that cannot be discovered at first glance. Instead of spending a lot of time searching, it makes sense for C and C++ programmers to use helper tools to perform automatic analyses of their code.\n\nIn this section, we will look at *Valgrind*, a free software for Linux and Mac that is able to automatically detect memory. Windows programers can for example use the Visual Studio debugger and C Run-time Library (CRT) to detect and identify memory leaks. More information on how to do this can be found here: [Find memory leaks with the CRT Library - Visual Studio | Microsoft Docs](https://docs.microsoft.com/en-us/visualstudio/debugger/finding-memory-leaks-using-the-crt-library?view=vs-2019)\n\nWith recent versions of MacOS, occasional difficulties have been reported with installing Valgrind. A working version for MacOS Mojave can be downloaded from GitHub via Homebrew: [GitHub - sowson/valgrind: Experimental Version of Valgrind for macOS 10.14.6 Mojave](https://github.com/sowson/valgrind)\n\nValgrind is a framework that facilitates the development of tools for the dynamic analysis of programs. Dynamic analysis examines the behavior of a program at runtime, in contrast to static analysis, which often checks programs for various criteria or potential errors at the source code level before, during, or after translation. More information on Valgrind can be found here: [Valgrind: About](http://valgrind.org/info/)\n\nThe Memcheck tool within Valgrind can be used to detect typical errors in programs written in C or C++ that occur in connection with memory management. It is probably the best-known tool in the Valgrind suite, and the name Valgrind is often used as a synonym for Memcheck.\n\nThe following code generates a memory leak as the integer array has been allocated on the heap but the deallocation has been forgotten by the programmer: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 940377,
+              "key": "26ab5155-37be-41a9-ab62-0ae47c0af3ed",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r859981c931086xREACTj3s98bg4",
+              "pool_id": "webterminal",
+              "view_id": "react-oebri",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "export CXX=g++-7\nexport CXXFLAGS=-std=c++17\nsudo apt-get -y update\nsudo apt-get -y install valgrind",
+                    "openFiles": [
+                      "/home/workspace/memory_leaks_debugging.cpp"
+                    ],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "terminalTitle": "BASH",
+                    "actionButtonText": "Preview",
+                    "openTerminalOnStartup": true
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 940374,
+              "key": "2dc77c99-8502-416a-affd-b9da3e8090e8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The array of integers on the heap to which `pInt` is pointing has a size of `10 * sizeof(int)`, which is 40 bytes. Let us now use Valgrind to search for this leak. \n\nAfter compiling the `memory_leaks_debugging.cpp` code file on the right to `a.out`, the terminal can be used to start Valgrind with the following command:\n\n```bash\nvalgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=/home/workspace/valgrind-out.txt /home/workspace/a.out\n```\n\nLet us look at the call parameters one by one: \n\n- **--leak-check** : Controls the search for memory leaks when the client program finishes. If set to `summary`, it says how many leaks occurred. If set to `full`, each individual leak will be shown in detail.\n\n- **--show-leak-kinds** : controls the set of leak kinds to show when —leak-check=full is specified. Options are `definite`, `indirect`, `possible` `reachable`, `all` and `none`\n\n- **--track-origins**  : can be used to see where uninitialised values come from.\n\nYou can read the file into the terminal with:\n```bash\ncat valgrind-out.txt\n```\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 940376,
+              "key": "4970f377-ac50-41fa-824e-8d27025bf114",
+              "title": "ND213 C03 L03 04.3 Typical Memory Management Problems SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "K2PQTpldoIw",
+                "china_cdn_id": "K2PQTpldoIw.mp4"
+              }
+            },
+            {
+              "id": 940375,
+              "key": "b746c81e-b300-4c95-8ded-c19e6c89a1e2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In the following, a (small) excerpt of the `valgrind-out.txt` log file is given: \n```\n==952== 40 bytes in 1 blocks are definitely lost in loss record 18 of 45\n\n...\n\n==952==    by 0x10019A377: operator new(unsigned long) (in /usr/lib/libc++abi.dylib)\n\n...\n\n==952==    by 0x100000F8A: main (memory_leaks_debugging.cpp:12)\n\n...\n\n==952== LEAK SUMMARY:\n==952==    definitely lost: 40 bytes in 1 blocks\n==952==    indirectly lost: 0 bytes in 0 blocks\n==952==      possibly lost: 72 bytes in 3 blocks\n==952==    still reachable: 200 bytes in 6 blocks\n==952==         suppressed: 18,876 bytes in 160 blocks\n```\n\nAs expected, the memory leak caused by the omitted deletion of the array of 10 integers in the code sample above shows up in the leak summary. Additionally, the exact position where the leak occurs in the code (line 12) can also be seen together with the responsible call with caused the leak. \n\nThis short introduction into memory leak search is only an example of how powerful analysis tools such as Valgrind can be used to detect memory-related problems in your code. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931088,
+              "key": "0ef726d9-4460-4721-a9f7-b690552e6cac",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 931089,
+              "key": "e3c508a5-19a1-4d4e-8c0d-c1a7958ddc79",
+              "title": "ND213 C03 L03 04.4 Typical Memory Management Problems HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "IhFaPswyBJI",
+                "china_cdn_id": "IhFaPswyBJI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 850802,
+          "key": "a6cd5960-7afb-44bd-893d-2e620a2acd65",
+          "title": "Bjarne on Memory Leaks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a6cd5960-7afb-44bd-893d-2e620a2acd65",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 850803,
+              "key": "05c4ad7f-fba9-48d7-89f0-a36a41b4a2f9",
+              "title": "ND213 C03 Memory Leaks How Do Memory Leaks Happen-",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "JwZa3Z5rvtg",
+                "china_cdn_id": "JwZa3Z5rvtg.mp4"
+              }
+            },
+            {
+              "id": 947879,
+              "key": "b53063fe-3169-47bc-b45f-7b2950d080c4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "RAII, which stands for [**R**esource **A**cquisition **I**s **I**nitialization](https://en.cppreference.com/w/cpp/language/raii) is something you will learn about in a later part of the course.",
+              "instructor_notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

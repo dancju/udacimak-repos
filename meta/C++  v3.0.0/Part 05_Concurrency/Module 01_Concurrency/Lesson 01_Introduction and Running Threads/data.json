@@ -1,0 +1,953 @@
+{
+  "data": {
+    "lesson": {
+      "id": 859880,
+      "key": "0ccc7913-cee9-43c7-824a-5148d5fce65a",
+      "title": "Introduction and Running Threads",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Learn the difference between processes and threads, and write your own concurrent program running multiple threads at the same time.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/0ccc7913-cee9-43c7-824a-5148d5fce65a/859880/1565924143318/Introduction+and+Running+Threads+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/0ccc7913-cee9-43c7-824a-5148d5fce65a/859880/1565924138843/Introduction+and+Running+Threads+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 861025,
+          "key": "0e24eadc-2c81-447b-9d9b-405c87955944",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "0e24eadc-2c81-447b-9d9b-405c87955944",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861026,
+              "key": "1594e3bf-565d-4bf6-a38f-82aa733c5e5f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Introduction",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861027,
+              "key": "a0b6728f-dc2a-4e46-ac25-3155528803f6",
+              "title": "ND213 C04 L01 C1.1 Introduction To Concurrency",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "frWbL4aWNI4",
+                "china_cdn_id": "frWbL4aWNI4.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 859885,
+          "key": "8d9fcf44-5a91-4e2e-aa0e-74b7399fdb04",
+          "title": "Processes and Threads",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8d9fcf44-5a91-4e2e-aa0e-74b7399fdb04",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 859892,
+              "key": "c8e3f3c8-3342-474d-a21c-cdc8ccce0920",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Processes and Threads",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859890,
+              "key": "111258ce-b03e-4b48-a8c1-6b4ce6cb018c",
+              "title": "ND213 C04 L01 C1.2-Atom1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "V4YyCCELd4M",
+                "china_cdn_id": "V4YyCCELd4M.mp4"
+              }
+            },
+            {
+              "id": 859891,
+              "key": "f14ec722-0de0-493c-b24c-2be50c4d0ab7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Processes and Threads\n\nIn this lesson, you will learn how to start and manage your first parallel path of execution, which runs concurrently with the main program and is thus asynchronous. In contrast to synchronous programs, the main program can continue with its line of execution without the need to wait for the parallel task to complete. The following figure illustrates this difference.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859894,
+              "key": "8bb7b784-ede4-41fa-8207-4ef63fe47125",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5d07fe1e_c2-2-a2a/c2-2-a2a.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8bb7b784-ede4-41fa-8207-4ef63fe47125",
+              "caption": "",
+              "alt": "",
+              "width": 1635,
+              "height": 1127,
+              "instructor_notes": null
+            },
+            {
+              "id": 859897,
+              "key": "e8928bc5-7f9d-4a3e-b620-90e4f3d2ff96",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Before we start writing a first asynchronous program in C++, let us take a look at the differences between two important concepts : processes and threads.\n\nA _process_ (also called a task) is a computer program at runtime. It is comprised of the runtime environment provided by the operating system (OS), as well as of the embedded binary code of the program during execution. A process is controlled by the OS through certain actions with which it sets the process into one of several carefully defined states:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859895,
+              "key": "cbb1f901-1678-40b8-a286-833d5205a14a",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5d07fe1f_c2-2-a2b/c2-2-a2b.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/cbb1f901-1678-40b8-a286-833d5205a14a",
+              "caption": "",
+              "alt": "",
+              "width": 1787,
+              "height": 1181,
+              "instructor_notes": null
+            },
+            {
+              "id": 859898,
+              "key": "c1f7ea85-ef44-4181-a0c2-5ea1c02c4a7f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "- **Ready** : After its creation, a process enters the ready state and is loaded into main memory. The process now is ready to run and is waiting for CPU time to be executed. Processes that are ready for execution by the CPU are stored in a queue managed by the OS.\n- **Running** : The operating system has selected the process for execution and the instructions within the process are executed on one or more of the available CPU cores.\n- **Blocked** : A process that is blocked is one that is waiting for an event (such as a system resource becoming available) or the completion of an I/O operation.\n- **Terminated** : When a process completes its execution or when it is being explicitly killed, it changes to the \"terminated\" state. The underlying program is no longer executing, but the process remains in the process table as a \"zombie process\". When it is finally removed from the process table, its lifetime ends.\n- **Ready suspended** : A process that was initially in ready state but has been swapped out of main memory and placed onto external storage is said to be in suspend ready state. The process will transition back to ready state whenever it is moved to main memory again.\n- **Blocked suspended** : A process that is blocked may also be swapped out of main memory. It may be swapped back in again under the same conditions as a \"ready suspended\" process. In such a case, the process will move to the blocked state, and may still be waiting for a resource to become available.\n\nProcesses are managed by the _scheduler_ of the OS. The scheduler can either let a process run until it ends or blocks (non-interrupting scheduler), or it can ensure that the currently running process is interrupted after a short period of time. The scheduler can switch back and forth between different active processes (interrupting scheduler), alternately assigning them CPU time. The latter is the typical scheduling strategy of any modern operating system.\n\nSince the administration of processes is computationally taxing, operating systems support a more resource-friendly way of realizing concurrent operations: the threads.\n\nA _thread_ represents a concurrent execution unit within a process. In contrast to full-blown processes as described above, threads are characterized as light-weight processes (LWP). These are significantly easier to create and destroy: In many systems the creation of a thread is up to 100 times faster than the creation of a process. This is especially advantageous in situations, when the need for concurrent operations changes dynamically.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859896,
+              "key": "a6d8c86f-9f95-4bda-8b87-4184b5537fce",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5d07fe20_c2-2-a2c/c2-2-a2c.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/a6d8c86f-9f95-4bda-8b87-4184b5537fce",
+              "caption": "",
+              "alt": "",
+              "width": 1816,
+              "height": 1097,
+              "instructor_notes": null
+            },
+            {
+              "id": 859899,
+              "key": "630b0cc3-acf6-46d3-9978-20a231ba56d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Threads exist within processes and share their resources. As illustrated by the figure above, a process can contain several threads or - if no parallel processing is provided for in the program flow - only a single thread.\n\nA major difference between a process and a thread is that each process has its own address space, while a thread does not require a new address space to be created. All the threads in a process can access its shared memory. Threads also share other OS dependent resources such as processors, files, and network connections. As a result, the management overhead for threads is typically less than for processes. Threads, however, are not protected against each other and must carefully synchronize when accessing the shared process resources to avoid conflicts.\n\nSimilar to processes, threads exist in different states, which are illustrated in the figure below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859893,
+              "key": "1b33548a-65db-4d45-9629-5a5d973d2bfe",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5d07fe21_c2-2-a2d/c2-2-a2d.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1b33548a-65db-4d45-9629-5a5d973d2bfe",
+              "caption": "",
+              "alt": "",
+              "width": 1579,
+              "height": 1014,
+              "instructor_notes": null
+            },
+            {
+              "id": 859900,
+              "key": "e7028688-f264-4ffe-a774-602b33e1a29e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "- **New** : A thread is in this state once it has been created. Until it is actually running, it will not take any CPU resources.\n- **Runnable** : In this state, a thread might actually be running or it might be ready to run at any instant of time. It is the responsibility of the thread scheduler to assign CPU time to the thread.\n- **Blocked** : A thread might be in this state, when it is waiting for I/O operations to complete. When blocked, a thread cannot continue its execution any further until it is moved to the runnable state again. It will not consume any CPU time in this state. The thread scheduler is responsible for reactivating the thread.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859901,
+              "key": "fe1eecb6-fb6d-400c-89e3-21768bdeef01",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## The System Task Manager",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859902,
+              "key": "02810447-3362-46b3-9fbf-6897b9acc2f1",
+              "title": "ND213 C04 L01 C1.2-Atom3 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "QdXCdZdGBwM",
+                "china_cdn_id": "QdXCdZdGBwM.mp4"
+              }
+            },
+            {
+              "id": 859905,
+              "key": "712e2591-34c0-4b1d-be0f-af6363139f98",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Differences Between Processes And Threads",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859906,
+              "key": "417e94f4-0da7-4ae3-abb3-860dde5d2881",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "417e94f4-0da7-4ae3-abb3-860dde5d2881",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "In the following, a number of statements is made. Please decide for each statement whether the blanks apply to processes or threads."
+                },
+                "concepts_label": "Statements",
+                "answers_label": "Solution",
+                "concepts": [
+                  {
+                    "text": "In a concurrent program, ____________________ share memory. Thus, many ____________________ can access and modify the same memory.",
+                    "correct_answer": {
+                      "id": "a1560806120896",
+                      "text": "Threads, Threads"
+                    }
+                  },
+                  {
+                    "text": "Creating a ___________ is fairly resource-intensive. It is generally more efficient to use several ____________________ within a ____________________.",
+                    "correct_answer": {
+                      "id": "a1560806289668",
+                      "text": "Process, Threads, Process"
+                    }
+                  },
+                  {
+                    "text": "In contrast to a ____________________, ____________________ are characterized as light-weight. They are significantly easier to create and destroy.",
+                    "correct_answer": {
+                      "id": "a1560806363680",
+                      "text": "Process, Threads"
+                    }
+                  },
+                  {
+                    "text": "Inter-____________________ communication can be faster than inter-____________________ communication.",
+                    "correct_answer": {
+                      "id": "a1560806394664",
+                      "text": "Thread, Process"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1560806289668",
+                    "text": "Process, Threads, Process"
+                  },
+                  {
+                    "id": "a1560806363680",
+                    "text": "Process, Threads"
+                  },
+                  {
+                    "id": "a1560806394664",
+                    "text": "Thread, Process"
+                  },
+                  {
+                    "id": "a1560806120896",
+                    "text": "Threads, Threads"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 859903,
+              "key": "c543c39d-a858-4970-abc7-ba98d6ea3fe7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 859904,
+              "key": "17a1e228-358d-4a09-b0f8-3a46f906d002",
+              "title": "ND213 C04 L01 C1.2-Atom5",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9XuSTdkxgOE",
+                "china_cdn_id": "9XuSTdkxgOE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 859886,
+          "key": "6c60ef42-c39d-405e-bf5b-92d03a9f747e",
+          "title": "Running a Single Thread",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6c60ef42-c39d-405e-bf5b-92d03a9f747e",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861031,
+              "key": "ac70b481-e2a4-4060-baa8-6202b3bac3ff",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Running a Single Thread",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861032,
+              "key": "05bf14e2-c075-4dff-8054-a0943ff41e7d",
+              "title": "ND213 C04 L01 C1.3-Atom1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "tQZA7gukZTc",
+                "china_cdn_id": "tQZA7gukZTc.mp4"
+              }
+            },
+            {
+              "id": 861035,
+              "key": "954de27b-1d61-460c-aa3a-20764cb1ef6f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace Guide",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861033,
+              "key": "3ee83385-3914-4cf1-acaa-f9a0f892c66f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The Workspace below contains code samples and material to introduce C++ threads. There is a guide in the left pane, and a code editor with terminal on the right. The guide contains multiple pages of content, so be sure to work through each page to see all of the content!\n\nYou can save changes to files you're editing in the code editor by pressing Cmd-S (Mac) or Ctrl-S (PC/Linux).\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861039,
+              "key": "30aed291-30f9-4b69-bfdd-f5b6e8f4653e",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5d14fae5_pages/pages.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/30aed291-30f9-4b69-bfdd-f5b6e8f4653e",
+              "caption": "",
+              "alt": "",
+              "width": 2491,
+              "height": 1303,
+              "instructor_notes": null
+            },
+            {
+              "id": 861036,
+              "key": "38ac1f36-319b-49e0-88ff-eb83bf351be3",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Also, for the best viewing experience, **be sure to click the \"Expand\" button in the lower left corner of the Workspace when you begin working:**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861034,
+              "key": "6eed50f3-1697-4beb-b6eb-0045bf440324",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5d14f8f8_expand-button/expand-button.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/6eed50f3-1697-4beb-b6eb-0045bf440324",
+              "caption": "",
+              "alt": "",
+              "width": 123,
+              "height": 71,
+              "instructor_notes": null
+            },
+            {
+              "id": 861179,
+              "key": "b8ea41e2-1c9d-4ffe-9c42-359ce6543f40",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "When you are finished with the Workspace, **be sure to click on the \"Shrink\" button to come back to the classroom:**",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861180,
+              "key": "34bde9fa-6e22-48ab-9e98-5ab0bfc53892",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/June/5d156111_shrink/shrink.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/34bde9fa-6e22-48ab-9e98-5ab0bfc53892",
+              "caption": "",
+              "alt": "",
+              "width": 99,
+              "height": 75,
+              "instructor_notes": null
+            },
+            {
+              "id": 861040,
+              "key": "eb3fff15-38cb-4d87-8e7b-a09d96e67815",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace",
+              "instructor_notes": ""
+            },
+            {
+              "id": 860046,
+              "key": "30755847-1759-467b-a356-210a9d072f5f",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r845225c859886xJUPYTERLt2lua6fq",
+              "pool_id": "jupyterlab2cpu",
+              "view_id": "jupyter-lab-wowsn",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 861042,
+              "key": "8dfc0bc0-c6be-4084-84a0-6109c34a45a0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861041,
+              "key": "7df334a0-bb31-4ce7-8514-c8592ad9a65a",
+              "title": "ND213 C04 L01 C1.3-Atom7",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WOUZqtMtwhE",
+                "china_cdn_id": "WOUZqtMtwhE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 859887,
+          "key": "36d06b8c-adbe-44f7-aa35-28011e0a6b61",
+          "title": "Starting a Thread with Function Objects",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "36d06b8c-adbe-44f7-aa35-28011e0a6b61",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861043,
+              "key": "d4a0e0ef-6873-4a7c-ada6-c60591af5650",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Starting a Thread with a Function Object",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861044,
+              "key": "761f4bd0-9172-4740-9c75-7d7880ac0947",
+              "title": "ND213 C04 L01 C1.4-Atom1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ytEszL3n_Fw",
+                "china_cdn_id": "ytEszL3n_Fw.mp4"
+              }
+            },
+            {
+              "id": 861049,
+              "key": "a848e653-1254-4462-b77b-9e52583e21d9",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace",
+              "instructor_notes": ""
+            },
+            {
+              "id": 860010,
+              "key": "67baa70c-5871-450a-878c-b02ee2b0da17",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r845225c859887xJUPYTERL663lbcad",
+              "pool_id": "jupyterlab",
+              "view_id": "jupyter-lab-wsq9s",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 861048,
+              "key": "26e3e472-7919-4386-a562-1669536fca04",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Exercise Solution",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861045,
+              "key": "d2279021-7ad3-488f-b3ba-ed7940b2bc9f",
+              "title": "ND213 C04 L01 C1.4-Atom5 SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "K8GxT0bHosY",
+                "china_cdn_id": "K8GxT0bHosY.mp4"
+              }
+            },
+            {
+              "id": 861047,
+              "key": "53fe368a-7bb3-40be-8173-85a4eb0b1f33",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861046,
+              "key": "ad3e3c3b-2036-43ec-9dc3-b85b0caccdc3",
+              "title": "ND213 C04 L01 C1.4-Atom7",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "BOU4yXn9y9g",
+                "china_cdn_id": "BOU4yXn9y9g.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 859888,
+          "key": "ecec43c8-4fa4-4d28-abc3-3c8671388e41",
+          "title": "Starting a Thread with Variadic Templates & Member Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ecec43c8-4fa4-4d28-abc3-3c8671388e41",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861050,
+              "key": "178226bb-9baa-4511-8670-2a9a761dbde5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Starting a Thread with Variadic Templates & Member Functions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861051,
+              "key": "cdfb6f4c-d9e2-47b1-a522-ff7fb3b92869",
+              "title": "ND213 C04 L01 C1.5-Atom1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "4CnhFkKbUk8",
+                "china_cdn_id": "4CnhFkKbUk8.mp4"
+              }
+            },
+            {
+              "id": 861052,
+              "key": "b08b450b-35fd-40ff-a47b-4868a66dae35",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace",
+              "instructor_notes": ""
+            },
+            {
+              "id": 860019,
+              "key": "86205ea3-6491-484f-991c-adb74509ed63",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r845225c859888xJUPYTERLcyid4qbx",
+              "pool_id": "jupyterlab",
+              "view_id": "jupyter-lab-t15tc",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 861054,
+              "key": "646b2189-db28-4d09-a7c1-8e9f777ff9aa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861053,
+              "key": "7be5255c-f7de-4b79-917f-d97170cc2fc0",
+              "title": "ND213 C04 L01 C1.5-Atom5",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iFm6aUw1Tqk",
+                "china_cdn_id": "iFm6aUw1Tqk.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 859889,
+          "key": "283a3301-7f4c-4e7e-8f15-9117d6cd4a75",
+          "title": "Running Multiple Threads",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "283a3301-7f4c-4e7e-8f15-9117d6cd4a75",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861055,
+              "key": "b85e7666-73d7-4f7b-91da-73b1cc01a33e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Running Multiple Threads",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861056,
+              "key": "bae2cd9b-31ab-4f8b-9d23-c669eaf4ed7e",
+              "title": "ND213 C04 L01 C1.6-Atom1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ZjkflMtAaYU",
+                "china_cdn_id": "ZjkflMtAaYU.mp4"
+              }
+            },
+            {
+              "id": 861057,
+              "key": "b5fe22d9-be7a-4d8d-a897-6b29da553239",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Workspace",
+              "instructor_notes": ""
+            },
+            {
+              "id": 860118,
+              "key": "1c23bddc-ebc5-4457-bbae-e2053359bdb3",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r845225c859889xJUPYTERLlynna106",
+              "pool_id": "jupyterlab2cpu",
+              "view_id": "jupyter-lab-qwj5w",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 861058,
+              "key": "b500274e-c22a-42f2-ba79-c63a597425b6",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861059,
+              "key": "111706df-220e-48f0-a659-7f73543f9bcb",
+              "title": "ND213 C04 L01 C1.6-Atom4",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "L_s79seFi-I",
+                "china_cdn_id": "L_s79seFi-I.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 860341,
+          "key": "6391da39-84c7-4442-a0fd-f74f97ad6d70",
+          "title": "Lesson 1 Exercise",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6391da39-84c7-4442-a0fd-f74f97ad6d70",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861060,
+              "key": "3b017004-c922-4b84-9307-05628d86985f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Lesson 1 Exercise",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861223,
+              "key": "f63ea07a-bf45-4240-b1fb-279eaac4e136",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Overview",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861061,
+              "key": "95c7f744-182f-4436-a372-017505484248",
+              "title": "ND213 C04 L01 C1.7-Atom1a SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iifZEu0ctxc",
+                "china_cdn_id": "iifZEu0ctxc.mp4"
+              }
+            },
+            {
+              "id": 861224,
+              "key": "ffa3009c-34f3-4052-9898-a1214e12b975",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Code Walkthrough\n\nNote: we recommend playing the video below full-screen so you will be able to see the code.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861225,
+              "key": "d2592107-8f91-475d-84f2-4cae9965b853",
+              "title": "C1-7-A2-SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OwiKpGYN9wI",
+                "china_cdn_id": "OwiKpGYN9wI.mp4"
+              }
+            },
+            {
+              "id": 860648,
+              "key": "4cde9acf-76f0-430b-82c4-cbeb4667b863",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Project Tasks\n\n- **Task L1.1** : In the base class `TrafficObject`, set up a thread barrier in its destructor that ensures\nthat all the thread objects in the member vector ` _threads` are joined.\n\n- **Task L1.2** : In the `Vehicle` class, start a thread with the member function `drive` and the\nobject `this` as the launch parameters. Also, add the created thread into the `_thread` vector of\nthe parent class.\n\n- **Task L1.3** : Vary the number of simulated vehicles in `main` and use the top function on the terminal\nor the task manager of your system to observe the number of threads used by the simulation.\n\nYou can find these tasks in the `project_tasks.txt` within the workspace as well.\n\n### Build Instructions\n_To run this code using a Udacity workspace, you will need to use the virtual desktop_. In the desktop you can use Terminator or the terminal in Visual Studio Code.\n\nOnce in the virtual desktop, to compile and run the code, create a `build` directory and use `cmake` and `make` as follows:\n```bash\nroot@a9ad274128c4:/home/workspace/L1_Project# mkdir build\nroot@a9ad274128c4:/home/workspace/L1_Project# cd build\nroot@a9ad274128c4:/home/workspace/L1_Project/build# cmake ..\nroot@a9ad274128c4:/home/workspace/L1_Project/build# make\nroot@a9ad274128c4:/home/workspace/L1_Project/build# ./traffic_simulation\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 860342,
+              "key": "4829d3db-c62d-47c0-af6e-2c3d36368f98",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r845225c860341xREACTvmc2shub",
+              "pool_id": "autonomouscpu",
+              "view_id": "react-u3tao",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "export CXX=g++-7",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": false,
+                    "terminalTitle": "BASH",
+                    "actionButtonText": "Desktop",
+                    "openTerminalOnStartup": true
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "data": {
+    "lesson": {
+      "id": 860042,
+      "key": "bed49f4f-47d6-4a71-918c-1dd75e1961d9",
+      "title": "Program a Concurrent Traffic Simulation",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Build a multithreaded traffic simulator using a real urban map. Run each vehicle on a separate thread, and manage intersections to facilitate traffic flow and avoid collisions.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": true,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/bed49f4f-47d6-4a71-918c-1dd75e1961d9/860042/1565924174770/Program+a+Concurrent+Traffic+Simulation+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/bed49f4f-47d6-4a71-918c-1dd75e1961d9/860042/1565924172283/Program+a+Concurrent+Traffic+Simulation+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": {
+        "key": "b8fe9e6f-6e1d-4bd2-8814-815f485f57a8",
+        "version": "1.0.0",
+        "locale": "en-us",
+        "duration": 30240,
+        "semantic_type": "Project",
+        "title": "Program a Concurrent Traffic Simulation",
+        "description": "Instructions",
+        "is_public": true,
+        "summary": null,
+        "forum_path": "",
+        "rubric_id": "2640",
+        "terminal_project_id": null,
+        "resources": null,
+        "image": null
+      },
+      "lab": null,
+      "concepts": [
+        {
+          "id": 860414,
+          "key": "23429a19-bd0f-446a-a185-eeaa1031b416",
+          "title": "Final Project Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "23429a19-bd0f-446a-a185-eeaa1031b416",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861148,
+              "key": "527a1429-3c13-47ef-b92d-5d61514662f5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Final Project Intro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861151,
+              "key": "da23ab46-64a3-4aa2-a97b-f6d041cecc36",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Overview",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861149,
+              "key": "95649452-37f6-47f3-b782-09f0006e49ee",
+              "title": "ND213 C04 L05 C5.1 Atom 1",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "pqCie1uqWVE",
+                "china_cdn_id": "pqCie1uqWVE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 860415,
+          "key": "4c5fbaec-4e3e-404c-b1d9-e5da650542a0",
+          "title": "Final Project Tasks",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "4c5fbaec-4e3e-404c-b1d9-e5da650542a0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861150,
+              "key": "4d5aca6a-d7a4-4295-a570-d9b90ddc9108",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Final Project Tasks",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861152,
+              "key": "ac430654-07d8-4fcc-a184-eb6d9e8aebf8",
+              "title": "ND213 C04 L05 C5-1-A2-SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "ie1CM5ms2O8",
+                "china_cdn_id": "ie1CM5ms2O8.mp4"
+              }
+            },
+            {
+              "id": 861154,
+              "key": "4d54a8fa-ed22-4265-a0e5-e3e3933f4a49",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Task List\n\n- **Task FP.1** : Define a class `TrafficLight` which is a child class of `TrafficObject`. The class shall have the public methods `void waitForGreen()` and `void simulate()` as well as `TrafficLightPhase getCurrentPhase()`, where `TrafficLightPhase` is an enum that can be either `red` or `green`. Also, add the private method `void cycleThroughPhases()`. Furthermore, there shall be the private member `_currentPhase` which can take `red` or `green` as its value.\n\n\n- **Task FP.2** : Implement the function with an infinite loop that measures the time between two loop cycles and toggles the current phase of the traffic light between red and green and sends an update method to the message queue using move semantics. The cycle duration should be a random value between 4 and 6 seconds. Also, the while-loop should use `std::this_thread::sleep_`for to wait 1ms between two cycles. Finally, the private method `cycleThroughPhases` should be started in a thread when the public method `simulate` is called. To do this, use the thread queue in the base class.\n\n\n- **Task FP.3** : Define a class `MessageQueue` which has the public methods send and receive. Send should take an rvalue reference of type TrafficLightPhase whereas receive should return this type. Also, the class should define an `std::dequeue` called `_queue`, which stores objects of type `TrafficLightPhase`. Finally, there should be an `std::condition_variable` as well as an `std::mutex` as private members.\n\n\n- **Task FP.4** : Implement the method `Send`, which should use the mechanisms `std::lock_guard<std::mutex>` as well as `_condition.notify_one()` to add a new message to the queue and afterwards send a notification. Also, in class `TrafficLight`, create a private member of type `MessageQueue` for messages of type `TrafficLightPhase` and use it within the infinite loop to push each new `TrafficLightPhase` into it by calling send in conjunction with move semantics.\n\n\n- **Task FP.5** : The method receive should use `std::unique_lock<std::mutex>` and `_condition.wait()` to wait for and receive new messages and pull them from the queue using move semantics. The received object should then be returned by the receive function. Then, add the implementation of the method `waitForGreen`, in which an infinite while-loop runs and repeatedly calls the `receive` function on the message queue. Once it receives `TrafficLightPhase::green`, the method returns.\n\n\n- **Task FP.6** : In class Intersection, add a private member `_trafficLight` of type `TrafficLight`. In method `Intersection::simulate()`, start the simulation of `_trafficLight`. Then, in method `Intersection::addVehicleToQueue`, use the methods `TrafficLight::getCurrentPhase` and `TrafficLight::waitForGreen` to block the execution until the traffic light turns green.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861153,
+          "key": "b5ce15ff-1b3f-4fa7-b877-051b79e23e2b",
+          "title": "Final Project Code Overview",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b5ce15ff-1b3f-4fa7-b877-051b79e23e2b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861155,
+              "key": "dc649ad2-280b-4343-91ab-66d2ae9cce68",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Final Project Code Overview",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861156,
+              "key": "386bcdc3-7c42-4509-82f3-e8523d20ee69",
+              "title": "ND213 C04 L05 C5-1-A3-SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XVQt4iKEQwo",
+                "china_cdn_id": "XVQt4iKEQwo.mp4"
+              }
+            },
+            {
+              "id": 861157,
+              "key": "4cf1e79b-0fcf-4d8e-9d5b-f5e7a3a1aa39",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Task List\n\n- **Task FP.1** : Define a class `TrafficLight` which is a child class of `TrafficObject`. The class shall have the public methods `void waitForGreen()` and `void simulate()` as well as `TrafficLightPhase getCurrentPhase()`, where `TrafficLightPhase` is an enum that can be either `red` or `green`. Also, add the private method `void cycleThroughPhases()`. Furthermore, there shall be the private member `_currentPhase` which can take `red` or `green` as its value.\n\n\n- **Task FP.2** : Implement the function with an infinite loop that measures the time between two loop cycles and toggles the current phase of the traffic light between red and green and sends an update method to the message queue using move semantics. The cycle duration should be a random value between 4 and 6 seconds. Also, the while-loop should use `std::this_thread::sleep_`for to wait 1ms between two cycles. Finally, the private method `cycleThroughPhases` should be started in a thread when the public method `simulate` is called. To do this, use the thread queue in the base class.\n\n\n- **Task FP.3** : Define a class `MessageQueue` which has the public methods send and receive. Send should take an rvalue reference of type TrafficLightPhase whereas receive should return this type. Also, the class should define an `std::dequeue` called `_queue`, which stores objects of type `TrafficLightPhase`. Finally, there should be an `std::condition_variable` as well as an `std::mutex` as private members.\n\n\n- **Task FP.4** : Implement the method `Send`, which should use the mechanisms `std::lock_guard<std::mutex>` as well as `_condition.notify_one()` to add a new message to the queue and afterwards send a notification. Also, in class `TrafficLight`, create a private member of type `MessageQueue` for messages of type `TrafficLightPhase` and use it within the infinite loop to push each new `TrafficLightPhase` into it by calling send in conjunction with move semantics.\n\n\n- **Task FP.5** : The method receive should use `std::unique_lock<std::mutex>` and `_condition.wait()` to wait for and receive new messages and pull them from the queue using move semantics. The received object should then be returned by the receive function. Then, add the implementation of the method `waitForGreen`, in which an infinite while-loop runs and repeatedly calls the `receive` function on the message queue. Once it receives `TrafficLightPhase::green`, the method returns.\n\n\n- **Task FP.6** : In class Intersection, add a private member `_trafficLight` of type `TrafficLight`. In method `Intersection::simulate()`, start the simulation of `_trafficLight`. Then, in method `Intersection::addVehicleToQueue`, use the methods `TrafficLight::getCurrentPhase` and `TrafficLight::waitForGreen` to block the execution until the traffic light turns green.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 861158,
+          "key": "d9a586a0-7f87-4cd8-89d9-c6782108ee65",
+          "title": "Final Project Workspace",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d9a586a0-7f87-4cd8-89d9-c6782108ee65",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 861159,
+              "key": "80506e7b-ac73-432f-bcec-f20403ca04d5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Final Project Workspace",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861160,
+              "key": "fd48b6ed-7852-46d7-89f7-c23d005cb426",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Below is the workspace you can use to complete your project. **Note that the task list is included in the README for the project. Please be sure to have GPU enabled when using the project workspace below to ensure that you have access to the libraries needed to run the project.**\n\n## Checking the Rubric\n\nIf your project works correctly, carefully look at the [project rubric](https://review.udacity.com/#!/rubrics/2640/view). If you feel like all the criteria from the rubric are met, you are ready to submit!\n\n## Submitting the Project\n\nYou can submit your project using the \"SUBMIT PROJECT\" button in the terminal below. \n\nThis project can only be submitted through this workspace. This is done to ensure that you are able to test your code in an environment similar to what reviewers will use. \n\nIf you have developed your project locally, you can upload the project directory to the workspace for submission. Similarly, if you have your code in Github, you can clone your project into the workspace for submission.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 861164,
+              "key": "c16eead7-2afb-478e-8040-65ee075058e4",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r845225c861158xREACTljfp2ums",
+              "pool_id": "autonomouscpu",
+              "view_id": "react-fzhhb",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "userCode": "export CXX=g++-7",
+                    "openFiles": [],
+                    "showFiles": true,
+                    "allowClose": true,
+                    "allowSubmit": true,
+                    "terminalTitle": "BASH",
+                    "actionButtonText": "Desktop",
+                    "openTerminalOnStartup": true
+                  },
+                  "kind": "react"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,937 @@
+{
+  "data": {
+    "lesson": {
+      "id": 930263,
+      "key": "ec63b3b7-590d-43ef-9492-66f6f23d9988",
+      "title": "Overview of Memory Types",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "This lesson covers basic concepts such as cache, virtual memory, and the structure of memory addresses. In addition, it is demonstrated how the debugger can be used to read data from memory.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": false,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "https://zips.udacity-data.com/ec63b3b7-590d-43ef-9492-66f6f23d9988/930263/1570750077430/Overview+of+Memory+Types+Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "https://zips.udacity-data.com/ec63b3b7-590d-43ef-9492-66f6f23d9988/930263/1570750073582/Overview+of+Memory+Types+Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 930265,
+          "key": "e6830afc-c398-4af8-9221-f2675293f46f",
+          "title": "Memory Addresses and Hexidecimal Numbers",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "e6830afc-c398-4af8-9221-f2675293f46f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930273,
+              "key": "e049f7ac-1a3d-4e6f-b8a8-4d1cc4aa7053",
+              "title": "ND213 C03 L01 01.1 Memory Addresses And Hexadecimal Numbers HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "OAU28NfySsQ",
+                "china_cdn_id": "OAU28NfySsQ.mp4"
+              }
+            },
+            {
+              "id": 930270,
+              "key": "e12fd78a-f7d4-4c7d-9d75-3e503e63c8d2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Memory Addresses and Hexadecimal Numbers",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930272,
+              "key": "d5af951b-4e27-40b4-abce-3928be67a4b4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Understanding the number system used by computers  to store and process data is essential for effective memory management, which is why we will start with an introduction into the binary and hexadecimal number systems and the structure of memory addresses. \n\nEarly attempts to invent an electronic computing device met with disappointing results as long as engineers and computer scientists tried to use the decimal system. One of the biggest problems was the low distinctiveness of the individual symbols in the presence of [noise](https://en.wikipedia.org/wiki/Noise_%28electronics%29). A 'symbol' in our alphabet might be a letter in the range A-Z while in our decimal system it might be a number in the range 0-9. The more symbols there are, the harder it can be to differentiate between them, especially when there is electrical interference. After many years of research, an early pioneer in  computing, John Atanasoff,  proposed to use a coding system that expressed numbers as sequences of only two digits: one by the presence of a charge and one by the absence of a charge. This numbering system is called Base 2 or binary and it is represented by the digits 0 and 1 (called 'bit')  instead of 0-9 as with the decimal system. Differentiating between only two symbols, especially at high frequencies, was much easier and more robust than with 10 digits. In a way, the ones and zeroes of the binary system can be compared to Morse Code, which is also a very robust way to transmit information in the presence of much interference. This was one of the primary reasons why the binary system quickly became the standard for computing.\n\nInside each computer, all numbers, characters, commands and every imaginable type of information are represented in binary form. Over the years, many coding schemes and techniques were invented to manipulate these 0s and 1s effectively.  One of the most widely used schemes is called ASCII (*American Standard Code for Information Interchange*), which lists the binary code for a set of 127 characters. The idea was to represent each letter with a sequence of binary numbers so that storing texts on in computer memory and on hard (or floppy) disks would be possible. \n\nThe film enthusiasts among you might know the scene in the hit movie \"The Martian\" with Mat Daemon, in which an ASCII table plays an important role in the rescue from Mars.\n\nThe following figure shows an ASCII table, where each character (rightmost column) is associated with an 8-digit binary number:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930274,
+              "key": "02326c3f-a218-4d86-8317-a35be407fad6",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d77ea74_ascii-table-black/ascii-table-black.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/02326c3f-a218-4d86-8317-a35be407fad6",
+              "caption": "",
+              "alt": "",
+              "width": 2104,
+              "height": 1621,
+              "instructor_notes": null
+            },
+            {
+              "id": 930275,
+              "key": "e80fb4ec-34ea-4541-839e-8106aef7b9c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The letter `U` for example can be represented by the following sequence of bits: `0101 0101`",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930276,
+              "key": "e246fea5-e568-4f38-bee7-d6db51a8429e",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "e246fea5-e568-4f38-bee7-d6db51a8429e",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Can you figure out the binary sequence for the word \"UDACITY\"?",
+                "answers": [
+                  {
+                    "id": "a1568139989298",
+                    "text": "01001000 01100101 01101100 01101100 01101111 0100000 01010111 01101111 01110010 01101100 01100100",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1568139996411",
+                    "text": "01110100 01110010 01111001 01000001 01100111 01100001 01101001 01101110",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1568139997403",
+                    "text": "01010101 01000100 01000001 01000011 01001001 01010100 01011001",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1568139998081",
+                    "text": "01010101 01000100 01001111 01001110 01001101 01001101 01001101",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930278,
+              "key": "fc4adf7d-752c-4995-b403-e5d8d15718af",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In addition to the decimal number (column \"Dec\") and the binary number, the ASCII table provides a third number for each character (column \"Hex\"). According to the table above, the letter `z` is referenced by the decimal number `122`, by the binary number `0111 1010` and by `7A`. You have probably seen this type of notation before, which is called \"*hexadecimal*\".  Hexadecimal (hex) numbers are used often in computer systems, e.g for displaying memory readouts - which is why we will look into this topic a little bit deeper. Instead of having a base of 2 (such as binary numbers) or a base of 10 (such as our conventional decimal numbers), hex numbers have a base of 16. The conversion between the different numbering systems is a straightforward operation and can be easily performed with any scientific calculator. More details on how to do this can e.g. be found [here](https://en.wikipedia.org/wiki/Computer_number_format).\n\nThere are several reasons why it is preferable to use hex numbers instead of binary numbers (which computers store at the lowest level), three of which are given below: \n\n1. **Readability**: It is significantly easier for a human to understand hex numbers as they resemble the decimal numbers we are used to. It is simply not intuitive to look at binary numbers and decide how big they are and how they relate to another binary number. \n\n2. **Information density**: A hex number with two digits can express any number from 0 to 255 (because 16^2 is 256). To do the same in the binary system, we would require 8 digits. This difference is even more pronounced as numbers get larger and thus harder to deal with. \n\n3. **Conversion into bytes**:  Bytes are units of information consisting of 8 bits. Almost all computers are byte-addressed, meaning all memory is referenced by byte, instead of by bit. Therefore, using a counting system that can easily convert into bytes is an important requirement. We will shortly see why grouping bits into a byte plays a central role in understanding how computer memory works.\n\nThe reason why early computer scientists have decided to not use decimal numbers can also be seen in the figure below. In these days (before pocket calculators were widely available), programers had to interpret computer output in their head on a regular basis. For them, it was much easier and quicker to look at and interpret `7E`instead of `0111 1110`. Ideally, they would have used the decimal system, but the conversion between base 2 and base 10 is much harder than between base 2 and base 16. Note in the figure that the decimal system's digit transitions never match those of the binary system. With the hexadecimal system, which is based on a multiple of 2, digit transitions match up each time, thus making it much easier to convert quickly between these numbering systems.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930279,
+              "key": "5ffa9714-6510-4456-9026-b35b8fc82461",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d8509ad_c11-fig2/c11-fig2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/5ffa9714-6510-4456-9026-b35b8fc82461",
+              "caption": "Each dot represents an increase in the number of digits required to express a number in different number systems. For base 2, this happens at 2, 4, 8, 32, 64, 128 and 256. The red dots indicate positions where several numbering systems align. Note that there are breaks in the number line to conserve space.",
+              "alt": "Image showing increase in number of digits required to express numbers in different number systems.",
+              "width": 883,
+              "height": 154,
+              "instructor_notes": null
+            },
+            {
+              "id": 930331,
+              "key": "3cfbde42-f1f2-44d2-b7d2-9aaa34c7cebc",
+              "title": "",
+              "semantic_type": "MatchingQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3cfbde42-f1f2-44d2-b7d2-9aaa34c7cebc",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "complex_prompt": {
+                  "text": "Convert the following numbers from binary into hex and vice-versa:"
+                },
+                "concepts_label": "Number",
+                "answers_label": "Conversion",
+                "concepts": [
+                  {
+                    "text": "FF",
+                    "correct_answer": {
+                      "id": "a1568141204172",
+                      "text": "1111 1111"
+                    }
+                  },
+                  {
+                    "text": "1D",
+                    "correct_answer": {
+                      "id": "a1568141244907",
+                      "text": "11101"
+                    }
+                  },
+                  {
+                    "text": "1101 1001",
+                    "correct_answer": {
+                      "id": "a1568141265772",
+                      "text": "D9"
+                    }
+                  },
+                  {
+                    "text": "1001 0110",
+                    "correct_answer": {
+                      "id": "a1568141276113",
+                      "text": "96"
+                    }
+                  }
+                ],
+                "answers": [
+                  {
+                    "id": "a1568141276113",
+                    "text": "96"
+                  },
+                  {
+                    "id": "a1568141204172",
+                    "text": "1111 1111"
+                  },
+                  {
+                    "id": "a1568141244907",
+                    "text": "11101"
+                  },
+                  {
+                    "id": "a1568141265772",
+                    "text": "D9"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930380,
+              "key": "b9d11ccf-f561-4b44-8372-3e0be27cd053",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930379,
+              "key": "63728cc3-0a7c-4e53-b2a1-84fced764743",
+              "title": "ND213 C03 L01 01.2 Memory Addresses And Hexadecimal Numbers HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "q1C7lBXNGn0",
+                "china_cdn_id": "q1C7lBXNGn0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930266,
+          "key": "1e4778a4-f76e-4448-8bb9-26ae7e81671c",
+          "title": "Using the Debugger to Analyze Memory",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1e4778a4-f76e-4448-8bb9-26ae7e81671c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930382,
+              "key": "c11afb10-1cd4-4263-86e0-213551e20c34",
+              "title": "ND213 C03 L01 02.1 Using The Debugger To Analyze Memory HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "-p99igKSazc",
+                "china_cdn_id": "-p99igKSazc.mp4"
+              }
+            },
+            {
+              "id": 930381,
+              "key": "1b3b4082-f3f5-41b2-9b00-0cc2d35cd9a8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Using the Debugger to Analyze Memory\n\nAs you have seen in the last section, binary numbers and hex numbers can be used to represent information. A coding scheme such as an ASCII table makes it possible to convert text into binary form. In the following, we will try to look at computer memory and locate information there.\n\nIn the following example, we will use the debugger to look for a particular string in computer memory. Depending on your computer operating system and on the compiler you have installed, there might be several debugging tools available to you. In the following video, we will use the gdb debugger to locate the character sequence \"UDACITY\" in computer memory. The code below creates an array of characters in computer memory (on the stack, which we will learn more about shortly) and prints it to the console:\n\n```\n#include <stdio.h>\n\nint main()\n{\n    char str1[]= \"UDACITY\";\n    printf(\"%s\",str1);\n\n    return 0;\n}\n```\n\nLet us try to locate the string in memory using gdb.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930383,
+              "key": "0cc292b4-9e48-47e9-a155-8cecce8e8e4b",
+              "title": "ND213 C03 L01 02.2 Using The Debugger To Analyze Memory SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Spj2jK1-uIE",
+                "china_cdn_id": "Spj2jK1-uIE.mp4"
+              }
+            },
+            {
+              "id": 940344,
+              "key": "9aa52866-a072-4043-a2d7-56bf87e3826d",
+              "title": "ND213 C03 L01 02.3 Using The Debugger To Analyze Memory SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Lopa5WXR1uQ",
+                "china_cdn_id": "Lopa5WXR1uQ.mp4"
+              }
+            },
+            {
+              "id": 930384,
+              "key": "3c348354-3ff9-4db5-a74b-879a8dc42294",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you have just seen in the video, the binary ASCII codes for the letters in UDACITY could be located in computer memory by using the address of the variable `str1` from the code example above. The output of gdb can also be observed in the following image: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930385,
+              "key": "eed29d64-0aaa-49d0-a650-b3486e96e69b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d78129f_8e0935d2-6391-4e89-84fd-7a424a090cff/8e0935d2-6391-4e89-84fd-7a424a090cff.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/eed29d64-0aaa-49d0-a650-b3486e96e69b",
+              "caption": "",
+              "alt": "",
+              "width": 2440,
+              "height": 330,
+              "instructor_notes": null
+            },
+            {
+              "id": 930386,
+              "key": "f1c50847-f116-4409-8672-2cd59bfb99b5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can clearly see that using hex numbers to display the information is a much shorter and more convenient form for a human programmer than looking at the binary numbers. Note that hex numbers are usually prepended with \"0x\". \n\nComputer memory is treated as a sequence of cells. This means that we can use the starting address to retrieve the byte of information stored there. The following figure illustrates the principle: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930387,
+              "key": "e72ed93a-3884-4d19-a700-1635a6c7ea7f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d850ae4_c12-fig2/c12-fig2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/e72ed93a-3884-4d19-a700-1635a6c7ea7f",
+              "caption": "Computer memory represented as a sequence of data cells (e.g. 01010101) with their respective memory addresses shown on top.",
+              "alt": "Computer memory represented as a sequence of cells.",
+              "width": 597,
+              "height": 154,
+              "instructor_notes": null
+            },
+            {
+              "id": 930388,
+              "key": "845ce8c3-fd0a-407e-93a1-f22a2209d5a4",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Let us perform a short experiment using gdb again: By adding 1, 2, 3, … to the address of the string variable `str1`, we can proceed to the next cell until we reach the end of the memory we want to look at. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930389,
+              "key": "1c347a57-cd16-4787-8dcb-d7f4cf7e9fd5",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d781309_340b8883-80b9-4d51-97d3-b67d845d74d4/340b8883-80b9-4d51-97d3-b67d845d74d4.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/1c347a57-cd16-4787-8dcb-d7f4cf7e9fd5",
+              "caption": "",
+              "alt": "",
+              "width": 303,
+              "height": 328,
+              "instructor_notes": null
+            },
+            {
+              "id": 930390,
+              "key": "fa7256ad-11b4-4d20-a5c3-78cf3d9cb210",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Note that the numbers above represent the string \"UDACITY\" again. Also note that once we exceed the end of the string, the memory cell has the value 0x00. This means that the experiment has shown that an offset of 1 in a hexadecimal address corresponds to an offset of 8 bits (or 1 byte) in computer memory. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930402,
+              "key": "1ef2785f-aebb-446e-8930-34bae95cafbf",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Your Turn\n\nUnfortunately, gdb will not work in Udacity Workspaces, but you can still try this exercise either in your local environment if you have g++ and gdb installed, or you can use [OnlineGDB](https://www.onlinegdb.com/) to follow along.\n\nTry to locate the characters of \"Udacity\" using gdb in your local environment or in the online debugger. \n\n#### Using GDB Locally\nIn order to use gdb locally, you will need to compile `main.cpp` with [debugging symbols](https://en.wikipedia.org/wiki/Debug_symbol). This can be done with the `-g` option for g++:\n```bash\ng++ -g main.cpp\n```\nYou can then run gdb on the output with:\n```bash\ngdb a.out\n```\nWhen gdb displays the line `Type <RET> for more, q to quit, c to continue without paging`, be sure to press the RETURN key to continue.\n\n#### Using GDB Online\n\nTo use the OnlineGDB application, simply paste the code into the online editor and press the \"Debug\" button at the top of the screen.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 950887,
+              "key": "364b21bd-8073-4ebc-8e38-70e848e4c74d",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/October/5d9bbbcc_onlinegdb/onlinegdb.gif",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/364b21bd-8073-4ebc-8e38-70e848e4c74d",
+              "caption": "",
+              "alt": "",
+              "width": 1382,
+              "height": 756,
+              "instructor_notes": null
+            },
+            {
+              "id": 950884,
+              "key": "393e5448-b4bf-41f6-8f55-4829ccbd07e8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "You can find the gdb \"cheat sheet\" used in the videos above [here](https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930392,
+              "key": "86be247a-2450-4ebb-bc6b-cd2eca4f76cd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930391,
+              "key": "036f57e1-13a6-464e-b862-f46c1155001b",
+              "title": "ND213 C03 L01 02.4 Using The Debugger To Analyze Memory HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "9oESTYFVCV8",
+                "china_cdn_id": "9oESTYFVCV8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930267,
+          "key": "f9f42086-90c6-4f92-bc5c-7c33d5b4f597",
+          "title": "Types of Computer Memory",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "f9f42086-90c6-4f92-bc5c-7c33d5b4f597",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930423,
+              "key": "d31d4fcf-5da2-4c6d-b5f2-2650767626c7",
+              "title": "ND213 C03 L01 03.1 Types Of Computer Memory HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "hUKRiLAj0EM",
+                "china_cdn_id": "hUKRiLAj0EM.mp4"
+              }
+            },
+            {
+              "id": 930424,
+              "key": "66a4a182-e530-47c7-8462-9cf994f74cc8",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In a course on memory management we obviously need to take a look at the available memory types in computer systems. Below you will find a small list of some common memory types that you will surely have heard of:\n- RAM / ROM\n- Cache (L1, L2)\n- Registers\n- Virtual Memory\n- Hard Disks, USB drives\n\nLet us look into these types more deeply: When the CPU of a computer needs to access memory, it wants to do this with minimal latency. Also, as large amounts of information need to be processed, the available memory should be sufficiently large with regard to the tasks we want to accomplish. \n\nRegrettably though, low latency and large memory are not compatible with each other (at least not at a reasonable price). In practice, the decision for low latency usually results in a reduction of the available storage capacity (and vice versa). This is the reason why a computer has multiple memory types that are arranged hierarchically. The following pyramid illustrates the principle: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930425,
+              "key": "42a0f229-7c41-4804-8751-1658b4b79a50",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d850b3d_c13-fig1/c13-fig1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/42a0f229-7c41-4804-8751-1658b4b79a50",
+              "caption": "Computer memory latency and size hierarchy.",
+              "alt": "A pyramid representing latency and size of different kinds of computer memory (Bottom is largest and slowest).",
+              "width": 402,
+              "height": 362,
+              "instructor_notes": null
+            },
+            {
+              "id": 930426,
+              "key": "3f22444f-72e4-4e2e-8958-7cd1f243337b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As you can see, the CPU and its ultra-fast (but small) registers used for short-term data storage reside at the top of the pyramid. Below are Cache and RAM, which belong to the category of temporary memory which quickly looses its content once power is cut off. Finally, there are permanent storage devices such as the ROM, hard drives as well as removable drives such as USB sticks. \n\nLet us take a look at a typical computer usage scenario to see how the different types of memory are used: \n\n1. After switching on the computer, it loads data from its read-only memory (ROM) and performs a power-on self-test (POST) to ensure that all major components are working properly. Additionally, the computer memory controller checks all of the memory addresses with a simple read/write operation to ensure that memory is functioning correctly. \n\n2. After performing the self-test, the computer loads the basic input/output system (BIOS) from ROM.  The major task of the BIOS is to make the computer functional by providing basic information about such things as storage devices, boot sequence, security or auto device recognition capability. \n\n3. The process of activating a more complex system on a simple system is called \"bootstrapping\": It is a solution for the chicken-egg-problem of starting a software-driven system by itself using software. During bootstrapping, the computer loads the operating system (OS) from the hard drive into random access memory (RAM). RAM is considered \"random access\" because any memory cell can be accessed directly by intersecting the respective row and column in the matrix-like memory layout. For performance reasons, many parts of the OS are kept in RAM as long as the computer is powered on.\n\n4. When an application is started, it is loaded into RAM. However, several application components are only loaded into RAM on demand to preserve memory.  Files that are opened during runtime are also loaded into RAM. When a file is saved, it is written to the specified storage device. After closing the application, it is deleted from RAM.\n\nThis simple usage scenario shows the central importance of the RAM. Every time data is loaded or a file is opened, it is placed into this temporary storage area - but what about the other memory types above the RAM layer in the pyramid? \n\nTo maximize CPU performance, fast access to large amounts of data is critical. If the CPU cannot get the data it needs, it stops and waits for data availability.  Thus, when designing new memory chips, engineers must adapt to the speed of the available CPUs. The problem they are facing is that memory which is able to keep up with modern CPUs running at several GHz is extremely expensive. To combat this, computer designers have created the memory tier system which has already been shown in the pyramid diagram above. The solution is to use expensive memory in small quantities and then back it up using larger quantities of less expensive memory. \n\nThe cheapest form of memory available today is the hard disk. It provides large quantities of inexpensive and permanent storage. The problem of a hard disk is its comparatively low speed - even though access times with modern solid state disks (SSD) have decreased significantly compared to older magnetic-disc models.\n\nThe next hierarchical level above hard disks or other external storage devices is the RAM. We will not discuss in detail how it works but only take a look at some key performance metrics of the CPU at this point, which place certain performance expectations on the RAM and its designers: \n\n1. The **bit size** of the CPU decides how many bytes of data it can access in RAM memory at the same time. A 16-bit CPU can access 2 bytes (with each byte consisting of 8 bit) while a 64-bit CPU can access 8 bytes at a time. \n\n2. The **processing speed** of the CPU is measured in Gigahertz or Megahertz and denotes the number of operations it can perform in one second. \n\nFrom processing speed and bit size, the data rate required to keep the CPU busy can easily be computed by multiplying bit size with processing speed. With modern CPUs and ever-increasing speeds, the available RAM in the market will not be fast enough to match the CPU data rate requirements. \n\n## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930427,
+              "key": "95b9b113-38a8-49ec-b116-11f2f6bfb006",
+              "title": "ND213 C03 L01 03.2 Types Of Computer Memory HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "cfnC4fBeWfU",
+                "china_cdn_id": "cfnC4fBeWfU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930268,
+          "key": "1239107a-5d3f-4d47-acb3-8c0ea9b0c94f",
+          "title": "Cache Memory",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1239107a-5d3f-4d47-acb3-8c0ea9b0c94f",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930500,
+              "key": "e0c83705-e8ea-48e5-bb64-0cd6b31c0212",
+              "title": "ND213 C03 L01 04.1 Cache Memory HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "FNaaBipEqBw",
+                "china_cdn_id": "FNaaBipEqBw.mp4"
+              }
+            },
+            {
+              "id": 930501,
+              "key": "9786defa-1246-4d98-b405-bf7f3bce8643",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Cache Levels\n\nCache memory is much faster but also significantly smaller than standard RAM. It holds the data that will (or might) be used by the CPU more often. In the memory hierarchy we have seen in the last section, the cache plays an intermediary role between fast CPU and slow RAM and hard disk. The figure below gives a rough overview of a typical system architecture: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930502,
+              "key": "73a17091-98c0-4c1f-a2a2-3e343420dc65",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d850baa_c14-fig1/c14-fig1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/73a17091-98c0-4c1f-a2a2-3e343420dc65",
+              "caption": "System architecture diagram showing caches, ALU (arithmetic logic unit), main memory, and the buses connected each component.",
+              "alt": "",
+              "width": 1354,
+              "height": 464,
+              "instructor_notes": null
+            },
+            {
+              "id": 930503,
+              "key": "9f33dc60-f7dd-4615-8404-150ac3d280e5",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "The central CPU chip is connected to the outside world by a number of buses. There is a cache bus, which leads to a block denoted as L2 cache, and there is a system bus as well as a memory bus that leads to the computer main memory. The latter holds the comparatively large RAM while the L2 cache as well as the L1 cache are very small with the latter also being a part of the CPU itself. \n\nThe concept of L1 and L2 (and even L3) cache is further illustrated by the following figure, which shows a multi-core CPU and its interplay with L1, L2 and L3 caches: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930504,
+              "key": "fa85867a-298c-46f7-85b0-9803d05068e9",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d850be1_c14-fig2/c14-fig2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/fa85867a-298c-46f7-85b0-9803d05068e9",
+              "caption": "L1, L2, and L3 cache",
+              "alt": "Diagram showing L1, L2, and L3 cache on a CPU chip with bus to main memory.",
+              "width": 799,
+              "height": 393,
+              "instructor_notes": null
+            },
+            {
+              "id": 930505,
+              "key": "706af17c-ca80-4279-a10b-b9ad12167a92",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "1. **Level 1 cache** is the fastest and smallest memory type in the cache hierarchy. In most systems, the L1 cache is not very large. Mostly it is in the range of 16 to 64 kBytes, where the memory areas for instructions and data are separated from each other (L1i  and L1d, where \"i\" stands for \"instruction\" and \"d\" stands for \"data\". Also see \"[Harvard architecture](https://en.wikipedia.org/wiki/Harvard_architecture)\" for further reference). The importance of the L1 cache grows with increasing speed of the CPU. In the L1 cache, the most frequently required instructions and data are buffered so that as few accesses as possible to the slow main memory are required. This cache avoids delays in data transmission and helps to make optimum use of the CPU's capacity.\n\n2. **Level 2 cache** is located close to the CPU and has a direct connection to it. The information exchange between L2 cache and CPU is managed by the L2 controller on the computer main board. The size of the L2 cache is usually at or below 2 megabytes. On modern multi-core processors, the L2 cache is often located within the CPU itself. The choice between a processor with more clock speed or a larger L2 cache can be answered as follows: With a higher clock speed, individual programs run faster, especially those with high computing requirements. As soon as several programs run simultaneously, a larger cache is advantageous. Usually normal desktop computers with a processor that has a large cache are better served than with a processor that has a high clock rate.\n\n3. **Level 3 cache** is shared among all cores of a multicore processor.  With the L3 cache, the [cache coherence](https://en.wikipedia.org/wiki/Cache_coherence) protocol of multicore processors can work much faster. This protocol compares the caches of all cores to maintain data consistency so that all processors have access to the same data at the same time. The L3 cache therefore has less the function of a cache, but is intended to simplify and accelerate the cache coherence protocol and the data exchange between the cores.\n\nOn Mac, information about the system cache can be obtained by executing the command `sysctl -a hw` in a terminal. On Debian Linux linux, this information can be found with `lscpu | grep cache`. On my iMac Pro (2017), this command yielded (among others) the following output: \n\n```\nhw.memsize: 34359738368\nhw.l1icachesize: 32768\nhw.l1dcachesize: 32768\nhw.l2cachesize: 1048576\nhw.l3cachesize: 14417920\n```\n\n- *hw.l1icachesize* is the size of the L1 instruction cache, wich is at 32kB. This cache is strictly reserved for storing CPU instructions only. \n- *hw.l1dcachesize* is also 32 KB and is dedicated for data as opposed to instructions.\n- *hw.l2cachesize* and *hw.l3cachesize* show the size of the L2 and L3 cache, which are at 1MB and 14MB respectively. \n\nIt should be noted that the size of all caches combined is very small when compared to the size of the main memory (the RAM), which is at 32GB on my system.\n\nIdeally, data needed by the CPU should be read from the various caches for more than 90% of all memory access operations. This way, the high latency of RAM and hard disk can be efficiently compensated. \n\n### Temporal and Spatial Locality\n\nThe following table presents a rough overview of the latency of various memory access operations. Even though these numbers will differ significantly between systems, the order of magnitude between the different memory types is noteworthy. While L1 access operations are close to the speed of a photon traveling at light speed for a distance of 1 foot, the latency of L2 access is roughly one order of magnitude slower already while access to main memory is two orders of magnitude slower.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930506,
+              "key": "8d8bab55-fdc2-4373-9e3b-bd806be5c737",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d8928e3_image/image.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/8d8bab55-fdc2-4373-9e3b-bd806be5c737",
+              "caption": "Originally from Peter Norvig:\nhttp://norvig.com/21-days.html#answers",
+              "alt": "",
+              "width": 1368,
+              "height": 758,
+              "instructor_notes": null
+            },
+            {
+              "id": 930507,
+              "key": "6828c7f3-def9-4c26-85f9-240ef515bc7c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In algorithm design, programmers can exploit two principles to increase runtime performance: \n\n1. **Temporal locality** means that address ranges that are accessed are likely to be used again in the near future. In the course of time, the same memory address is accessed relatively frequently (e.g. in a loop). This property can be used at all levels of the memory hierarchy to keep memory areas accessible as quickly as possible. \n\n2. **Spatial locality** means that after an access to an address range, the next access to an address in the immediate vicinity is highly probable (e.g. in arrays). In the course of time, memory addresses that are very close to each other are accessed again multiple times. This can be exploited by moving the adjacent address areas upwards into the next hierarchy level during a memory access.\n\nLet us consider the following code example: \n\n```\n#include <chrono>\n#include <iostream>\n\nint main()\n{\n    // create array \n    const int size = 4;\n    static int x[size][size];\n\n    auto t1 = std::chrono::high_resolution_clock::now();\n    for (int i = 0; i < size; i++)\n    {\n        for (int j = 0; j < size; j++)\n        {\n            x[j][i] = i + j;\n            std::cout << &x[j][i] << \": i=\" << i << \", j=\" << j << std::endl;\n        }\n    }\n\n    // print execution time to console\n    auto t2 = std::chrono::high_resolution_clock::now(); // stop time measurement\n    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();\n    std::cout << \"Execution time: \" << duration << \" microseconds\" << std::endl;\n\n    return 0;\n}\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930508,
+              "key": "589f1db4-01ce-4712-af67-a7a9b48fc4b5",
+              "title": "ND213 C03 L01 04.2 Cache Memory SC",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Gfrfp1GtIUU",
+                "china_cdn_id": "Gfrfp1GtIUU.mp4"
+              }
+            },
+            {
+              "id": 930509,
+              "key": "8fe22a51-e032-4a87-a3fc-4aac9785bdfa",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Exercise : Cache-friendly coding",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930512,
+              "key": "9fa1fd25-3e82-4317-9899-8c3fc5cf746e",
+              "title": null,
+              "semantic_type": "WorkspaceAtom",
+              "is_public": true,
+              "workspace_id": "r859981c930268xJUPYTERLogu5pylt",
+              "pool_id": "jupyterlab",
+              "view_id": "jupyter-lab-lzlun",
+              "gpu_capable": false,
+              "configuration": {
+                "id": "reserved",
+                "blueprint": {
+                  "conf": {
+                    "disk": null,
+                    "port": 3000,
+                    "ports": [],
+                    "pageEnd": "",
+                    "pageStart": "",
+                    "allowSubmit": false,
+                    "defaultPath": "/",
+                    "actionButtonText": ""
+                  },
+                  "kind": "jupyter-lab"
+                },
+                "workspaceId": "reserved"
+              },
+              "starter_files": null
+            },
+            {
+              "id": 930510,
+              "key": "461ffe8c-89ed-48e9-a013-3c92a08fa5fd",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930511,
+              "key": "af43fa8f-54c4-43a2-9f77-69c0e7765e97",
+              "title": "ND213 C03 L01 04.3 Cache Memory HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "izXHpEad7hY",
+                "china_cdn_id": "izXHpEad7hY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 930269,
+          "key": "6909fa20-4847-4484-b808-410bc36bbe7c",
+          "title": "Virtual Memory",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6909fa20-4847-4484-b808-410bc36bbe7c",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 930525,
+              "key": "d2a0d66a-beee-4991-9b0a-7e48ebc69520",
+              "title": "ND213 C03 L01 05.1 Smart Pointers HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "mY3j60e4ZIs",
+                "china_cdn_id": "mY3j60e4ZIs.mp4"
+              }
+            },
+            {
+              "id": 930526,
+              "key": "fb7485c6-98b0-4f29-a06a-7f9a134a9b71",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Problems with physical memory\n\nVirtual memory is a very useful concept in computer architecture because it helps with making your software work well given the configuration of the respective hardware on the computer it is running on. \n\nThe idea of virtual memory stems back from a (not so long ago) time, when the random access memory (RAM) of most computers was severely limited. Programers needed to treat memory as a precious resource and use it most efficiently. Also, they wanted to be able to run programs even if there was not enough RAM available. At the time of writing (August 2019), the amount of RAM is no longer a large concern for most computers and programs usually have enough memory available to them. But in some cases, for example when trying to do video editing or when running multiple large programs at the same time, the RAM memory can be exhausted. In such a case, the computer can slow down drastically.  \n\nThere are several other memory-related problems, that programmers need to know about: \n\n1. **Holes in address space** : If several programs are started one after the other and then shortly afterwards some of these are terminated again, it must be ensured that the freed-up space in between the remaining programs does not remain unused. If memory becomes too fragmented, it might not be possible to allocate a large block of memory due to a large-enough free contiguous block not being available any more. \n\n2. **Programs writing over each other** : If several programs are allowed to access the same memory address, they will overwrite each others' data at this location. In some cases, this might even lead to one program reading sensitive information (e.g. bank account info) that was written by another program. This problem is of particular concern when writing concurrent programs which run several threads at the same time. \n\nThe basic idea of virtual memory is to separate the addresses a program may use from the addresses in physical computer memory. By using a mapping function, an access to (virtual) program memory can be redirected to a real address which is guaranteed to be protected from other programs. \n\nIn the following, you will see, how virtual memory solves the problems mentioned above and you will also learn about the concepts of memory pages, frames and mapping. A sound knowledge on virtual memory will help you understand the C++ memory model, which will be introduced in the next lesson of this course. ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930529,
+              "key": "0b87b78a-a37d-43fc-a179-953a08592919",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Quiz\n\nOn a 32-bit machine, each program has its own 32-bit address space. When a program wants to access a memory location, it must specify a 32-bit address, which directs it to the byte stored at this location. On a hardware level, this address is transported to the physical memory via a parallel bus with 32 cables, i.e. each cable can either have the information 'high voltage', and 'low voltage' (or '1' and '0'). ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930528,
+              "key": "9b7a2d80-ffd3-47bf-987e-e27656189fa2",
+              "title": "",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "9b7a2d80-ffd3-47bf-987e-e27656189fa2",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "How large is the address space on a 32-bit system? What is the upper limit for program memory in GB?",
+                "answers": [
+                  {
+                    "id": "a1568155859700",
+                    "text": "1 GB",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1568156276755",
+                    "text": "2 GB",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1568156289407",
+                    "text": "4 GB",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1568156299666",
+                    "text": "8 GB",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 930530,
+              "key": "7ad0f517-5325-47ce-ba8a-68d127892b3f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Expanding the available memory\n\nAs you have just learned in the quiz, the total amount of addressable memory is limited and depends on the architecture of the system (e.g. 32-bit). But what would happen if the available physical memory was below the upper bound imposed by the architecture? The following figure illustrates the problem for such a case: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930531,
+              "key": "b66b8ecc-50db-458f-b7db-b04563ca117f",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d850de8_c15-fig1/c15-fig1.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/b66b8ecc-50db-458f-b7db-b04563ca117f",
+              "caption": "In the image above, the available physical memory is less than the upper bound provided by the 32-bit address space.",
+              "alt": "Diagram showing situation where physical memory is less than the upper bound imposed by the architecture.",
+              "width": 724,
+              "height": 349,
+              "instructor_notes": null
+            },
+            {
+              "id": 930532,
+              "key": "a13a4ab2-501b-465f-87ee-9e5da8d491d7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "On a typical architecture such as MIPS (\"Microprocessor without interlocked pipeline stages\"), each program is promised to have access to an address space ranging from 0x00000000 up to 0xFFFFFFFF. If however, the available physical memory is only 1GB in size, a 1-on-1 mapping would lead to undefined behavior as soon as the 30-bit RAM address space were exceeded. \n\nWith virtual memory however, a mapping is performed between the virtual address space a program sees and the physical addresses of various storage devices such as the RAM but also the hard disk. Mapping makes it possible for the operating system to use physical memory for the parts of a process that are currently being used and back up the rest of the virtual memory to a secondary storage location such as the hard disk. With virtual memory, the size of RAM is not the limit anymore as the system hard disk can be used to store information as well. \n\nThe following figure illustrates the principle:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930533,
+              "key": "015ce96c-fe21-4755-abbb-97cd8c8ed172",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d850e7b_c15-fig2/c15-fig2.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/015ce96c-fe21-4755-abbb-97cd8c8ed172",
+              "caption": "",
+              "alt": "Diagram showing virtual address space referencing RAM and hard disk.",
+              "width": 941,
+              "height": 589,
+              "instructor_notes": null
+            },
+            {
+              "id": 930534,
+              "key": "7a9908b9-2d08-4b1a-b85e-673e819fc265",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "With virtual memory, the RAM acts as a cache for the virtual memory space which resides on secondary storage devices. On Windows systems, the file `pagefile.sys` is such a virtual memory container of varying size. To speed up your system, it makes sense to adjust the system settings in a way that this file is stored on an SSD instead of a slow magnetic hard drive, thus reducing the latency. On a Mac, swap files are stored in`/private/var/vm/`. \n\nIn a nutshell, virtual memory guarantees us a fixed-size address space which is largely independent of the system configuration. Also, the OS guarantees that the virtual address spaces of different programs do not interfere with each other. \n\nThe task of mapping addresses and of providing each program with its own virtual address space is performed entirely by the operating system, so from a programmer’s perspective, we usually don’t have to bother much about memory that is being used by other processes. \n\nBefore we take a closer look at an example though, let us define two important terms which are often used in the context of caches and virtual memory: \n\n- A **memory page** is a number of directly successive memory locations in virtual memory defined by the computer architecture and by the operating system. The computer memory is divided into memory pages of equal size. The use of memory pages enables the operating system to perform virtual memory management. The entire working memory is divided into tiles and each address in this computer architecture is interpreted by the Memory Management Unit (MMU) as a logical address and converted into a physical address.\n- A **memory frame** is mostly identical to the concept of a memory page with the key difference being its location in the physical main memory instead of the virtual memory.\n\nThe following diagram shows two running processes and a collection of memory pages and frames: ",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930535,
+              "key": "0123b891-e734-4383-adcd-230dab9080d8",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2019/September/5d850efc_c15-fig3/c15-fig3.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/0123b891-e734-4383-adcd-230dab9080d8",
+              "caption": "",
+              "alt": "Diagram showing two running processes and a collection of memory pages and frames.",
+              "width": 1162,
+              "height": 1162,
+              "instructor_notes": null
+            },
+            {
+              "id": 930536,
+              "key": "5964fb21-b06a-4bdb-928a-da9979f8c09c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "As can be seen, both processes have their own virtual memory space. Some of the pages are mapped to frames in the physical memory and some are not. If process 1 needs to use memory in the memory page that starts at address 0x1000, a page fault will occur if the required data is not there. The memory page will then be mapped to a vacant memory frame in physical memory. Also, note that the virtual memory addresses are not the same as the physical addresses. The first memory page of process 1, which starts at the virtual address 0x0000, is mapped to a memory frame that starts at the physical address 0x2000. \n\nIn summary, virtual memory management is performed by the operating system and programmers do usually not interfere with this process. The major benefit is a unique perspective on a chunk of memory for each program that is only limited in its size by the architecture of the system (32 bit, 64 bit) and by the available physical memory, including the hard disk.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930537,
+              "key": "a8a6a62f-ec86-4634-b36c-827e59c4f9ae",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Outro",
+              "instructor_notes": ""
+            },
+            {
+              "id": 930538,
+              "key": "3454bd82-7577-4901-b423-a89bbfb05f08",
+              "title": "ND213 C03 L01 05.2 Smart Pointers HS",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "yaDdy3j_lYE",
+                "china_cdn_id": "yaDdy3j_lYE.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

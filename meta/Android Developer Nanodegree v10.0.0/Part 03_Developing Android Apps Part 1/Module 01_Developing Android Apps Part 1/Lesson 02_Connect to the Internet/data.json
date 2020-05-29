@@ -1,0 +1,1550 @@
+{
+  "data": {
+    "lesson": {
+      "id": 183176,
+      "key": "e5d74e43-743c-455e-9a70-7545a2da9783",
+      "title": "Connect to the Internet",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "In this lesson you'll harness the power of the Internet by connecting Sunshine to the cloud! You'll learn how to make requests to an API and visualize what's returned in your Android app, with an emphasis on performance. You'll also explore modifying the Action Bar of your app to add menu items. ",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/e5d74e43-743c-455e-9a70-7545a2da9783/183176/1516668152796/Connect%20to%20the%20Internet%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/e5d74e43-743c-455e-9a70-7545a2da9783/183176/1516668109446/Connect%20to%20the%20Internet%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 189486,
+          "key": "1a083100-f08e-4c15-9178-49859813adf4",
+          "title": "Introduction",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1a083100-f08e-4c15-9178-49859813adf4",
+            "completed_at": "2020-05-16T01:17:33.260Z",
+            "last_viewed_at": "2020-05-16T01:18:03.666Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195338,
+              "key": "a7301246-5465-483c-89ad-4b5ae4cd135d",
+              "title": "Introduction",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "n2fqTGPTbOM",
+                "china_cdn_id": "n2fqTGPTbOM.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 189491,
+          "key": "68647b6e-1bea-49e1-a33f-eb2a2ad14de1",
+          "title": "Logging",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "68647b6e-1bea-49e1-a33f-eb2a2ad14de1",
+            "completed_at": "2020-05-16T01:18:26.752Z",
+            "last_viewed_at": "2020-05-16T01:18:25.889Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195339,
+              "key": "18e34c4e-e086-4249-a12c-a71dd6198ad8",
+              "title": "Logging",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "[Documentation for Logging](https://developer.android.com/reference/android/util/Log.html)",
+              "video": {
+                "youtube_id": "i8CELIzOXCs",
+                "china_cdn_id": "i8CELIzOXCs.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 189492,
+          "key": "6e7a35b0-2ebf-450e-bbec-f16424d8f630",
+          "title": "Internet Toy App Intro",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6e7a35b0-2ebf-450e-bbec-f16424d8f630",
+            "completed_at": "2020-05-16T01:18:44.487Z",
+            "last_viewed_at": "2020-05-16T01:18:43.503Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195340,
+              "key": "731f97d2-d73c-4903-a2ae-922a79cf3662",
+              "title": "Internet: Toy App Intro",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "1YOwjTmpYiA",
+                "china_cdn_id": "1YOwjTmpYiA.mp4"
+              }
+            },
+            {
+              "id": 205445,
+              "key": "8fdb0f6e-c9c1-4cf8-ae06-5836fafe7b8e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\n# GitHub Repo Search Code\nThe code for this app can be found in the [Lesson02-GitHub-Repo-Search](https://github.com/udacity/ud851-Exercises/tree/student/Lesson02-GitHub-Repo-Search) folder of the [Toy App Repository](https://github.com/udacity/ud851-Exercises).\n\nIf you need to a refresher on how the code is organized, please refer the [concept where we introduced the code flow](https://classroom.udacity.com/courses/ud851/lessons/93affc67-3f0b-4f9b-b3a4-a7a26f241a86/concepts/115d08bb-f114-46fa-b693-5c6ce1445c07).\n\n## Explanation of GitHub Repo Search\n\nThe Github Repo Search app searches for a [GitHub](https://github.com/) repository by name. The URL you'll use to get search information will be something like the URL below, which searches for repositories containing the word **android** and sorts by the number of **stars** the repo has:\n\nhttps://api.github.com/search/repositories?q=android&sort=stars\n\nWhich returns information in JSON. We'll be going over how to make sense of this returned JSON, parse it and display it in your app during this lesson. We'll also cover how to connect to the internet and download data. Let's get started!",
+              "instructor_notes": ""
+            },
+            {
+              "id": 205446,
+              "key": "07ab2bc4-62a0-4b0b-a930-71e272e67bbb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": " ",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 189494,
+          "key": "df87e335-ec8d-4383-9e32-78f8e0f982f1",
+          "title": "Exercise: Create a Layout ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "df87e335-ec8d-4383-9e32-78f8e0f982f1",
+            "completed_at": "2020-05-16T01:19:45.387Z",
+            "last_viewed_at": "2020-05-16T01:19:44.539Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195341,
+              "key": "ce8281fc-92d1-4e0a-87ad-c7508281183d",
+              "title": "Quiz: Create Layout",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "At 1:00, the `layout_width` of `EditText` is set to `match_parent`. This value should be set to `wrap_content` to match the TODO task in the exercise.",
+              "video": {
+                "youtube_id": "DL4kO9M73i4",
+                "china_cdn_id": "DL4kO9M73i4.mp4"
+              }
+            },
+            {
+              "id": 206219,
+              "key": "68e27343-cede-4786-8269-e7d92ea52d46",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now it's your turn.  Create our \"Github Query\" Layout, following all the TODOs in the exercise, and attach it to your Java code. Have fun!\n\n### Exercise Code\n**Exercise:** [T02.01-Exercise-CreateLayout](https://github.com/udacity/ud851-Exercises/tree/student/Lesson02-GitHub-Repo-Search/T02.01-Exercise-CreateLayout)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 195343,
+              "key": "7b6ff561-c7ad-42bb-b9c1-73fdfc21e68d",
+              "title": "Create Layout",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7b6ff561-c7ad-42bb-b9c1-73fdfc21e68d",
+                "completed_at": "2020-05-16T01:22:12.803Z",
+                "last_viewed_at": "2020-05-16T01:22:12.803Z",
+                "unstructured": "{\"selected_ids\":[\"a1475792616888\",\"a1475792718361\",\"a1475792725809\",\"a1475792735956\",\"a1475792745057\",\"a1475792747015\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": " ",
+                "answers": [
+                  {
+                    "id": "a1475792616888",
+                    "text": "Convert the ConstraintLayout to a LinearLayout",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475792718361",
+                    "text": "Add the EditText for the query",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475792725809",
+                    "text": "Add a TextView to display the URL",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475792735956",
+                    "text": "Add a scrolling TextView (TextView in a ScrollView) to display the query result",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475792745057",
+                    "text": "Create and populate the MainActivity member variables for the Search Box EditText, the URLDisplay TextView, and the SearchResults TextView",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475792747015",
+                    "text": "Remove the unneeded reference to the ConstraintLayout library",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 215746,
+          "key": "098396ee-917e-47f8-95cd-b10ca27ac2a7",
+          "title": "Resources",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "098396ee-917e-47f8-95cd-b10ca27ac2a7",
+            "completed_at": "2020-05-16T01:22:16.029Z",
+            "last_viewed_at": "2020-05-16T01:22:15.115Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 215749,
+              "key": "34e0553d-2891-49a0-a5aa-5950aa3d1821",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Resources\n\n## What is the res Directory?\nThe res directory is where you should put things such as images, strings, and layouts. It's included in every Android project, and you can see it in Android Studio here:\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 215790,
+              "key": "42d29104-a736-4780-bf4e-9b58009f8286",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2016/November/582f613d_screen-shot-2016-11-18-at-12.12.40-pm/screen-shot-2016-11-18-at-12.12.40-pm.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/42d29104-a736-4780-bf4e-9b58009f8286",
+              "caption": "",
+              "alt": null,
+              "width": 359,
+              "height": 87,
+              "instructor_notes": null
+            },
+            {
+              "id": 215750,
+              "key": "cb50dab4-bcb8-4f28-af13-cbae2e7ca403",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Inside of the res directory, are sub folders for the following types of resources. You may have a subset of these directories, depending on the types of resources you're using in your app.\n\n### Different Resource Directories\n\nThis information can also be found [here](https://developer.android.com/guide/topics/resources/providing-resources.html).\n\n#### Some Common Resource Types \nName | What's Stored Here\n--- | ---\nvalues | XML files that contain simple values, such as string or integers\ndrawable | A bunch of visual files, including Bitmap file types and shapes. More information is [here](https://developer.android.com/guide/topics/resources/drawable-resource.html)\nlayouts | XML layouts for your app\n\n#### Other Resource Types \nName | What's Stored Here\n--- | ---\nanimator | XML files for property animations\nanim | XML files for tween animations\ncolor | XML files that define state list colors\nmipmap | Drawable files for launcher icons\nmenu | XML files that define application menus\nraw | Resource file for arbitrary files saved in their raw form. For example, you could put audio files here. (You might also be interested in the [assets folder](https://developer.android.com/reference/android/content/res/AssetManager.html), depending on how you use that audio)\nxml | Arbitrary XML; if you have XML configuration files, this is a good place to put them\n\n## Why Resources\nYou should always keep things like images and layouts separate in the **res** folder. Keeping resource files and values independent helps you easily maintain them if you need to update, say, all your button images to match a new style. The Android Framework also easily allows for alternative resources that support specific device configurations such as different languages or screen sizes. Providing a customized experience for users from different locations or on different devices becomes increasingly important as more of the world comes online and more devices come on the market. We will see how to provide alternate resources for different configurations and locals later in this course.\n\n## Using Resources in XML and Java\n\nYou've already seen resources in action. For example, in the `MainActivity`, you have already seen usage of resources. When we say `setContentView(R.layout.activity_main)`, we are referencing a resource (the `activity_main.xml`) file to use as the layout of `MainActivity`. That magical looking R.layout part of the expression above is actually a static class that is generated for us to reference resources in Java code.  This is all described in the [Android Layouts Primer](https://classroom.udacity.com/courses/ud851/lessons/93affc67-3f0b-4f9b-b3a4-a7a26f241a86/concepts/cdbfd437-de24-4903-8f01-37c29427cb38).",
+              "instructor_notes": ""
+            },
+            {
+              "id": 215801,
+              "key": "cbe44ca6-ae6e-438d-af37-88f1a8cdd0ba",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "### Working with strings.xml\nIn Java, you can get a String saved in **res** -> **values** -> **strings.xml** by calling the `getString` method. If you’re in an Activity, you can just call `getString`, and pass in the String resource ID. The String resource ID can be found in the **strings.xml** XML. For example, let's look at Sunshine's **strings.xml** file:\n\n```xml\n    <string name=\"today\">Today</string>\n\n    <!-- For labelling tomorrow's forecast [CHAR LIMIT=15] -->\n    <string name=\"tomorrow\">Tomorrow</string>\n\n    <!-- Date format [CHAR LIMIT=NONE] -->\n    <string name=\"format_full_friendly_date\">\n        <xliff:g id=\"month\">%1$s</xliff:g>, <xliff:g id=\"day\">%2$s</xliff:g>\n    </string>\n```\n\nThe id of the String with the value \"Today\" is `today` and the id of the String with the value `<xliff:g id=\"month\">%1$s</xliff:g>, <xliff:g id=\"day\">%2$s</xliff:g>` is `format_full_friendly_date`\n\nIf you wanted to reference the **Today** string, you would reference it in Java by doing something like this: \n\n```java\nString myString = getString(R.string.today);\n```\n\nIn XML, you can access a String by using the @string accessor method. For the same String defined above, you could access it like this:\n```xml\n<TextView text=”@string/today” />\n```\n\nFor more information on String Resources check out the [documentation](https://developer.android.com/guide/topics/resources/string-resource.html).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 189495,
+          "key": "b14b510c-1fa4-415f-825e-445aed179c2b",
+          "title": "On Menus",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "b14b510c-1fa4-415f-825e-445aed179c2b",
+            "completed_at": "2020-05-16T01:23:20.613Z",
+            "last_viewed_at": "2020-05-16T01:23:19.718Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195374,
+              "key": "2ffdfe98-4da8-486c-826e-af20cd84857b",
+              "title": "On Menus",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vB84S_uMUu8",
+                "china_cdn_id": "vB84S_uMUu8.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 189496,
+          "key": "6dbe6d69-1d5d-44e4-9af7-36526ba7f09e",
+          "title": "Exercise: Add a Menu",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6dbe6d69-1d5d-44e4-9af7-36526ba7f09e",
+            "completed_at": "2020-05-16T01:24:11.307Z",
+            "last_viewed_at": "2020-05-16T01:24:09.731Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195375,
+              "key": "e1d96af0-c279-4e16-a7f4-67e10e6d0ec5",
+              "title": "Add a Menu",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "WwL3uzwrpqk",
+                "china_cdn_id": "WwL3uzwrpqk.mp4"
+              }
+            },
+            {
+              "id": 206227,
+              "key": "d9dc863b-a190-41db-919d-b00ac7da3954",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now it's your turn. Add the Menu to \"Github Query\" following all the TODOs in the exercise. Have fun!\n\n### Exercise Code\n**Exercise:** [T02.02-Exercise-AddMenu](https://github.com/udacity/ud851-Exercises/tree/student/Lesson02-GitHub-Repo-Search/T02.02-Exercise-AddMenu)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 195376,
+              "key": "bf383d05-b7d2-4c56-9d80-b6c2543b65a6",
+              "title": "Quiz: Add a menu",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "bf383d05-b7d2-4c56-9d80-b6c2543b65a6",
+                "completed_at": "2020-05-16T01:24:24.976Z",
+                "last_viewed_at": "2020-05-16T01:24:24.976Z",
+                "unstructured": "{\"selected_ids\":[\"a1475864032341\",\"a1475864095619\",\"a1475864113592\",\"a1475864123141\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": " ",
+                "answers": [
+                  {
+                    "id": "a1475864032341",
+                    "text": "Create the Menu Resource",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475864095619",
+                    "text": "Add the menu item for Search to the Menu Resource, setting it to showAsAction ifRoom",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475864113592",
+                    "text": "Inflate the menu in onCreateOptionsMenu",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475864123141",
+                    "text": "Display a toast in onOptionsItemSelected when Search is selected",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 195377,
+              "key": "f49357a4-e091-4751-9591-a5d652f6af2d",
+              "title": "Quiz: Add Menu",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "f49357a4-e091-4751-9591-a5d652f6af2d",
+                "completed_at": "2020-05-16T01:25:57.353Z",
+                "last_viewed_at": "2020-05-16T01:25:57.353Z",
+                "unstructured": "{\"selected_id\":\"a1475864318957\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "How do we tell Android that we'd like a menu item to show up as a button on the Toolbar?\n",
+                "answers": [
+                  {
+                    "id": "a1475864261002",
+                    "text": "Add a button to the Toolbar layout",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1475864312837",
+                    "text": " Add the \"asButton\" XML attribute to the menu item",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1475864318957",
+                    "text": "Add the showAsAction XML attribute to the menu item",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475864326585",
+                    "text": "Add a button resource to the menu XML",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 189497,
+          "key": "6429b4ab-c9ee-45d2-9d7c-d18a8364827d",
+          "title": "Exercise: Build our URL ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "6429b4ab-c9ee-45d2-9d7c-d18a8364827d",
+            "completed_at": "2020-05-16T01:26:31.662Z",
+            "last_viewed_at": "2020-05-16T01:26:30.702Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195378,
+              "key": "24d1cf15-e4a4-4cf9-8793-bfa7109fb303",
+              "title": "Building our URL",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "Zim98WIKSYI",
+                "china_cdn_id": "Zim98WIKSYI.mp4"
+              }
+            },
+            {
+              "id": 206234,
+              "key": "32c82d07-57d3-4751-a56d-0ca6fc30ad29",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Build the Url that will be used to query Github and display it when the Search button is pressed.\n\n### Exercise Code\n**Exercise:** [T02.03-Exercise-DisplayUrl](https://github.com/udacity/ud851-Exercises/tree/student/Lesson02-GitHub-Repo-Search/T02.03-Exercise-DisplayUrl)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 195379,
+              "key": "0fefcecb-58a2-4d1e-91a7-58c38e1d8601",
+              "title": "Building our URL",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0fefcecb-58a2-4d1e-91a7-58c38e1d8601",
+                "completed_at": "2020-05-16T01:27:51.002Z",
+                "last_viewed_at": "2020-05-16T01:27:51.002Z",
+                "unstructured": "{\"selected_ids\":[\"a1475864421418\",\"a1475864459934\",\"a1475864466019\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "",
+                "answers": [
+                  {
+                    "id": "a1475864421418",
+                    "text": " Fill in the buildUrl method from NetworkUtils using Uri.Builder and the URL constructor",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475864459934",
+                    "text": "Implement the makeGithubSearchQuery method",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475864466019",
+                    "text": "Call the makeGithubSearchQuery method when Search is selected",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 189498,
+          "key": "195163c8-abbb-424a-90ab-2ee6d07720a3",
+          "title": "Fetching an HTTP Request",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "195163c8-abbb-424a-90ab-2ee6d07720a3",
+            "completed_at": "2020-05-16T01:27:54.938Z",
+            "last_viewed_at": "2020-05-16T01:27:53.153Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195380,
+              "key": "ba97f7f6-76f2-4623-9171-880616d760c5",
+              "title": "Fetching an HTTP Request",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "See this post on [StackOverflow](http://stackoverflow.com/questions/309424/read-convert-an-inputstream-to-a-string) for a good discussion on different methods of doing this.\nAlso, if you want more information on the OkHttp, you can find it [here](http://square.github.io/okhttp/).",
+              "video": {
+                "youtube_id": "4rl1pR_06MY",
+                "china_cdn_id": "4rl1pR_06MY.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 189499,
+          "key": "8ef25888-bcf3-4dcd-aff2-ab75db99daa5",
+          "title": "Permissions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8ef25888-bcf3-4dcd-aff2-ab75db99daa5",
+            "completed_at": "2020-05-16T01:28:57.954Z",
+            "last_viewed_at": "2020-05-16T01:28:56.914Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195381,
+              "key": "d2c9a26a-8708-4b60-8146-573d139c3e43",
+              "title": "Permissions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "See [here](https://developer.android.com/guide/topics/security/permissions.html) for a list of all permissions your app may need.",
+              "video": {
+                "youtube_id": "fq3y6NK61N0",
+                "china_cdn_id": "fq3y6NK61N0.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 189500,
+          "key": "006d198b-c230-4140-8957-7b98750bc01c",
+          "title": "Quiz: Permissions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "006d198b-c230-4140-8957-7b98750bc01c",
+            "completed_at": "2020-05-16T01:29:15.901Z",
+            "last_viewed_at": "2020-05-16T01:29:13.917Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 310188,
+              "key": "9654dd1e-3b36-44bc-a4bb-9d4f8c5495a0",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Quiz: Permissions",
+              "instructor_notes": ""
+            },
+            {
+              "id": 195382,
+              "key": "b8368afd-3129-4400-b30a-eb5b6f8fcff1",
+              "title": "Quiz: Permissions",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "b8368afd-3129-4400-b30a-eb5b6f8fcff1",
+                "completed_at": "2020-05-16T01:31:19.115Z",
+                "last_viewed_at": "2020-05-16T01:31:19.115Z",
+                "unstructured": "{\"selected_id\":\"a1475864630836\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Which of the following activities can only be done after declaring a user-permission in the manifest (rather than by using a system app)? Hint: Take a moment to explore http://developer.android.com/guide/topics/security/permissions.html",
+                "answers": [
+                  {
+                    "id": "a1475864607169",
+                    "text": "Taking a photo",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1475864624941",
+                    "text": "Making a phone call",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1475864630836",
+                    "text": "Getting the user’s current location",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475864636474",
+                    "text": "Accessing the details for a contact the user selects from the contact manager",
+                    "is_correct": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 189501,
+          "key": "d8ef20e6-8d9f-454b-850a-896bff47a627",
+          "title": "Exercise: Connect to the Internet ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d8ef20e6-8d9f-454b-850a-896bff47a627",
+            "completed_at": "2020-05-16T01:31:33.426Z",
+            "last_viewed_at": "2020-05-16T01:31:32.112Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 321951,
+              "key": "8fde8d48-8dba-43ae-80bb-d272fa31453a",
+              "title": "Ud853 L02 A13 Q Quiz- ConnectToTheInternet 5-17 Reedit",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "XXERJtCswRw",
+                "china_cdn_id": "XXERJtCswRw.mp4"
+              }
+            },
+            {
+              "id": 206238,
+              "key": "d5b1f60a-8ed4-43ae-a3e0-0d09ffe92d48",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now it's your turn!  Follow the TODOS. But it will crash when you run it. \n\n### Exercise Code\n**Exercise:** [T02.04-Exercise-ConnectingToTheInternet](https://github.com/udacity/ud851-Exercises/tree/student/Lesson02-GitHub-Repo-Search/T02.04-Exercise-ConnectingToTheInternet)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 195385,
+              "key": "7b2c4a89-6cae-4cba-b194-2d957816987b",
+              "title": "Exercise: Connect to the internet",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "7b2c4a89-6cae-4cba-b194-2d957816987b",
+                "completed_at": "2020-05-16T01:31:59.851Z",
+                "last_viewed_at": "2020-05-16T01:31:59.851Z",
+                "unstructured": "{\"selected_ids\":[\"a1475864798006\",\"a1475864829445\",\"a1475864838502\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": " ",
+                "answers": [
+                  {
+                    "id": "a1475864798006",
+                    "text": " Add the Internet permission",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475864829445",
+                    "text": "Change the makeGithubSearchQuery to call NetworkUtils.getResponseFromHttpUrl",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475864838502",
+                    "text": "Set the results in our searchResultsTextView",
+                    "is_correct": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 195386,
+              "key": "467ca7ce-4570-4d87-8704-bdbdd01df9ba",
+              "title": "Quiz: Connect to the internet",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "467ca7ce-4570-4d87-8704-bdbdd01df9ba",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Look in the Android Monitor logcat.  What error do you see when the app tries to connect to the Internet?",
+                "answers": [
+                  {
+                    "id": "a1475864884992",
+                    "text": "OutofMemory Error",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1475864919278",
+                    "text": "IOException",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1475864925478",
+                    "text": "NetworkOnMainThreadException",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475864930618",
+                    "text": "SecurityException",
+                    "is_correct": false
+                  }
+                ]
+              }
+            },
+            {
+              "id": 195384,
+              "key": "1ba28b86-55cd-4a44-be03-ea08873bb88d",
+              "title": "Solution: Connect to the Internet",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "DvRynASE9zI",
+                "china_cdn_id": "DvRynASE9zI.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 189502,
+          "key": "dcae6dc4-bdf0-4c93-b70c-09cd47ff2d09",
+          "title": "Thread Basics",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "dcae6dc4-bdf0-4c93-b70c-09cd47ff2d09",
+            "completed_at": "2020-05-16T01:32:19.617Z",
+            "last_viewed_at": "2020-05-16T01:32:18.494Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195387,
+              "key": "a21b9531-266e-42db-a36b-1eb02409d180",
+              "title": "Thread Basics",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "At 1:35, the slide should read, \"Run the network **task** on a secondary execution thread\"",
+              "video": {
+                "youtube_id": "fos0rP73LFc",
+                "china_cdn_id": "fos0rP73LFc.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 189503,
+          "key": "72597e43-7640-4290-bba2-bd5b57add22b",
+          "title": "AsyncTask",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "72597e43-7640-4290-bba2-bd5b57add22b",
+            "completed_at": "2020-05-16T01:33:03.455Z",
+            "last_viewed_at": "2020-05-16T01:36:01.355Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195388,
+              "key": "5622afa0-5968-42ed-9c41-de71b9c56306",
+              "title": "Create AsyncTask",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "8CO0UmLZH80",
+                "china_cdn_id": "8CO0UmLZH80.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 189504,
+          "key": "a8adb5f4-0a8e-459c-849f-c9e7ed38186c",
+          "title": "Quiz: AsyncTask",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "a8adb5f4-0a8e-459c-849f-c9e7ed38186c",
+            "completed_at": "2020-05-16T01:34:35.777Z",
+            "last_viewed_at": "2020-05-16T01:36:41.141Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 310189,
+              "key": "1ea0a88c-be4d-4175-95eb-4ff4d55b705b",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Quiz: AsyncTask",
+              "instructor_notes": ""
+            },
+            {
+              "id": 196090,
+              "key": "a7da906e-66d3-4ea5-a882-b55af1dd1151",
+              "title": "Quiz: AsyncTask",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a7da906e-66d3-4ea5-a882-b55af1dd1151",
+                "completed_at": "2020-05-16T01:35:25.155Z",
+                "last_viewed_at": "2020-05-16T01:37:28.517Z",
+                "unstructured": "{\"selected_ids\":[\"a1476214572660\",\"a1476214499422\",\"a1476214518772\",\"a1476214428810\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Which methods are run on the main UI thread? You can read the [JavaDoc on AsyncTask](https://developer.android.com/reference/android/os/AsyncTask.html) to refresh your memory.",
+                "answers": [
+                  {
+                    "id": "a1476214428810",
+                    "text": "execute()",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476214499422",
+                    "text": "onPreExecute()",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476214505520",
+                    "text": "doInBackground()",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1476214512978",
+                    "text": "publishProgress()",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1476214518772",
+                    "text": "onProgressUpdate()",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476214572660",
+                    "text": "onPostExecute()",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 189505,
+          "key": "1cde0c2f-18e7-4528-8610-bfb04a81fe9c",
+          "title": "Exercise: Create an AsyncTask ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1cde0c2f-18e7-4528-8610-bfb04a81fe9c",
+            "completed_at": "2020-05-16T01:37:35.122Z",
+            "last_viewed_at": "2020-05-16T01:37:33.483Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195389,
+              "key": "e6f688d9-44cd-48a4-8e29-70af5647a164",
+              "title": "Create AsyncTask",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "lyStetvQkrE",
+                "china_cdn_id": "lyStetvQkrE.mp4"
+              }
+            },
+            {
+              "id": 206246,
+              "key": "31c775e3-5c05-459d-b2d6-74c4a8d2b60f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now it's your turn!\n\n### Exercise Code\n**Exercise:** [T02.05-Exercise-CreateAsyncTask](https://github.com/udacity/ud851-Exercises/tree/student/Lesson02-GitHub-Repo-Search/T02.05-Exercise-CreateAsyncTask)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 195390,
+              "key": "1a06920b-6cc4-4711-a26b-a377303de743",
+              "title": "Create AsyncTask",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "1a06920b-6cc4-4711-a26b-a377303de743",
+                "completed_at": "2020-05-16T01:37:52.114Z",
+                "last_viewed_at": "2020-05-16T01:37:52.114Z",
+                "unstructured": "{\"selected_ids\":[\"a1475865802026\",\"a1475865835997\",\"a1475865829033\",\"a1475865843175\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": " ",
+                "answers": [
+                  {
+                    "id": "a1475865802026",
+                    "text": "Create GithubQueryTask as an inner class of MainActivity, with the types URL, Void, and String.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475865829033",
+                    "text": "Override doInBackground to query Github and return a string",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475865835997",
+                    "text": "Override onPostExecute to set our searchResultsTextView with the GitHub query search results",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475865843175",
+                    "text": "Instantiate and call GithubQueryTask in the makeGithubSearchQuery function",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 196092,
+          "key": "c1c96d4c-c231-4653-bbbd-19e3cbadc1da",
+          "title": "Exercise: Missing Permissions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c1c96d4c-c231-4653-bbbd-19e3cbadc1da",
+            "completed_at": "2020-05-16T01:37:55.664Z",
+            "last_viewed_at": "2020-05-16T01:37:54.629Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 196418,
+              "key": "887f536b-0d5f-4748-92db-b52ccec1938d",
+              "title": "Quiz: Missing Permissions",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "uYNrLtDERuw",
+                "china_cdn_id": "uYNrLtDERuw.mp4"
+              }
+            },
+            {
+              "id": 206383,
+              "key": "dd7ac5cc-cd49-4eaf-aaab-03134b9f0dde",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Missing Permission\nComment out the `<uses-permission android:name=\"android.permission.INTERNET\" />` statement in the `AndroidManifest.xml` and then run the app. Make a search in the app, and then look in the Android Monitor logcat.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 196093,
+              "key": "60bdc1c6-ed7a-4ee3-a160-741d5ed06ac4",
+              "title": "Quiz: Missing Permissions",
+              "semantic_type": "RadioQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "60bdc1c6-ed7a-4ee3-a160-741d5ed06ac4",
+                "completed_at": "2020-05-16T01:38:47.843Z",
+                "last_viewed_at": "2020-05-16T01:39:02.932Z",
+                "unstructured": "{\"selected_id\":\"a1476214845221\",\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "In the Android Monitor logcat,  what error do you see when the app tries to connect to the Internet?",
+                "answers": [
+                  {
+                    "id": "a1476214800368",
+                    "text": "OutofMemory Error",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1476214828029",
+                    "text": "IOException",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1476214840178",
+                    "text": "NetworkOnMainThreadException",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1476214845221",
+                    "text": "SecurityException",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 189506,
+          "key": "591ff476-467a-4696-8501-3b6fa465118c",
+          "title": "Exercise: Add Polish",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "591ff476-467a-4696-8501-3b6fa465118c",
+            "completed_at": "2020-05-16T01:39:06.264Z",
+            "last_viewed_at": "2020-05-16T01:39:05.274Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195393,
+              "key": "fe9b67d1-4e47-4d08-864b-c7e17ade58f8",
+              "title": "Add Polish",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "oL2Yl6lZrQM",
+                "china_cdn_id": "oL2Yl6lZrQM.mp4"
+              }
+            },
+            {
+              "id": 206250,
+              "key": "d333a7b2-be9f-4821-9493-8d78c3ddd05e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now it's your turn!\n\n### Exercise Code\n**Exercise:** [T02.06-Exercise-AddPolish](https://github.com/udacity/ud851-Exercises/tree/student/Lesson02-GitHub-Repo-Search/T02.06-Exercise-AddPolish)",
+              "instructor_notes": ""
+            },
+            {
+              "id": 195394,
+              "key": "a72f689d-1bc1-4acd-89b8-cbdf56dfc454",
+              "title": "Add Polish",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a72f689d-1bc1-4acd-89b8-cbdf56dfc454",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "Check off each task as you complete them",
+                "answers": [
+                  {
+                    "id": "a1475866065921",
+                    "text": "Add error text string",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475866086707",
+                    "text": "Wrap the ScrollView with a FrameLayout",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475866091657",
+                    "text": "Insert an error TextView into the FrameLayout set to our new text string",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475866097316",
+                    "text": "Add helper functions in MainActivity to swap the visibility of JsonData and the ErrorView.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475866103481",
+                    "text": "Call the error view on null or empty data.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475866110242",
+                    "text": "Add a progressBar to the FrameLayout",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1475866116971",
+                    "text": "Show the progressBar during loading and hide it afterwards",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 189507,
+          "key": "efd15f16-1716-4e58-b64a-07db817743b2",
+          "title": "JSON Format",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "efd15f16-1716-4e58-b64a-07db817743b2",
+            "completed_at": "2020-05-16T01:39:42.028Z",
+            "last_viewed_at": "2020-05-16T01:39:40.163Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 348200,
+              "key": "403d548e-94ad-45f8-a7b0-cfccd608719c",
+              "title": "JSON Format",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "0IOCgHrTJGU",
+                "china_cdn_id": "0IOCgHrTJGU.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 189508,
+          "key": "28ad45a2-c02f-4e95-9785-ac47b8024ae6",
+          "title": "Quiz: JSON by Hand",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "28ad45a2-c02f-4e95-9785-ac47b8024ae6",
+            "completed_at": "2020-05-16T01:40:00.887Z",
+            "last_viewed_at": "2020-05-16T01:39:59.087Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195397,
+              "key": "2adcfae1-9ca5-48e7-b74c-bb4a9b45d0ab",
+              "title": "Create JSON",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "Note: the comma after \"Doe\" should appear after the closing braces.",
+              "video": {
+                "youtube_id": "Okfg2AVcH6U",
+                "china_cdn_id": "Okfg2AVcH6U.mp4"
+              }
+            },
+            {
+              "id": 205448,
+              "key": "11f7f7f6-96e1-4447-ada9-ddde7864828c",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "## Create JSON\n\nGiven that the JSON result for the Name & Title data in the video above is:\n\n```\n{\n   \"name\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\"\n   },\n   \"title\": \"Missing Person\"\n}\n```\n\nWhat would the following look like as JSON?\n\n```\ntemp\n  min = 11.34\n  max = 19.01\nweather\n  id = 801\n  condition = Clouds\n  description = few clouds\npressure = 1023.51\nhumidity = 87\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 205447,
+              "key": "3c022294-7cc9-4164-88b0-db33bb00998f",
+              "title": "Reflect",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "3c022294-7cc9-4164-88b0-db33bb00998f",
+                "completed_at": "2020-05-16T01:44:02.829Z",
+                "last_viewed_at": "2020-05-16T01:44:02.829Z",
+                "unstructured": "{\"answer\":\"{\\n   \\\"temp\\\": {\\n      \\\"min\\\": 11.34,\\n      \\\"max\\\": 19.01\\n   },\\n\\\"weather\\\": {\\n      \\\"id\\\": 801,\\n      \\\"condition\\\": \\\"Clouds\\\",\\n      \\\"description\\\":\\\"few clouds\\\"\\n   },\\n   \\\"pressure\\\": 1023.51,\\n   \\\"humidity\\\": 87\\n}\"}"
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Write your best guess about what the data would look like as JSON"
+              },
+              "answer": {
+                "text": "The correct answer is:\n\n```javascript\n{\n   \"temp\": {\n      \"min\":11.34,\n      \"max\":19.01\n   },\n   \"weather\": {\n      \"id\":801,\n      \"condition\":\"Clouds\",\n      \"description\":\"few clouds\"\n   },\n   \"pressure\":1023.51,\n   \"humidity\":87\n}\n\n```",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 189509,
+          "key": "8ed3a385-34d5-4ea5-acbe-8b0be72ee9b6",
+          "title": "Quiz: Parse JSON",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8ed3a385-34d5-4ea5-acbe-8b0be72ee9b6",
+            "completed_at": "2020-05-16T01:44:22.746Z",
+            "last_viewed_at": "2020-05-16T01:44:21.861Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195400,
+              "key": "fa37feb5-c014-40ce-bd47-ba25e0060e28",
+              "title": "Quiz: Parse JSON",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "iQxHEyxlea4",
+                "china_cdn_id": "iQxHEyxlea4.mp4"
+              }
+            },
+            {
+              "id": 206280,
+              "key": "a7f5fbd9-3eee-4c57-a038-01c637b5d433",
+              "title": "Write the function to return the condition.",
+              "semantic_type": "ReflectAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "a7f5fbd9-3eee-4c57-a038-01c637b5d433",
+                "completed_at": "2020-05-16T01:45:34.222Z",
+                "last_viewed_at": "2020-05-16T01:45:34.222Z",
+                "unstructured": "{\"answer\":\"String getCondition(String JSONString) {\\n   JSONObject forecast = new JSONObject(JSONString);\\n   JSONObject weather = forecast.getJSONObject(\\\"weather\\\");\\n   return weather.getString(\\\"condition\\\");\\n}\"}"
+              },
+              "question": {
+                "title": null,
+                "semantic_type": "TextQuestion",
+                "evaluation_id": null,
+                "text": "Given the following JSON, write a function to retrieve the weather \"condition\".\n\n```javascript\n{\n   \"temp\": {\n      \"min\":\"11.34\",\n      \"max\":\"19.01\"\n   },\n   \"weather\": {\n      \"id\":\"801\",\n      \"condition\":\"Clouds\",\n      \"description\":\"few clouds\"\n   },\n   \"pressure\":\"1023.51\",\n   \"humidity\":\"87\"\n}\n\n```"
+              },
+              "answer": {
+                "text": "Here is the answer:\n\n```java\n\nString getCondition(String jsonString) {\n   JSONObject forecast = new JSONObject(jsonString);\n   JSONObject weather = forecast.getJSONObject(\"weather\");\n   return weather.getString(\"condition\");\n}\n\n```\n",
+                "video": null
+              }
+            }
+          ]
+        },
+        {
+          "id": 189510,
+          "key": "82cd942e-462c-4518-bb14-61782ea86a73",
+          "title": "Exercise: Networking ",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "82cd942e-462c-4518-bb14-61782ea86a73",
+            "completed_at": "2020-05-16T01:45:41.581Z",
+            "last_viewed_at": "2020-05-16T01:45:40.666Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 310186,
+              "key": "97ee9d17-7c15-4af0-93c5-c3112f9d7fe7",
+              "title": "Exercise: Networking",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "In this video, the first TODO incorrectly lists readInputStream; we apologize for the error. ",
+              "video": {
+                "youtube_id": "NHFuFiX3zsw",
+                "china_cdn_id": "NHFuFiX3zsw.mp4"
+              }
+            },
+            {
+              "id": 206327,
+              "key": "b7ebbe0f-8afc-4158-9114-fcfbd3ebe8bc",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Networking\n\nIn this Exercise, you will get to apply what you've learned on Sunshine to add an async task and permissions to load weather data.\n\n### Exercise Code\n**Exercise**:[S02.01-Exercise-Networking](https://github.com/udacity/ud851-Sunshine/tree/S02.01-Exercise-Networking)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 195597,
+              "key": "042f6c6e-e0f9-4cd1-9615-23db433c6d14",
+              "title": "Quiz: Networking",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "042f6c6e-e0f9-4cd1-9615-23db433c6d14",
+                "completed_at": "2020-05-16T01:45:54.836Z",
+                "last_viewed_at": "2020-05-16T01:45:54.836Z",
+                "unstructured": "{\"selected_ids\":[\"a1476132056066\",\"a1476132082242\",\"a1476132087842\",\"a1476132094637\",\"a1476132100263\",\"a1476132107946\",\"a1476132114160\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": " Open the exercise and refer to the TODOs to complete these steps.",
+                "answers": [
+                  {
+                    "id": "a1476132056066",
+                    "text": "Fill in buildUrl in NetworkUtils.java",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476132082242",
+                    "text": "Add the Internet Permission",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476132087842",
+                    "text": "Delete the dummy data-related code",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476132094637",
+                    "text": "Create a FetchWeatherTask AsyncTask to perform the network requests",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476132100263",
+                    "text": " Override the doInBackground and onPostExecute methods to get and display the results of the network request",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476132107946",
+                    "text": "Create a loadWeatherData function to get the preferredWeatherLocation from SunshinePreferences and execute the FetchWeatherTask",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476132114160",
+                    "text": "Call loadWeatherData from onCreate",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 189511,
+          "key": "c4aba829-2bb7-42a0-9214-42fef3534b93",
+          "title": "Exercise: Menus",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "c4aba829-2bb7-42a0-9214-42fef3534b93",
+            "completed_at": "2020-05-16T01:45:58.622Z",
+            "last_viewed_at": "2020-05-16T01:45:57.744Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195593,
+              "key": "e64f3223-16e5-4753-a308-36973bb79c49",
+              "title": "Menus",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "7ALa3sG0rzs",
+                "china_cdn_id": "7ALa3sG0rzs.mp4"
+              }
+            },
+            {
+              "id": 206334,
+              "key": "753f42f9-6304-4538-83a5-4191f239f4c2",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Add a menu to Sunshine\n\n### Exercise Code\n**Exercise**:[S02.02-Exercise-Menus](https://github.com/udacity/ud851-Sunshine/tree/S02.02-Exercise-Menus)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 195594,
+              "key": "dadf1179-0096-4aad-9f21-ffa10c81e917",
+              "title": "Quiz: Menus",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "dadf1179-0096-4aad-9f21-ffa10c81e917",
+                "completed_at": "2020-05-16T01:46:09.981Z",
+                "last_viewed_at": "2020-05-16T01:46:09.981Z",
+                "unstructured": "{\"selected_ids\":[\"a1476131946399\",\"a1476131971583\",\"a1476131977287\",\"a1476131985578\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Look at your TODOs.  This is going to look a lot like what we did to add that menu to the Github query app earlier.",
+                "answers": [
+                  {
+                    "id": "a1476131946399",
+                    "text": "Add a \"Refresh\" string named action_refresh",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476131971583",
+                    "text": "Create a new \"forecast\" menu with a single \"Refresh\" menu item",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476131977287",
+                    "text": "Inflate the menu on onCreateOptionsMenu",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1476131985578",
+                    "text": "Handle the menu action in onOptionsItemSelected by clearing the weatherTextView and calling loadWeatherData",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 206335,
+          "key": "d6dd3b5a-70c1-48ab-97d9-59ef9d10062f",
+          "title": "Exercise: Add Loading Polish",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d6dd3b5a-70c1-48ab-97d9-59ef9d10062f",
+            "completed_at": "2020-05-16T01:46:13.198Z",
+            "last_viewed_at": "2020-05-16T01:46:12.314Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 206337,
+              "key": "c43b8435-baf3-4922-9cae-c4d646234fad",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "# Add Loading Polish and Error Messages to Sunshine\n\nIn this Exercise, you will get to apply what you've learned about adding polish to Sunshine.\n\n### Exercise Code\n**Exercise**:[S02.03-Exercise-Polish](https://github.com/udacity/ud851-Sunshine/tree/S02.03-Exercise-Polish)\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 206342,
+              "key": "0f74d106-68a9-4f66-9a0e-118b9ccd8951",
+              "title": "",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "0f74d106-68a9-4f66-9a0e-118b9ccd8951",
+                "completed_at": "2020-05-16T01:46:29.043Z",
+                "last_viewed_at": "2020-05-16T01:46:29.043Z",
+                "unstructured": "{\"selected_ids\":[\"a1479186626198\",\"a1479186707575\",\"a1479186762726\",\"a1479186765682\",\"a1479186859009\"],\"is_correct\":true}"
+              },
+              "question": {
+                "prompt": "Add code and views to display an error message for a failed data retrieval, and loading indicators for loading data.",
+                "answers": [
+                  {
+                    "id": "a1479186626198",
+                    "text": "Add a string resource for an error message, should loading data fail.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1479186707575",
+                    "text": "Add a TextView that you will show the user if there is an error loading content.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1479186762726",
+                    "text": "Add a ProgressBar to show the user content is loading.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1479186765682",
+                    "text": "In onPostExecute, show the error message, progress bar, or data views as appropriate.",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1479186859009",
+                    "text": "Override the method onPreExecute and show the loading indicator.",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 189512,
+          "key": "ff69691b-bf34-4951-9f7c-b1d5662df57d",
+          "title": "Refresh Bad!!!",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ff69691b-bf34-4951-9f7c-b1d5662df57d",
+            "completed_at": "2020-05-16T01:46:32.265Z",
+            "last_viewed_at": "2020-05-16T01:46:31.367Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 195592,
+              "key": "5ac346c5-8e60-4205-b5d5-8487842122b1",
+              "title": "Refresh Bad",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "kO-afY-fUEE",
+                "china_cdn_id": "kO-afY-fUEE.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 189513,
+          "key": "8924451b-0d5a-4d4c-93d9-2df300da9284",
+          "title": "Recap",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "8924451b-0d5a-4d4c-93d9-2df300da9284",
+            "completed_at": "2020-05-16T01:47:18.947Z",
+            "last_viewed_at": "2020-05-16T01:47:18.016Z",
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 196417,
+              "key": "56069bff-f36b-4133-910a-84a16923840c",
+              "title": "Recap",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "i6B4H79Q76E",
+                "china_cdn_id": "i6B4H79Q76E.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}

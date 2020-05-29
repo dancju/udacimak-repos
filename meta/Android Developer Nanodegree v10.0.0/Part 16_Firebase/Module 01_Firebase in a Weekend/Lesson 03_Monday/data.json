@@ -1,0 +1,520 @@
+{
+  "data": {
+    "lesson": {
+      "id": 269171,
+      "key": "9d2e8938-1714-420b-8421-03757d7d51a5",
+      "title": "Monday",
+      "semantic_type": "Lesson",
+      "is_public": true,
+      "version": "1.0.0",
+      "locale": "en-us",
+      "summary": "Got extra time this weekend? Write your own Cloud Function for Firebase that makes chat more fun by adding emojis to FriendlyChat conversations.",
+      "lesson_type": "Classroom",
+      "display_workspace_project_only": null,
+      "resources": {
+        "files": [
+          {
+            "name": "Videos Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/9d2e8938-1714-420b-8421-03757d7d51a5/269171/1516791316900/Monday%20Videos.zip"
+          },
+          {
+            "name": "Transcripts Zip File",
+            "uri": "http://d2uz2655q5g6b2.cloudfront.net/9d2e8938-1714-420b-8421-03757d7d51a5/269171/1516791309754/Monday%20Subtitles.zip"
+          }
+        ],
+        "google_plus_link": null,
+        "career_resource_center_link": null,
+        "coaching_appointments_link": null,
+        "office_hours_link": null,
+        "aws_provisioning_link": null
+      },
+      "project": null,
+      "lab": null,
+      "concepts": [
+        {
+          "id": 269176,
+          "key": "738c5fe5-2ea2-42b7-b4d1-5af838e3b9fd",
+          "title": "Intro to Monday Module",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "738c5fe5-2ea2-42b7-b4d1-5af838e3b9fd",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 269177,
+              "key": "83d35c6c-8db5-421c-b2cb-df4999d8a1b7",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Welcome to the Monday module! \n\nOver the weekend you created a complete app, using Firebase as the back-end.\n\nIt's feature-rich with data and file persistence, authentication, analytics, and notifications, and remote config. \n\nIn this module we'll add some extra features that we weren't able to get to during the weekend.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 269179,
+          "key": "1c12573e-e97d-4725-b66c-3845220fd4eb",
+          "title": "Java to JavaScript Comparison",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1c12573e-e97d-4725-b66c-3845220fd4eb",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 269190,
+              "key": "13f2b53b-cb10-4f93-865b-6b9c6e039a05",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "In this lesson we'll be writing JavaScript code. It helps to already have experience writing JavaScript, but we'll be stepping you through each line of code to write. You have enough programming experience with Java to understand the code in this lesson. Below you'll find a quick reference of the syntactic and semantic differences between Java and JavaScript. If you'd like to learn more about JavaScript, consider taking the [JavaScript Basics course](https://www.udacity.com/course/javascript-basics--ud804).\n\nComparison of Java and JavaScript:\n\nType\n====================\nFind out more about types [here](https://en.wikipedia.org/wiki/Type_system).\n\n**Java:** Static Type\n\nVariables are associated with a type:\n\n```java\nString name = \"Firebase\";\nname = 3; // ERROR\n```\n\n**JavaScript:** Dynamic Type\n\nVariables are not associated with a type\n\n```javascript\nvar name = \"Firebase\";\nname = 3; // OK\n```\n\nConstants\n====================\n\n**Java:**\n\n```java\nfinal x = 42;\nx = 1024; // ERROR\n```\n\n```javascript\nconst x = 42;\nx = 1024 // ERROR\n```\n\nSemicolons at the end of statements?\n====================\n**Java:** Semicolons at the end of statements\n\n```java\nint x = 42;\n```\n\n**JavaScript:**\n\nOptional semicolons\n\n```javascript\nvar x = 42 // OK\nvar y = 1024; // Also OK\n```\n\nLogging to the console/debug area\n====================\n\n\n**Java:**\n\n```java\nSystem.out.println(\"Message\");\n\n// Android-specific\nLog.d(TAG, \"Message\");\n```\n**JavaScript:**\n\n```javascript\nconsole.log(\"Message\");\n```\n\nTypesafe Equality\n====================\n\n**Java:**\n\n`==` for primitives, `.equals()` for objects\n\n**JavaScript:**\n\n `===` for strict equality\n\nPushing values to arrays\n====================\n\n**Java:**\n\n```java\nArrayList arrayList = new ArrayList<>();\narrayList.add(10);\n```\n**JavaScript:**\n\n```javascript\nvar array = [];\narray.push(10);\n```\nMethod/Function syntax\n====================\n**Java:**\n\n```java\npublic int multiply(int a, int b) {\n  return a * b;\n}\n```\n\n**JavaScript:**\n\nFunction declaration:\n\n```javascript\nfunction multiply(a, b) {\n    return a * b;\n}\n```\n\nor, function expression:\n\n```javascript\n// Variable assignment\nvar multiply = function(a, b) {\n  return a  b;\n}\n```\n\nor, arrow function\n\n```javascript\n// New in ES2016; drops \"function\" keyword\nvar multiply = (a ,b) => {\n  return a  b;\n}\n```\n\nStrings\n====================\n\n**Java:**\n\nOnly double quotes represent strings:\n\n```java\nString name = \"Firebase\";\n```\n\n**JavaScript:**\n\nDouble and single quotes represent strings:\n\n```javascript\nvar str1 = \"this is a valid string\";\nvar str2 = 'and this is too';\n```\n\nString interpolation with backtick quotes and `${}`:\n\n```javascript\nvar name = 'puf';\nvar message = `Hello ${name}!`; // Hello puf!\n```\n\nLoops\n====================\n\n**Java:**\n\n```java\nString[] list = {\"apple\", \"pear\", \"orange\"};\n\nfor (int i = 0; i < list.length; i++) {\n    System.out.println(list[i]);\n}\n```\n\n**JavaScript:**\n\n```javascript\nvar list = ['apple', 'pear', 'orange'];\n\nfor (i = 0; i < list.length(); i++) {\nconsole.log(list[i]);\n}\n```\n\nOr\n\n```javascript\nfor (var index in list) {\n     console.log(list[index])\n}\n```\n\nImporting a library\n====================\n\n**Java:**\n\n```java\nimport java.util.ArrayList;\n```\n\n**JavaScript:**\n\nUse `require()` and assign the result to a variable for later use:\n\n```javascript\nvar child_process = require('child_process');\n```\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 269191,
+          "key": "bec72101-f78a-4e5e-bc2a-51496b9c59fc",
+          "title": "Intro to Cloud Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "bec72101-f78a-4e5e-bc2a-51496b9c59fc",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 280144,
+              "key": "8d3d09e2-82c8-4b93-ac0c-182e1909c6d5",
+              "title": "4 H Intro To Cloud Functions Fixed",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "M_BMzFOdQNM",
+                "china_cdn_id": "M_BMzFOdQNM.mp4"
+              }
+            },
+            {
+              "id": 269192,
+              "key": "d501ff4c-0800-4c11-a5b6-65407a7c455a",
+              "title": "Intro to Cloud Functions",
+              "semantic_type": "CheckboxQuizAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "d501ff4c-0800-4c11-a5b6-65407a7c455a",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "question": {
+                "prompt": "What are some reasons to run code on a server instead of locally on a user's device (the client)? Check all that apply.",
+                "answers": [
+                  {
+                    "id": "a1488398735602",
+                    "text": "The code should be secret",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1488398756823",
+                    "text": "The code requires additional computing resources that the client doesn't necessarily have",
+                    "is_correct": true
+                  },
+                  {
+                    "id": "a1488398757441",
+                    "text": "The code is written in a different programming language than the client",
+                    "is_correct": false
+                  },
+                  {
+                    "id": "a1488398758073",
+                    "text": "The code requires admin authorization privileges",
+                    "is_correct": true
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 269193,
+          "key": "98447176-b878-437b-87ab-4c148974dc3b",
+          "title": "Install the Firebase CLI",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "98447176-b878-437b-87ab-4c148974dc3b",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 278812,
+              "key": "9200b37e-c646-4ef4-8669-efe0d7aa4e33",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nLet's get started using the Firebase SDK for Cloud Functions.\n\nThe first thing you need to do is install the command line tools for Firebase, the Firebase CLI (Command Line Interface). The Firebase CLI will allow you to deploy your functions from your computer onto Google Cloud infrastructure.\n\n## Installing the Firebase CLI\n\nThe Firebase CLI (Command Line Interface) requires Node.js and npm, which you can install by following the instructions on https://nodejs.org/. Installing Node.js also installs npm, the Node.js package manager. The Firebase CLI requires Node.js version 6.3.1 or greater, so the long-term support (LTS) version as of March 8, 2017 will work fine.\n\nOnce you've install Node.js and npm, you can verify that the installation went correctly by running them on the command line. You can open up the Terminal (on Mac and Linux) or Command Prompt (on Windows) and running `node --version` and `npm --version`:\n\n```sh\n$ node --version\nv6.9.5\n$ npm --version\n3.10.9\n```\n\n Once you've installed Node.js and npm, you can use npm to install the Firebase CLI:\n\n```sh\nnpm install -g firebase-tools\n```\n\nIf you get an error at this step you can [fix it by changing your npm permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions).\n\nIf everything is installed correctly, you should be able to run the `firebase` command successfully and get a version number output for this command:\n\n```sh\n$ firebase --version\n3.3.0\n```\n\nThe version number can be 3.3.0 or higher.\n\nNow that you have the Firebase CLI installed, let's continue to the next step and create your local project, where you'll write your Cloud Functions for Firebase.",
+              "instructor_notes": ""
+            },
+            {
+              "id": 269194,
+              "key": "81f46bd8-a1d8-4680-babe-49659af786eb",
+              "title": "Task: Install the Firebase CLI",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "81f46bd8-a1d8-4680-babe-49659af786eb",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "Install the latest version of [NodeJS](https://nodejs.org/)",
+                "Install the Firebase command line tools using<br><code>npm install -g firebase<nobr>-</nobr>tools</code>"
+              ],
+              "positive_feedback": "Nice work! The Firebase CLI is our interface to deploy our cloud functions to the cloud.",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 278807,
+          "key": "d87ba9e6-0681-4d5b-b541-668f972b0e52",
+          "title": "Create the Local Project",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "d87ba9e6-0681-4d5b-b541-668f972b0e52",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 278808,
+              "key": "6f6582ce-91c7-4dee-93e4-d897fce7bb7e",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "\nNow that you have the Firebase CLI installed, you'll use it to set up our local project files on your computer.\n\n## Login with Firebase CLI\n\nThe first thing you need to do is use the `firebase login` command. This authenticates the command line tool to your Firebase account.\n\nIt'll open up a browser window to the login flow so you can approve it.\n\nNext, set up our local project files.\n\n## Initialize Project Directory\n\nCreate a new directory called FriendlyChatFunctions and go to it. Here's an example of creating the directory in the Desktop:\n\n```\n$ mkdir ~/Desktop/FriendlyChatFunctions\n$ cd ~/Desktop/FriendlyChatFunctions\n```\n\nNow, create your project with the following command to set up a starter template for the Firebase SDK for Cloud Functions in your directory:\n\n```\n$ firebase init functions\n```\n\nYou'll be asked to pick one of your Firebase Projects to associate with this project directory. Use the up and down arrow keys to select the FriendlyChat project, and press Enter to select it. Any Cloud Functions you deploy here will be associated with this project. This means you can create Cloud Functions that trigger from Realtime Database events and Storage events from FriendlyChat.\n\nYou'll also be prompted to install dependencies from the node package manager, so do that by entering Y to install those dependencies.\n\nOnce the dependencies have been installed you now have a functions directory.\n\nIn the index.js file you will write any Cloud Function for Firebase in the functions folder. Other files were created too; you can get the full details of what's been created in the [functions documentation](https://firebase.google.com/docs/functions).\n\nNext, let's talk about the structure of any cloud function before you begin writing one on your own.\n",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 269243,
+          "key": "27745d96-8b24-4470-84cd-856a2cfa7716",
+          "title": "Cloud Functions Structure",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "27745d96-8b24-4470-84cd-856a2cfa7716",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 280145,
+              "key": "6462cf78-f996-4923-af09-2187c0d60d42",
+              "title": "7 H Functions Structure Fixed",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "bpFAdhNkA6c",
+                "china_cdn_id": "bpFAdhNkA6c.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 269244,
+          "key": "171a80ff-9d0a-4d77-bc46-8688c6beca37",
+          "title": "Function with Realtime Database",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "171a80ff-9d0a-4d77-bc46-8688c6beca37",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 269930,
+              "key": "78ca70a4-9e75-472e-a1fe-34e982b7f31f",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that we know about the four steps of a Cloud Function for Firebase, let's write a function for our chat messages in FriendlyChat.\n\n### Note About Text Editors\n\nYou'll need a text editor to edit the code for each Cloud Function for Firebase. You can use any text editor. If you don't already have a preferred text editor to use, we recommend using [Atom](https://atom.io/) or [Sublime Text](https://www.sublimetext.com/).\n\nYou can also use Android Studio or Xcode since you're already comfortable with the software. If you use Android Studio or Xcode keep in mind that cloud functions do not run directly within an Android or iOS app; we won't use the build processes that are set up by default on Android Studio and Xcode.\n\nWith that note in mind, let's begin.\n\n### The First Function\n\nWhen you open up index.js for the first time, you'll probably see a sample function that's commented out already in the file. This was created when we set up our directory with `firebase init`. Feel free to take a look at the function and see if you can understand what it does.\n\nNotice that the file starts with a statement that includes the `firebase-functions` module \nin our file, index.js, so we can write cloud functions:\n\n```javascript\nvar functions = require('firebase-functions');\n```\n\n### Cloud Function Specification for `emojify`\n\nLet's write a function called `emojify`. This function will **replace certain words in a chat message with an emoji**. This means the function will do the following:\n\n- Trigger for new *text* chat message events in the Realtime Database\n- Replace certain words with an emoji in the chat message\n- Set the chat message to the new text with any applicable emojis.\n\nNote that this function is only for the *text* messages in FriendlyChat. This simple cloud function won't trigger for photo messages since there's no text to replace.\n\nHere's the code for the function. Your index.js file should look like the following:\n\nNote that this function is only for the *text* messages in FriendlyChat. This simple cloud function won't trigger for photo messages since there's no text to replace.\n\nHere's the code for our function. Your index.js file should look like the following:\n\n```javascript\nconst functions = require('firebase-functions');\n\n// replaces keywords with emoji in the \"text\" key of messages\n// pushed to /messages\nexports.emojify =\n    functions.database.ref('/messages/{pushId}/text')\n    .onWrite(event => {\n        // Database write events include new, modified, or deleted\n        // database nodes. All three types of events at the specific\n        // database path trigger this cloud function.\n        // For this function we only want to emojify new database nodes,\n        // so we'll first check to exit out of the function early if\n        // this isn't a new message.\n\n        // !event.data.val() is a deleted event\n        // event.data.previous.val() is a modified event\n        if (!event.data.val() || event.data.previous.val()) {\n            console.log(\"not a new write event\");\n            return;\n        }\n\n        // Now we begin the emoji transformation\n        console.log(\"emojifying!\");\n\n        // Get the value from the 'text' key of the message\n        const originalText = event.data.val();\n        const emojifiedText = emojifyText(originalText);\n\n        // Return a JavaScript Promise to update the database node\n        return event.data.ref.set(emojifiedText);\n    });\n\n// Returns text with keywords replaced by emoji\n// Replacing with the regular expression /.../ig does a case-insensitive\n// search (i flag) for all occurrences (g flag) in the string\nfunction emojifyText(text) {\n    var emojifiedText = text;\n    emojifiedText = emojifiedText.replace(/\\blol\\b/ig, \"😂\");\n    emojifiedText = emojifiedText.replace(/\\bcat\\b/ig, \"😸\");\n    return emojifiedText;\n}\n```\n\nAs you learned in the previous video, there are four major steps to writing a cloud function: choose a name, choose a service, add conditions, and add an event handler:\n\n- **name**: The name of this function is `emojify`. Writing `exports` is the standard way in Node.js to make a function publically visible. In the context of the Firebase SDK for Cloud Functions, this markes this as a **cloud function**.\n- **service**: With `functions.database`, the service we're handling events for is the Realtime Database.\n- **conditions**: `.ref('/messages/{pushId}/text')` is the condition. The condition for Realtime Database events is the specific database path that we want to listen to.\n- **event handler**: `.onWrite(event => { … })` is our event handler. We pass a function to the `.onWrite()` method with a single argument for our Realtime Database event. Each service accepts different types of arguments for the event handler, which you can read more about in the [documentation](https://firebase.google.com/docs/functions/).\n\nAs you can see, most of the complexity of a cloud function is in the event handler itself; after all, this is where you get to choose what your function does.\n\nHere are some focus points for this cloud function, which are also highlighted in the code comments:\n\n- The cloud function is triggered by Realtime Database write events, including **new**, **modified**, and **deleted** writes to the database. This means that a cloud function can update a node in the database, and the same or another cloud function will be retriggered to handle the modified event for that updated node. This has the potential for *infinite loops*, so be extra careful that any cloud functions you write prevent infinite loops. Writing to a different database path or clearly handling the case not tomodify the same database path again are a couple of ways to prevent infinite loops. Infinite loops can burn through your quota for cloud functions or even cost you significant money depending on your pricing plan for Firebase. It's worth repeating: **avoid infinite loops**.\n- The cloud function should end either with a Promise, null, or an Object. Returning null or an object ends the cloud function synchronously, as you typically expect from a return call. Returning a Promise is helpful for longer running tasks and lets your cloud function continue to execute until all tasks are completed. In this case, the Firebase SDK for Cloud Functions implements database updates (e.g., `event.data.ref.set(...)`) to return a Promise. You can read more about [Promises and Firebase on The Firebase Blog](https://firebase.googleblog.com/2016/01/keeping-our-promises-and-callbacks_76.html).\n- The function `emojifyText` is a helper function and *not* a cloud function. It's not an exported function for the Firebase SDK for Cloud Functions.\n\nWith `emojify` in our index.js file, let's test it out in the next step.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 269245,
+          "key": "ceaeefa6-a2fb-4a3e-b2a5-d2c213600e75",
+          "title": "Deploy and Test",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "ceaeefa6-a2fb-4a3e-b2a5-d2c213600e75",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 269952,
+              "key": "1d246313-2af3-4dff-8839-e9b9d23c5e1d",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Now that you have emojify written in your functions/index.js file, let's deploy it to Google Cloud Platform and see it in action.\n\nMake sure that the index.js file is saved first in the text editor.\n\nOn the command line, while in the project directory (either the root directory like FriendlyChatFunctions or the FriendlyChatFunctions/functions subdirectory), run the command\n\n```\n$ firebase deploy\n```",
+              "instructor_notes": ""
+            },
+            {
+              "id": 269953,
+              "key": "75730a08-5355-4e0f-b688-167cfa2a0784",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58b864b3_firebase-in-weekend-l3-deploy/firebase-in-weekend-l3-deploy.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/75730a08-5355-4e0f-b688-167cfa2a0784",
+              "caption": "You'll see output similar to above when running `firebase deploy`",
+              "alt": null,
+              "width": 910,
+              "height": 521,
+              "instructor_notes": null
+            },
+            {
+              "id": 269954,
+              "key": "2ee54f8e-3a29-458e-a759-8ff29321c700",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "This command may take a while to complete. With this one command the Firebase SDK for Cloud Functions is packaging any functions in `functions/index.js` along with any dependencies declared in `functions/package.json` and deploying it to the cloud.\n\nOnce the deploy is complete, you'll be able to see details about the deployed function in the [Firebase console in the Functions section](https://console.firebase.google.com/project/_/functions/list/), including the name, service, conditions, number of executions, median run time, and the logs.\n\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 269958,
+              "key": "03857afb-b0ee-41bd-845e-3626df4681cf",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58b86714_screen-shot-2017-03-02-at-9.36.41-am/screen-shot-2017-03-02-at-9.36.41-am.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/03857afb-b0ee-41bd-845e-3626df4681cf",
+              "caption": "Information on deployed functions is visible in the console",
+              "alt": null,
+              "width": 2738,
+              "height": 558,
+              "instructor_notes": null
+            },
+            {
+              "id": 277417,
+              "key": "83f6aca8-40f0-4974-96a0-e101c5b13293",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Any time you want to update a cloud function, you can deploy your changes again with `firebase deploy`. Any modified functions will be updated and any functions you delete in the file will be removed from your Firebase project.\n\n### Test function in the Firebase console\n\nIn FriendlyChat, you can write new messages to the database in the Firebase console and see the results after the cloud function triggers. New messages for the path `/messages/{pushId}/text` will trigger the event (remember, path segments with braces are wildcards). So if you create a new message in that path with the value \"Lol that cat is funny,\" you will see it changed to \"😂 that 😸 is funny\", like in the screenshots below:",
+              "instructor_notes": ""
+            },
+            {
+              "id": 277415,
+              "key": "dfc5f32b-0f14-4edd-ad42-343767eed477",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58bdc24b_fiaw-key-before-cropped/fiaw-key-before-cropped.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/dfc5f32b-0f14-4edd-ad42-343767eed477",
+              "caption": "Firebase console - New chat message **before** emojify function triggered",
+              "alt": null,
+              "width": 2730,
+              "height": 1340,
+              "instructor_notes": null
+            },
+            {
+              "id": 277416,
+              "key": "84669031-560f-46ca-aced-8fe3d99f709b",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58bdc259_fiaw-key-after-cropped/fiaw-key-after-cropped.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/84669031-560f-46ca-aced-8fe3d99f709b",
+              "caption": "Firebase console - Changed chat message **after** emojify function triggered",
+              "alt": null,
+              "width": 2730,
+              "height": 1340,
+              "instructor_notes": null
+            },
+            {
+              "id": 277419,
+              "key": "21b46577-75e9-4e3a-a0bb-2945c180f3df",
+              "title": "Test function in Firebase console",
+              "semantic_type": "TaskListAtom",
+              "is_public": true,
+              "instructor_notes": null,
+              "user_state": {
+                "node_key": "21b46577-75e9-4e3a-a0bb-2945c180f3df",
+                "completed_at": null,
+                "last_viewed_at": null,
+                "unstructured": null
+              },
+              "tasks": [
+                "I see the chat message update with emojis in the Firebase console"
+              ],
+              "positive_feedback": "Nice work! 👍",
+              "video_feedback": null,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 278800,
+          "key": "1c3b68a6-b098-4479-9545-28b6d83c05c0",
+          "title": "Emojify in FriendlyChat App",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "1c3b68a6-b098-4479-9545-28b6d83c05c0",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 278801,
+              "key": "3f044b0f-7f7b-4462-b17f-2b518f203311",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "With your function deployed, you should be able to see your chat messages in FriendlyChat emojify too. But you currently don't see that. The emojify cloud function *does* trigger, and you can see the updated message in the Firebase console. But exiting out of the app and opening it afterwards does display the updated chat message.\n",
+              "instructor_notes": ""
+            },
+            {
+              "id": 278803,
+              "key": "328a53bd-af23-4d20-826e-56129e325a90",
+              "title": null,
+              "semantic_type": "ImageAtom",
+              "is_public": true,
+              "url": "https://video.udacity-data.com/topher/2017/March/58bf3370_fiaw-lesson3-chat-message/fiaw-lesson3-chat-message.png",
+              "non_google_url": "https://s3.cn-north-1.amazonaws.com.cn/u-img/328a53bd-af23-4d20-826e-56129e325a90",
+              "caption": "This sent message doesn't appear changed as expected",
+              "alt": null,
+              "width": 1071,
+              "height": 318,
+              "instructor_notes": null
+            },
+            {
+              "id": 278802,
+              "key": "b38f4916-f101-4e3f-b461-4dd6326d0adb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Remember that you have a simple implementation in the message database listener; you only implemented `onChildAdded()` database handler.\n\nOne way you can improve FriendlyChat so that your updated database messages are updated is to use the [FirebaseUI Database](https://github.com/firebase/FirebaseUI-Android/tree/master/database) library, which properly implements the child event listener for List Views and Recycler Views.\n\nOnce you update FriendlyChat to use FirebaseUI Database, new messages from the app will show up in the chat list as well as chat message updates from the `emojify` cloud function.",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 269246,
+          "key": "3bbed553-9c72-4648-a75f-92c55ea91983",
+          "title": "More Functions",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "3bbed553-9c72-4648-a75f-92c55ea91983",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 269935,
+              "key": "336e3c4e-ba88-48b0-b6cd-c802be0710cb",
+              "title": null,
+              "semantic_type": "TextAtom",
+              "is_public": true,
+              "text": "Congratulations on writing and deploying a cloud function for FriendlyChat. We've now reached the end to this extended weekend.\n\nThere's much more to explore with the Firebase SDK for Cloud Functions. These cloud functions are the glue between services, _taking action_ whenever _an event occurs_.\n\nHere's some examples of what you can do:\n- Pre-process form submissions before writing to the Realtime Database\n- Start encoding a video once a video has finished uploading to Firebase Storage\n- Resize an image once a photo has finished uploading to Firebase Storage\n- Send a notification when someone comments on a photo/video\n- Add custom auth for username/password or new OAuth providers\n- Process webhooks from a third-party payment provider\n\nCheck out the [Firebase SDK for Cloud Functions documentation](https://firebase.google.com/docs/functions) and [the collection of sample functions by Firebase on GitHub](https://github.com/firebase/functions-samples).",
+              "instructor_notes": ""
+            }
+          ]
+        },
+        {
+          "id": 280147,
+          "key": "296b8d05-e2c8-4a40-8543-7937875fc25d",
+          "title": "Cloud Functions Conclusion",
+          "semantic_type": "Concept",
+          "is_public": true,
+          "user_state": {
+            "node_key": "296b8d05-e2c8-4a40-8543-7937875fc25d",
+            "completed_at": null,
+            "last_viewed_at": null,
+            "unstructured": null
+          },
+          "resources": null,
+          "atoms": [
+            {
+              "id": 280148,
+              "key": "92af9db7-0dd1-47e0-866b-5b725e5b6f14",
+              "title": "11 L",
+              "semantic_type": "VideoAtom",
+              "is_public": true,
+              "instructor_notes": "",
+              "video": {
+                "youtube_id": "vOYvSkI10Ow",
+                "china_cdn_id": "vOYvSkI10Ow.mp4"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "_deprecated": [
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    },
+    {
+      "name": "non_google_url",
+      "reason": "(2016/8/18) Not sure, ask i18n team for reason"
+    }
+  ]
+}
